@@ -18,5 +18,8 @@
 		"url": "https://github.com/rektide/rekon/issues"
 	},
 	"homepage": "https://github.com/rektide/rekon#readme",
-	"module": "rekon.js"
+	"module": "rekon.js",
+	"dependencies": {
+		"gunshi": "^0.27.5"
+	}
 }
