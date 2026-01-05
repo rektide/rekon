@@ -20,6 +20,7 @@
 	"homepage": "https://github.com/rektide/rekon#readme",
 	"module": "rekon.js",
 	"dependencies": {
+		"glob": "^13.0.0",
 		"gunshi": "^0.27.5"
 	}
 }
