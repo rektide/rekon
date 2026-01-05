@@ -47,6 +47,145 @@ The Gunshi plugin system provides:
 - **Renderer Decorators**: Customize help text, validation errors, and usage output
 - **Sub-command Registration**: Dynamically add commands through plugins
 
+## Context Extensions
+
+Context Extensions are the primary mechanism for plugins to expose functionality to commands and other plugins. Extensions provide type-safe access to plugin capabilities.
+
+### Defining Extension Interfaces
+
+Export extension interfaces for type safety:
+
+```typescript
+// plugins/logger/types.ts
+export const pluginId = 'myapp:logger' as const
+export type PluginId = typeof pluginId
+
+export interface LoggerExtension {
+  log: (message: string) => void
+  error: (message: string) => void
+  warn: (message: string) => void
+  debug: (message: string) => void
+}
+```
+
+### Creating Plugins with Extensions
+
+Use the `extension` property to expose functionality:
+
+```typescript
+// plugins/logger/index.ts
+import { plugin } from 'gunshi/plugin'
+import { pluginId, LoggerExtension } from './types.js'
+
+export default function logger(options = {}) {
+  return plugin<{}, typeof pluginId, [], LoggerExtension>({
+    id: pluginId,
+    name: 'Logger Plugin',
+    extension: (): LoggerExtension => ({
+      log: msg => console.log(`[LOG] ${msg}`),
+      error: msg => console.error(`[ERROR] ${msg}`),
+      warn: msg => console.warn(`[WARN] ${msg}`),
+      debug: msg => console.debug(`[DEBUG] ${msg}`)
+    })
+  })
+}
+```
+
+### Accessing Extensions in Commands
+
+Commands access extensions via `ctx.extensions[pluginId]`:
+
+```typescript
+import { define } from 'gunshi'
+import { pluginId as loggerId } from '../plugins/logger/types.js'
+
+const deployCommand = define<{
+  extensions: Record<typeof loggerId, LoggerExtension>
+}>({
+  name: 'deploy',
+  run: ctx => {
+    const logger = ctx.extensions[loggerId]
+    logger.log('Starting deployment...')
+    // deployment logic
+    logger.log('Deployment complete!')
+  }
+})
+```
+
+### Plugins with Dependencies
+
+Plugins can depend on other plugins and access their extensions:
+
+```typescript
+// plugins/api/index.ts
+import { plugin } from 'gunshi/plugin'
+import { pluginId as loggerId, LoggerExtension } from '../logger/types.js'
+
+export const pluginId = 'myapp:api' as const
+export interface ApiExtension {
+  fetch: (endpoint: string) => Promise<unknown>
+}
+
+export default function api(baseUrl: string) {
+  return plugin<
+    { [loggerId]: LoggerExtension },
+    typeof pluginId,
+    [typeof loggerId],
+    ApiExtension
+  >({
+    id: pluginId,
+    dependencies: [loggerId],
+    extension: ctx => {
+      const logger = ctx.extensions[loggerId]
+      return {
+        fetch: async endpoint => {
+          logger.log(`Fetching ${endpoint}...`)
+          const response = await fetch(`${baseUrl}${endpoint}`)
+          return response.json()
+        }
+      }
+    }
+  })
+}
+```
+
+### Extension Best Practices
+
+- **Always Define Interface Types**: Export extension interfaces for reuse
+- **Use Literal Plugin IDs**: Use `as const` for plugin IDs to enable type tracking
+- **Prefer Extension Methods**: Expose methods rather than direct data access
+- **Handle Optional Dependencies**: Use type guards for optional plugin dependencies
+- **Keep Extensions Focused**: Each extension should have a single responsibility
+- **Export Plugin Constants**: Export pluginId and types from a `types.ts` file
+
+### Common Extension Patterns
+
+**Configuration Extension:**
+```typescript
+interface ConfigExtension {
+  get: () => Config
+  reload: () => Promise<void>
+}
+```
+
+**Authentication Extension:**
+```typescript
+interface AuthExtension {
+  getToken: () => string | undefined
+  authenticate: () => Promise<void>
+  logout: () => void
+}
+```
+
+**Cache Extension:**
+```typescript
+interface CacheExtension {
+  get: <T>(key: string) => Promise<T | undefined>
+  set: <T>(key: string, value: T, ttl?: number) => Promise<void>
+  clear: () => Promise<void>
+}
+```
+
 ## Planning Process
 
 When designing a CLI with Gunshi:
@@ -100,6 +239,9 @@ When designing a CLI with Gunshi:
 
 ## Best Practices
 
+- **Project Structure**: Set `bin` in package.json pointing directly to `/<program-name>.ts`. No build step needed during development.
+- **TypeScript First**: Write `.ts` files, run them directly with Node. Build artifacts are ONLY for npm package distribution.
+- **No JSX/Transpilation**: Link to TypeScript files directly in package.json bin unless JSX processing is required
 - **Prefer Plugins for Cross-cutting Concerns**: If functionality is needed by multiple commands, make it a plugin
 - **Type-Safe Dependencies**: Always use type parameters for plugin dependencies
 - **Plugin IDs**: Use literal string types (`as const`) for plugin IDs
