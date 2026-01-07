@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-import { cli } from 'gunshi'
 import { readFile, writeFile } from 'node:fs/promises'
 import { glob } from 'glob'
 import { join, dirname, basename } from 'node:path'
@@ -11,14 +10,14 @@ const __dirname = dirname(__filename)
 async function* prompts(patterns, baseDir = 'prompt/') {
 	for (const pattern of patterns) {
 		const searchPattern = pattern.startsWith('prompt/') ? pattern : join(baseDir, pattern)
-		const files = await glob(searchPattern, { cwd: __dirname })
+		const files = await glob(searchPattern, { cwd: join(__dirname, '..') })
 		yield* files
 	}
 }
 
 async function* planFiles(patterns, baseDir = 'prompt/') {
 	for await (const file of prompts(patterns, baseDir)) {
-		const fullPath = join(__dirname, file)
+		const fullPath = join(__dirname, '..', file)
 		try {
 			const content = await readFile(fullPath, 'utf-8')
 			yield { name: file, content }
@@ -47,11 +46,11 @@ async function writeCombined(patterns, outputFile = 'COMBINED.md') {
 		combinedContent.push('\n\n---\n\n')
 	}
 	const finalContent = combinedContent.join('')
-	await writeFile(join(__dirname, outputFile), finalContent, 'utf-8')
+	await writeFile(join(__dirname, '..', outputFile), finalContent, 'utf-8')
 	return outputFile
 }
 
-const command = {
+export const command = {
 	name: 'combine',
 	description: 'Combine markdown plans from prompt/ directory',
 	args: {
@@ -82,9 +81,3 @@ const command = {
 		console.log(`Combined ${patterns.length} file(s) into ${resultFile}`)
 	}
 }
-
-await cli(process.argv.slice(2), command, {
-	name: 'combine',
-	version: '1.0.0',
-	description: 'Combine markdown plans into single file'
-})
