@@ -3,6 +3,7 @@ import { readFile, writeFile } from "node:fs/promises";
 import { glob } from "glob";
 import { join, dirname, basename } from "node:path";
 import { fileURLToPath } from "node:url";
+import { define } from 'gunshi'
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -35,7 +36,7 @@ function ensureHeader(name, content) {
     return content;
   }
   const baseName = basename(name, ".md");
-  return `# ${baseName}\n\nThis is the prompt called ${name}\n\n${content}`;
+  return `# ${baseName}\n\nThis is prompt called ${name}\n\n${content}`;
 }
 
 async function writeCombined(patterns, outputFile = "COMBINED.md") {
@@ -51,15 +52,15 @@ async function writeCombined(patterns, outputFile = "COMBINED.md") {
   return outputFile;
 }
 
-export const command = {
-  name: "combine",
-  description: "Combine markdown plans from prompt/ directory",
+export default define({
+  name: 'combine',
+  description: 'Combine markdown plans from prompt/ directory',
   args: {
     output: {
-      type: "string",
-      short: "o",
-      default: "COMBINED.md",
-      description: "Output file path",
+      type: 'string',
+      short: 'o',
+      default: 'COMBINED.md',
+      description: 'Output file path',
     },
   },
   run: async (ctx) => {
@@ -81,4 +82,4 @@ export const command = {
     const resultFile = await writeCombined(patterns, outputFile);
     console.log(`Combined ${patterns.length} file(s) into ${resultFile}`);
   },
-};
+});
