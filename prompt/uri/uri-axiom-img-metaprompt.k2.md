@@ -7,10 +7,12 @@ We're creating a comprehensive set of image generation prompts that visualize th
 ## Current State (As of This Session)
 
 ### Completed Files
+
 1. **TODO-uri-axiom-img-files.md** - Comprehensive project plan
 2. **uri-axiom-img.nature-and-organic.md** - 7 detailed sections (completed with rich connections to URI axioms and Cool URIs concepts)
 
 ### File Structure Created
+
 ```
 prompt/uri/
 ├── TODO-uri-axiom-img-files.md (project plan)
@@ -28,6 +30,7 @@ prompt/uri/
 ## Source Materials
 
 ### Primary Documents
+
 1. **Cool URIs don't change** (https://www.w3.org/Provider/Style/URI.html)
    - Persistence over time (2, 20, 200, 2000 years)
    - What makes URIs break (reorganization, tech changes, short-sightedness)
@@ -45,7 +48,8 @@ prompt/uri/
    - Hierarchical structure enabling relative URIs
 
 ### Reference Files
-- `@prompt/uri/uri-axiom-img.k2.md` - Original 45 brief prompts  
+
+- `@prompt/uri/uri-axiom-img.k2.md` - Original 45 brief prompts
 - `@prompt/uri/uri-axiom-img.glm47.md` - Single detailed prompt with staging
 - `@prompt/uri/uri-axiom-summary.k2.md` - URI axioms summary
 - `@prompt/uri/uri-axiom-of-web-architecture.glm47.md` - Full axioms document
@@ -53,7 +57,9 @@ prompt/uri/
 ## Thematic Framework (9 Categories)
 
 ### 1. Architectural & Monumental
+
 **Core metaphor**: Enduring human constructions representing persistent digital identifiers
+
 - Ancient stone tablets (persistence through civilization collapse)
 - Baroque libraries (universal information spaces)
 - Brutalist monuments (stark functionality over time)
@@ -61,7 +67,9 @@ prompt/uri/
 - Victorian archways (protocol portals with decorative function)
 
 ### 2. Nature & Organic (MINIMUM 5 SECTIONS)
+
 **Core metaphor**: Natural systems demonstrating adaptive permanence
+
 - **Tree roots** - Hierarchical URI structures
 - **Amber fossils** - Immutable preservation
 - **Coral reefs** - Symbiotic evolution
@@ -71,7 +79,9 @@ prompt/uri/
 - **Bioluminescent deep sea** - Discoverability in darkness
 
 ### 3. Cosmic & Scientific
+
 **Core metaphor**: Universal physical laws and cosmic timescales
+
 - Constellations (universal naming)
 - DNA helices (information encoding)
 - Atomic orbitals (quantum state retrieval)
@@ -79,7 +89,9 @@ prompt/uri/
 - Geological time (persistence across eons)
 
 ### 4. Cultural & Historical
+
 **Core metaphor**: Human cultural artifacts and translation
+
 - Medieval manuscripts (handcrafted resources)
 - Egyptian hieroglyphs (symbolic persistence)
 - Rosetta Stone (scheme translation)
@@ -87,7 +99,9 @@ prompt/uri/
 - Medieval tapestries (interwoven narratives)
 
 ### 5. Modern & Abstract
+
 **Core metaphor**: Contemporary digital aesthetics
+
 - Cyberpunk neon (digital frontier)
 - ASCII art (minimal encoding)
 - QR codes (machine-readable patterns)
@@ -95,7 +109,9 @@ prompt/uri/
 - Glitch art (degraded but recoverable)
 
 ### 6. Metaphorical & Symbolic
+
 **Core metaphor**: Abstract symbols representing reference concepts
+
 - Anchors (stable references)
 - Pocket watches (temporal versioning)
 - Ships in bottles (encapsulated universes)
@@ -103,7 +119,9 @@ prompt/uri/
 - Hourglasses (time-based caching)
 
 ### 7. Minimalist & Typographic
+
 **Core metaphor**: Reduction to essential forms
+
 - Shadow casting (opaque identifiers)
 - Zen gardens (meditative URIs)
 - String art (connected graphs)
@@ -111,7 +129,9 @@ prompt/uri/
 - Negative space (hidden meaning)
 
 ### 8. Surreal & Dreamlike
+
 **Core metaphor**: Impossible but evocative imagery
+
 - Escher staircases (impossible architectures)
 - Dalí melting clocks (temporal distortion)
 - Magritte pipes (representation vs reality)
@@ -119,7 +139,9 @@ prompt/uri/
 - Digital tattoos (permanent identity)
 
 ### 9. Technical & Industrial
+
 **Core metaphor**: Human manufacturing and engineering
+
 - Blueprints (specifications)
 - Steel stamping (mass production)
 - Bronze casting (archival permanence)
@@ -143,6 +165,7 @@ For each theme file, we follow this structure:
 ## Completed Work: nature-and-organic.md
 
 **7 sections created with deep elaboration:**
+
 1. Gigantic tree roots forming "http://" - Hierarchical persistence, sameness over time
 2. Fossilized URLs in amber - Literal preservation, opacity, museum context
 3. Coral reef growing around URL structures - Symbiotic evolution, modularity
@@ -152,12 +175,14 @@ For each theme file, we follow this structure:
 7. Bioluminescent deep sea - Discoverability, scheme differentiation, honest signaling
 
 **Each section connects to:**
+
 - 2-3 URI axioms explicitly
 - Multiple Cool URI principles
 - Rich visual details for AI generation
 - Metaphorical depth showing concept interconnections
 
 **Key insights documented:**
+
 - Growth through stability vs. reorganization
 - Invisible infrastructure as essential foundation
 - Time scales (geological, generational, ephemeral)
@@ -167,6 +192,7 @@ For each theme file, we follow this structure:
 ## Remaining Work
 
 ### 8 files to complete:
+
 1. **architectural-and-monumental.md** - Stone tablets, baroque libraries, brutalist monuments, petroglyphs, Victorian archways
 2. **cosmic-and-scientific.md** - Constellations, DNA, atomic orbitals, crystal lattices, geological time
 3. **cultural-and-historical.md** - Medieval manuscripts, hieroglyphs, Rosetta Stone, woodblocks, tapestries
@@ -177,6 +203,7 @@ For each theme file, we follow this structure:
 8. **technical-and-industrial.md** - Blueprints, steel stamping, bronze casting, CNC machining, welded sculptures
 
 ### Each file needs:
+
 - Theme concept overview (3-5 sentences)
 - 5-7 detailed sections (matching structure of nature-and-organic.md)
 - Each section: visual description + URI axiom connections + Cool URI connections + metaphorical depth
@@ -186,6 +213,7 @@ For each theme file, we follow this structure:
 ## Key Insights & Patterns Discovered
 
 ### Meta-Patterns Across Themes:
+
 1. **Persistence as Adaptive Permanence** - Not rigid stasis, but resilient evolution
 2. **Opacity as Feature** - Not just technical constraint, but enabling flexibility
 3. **Hierarchy as Natural Law** - Found in tree roots, crystal structures, manuscript organization
@@ -193,6 +221,7 @@ For each theme file, we follow this structure:
 5. **The Invisible Web** - Mycelium networks, underground roots, deep sea abyss—most important infrastructure is hidden
 
 ### Connection Strategies:
+
 - **Direct metaphors** - Tree roots = URI paths
 - **Process analogies** - Fossilization = caching/archival
 - **Temporal scaling** - Geological time = 2000-year URI persistence
@@ -200,6 +229,7 @@ For each theme file, we follow this structure:
 - **Visual emphasis** - Golden hour lighting = timelessness, bioluminescence = discoverability
 
 ### Writing Voice:
+
 - Academic but accessible
 - Explicit connections (not implied)
 - Multiple layers per concept
@@ -209,6 +239,7 @@ For each theme file, we follow this structure:
 ## Next Steps When Resuming
 
 ### Immediate Actions:
+
 1. **Create comprehensive braindump file** (this plan) at `/home/rektide/src/rekon/prompt/uri/uri-axiom-img-metaprompt.k2.md`
 
 2. **Complete remaining 8 theme files** in order:
@@ -226,6 +257,7 @@ For each theme file, we follow this structure:
 4. **Integration test** - Verify each prompt file can generate distinct, conceptually-aligned images
 
 ### Quality Checks:
+
 - Each section must cite specific URI axioms
 - Each section must connect to Cool URIs principles
 - Visual descriptions must be generative (AI-friendly)
@@ -234,6 +266,7 @@ For each theme file, we follow this structure:
 - Files should be linkable and referenceable
 
 ### Potential Enhancements:
+
 - Create a master index file linking all theme files
 - Generate example AI prompts combining theme + specific URI axiom
 - Create visual mood boards for each theme
@@ -251,6 +284,7 @@ For each theme file, we follow this structure:
 ## Files Reference
 
 For resuming work, all relevant files are in:
+
 - `/home/rektide/src/rekon/prompt/uri/` - Theme files and planning documents
 - `/home/rektide/src/rekon/prompt/uri-axiom-of-web-architecture.*` - Source materials
 - `/home/rektide/src/rekon/prompt/uri-axiom-summary.*` - Quick reference

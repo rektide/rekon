@@ -225,6 +225,7 @@ This visualization is not merely a diagram; it's a stellar yantra for the digita
 ### Quantum Field Theory and Stellar URI Axioms
 
 Quantum field theory provides foundational understanding:
+
 - **Field vs. Particle:** URIs as field coordinates vs. individual information particles
 - **Universal Field:** URI universality as quantum information field permeating all space
 - **Observer Effect:** GET's no-side-effects as ideal quantum non-interference
@@ -236,6 +237,7 @@ Quantum field theory provides foundational understanding:
 ### Dark Energy and Stellar URI Axioms
 
 Dark energy inform cosmic expansion:
+
 - **Accelerating Expansion:** URI universality as cosmic expansion including all information
 - **Cosmic Horizon:** URI space boundaries like cosmic horizons - yet accessible
 - **Dark Energy as Connector:** URI connections as dark energy binding information
@@ -247,6 +249,7 @@ Dark energy inform cosmic expansion:
 ### Cosmic String Theory and Stellar URI Axioms
 
 String theory provides multi-dimensional understanding:
+
 - **String Vibration:** URI strings as fundamental vibrating cosmic strings
 - **Branes as Hierarchies:** URI slashes as boundaries between cosmic branes
 - **Multi-Dimensional:** Matrix URIs as coordinates across string theory dimensions
@@ -258,6 +261,7 @@ String theory provides multi-dimensional understanding:
 ### Relativity and Stellar URI Axioms
 
 Relativity informs cosmic navigation:
+
 - **Coordinate Invariance:** URI global scope as relativistic coordinate invariance
 - **Light-Speed Caching:** GET speed limited by cosmic information speed
 - **Spacetime Curvature:** URI hierarchies as paths through curved spacetime

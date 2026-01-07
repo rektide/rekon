@@ -223,6 +223,7 @@ This visualization is not merely a diagram; it's a noir yantra for the digital a
 ### Film Noir and Neon Noir URI Axioms
 
 Classic film noir provides foundational understanding:
+
 - **The Moral Detective:** URI global scope as detective following leads without bias
 - **The Femme Fatale:** URI opacity as mysterious woman whose meaning cannot be read from appearance
 - **The Corruption:** Identity abuse as corruption of the investigation itself
@@ -234,6 +235,7 @@ Classic film noir provides foundational understanding:
 ### Cyberpunk Noir and Neon Noir URI Axioms
 
 Cyberpunk noir informs the aesthetic:
+
 - **High-Tech Low-Life:** URIs as high-tech identifiers in low-tech rain-slicked alleys
 - **Corporate Dominance:** URI space as corporate directory system in the metropolis
 - **The Glitch:** HTTP errors as neon glitches in the investigation
@@ -245,6 +247,7 @@ Cyberpunk noir informs the aesthetic:
 ### Detective Fiction and Neon Noir URI Axioms
 
 Detective tradition informs the logic:
+
 - **Deductive Reasoning:** Following URIs as following clues to their logical conclusion
 - **The Red Herring:** Identity abuse as planted evidence that misleads
 - **The Stakeout:** The persistent URI as stakeout point in the investigation
@@ -256,6 +259,7 @@ Detective tradition informs the logic:
 ### True Crime and Neon Noir URI Axioms
 
 True crime inform the realism:
+
 - **The Evidence Chain:** URIs connecting to form the evidence chain
 - **The Witness Network:** Multiple access to same URI as multiple witnesses describing same event
 - **The Timeline:** Matrix URIs as timeline evidence positioning

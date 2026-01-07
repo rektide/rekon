@@ -86,7 +86,7 @@ A sandstone cliff face in the American Southwest, covered in petroglyphs carved 
 
 - **Canonicalization:** The carvings are exact, character-for-character matches. There's no canonicalization algorithm for petroglyphs—each carving is unique. Two identical carvings are the same by inspection, just as URIs are identical by character-by-character comparison, not by algorithmic normalization.
 
-- **Axiom 2b (Identity):** The original carvers determined the meaning—their cultural context established what these symbols referenced. Today, we may not understand them, but we know they reference *something* important to the carvers, just as URIs may reference resources whose meaning we don't fully grasp but whose identity is established by the owner.
+- **Axiom 2b (Identity):** The original carvers determined the meaning—their cultural context established what these symbols referenced. Today, we may not understand them, but we know they reference _something_ important to the carvers, just as URIs may reference resources whose meaning we don't fully grasp but whose identity is established by the owner.
 
 **Connection to Cool URIs:**
 

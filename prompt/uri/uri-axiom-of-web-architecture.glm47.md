@@ -31,15 +31,15 @@ Status: personal view. Editing status: Italic text is rough. Reques complete edi
 
 The operation of the World Wide Web, and its interoperability between platforms of differing hardware and software manufacturers, depend on the specifications of protocols such as HTTP, data formats such as HTML, and other syntaxes such as the URL or, more generally, URI specifications. Behind these specifications lie some important rules of behavior which determine the foundation of the properties of the Web. These are rules and principles upon which new designs of programs and the behavior of people must rely. And it is that reliance which makes the Web both an information space which works now, and the foundation for future applications, protocols, and extensions. The more essential of these I refer to loosely as axioms, and the most basic of these have to do with URI.
 
-The aim of thes article is to summarize in one place the axioms of Web architecture: those invariant aspects of Web design which are implied or stated in various specifications or in some cases simply part of the folk law of how the Web ought to be used. Especially for these latter cases, this article is designed to tie together the Web community in a common understanding of how we can progress, extend, and evolve the Web protocols. *Terms such as "axiom", and "theorem" are used with gay abandon rather than precision as this not a mathematical treatise.*
+The aim of thes article is to summarize in one place the axioms of Web architecture: those invariant aspects of Web design which are implied or stated in various specifications or in some cases simply part of the folk law of how the Web ought to be used. Especially for these latter cases, this article is designed to tie together the Web community in a common understanding of how we can progress, extend, and evolve the Web protocols. _Terms such as "axiom", and "theorem" are used with gay abandon rather than precision as this not a mathematical treatise._
 
 ## Universal Resource Identifiers
 
-The Web is a universal information space. It is a space in the sense that things in it have an address. The "addresses", "names", or as we call them here identifiers, are the subject of this article.  They are called **Universal Resource Identifiers** (URIs).
+The Web is a universal information space. It is a space in the sense that things in it have an address. The "addresses", "names", or as we call them here identifiers, are the subject of this article. They are called **Universal Resource Identifiers** (URIs).
 
-An information object is "on the web" if it has a URI.  Objects which have URIs are sometimes known as "First Class Objects" (FCOs).  The Web works best when any information object of value and identity is a first class object.  If something does not have a URI, you can't refer to it, and the power of the Web is the less for that.
+An information object is "on the web" if it has a URI. Objects which have URIs are sometimes known as "First Class Objects" (FCOs). The Web works best when any information object of value and identity is a first class object. If something does not have a URI, you can't refer to it, and the power of the Web is the less for that.
 
-By *Universal* I mean that the web is declared to be able to contain in principle every bit of information accessible by networks. It was designed to be able to include existing information systems such as FTP, and to be able simply in the future to be extendable to include any new information system.
+By _Universal_ I mean that the web is declared to be able to contain in principle every bit of information accessible by networks. It was designed to be able to include existing information systems such as FTP, and to be able simply in the future to be extendable to include any new information system.
 
 The URI schemes identify things various different types of information object, wich play different roles in the protocols. Some identify services, connection end points, and so on, but a fundamental underlying architectural notion is of information objects - otherwise known as generic **documents**. These can be **represented** by strings of bits. An information object conveys something - it may be art, poetry, sensor values or mathematical equations.
 
@@ -89,7 +89,7 @@ We do not discuss in detail here the definition of owner because the mechanism b
 
 The implication here is that we will need protocols for exchanging any guarantees of the properties of given URIs: they are not simply laid down in the specification of the web. This is in tune with a general philosophical principle of design (after Bob Scheifler and others):
 
-> The technology should define *mechanisms* wherever possible without defining *policy*.
+> The technology should define _mechanisms_ wherever possible without defining _policy_.
 
 because we recognize here that many properties of URIs are social rather than technical in origin.
 
@@ -97,9 +97,9 @@ Therefore, you will find pointers in hypertext which point to documents which ne
 
 #### Identity abuse
 
-*All the same, a word of caution is appropriate about the indiscriminate or deliberately misleading abuse of the identity of the object refered to by a URI. A web server is often in a position to know a lot of context about a request. This can include for example, the person who is asking, the document they were reading last from which they followed the link.  It is possible to use this information to dramatically change the content of the document refered to.  This undermines the concept of identity and of reference in general.  To do that without making it clear is misleading both to anyone who quotes the URI of a page or who follows the link.*
+_All the same, a word of caution is appropriate about the indiscriminate or deliberately misleading abuse of the identity of the object refered to by a URI. A web server is often in a position to know a lot of context about a request. This can include for example, the person who is asking, the document they were reading last from which they followed the link. It is possible to use this information to dramatically change the content of the document refered to. This undermines the concept of identity and of reference in general. To do that without making it clear is misleading both to anyone who quotes the URI of a page or who follows the link._
 
-*Unless it is clearly indicated on the page (or using a future protocol) , to return differing information for the same URI must be considered a form of deception.  It also of course messes up caches. Note the HTTP 1.1 "Vary" header allows this indication to be passed.*
+_Unless it is clearly indicated on the page (or using a future protocol) , to return differing information for the same URI must be considered a form of deception. It also of course messes up caches. Note the HTTP 1.1 "Vary" header allows this indication to be passed._
 
 #### When is a URI "the same URI"?
 
@@ -129,7 +129,7 @@ So, on this last axiom rests not specifically the operation of the web, but its 
 
 ### Identity, State and GET
 
-From the fact that the thing referenced by the URI is in some sense repeatably the same suggests that in a large number of cases the result of de-referencing the URI will be exactly the same, especially during a short period of time. This leads to the possibility of caching information. It leads to the whole concept of the Web as an information space rather than a computing program. It is a very fundamental concept. Not only do the concepts of navigation around the space remembering "places" in the Web and other humanly visible aspects of the nature of the Web depend on it, but also many technical architectural properties depend on it. For example, the implication is that the GET operation in HTTP is an operation which is expected to repeatably return the same result. As a result of that, anyone may know that under certain circumstances that they may instead of repeating an HTTP operation, use the result of a previous operation. The operation is "idempotent". This, in turn, allows software to use previously fetched copies of documents and it requires that the HTTP GET operation should have no *side effects*. For example, GET should never be used to initiate another operation which will change state. In general (see the HTTP 1.1 spec) the notion of side-effects is that of any significant communication between the parties. A user can never be held accountable to anything as a result of doing a GET. The server may for example log the number of requests, but the client user cannot be held responsible for that: it does not constitute communication between the two parties.
+From the fact that the thing referenced by the URI is in some sense repeatably the same suggests that in a large number of cases the result of de-referencing the URI will be exactly the same, especially during a short period of time. This leads to the possibility of caching information. It leads to the whole concept of the Web as an information space rather than a computing program. It is a very fundamental concept. Not only do the concepts of navigation around the space remembering "places" in the Web and other humanly visible aspects of the nature of the Web depend on it, but also many technical architectural properties depend on it. For example, the implication is that the GET operation in HTTP is an operation which is expected to repeatably return the same result. As a result of that, anyone may know that under certain circumstances that they may instead of repeating an HTTP operation, use the result of a previous operation. The operation is "idempotent". This, in turn, allows software to use previously fetched copies of documents and it requires that the HTTP GET operation should have no _side effects_. For example, GET should never be used to initiate another operation which will change state. In general (see the HTTP 1.1 spec) the notion of side-effects is that of any significant communication between the parties. A user can never be held accountable to anything as a result of doing a GET. The server may for example log the number of requests, but the client user cannot be held responsible for that: it does not constitute communication between the two parties.
 
 It is wrong to represent the user doing a GET as committing to something or putting themselves on a mailing list, doing any operation which effects the state of the Web or the state of the users relationship with the information provider or the server. To ignore this rule can be to introduce a serious security problem in a website.
 
@@ -149,7 +149,7 @@ This means that for people implementing systems in which users request informati
 
 However, when the result of a form is to execute an operation, which changes the Web or a relationship of a user to anyone else, then the GET operation may not be used and POST or other method either through HTTP or mail must be used. Only by sticking to this rule can such systems interoperate with caches and other agents which exploit the repeatability of HTTP GET of URI dereferencing in the future.
 
-The axiom above about URIs pointing in principle to conceptually the same thing has a corollary which says that URIs do not always have to point to *exactly* the same set of bits. This means that URIs can be "generic". See the [discussion of generic URIs](Generic.html).
+The axiom above about URIs pointing in principle to conceptually the same thing has a corollary which says that URIs do not always have to point to _exactly_ the same set of bits. This means that URIs can be "generic". See the [discussion of generic URIs](Generic.html).
 
 ### The Opacity Axiom
 
@@ -176,8 +176,9 @@ An important case is the treatment of the question mark in HTML forms. There is 
 When a query string and fragment identifier are used, the function evaluated on dereferencing a URL
 
          http://foo/bar?baz#frag
- Is
-         select(get( "foo", "query("bar","baz")), "frag")
+
+Is
+select(get( "foo", "query("bar","baz")), "frag")
 
 where
 
@@ -261,15 +262,15 @@ There is a lot of flexibility and growth to be gained by allowing any sort of UR
 
 Comparison of some URI schemes
 
-| Scheme prefix | Identity relationship: what does the URI correspond to? | Reuse | Persistence |
-| --- | --- | --- | --- |
-| http | Geneneric document as :defined by publisher. Generic URIs possible with content negotiation | defined by publisher | defined by publisher |
-| ftp: | sequence of bits | defined by publisher | defined by publisher |
-| uuid: | expectation of uniqueness has to be upheld by publisher | defined by publisher | (no dereference) |
-| sha1: | sequence of bits. | mathematically extremely unlikely | (no dereference) |
-| mid: | Email message. Should be 1:1 modulo recoding, and header addition/deletion | Can happen after 2 years according to the spec, but absolutely not recommended | (no derefrence) |
-| mailto: | mailbox as used in email protocols | Socially unacceptable | (no dereference) |
-| telnet: | connection endpoint for interactive login service | defined by publisher | (no dereference) |
+| Scheme prefix | Identity relationship: what does the URI correspond to?                                     | Reuse                                                                          | Persistence          |
+| ------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ | -------------------- |
+| http          | Geneneric document as :defined by publisher. Generic URIs possible with content negotiation | defined by publisher                                                           | defined by publisher |
+| ftp:          | sequence of bits                                                                            | defined by publisher                                                           | defined by publisher |
+| uuid:         | expectation of uniqueness has to be upheld by publisher                                     | defined by publisher                                                           | (no dereference)     |
+| sha1:         | sequence of bits.                                                                           | mathematically extremely unlikely                                              | (no dereference)     |
+| mid:          | Email message. Should be 1:1 modulo recoding, and header addition/deletion                  | Can happen after 2 years according to the spec, but absolutely not recommended | (no derefrence)      |
+| mailto:       | mailbox as used in email protocols                                                          | Socially unacceptable                                                          | (no dereference)     |
+| telnet:       | connection endpoint for interactive login service                                           | defined by publisher                                                           | (no dereference)     |
 
 ### How not to do it
 

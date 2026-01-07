@@ -221,6 +221,7 @@ This visualization is not merely a diagram; it's a vaporwork yantra for the digi
 ### Cyberpunk and Vaporwave URI Axioms
 
 Cyberpunk influences vaporwave:
+
 - **High-Tech Low-Life:** URIs as high-tech addresses for low-tech content - encoding hyperreal from humble resources
 - **Corporate Dominance:** Vaporwave's corporate aesthetic - malls, logos - URIs identifying consumer culture artifacts
 - **Glitch as Rebellion:** Cyberpunk's embrace of technological imperfection - URI opacity as embracing encoding over raw access
@@ -231,6 +232,7 @@ Cyberpunk influences vaporwave:
 ### Glitch Art and Vaporwave URI Axioms
 
 Glitch art provides foundational understanding:
+
 - **Digital Corruption as Beauty:** URI strings containing glitches, brackets, corruption - vaporwave identifiers
 - **The Error as Aesthetic:** HTTP errors (404, 500) as vaporwork visual elements - error pages as aesthetic objects
 - **Corrupted Encoding:** JPEG artifacts, VHS lines as encoding markers - URIs as the ultimate encoding
@@ -241,6 +243,7 @@ Glitch art provides foundational understanding:
 ### Synthwave and Vaporwave URI Axioms
 
 Synthwave shares nostalgic futurism:
+
 - **Retro-Synthetics:** Both nostalgic for imagined technological futures - URIs as retro-futurist addresses
 - **80s Optimism:** Synthwave's upbeat 80s vision vs vaporwave's melancholy - both URI-based hyperreal aesthetics
 - **Grid Aesthetics:** Synthwave's perspective grids, vaporwave's hierarchical slashes - both grid-based navigation
@@ -251,6 +254,7 @@ Synthwave shares nostalgic futurism:
 ### Outrun and Vaporwave URI Axioms
 
 Outrun shares brutalist vaporwave:
+
 - **Retro-Futurist Architecture:** Both imagining futures through past aesthetics - URI space as retro-futurist design
 - **Brutalist Glitching:** Outrun's severe glitching vs vaporwave's nostalgic glitching - URI encoding can vary
 - **Sunset Aesthetics:** Both love sunsets - URIs addressing hyperreal sunsets across aesthetic dimensions
@@ -261,6 +265,7 @@ Outrun shares brutalist vaporwave:
 ### Early Internet Culture and Vaporwave URI Axioms
 
 Early internet culture provides source material:
+
 - **Geocities Pages:** Early web aesthetics as vaporwork source - URIs identifying nostalgic early web resources
 - **Under Construction GIFs:** Early internet placeholder aesthetics - URIs identifying incomplete resources
 - **Marquee Text:** Scrolling text as vaporwave aesthetic element - HTTP headers as hyperreal marquees

@@ -12,15 +12,8 @@
     "resolveJsonModule": true,
     "allowImportingTsExtensions": true,
     "noEmit": true,
-    "isolatedDeclarations": true,
     "moduleDetection": "force"
   },
-  "include": [
-    "**/*.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "build"
-  ]
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules", "dist", "build"]
 }

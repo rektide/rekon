@@ -1,4 +1,4 @@
-# Cosmic & Scientific: URI Axiom Visualizations  
+# Cosmic & Scientific: URI Axiom Visualizations
 
 ## Theme Concept: Universal Patterns Across Creation
 

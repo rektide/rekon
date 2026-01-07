@@ -1,41 +1,42 @@
 {
-	"name": "rekon",
-	"version": "1.0.0",
-	"description": "",
-	"main": "index.js",
-	"bin": {
-		"rekon": "./rekon.ts"
-	},
-	"scripts": {
-		"format": "oxfmt .",
-		"format:check": "oxfmt --check .",
-		"lint": "oxlint",
-		"typecheck": "tsgo",
-		"test": "vitest",
-		"build": "tsdown"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/rektide/rekon.git"
-	},
-	"keywords": [],
-	"author": "rektide de la faye",
-	"license": "MIT",
-	"type": "module",
-	"bugs": {
-		"url": "https://github.com/rektide/rekon/issues"
-	},
-	"homepage": "https://github.com/rektide/rekon#readme",
-	"module": "rekon.js",
-	"dependencies": {
-		"glob": "^13.0.0",
-		"gunshi": "^0.27.5"
-	},
-	"devDependencies": {
-		"@typescript/native-preview": "7.0.0-dev.20260106.1",
-		"oxfmt": "^0.23.0",
-		"oxlint": "^1.38.0",
-		"tsdown": "0.19.0-beta.3",
-		"vitest": "^4.0.16"
-	}
+  "name": "rekon",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "homepage": "https://github.com/rektide/rekon#readme",
+  "bugs": {
+    "url": "https://github.com/rektide/rekon/issues"
+  },
+  "license": "MIT",
+  "author": "rektide de la faye",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rektide/rekon.git"
+  },
+  "bin": {
+    "rekon": "./rekon.ts"
+  },
+  "type": "module",
+  "main": "index.js",
+  "module": "rekon.js",
+  "scripts": {
+    "format": "oxfmt .",
+    "format:check": "oxfmt --check .",
+    "lint": "oxlint",
+    "typecheck": "tsgo",
+    "test": "vitest",
+    "build": "tsdown"
+  },
+  "dependencies": {
+    "glob": "^13.0.0",
+    "gunshi": "^0.27.5"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.3",
+    "@typescript/native-preview": "7.0.0-dev.20260106.1",
+    "oxfmt": "^0.23.0",
+    "oxlint": "^1.38.0",
+    "tsdown": "0.19.0-beta.3",
+    "vitest": "^4.0.16"
+  }
 }

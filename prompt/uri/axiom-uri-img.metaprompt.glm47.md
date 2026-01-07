@@ -113,6 +113,7 @@ Our catalog of 50 artistic themes provides 50 different sacred geometries throug
 ### 1. DWELL IN THE THEME'S SACRED GEOMETRY
 
 Research and understand:
+
 - The historical and cultural context of the theme
 - The sacred symbols and their meanings within that tradition
 - The color palette and its symbolic significance
@@ -130,12 +131,14 @@ For Cyberpunk: Research dystopian futures, the aesthetics of decay and rebirth t
 Every theme contains its own axioms, its own sacred principles. Our task is to discover how these parallel the URI axioms. This is not forcing a connection but REVEALING the pre-existing resonance.
 
 Example - Mandala:
+
 - Radial symmetry = Global scope (works from any angle)
 - Layers of depth = Hierarchy (levels of meaning)
 - Eternal center point = Sameness (persistence across time)
 - Sacred glyphs = Opacity (meaning beyond literal interpretation)
 
 Example - Steampunk:
+
 - Gears interlocking = Universality (any part connects to any other)
 - Machine as cosmos = Identity (the whole is more than parts)
 - Gauge readings = Sameness (measurements repeat)
@@ -156,12 +159,14 @@ Example: Opacity as Maya in Hindu Theme
 Beyond the primary theme, show how these truths echo in related traditions, disciplines, and modes of knowing. This demonstrates the universality of the axioms themselves.
 
 For each major section or axiom, create a "Cross-Connections" subsection that explores:
+
 - Parallel concepts in other spiritual traditions
 - Resonances with scientific or mathematical principles
 - Reflections in other art forms or cultural practices
 - Unexpected connections that reveal the axiom's universality
 
 Example Cross-Connections for Opacity:
+
 - Heisenberg Uncertainty Principle (quantum physics)
 - Zen concept of finger/moon
 - Platonic theory of forms
@@ -208,6 +213,7 @@ This is the critical distinction: we are not writing technical documentation. We
 **Introduction:** Set the cosmic context, declare the sacred mission, invoke the reader's participation in myth-making.
 
 **Axiom Explorations:** For each axiom:
+
 - First state the axiom accurately
 - Then offer the sacred dimension
 - Then weave the theme-specific metaphors
@@ -265,6 +271,7 @@ This is the critical distinction: we are not writing technical documentation. We
 Ultimately, this project creates a library of 50 sacred technical yantras - 50 themed visualizations of the URI axioms that together form a complete cosmology of Web architecture principles. Each yantra is complete in itself, but together they reveal the universal nature of these principles.
 
 Think of this as:
+
 - A library of mystical texts, each from a different spiritual tradition, all revealing the same ultimate truth
 - A gallery of sacred art across cultures, each portraying divine reality through its own aesthetic
 - A set of mathematical proofs of the same theorem, each using different methods but arriving at identical results
@@ -293,6 +300,7 @@ A themed prompt document is complete when:
 ### Step 1: Understand Steampunk's Sacred Geometry
 
 Steampunk is more than Victorian aesthetics; it represents:
+
 - The mechanical universe - cosmos as clockwork
 - Marriage of human craft and natural power
 - Progress and its cost - the beauty and horror of industrial revolution

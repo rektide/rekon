@@ -225,6 +225,7 @@ This visualization is not merely a diagram; it's a mathematical revelation - sho
 ### Set Theory and Fractal URI Axioms
 
 Set theory provides foundational understanding:
+
 - **Universal Set:** The set containing all URIs - analogous to the universal set
 - **Power Sets:** The set of all URI-identifiable resources - larger than URI set
 - **Cantor's Paradox:** The set of all sets containing themselves - URIs can address themselves
@@ -236,6 +237,7 @@ Set theory provides foundational understanding:
 ### Topology and Fractal URI Axioms
 
 Topological thinking informs URI structure:
+
 - **Homeomorphism:** URI space and telephone space are homeomorphic - same topological structure
 - **Continuity:** Dereferencing is continuous across URI space - no tearing or gluing
 - **Connectedness:** URI space is path-connected - any URI can reach any other through links
@@ -247,6 +249,7 @@ Topological thinking informs URI structure:
 ### Category Theory and Fractal URI Axioms
 
 Category theory provides higher-level understanding:
+
 - **Universal Objects:** URI space as an initial object in addressing category
 - **Natural Transformations:** Mapping between URI schemes as natural transformations
 - **Limit/Colimit:** URI composition as categorical limits and colimits
@@ -258,6 +261,7 @@ Category theory provides higher-level understanding:
 ### Complexity Theory and Fractal URI Axioms
 
 Computational complexity informs URI understanding:
+
 - **NP-Complete Problems:** URI equivalence might be NP-complete - no efficient canonicalization
 - **PSPACE:** The space needed to parse URIs - polynomial in URI length
 - **Time Complexity:** Resolving relative URIs - polynomial time relative to depth
@@ -269,6 +273,7 @@ Computational complexity informs URI understanding:
 ### Information Theory and Fractal URI Axioms
 
 Information theory provides quantitative understanding:
+
 - **Entropy:** The information content of URI strings - measured in bits
 - **Redundancy:** Redundant information in URIs - opportunities for compression
 - **Channel Capacity:** URIs as addressing through information channels

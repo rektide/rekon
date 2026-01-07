@@ -219,6 +219,7 @@ This visualization is not merely a diagram; it's a vision of what the Web could 
 ### Permaculture and Solarpunk URI Axioms
 
 Permaculture principles directly inform our understanding:
+
 - **Observe and Interact:** Permaculture's first principle - URI global scope as universal observability
 - **Catch and Store Energy:** Caching GET results is information energy storage
 - **Obtain a Yield:** GET as obtaining without depleting
@@ -231,6 +232,7 @@ Permaculture principles directly inform our understanding:
 ### Cradle-to-Cradle and Solarpunk URI Axioms
 
 Circular economy thinking informs URI persistence:
+
 - **Material Flow:** Information flowing through URIs like materials in circular systems
 - **Technical Cycles:** URI reuse, version cycles, refresh cycles are technical metabolisms
 - **Biological Cycles:** Knowledge evolution through URIs like biological evolution
@@ -242,6 +244,7 @@ Circular economy thinking informs URI persistence:
 ### Biomimicry and Solarpunk URI Axioms
 
 Learning from nature's patterns informs URI design:
+
 - **Network Mimicry:** Mycelial networks as URI connection patterns
 - **Hierarchical Mimicry:** Natural hierarchies (forest layers, food webs) as URI slash hierarchies
 - **Redundancy:** Multiple universal spaces as biological redundancy for resilience
@@ -253,6 +256,7 @@ Learning from nature's patterns informs URI design:
 ### Transition Towns and Solarpunk URI Axioms
 
 Community resilience thinking informs URI universality:
+
 - **Localization:** Relative URIs as local resilience - navigation within local context
 - **Community Scale:** URI hierarchies working at community scale
 - **Interdependence:** URI space connecting communities without destroying local identity
@@ -264,6 +268,7 @@ Community resilience thinking informs URI universality:
 ### Ecological Economics and Solarpunk URI Axioms
 
 Understanding value in living systems informs URI significance:
+
 - **Natural Capital:** URIs as information capital - preserved, invested, grown
 - **Ecosystem Services:** URI system provides services to information economy
 - **Valuing What's Hidden:** URI opacity means not judging value by packaging

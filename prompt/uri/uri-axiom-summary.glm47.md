@@ -41,6 +41,7 @@ The person or agent who created the URI and first determined what it points to d
 This leads to an important design principle: "The technology should define mechanisms wherever possible without defining policy." Many URI properties are social rather than technical, requiring protocols for exchanging guarantees about URI properties.
 
 Consequences of this axiom:
+
 - Pointers can reference documents that never change
 - Pointers can reference documents that change over time
 - Pointers can reference documents available in multiple formats
@@ -57,6 +58,7 @@ Web servers often have context about requests (who is asking, what document they
 **Two URIs are the same if and only if they are identical character for character.**
 
 Different URIs may still be equivalent if they refer to the same thing and produce identical results. Some equivalence can be deduced from web standards:
+
 - HTTP domain names are case-insensitive
 - Some sites may have case-invariant paths
 - Some sites may treat "/" and "/index.html" as equivalent
@@ -86,6 +88,7 @@ Since URIs repeatably refer to "the same" thing, dereferencing a URI often retur
 **In HTTP, anything which does not have side-effects should use GET.**
 
 The HTTP GET operation is expected to repeatably return the same result, making it idempotent. Consequently:
+
 - Software can use previously fetched copies (caching)
 - HTTP GET should have no side effects
 - GET should never be used to initiate state-changing operations
@@ -145,6 +148,7 @@ select(get("foo", query("bar", "baz")), "frag")
 ```
 
 Where:
+
 - `query(resource, querystring)` is evaluated by resource "bar" (opaque to all except server "foo")
 - `get(server, restofuri)` is executed by the client (understands "foo", not "bar")
 - `select(fragmentid, resource)` is evaluated by client code handling the resource
@@ -174,6 +178,7 @@ Relative naming allows closely located documents to reference each other without
 ### Example: Telephone Number Mapping
 
 International telephone numbers are hierarchical:
+
 - Country code
 - Area code (if any)
 - Telephone number
@@ -185,6 +190,7 @@ phone://1/617/253-5708
 ```
 
 Using relative URI rules within a base context:
+
 - Local number: `861-5000`
 - Country-relative number: `/800/123-4567`
 - International number: `phone://41/22/767-6111`
@@ -202,6 +208,7 @@ This demonstrates the power of relative naming in hierarchical systems.
 RFC1630 defines an algorithm for parsing relative URIs with any arbitrary number of consecutive slashes. While not perfect in handling "." and "..", it applies to any number of slash levels.
 
 Key rules:
+
 - If schemes differ, full absolute URI required
 - Otherwise, scheme is omitted
 - Matching consecutive slashes from context prepended to partial URI
@@ -224,24 +231,26 @@ The URI concept doesn't define specific identity properties between URI and reso
 
 ### Comparison of Common URI Schemes
 
-| Scheme | Identity Relationship | Reuse | Persistence |
-|--------|----------------------|-------|-------------|
-| **http** | Generic document as defined by publisher. Generic URIs possible with content negotiation. | Publisher-defined | Publisher-defined |
-| **ftp:** | Sequence of bits | Publisher-defined | Publisher-defined |
-| **uuid:** | Uniqueness upheld by publisher | Publisher-defined | No dereference |
-| **sha1:** | Sequence of bits | Mathematically extremely unlikely | No dereference |
-| **mid:** | Email message (1:1 modulo recoding, header changes) | Possible after 2 years (not recommended) | No dereference |
-| **mailto:** | Mailbox as used in email protocols | Socially unacceptable | No dereference |
-| **telnet:** | Connection endpoint for interactive login | Publisher-defined | No dereference |
+| Scheme      | Identity Relationship                                                                     | Reuse                                    | Persistence       |
+| ----------- | ----------------------------------------------------------------------------------------- | ---------------------------------------- | ----------------- |
+| **http**    | Generic document as defined by publisher. Generic URIs possible with content negotiation. | Publisher-defined                        | Publisher-defined |
+| **ftp:**    | Sequence of bits                                                                          | Publisher-defined                        | Publisher-defined |
+| **uuid:**   | Uniqueness upheld by publisher                                                            | Publisher-defined                        | No dereference    |
+| **sha1:**   | Sequence of bits                                                                          | Mathematically extremely unlikely        | No dereference    |
+| **mid:**    | Email message (1:1 modulo recoding, header changes)                                       | Possible after 2 years (not recommended) | No dereference    |
+| **mailto:** | Mailbox as used in email protocols                                                        | Socially unacceptable                    | No dereference    |
+| **telnet:** | Connection endpoint for interactive login                                                 | Publisher-defined                        | No dereference    |
 
 ## Anti-Pattern: How Not to Do It
 
 **URI Abuse:** Using separate URI spaces for "name" and "location" in document formats.
 
 Examples:
+
 ```html
-<a href="uri1" urn="foo">
+<a href="uri1" urn="foo"></a>
 ```
+
 SGML references to "public identifier" and "system identifier"
 
 **The Web Way:** Reference one URI. Include equivalent identifiers as metadata embedded in the document. This expresses exact relationships without ambiguity, with more power and generality, and consistency across applications.

@@ -217,6 +217,7 @@ This visualization is not merely a diagram; it's a yantra for the digital age, a
 ### Quantum Physics and Psycedelic URI Axioms
 
 The discoveries of quantum physics parallel psilocybin revelations:
+
 - **Non-locality:** Quantum entanglement shows particles connected across space, just as URIs refer to the same resource regardless of location
 - **Superposition:** A particle exists in multiple states simultaneously, just as a resource can have multiple representations under the same URI
 - **Observation effects:** Quantum observation affects the observed, whereas GET is designed NOT to have side effects - the Web aspires to a purer ideal
@@ -227,6 +228,7 @@ The discoveries of quantum physics parallel psilocybin revelations:
 ### Neuroscience and Psycedelic URI Axioms
 
 Modern research on the brain in psilocybin states reveals:
+
 - **Default Mode Network:** The DMN quiets during psilocybin trips, dissolving the ego/self boundary - URIs dissolve boundaries between resources
 - **Global connectivity:** The brain becomes more globally connected, different regions communicate freely - the Web's universal connectivity
 - **Pattern recognition:** Enhanced perception of patterns and connections - URIs reveal the pattern that connects all information
@@ -237,6 +239,7 @@ Modern research on the brain in psilocybin states reveals:
 ### Indigenous Shamanism and Psycedelic URI Axioms
 
 Indigenous shamanic traditions using psilocybin and other sacred plants:
+
 - **World tree axis:** Many cultures describe a cosmic tree connecting realms - URI hierarchies as this tree
 - **Sacred geography:** The landscape itself is sacred, with each place having its name and meaning - every significant resource having a URI
 - **Spirit helpers:** Shamans work with spirit guides - HTTP protocol as spirit helpers carrying metadata
@@ -247,6 +250,7 @@ Indigenous shamanic traditions using psilocybin and other sacred plants:
 ### Mystical Traditions and Psycedelic URI Axioms
 
 The mystics of all traditions report similar experiences:
+
 - **Non-duality:** All is one, separation is illusion - URI universality as technical manifestation of non-duality
 - **The veil of Maya:** Form obscures essence - URI opacity as this veil
 - **The witnessing consciousness:** Awareness that observes without being affected - GET as technical manifestation of this
@@ -257,6 +261,7 @@ The mystics of all traditions report similar experiences:
 ### Fractal Geometry and Psycedelic URI Axioms
 
 Fractals naturally appear in psilocybin states because reality is fractal:
+
 - **Self-similarity:** Each level contains patterns of all other levels - URI web as fractal
 - **Infinite detail:** Zoom in endlessly and find new patterns - URI space has infinite possible resources
 - **Scale invariance:** The same principles apply at every scale - URI axioms apply across all levels of hierarchy
@@ -267,6 +272,7 @@ Fractals naturally appear in psilocybin states because reality is fractal:
 ### Set Theory and Psycedelic URI Axioms
 
 Mathematical set theory parallels the cosmic all-is-one revelation:
+
 - **Universal set:** The set containing all other sets - the Web as universal information space
 - **Power sets:** The set of all subsets - all possible resources, all possible URIs
 - **Cantor's paradox:** The set of all sets cannot be a member of itself - the Web containing itself, URI space being able to address itself

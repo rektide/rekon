@@ -90,7 +90,7 @@ Fantasy art, dramatic lighting: a magnificent phoenix erupts from a pyre of brok
 
 **Connection to Cool URIs:**
 
-The **broken links as fuel** is crucial: Cool URIs don't break, but when they *must* change (domain sale, protocol upgrade), the transition should be **transformational, not destructive**. Like a phoenix, the new URI should be clearly connected to the old, maintaining lineage of reference.
+The **broken links as fuel** is crucial: Cool URIs don't break, but when they _must_ change (domain sale, protocol upgrade), the transition should be **transformational, not destructive**. Like a phoenix, the new URI should be clearly connected to the old, maintaining lineage of reference.
 
 The **golden URLs as plumage** represents **the visible part of renewal**—redirects, version bumps, migrations all become visible. The phoenix's core (the resource's essential identity) remains unchanged, but its feathers (representations) renew.
 

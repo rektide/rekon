@@ -225,6 +225,7 @@ This visualization is not merely a diagram; it's a Memphis yantra for the digita
 ### 1980s Pop Art and Memphis URI Axioms
 
 1980s pop art provides foundational understanding:
+
 - **Surface Over Depth:** URI opacity as celebration of surface over hidden meaning
 - **Bold Color:** URI global scope as bold accessibility to all
 - **Pattern Repetition:** URI sameness as pattern identity through repetition
@@ -236,6 +237,7 @@ This visualization is not merely a diagram; it's a Memphis yantra for the digita
 ### Postmodern Design and Memphis URI Axioms
 
 Postmodernism informs radical inclusivity:
+
 - **Deconstruction of Meaning:** URI opacity as deconstructing hidden "essence"
 - **Pastiche of Styles:** Multiple universal spaces as multiple design languages coexisting
 - **Playful Irony:** URI axioms as taken playfully but functional
@@ -247,6 +249,7 @@ Postmodernism informs radical inclusivity:
 ### Contemporary Digital Play and Memphis URI Axioms
 
 Digital play principles extend Memphis:
+
 - **Emoji as Modern Squiggles:** URIs as emoji-like connectors of meaning
 - **Glitch Aesthetics:** Identity abuse as glitching the pattern party
 - **UI Playfulness:** URI hierarchies as playful navigation systems
@@ -258,6 +261,7 @@ Digital play principles extend Memphis:
 ### Radical Typography and Memphis URI Axioms
 
 Typography informs pattern language:
+
 - **Letterforms as Shapes:** Squiggles as radical letterform mutations
 - **Bold Display Type:** URI labels as bold typographic declarations
 - **Playful Layouts:** Slash hierarchies as radical typographic spacing

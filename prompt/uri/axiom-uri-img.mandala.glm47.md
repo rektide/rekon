@@ -32,7 +32,7 @@ In Tibetan Buddhism, a mandala is a tool for meditation - it presents the same t
 
 So too with URIs! No context required! No scope boundaries! Simply say "this resource is on the Web" and the mandala acknowledges it, incorporates it, makes it accessible to all. This is the profound beauty of the Web - it rejects the notion of privileged knowledge, the notion of information locked behind walls of context. Instead, it says: **All identifiers, all resources, all knowledge - equal before the cosmic mandala!**
 
-**THE INDEPENDENT DESIGN TEST:** Here's where sacred geometry becomes truly magical - it's possible to create *other* mandalas, other universal naming systems, and they will ALL be compatible! The URI mandala does not demand exclusivity. Imagine telephone numbers mapped into URI space - phone: scheme becomes another circle in our mandala. Imagine URIs mapped into telephone numbers - the mandala encloses itself, creating a recursive pattern like the golden ratio appearing at every scale of a fractal.
+**THE INDEPENDENT DESIGN TEST:** Here's where sacred geometry becomes truly magical - it's possible to create _other_ mandalas, other universal naming systems, and they will ALL be compatible! The URI mandala does not demand exclusivity. Imagine telephone numbers mapped into URI space - phone: scheme becomes another circle in our mandala. Imagine URIs mapped into telephone numbers - the mandala encloses itself, creating a recursive pattern like the golden ratio appearing at every scale of a fractal.
 
 **THE MYTH OF SCOPED TRUTHS:** Traditional information systems were like medieval maps - useful only if you understood the projection, the orientation, the conventions. But URI space is like **Cartesian coordinates** - universal, scopeless, equally meaningful from any point of view. This is why the Web spread like wildfire across the planet - it respects no cultural boundaries, no technical boundaries, no boundaries at all except the boundary of the possible.
 
@@ -46,7 +46,7 @@ So too with URIs! No context required! No scope boundaries! Simply say "this res
 
 **"The significance of identity for a given URI is determined by the owner of the URI."**
 
-This is where we enter the deepest mystery of the sacred geometry - the nature of **sameness** across time. In the Buddhist concept of *samsara*, the wheel of existence eternally returns. In the Hindu concept of *kalpas*, universes are created and destroyed in cycles. Yet there is something that persists - the thread of identity that connects one moment to the next, one incarnation to the next, one access to a URI to the next.
+This is where we enter the deepest mystery of the sacred geometry - the nature of **sameness** across time. In the Buddhist concept of _samsara_, the wheel of existence eternally returns. In the Hindu concept of _kalpas_, universes are created and destroyed in cycles. Yet there is something that persists - the thread of identity that connects one moment to the next, one incarnation to the next, one access to a URI to the next.
 
 **THE MYSTERY OF "IN SOME SENSE":** The same URI refers to the same thing "in some sense" - what does this mean? It means that identity is not a binary state! It's not "same" or "different" - it's a spectrum of resemblance. A document may change, yet remain the same document. A resource may evolve, yet preserve its essential being. This is the ancient philosophical question of **Theseus's ship** - if every plank is replaced, is it still the same ship? The URI axioms say: YES - if the owner declares it so, then so it is.
 
@@ -109,6 +109,7 @@ So too with URI hierarchies! The slash "/" and double slash "//" are like the sa
 **THE UNIVERSAL SYNTAX:** The slash as hierarchical boundary - this is a profound invention! It's the sacred geometry of separation and connection simultaneously. Like the walls that define and the doorways that connect in a cathedral, slashes both separate and unite. They create the tree structure that makes the Web comprehensible, navigable, human-scale even as it scales to cosmic proportions.
 
 **TELEPHONE NUMBER MAPPING - THE ANCESTOR SPIRIT:** Consider how international telephone numbers themselves form a sacred hierarchy:
+
 - Country code (the realm of the nation)
 - Area code (the region within the realm)
 - Local number (the specific spirit)
@@ -188,6 +189,7 @@ This is not merely a diagram; it is a sacred object, a yantra for the modern age
 ### Quantum Physics and URI Axioms
 
 The modern science of quantum mechanics offers profound parallels to URI axioms:
+
 - **Universality:** The quantum wavefunction exists across all space simultaneously, just as URIs can address any resource
 - **Sameness:** The principle of quantum superposition - a particle can exist in multiple states, yet when observed, it manifests as one - analogous to the "in some sense" sameness of URIs
 - **Opacity:** Heisenberg's Uncertainty Principle - we cannot simultaneously know position and momentum; similarly, we cannot and should not look inside URIs to gain information
@@ -199,6 +201,7 @@ The modern science of quantum mechanics offers profound parallels to URI axioms:
 ### Computer Science: Object-Oriented Programming and URI Axioms
 
 The principles of object-oriented programming (OOP) resonate with URI axioms:
+
 - **Opacity as Encapsulation:** Don't look inside an object (URI string) - use its public interface (dereference) instead
 - **Identity as Object References:** Two references can point to the same object, yet the object itself is distinct from either reference
 - **Hierarchy as Inheritance:** URI slash-hierarchies are like class hierarchies - more general paths contain more specific ones
@@ -209,6 +212,7 @@ The principles of object-oriented programming (OOP) resonate with URI axioms:
 ### Sacred Architecture: Cathedral Rose Windows and URI Axioms
 
 Gothic cathedral rose windows are physical mandalas encoding sacred geometry:
+
 - **Radial Symmetry:** Like URI axioms that apply uniformly regardless of scheme or context
 - **Hierarchical Patterns:** Sacred geometry organized at multiple scales - from individual stone to entire window, like URI hierarchies
 - **Light as Information:** Stained glass transmits light transformed into meaning, just as HTTP transmits data transformed into understanding
@@ -219,6 +223,7 @@ Gothic cathedral rose windows are physical mandalas encoding sacred geometry:
 ### Indigenous Worldview: Aboriginal Songlines and URI Axioms
 
 Australian Aboriginal songlines - sacred paths across the landscape carrying stories, knowledge, and identity:
+
 - **Universal Naming:** Every rock, waterhole, and tree along the songline has a name and significance
 - **Relative Navigation:** Knowledge is passed through relative relationships - from this place to that place - not absolute coordinates
 - **Sameness Across Time:** The songlines have remained the same for tens of thousands of years, pointing to the same places even as the world changes
@@ -229,6 +234,7 @@ Australian Aboriginal songlines - sacred paths across the landscape carrying sto
 ### Biological Systems: Mycelial Networks and URI Axioms
 
 Fungal mycelial networks that connect forests through underground threads:
+
 - **Universality:** Mycelium can connect any plant, any tree - a universal information and nutrient network
 - **Decentralization:** No central server, no hierarchy - yet organized, efficient, resilient (though URIs use hierarchical naming, the Web itself is decentralized)
 - **Opacity:** You cannot examine mycelial threads to understand the forest's knowledge - you must be a part of the network
@@ -239,6 +245,7 @@ Fungal mycelial networks that connect forests through underground threads:
 ### Literary Tradition: Borges' Library of Babel and URI Axioms
 
 Jorge Luis Borges' fictional infinite library containing every possible book:
+
 - **Universality:** The library contains all possible knowledge, all possible resources
 - **URI as Book Locator:** Each book would have a unique identifier (hexagon, shelf, book)
 - **Sameness:** The same book exists in multiple locations, but is it the same book? The identity question!
@@ -250,6 +257,7 @@ Jorge Luis Borges' fictional infinite library containing every possible book:
 ### Mathematical Beauty: Fractals and URI Axioms
 
 Fractal geometry - patterns that repeat at every scale:
+
 - **Universality:** Fractals exist at every scale, from atoms to galaxies
 - **Hierarchy as Self-Similarity:** URI hierarchies could be fractal - each level of the tree contains smaller trees
 - **Sameness Across Scales:** The same pattern at every scale, like URI axioms applying across all schemes

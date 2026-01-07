@@ -223,6 +223,7 @@ This visualization is not merely a diagram; it's a Celtic yantra for the digital
 ### Norse Mythology and Celtic Knotwork URI Axioms
 
 Norse mythology provides connection insights:
+
 - **The World Tree Yggdrasil:** URI hierarchies as branches of the cosmic tree
 - **The Norns' Threads:** URIs as threads of destiny weaving through the tapestry
 - **The Web of Wyrd:** The Web as woven fate, URIs as individual threads
@@ -234,6 +235,7 @@ Norse mythology provides connection insights:
 ### Hinduism and Celtic Knotwork URI Axioms
 
 Hindu cosmology provides interconnection wisdom:
+
 - **Indra's Net:** URI universality as Indra's net that caught the universe
 - **The Sutras:** Relative URIs as individual threads within the cosmic fabric
 - **Maya's Veil:** URI opacity as the veil covering ultimate reality
@@ -245,6 +247,7 @@ Hindu cosmology provides interconnection wisdom:
 ### Indigenous Sacred Knots and Celtic Knotwork URI Axioms
 
 Indigenous traditions inform knot understanding:
+
 - **The Dreamtime Knots:** URI space as the weaving of creation in Dreamtime
 - **The Songlines:** URI hierarchies as sacred paths through the tapestry
 - **The Medicine Wheel:** Matrix URIs as addressing through sacred directions
@@ -256,6 +259,7 @@ Indigenous traditions inform knot understanding:
 ### African Textile Traditions and Celtic Knotwork URI Axioms
 
 Textile traditions provide pattern wisdom:
+
 - **The Interwoven Tales:** URI connections as threads weaving stories together
 - **The Pattern Language:** URI opacity as pattern that speaks without being analyzed
 - **The Community Cloths:** URI universality as cloths that connect whole communities

@@ -1,11 +1,9 @@
-import { defineConfig } from 'tsdown';
+import { defineConfig } from "tsdown";
 
 export default defineConfig({
-  format: 'esm',
-  target: 'esnext',
+  format: "esm",
+  target: "esnext",
   shims: false,
   clean: true,
-  entry: [
-    'rekon.ts'
-  ],
+  entry: ["rekon.ts"],
 });

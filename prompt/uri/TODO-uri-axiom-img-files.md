@@ -1,11 +1,13 @@
 # TODO: URI Axiom Image Prompt Files
 
 ## Overview
+
 Create detailed prompt files for each theme connecting visual concepts to URI axioms and Cool URIs.
 
 ## Files to Create (9 total)
 
 ### 1. architectural-and-monumental.md
+
 - Ancient stone tablets as persistent URIs
 - Baroque libraries as universal information spaces
 - Brutalist monuments as stability-over-time
@@ -13,6 +15,7 @@ Create detailed prompt files for each theme connecting visual concepts to URI ax
 - Victorian archways as protocol portals
 
 ### 2. nature-and-organic.md (MINIMUM 5 SECTIONS)
+
 - Tree roots as hierarchical URI structures
 - Fossilized URLs in amber as immutable references
 - Coral reefs as evolving but stable ecosystems
@@ -22,6 +25,7 @@ Create detailed prompt files for each theme connecting visual concepts to URI ax
 - Bioluminescent organisms as discoverable endpoints
 
 ### 3. cosmic-and-scientific.md
+
 - Constellations as universal naming systems
 - DNA helices as information encoding
 - Atomic orbitals as electron-like state retrieval
@@ -29,6 +33,7 @@ Create detailed prompt files for each theme connecting visual concepts to URI ax
 - Geological time as persistence over millennia
 
 ### 4. cultural-and-historical.md
+
 - Medieval manuscripts as handcrafted resources
 - Egyptian hieroglyphs as persistent symbols
 - Rosetta Stone as scheme translation
@@ -36,6 +41,7 @@ Create detailed prompt files for each theme connecting visual concepts to URI ax
 - Medieval tapestries as woven narratives
 
 ### 5. modern-and-abstract.md
+
 - Cyberpunk neon as digital frontier
 - ASCII art as minimal encoding
 - QR codes as machine-readable patterns
@@ -43,6 +49,7 @@ Create detailed prompt files for each theme connecting visual concepts to URI ax
 - Glitch art as degraded but recoverable data
 
 ### 6. metaphorical-and-symbolic.md
+
 - Anchors as stable references in digital ocean
 - Pocket watches as temporal versioning
 - Ships in bottles as encapsulated universes
@@ -50,6 +57,7 @@ Create detailed prompt files for each theme connecting visual concepts to URI ax
 - Hourglasses as time-based caching
 
 ### 7. minimalist-and-typographic.md
+
 - Shadow casting as opaque identifiers
 - Zen gardens as meditative URIs
 - String art as connected graphs
@@ -57,6 +65,7 @@ Create detailed prompt files for each theme connecting visual concepts to URI ax
 - Negative space as hidden meaning
 
 ### 8. surreal-and-dreamlike.md
+
 - Escher staircases as impossible architectures
 - Dalí melting clocks as temporal distortion
 - Magritte pipes as representation vs reality
@@ -64,6 +73,7 @@ Create detailed prompt files for each theme connecting visual concepts to URI ax
 - Digital tattoos as permanent identity marks
 
 ### 9. technical-and-industrial.md
+
 - Blueprints as specification documents
 - Steel stamping as mass production
 - Bronze casting as archival permanence
@@ -73,6 +83,7 @@ Create detailed prompt files for each theme connecting visual concepts to URI ax
 ## Key Concepts to Weave Into Each Theme
 
 ### From URI Axioms:
+
 - Universality (Axiom 0): Anything can have a URI
 - Global Scope (Axiom 1): Same meaning everywhere
 - Sameness (Axiom 2a): Repeatable reference to same thing
@@ -83,6 +94,7 @@ Create detailed prompt files for each theme connecting visual concepts to URI ax
 - First Class Objects (FCOs)
 
 ### From Cool URIs:
+
 - Persistence over time
 - What makes a URI cool (doesn't change)
 - Why URIs change (human decisions, not technical necessity)
@@ -94,6 +106,7 @@ Create detailed prompt files for each theme connecting visual concepts to URI ax
 ## Writing Strategy
 
 For each file:
+
 1. Open with theme concept overview
 2. For each sub-prompt:
    - Start with visual description
@@ -106,6 +119,7 @@ For each file:
 5. Aim for rich, evocative language that inspires visual generation
 
 ## Priorities
+
 1. nature-and-organic.md (minimum 5 sections - GO DEEP)
 2. architectural-and-monumental.md (persistent structures)
 3. cosmic-and-scientific.md (universal principles)

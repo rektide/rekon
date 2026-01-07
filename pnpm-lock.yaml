@@ -15,6 +15,9 @@ importers:
         specifier: ^0.27.5
         version: 0.27.5
     devDependencies:
+      '@types/node':
+        specifier: ^25.0.3
+        version: 25.0.3
       '@typescript/native-preview':
         specifier: 7.0.0-dev.20260106.1
         version: 7.0.0-dev.20260106.1
@@ -29,7 +32,7 @@ importers:
         version: 0.19.0-beta.3(@typescript/native-preview@7.0.0-dev.20260106.1)
       vitest:
         specifier: ^4.0.16
-        version: 4.0.16
+        version: 4.0.16(@types/node@25.0.3)
 
 packages:
 
@@ -549,6 +552,9 @@ packages:
   '@types/estree@1.0.8':
     resolution: {integrity: sha512-dWHzHa2WqEXI/O1E9OjrocMTKJl2mSrEolh1Iomrv6U+JuNwaHXsXx9bLu5gG7BUWFIN0skIQJQ/L1rIex4X6w==}
 
+  '@types/node@25.0.3':
+    resolution: {integrity: sha512-W609buLVRVmeW693xKfzHeIV6nJGGz98uCPfeXI1ELMLXVeKYZ9m15fAMSaUPBHYLGFsVRcMmSCksQOrZV9BYA==}
+
   '@typescript/native-preview-darwin-arm64@7.0.0-dev.20260106.1':
     resolution: {integrity: sha512-9n7HIVP3UMgWSK8Yi2H+23hrrEDNNfkW78mbkxfatGh/ghU4m2QuO8R6MdMdPsSmmKDvbWOtpLEuSZFKNzu7eQ==}
     cpu: [arm64]
@@ -874,6 +880,9 @@ packages:
 
   unconfig-core@7.4.2:
     resolution: {integrity: sha512-VgPCvLWugINbXvMQDf8Jh0mlbvNjNC6eSUziHsBCMpxR05OPrNrvDnyatdMjRgcHaaNsCqz+wjNXxNw1kRLHUg==}
+
+  undici-types@7.16.0:
+    resolution: {integrity: sha512-Zz+aZWSj8LE6zoxD+xrjh4VfkIG8Ya6LvYkZqtUQGJPZjYl53ypCaUwWqo7eI0x66KBGeRo+mlBEkMSeSZ38Nw==}
 
   unrun@0.2.22:
     resolution: {integrity: sha512-vlQce4gTLNyCZxGylEQXGG+fSrrEFWiM/L8aghtp+t6j8xXh+lmsBtQJknG7ZSvv7P+/MRgbQtHWHBWk981uTg==}
@@ -1296,6 +1305,10 @@ snapshots:
 
   '@types/estree@1.0.8': {}
 
+  '@types/node@25.0.3':
+    dependencies:
+      undici-types: 7.16.0
+
   '@typescript/native-preview-darwin-arm64@7.0.0-dev.20260106.1':
     optional: true
 
@@ -1336,13 +1349,13 @@ snapshots:
       chai: 6.2.2
       tinyrainbow: 3.0.3
 
-  '@vitest/mocker@4.0.16(vite@7.3.1)':
+  '@vitest/mocker@4.0.16(vite@7.3.1(@types/node@25.0.3))':
     dependencies:
       '@vitest/spy': 4.0.16
       estree-walker: 3.0.3
       magic-string: 0.30.21
     optionalDependencies:
-      vite: 7.3.1
+      vite: 7.3.1(@types/node@25.0.3)
 
   '@vitest/pretty-format@4.0.16':
     dependencies:
@@ -1638,11 +1651,13 @@ snapshots:
       '@quansync/fs': 1.0.0
       quansync: 1.0.0
 
+  undici-types@7.16.0: {}
+
   unrun@0.2.22:
     dependencies:
       rolldown: 1.0.0-beta.58
 
-  vite@7.3.1:
+  vite@7.3.1(@types/node@25.0.3):
     dependencies:
       esbuild: 0.27.2
       fdir: 6.5.0(picomatch@4.0.3)
@@ -1651,12 +1666,13 @@ snapshots:
       rollup: 4.55.1
       tinyglobby: 0.2.15
     optionalDependencies:
+      '@types/node': 25.0.3
       fsevents: 2.3.3
 
-  vitest@4.0.16:
+  vitest@4.0.16(@types/node@25.0.3):
     dependencies:
       '@vitest/expect': 4.0.16
-      '@vitest/mocker': 4.0.16(vite@7.3.1)
+      '@vitest/mocker': 4.0.16(vite@7.3.1(@types/node@25.0.3))
       '@vitest/pretty-format': 4.0.16
       '@vitest/runner': 4.0.16
       '@vitest/snapshot': 4.0.16
@@ -1673,8 +1689,10 @@ snapshots:
       tinyexec: 1.0.2
       tinyglobby: 0.2.15
       tinyrainbow: 3.0.3
-      vite: 7.3.1
+      vite: 7.3.1(@types/node@25.0.3)
       why-is-node-running: 2.3.0
+    optionalDependencies:
+      '@types/node': 25.0.3
     transitivePeerDependencies:
       - jiti
       - less

@@ -1,7 +1,7 @@
 > What makes a cool URI?  
 > A cool URI is one which does not change.  
 > What sorts of URI change?  
-> *URIs don't change: people change them.*
+> _URIs don't change: people change them._
 
 There are no reasons at all in theory for people to change URIs (or stop maintaining documents), but millions of reasons in practice.
 
@@ -29,12 +29,12 @@ There is a crazy notion that pages produced by scripts have to be located in a "
 
 For example, take the National Science Foundation:
 
-*NSF Online Documents*  
+_NSF Online Documents_  
 http://www.nsf.gov/cgi-bin/pubsys/browser/odbrowse.pl
 
 the main page for starting to look for documents, is clearly not going to be something to trust to being there in a few years. "cgi-bin" and "oldbrowse" and ".pl" all point to bits of how-we-do-it-now. By contrast, if you use the page to find a document, you get first an equally bad
 
-*Report of Working Group on Cryptology and Coding Theory*  
+_Report of Working Group on Cryptology and Coding Theory_  
 http://www.nsf.gov/cgi-bin/getpub?nsf9814
 
 for the document's index page, but the html document itself by contrast is very much better:
@@ -57,7 +57,7 @@ Now here is one I can sympathize with. I agree entirely. What you need to do is 
 
 You need to be able to change things like ownership, access, archive level security level, and so on, of a document in the URI space without changing the URI.
 
-Too bad. But we'll get there. At W3C we use *Jigedit* functionality (*Jigsaw* server used for editing) which does track versions, and we are experimenting with document creation scripts. If you make tools, servers and clients, take note!
+Too bad. But we'll get there. At W3C we use _Jigedit_ functionality (_Jigsaw_ server used for editing) which does track versions, and we are experimenting with document creation scripts. If you make tools, servers and clients, take note!
 
 > This is an outstanding reason, which applies for example to many W3C pages including this one: so do what I say, not what I do.
 
@@ -81,7 +81,7 @@ The only exception is a page which is deliberately a "latest" page for, for exam
 
 http://www.pathfinder.com/money/moneydaily/latest/
 
-is the latest "Money daily" column in "Money" magazine. The main reason for not needing the date in this URI is that there is no reason for the persistence of the URI to outlast the magazine. The concept of "today's *Money*" vanishes if *Money* goes out of production. If you want to link to the content, you would link to it where it appears separately in the archives as
+is the latest "Money daily" column in "Money" magazine. The main reason for not needing the date in this URI is that there is no reason for the persistence of the URI to outlast the magazine. The concept of "today's _Money_" vanishes if _Money_ goes out of production. If you want to link to the content, you would link to it where it appears separately in the archives as
 
 http://www.pathfinder.com/money/moneydaily/1998/981212.moneyonline.html
 
@@ -91,12 +91,12 @@ http://www.pathfinder.com/money/moneydaily/1998/981212.moneyonline.html
 
 Everything! After the creation date, putting any information in the name is asking for trouble one way or another.
 
--   **Authors name**- authorship can change with new versions. People quit organizations and hand things on.
--   **Subject**. This is tricky. It always looks good at the time but changes surprisingly fast. I discuss this more below.
--   **Status**- directories like "old" and "draft" and so on, not to mention "latest" and "cool" appear all over file systems. Documents change status - or there would be no point in producing drafts. The latest version of a document needs a persistent identifier whatever its status is. Keep the status out of the name.
--   **Access**. At W3C we divide the site into "Team access", "Member access" and "Public access". It sounds good, but of course documents start off as team ideas, are discussed with members, and then go public. A shame indeed if every time some document is opened to wider discussion all the old links to it fail! We are switching to a simple date code now.
--   **File name extension**. This is a very common one. "cgi", even ".html" is something which will change. You may not be using HTML for that page in 20 years time, but you might want today's links to it to still be valid. The canonical way of making links to the W3C site doesn't use the extension.([how?](#remove))
--   **Software mechanisms**. Look for "cgi", "exec" and other give-away "look what software we are using" bits in URIs. Anyone want to commit to using perl cgi scripts all their lives? Nope? Cut out the .pl. Read the server manual on how to do it.
+- **Authors name**- authorship can change with new versions. People quit organizations and hand things on.
+- **Subject**. This is tricky. It always looks good at the time but changes surprisingly fast. I discuss this more below.
+- **Status**- directories like "old" and "draft" and so on, not to mention "latest" and "cool" appear all over file systems. Documents change status - or there would be no point in producing drafts. The latest version of a document needs a persistent identifier whatever its status is. Keep the status out of the name.
+- **Access**. At W3C we divide the site into "Team access", "Member access" and "Public access". It sounds good, but of course documents start off as team ideas, are discussed with members, and then go public. A shame indeed if every time some document is opened to wider discussion all the old links to it fail! We are switching to a simple date code now.
+- **File name extension**. This is a very common one. "cgi", even ".html" is something which will change. You may not be using HTML for that page in 20 years time, but you might want today's links to it to still be valid. The canonical way of making links to the W3C site doesn't use the extension.([how?](#remove))
+- **Software mechanisms**. Look for "cgi", "exec" and other give-away "look what software we are using" bits in URIs. Anyone want to commit to using perl cgi scripts all their lives? Nope? Cut out the .pl. Read the server manual on how to do it.
 - Disk name - gimme a break! But I've seen it.
 
 So a better example from our site is simply
@@ -115,7 +115,7 @@ Part of the reasons for this lie in the philosophy of meaning. every term in the
 
 Effectively, when you use a topic name in a URI you are binding yourself to some classification. You may in the future prefer a different one. Then, the URI will be liable to break.
 
-A reason for using a topic area as part of the URI is that responsibility for sub-parts of a URI space is typically delegated, and then you need a name for the organizational body - the subdivision or group or whatever - which has responsibility for that sub-space. This is binding your URIs to the organizational structure. It is typically safe only when protected by a date further up the URI (to the left of it): 1998/pics can be taken to mean for your server "what we meant in 1998 by *pics*", rather than "what in 1998 we did with what we now refer to as *pics*."
+A reason for using a topic area as part of the URI is that responsibility for sub-parts of a URI space is typically delegated, and then you need a name for the organizational body - the subdivision or group or whatever - which has responsibility for that sub-space. This is binding your URIs to the organizational structure. It is typically safe only when protected by a date further up the URI (to the left of it): 1998/pics can be taken to mean for your server "what we meant in 1998 by _pics_", rather than "what in 1998 we did with what we now refer to as _pics_."
 
 ### Don't forget the domain name.
 
@@ -129,7 +129,7 @@ Keeping URIs so that they will still be around in 2, 20 or 200 or even 2000 year
 
 See also:
 
--   [Jacob Nielsen's "Alertbox" rant on the same topic](http://www.useit.com/alertbox/990321.html)
+- [Jacob Nielsen's "Alertbox" rant on the same topic](http://www.useit.com/alertbox/990321.html)
 
 ---
 
@@ -141,10 +141,10 @@ See also:
 
 ...from my URIs in a practical file-based web server?
 
-If you are using, for example, Apache, you can set it up to do content negotiation. You keep the file extension (such as .png) on the file (e.g. `mydog.png`), but refer to the web resource without it. Apache then checks the directory for all files with that name and any extension, and it can also pick the best one out of a set (e.g. GIF and PNG). (You do *not* have to put different types of file in different directories, in fact the content negotiation won't work if you do.)
+If you are using, for example, Apache, you can set it up to do content negotiation. You keep the file extension (such as .png) on the file (e.g. `mydog.png`), but refer to the web resource without it. Apache then checks the directory for all files with that name and any extension, and it can also pick the best one out of a set (e.g. GIF and PNG). (You do _not_ have to put different types of file in different directories, in fact the content negotiation won't work if you do.)
 
--   Set up your server to do content negotiation
--   Make references always to the URI without the extension
+- Set up your server to do content negotiation
+- Make references always to the URI without the extension
 
 References which do have the extension on will still work but will not allow your server to select the best of currently available and future formats.
 
