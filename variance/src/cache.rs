@@ -1,6 +1,8 @@
 use anyhow::{Context, Result};
 use chrono::{DateTime, Duration, Utc};
 use serde::{Deserialize, Serialize};
+use serde_json::Value;
+use std::collections::HashMap;
 use std::fs;
 use std::path::{Path, PathBuf};
 
@@ -18,6 +20,10 @@ pub struct ModelsCache {
 pub struct ProviderInfo {
     pub id: String,
     pub name: String,
+    pub npm: String,
+    pub api_url: String,
+    pub doc: Option<String>,
+    pub env: Vec<String>,
     pub models: Vec<ModelInfo>,
 }
 
@@ -25,11 +31,73 @@ pub struct ProviderInfo {
 pub struct ModelInfo {
     pub id: String,
     pub name: String,
-    pub context_window: Option<u32>,
-    pub supports_thinking: Option<bool>,
-    pub max_thinking_tokens: Option<u32>,
-    pub supports_reasoning_effort: Option<bool>,
-    pub max_output_tokens: Option<u32>,
+    pub provider_id: String,
+    pub family: Option<String>,
+
+    pub capabilities: ModelCapabilities,
+
+    pub context_limit: u32,
+    pub output_limit: u32,
+
+    pub cost_input: f64,
+    pub cost_output: f64,
+    pub cost_cache_read: Option<f64>,
+    pub cost_cache_write: Option<f64>,
+    pub cost_over_200k_input: Option<f64>,
+    pub cost_over_200k_output: Option<f64>,
+
+    pub release_date: String,
+    pub status: ModelStatus,
+    pub options: Option<Value>,
+    pub headers: Option<HashMap<String, String>>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct ModelCapabilities {
+    pub temperature: bool,
+    pub reasoning: bool,
+    pub attachment: bool,
+    pub tool_call: bool,
+    pub input: ModalityCapabilities,
+    pub output: ModalityCapabilities,
+    pub interleaved: InterleavedConfig,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, Default)]
+pub struct ModalityCapabilities {
+    pub text: bool,
+    pub audio: bool,
+    pub image: bool,
+    pub video: bool,
+    pub pdf: bool,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum InterleavedConfig {
+    Enabled(bool),
+    Field { field: String },
+}
+
+impl Default for InterleavedConfig {
+    fn default() -> Self {
+        InterleavedConfig::Enabled(false)
+    }
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(rename_all = "lowercase")]
+pub enum ModelStatus {
+    Alpha,
+    Beta,
+    Deprecated,
+    Active,
+}
+
+impl Default for ModelStatus {
+    fn default() -> Self {
+        ModelStatus::Active
+    }
 }
 
 pub struct CacheManager {
@@ -47,7 +115,6 @@ impl CacheManager {
         self.cache_dir.join(CACHE_FILENAME)
     }
 
-    /// Get cached data if it exists and is fresh, otherwise fetch fresh data
     pub fn get_or_fetch(&self) -> Result<ModelsCache> {
         if let Some(cached) = self.load_cached()? {
             if self.is_cache_fresh(&cached) {
@@ -58,7 +125,6 @@ impl CacheManager {
         self.fetch_and_cache()
     }
 
-    /// Fetch fresh data from models.dev API
     pub fn fetch_and_cache(&self) -> Result<ModelsCache> {
         println!("Fetching available models from models.dev...");
 
@@ -71,7 +137,6 @@ impl CacheManager {
             .into_string()
             .context("Failed to read response body")?;
 
-        // Parse the response
         let providers = self.parse_models_response(&text)?;
 
         let cache = ModelsCache {
@@ -80,7 +145,6 @@ impl CacheManager {
             api_url: api_url.to_string(),
         };
 
-        // Save to cache
         self.save_cache(&cache)?;
 
         println!("Fetched {} providers", cache.providers.len());
@@ -119,27 +183,37 @@ impl CacheManager {
         age < Duration::hours(CACHE_MAX_AGE_HOURS)
     }
 
-    /// Parse models.dev API response into our internal structure
     fn parse_models_response(&self, text: &str) -> Result<Vec<ProviderInfo>> {
-        // The exact structure of models.dev API response needs investigation
-        // This is a placeholder implementation
-        let api_data: serde_json::Value = serde_json::from_str(text)
+        let api_data: Value = serde_json::from_str(text)
             .context("Failed to parse models.dev API response")?;
 
         let mut providers = Vec::new();
 
-        // TODO: Parse actual API structure
-        // This will need to be updated once we investigate models.dev API format
         if let Some(obj) = api_data.as_object() {
             for (provider_id, provider_data) in obj {
                 let provider_name = provider_data["name"]
                     .as_str()
                     .unwrap_or(provider_id);
 
-                let models = if let Some(models_array) = provider_data["models"].as_array() {
-                    models_array
-                        .iter()
-                        .filter_map(|m| self.parse_model_info(m))
+                let npm = provider_data["npm"]
+                    .as_str()
+                    .unwrap_or("");
+
+                let api_url = provider_data["api"]
+                    .as_str()
+                    .unwrap_or("");
+
+                let doc = provider_data["doc"].as_str().map(|s| s.to_string());
+
+                let env = provider_data["env"]
+                    .as_array()
+                    .map(|arr| arr.iter().filter_map(|v| v.as_str().map(|s| s.to_string())).collect())
+                    .unwrap_or_default();
+
+                let models = if let Some(models_obj) = provider_data["models"].as_object() {
+                    models_obj
+                        .values()
+                        .filter_map(|m| self.parse_model_info(provider_id, npm, api_url, m))
                         .collect()
                 } else {
                     Vec::new()
@@ -148,6 +222,10 @@ impl CacheManager {
                 providers.push(ProviderInfo {
                     id: provider_id.clone(),
                     name: provider_name.to_string(),
+                    npm: npm.to_string(),
+                    api_url: api_url.to_string(),
+                    doc,
+                    env,
                     models,
                 });
             }
@@ -156,19 +234,134 @@ impl CacheManager {
         Ok(providers)
     }
 
-    fn parse_model_info(&self, value: &serde_json::Value) -> Option<ModelInfo> {
+    fn parse_model_info(
+        &self,
+        provider_id: &str,
+        provider_npm: &str,
+        provider_api: &str,
+        value: &Value,
+    ) -> Option<ModelInfo> {
+        let limit = value.get("limit").and_then(|v| v.as_object());
+        let cost = value.get("cost").and_then(|v| v.as_object());
+        let modalities = value.get("modalities").and_then(|v| v.as_object());
+
         Some(ModelInfo {
             id: value["id"].as_str()?.to_string(),
             name: value["name"].as_str()?.to_string(),
-            context_window: value["context_window"].as_u64().map(|v| v as u32),
-            supports_thinking: value["supports_thinking"].as_bool(),
-            max_thinking_tokens: value["max_thinking_tokens"].as_u64().map(|v| v as u32),
-            supports_reasoning_effort: value["supports_reasoning_effort"].as_bool(),
-            max_output_tokens: value["max_output_tokens"].as_u64().map(|v| v as u32),
+            provider_id: provider_id.to_string(),
+            family: value.get("family").and_then(|v| v.as_str()).map(|s| s.to_string()),
+
+            capabilities: ModelCapabilities {
+                temperature: value.get("temperature").and_then(|v| v.as_bool()).unwrap_or(false),
+                reasoning: value.get("reasoning").and_then(|v| v.as_bool()).unwrap_or(false),
+                attachment: value.get("attachment").and_then(|v| v.as_bool()).unwrap_or(false),
+                tool_call: value.get("tool_call").and_then(|v| v.as_bool()).unwrap_or(true),
+                input: self.parse_modalities(modalities, "input"),
+                output: self.parse_modalities(modalities, "output"),
+                interleaved: self.parse_interleaved(value),
+            },
+
+            context_limit: limit
+                .and_then(|l| l.get("context").and_then(|v| v.as_u64()).map(|v| v as u32))
+                .unwrap_or(0),
+            output_limit: limit
+                .and_then(|l| l.get("output").and_then(|v| v.as_u64()).map(|v| v as u32))
+                .unwrap_or(0),
+
+            cost_input: cost
+                .and_then(|c| c.get("input").and_then(|v| v.as_f64()))
+                .unwrap_or(0.0),
+            cost_output: cost
+                .and_then(|c| c.get("output").and_then(|v| v.as_f64()))
+                .unwrap_or(0.0),
+            cost_cache_read: cost
+                .and_then(|c| c.get("cache_read").and_then(|v| v.as_f64())),
+            cost_cache_write: cost
+                .and_then(|c| c.get("cache_write").and_then(|v| v.as_f64())),
+            cost_over_200k_input: cost
+                .and_then(|c| c.get("context_over_200k"))
+                .and_then(|o| o.get("input").and_then(|v| v.as_f64())),
+            cost_over_200k_output: cost
+                .and_then(|c| c.get("context_over_200k"))
+                .and_then(|o| o.get("output").and_then(|v| v.as_f64())),
+
+            release_date: value
+                .get("release_date")
+                .and_then(|v| v.as_str())
+                .unwrap_or("")
+                .to_string(),
+
+            status: value
+                .get("status")
+                .and_then(|s| s.as_str())
+                .and_then(|s| match s {
+                    "alpha" => Some(ModelStatus::Alpha),
+                    "beta" => Some(ModelStatus::Beta),
+                    "deprecated" => Some(ModelStatus::Deprecated),
+                    "active" => Some(ModelStatus::Active),
+                    _ => None,
+                })
+                .unwrap_or_default(),
+
+            options: value.get("options").cloned(),
+            headers: value
+                .get("headers")
+                .cloned()
+                .and_then(|h| serde_json::from_value(h).ok()),
         })
     }
 
-    /// Force refresh the cache
+    fn parse_modalities(&self, modalities: Option<&serde_json::Map<String, Value>>, key: &str) -> ModalityCapabilities {
+        let obj = modalities
+            .and_then(|m| m.get(key))
+            .and_then(|v| v.as_object());
+
+        let array = modalities
+            .and_then(|m| m.get(key))
+            .and_then(|v| v.as_array());
+
+        let mut caps = ModalityCapabilities::default();
+
+        if let Some(arr) = array {
+            for item in arr {
+                if let Some(s) = item.as_str() {
+                    match s {
+                        "text" => caps.text = true,
+                        "audio" => caps.audio = true,
+                        "image" => caps.image = true,
+                        "video" => caps.video = true,
+                        "pdf" => caps.pdf = true,
+                        _ => {}
+                    }
+                }
+            }
+        } else if let Some(obj) = obj {
+            caps.text = obj.get("text").and_then(|v| v.as_bool()).unwrap_or(false);
+            caps.audio = obj.get("audio").and_then(|v| v.as_bool()).unwrap_or(false);
+            caps.image = obj.get("image").and_then(|v| v.as_bool()).unwrap_or(false);
+            caps.video = obj.get("video").and_then(|v| v.as_bool()).unwrap_or(false);
+            caps.pdf = obj.get("pdf").and_then(|v| v.as_bool()).unwrap_or(false);
+        }
+
+        caps
+    }
+
+    fn parse_interleaved(&self, value: &Value) -> InterleavedConfig {
+        if let Some(interleaved) = value.get("interleaved") {
+            if let Some(s) = interleaved.as_str() {
+                if s == "reasoning_content" || s == "reasoning_details" {
+                    return InterleavedConfig::Field {
+                        field: s.to_string(),
+                    };
+                }
+            }
+            if let Some(b) = interleaved.as_bool() {
+                return InterleavedConfig::Enabled(b);
+            }
+        }
+        InterleavedConfig::Enabled(false)
+    }
+
     pub fn refresh(&self) -> Result<ModelsCache> {
         self.fetch_and_cache()
     }
