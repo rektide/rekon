@@ -129,13 +129,48 @@ impl CacheManager {
         println!("Fetching available models from models.dev...");
 
         let api_url = "https://models.dev/api.json";
-        let response = ureq::get(api_url)
+
+        let agent = ureq::AgentBuilder::new()
+            .timeout(std::time::Duration::from_secs(30))
+            .user_agent("oc-variance/0.1.0")
+            .build();
+
+        let response = agent
+            .get(api_url)
             .call()
-            .context("Failed to fetch models from models.dev API")?;
+            .map_err(|e| {
+                let error_msg = e.to_string().to_lowercase();
+                if error_msg.contains("connect") || error_msg.contains("connection") {
+                    anyhow::anyhow!("Failed to connect to models.dev API. Check your internet connection.")
+                } else if error_msg.contains("dns") {
+                    anyhow::anyhow!("DNS resolution failed for models.dev API.")
+                } else if error_msg.contains("timeout") {
+                    anyhow::anyhow!("Request to models.dev API timed out after 30 seconds.")
+                } else if error_msg.contains("io") || error_msg.contains("network") {
+                    anyhow::anyhow!("Network error while fetching from models.dev API: {}", e)
+                } else {
+                    anyhow::anyhow!("Failed to fetch models from models.dev API: {}", e)
+                }
+            })?;
+
+        let status_code = response.status();
+        if !(200..=299).contains(&status_code) {
+            return Err(anyhow::anyhow!(
+                "models.dev API returned error status {}: {}",
+                status_code,
+                response.status_text()
+            ));
+        }
 
         let text = response
             .into_string()
-            .context("Failed to read response body")?;
+            .with_context(|| format!("Failed to read response body from {}", api_url))?;
+
+        if text.is_empty() {
+            return Err(anyhow::anyhow!(
+                "Received empty response from models.dev API"
+            ));
+        }
 
         let providers = self.parse_models_response(&text)?;
 
@@ -159,10 +194,27 @@ impl CacheManager {
         }
 
         let contents = fs::read_to_string(&path)
-            .with_context(|| format!("Failed to read cache file: {}", path.display()))?;
+            .with_context(|| {
+                format!(
+                    "Failed to read cache file: {}. Check file permissions.",
+                    path.display()
+                )
+            })?;
 
-        let cache: ModelsCache = serde_json::from_str(&contents)
-            .context("Failed to parse cache file")?;
+        if contents.is_empty() {
+            return Err(anyhow::anyhow!(
+                "Cache file {} is empty. Consider deleting it to force a fresh fetch.",
+                path.display()
+            ));
+        }
+
+        let cache: ModelsCache = serde_json::from_str(&contents).with_context(|| {
+            format!(
+                "Cache file {} is corrupted or invalid. Delete it to force a fresh fetch. Error: {}",
+                path.display(),
+                contents.chars().take(200).collect::<String>()
+            )
+        })?;
 
         Ok(Some(cache))
     }
@@ -184,51 +236,74 @@ impl CacheManager {
     }
 
     fn parse_models_response(&self, text: &str) -> Result<Vec<ProviderInfo>> {
-        let api_data: Value = serde_json::from_str(text)
-            .context("Failed to parse models.dev API response")?;
+        let api_data: Value = serde_json::from_str(text).with_context(|| {
+            "Failed to parse models.dev API response. The API format may have changed."
+        })?;
+
+        let obj = api_data
+            .as_object()
+            .ok_or_else(|| anyhow::anyhow!("API response is not a JSON object as expected"))?;
+
+        if obj.is_empty() {
+            return Err(anyhow::anyhow!(
+                "API response contains no providers. This may be a temporary API issue."
+            ));
+        }
 
         let mut providers = Vec::new();
 
-        if let Some(obj) = api_data.as_object() {
-            for (provider_id, provider_data) in obj {
-                let provider_name = provider_data["name"]
-                    .as_str()
-                    .unwrap_or(provider_id);
+        for (provider_id, provider_data) in obj {
+            let provider_name = provider_data["name"]
+                .as_str()
+                .unwrap_or(provider_id);
 
-                let npm = provider_data["npm"]
-                    .as_str()
-                    .unwrap_or("");
+            let npm = provider_data["npm"]
+                .as_str()
+                .unwrap_or("");
 
-                let api_url = provider_data["api"]
-                    .as_str()
-                    .unwrap_or("");
+            let api_url = provider_data["api"]
+                .as_str()
+                .unwrap_or("");
 
-                let doc = provider_data["doc"].as_str().map(|s| s.to_string());
+            let doc = provider_data["doc"].as_str().map(|s| s.to_string());
 
-                let env = provider_data["env"]
-                    .as_array()
-                    .map(|arr| arr.iter().filter_map(|v| v.as_str().map(|s| s.to_string())).collect())
-                    .unwrap_or_default();
+            let env = provider_data["env"]
+                .as_array()
+                .map(|arr| arr.iter().filter_map(|v| v.as_str().map(|s| s.to_string())).collect())
+                .unwrap_or_default();
 
-                let models = if let Some(models_obj) = provider_data["models"].as_object() {
-                    models_obj
-                        .values()
-                        .filter_map(|m| self.parse_model_info(provider_id, npm, api_url, m))
-                        .collect()
-                } else {
-                    Vec::new()
-                };
+            let models = if let Some(models_obj) = provider_data["models"].as_object() {
+                if models_obj.is_empty() {
+                    eprintln!("Warning: Provider '{}' has no models defined", provider_id);
+                }
+                models_obj
+                    .values()
+                    .filter_map(|m| self.parse_model_info(provider_id, npm, api_url, m))
+                    .collect()
+            } else {
+                eprintln!("Warning: Provider '{}' has no models field", provider_id);
+                Vec::new()
+            };
 
-                providers.push(ProviderInfo {
-                    id: provider_id.clone(),
-                    name: provider_name.to_string(),
-                    npm: npm.to_string(),
-                    api_url: api_url.to_string(),
-                    doc,
-                    env,
-                    models,
-                });
+            if models.is_empty() && !npm.is_empty() {
+                eprintln!("Warning: Provider '{}' ({}) has no valid models", provider_id, npm);
             }
+
+            providers.push(ProviderInfo {
+                id: provider_id.clone(),
+                name: provider_name.to_string(),
+                npm: npm.to_string(),
+                api_url: api_url.to_string(),
+                doc,
+                env,
+                models,
+            });
+        }
+
+        if providers.is_empty() {
+            return Err(anyhow::anyhow!(
+                "Failed to parse any providers from API response"
+            ));
         }
 
         Ok(providers)
@@ -237,17 +312,39 @@ impl CacheManager {
     fn parse_model_info(
         &self,
         provider_id: &str,
-        provider_npm: &str,
-        provider_api: &str,
+        _provider_npm: &str,
+        _provider_api: &str,
         value: &Value,
     ) -> Option<ModelInfo> {
+        let id = value.get("id")?.as_str()?;
+
+        if id.is_empty() {
+            return None;
+        }
+
+        let name = value.get("name")?.as_str()?;
+
         let limit = value.get("limit").and_then(|v| v.as_object());
         let cost = value.get("cost").and_then(|v| v.as_object());
         let modalities = value.get("modalities").and_then(|v| v.as_object());
 
+        let context_limit = limit
+            .and_then(|l| l.get("context").and_then(|v| v.as_u64()))
+            .map(|v| v as u32)
+            .unwrap_or(0);
+
+        let output_limit = limit
+            .and_then(|l| l.get("output").and_then(|v| v.as_u64()))
+            .map(|v| v as u32)
+            .unwrap_or(0);
+
+        if context_limit == 0 && output_limit == 0 {
+            return None;
+        }
+
         Some(ModelInfo {
-            id: value["id"].as_str()?.to_string(),
-            name: value["name"].as_str()?.to_string(),
+            id: id.to_string(),
+            name: name.to_string(),
             provider_id: provider_id.to_string(),
             family: value.get("family").and_then(|v| v.as_str()).map(|s| s.to_string()),
 
@@ -261,12 +358,8 @@ impl CacheManager {
                 interleaved: self.parse_interleaved(value),
             },
 
-            context_limit: limit
-                .and_then(|l| l.get("context").and_then(|v| v.as_u64()).map(|v| v as u32))
-                .unwrap_or(0),
-            output_limit: limit
-                .and_then(|l| l.get("output").and_then(|v| v.as_u64()).map(|v| v as u32))
-                .unwrap_or(0),
+            context_limit,
+            output_limit,
 
             cost_input: cost
                 .and_then(|c| c.get("input").and_then(|v| v.as_f64()))
