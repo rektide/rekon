@@ -164,10 +164,10 @@ pub fn save_config(config_dir: &Path, config: &OpenCodeConfig) -> Result<()> {
 }
 
 /// Find system-wide configuration file
-/// Checks /etc/oc-variance/opencode.json and /etc/opencode.json
+/// Checks /etc/opencode/opencode.json and /etc/opencode.json
 fn find_system_config() -> Option<PathBuf> {
     let paths = [
-        "/etc/oc-variance/opencode.json",
+        "/etc/opencode/opencode.json",
         "/etc/opencode.json",
     ];
 
@@ -182,11 +182,23 @@ fn find_system_config() -> Option<PathBuf> {
 }
 
 /// Find user configuration file following XDG spec
+/// Primary: ~/.config/opencode/opencode.json
+/// Fallback: ~/opencode/opencode.json
 fn find_user_config() -> Option<PathBuf> {
-    if let Some(proj_dirs) = ProjectDirs::from("org", "rekon", "oc-variance") {
-        let user_config = proj_dirs.config_dir().join("opencode.json");
-        if user_config.exists() {
-            return Some(user_config);
+    // Primary XDG location: ~/.config/opencode/opencode.json
+    if let Some(proj_dirs) = ProjectDirs::from("org", "rekon", "opencode") {
+        let opencode_config = proj_dirs.config_dir().join("opencode.json");
+        if opencode_config.exists() {
+            return Some(opencode_config);
+        }
+    }
+
+    // Fallback: ~/opencode/opencode.json
+    if let Some(home_str) = std::env::var("HOME") {
+        let home = PathBuf::from(&home_str);
+        let fallback_config = home.join("opencode/opencode.json");
+        if fallback_config.exists() {
+            return Some(fallback_config);
         }
     }
 
