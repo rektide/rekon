@@ -33,6 +33,7 @@ async function precheckTarget(destFile: string, absoluteSource: string): Promise
 
 async function run(ctx: any) {
   const force = ctx.values.f || false;
+  const dryRun = ctx.values.n || false;
   const projectRoot = resolve(__dirname, '..');
   const promptDir = join(projectRoot, 'prompt');
   const configDir = xdgConfig;
@@ -40,7 +41,9 @@ async function run(ctx: any) {
 
   const markdownFiles = await findMarkdownFiles(promptDir);
 
-  await mkdir(opencodeCommandDir, { recursive: true });
+  if (!dryRun) {
+    await mkdir(opencodeCommandDir, { recursive: true });
+  }
 
   for (const sourceFile of markdownFiles) {
     const relativePath = sourceFile.slice(promptDir.length + 1);
@@ -61,18 +64,20 @@ async function run(ctx: any) {
       }
     }
 
-    try {
-      if (force && (status === 'different-symlink' || status === 'regular-file')) {
-        await rm(destFile, { force: true });
+    if (!dryRun) {
+      try {
+        if (force && (status === 'different-symlink' || status === 'regular-file')) {
+          await rm(destFile, { force: true });
+        }
+        await symlink(absoluteSource, destFile, 'file');
+      } catch (err: unknown) {
+        if (err instanceof Error) {
+          console.error(`${relativePath}: error - ${err.message}`);
+        }
+        process.exit(1);
       }
-      await symlink(absoluteSource, destFile, 'file');
-      console.log(`${relativePath}: done`);
-    } catch (err: unknown) {
-      if (err instanceof Error) {
-        console.error(`${relativePath}: error - ${err.message}`);
-      }
-      process.exit(1);
     }
+    console.log(`${relativePath}: done`);
   }
 }
 
@@ -85,6 +90,12 @@ export default define({
       short: 'f',
       default: false,
       description: 'Force overwrite existing files',
+    },
+    n: {
+      type: 'boolean',
+      short: 'n',
+      default: false,
+      description: 'Dry run - show what would happen without making changes',
     },
   },
   run,
