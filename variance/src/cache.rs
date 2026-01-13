@@ -1,13 +1,66 @@
 use anyhow::{Context, Result};
 use chrono::{DateTime, Duration, Utc};
+use rand::Rng;
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use std::collections::HashMap;
 use std::fs;
 use std::path::{Path, PathBuf};
+use std::thread;
+use std::time::Duration as StdDuration;
 
 const CACHE_FILENAME: &str = "models-dev-cache.json";
 const CACHE_MAX_AGE_HOURS: i64 = 24;
+
+const MAX_RETRIES: u32 = 3;
+const BASE_RETRY_DELAY_MS: u64 = 1000;
+const MAX_RETRY_DELAY_MS: u64 = 10000;
+
+fn retry_with_backoff<F, T>(mut operation: F) -> Result<T>
+where
+    F: FnMut() -> Result<T>,
+{
+    let mut last_error = None;
+
+    for attempt in 0..MAX_RETRIES {
+        match operation() {
+            Ok(result) => return Ok(result),
+            Err(e) => {
+                let error_msg = e.to_string().to_lowercase();
+
+                let should_retry = error_msg.contains("connect")
+                    || error_msg.contains("timeout")
+                    || error_msg.contains("network")
+                    || error_msg.contains("io");
+
+                if !should_retry {
+                    return Err(e);
+                }
+
+                last_error = Some(e);
+
+                if attempt < MAX_RETRIES - 1 {
+                    let delay_ms = (BASE_RETRY_DELAY_MS * 2u64.pow(attempt))
+                        .min(MAX_RETRY_DELAY_MS);
+                    let jitter = rand::thread_rng().gen_range(0..=delay_ms / 4);
+                    let total_delay = delay_ms + jitter;
+
+                    eprintln!(
+                        "Request failed (attempt {}/{}), retrying in {}ms...",
+                        attempt + 1,
+                        MAX_RETRIES,
+                        total_delay
+                    );
+                    thread::sleep(StdDuration::from_millis(total_delay));
+                }
+            }
+        }
+    }
+
+    Err(last_error.unwrap_or_else(|| {
+        anyhow::anyhow!("Operation failed after {} retries", MAX_RETRIES)
+    }))
+}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ModelsCache {
@@ -135,23 +188,25 @@ impl CacheManager {
             .user_agent("oc-variance/0.1.0")
             .build();
 
-        let response = agent
-            .get(api_url)
-            .call()
-            .map_err(|e| {
-                let error_msg = e.to_string().to_lowercase();
-                if error_msg.contains("connect") || error_msg.contains("connection") {
-                    anyhow::anyhow!("Failed to connect to models.dev API. Check your internet connection.")
-                } else if error_msg.contains("dns") {
-                    anyhow::anyhow!("DNS resolution failed for models.dev API.")
-                } else if error_msg.contains("timeout") {
-                    anyhow::anyhow!("Request to models.dev API timed out after 30 seconds.")
-                } else if error_msg.contains("io") || error_msg.contains("network") {
-                    anyhow::anyhow!("Network error while fetching from models.dev API: {}", e)
-                } else {
-                    anyhow::anyhow!("Failed to fetch models from models.dev API: {}", e)
-                }
-            })?;
+        let response = retry_with_backoff(|| {
+            agent
+                .get(api_url)
+                .call()
+                .map_err(|e| {
+                    let error_msg = e.to_string().to_lowercase();
+                    if error_msg.contains("connect") || error_msg.contains("connection") {
+                        anyhow::anyhow!("Failed to connect to models.dev API. Check your internet connection.")
+                    } else if error_msg.contains("dns") {
+                        anyhow::anyhow!("DNS resolution failed for models.dev API.")
+                    } else if error_msg.contains("timeout") {
+                        anyhow::anyhow!("Request to models.dev API timed out after 30 seconds.")
+                    } else if error_msg.contains("io") || error_msg.contains("network") {
+                        anyhow::anyhow!("Network error while fetching from models.dev API: {}", e)
+                    } else {
+                        anyhow::anyhow!("Failed to fetch models from models.dev API: {}", e)
+                    }
+                })
+        })?;
 
         let status_code = response.status();
         if !(200..=299).contains(&status_code) {
