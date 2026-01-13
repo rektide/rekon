@@ -7,6 +7,10 @@ license = "MIT OR Apache-2.0"
 repository = "https://github.com/rektide/rekon"
 authors = ["Rektide"]
 
+[lib]
+name = "oc_variance"
+path = "src/lib.rs"
+
 [[bin]]
 name = "oc-variance"
 path = "src/main.rs"

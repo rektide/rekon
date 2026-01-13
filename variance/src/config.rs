@@ -194,7 +194,7 @@ fn find_user_config() -> Option<PathBuf> {
     }
 
     // Fallback: ~/opencode/opencode.json
-    if let Some(home_str) = std::env::var("HOME") {
+    if let Ok(home_str) = std::env::var("HOME") {
         let home = PathBuf::from(&home_str);
         let fallback_config = home.join("opencode/opencode.json");
         if fallback_config.exists() {
