@@ -8,7 +8,7 @@ import { define } from 'gunshi'
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-async function* prompts(patterns, baseDir = "prompt/") {
+async function* prompts(patterns: string[], baseDir = "prompt/") {
   for (const pattern of patterns) {
     const searchPattern = pattern.startsWith("prompt/") ? pattern : join(baseDir, pattern);
     const files = await glob(searchPattern, { cwd: join(__dirname, "..") });
@@ -16,21 +16,21 @@ async function* prompts(patterns, baseDir = "prompt/") {
   }
 }
 
-async function* planFiles(patterns, baseDir = "prompt/") {
+async function* planFiles(patterns: string[], baseDir = "prompt/") {
   for await (const file of prompts(patterns, baseDir)) {
     const fullPath = join(__dirname, "..", file);
     try {
       const content = await readFile(fullPath, "utf-8");
       yield { name: file, content };
-    } catch (error) {
-      if (error.code !== "ENOENT") {
+    } catch (error: unknown) {
+      if (error instanceof Error && (error as NodeJS.ErrnoException).code !== "ENOENT") {
         throw error;
       }
     }
   }
 }
 
-function ensureHeader(name, content) {
+function ensureHeader(name: string, content: string) {
   const trimmed = content.trimStart();
   if (trimmed.startsWith("#")) {
     return content;
@@ -39,7 +39,7 @@ function ensureHeader(name, content) {
   return `# ${baseName}\n\nThis is prompt called ${name}\n\n${content}`;
 }
 
-async function writeCombined(patterns, outputFile = "COMBINED.md") {
+async function writeCombined(patterns: string[], outputFile = "COMBINED.md") {
   const combinedContent = [];
   for await (const { name, content } of planFiles(patterns)) {
     const contentWithHeader = ensureHeader(name, content);

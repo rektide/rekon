@@ -29,7 +29,8 @@
   },
   "dependencies": {
     "glob": "^13.0.0",
-    "gunshi": "^0.27.5"
+    "gunshi": "^0.27.5",
+    "xdg-basedir": "^5.1.0"
   },
   "devDependencies": {
     "@types/node": "^25.0.3",
