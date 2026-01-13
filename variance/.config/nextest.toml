@@ -1,8 +1,0 @@
-[profile.default]
-# Faster tests by default
-retries = 2
-
-[profile.ci]
-# CI profile: slower but more thorough
-retries = 0
-fail-fast = true
