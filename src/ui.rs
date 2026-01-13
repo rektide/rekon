@@ -1,26 +1,38 @@
 use anyhow::Result;
+use crate::models::{TreeNode, build_tree_from_providers};
+use crate::cache::CacheManager;
 use std::path::Path;
 
-/// Run the interactive TUI for model configuration
 pub fn run_interactive(config_dir: &Path, cache_dir: &Path) -> Result<()> {
     println!("oc-variance interactive mode");
     println!("Config dir: {}", config_dir.display());
     println!("Cache dir: {}", cache_dir.display());
 
-    // TODO: Implement ratatui-based TUI
-    // - Parse and load opencode.json
-    // - Build tree structure of providers/models/variants
-    // - Render fully expanded tree without borders
-    // - Implement navigation with vim keys
-    // - Support [ and ] for expand/collapse
-    // - Show configuration panel below tree on selection
-    // - Allow editing parameters
-    // - Save changes back to opencode.json
+    let cache_manager = CacheManager::new(cache_dir);
+    let cache = cache_manager.get_or_fetch()?;
 
-    println!("\nTODO: Interactive TUI not yet implemented");
-    println!("Available commands:");
-    println!("  fetch-models  - Fetch available models from models.dev");
-    println!("  validate      - Validate current configuration");
+    let tree_root = build_tree_from_providers(&cache.providers);
+    println!("\nTree structure with {} providers:", cache.providers.len());
+    print_tree(&tree_root, 0);
+
+    println!("\nTotal nodes in tree: {}", tree_root.count_nodes());
 
     Ok(())
+}
+
+fn print_tree(node: &TreeNode, depth: usize) {
+    let indent = "  ".repeat(depth);
+    let expanded = if node.is_expanded() { "[-]" } else { "[+]" };
+    let kind_marker = match &node.kind {
+        crate::models::TreeNodeKind::Provider(_) => "P",
+        crate::models::TreeNodeKind::Model(_) => "M",
+        crate::models::TreeNodeKind::Variant(_) => "V",
+    };
+    println!("{}{} {} {}", indent, expanded, kind_marker, node.name);
+
+    if node.is_expanded() {
+        for child in &node.children {
+            print_tree(child, depth + 1);
+        }
+    }
 }
