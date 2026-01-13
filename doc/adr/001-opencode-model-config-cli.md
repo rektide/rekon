@@ -1,7 +1,15 @@
 # ADR-001: OpenCode Model Configuration CLI Tool
 
 ## Status
-Proposed
+In Progress
+
+## Program: oc-variance
+
+**Location:** `variance/` subdirectory of rekon project
+
+**Purpose:** Interactive TUI for managing OpenCode model providers, models, and variants with caching from models.dev API.
+
+**Design Philosophy:** No high-performance requirements - use blocking I/O and simple caching instead of async/await patterns.
 
 ## Context
 OpenCode uses a JSON-based configuration system that allows users to configure multiple providers, models, and model variants with different thinking/reasoning levels. Currently, users must manually edit `opencode.json` to:
@@ -23,6 +31,8 @@ This manual editing process is error-prone and lacks discoverability. Users need
 - **Validation**: Prevent invalid configurations before writing to files
 - **Completeness**: Support all opencode model configuration features
 - **Programmatic Discovery**: Leverage external APIs (models.dev) for model information
+- **Performance**: No high-performance requirements - simple blocking I/O is sufficient
+- **Caching**: Avoid repeated API calls with local cache and periodic refresh
 
 ## Considered Options
 
@@ -180,27 +190,74 @@ Thinking Config:
 | s | Save configuration (when valid) |
 | ? | Show help |
 
-### Integration with models.dev
+### Integration with models.dev with Caching
 
-The tool will use the `models.dev` crate to:
-1. Fetch available models for supported providers
-2. Get metadata about model capabilities
-3. Discover available parameters and their ranges
+The tool will use a caching layer to avoid repeated API calls:
 
 ```rust
-// Pseudo-code for models.dev integration
-async fn fetch_provider_models(provider_id: &str) -> Vec<ModelMetadata> {
-    let client = ModelsDevClient::new();
-    client.list_models(provider_id).await
+// Cache structure
+pub struct ModelsCache {
+    pub fetched_at: DateTime<Utc>,
+    pub providers: Vec<ProviderInfo>,
+    pub api_url: String,
 }
 
-struct ModelMetadata {
+// Cache manager implementation
+impl CacheManager {
+    /// Get cached data if fresh, otherwise fetch fresh data
+    pub fn get_or_fetch(&self) -> Result<ModelsCache> {
+        if let Some(cached) = self.load_cached()? {
+            if self.is_cache_fresh(&cached) {
+                return Ok(cached);
+            }
+        }
+        self.fetch_and_cache()
+    }
+
+    /// Fetch fresh data from models.dev API
+    pub fn fetch_and_cache(&self) -> Result<ModelsCache> {
+        let response = ureq::get("https://models.dev/api.json").call()?;
+        let providers = self.parse_models_response(&response.into_string()?)?;
+
+        let cache = ModelsCache {
+            fetched_at: Utc::now(),
+            providers,
+            api_url: "https://models.dev/api.json".to_string(),
+        };
+
+        self.save_cache(&cache)
+    }
+
+    /// Cache is fresh if less than 24 hours old
+    fn is_cache_fresh(&self, cache: &ModelsCache) -> bool {
+        let age = Utc::now() - cache.fetched_at;
+        age < Duration::hours(24)
+    }
+}
+```
+
+**Cache Strategy:**
+- Cache file stored in XDG cache directory (e.g., `~/.cache/oc-variance/models-dev-cache.json`)
+- Maximum cache age: 24 hours
+- Users can force refresh with `fetch-models` command
+- Cache includes timestamp for freshness checking
+
+**Model Metadata Structure:**
+```rust
+pub struct ProviderInfo {
     pub id: String,
     pub name: String,
-    pub context_window: u32,
-    pub supports_thinking: bool,
+    pub models: Vec<ModelInfo>,
+}
+
+pub struct ModelInfo {
+    pub id: String,
+    pub name: String,
+    pub context_window: Option<u32>,
+    pub supports_thinking: Option<bool>,
     pub max_thinking_tokens: Option<u32>,
-    pub supports_reasoning_effort: bool,
+    pub supports_reasoning_effort: Option<bool>,
+    pub max_output_tokens: Option<u32>,
 }
 ```
 
@@ -230,6 +287,287 @@ Based on opencode documentation, we understand these parameters:
 - `apiKey`: Authentication key
 - `headers`: Custom HTTP headers
 
+### Error Handling Strategy
+
+Following modern CLI best practices with anyhow for user-friendly error messages:
+
+```rust
+use anyhow::{anyhow, bail, Context, Result};
+use thiserror::Error;
+
+// Custom error types for specific domains
+#[derive(Error, Debug)]
+pub enum ConfigError {
+    #[error("Configuration file not found at {path}")]
+    NotFound { path: PathBuf },
+
+    #[error("Invalid configuration: {message}")]
+    Invalid { message: String },
+
+    #[error("Provider '{provider}' not found")]
+    ProviderNotFound { provider: String },
+
+    #[error("Model '{model}' not available for provider '{provider}'")]
+    ModelNotFound { provider: String, model: String },
+}
+
+// Example: Load configuration with helpful context
+pub async fn load_config(path: &Path) -> Result<ModelConfig> {
+    let contents = fs::read_to_string(path)
+        .with_context(|| format!("Failed to read config file at {}", path.display()))?;
+
+    let config: ModelConfig = serde_json::from_str(&contents)
+        .with_context(|| format!("Invalid JSON in config file {}", path.display()))?;
+
+    validate_config(&config)
+        .with_context(|| "Configuration validation failed")?;
+
+    Ok(config)
+}
+
+// Display errors with suggestions
+pub fn display_error(err: &anyhow::Error) -> String {
+    let mut output = String::new();
+
+    writeln!(
+        &mut output,
+        "{} {}",
+        style("Error:").red().bold(),
+        err
+    ).unwrap();
+
+    // Chain of causes
+    let mut source = err.source();
+    while let Some(cause) = source {
+        writeln!(
+            &mut output,
+            "  {} {}",
+            style("Caused by:").yellow(),
+            cause
+        ).unwrap();
+        source = cause.source();
+    }
+
+    // Add helpful suggestions
+    if let Some(suggestion) = suggest_fix(err) {
+        writeln!(
+            &mut output,
+            "\n{} {}",
+            style("Suggestion:").green(),
+            suggestion
+        ).unwrap();
+    }
+
+    output
+}
+
+// Provide context-aware suggestions
+fn suggest_fix(err: &anyhow::Error) -> Option<&'static str> {
+    let msg = err.to_string();
+
+    if msg.contains("not found") && msg.contains("config") {
+        Some("Run 'opencode config init' to create a default configuration")
+    } else if msg.contains("Invalid JSON") {
+        Some("Check your opencode.json file for syntax errors. Consider using a JSON validator.")
+    } else if msg.contains("Provider") && msg.contains("not found") {
+        Some("Verify the provider name is correct. Use 'opencode models' to list available providers.")
+    } else {
+        None
+    }
+}
+```
+
+### Configuration Management
+
+The tool should support layered configuration from multiple sources:
+
+```rust
+use directories::ProjectDirs;
+
+impl ConfigLoader {
+    pub async fn load(cli_path: Option<&Path>) -> Result<ModelConfig> {
+        let mut config = ModelConfig::default();
+
+        // 1. Load from default locations with proper precedence
+        for path in Self::default_paths() {
+            if path.exists() {
+                config.merge_file(&path)
+                    .with_context(|| format!("Failed to load config from {}", path.display()))?;
+            }
+        }
+
+        // 2. Load from CLI-specified path (highest precedence)
+        if let Some(path) = cli_path {
+            if !path.exists() {
+                bail!("Config file not found: {}", path.display());
+            }
+            config.merge_file(path)?;
+        }
+
+        // 3. Apply environment variable overrides
+        config.merge_env()?;
+
+        // 4. Validate final configuration
+        config.validate()
+            .context("Configuration validation failed. See errors above.")?;
+
+        Ok(config)
+    }
+
+    fn default_paths() -> Vec<PathBuf> {
+        let mut paths = Vec::new();
+
+        // System-wide config (lowest precedence)
+        paths.push(PathBuf::from("/etc/opencode/config.json"));
+
+        // User config from XDG directories
+        if let Some(proj_dirs) = ProjectDirs::from("org", "rekon", "rekon-config") {
+            paths.push(proj_dirs.config_dir().join("opencode.json"));
+        }
+
+        // Project-local config (medium precedence)
+        if let Ok(cwd) = std::env::current_dir() {
+            paths.push(cwd.join("opencode.json"));
+        }
+
+        paths
+    }
+
+    fn merge_env(&mut self) -> Result<()> {
+        // Override with environment variables
+        if let Ok(endpoint) = std::env::var("OPENCODE_API_ENDPOINT") {
+            if let Some(ref mut api) = self.provider.get_mut("anthropic") {
+                if let Some(ref mut opts) = api.options.as_mut() {
+                    opts.base_url = Some(endpoint);
+                }
+            }
+        }
+
+        Ok(())
+    }
+}
+
+impl VariantConfig {
+    fn validate_with_context(
+        &self,
+        provider: &str,
+        model: &str,
+        variant: &str,
+    ) -> Result<()> {
+        if let Some(ref thinking) = self.options.thinking {
+            if thinking.type_ == "enabled" && thinking.budget_tokens == 0 {
+                bail!(
+                    "Variant '{}/{}:{}' has enabled thinking with 0 budget tokens. \
+                     Set a positive value for thinking.budget_tokens.",
+                    provider, model, variant
+                );
+            }
+        }
+
+        // Validate thinking budget doesn't exceed model limits
+        if let Some(ref thinking) = self.options.thinking {
+            if thinking.budget_tokens > 200000 {
+                bail!(
+                    "Variant '{}/{}:{}' has thinking budget of {} tokens, which exceeds maximum of 200000. \
+                     Use a smaller value or remove this variant.",
+                    provider, model, variant, thinking.budget_tokens
+                );
+            }
+        }
+
+        Ok(())
+    }
+}
+```
+
+### Testing Strategy
+
+Following CLI testing best practices with assert_cmd and insta:
+
+```rust
+use assert_cmd::Command;
+use predicates::prelude::*;
+use tempfile::TempDir;
+
+#[test]
+fn test_load_valid_config() {
+    let temp = TempDir::new().unwrap();
+    let config_path = temp.path().join("opencode.json");
+    std::fs::write(
+        &config_path,
+        r#"{
+            "provider": {
+                "anthropic": {
+                    "models": {
+                        "claude-sonnet-4-5": {}
+                    }
+                }
+            }
+        }"#
+    ).unwrap();
+
+    Command::cargo_bin("rekon-config")
+        .unwrap()
+        .arg("--config")
+        .arg(&config_path)
+        .arg("validate")
+        .assert()
+        .success()
+        .stdout(predicate::str::contains("Configuration is valid"));
+}
+
+#[test]
+fn test_invalid_thinking_budget() {
+    let temp = TempDir::new().unwrap();
+    let config_path = temp.path().join("opencode.json");
+    std::fs::write(
+        &config_path,
+        r#"{
+            "provider": {
+                "anthropic": {
+                    "models": {
+                        "claude-sonnet-4-5": {
+                            "variants": {
+                                "overflow": {
+                                    "options": {
+                                        "thinking": {
+                                            "type": "enabled",
+                                            "budget_tokens": 999999999
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }"#
+    ).unwrap();
+
+    Command::cargo_bin("rekon-config")
+        .unwrap()
+        .arg("--config")
+        .arg(&config_path)
+        .arg("validate")
+        .assert()
+        .failure()
+        .stderr(predicate::str::contains("thinking budget"))
+        .stderr(predicate::str::contains("exceeds maximum"));
+}
+
+// Snapshot testing for UI output
+#[test]
+fn test_help_output() {
+    let output = Command::cargo_bin("rekon-config")
+        .unwrap()
+        .arg("--help")
+        .output()
+        .unwrap();
+
+    insta::assert_snapshot!(String::from_utf8_lossy(&output.stdout));
+}
+```
+
 ### Missing Information
 
 We need to research the following to build a complete solution:
@@ -258,59 +596,116 @@ We need to research the following to build a complete solution:
 
 ### Implementation Plan
 
-#### Phase 1: Core Data Structures
-1. Define Rust types for opencode configuration
-2. Implement parsing and serialization of `opencode.json`
-3. Create in-memory tree representation
+#### Phase 1: Project Setup & Structure
+1. Initialize Rust project in `variance/` subdirectory
+2. Set up modular project structure following CLI best practices
+3. Configure dependencies in `Cargo.toml`
 
-#### Phase 2: models.dev Integration
-1. Investigate `models.dev` crate API
-2. Implement provider/model fetching
-3. Test parameter discovery capabilities
+**Project Structure:**
+```
+variance/
+├── Cargo.toml
+├── src/
+│   ├── main.rs              # Entry point
+│   ├── cli.rs              # CLI argument parsing with clap
+│   ├── config.rs            # OpenCode config loading and validation
+│   ├── models.rs            # Model discovery entry point
+│   ├── cache.rs            # models.dev API caching
+│   └── ui.rs              # TUI framework (placeholder)
+└── (future) tests/
+```
 
-#### Phase 3: Basic UI Framework
-1. Set up ratatui application
-2. Implement tree view rendering
-3. Add basic navigation
+#### Phase 2: models.dev Integration with Caching
+1. Implement blocking HTTP client using ureq
+2. Add caching layer with freshness checking (24h max age)
+3. Store cache in XDG cache directory
+4. Parse models.dev API response (placeholder structure)
 
-#### Phase 4: Configuration Panel
-1. Create split-pane layout
-2. Implement form fields for parameters
-3. Add validation
+**Caching Features:**
+- Cache stored in `~/.cache/oc-variance/models-dev-cache.json`
+- Automatic cache refresh when >24 hours old
+- `fetch-models` command to force refresh
+- Timestamp tracking for freshness validation
 
-#### Phase 5: CRUD Operations
+#### Phase 3: Configuration Management
+1. Load and parse `opencode.json` with serde
+2. Implement multi-source config discovery (CLI arg, config dir, current dir)
+3. Add validation for OpenCode schema and model parameters
+4. Support `validate` command for standalone validation
+
+**Config Discovery Order:**
+1. `--config` CLI argument (highest priority)
+2. XDG config directory (`~/.config/oc-variance/opencode.json`)
+3. Current directory (`./opencode.json`)
+
+#### Phase 4: Core Data Structures ✅ PARTIAL
+1. ✅ Define Rust types for opencode configuration with serde
+2. ✅ Implement parsing and serialization of `opencode.json`
+3. ⏳ Create in-memory tree representation (TUI phase)
+4. ✅ Add configuration validation with context
+
+#### Phase 5: Basic UI Framework ⏳ TODO
+1. Set up ratatui application with crossterm terminal handling
+2. Implement tree view rendering (fully expanded by default, no borders)
+3. Add navigation (vim-style, `[`/`]` for expand/collapse)
+4. Handle keyboard input for selection and editing
+
+#### Phase 6: Configuration Panel ⏳ TODO
+1. Create split-pane layout (tree + config panel)
+2. Implement form fields for parameter editing
+3. Add real-time validation with helpful error messages
+4. Display model info from cached models.dev data
+
+#### Phase 7: CRUD Operations ⏳ TODO
 1. Implement create (new provider/model/variant)
 2. Implement read (parse and display)
 3. Implement update (edit and save)
-4. Implement delete (remove items)
+4. Implement delete (remove items with confirmation)
+5. Add user prompts using dialoguer for destructive operations
 
-#### Phase 6: Advanced Features
-1. Search/filter functionality
+#### Phase 8: Testing & Quality ⏳ TODO
+1. Integration tests with assert_cmd
+2. Snapshot testing with insta for UI output
+3. Mock external dependencies (models.dev API)
+4. Configuration validation tests
+
+#### Phase 9: Advanced Features ⏳ TODO
+1. Search/filter functionality in tree view
 2. Import/export configurations
 3. Configuration templates
-4. Validation and error messages
+4. Shell integration and completions
 
 ### Technology Stack
 
-- **Language**: Rust
-- **TUI Framework**: ratatui
-- **Input Handling**: crossterm
-- **Configuration Parsing**: serde_json
-- **Model Discovery**: models.dev crate
-- **Forms/Validation**: custom implementation (or inquire integration)
+- **Language**: Rust (2021 edition, no nightly needed)
+- **TUI Framework**: ratatui with crossterm
+- **CLI Parsing**: clap (derive API) for command-line arguments
+- **Error Handling**: anyhow with context, thiserror for custom types
+- **Configuration**: serde with JSON support
+- **Model Discovery**: ureq (blocking HTTP) to fetch models.dev API with caching
+- **User Interaction**: dialoguer for prompts, indicatif for progress
+- **Terminal Handling**: console for styled output, colored for colors
+- **Directory Management**: directories crate for XDG-compliant config and cache paths
+
+### Project Location
+
+The `oc-variance` tool lives in the `variance/` subdirectory of the rekon project.
 
 ### Dependencies
 
-```toml
-[dependencies]
-ratatui = "0.26"
-crossterm = "0.27"
-serde = { version = "1.0", features = ["derive"] }
-serde_json = "1.0"
-models-dev = "0.1"  # placeholder - verify actual crate name
-anyhow = "1.0"
-tokio = { version = "1.0", features = ["full"] }
-```
+See `variance/Cargo.toml` for the complete dependency list. Key dependencies include:
+
+- **clap** - CLI argument parsing with derive macros
+- **ratatui** - Terminal UI framework for tree-based interface
+- **crossterm** - Terminal handling and input
+- **anyhow** - Ergonomic error handling with context
+- **thiserror** - Custom error types
+- **serde/serde_json** - Configuration serialization
+- **ureq** - Simple blocking HTTP client for API requests
+- **directories** - XDG-compliant config and cache directories
+- **dialoguer** - Interactive prompts and confirmations
+- **indicatif** - Progress bars and spinners
+- **chrono** - Time handling for cache freshness checking
 
 ### Alternatives Considered
 
@@ -327,6 +722,11 @@ tokio = { version = "1.0", features = ["full"] }
 5. Users can create custom variants with specific parameter combinations
 6. Changes are validated before writing to `opencode.json`
 7. Tool handles edge cases (invalid configs, missing files, etc.)
+8. Error messages are helpful and provide actionable suggestions
+9. All functionality is covered by integration tests
+10. CLI supports shell completions for bash, zsh, fish, and PowerShell
+11. Configuration follows XDG Base Directory specification
+12. Async operations handle failures gracefully with retry logic
 
 ### Open Questions
 
@@ -342,9 +742,13 @@ tokio = { version = "1.0", features = ["full"] }
 - [ratatui Documentation](https://ratatui.rs/)
 - [models.dev API](https://models.dev/api) (investigate actual URL)
 - OpenCode configuration examples in `provider/opencode-model-config.json`
+- [The Definitive Guide to High-Performance CLI and Automation Tools with Rust](../../prompt/rust-cli.md) - Best practices for CLI development
+- [Clap Documentation](https://docs.rs/clap/latest/clap/)
+- [Anyhow Documentation](https://docs.rs/anyhow/latest/anyhow/)
+- [Tokio Documentation](https://docs.rs/tokio/latest/tokio/)
 
 ---
 
-**Document Version**: 1.0  
-**Created**: January 13, 2026  
+**Document Version**: 1.1
+**Created**: January 13, 2026
 **Last Updated**: January 13, 2026
