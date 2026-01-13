@@ -1,10 +1,11 @@
 #!/usr/bin/env node
-import { readlink, symlink, mkdir, rm } from "node:fs/promises";
+import { readlink, symlink, mkdir, rm, readFile } from "node:fs/promises";
 import { join, dirname, basename, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { define } from 'gunshi'
 import { glob } from "glob";
 import { xdgConfig } from 'xdg-basedir';
+import matter from 'gray-matter';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -12,6 +13,13 @@ const __dirname = dirname(__filename);
 async function findMarkdownFiles(dir: string): Promise<string[]> {
   const files = await glob('**/*.{md,mdx}', { cwd: dir, absolute: true });
   return files.sort();
+}
+
+function checkFrontMatter(content: string, filePath: string, quiet: boolean): void {
+  const { data } = matter(content);
+  if (!data.description && !quiet) {
+    console.warn(`Warning: ${filePath} missing description in front-matter`);
+  }
 }
 
 type TargetStatus = 'does-not-exist' | 'already-symlinked' | 'different-symlink' | 'regular-file';
@@ -34,6 +42,7 @@ async function precheckTarget(destFile: string, absoluteSource: string): Promise
 async function run(ctx: any) {
   const force = ctx.values.f || false;
   const dryRun = ctx.values.n || false;
+  const quiet = ctx.values.q || false;
   const projectRoot = resolve(__dirname, '..');
   const promptDir = join(projectRoot, 'prompt');
   const configDir = xdgConfig;
@@ -49,6 +58,9 @@ async function run(ctx: any) {
     const relativePath = sourceFile.slice(promptDir.length + 1);
     const destFile = join(opencodeCommandDir, basename(sourceFile));
     const absoluteSource = resolve(sourceFile);
+
+    const content = await readFile(sourceFile, 'utf-8');
+    checkFrontMatter(content, relativePath, quiet);
 
     const status = await precheckTarget(destFile, absoluteSource);
     
@@ -96,6 +108,12 @@ export default define({
       short: 'n',
       default: false,
       description: 'Dry run - show what would happen without making changes',
+    },
+    q: {
+      type: 'boolean',
+      short: 'q',
+      default: false,
+      description: 'Quiet - suppress warnings',
     },
   },
   run,
