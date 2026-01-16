@@ -20,7 +20,30 @@ once you are done writing the sketch of the work, write a second document, a SUM
 
 ## write the tickets
 
-usually you will have a good enough idea of the problem to create beads tickets. there are probably at least some epics that you have a good idea for, based on logical groupings of how the PLAN might be broken down and what the component architecture , the system composition is probably going to be. be conservative and general in making implementation tickets, which we do not yet have confidence really will be accepted from the draft of the plan, but be generous with the research tickets you create. create research tickets EARLY and UPDATE and ADD to them regularly. please try to capture implications and assessments as discrete entities in the research, and UPDATE YOUR PRIORS as you work. giving the various components a short-name, a descriptive label is VERY HELPFUL. you are encouraged to CROSSLINK tickets, not just with beads deps, but with with links.
+usually you will have a good enough idea of the problem to create beads tickets. there are probably at least some epics that you have a good idea for, based on logical groupings of how the PLAN might be broken down and what the component architecture , the system composition is probably going to be. be conservative and general in making implementation tickets, which we do not yet have confidence really will be accepted from the draft of the plan, but be generous with the research tickets you create. create research tickets EARLY and UPDATE and ADD to them regularly. please try to capture implications and assessments as discrete entities in the research, and rework tickets as you go (which is called UPDATE YOUR PRIORS). giving the various components a short-name, a descriptive label is VERY HELPFUL. you are encouraged to CROSSLINK tickets, not just with beads deps, but by using the SHORT-NAME as a keyword in your descriptions.
+
+**IMPORTANT: Set up beads prefix BEFORE creating tickets**
+First, ensure the beads config has a meaningful `issue-prefix` set. This prevents painful bulk renaming later.
+
+**Ticket creation strategy:**
+
+1. Create epics first (logical groupings based on PLAN's component architecture)
+2. Use short-names in ticket IDs from the start - auto-generated IDs will be painful to rename later
+3. Be generous with research tickets, conservative with implementation tickets
+
+**Ticket naming:**
+
+- Tickets should use short-names in their IDs and titles
+- Avoid the "rename trap" - once tickets have IDs, renaming them all is painful and error-prone
+
+**Ticket content:**
+
+- Describe the actual feature/subsystem, NOT "research about X"
+- Include components, API goals, and use cases
+- Give various components short-names for cross-referencing
+- Crosslink tickets with beads deps and inline links
+
+Create tickets EARLY and UPDATE them regularly as your understanding evolves. Capture implications and assessments as discrete entities in ticket descriptions.
 
 #### writing research tickets
 
