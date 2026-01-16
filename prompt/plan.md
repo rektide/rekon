@@ -1,8 +1,12 @@
-# draft the plan
+---
+describe: building a plan markdown and tickets for work we are about to do
+---
+
+# draft-the-plan
 
 drafing a plan or DRAFT-PLAN is a planning phase involving a lot of thinking about problems and researching.
 
-this sub-prompt is a- perhaps THE- heart of the `rekon` prompt system of which it is a part. ideas flow from drafting plans, and it is where many SHORT-NAMES are often begat. drafting a plan is not set in stone, and indeed, we want to try to encourage and leave lots of wiggle room, leave a long trail of how we got where we were (a WORK LOG), while still maintaining overall conceise easy to drop into topics when we build the initial DRAFT and then REFINE the draft.
+# plan-philosophy
 
 ## using many systems architectures views to let us start to look at the problem across many dimensions
 
@@ -12,48 +16,66 @@ looking at component architectures, and data-flows of the system, and in general
 
 our goal is not yet to be absolutely sure, uncertainty and more importantly possibility is to be regarded & given respect.
 
-## sketching the work
+## creating descriptive and visually iconic short-names
 
-we want end products of this work and research, a short and long view of the plan. create a PLAN markdown file in a .transcript/ directory that covers our prompt, research, and architecture, and what the early plan is. the filename should start with PLAN but include an up to around twenty word concise explanation of the topic that is being planned for.
+we want to be creating and re-using visually distinct SHORT-NAMES for aspects of our system as we go. we want to breed familiarity and be clear that we are referring to the same thing.
 
-once you are done writing the sketch of the work, write a second document, a SUMMARY PLAN. the summary plan should summarize the PLAN. this is an excellent task for a subagent to do! you do not want to waste time and energy yourself thinking of the summary, but you do want to encourage another subagent to really reflect and consider the PLAN. if there is a tool for createing a worktree, create a worktree and use that, and squash all your work back on when complete with the SUMMARY PLAN. subagent, your commands are as follows (with additional prompting help from the parent agent creating you): you need to do this in multple phases. start a general summary. commit that. now take a higher level view. reflect on the plan as a whole. we really want to distill out core concepts and points from here, using the original PLAN and it's SUMMARY. update the SUMMARY PLAN to better link together different pieces of the PLAN and SUMMARY and
+## a good plan is the heart of the work
 
-## write the tickets
+this sub-prompt is a- perhaps THE- heart of the `rekon` prompt system of which it is a part. ideas flow from drafting plans, and it is where many SHORT-NAMES are often begat. drafting a plan is not set in stone, and indeed, we want to try to encourage and leave lots of wiggle room, leave a long trail of how we got where we were (a WORK LOG), while still maintaining overall conceise easy to drop into topics when we build the initial DRAFT and then REFINE THE DRAFT.
 
-usually you will have a good enough idea of the problem to create beads tickets. there are probably at least some epics that you have a good idea for, based on logical groupings of how the PLAN might be broken down and what the component architecture , the system composition is probably going to be. be conservative and general in making implementation tickets, which we do not yet have confidence really will be accepted from the draft of the plan, but be generous with the research tickets you create. create research tickets EARLY and UPDATE and ADD to them regularly. please try to capture implications and assessments as discrete entities in the research, and rework tickets as you go (which is called UPDATE YOUR PRIORS). giving the various components a short-name, a descriptive label is VERY HELPFUL. you are encouraged to CROSSLINK tickets, not just with beads deps, but by using the SHORT-NAME as a keyword in your descriptions.
+# plan-process
+
+- create a plan as a `/doc/plan/<plan-name>.md` that covers our prompt, research, and design/architecture, and exploration areas, and what the early plan is.
+- we need a good short-name for the plan that can be up to about 8 words, that describes the thing we're going to make.
+- propose the plan plan to the user and refine the plan with them
+- once you have approval, create a @general subagent to build a `<plan-name>.summary.md` file next to the plan. have it review the work. after evaluating and writing the summary, append to the summary a review of what areas of the plan seem most clear and fleshed out, and which seem like they need the most refinement. then write a core concepts section that talks to the main ideas of the plan again.
+- WRITE-THE-TICKETS
+
+## refine-the-draft
+
+drafting a plan implicitly carries with it the implication that we are going to refine the plan. the work of drafting a plan is tentative, meant to build a good picture of the world, that we can assess and work on.
+
+some elements of the plan might need revising. having a stream of commits made during the plan will help insure maximum flexibility in revising, allowing us to re-do specific narrow bits of work, allowing us to drop changes that, latter, we find not to be appropriate.
+
+## write-the-ticket
 
 **IMPORTANT: Set up beads prefix BEFORE creating tickets**
-First, ensure the beads config has a meaningful `issue-prefix` set. This prevents painful bulk renaming later.
+first, ensure the beads config has a meaningful `issue-prefix` set. this prevents painful bulk renaming later.
 
-**Ticket creation strategy:**
+**ticket creation strategy:**
 
-1. Create epics first (logical groupings based on PLAN's component architecture)
-2. Use short-names in ticket IDs from the start - auto-generated IDs will be painful to rename later
-3. Be generous with research tickets, conservative with implementation tickets
+1. create epics first (logical groupings based on PLAN's component architecture)
+2. tickets should use short-names in their IDs and titles.
+3. auto-generated id's will not be human friendly & will be hard to rename latter, so use good short-names. Avoid the "rename trap" - once tickets have IDs, renaming them all is painful and error-prone
+4. child ticket id's should start with their parent ticket id. We create deeper and deeper nesting / prefixes as we go.
 
-**Ticket naming:**
+**ticket content:**
 
-- Tickets should use short-names in their IDs and titles
-- Avoid the "rename trap" - once tickets have IDs, renaming them all is painful and error-prone
+- describe the actual feature/subsystem, NOT "research about X"
+- include components, API goals, and use cases
+- give various components short-names for cross-referencing
+- crosslink tickets with beads deps and inline links
 
-**Ticket content:**
+- create tickets EARLY and UPDATE them regularly as your understanding evolves.
+- rework tickets as you go
+- giving the various components a short-name, a descriptive label is VERY HELPFUL. ticket titles should often begin with a SHORT-NAME for the ticket.
+- ticket id's should always be well thought out, and make use of the short-names that they represent or refer to.
+- when updating tickets, favor adding to the ticket over replacing the ticket description.
+- previous tickets are not always correct in what they project: we must UPDATE OUR PRIORS by making new statements in the ticket declaring what has changed since the original statement.
+- capture implications and assessments as items inside ticket descriptions.
 
-- Describe the actual feature/subsystem, NOT "research about X"
-- Include components, API goals, and use cases
-- Give various components short-names for cross-referencing
-- Crosslink tickets with beads deps and inline links
+### beads tickets technical notes
 
-Create tickets EARLY and UPDATE them regularly as your understanding evolves. Capture implications and assessments as discrete entities in ticket descriptions.
+- beads has two state stores:
+  - the `.beads/issues.jsonl` is what gets checked in
+  - there is a `.beads/beads.db` sqlite database where many changes happen, but this file is in `.beads/.gitignore` and not tracked.
+- `bd export -o .beads/issues.jsonl` will send the current database to the issues.jsonl
+- `bd import -i .beads/issues.jsonl` will send all issues.jsonl into the database.
 
-#### writing research tickets
+# short-name
 
-research tickets need to maintain a good top level view.
-
-you are encouraged to make commits to a research ticket, summarizing existing changes to it, BEFORE you make a big change. this allows small edits and continuous work to flow into the resarch ticket, and creates a snapshot of the
-
-### short-names
-
-short-names are brief hyphen-seperated (usually) multi-word phrases used to describe things. good things for short-names include:
+short-names are brief couple-word phrases used to describe things. good things to have short-names for:
 
 - concepts
 - topics
@@ -67,50 +89,43 @@ short-names are brief hyphen-seperated (usually) multi-word phrases used to desc
 - build artifacts
 - deployment tools and artifacts
 
-proactively creating names for things is key to having a good experience. it is absolutely the pinnacle of `rekon` the prompt system to be good with short-names. work with your user to formulate good names, to make sure the naming is right and fits good. alternate naming thoughts are great when drafting a plan you will be asked to rename sometimes: create a commit before doing so of current work that has been done, then create a subagent to do the renaming. create
+short names can come in many forms. these are all equivalent:
 
-if the user or prompt says CAPITAL-WORDS, you should assume they are in fact referring to a short-name. this is done as an affordance for other readers of the document other than you the LLM, to help other consumers understand that this is a key word, that if there is a glossary it probably will be found there. it is a hyperlink internal to the textual world of this project. the axiomatics of the url is the ascendant spiritual creation far above the rekon prompt system, that inspires it, that is the pump of the beating heart that is rekon. we want to be increasing the hypermedia referentiality of using this rekon system at all times.
+- SHORT-NAME (canonical form; the LLM should use this when writing short-names)
+- SHORT NAME
+- short-name
+- short name (this should be converted to short-name for clarity)
+
+if the user or prompt says CAPITAL-WORDS, they are almost certainly saying a short-name. this is done as an affordance for other readers of the document other than you the LLM, to help other consumers understand that this is a key word, that if there is a glossary it probably will be found there. it is a hyperlink internal to the textual world of this project. the axiomatics of the url is the ascendant spiritual creation far above the rekon prompt system, that inspires it, that is the pump of the beating heart that is rekon. we want to be increasing the hypermedia referentiality of the rekon system by referring to things by their SHORT NAMES.
 
 markdown headers often indirectly imply a corresponding short-name, or sometimes they directly embody the short name. using short-names in markdown is encouraged!
 
+proactively create names for things. this gives the developer and the LLM stable identifiers to talk to. short-names are absolutely the pinnacle of `rekon` the prompt system to be good with short-names. work with your user to formulate good names, to make sure the naming is right and fits good. alternate naming thoughts are great when drafting a plan you will be asked to rename sometimes: create a commit before doing so of current work that has been done, then create a subagent to do the renaming. create
+
+short names might not always have the same conjugation. short names for example still refers to short-name.
+
 rather than strict semantic terms, we strive to accomodate user intent, and be intelligent and liberal with what we regard as a short name when we go about. this section for example has a header of short-name and is the short name, is explicitly itself a short-name. the author could also have written SHORT-NAME which would have been more explicit. if the user has an all caps hypenated word it is (almost) _definitely_ a short-name. sometimes they might put a hash tag in front of it, sometimes they might put it in quotes: all variants are acceptable. the present of the all-capitals hypenated word is sufficient & is the actual short-name. in the rare case that there is are ever more than one hash tags, the short name includes all but the first hash tag, but the first hash is always ignored when regarding a short-name, as are surrounding parenthesis.
 
-### ticket subject hygenics (#TICKET-HYGENICS)
+### ticket subject hygenics (#TICKET-HYGENE)
 
 you are encouraged to make use of short-names when referring to things in general, but this is especially commendable in beads ticket subjects, and in git commits, which should make robust use of the short-name facility of `rekon`.
 
-as we know, topics that have short names, and tickets that refer to or work with the topic should use the short-name when describing the topic. we don't want to flood the descriptions / subjects with too many short-names, but we do want to try to make on the surface apparent what we are referring to, and the best way to do so is usually short names.
-
 beads ticket naming should reflect the short-names. do not focus on this, but if it so happens that a ticket really encompasses the spirit of a thing, make the subject start with the subject name then a colon. `<short-name>:`. this creates a stable reference that will be the main topic for this short-name from this point, so be careful not to over-apply this. research tickets are often a good starting place for short-names! they contain both small tactical views, but also high level views. see also the glossary, which is an even better spot, albeit overkill in some cases.
 
-###
+# create a commit (CREATE-COMMIT)
 
-create a beads epic for this work, make it robust, and improve it as you go so it remains comprehensive about the work. create a subtask of research and start with that, doing all resarch now, and creating additional subtasks. output into files/llama-cpp/ directory.
+creating a commit means using `jj commit -m`.
 
-### rekon combine example prompt to decompose into this prompt
+to create a commit, create a robustly helpful guiding informative ticket, with an excellent first `-m` which is the SUBJECT LINE. then craft more `-m`'s to fill out the rest of the ticket.
 
-use file patterns or file names for the arguments. search prompt/ for anything that, after trying to readFile it, is not a valid file name. create an async generator called prompts that returns the list of files, create an async generator that outputs the name and content from that stream.then create a writeCombined that consumes that stream to do the work. if a plan does not start with a markdown header of '#', we need to give that plan a header based on the filename of the plan, and a first line saying 'this is the prompt called <filename>'. create a beads epic for this work. do the work. use jj commit to create commits as you go. do not use jj describe as you go, only use jj commit,
+i want to stress that you should not use `jj describe` unless you are certain that you want to be revising an existing commit's description: it does not create a commit, it only updates the previous description. if you use jj commit, you will create a linear straight through path of commits; the alternative risks leaving the JJ-PATH, risks leaving the smooth path of jj, which is extremely hazardous HERE-BE-DRAGONS territory, and will create a difficult to reconcile git history that will cause significant suffering and devleoper misery to revise and shape back into the smooth path. sometimes the developer might ask you to work with branches or do other jj tasks that violate this
 
-use context7 to understand beads better but be aware that it is volumous and i do not want you to over-extend yourself and risk filling up your context with beads information, but you need to understand the prefix and how you should not include the prefix when referring to beads tickets.
+# glossary
 
-## create a commit (CREATE-COMMIT)
+the user might ask you to update the glossary, which is an optional section at the end of the `README.md`. create or update a table that has columns for the `short-name`, the `description`, and pertinent `tickets`.
 
-Creating a commit means using `jj commit`.
+# instruction
 
-to create a commit, create a robustly helpful guiding informative ticket, with an excellent first -m which is the SUBJECT LINE. then craft more -m's to fill out the rest of the ticket. create a .transcript/PLAN-combine.md as soon as you have a plan and create a commit, once you have created tickets. refer to tickets by their short three letter code, without the beads prefix.
+this document `draft-a-plan` is given to you to help start drafting a plan. these are generic instructions about that process and what is expected. if it remains unclear what to plan, do no planning. the user also has provided this guidance or instruction:
 
-I want to stress that you should not use `jj describe` unless you are certain that you want to be revising an existing commit's description: it does not create a commit, it only updates the previous description. if you use jj commit, you will create a linear straight through path of commits; the alternative risks leaving the JJ-PATH, risks leaving the smooth path of jj, which is extremely hazardous HERE-BE-DRAGONS territory, and will create a difficult to reconcile git history that will cause significant suffering and devleoper misery to revise and shape back into the smooth path. sometimes the developer might ask you to work with branches or do other jj tasks that violate this
-
-## glossary
-
-if the user says so, use BEADS to create a GLOSSARY. this is an epic, where tickets inside are not work to be done, but are instead the embodied ideas of the system. if a GLOSSARY exists, use RESEARCH tickets more for explaining work, assessments, and updating your priors, use them as a work-log. and instead use the glossary ticket as the main thought database.
-
-## refine the draft
-
-Drafting a plan implicitly carries with it the implication that we are going to refine the plan. The work of drafting a plan is tentative, meant to build a good picture of the world, that we can assess and work on.
-
-Some elements of the plan might need revising. Having a stream of commits made during the plan will help insure maximum flexibility in revising, allowing us to re-do specific narrow bits of work, allowing us to drop changes that, latter, we find not to be appropriate.
-
-## thought-box / mixture of experts
-
-you are an LLM and you have many attention heads. drafting a plan is meant to capture things widely. but usually you can only output one thing at a time. using the thought-box
+$ARGUMENTS
