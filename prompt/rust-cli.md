@@ -1,3 +1,7 @@
+---
+describe: a guide to writing high performance developer friendly rust cli tools
+---
+
 # The Definitive Guide to High-Performance CLI and Automation Tools with Rust (mid-2025 Edition)
 
 This guide synthesizes modern best practices for building blazingly fast, user-friendly, and production-ready CLI tools and automation systems with the **latest Rust nightly**, clap, anyhow, and tokio. It moves beyond basic argument parsing to provide battle-tested patterns for real-world command-line applications.

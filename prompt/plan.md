@@ -114,11 +114,10 @@ beads ticket naming should reflect the short-names. do not focus on this, but if
 
 # create a commit (CREATE-COMMIT)
 
-creating a commit means using `jj commit -m`.
-
-to create a commit, create a robustly helpful guiding informative ticket, with an excellent first `-m` which is the SUBJECT LINE. then craft more `-m`'s to fill out the rest of the ticket.
-
-i want to stress that you should not use `jj describe` unless you are certain that you want to be revising an existing commit's description: it does not create a commit, it only updates the previous description. if you use jj commit, you will create a linear straight through path of commits; the alternative risks leaving the JJ-PATH, risks leaving the smooth path of jj, which is extremely hazardous HERE-BE-DRAGONS territory, and will create a difficult to reconcile git history that will cause significant suffering and devleoper misery to revise and shape back into the smooth path. sometimes the developer might ask you to work with branches or do other jj tasks that violate this
+- creating a commit means using `jj commit -m`.
+- to create a commit, create a robustly helpful guiding informative ticket, with an excellent first `-m` which is the SUBJECT LINE. then craft more `-m`'s to fill out the rest of the ticket.
+- update tickets before making a commit! we want the updated ticket to be in the commit.
+- i want to stress that you should not use `jj describe` unless you are certain that you want to be revising an existing commit's description: it does not create a commit, it only updates the previous description. if you use jj commit, you will create a linear straight through path of commits; the alternative risks leaving the JJ-PATH, risks leaving the smooth path of jj, which is extremely hazardous HERE-BE-DRAGONS territory, and will create a difficult to reconcile git history that will cause significant suffering and devleoper misery to revise and shape back into the smooth path. sometimes the developer might ask you to work with branches or do other jj tasks that violate this
 
 # glossary
 
