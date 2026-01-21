@@ -10,8 +10,9 @@ import matter from 'gray-matter';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-async function findMarkdownFiles(dir: string): Promise<string[]> {
-  const files = await glob('**/*.{md,mdx}', { cwd: dir, absolute: true });
+async function findMarkdownFiles(dir: string, subdirs: boolean = false): Promise<string[]> {
+  const pattern = subdirs ? '**/*.{md,mdx}' : '*.{md,mdx}';
+  const files = await glob(pattern, { cwd: dir, absolute: true });
   return files.sort();
 }
 
@@ -43,12 +44,13 @@ async function run(ctx: any) {
   const force = ctx.values.f || false;
   const dryRun = ctx.values.n || false;
   const quiet = ctx.values.q || false;
+  const subdirs = ctx.values.s || false;
   const projectRoot = resolve(__dirname, '..');
   const promptDir = join(projectRoot, 'prompt');
   const configDir = xdgConfig;
   const opencodeCommandDir = join(configDir || join(process.env.HOME || process.env.USERPROFILE || '.', '.config'), 'opencode', 'command');
 
-  const markdownFiles = await findMarkdownFiles(promptDir);
+  const markdownFiles = await findMarkdownFiles(promptDir, subdirs);
 
   if (!dryRun) {
     await mkdir(opencodeCommandDir, { recursive: true });
@@ -114,6 +116,12 @@ export default define({
       short: 'q',
       default: false,
       description: 'Quiet - suppress warnings',
+    },
+    s: {
+      type: 'boolean',
+      short: 's',
+      default: false,
+      description: 'Include subdirectories',
     },
   },
   run,
