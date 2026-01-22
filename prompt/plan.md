@@ -40,9 +40,6 @@ some elements of the plan might need revising. having a stream of commits made d
 
 ## write-the-ticket
 
-**IMPORTANT: Set up beads prefix BEFORE creating tickets**
-first, ensure the beads config has a meaningful `issue-prefix` set. this prevents painful bulk renaming later.
-
 **ticket creation strategy:**
 
 1. create epics first (logical groupings based on PLAN's component architecture)
@@ -108,9 +105,9 @@ rather than strict semantic terms, we strive to accomodate user intent, and be i
 
 ### ticket subject hygenics (#TICKET-HYGENE)
 
-you are encouraged to make use of short-names when referring to things in general, but this is especially commendable in beads ticket subjects, and in git commits, which should make robust use of the short-name facility of `rekon`.
+you are encouraged to make use of short-names when referring to things in general, and especially in beads tickets, in their ticket id's, in their ticket titles, and their ticket descriptions. and in git commits!
 
-beads ticket naming should reflect the short-names. do not focus on this, but if it so happens that a ticket really encompasses the spirit of a thing, make the subject start with the subject name then a colon. `<short-name>:`. this creates a stable reference that will be the main topic for this short-name from this point, so be careful not to over-apply this. research tickets are often a good starting place for short-names! they contain both small tactical views, but also high level views. see also the glossary, which is an even better spot, albeit overkill in some cases.
+beads ticket id's and descriptions should reflect the short-names. if there is a short name topic, prefix the ticket with the short name as a topic, like this: `<short-name>:`.
 
 # create a commit (CREATE-COMMIT)
 
