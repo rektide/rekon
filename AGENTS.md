@@ -5,6 +5,9 @@
 
 # Experimenting
 
+- use `rg` and `fd` for composing shell commands, both are kept fresh.
+- a `variant` is usually a ~/src/<repo>-<variant>/ directory with a jj workspace in it
+
 # Documentation / reference materials
 
 - make markdown links to the canonical url for entries, for example [`/README.md`](/README.md) for local files or [`rektide/compfuzor` `README.md`](https://github.com/rektide/compfuzor/blob/main/README.mdL10-20) for a remote canonical reference to lines 10-20 of `README.md` in `rektide/compfuzor` project, file `README.md` (for the main branch). the org/repository isn't required each time but should be explicitly included in the link text if we haven't been talking about that org/repository recently.
@@ -143,6 +146,27 @@ Include a `dev` target for watch/development mode (e.g. `wxt watch`).
 - do not mention tickets in the title of the commit message! "Closing ticket \_\_\_\_" doesn't describe the work. Describe the work.
 - do not mention "phases" of work in the title of a cmomit message! that is short-term planning information, not long term meaningful.
 - unless you are told otherwise, it is safe to assume that you are the only actor modifying a directory. there may be unchecked in changes when you start, but after that, you may assume all changes are your own. use this to avoid looking at `jj status` before committing.
+- `jj-hunk` is available for committing hunks, if you need to check in only some changes
+
+# jj-hunk
+
+- programmatic hunk selection for jj. lets you commit/split/squash specific hunks instead of whole files — use it when logical changes are intermingled within a file and you want clean commits.
+- subcommands (run `jj-hunk <sub> --help` to confirm flags):
+  - `jj-hunk list` — emit JSON of all hunks in current `@` change. each hunk has an `id` (`hunk-<sha256>`); this is how you discover IDs. `--files` for just file+hunk counts; `--spec-template` prints a starter spec populated with every hunk ID.
+  - `jj-hunk commit [SPEC] [MESSAGE]` — commit selected hunks; SPEC is a JSON/YAML string, `-` for stdin, or `--spec-file <path>`.
+  - `jj-hunk split [SPEC] [MESSAGE]` — split current `@` into two commits, selected hunks go into the new child.
+  - `jj-hunk squash [SPEC]` — squash selected hunks into the parent.
+- spec shape (same for all three): `{"files": {"<path>": {"ids": ["hunk-<id>", ...]}}}`. `jj-hunk list --spec-template` emits exactly this skeleton, seeded with every hunk — delete the IDs you don't want and pipe it back in.
+- discovery workflow:
+  - `jj-hunk list > /tmp/hunks.json` (or `--spec-template > /tmp/spec.json` to start from a fully-populated spec)
+  - identify the hunk IDs you want (match on the `added`/`removed`/`context.pre` fields in the JSON)
+  - build a spec: edit the template down to just the IDs you want, or hand-write `{"files": {"<path>": {"ids": [...]}}}`
+  - `jj-hunk commit - "$(cat <<'EOF'\n<message>\nEOF)" < /tmp/spec.json` — or `jj-hunk commit /tmp/spec.json "<message>"` via `--spec-file`
+- when to use vs alternatives:
+  - jj-hunk: changes intermingled in a file, you want clean commits, no TTY (agents, CI)
+  - plain `jj commit -m "<msg>" <files>`: file boundaries already align with logical commits (preferred when it works — simpler)
+  - `jj split -p` / `jj squash -i`: interactive flows when a TTY is available
+- gotcha: when a file has been wholesale rewritten, hunk-based splitting won't produce clean intermediate states (hunks reference a diff against the parent, and a rewrite's hunks don't compose into the intended intermediate). in that case, restore the file from the parent rev (`jj file show -r @- <file> > <file>`), apply the minimal change, commit, then write the full version back and commit again.
 
 # beads
 
