@@ -2,6 +2,7 @@
 
 - UNLESS DIRECTED BY USER ignore skills/etc that say to use a given model. we do not have access to most of these. just use whatever is currently running/default.
 - ask subagents to return references, to facilitate follow-up investigation/exploration.
+- remember to use the task_id to talk to an agent again; self maintain this prompt to make sure this directive is proper tool use for you
 
 # Experimenting
 
