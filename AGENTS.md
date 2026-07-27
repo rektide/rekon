@@ -17,57 +17,31 @@
 ## Writing
 
 - Markdown: write structured, readable content with headings, lists, tables, fenced code blocks, examples, and descriptive links; use prose to explain relationships between concepts.
-- For [Open Knowledge Format (OKF)](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md) concepts, write frontmatter as a trustworthy label: identify the concept, its source material, its authorship and verification, and its freshness. Use the body for explanation and links.
+- For [Open Knowledge Format (OKF)](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md) concepts, write frontmatter as a trustworthy label: what it is, what it's called, what it describes, where its claims came from, who wrote it, who checked it, and when it needs review. Use the body for explanation and links.
 
   ```markdown
   ---
-  # REQUIRED: a short, descriptive kind of knowledge. Types are intentionally open-ended.
-  type: Metric
-
-  # Recommended display metadata. Keep the description to one useful sentence for indexes and search.
-  title: Active customers
-  description: Distinct customers with at least one completed order in the reporting period.
-
-  # Optional canonical URI for the described asset; omit this for a purely abstract concept.
-  resource: https://example.com/metrics/active-customers
-  tags: [sales, customers] # Optional, concise cross-cutting categories.
-
-  # Optional lifecycle: draft | stable | deprecated. Omitted means stable.
-  status: stable
-
-  # Record who last materially changed the concept. Actors are human:<id>, process:<id>, or tool/version.
-  generated: { by: human:alice, at: 2026-07-27T12:00:00Z }
-
-  # Record independent confirmations. A human: verifier is human review; non-human verification is machine confirmation.
-  verified: { by: human:bob, at: 2026-07-27T13:00:00Z }
-
-  # Optional explicit review deadline; the content is stale on and after this YYYY-MM-DD date.
-  stale_after: 2026-10-01
-
-  # Source materials. Use stable ids for claims cited in the body; add author, last_modified, and usage signals when known.
-  sources:
+  type: Metric                                              # REQUIRED: kind of knowledge (open-ended)
+  title: Active customers                                   # display name
+  description: Distinct customers with a completed order.  # one-line summary
+  resource: https://example.com/metrics/active-customers    # canonical URI for the asset
+  tags: [sales, customers]
+  status: stable                                            # draft | stable | deprecated
+  generated: { by: human:alice, at: 2026-07-27T12:00:00Z } # who wrote it
+  verified: { by: human:bob, at: 2026-07-27T13:00:00Z }     # who checked it
+  stale_after: 2026-10-01                                   # review deadline (YYYY-MM-DD)
+  sources:                                                  # where its claims came from
     - id: metric-policy
       resource: https://example.com/policies/active-customers
       title: Active customer metric policy
       author: team:revenue-operations
       last_modified: 2026-07-01
   ---
-
-  # Definition
-
-  A customer is active when they have completed at least one order in the reporting period.[^metric-policy]
-
-  # Examples
-
-  - A customer with two completed orders counts once.
-  - See the [orders table](/tables/orders.md) for the underlying records.
-
-  [^metric-policy]: Active customer metric policy
   ```
 
-- Use bundle-root-relative links such as `/tables/orders.md` for internal OKF concepts; they stay stable when nearby files move.
-- `index.md`: reserved, optional directory listing for progressive disclosure. Group linked files or subdirectories under headings and give each entry a short description; do not treat it as a concept document.
-- `log.md`: reserved, optional update history. Write date headings as `YYYY-MM-DD`, newest first, followed by concise creation, update, or deprecation entries.
+  - Use bundle-root-relative links such as `/tables/orders.md` for internal concepts; they stay stable when nearby files move.
+  - `index.md`: reserved directory listing for progressive disclosure; group entries under headings with short descriptions, not a concept itself.
+  - `log.md`: reserved update history; `YYYY-MM-DD` headings newest first, concise creation/update/deprecation entries.
 
 # well known directories and files
 
@@ -208,16 +182,23 @@ Include a `dev` target for watch/development mode (e.g. `wxt watch`).
 
 - programmatic hunk selection for jj. lets you commit/split/squash specific hunks instead of whole files — use it when logical changes are intermingled within a file and you want clean commits.
 - subcommands (run `jj-hunk <sub> --help` to confirm flags):
-  - `jj-hunk list` — emit JSON of all hunks in current `@` change. each hunk has an `id` (`hunk-<sha256>`); this is how you discover IDs. `--files` for just file+hunk counts; `--spec-template` prints a starter spec populated with every hunk ID.
-  - `jj-hunk commit [SPEC] [MESSAGE]` — commit selected hunks; SPEC is a JSON/YAML string, `-` for stdin, or `--spec-file <path>`.
+  - `jj-hunk list` — emit JSON of all hunks in current `@` change (use `-r <rev>` for other revisions). each hunk has an `id` (`hunk-<sha256>`); this is how you discover IDs.
+    - `--format text` — compact human-readable output (file, hunk index, type, ID, and the added/removed lines); great for quick visual scanning instead of parsing JSON.
+    - `--files` — just file + hunk counts, no content.
+    - `--spec '<spec>'` — **dry-run**: preview which hunks a spec would select. returns `{"files": []}` if nothing matches. always run this before committing to catch mismatched IDs.
+    - `--spec-template` — print a starter spec populated with every hunk ID; delete the IDs you don't want and pipe it back in.
+    - `-i '<glob>'` / `-x '<glob>'` — include/exclude file patterns (repeatable) to filter noisy diffs.
+  - `jj-hunk commit [SPEC] [MESSAGE]` — commit selected hunks; SPEC is a JSON/YAML string (inline works fine for a hunk or two), `-` for stdin, or `--spec-file <path>`.
   - `jj-hunk split [SPEC] [MESSAGE]` — split current `@` into two commits, selected hunks go into the new child.
   - `jj-hunk squash [SPEC]` — squash selected hunks into the parent.
-- spec shape (same for all three): `{"files": {"<path>": {"ids": ["hunk-<id>", ...]}}}`. `jj-hunk list --spec-template` emits exactly this skeleton, seeded with every hunk — delete the IDs you don't want and pipe it back in.
-- discovery workflow:
-  - `jj-hunk list > /tmp/hunks.json` (or `--spec-template > /tmp/spec.json` to start from a fully-populated spec)
-  - identify the hunk IDs you want (match on the `added`/`removed`/`context.pre` fields in the JSON)
-  - build a spec: edit the template down to just the IDs you want, or hand-write `{"files": {"<path>": {"ids": [...]}}}`
-  - `jj-hunk commit - "$(cat <<'EOF'\n<message>\nEOF)" < /tmp/spec.json` — or `jj-hunk commit /tmp/spec.json "<message>"` via `--spec-file`
+- spec shape (same for all three): `{"files": {"<path>": {"ids": ["hunk-<id>", ...]}}}`.
+- **CRITICAL: use the full `hunk-<sha256>` ID.** short prefixes silently match nothing and `jj-hunk commit` happily creates an empty commit with no error. guard against this with the `--spec` dry-run above.
+- extracting IDs: `jj-hunk list | jq -r '.files[].hunks[].id'` prints just the IDs; pipe through `head`/`grep` as needed. to grab a specific file's ID: `jq -r '.files[] | select(.path=="<path>") | .hunks[].id'`.
+- discovery + commit workflow:
+  - `jj-hunk list --format text` to eyeball hunks and their IDs (or `jj-hunk list > /tmp/hunks.json` for full detail; match on `added`/`removed`/`context.pre`)
+  - hand-write a spec: `{"files": {"<path>": {"ids": ["hunk-<full-id>", ...]}}}`
+  - **verify**: `jj-hunk list --spec '<spec>'` — confirm it lists the hunks you expect before committing
+  - commit: `jj-hunk commit '<spec>' "<message>"` (inline), or for large specs pipe via stdin (`jj-hunk commit - "<message>" < /tmp/spec.json`) or file (`jj-hunk commit --spec-file /tmp/spec.json "<message>"`)
 - when to use vs alternatives:
   - jj-hunk: changes intermingled in a file, you want clean commits, no TTY (agents, CI)
   - plain `jj commit -m "<msg>" <files>`: file boundaries already align with logical commits (preferred when it works — simpler)
