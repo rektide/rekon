@@ -14,6 +14,61 @@
 - make markdown links to the canonical url for entries, for example [`/README.md`](/README.md) for local files or [`rektide/compfuzor` `README.md`](https://github.com/rektide/compfuzor/blob/main/README.mdL10-20) for a remote canonical reference to lines 10-20 of `README.md` in `rektide/compfuzor` project, file `README.md` (for the main branch). the org/repository isn't required each time but should be explicitly included in the link text if we haven't been talking about that org/repository recently.
 - the `summarizer` tool is WIP and not done yet. but will latter be a tool to write and read INDEX files in documentation directories to be aware of what's included in the directory.
 
+## Writing
+
+- Markdown: write structured, readable content with headings, lists, tables, fenced code blocks, examples, and descriptive links; use prose to explain relationships between concepts.
+- For [Open Knowledge Format (OKF)](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md) concepts, write frontmatter as a trustworthy label: identify the concept, its source material, its authorship and verification, and its freshness. Use the body for explanation and links.
+
+  ```markdown
+  ---
+  # REQUIRED: a short, descriptive kind of knowledge. Types are intentionally open-ended.
+  type: Metric
+
+  # Recommended display metadata. Keep the description to one useful sentence for indexes and search.
+  title: Active customers
+  description: Distinct customers with at least one completed order in the reporting period.
+
+  # Optional canonical URI for the described asset; omit this for a purely abstract concept.
+  resource: https://example.com/metrics/active-customers
+  tags: [sales, customers] # Optional, concise cross-cutting categories.
+
+  # Optional lifecycle: draft | stable | deprecated. Omitted means stable.
+  status: stable
+
+  # Record who last materially changed the concept. Actors are human:<id>, process:<id>, or tool/version.
+  generated: { by: human:alice, at: 2026-07-27T12:00:00Z }
+
+  # Record independent confirmations. A human: verifier is human review; non-human verification is machine confirmation.
+  verified: { by: human:bob, at: 2026-07-27T13:00:00Z }
+
+  # Optional explicit review deadline; the content is stale on and after this YYYY-MM-DD date.
+  stale_after: 2026-10-01
+
+  # Source materials. Use stable ids for claims cited in the body; add author, last_modified, and usage signals when known.
+  sources:
+    - id: metric-policy
+      resource: https://example.com/policies/active-customers
+      title: Active customer metric policy
+      author: team:revenue-operations
+      last_modified: 2026-07-01
+  ---
+
+  # Definition
+
+  A customer is active when they have completed at least one order in the reporting period.[^metric-policy]
+
+  # Examples
+
+  - A customer with two completed orders counts once.
+  - See the [orders table](/tables/orders.md) for the underlying records.
+
+  [^metric-policy]: Active customer metric policy
+  ```
+
+- Use bundle-root-relative links such as `/tables/orders.md` for internal OKF concepts; they stay stable when nearby files move.
+- `index.md`: reserved, optional directory listing for progressive disclosure. Group linked files or subdirectories under headings and give each entry a short description; do not treat it as a concept document.
+- `log.md`: reserved, optional update history. Write date headings as `YYYY-MM-DD`, newest first, followed by concise creation, update, or deprecation entries.
+
 # well known directories and files
 
 - **ALWAYS check `~/archive/<repo-org>/<repo-name>` FIRST for source code** before fetching from the web. This is the primary location for third-party project checkouts.
