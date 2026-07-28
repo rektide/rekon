@@ -8,10 +8,14 @@
 
 - use `rg` and `fd` for composing shell commands, both are kept fresh.
 - a `variant` is usually a ~/src/<repo>-<variant>/ directory with a jj workspace in it
+- `.test-agent` is our git-ignored scratch directory. prefer doing a domain of work inside a subdirectory, please, and include/maintain a README.md there
 
 # Documentation / reference materials
 
 - make markdown links to the canonical url for entries, for example [`/README.md`](/README.md) for local files or [`rektide/compfuzor` `README.md`](https://github.com/rektide/compfuzor/blob/main/README.mdL10-20) for a remote canonical reference to lines 10-20 of `README.md` in `rektide/compfuzor` project, file `README.md` (for the main branch). the org/repository isn't required each time but should be explicitly included in the link text if we haven't been talking about that org/repository recently.
+- either `.test-agent/<topic>/` or `.design/<topic>/` (sometimes `doc/`, rarely `docs/`) are typical places for docs, the first being gitignored, and used before we are ready to "promote" (move out of gitingore and commit) the work.
+- often we want to do a "wave" of review, where multiple llms with do a single "act". maybe a "draft" or a "review" or "cross" review, on a given topic. we'll end up with a bunch of .design/feature-colorization/draft.<model-name>.md files. be concise in your model name please. often we ping pong between design and cross review. design -> cross -> design2 -> cross2. we tend to write new files rather than update previous files. maintaining an index.md during this is hard but is encouraged once we start accepting the work as good.
+- a technique that can be helpfu: an addendum. this ia new top level h1 section at the end of a markdown that packages new information / in the document, but not inline. use pandoc to write OKF tags for the title. you are free to mix inline edits and addendum in to commits!
 - the `summarizer` tool is WIP and not done yet. but will latter be a tool to write and read INDEX files in documentation directories to be aware of what's included in the directory.
 
 ## Writing
