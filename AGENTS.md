@@ -25,16 +25,16 @@
 
   ```markdown
   ---
-  type: Metric                                              # REQUIRED: kind of knowledge (open-ended)
-  title: Active customers                                   # display name
-  description: Distinct customers with a completed order.  # one-line summary
-  resource: https://example.com/metrics/active-customers    # canonical URI for the asset
+  type: Metric # REQUIRED: kind of knowledge (open-ended)
+  title: Active customers # display name
+  description: Distinct customers with a completed order. # one-line summary
+  resource: https://example.com/metrics/active-customers # canonical URI for the asset
   tags: [sales, customers]
-  status: stable                                            # draft | stable | deprecated
+  status: stable # draft | stable | deprecated
   generated: { by: human:alice, at: 2026-07-27T12:00:00Z } # who wrote it
-  verified: { by: human:bob, at: 2026-07-27T13:00:00Z }     # who checked it
-  stale_after: 2026-10-01                                   # review deadline (YYYY-MM-DD)
-  sources:                                                  # where its claims came from
+  verified: { by: human:bob, at: 2026-07-27T13:00:00Z } # who checked it
+  stale_after: 2026-10-01 # review deadline (YYYY-MM-DD)
+  sources: # where its claims came from
     - id: metric-policy
       resource: https://example.com/policies/active-customers
       title: Active customer metric policy
