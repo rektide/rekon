@@ -14,20 +14,26 @@
 
 - make markdown links to the canonical url for entries, for example [`/README.md`](/README.md) for local files or [`rektide/compfuzor` `README.md`](https://github.com/rektide/compfuzor/blob/main/README.mdL10-20) for a remote canonical reference to lines 10-20 of `README.md` in `rektide/compfuzor` project, file `README.md` (for the main branch). the org/repository isn't required each time but should be explicitly included in the link text if we haven't been talking about that org/repository recently.
 - either `.test-agent/<topic>/` or `.design/<topic>/` (sometimes `doc/`, rarely `docs/`) are typical places for docs, the first being gitignored, and used before we are ready to "promote" (move out of gitingore and commit) the work.
-- often we want to do a "wave" of review, where multiple llms with do a single "act"/actions. maybe a "draft" or a "review" or "cross" review, on a given topic.
-  - we'll end up with a bunch of .design/<wave>/<act>.<model-name>.md files.
-  - as follow up often one or more llm's will be asked to synthesize, to review the existing act, and create a synthesis doc that combines the best elements of the different documents into their vision of the best document. at the end it should also cross compare, noting particular strengths, interesting/notable features, and relative weaknesses, and a general characterization of the different source documents. this is a synthesis waves, such files should be `<act>-syn.<model-name>.md`.
-  - we add numerical suffixes and increment as we go, as we do "rounds". feature3-syn2 usually means the third revision of the `feature` act and the second synthesis around that feature3.
-  - please start with 0 suffix to be clear. if "accepted" please make a prefix-less symlink for the accepted act. this is a signal that this is the accepted "tip" of material.
-  - rounds past the first should use the existing material across all previous rounds.
-  - start by capturing what is up. what are we doing, what the genereal situation is. what is the general problem, and then what more specifically is happening? if there are specific vectors/directions/instructions your user provided, please capture them. consider giving a couple sentance prompt that could be used to research the topic at hand, on the current lines/directions of inquiry.
-  - be concise in your model name please, for example gpt56t (for gpt 5.6 terra) or ds4f (for deepseek 4 flash) or glm52 (for glm 5.2).
-  - often we ping pong between design and cross review. design -> cross -> design2 -> cross2.
-  - we tend to write new files rather than update previous files.
-  - maintaining an index.md during this is hard but is encouraged once we start accepting the work as good.
-  - unless told do DO NOT read other files from your wave, from the other models: you are expected to do your own work and not pollute your thinking with their results; we want independent results, that's why we are asking multiple models.
 - a technique that can be helpfu: an addendum. this ia new top level h1 section at the end of a markdown that packages new information / in the document, but not inline. use pandoc to write OKF tags for the title. you are free to mix inline edits and addendum in to commits!
 - the `summarizer` tool is WIP and not done yet. but will latter be a tool to write and read INDEX files in documentation directories to be aware of what's included in the directory.
+
+## wave
+
+often we want to do a "wave" of review, where multiple llms produce their own independent output for the wave. this is typically in .design/<short-feature-name>/ , usually two maybe three words. sometimes .test-agent/. we'll end up with a bunch of .design/<feature>/<wave>.<model-name>.md files.
+
+- common waves:
+  - `init` for initial exploration / problem write ups
+  - `draft` for an initial design draft
+- we add numerical suffixes and increment as we go, as we do "rounds". feature3-syn2 usually means the third revision of the `feature` wave and the second synthesis around that feature3. as we iterate on topics we can add new suffixes to the wave, or start a new more focused wave.
+- `syn` is a frequently used suffix (ex: draft-syn.glm52.md): as follow up to a wave often one or more llm's will be asked to synthesize from their point of view, to review the existing wave, and create a synthesis doc that combines the best elements of the different documents into their vision of the best document. discuss common themes and tensions amid the source material. at the end it should also cross compare, noting particular strengths, interesting/notable features, and relative weaknesses, and a general characterization of the different source documents. this is cross-review and re-integration/synthesis.
+- please incldue a 0 suffix to be clear on your wave file.
+- if "accepted" please make a prefix-less symlink for the accepted wave. this is a signal that this is the accepted "tip" of material.
+- start waves by capturing what is up. what are we doing, what the genereal situation is. what is the general problem, and then what more specifically is happening? if there are specific vectors/directions/instructions your user provided, please capture them. consider giving a couple sentance prompt that could be used to research the topic at hand, on the current lines/directions of inquiry. you do not need to restate as we go, but talking about what's new or whats changed or what's emerged from the previous is helpful stage setting!
+- be concise in your model name please, for example gpt56t (for gpt 5.6 terra) or ds4f (for deepseek 4 flash) or glm52 (for glm 5.2).
+- often we ping pong between design (generally, even if not explicitly named so) and synthesis review. design -> syn -> design2 -> design2-syn -> design2->syn2.
+- we tend to write new files rather than update previous files. if we are close, sometimes we'll just integrate changes; usually this will be explicitly asked for.
+- maintaining an index.md during this is hard but is encouraged once we start accepting the work as good.
+- unless told do DO NOT read other files from your wave, from the other models: you are expected to do your own work and not pollute your thinking with their results; we want independent results, that's why we are asking multiple models. but you are free to read relevant files from previous waves.
 
 ## Writing
 
@@ -81,6 +87,7 @@
 # Coding advice
 
 - "Let It Fail" principle, when it makes sense. Do not create a try-catch just to print an error: the stack trace will show what is wrong.
+- please jj commit as you go! commit pro-actively in logical groups.
 
 # Rust instructions
 
