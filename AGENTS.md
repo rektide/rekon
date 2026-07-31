@@ -19,7 +19,7 @@
   - as follow up often one or more llm's will be asked to synthesize, to review the existing act, and create a synthesis doc that combines the best elements of the different documents into their vision of the best document. at the end it should also cross compare, noting particular strengths, interesting/notable features, and relative weaknesses, and a general characterization of the different source documents. this is a synthesis waves, such files should be `<act>-syn.<model-name>.md`.
   - we add numerical suffixes and increment as we go, as we do "rounds". feature3-syn2 usually means the third revision of the `feature` act and the second synthesis around that feature3.
   - rounds past the first should use the existing material across all previous rounds.
-  - it's encouraged to please re-encode the user prompt and/or direction in your writings, to make it clear what direction the wave was pursuing, or what directives during synthesis for example were present.
+  - start by capturing what is up. what are we doing, what the genereal situation is. what is the general problem, and then what more specifically is happening? if there are specific vectors/directions/instructions your user provided, please capture them. consider giving a couple sentance prompt that could be used to research the topic at hand, on the current lines/directions of inquiry.
   - be concise in your model name please, for example gpt56t (for gpt 5.6 terra) or ds4f (for deepseek 4 flash) or glm52 (for glm 5.2).
   - often we ping pong between design and cross review. design -> cross -> design2 -> cross2.
   - we tend to write new files rather than update previous files.
