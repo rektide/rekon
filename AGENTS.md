@@ -73,7 +73,7 @@ often we want to do a "wave" of review, where multiple llms produce their own in
 - read a `/llms.txt` from each project in the archive. it might not exist, that's fine. never mind this rarely exists, sad.
 - `~/ff` is future-fuze, our collection of kubernetes related resources
 - `/opt` and `/srv` for general software installs, and for instances of software / services
-- if you want to checkout source, get the repo and wiki for it via `~/src/rekon/src/command/dl.ts <url>`
+- `dl <url>` fetches a repo and its wiki into `~/archive/<org>/<repo>` and `~/wiki/<org>/<repo>`.
 - when writing files to explore behavior, please use a `.test-agent` folder at the top of the project for temporary files (creating it if needed), so they can be managed & cleaned up effectively.
 - for scripts, prefer adding a shebang and making the script executable, to having to launch via `node <script>.js`
 
