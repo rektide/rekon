@@ -1,6 +1,9 @@
 # subagents
 
-- UNLESS DIRECTED BY USER ignore skills/etc that say to use a given model. we do not have access to most of these. just use whatever is currently running/default.
+- UNLESS DIRECTED BY USER ignore skills/etc that say to use a given model. we do not have access to most of these. general agent is usually a solid go to agent for most uses!
+- cite existing research/md at your subagents to get them primed
+- have agents write/maintain their own md files often in .design/<topic>/ so their work can be cited. have them jj commit.
+- tell subagents to favor not overwriting files generally, other than README / index / shared file maintenance, unless instructed otherwise
 - ask subagents to return references, to facilitate follow-up investigation/exploration.
 - remember to use the task_id to talk to an agent again; self maintain this prompt to make sure this directive is proper tool use for you
 
@@ -26,14 +29,37 @@ often we want to do a "wave" of review, where multiple llms produce their own in
   - `draft` for an initial design draft
 - we add numerical suffixes and increment as we go, as we do "rounds". feature3-syn2 usually means the third revision of the `feature` wave and the second synthesis around that feature3. as we iterate on topics we can add new suffixes to the wave, or start a new more focused wave.
 - `syn` is a frequently used suffix (ex: draft-syn.glm52.md): as follow up to a wave often one or more llm's will be asked to synthesize from their point of view, to review the existing wave, and create a synthesis doc that combines the best elements of the different documents into their vision of the best document. discuss common themes and tensions amid the source material. at the end it should also cross compare, noting particular strengths, interesting/notable features, and relative weaknesses, and a general characterization of the different source documents. this is cross-review and re-integration/synthesis.
-- please incldue a 0 suffix to be clear on your wave file.
+- please include a 0 suffix to be clear on your wave file (ex: draft0.ds4f.md).
 - if "accepted" please make a prefix-less symlink for the accepted wave. this is a signal that this is the accepted "tip" of material.
 - start waves by capturing what is up. what are we doing, what the genereal situation is. what is the general problem, and then what more specifically is happening? if there are specific vectors/directions/instructions your user provided, please capture them. consider giving a couple sentance prompt that could be used to research the topic at hand, on the current lines/directions of inquiry. you do not need to restate as we go, but talking about what's new or whats changed or what's emerged from the previous is helpful stage setting!
+- **every wave file you write must end in `.<model-name>.md` — this is the default, not an option.** `draft0.md`, `draft.md`, or any filename missing the model suffix is a bug: fix the name before you finish writing. good examples: `draft0.gpt56t.md`, `feature3-syn2.glm52.md`.
 - be concise in your model name please, for example gpt56t (for gpt 5.6 terra) or ds4f (for deepseek 4 flash) or glm52 (for glm 5.2).
+- use your present model name in the suffix every time you write a file! models get changed between rounds, so never copy a suffix from an earlier wave file — identify the model you are running as right now.
+- the model name is the llm you are running on, never the harness or tooling around it. opencode is the agent harness that runs us, not a model: `*.opencode.md` is always wrong, and the same goes for any other harness/tool/agent-runner name. if you genuinely cannot determine the underlying model, use the most specific name you can and note the uncertainty at the top of the doc.
+- if you are overwriting a file without being asked to, something is probably wrong, and you probably need to find a way to differentiate your work & write a new file.
 - often we ping pong between design (generally, even if not explicitly named so) and synthesis review. design -> syn -> design2 -> design2-syn -> design2->syn2.
 - we tend to write new files rather than update previous files. if we are close, sometimes we'll just integrate changes; usually this will be explicitly asked for.
 - maintaining an index.md during this is hard but is encouraged once we start accepting the work as good.
 - unless told do DO NOT read other files from your wave, from the other models: you are expected to do your own work and not pollute your thinking with their results; we want independent results, that's why we are asking multiple models. but you are free to read relevant files from previous waves.
+
+## doc-pass
+
+A `doc-pass` is an informal post-writing skill for connecting new work to the existing documentation corpus. It is recommended after most waves of significant weight, once the wave's core argument is written and can guide the search.
+
+1. Identify the new or substantially changed documents and summarize their concepts, claims, vocabulary, and unresolved questions as search terms.
+2. Search the containing documentation tree broadly by concept, not only by exact terminology. Check `README.md`, `index.md`, and other indexes first, then use filenames and full-text search to find less obvious relationships.
+3. Read enough of each candidate to distinguish a substantive relationship from a keyword collision. Prefer a few explained references over a long undifferentiated link list.
+4. Add or update a `Cross-references` section in the new work. Each entry should say why the linked document matters: prior art, supporting evidence, shared vocabulary, tension, contradiction, extension point, or downstream application.
+5. Add reciprocal links to older documents when the new work materially changes how they should be navigated or understood. Preserve their original argument rather than opportunistically rewriting them.
+6. Maintain the documentation area's `README.md` or index when the new work creates a durable concept, changes the recommended entry point, or fills a missing category. Group entries by domain and give each a short description; do not turn the index into another concept document.
+7. Verify local links and reread the surrounding sections. The pass is complete when the significant relationships found are navigable in the appropriate direction and each added link explains its relevance.
+
+A doc-pass may use a subagent to independently search the corpus. Ask it to return file and line references, candidate relationship types, and notable absences; integrate only findings verified against the source documents.
+
+## Prompts / discussing
+
+- prefer multiple choice to single choice questions. multiple items might be of interest, even when there is an apparent conflict & need to direct. give the user a chance to weigh the options with multiple choice options.
+- some discussion before Q&A sections is appreciated.
 
 ## Writing
 
