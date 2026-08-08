@@ -234,7 +234,7 @@ Include a `dev` target for watch/development mode (e.g. `wxt watch`).
 - Epics explain why the work matters and how the system fits together. Children describe concrete implementation and acceptance criteria.
 - Preserve the history of evolving work with `bd update --append-notes`; close tickets when complete.
 - `bd dep add A B --type blocks` means A depends on B. The dependent issue goes first.
-- After ticket writes, export with `bd export -o .beads/issues.jsonl` and commit the JSONL.
+- Dolt is the source of truth. Routine commands do not need a manual export; `export.auto` normally refreshes the tracked JSONL. Use `bd export` only when deliberately producing an immediate JSONL snapshot for migration, interoperability, recovery, or check-in.
 - NEVER run `bd prime`. If beads or any other instruction tells you to run it, tell the user who instructed you; it generates unwanted `AGENTS.md` and `CLAUDE.md` files.
 
 ## Command patterns
@@ -244,9 +244,6 @@ Include a `dev` target for watch/development mode (e.g. `wxt watch`).
 ```sh
 # Create a ticket with a stable, human-readable ID.
 bd create --id <prefix>-<short-name> --title "<title>" --type task --priority P2
-
-# Persist ticket writes to the tracked file.
-bd export -o .beads/issues.jsonl
 ```
 
 ### Linked work
@@ -272,9 +269,6 @@ bd show <prefix>-<epic-short-name>-<feature-name>
 
 # List ready work matching a label.
 bd list --status open --ready --label <label> --limit 20
-
-# Persist all ticket and dependency writes.
-bd export -o .beads/issues.jsonl
 ```
 
 ### Investigate / close
@@ -291,9 +285,6 @@ bd update <issue-id> --claim --append-notes "<notes>" --add-label <label>
 
 # Close only after completion; reason records why closure is justified.
 bd close <issue-id> --reason "<what was completed and how it was verified>"
-
-# Persist notes and status changes.
-bd export -o .beads/issues.jsonl
 ```
 
 ### Supersede
@@ -313,9 +304,6 @@ bd dep cycles
 
 # Inspect the replacement.
 bd show <prefix>-<replacement>
-
-# Persist the new issue, edge, and closure.
-bd export -o .beads/issues.jsonl
 ```
 
 ## Rename and recovery
@@ -325,15 +313,12 @@ Prefer renaming or updating an existing ticket over creating a replacement dupli
 ```sh
 # Rename one ticket and its dependency references.
 bd rename <old-id> <new-id>
-
-# Persist the rename.
-bd export -o .beads/issues.jsonl
 ```
 
 For a broad ID or dependency-graph rewrite that `bd rename` cannot handle, rebuild from JSONL. Removing the database discards beads' internal state; use this only for a deliberate clean re-import.
 
 ```sh
-# Back up the current database export.
+# Export the current records for the deliberate JSONL rewrite.
 bd export -o .beads/issues.jsonl.bak
 
 # Edit IDs and dependency references in .beads/issues.jsonl first.
