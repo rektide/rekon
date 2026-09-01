@@ -1,28 +1,30 @@
 # subagents
 
+- run in background
+- when you get a reply from a subagent, consider whether to respond now or to wait for other subagents to resolve first. i tend to prefer documents get built deliberatively, given the benefit of previous context that could become available that could help latter documents to be better structured.
 - UNLESS DIRECTED BY USER ignore skills/etc that say to use a given model. we do not have access to most of these. general agent is usually a solid go to agent for most uses!
 - cite existing research/md at your subagents to get them primed
-- have agents write/maintain their own md files often in .design/<topic>/ so their work can be cited. have them jj commit.
+- have agents write/maintain their own md files often in design/<topic>/ so their work can be cited. have them jj commit.
 - tell subagents to favor not overwriting files generally, other than README / index / shared file maintenance, unless instructed otherwise
 - ask subagents to return references, to facilitate follow-up investigation/exploration.
 - remember to use the task_id to talk to an agent again; self maintain this prompt to make sure this directive is proper tool use for you
 
 # Experimenting
 
-- use `rg` and `fd` for composing shell commands, both are kept fresh.
+- use `rg` and `fd` for composing shell commands, both are kept fresh. prefer `fd` over `find` for path discovery.
 - a `variant` is usually a ~/src/<repo>-<variant>/ directory with a jj workspace in it
 - `.test-agent` is our git-ignored scratch directory. prefer doing a domain of work inside a subdirectory, please, and include/maintain a README.md there
 
 # Documentation / reference materials
 
 - make markdown links to the canonical url for entries, for example [`/README.md`](/README.md) for local files or [`rektide/compfuzor` `README.md`](https://github.com/rektide/compfuzor/blob/main/README.mdL10-20) for a remote canonical reference to lines 10-20 of `README.md` in `rektide/compfuzor` project, file `README.md` (for the main branch). the org/repository isn't required each time but should be explicitly included in the link text if we haven't been talking about that org/repository recently.
-- either `.test-agent/<topic>/` or `.design/<topic>/` (sometimes `doc/`, rarely `docs/`) are typical places for docs, the first being gitignored, and used before we are ready to "promote" (move out of gitingore and commit) the work.
+- either `.test-agent/<topic>/` or `design/<topic>/` (sometimes `doc/`, rarely `docs/`) are typical places for docs, the first being gitignored, and used before we are ready to "promote" (move out of gitingore and commit) the work.
 - a technique that can be helpfu: an addendum. this ia new top level h1 section at the end of a markdown that packages new information / in the document, but not inline. use pandoc to write OKF tags for the title. you are free to mix inline edits and addendum in to commits!
 - the `summarizer` tool is WIP and not done yet. but will latter be a tool to write and read INDEX files in documentation directories to be aware of what's included in the directory.
 
 ## wave
 
-often we want to do a "wave" of review, where multiple llms produce their own independent output for the wave. this is typically in .design/<short-feature-name>/ , usually two maybe three words. sometimes .test-agent/. we'll end up with a bunch of .design/<feature>/<wave>.<model-name>.md files.
+often we want to do a "wave" of review, where multiple llms produce their own independent output for the wave. this is typically in design/<short-feature-name>/ , usually two maybe three words. sometimes .test-agent/. we'll end up with a bunch of design/<feature>/<wave>.<model-name>.md files.
 
 - common waves:
   - `init` for initial exploration / problem write ups
@@ -30,7 +32,7 @@ often we want to do a "wave" of review, where multiple llms produce their own in
 - we add numerical suffixes and increment as we go, as we do "rounds". feature3-syn2 usually means the third revision of the `feature` wave and the second synthesis around that feature3. as we iterate on topics we can add new suffixes to the wave, or start a new more focused wave.
 - `syn` is a frequently used suffix (ex: draft-syn.glm52.md): as follow up to a wave often one or more llm's will be asked to synthesize from their point of view, to review the existing wave, and create a synthesis doc that combines the best elements of the different documents into their vision of the best document. discuss common themes and tensions amid the source material. at the end it should also cross compare, noting particular strengths, interesting/notable features, and relative weaknesses, and a general characterization of the different source documents. this is cross-review and re-integration/synthesis.
 - please include a 0 suffix to be clear on your wave file (ex: draft0.ds4f.md).
-- the "std name" is `.design/<name>/<name>.<model>.md`: when a directory holds one main document rather than a wave, name the file after the directory/topic itself (ex: `.design/roadmap/roadmap.ds4f.md`). revisions still get numerical suffixes (`roadmap2.ds4f.md`).
+- the "std name" is `design/<name>/<name>.<model>.md`: when a directory holds one main document rather than a wave, name the file after the directory/topic itself (ex: `design/roadmap/roadmap.ds4f.md`). revisions still get numerical suffixes (`roadmap2.ds4f.md`).
 - if "accepted" please make a prefix-less symlink for the accepted wave. this is a signal that this is the accepted "tip" of material.
 - start waves by capturing what is up. what are we doing, what the genereal situation is. what is the general problem, and then what more specifically is happening? if there are specific vectors/directions/instructions your user provided, please capture them. consider giving a couple sentance prompt that could be used to research the topic at hand, on the current lines/directions of inquiry. you do not need to restate as we go, but talking about what's new or whats changed or what's emerged from the previous is helpful stage setting!
 - **every wave file you write must end in `.<model-name>.md` — this is the default, not an option.** `draft0.md`, `draft.md`, or any filename missing the model suffix is a bug: fix the name before you finish writing. good examples: `draft0.gpt56t.md`, `feature3-syn2.glm52.md`.
@@ -114,6 +116,7 @@ A doc-pass may use a subagent to independently search the corpus. Ask it to retu
 # Coding advice
 
 - "Let It Fail" principle, when it makes sense. Do not create a try-catch just to print an error: the stack trace will show what is wrong.
+- pruning stale or undeclared artifacts is usually outside Compfuzor's scope. do not add automatic prune/reconciliation behavior unless the user explicitly requests it; create and update declared state, and leave cleanup deliberate.
 - please jj commit as you go! commit pro-actively in logical groups.
 
 # Rust instructions
