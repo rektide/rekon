@@ -12,7 +12,7 @@ extensions:
   supersedes_in_part:
     - /constitution/naming/exploration/proposal1.glm53m.md
     - /constitution/naming/exploration/proposal0.glm53m.md
-  ticket: none yet # forward: rekon-con-naming epic at launch
+  ticket: rekon-con-naming
   wave: naming exploration round 0
   launch: held for human go
 sources:
@@ -49,6 +49,10 @@ sources:
     resource: /.beads/issues.jsonl
     title: Beads issue graph as actually used
     author: human:rektide
+  - id: beads-research
+    resource: /constitution/naming/exploration/beads-offerings0.sol56x.md
+    title: Beads system offerings for Rekon's naming core
+    author: model:gpt-5.6-sol-xhigh
 ---
 
 <a id="stage"></a>
@@ -194,7 +198,7 @@ Ideas are clustered. Each carries one local identifier that concern-expands
 |---|---|
 | `naming-okf-actors` | OKF's actor convention (`human:<id>`, `process:<id>`, `<producer>/<version>`), trust tiers keyed on the `human:` prefix, and Attested Computation — executors and attesters as computer actors. |
 | `naming-human-actors` | Humans are actors and should be named too; the trust system already depends on the `human:` prefix being meaningful. |
-| `naming-beads-offerings` | Beads modeling we barely use: stable human-readable IDs, epics, labels, dependency edges, `--claim` as name-taking, rename-with-reference-rewrite, dolt making the graph queryable. |
+| `naming-beads-offerings` | Beads modeling we barely use — now inventoried by [`beads-offerings0.sol56x.md`](/constitution/naming/exploration/beads-offerings0.sol56x.md): the load-bearing abstraction is **guarded operations over a versioned work graph** (readiness, typed edges, rename-with-rewrite, audit, multi-repo movement), far past our tiny tip of create/update/list. `--claim` binds a work item to an actor string; the actor layer must mint the name. |
 | `naming-model-suffixes` | We already name models in wave filename suffixes; the practice extends from model types to agent instances. |
 | `naming-weak-numerics` | Numerals: exact, dumb, not referentially stable, self-describing to no one. |
 
@@ -373,12 +377,19 @@ a commit — because they make the waves comparable, not what the waves say.
   actors, §5.1 keyed source IDs replacing positional citation. A neighbor
   to compose with, not to replace.
 - Beads — `/.beads/issues.jsonl` for the real schema, `bd --help` for the
-  surface, and the offerings listed under `naming-beads-offerings`. Issues
-  are already named citizens, and tickets are among our most user-visible
-  framings: the epic names read as the project's topic index, and the
-  corpus itself evidences the shift from opaque generated IDs
+  surface, and the full inventory in
+  [`beads-offerings0.sol56x.md`](/constitution/naming/exploration/beads-offerings0.sol56x.md).
+  Issues are already named citizens, and tickets are among our most
+  user-visible framings: the epic names read as the project's topic index,
+  and the corpus itself evidences the shift from opaque generated IDs
   (`rekon-13x`, `rekon-4kh`) to self-describing ones
-  (`rekon-doc-constitution-hierarchy`). The census learns from them.
+  (`rekon-doc-constitution-hierarchy`). **Integration ambition**: beads as
+  the named system's work-and-coordination plane — documents and anchors
+  remain the knowledge plane, sharing semantic stems and explicit links
+  without pretending a ticket and its knowledge are always one entity. Use
+  existing primitives first (explicit IDs, `spec_id`, metadata, typed
+  edges, `bd ready`, rename); then test the seams beads deliberately stops
+  at — aliases, actors, named events, cross-project resolution.
 - [`AGENTS.md`](/AGENTS.md) — subagent practice, wave conventions, model
   suffixes, doc-pass, `.test-agent/` as pre-history. Its scattered naming
   conventions want gathering into the core.
@@ -422,9 +433,9 @@ a commit — because they make the waves comparable, not what the waves say.
 
 Do not launch yet. When the human says go:
 
-1. Optionally create the beads epic `rekon-con-naming` (decision-type,
-   P2) so the wave has a lifecycle handle; record its ID here. The name is
-   itself cross-modal: an alias (`con`) living inside a beads ID.
+1. The beads epic `rekon-con-naming` (decision-type, P2) carries the
+   wave's lifecycle. Its name is itself cross-modal: an alias (`con`)
+   living inside a beads ID.
 2. Spawn five background subagents — `glm-max-z`, `sol-max-gpt`,
    `sol-medium-gpt`, `flash-max`, `luna-xhigh-gpt` — each with the brief
    below, `draft0.<suffix>.md` adjusted per agent.
@@ -455,6 +466,8 @@ Prime yourself on:
 - /.beads/issues.jsonl and `bd --help` (what beads actually offers;
   tickets are our most user-visible framings — epic names read as the
   project's topic index)
+- /constitution/naming/exploration/beads-offerings0.sol56x.md (the
+  evidence-led beads inventory; the work-plane/knowledge-plane split)
 
 The proposal is priming material, not instruction. It imagines a flow —
 essence, wider brainstorm, wiring-or-superseding, Burgess, humans — that
