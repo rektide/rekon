@@ -20,10 +20,14 @@ topics and issues already share. A concern of the
 - [`exploration/`](/constitution/naming/exploration/) — the naming wave
   workspace. Start at
   [`proposal2.glm53m.md`](/constitution/naming/exploration/proposal2.glm53m.md),
-  the current tip, integrated from the top: the center, the one-name
-  discipline, the swirl with identifiers, the name grammar demonstrated,
-  the supersede ambition — naming as the kernel of a new core for rekon —
-  and the held launch kit for the five-agent exploration. Revisions 0 and 1
-  are retained as the critiqued passes.
+  the proposal tip: the center, the one-name discipline, the swirl with
+  identifiers, the name grammar demonstrated, and the supersede ambition —
+  naming as the kernel of a new core for rekon. The wave it launched is
+  complete and awaits comparison: the beads system inventory
+  [`beads-offerings0.sol56x.md`](/constitution/naming/exploration/beads-offerings0.sol56x.md)
+  plus five independent drafts — `draft0.sol56m.md`, `draft0.glm53m.md`,
+  `draft0.glm53fm.md`, `draft0.gpt56lx.md`, `draft0.sol56x.md` — each
+  minting its own identifiers; two agents self-named during the wave.
+  Revisions 0 and 1 of the proposal are retained as the critiqued passes.
 
 Nothing here is accepted practice yet; everything is under exploration.
