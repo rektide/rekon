@@ -42,6 +42,9 @@ artifact.
   prospective pilot, small-project proposal, and upstream carry policy.
 - [`adoption-syn0.sol56x.md`](adoption-syn0.sol56x.md) reconciles that pair and
   records the policy integrated into the canonical constitution.
+- [`adoption1.glm53m.md`](adoption1.glm53m.md) records the accepted round-1
+  decisions: per-repository counting, `design/` as the single island spelling,
+  and tacit local deviations.
 
 ## Status
 
