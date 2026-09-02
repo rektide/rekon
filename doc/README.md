@@ -22,6 +22,10 @@ sources:
     resource: /design/doc-constitution/adoption-syn0.sol56x.md
     title: Pilot adoption and upstream carry synthesis
     author: model:gpt-5.6-sol-max
+  - id: adoption-revision
+    resource: /design/doc-constitution/adoption1.glm53m.md
+    title: Adoption revision 1 decisions
+    author: model:glm-5.3-max
   - id: sol-draft
     resource: /design/doc-constitution/draft0.sol56m.md
     title: Workspace document constitution vision
@@ -456,9 +460,10 @@ improvement in:
 - filtering and carrying workspace-only work across upstream changes;
 - producing contributions that remain native to upstream projects.
 
-Record recurring success and friction as design evidence. The complete
-proposal procedure and cross-comparison live in
-[`adoption-syn0.sol56x.md`](/design/doc-constitution/adoption-syn0.sol56x.md).
+Record recurring success and friction as design evidence. The accepted
+adoption record — proposal procedure, cross-comparison, and revision
+decisions — is
+[`design/doc-constitution/adoption.md`](/design/doc-constitution/adoption.md).
 
 <a id="doc-constitution-references"></a>
 # Durable Referentiability
@@ -700,8 +705,10 @@ The assembler specified by `rekon-agents-maintenance-assembler` MUST:
 - handle source-relative links without changing their targets;
 - update declared output without silently pruning unrelated artifacts.
 
-The exact manifest and metadata syntax belong to that implementation ticket.
-Until it exists, `AGENTS.md` remains hand-maintained and `GLOBAL.md` fragments
+The exact manifest and metadata syntax belong to that implementation ticket;
+the implemented assembler is documented in
+[`/doc/agents-assembly.md`](/doc/agents-assembly.md). Until a production
+manifest exists, `AGENTS.md` remains hand-maintained and `GLOBAL.md` fragments
 can land beside it as declared future inputs.
 
 The OpenCode notes expose both sides of this boundary. A proposed
@@ -802,9 +809,9 @@ agreement alone.
   warning, and concrete assembly pressure.
 - [`syn0.gpt56t.md`](/design/doc-constitution/syn0.gpt56t.md) **records** the
   cross-comparison, selected choices, and tool questions deliberately deferred.
-- [`adoption-syn0.sol56x.md`](/design/doc-constitution/adoption-syn0.sol56x.md)
-  **reconciles** the independent Sol Max and Flash Max proposals into the pilot,
-  small-project, upstream-fit, and carry-island policy.
+- [`adoption.md`](/design/doc-constitution/adoption.md) **records** the
+  reconciled pilot, small-project, upstream-fit, and carry-island policy and
+  its accepted revisions; the full wave is preserved beside it.
 - [`AGENTS.md`](/AGENTS.md) **contains** the existing operational practice this
   module will progressively own through `GLOBAL.md` and future assembly.
 - Beads epic `rekon-doc-constitution` **tracks** acceptance and demonstrates

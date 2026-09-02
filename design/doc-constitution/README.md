@@ -46,9 +46,15 @@ artifact.
   decisions: per-repository counting, `design/` as the single island spelling,
   and tacit local deviations.
 
+## Accepted Tip
+
+- [`adoption.md`](adoption.md) symlinks to
+  [`adoption1.glm53m.md`](adoption1.glm53m.md), the accepted tip of the
+  adoption material. The wave files above remain citable evidence.
+
 ## Status
 
-The constitution remains `status: draft` until human review closes
-`rekon-doc-constitution-torch`. Accepted changes belong in the coherent
-canonical [`/doc/README.md`](/doc/README.md); materially distinct proposals
-belong in new model-suffixed files here.
+The constitution remains `status: draft` while its adoption pilot shakes out;
+the initial torch-pass review is closed. Accepted changes belong in the
+coherent canonical [`/doc/README.md`](/doc/README.md); materially distinct
+proposals belong in new model-suffixed files here.
