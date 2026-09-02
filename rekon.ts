@@ -8,13 +8,20 @@ import projectFilesCommand from "./src/command/project-files.ts";
 import lnCommand from "./src/command/ln.ts";
 import completion from "@gunshi/plugin-completion";
 
+const subCommands = {
+  agents: agentsCommand,
+  combine: combineCommand,
+  "install-commands": installCommandsCommand,
+  interpolate: interpolateCommand,
+  "project-files": projectFilesCommand,
+  ln: lnCommand,
+};
+
 const mainCommand = define({
   name: "rekon",
   description: "Rekon CLI tool",
   run: () => {
-    console.log(
-      "Available commands: agents, combine, install-commands, interpolate, project-files, ln",
-    );
+    console.log(`Available commands: ${Object.keys(subCommands).sort().join(", ")}`);
     console.log('Run "rekon --help" for more information');
   },
 });
@@ -23,13 +30,6 @@ await cli(process.argv.slice(2), mainCommand, {
   name: "rekon",
   version: "1.0.0",
   description: "Rekon CLI tool",
-  subCommands: {
-    agents: agentsCommand,
-    combine: combineCommand,
-    "install-commands": installCommandsCommand,
-    interpolate: interpolateCommand,
-    "project-files": projectFilesCommand,
-    ln: lnCommand,
-  },
+  subCommands,
   plugins: [completion()],
 });

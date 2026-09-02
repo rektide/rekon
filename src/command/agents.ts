@@ -44,19 +44,19 @@ export default define({
 
     const result = await writeAssembly(manifest, outputOverride);
     console.log(
-      `assembled ${result.fragments.length} fragment(s) into ${result.output} (${result.bytes.length} bytes)`,
+      `assembled ${result.fragments.length} fragment(s) into ${result.output} (${result.totalBytes} bytes)`,
     );
     for (const fragment of result.fragments) {
-      console.log(`  ${fragment.meta.order}\t${fragment.meta.id}\t${fragment.path}`);
+      console.log(
+        `  ${fragment.meta.order}\t${fragment.meta.id}\t${fragment.path}\t(${fragment.proseBytes} bytes)`,
+      );
     }
   },
 });
 
-void (async () => {
-  const mainPath = await realpath(process.argv[1]);
-  const mainUrl = pathToFileURL(mainPath).href;
-  if (import.meta.url === mainUrl) {
-    const module = await import("./agents.ts");
-    await cli(process.argv.slice(2), module.default, { name: "agents" });
-  }
-})();
+void realpath(process.argv[1]).then((mainPath) => {
+  if (pathToFileURL(mainPath).href !== import.meta.url) return undefined;
+  return import("./agents.ts").then((module) =>
+    cli(process.argv.slice(2), module.default, { name: "agents" }),
+  );
+});
