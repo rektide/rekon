@@ -12,7 +12,7 @@ extensions:
   supersedes_in_part:
     - /constitution/naming/exploration/proposal1.glm53m.md
     - /constitution/naming/exploration/proposal0.glm53m.md
-  ticket: none yet # forward: rekon-agent-naming epic at launch
+  ticket: none yet # forward: rekon-con-naming epic at launch
   wave: naming exploration round 0
   launch: held for human go
 sources:
@@ -166,6 +166,7 @@ Ideas are clustered. Each carries one local identifier that concern-expands
 | Identifier | The idea |
 |---|---|
 | `naming-one-name` | One name per entity; the discipline this document practices and the wave must keep making good on. |
+| `naming-cross-modal` | Cross-modal sympathy: markdown anchors, mermaid node ids, beads IDs, YAML keys, and filenames share one namespace — contortion and aliases let a name live in every medium. The epic name `rekon-con-naming` is itself an instance: an alias inside a beads ID. |
 | `naming-implied-names` | Short local anchors imply their full names: `id="stage"` implies `constitution-naming-exploration-proposal2-stage`. The anchor carries the tip; context carries the rest. |
 | `naming-model-qualified` | Optional model segment — `constitution-naming-exploration-proposal2-glm53m-stage` — for exact resolution to one authoring agent. Usually omitted *deliberately* to keep useful ambiguity; cite specific agents when precision matters. Permissible, not default. |
 | `naming-aliases` | Projects define abbreviations in their glossary, usually the README: `constitution`→`con`, `exploration`→`exp`, `research`→`res`, with `design` and `draft` written whole. `con-naming-exp-agent-naming` is not the worst — an OK example. |
@@ -183,6 +184,7 @@ Ideas are clustered. Each carries one local identifier that concern-expands
 | `naming-events` | Events as first-class named entities: waves launched, acceptances, promotions, migrations — the system's history becoming citable. |
 | `naming-findings` | Findings as named, citable outputs of research — smaller than documents, bigger than claims. |
 | `naming-research` | Research as an entity kind with its own names, succeeding the legacy `discovery` term as hierarchy1 provides. |
+| `naming-tickets` | Tickets as one of the most user-visible framings we have: epic names read as the project's topic index. Pulling tickets into the named system is key. |
 | — | Knowledge/documents, agents, humans, issues, and computations appear in their own clusters below; the census gathers them all. |
 
 <a id="swirl-actors"></a>
@@ -225,6 +227,7 @@ flowchart TD
     end
     subgraph the-grammar
         naming-one-name -->|guards| naming-aliases
+        naming-cross-modal -->|sympathizes with| naming-one-name
         naming-aliases -->|abbreviates| naming-implied-names
         naming-implied-names -->|optionally| naming-model-qualified
         naming-implied-names -->|softens| naming-rename-ripple
@@ -257,6 +260,7 @@ flowchart TD
     naming-rekon-core -->|gathers| naming-events
     naming-rekon-core -->|gathers| naming-findings
     naming-rekon-core -->|gathers| naming-research
+    naming-rekon-core -->|gathers| naming-tickets
     naming-rekon-core -->|seeks to supersede| naming-demonstration
     naming-center -->|proves| naming-demonstration
     naming-priming-docs -->|carries| naming-demonstration
@@ -370,7 +374,11 @@ a commit — because they make the waves comparable, not what the waves say.
   to compose with, not to replace.
 - Beads — `/.beads/issues.jsonl` for the real schema, `bd --help` for the
   surface, and the offerings listed under `naming-beads-offerings`. Issues
-  are already named citizens; the census learns from them.
+  are already named citizens, and tickets are among our most user-visible
+  framings: the epic names read as the project's topic index, and the
+  corpus itself evidences the shift from opaque generated IDs
+  (`rekon-13x`, `rekon-4kh`) to self-describing ones
+  (`rekon-doc-constitution-hierarchy`). The census learns from them.
 - [`AGENTS.md`](/AGENTS.md) — subagent practice, wave conventions, model
   suffixes, doc-pass, `.test-agent/` as pre-history. Its scattered naming
   conventions want gathering into the core.
@@ -414,8 +422,9 @@ a commit — because they make the waves comparable, not what the waves say.
 
 Do not launch yet. When the human says go:
 
-1. Optionally create the beads epic `rekon-agent-naming` (decision-type,
-   P2) so the wave has a lifecycle handle; record its ID here.
+1. Optionally create the beads epic `rekon-con-naming` (decision-type,
+   P2) so the wave has a lifecycle handle; record its ID here. The name is
+   itself cross-modal: an alias (`con`) living inside a beads ID.
 2. Spawn five background subagents — `glm-max-z`, `sol-max-gpt`,
    `sol-medium-gpt`, `flash-max`, `luna-xhigh-gpt` — each with the brief
    below, `draft0.<suffix>.md` adjusted per agent.
@@ -443,7 +452,9 @@ Prime yourself on:
 - /AGENTS.md (subagents, waves, model suffixes, doc-pass)
 - /home/rektide/archive/GoogleCloudPlatform/knowledge-catalog/okf/SPEC.md
   (actors, trust tiers, attested computation, keyed sources)
-- /.beads/issues.jsonl and `bd --help` (what beads actually offers)
+- /.beads/issues.jsonl and `bd --help` (what beads actually offers;
+  tickets are our most user-visible framings — epic names read as the
+  project's topic index)
 
 The proposal is priming material, not instruction. It imagines a flow —
 essence, wider brainstorm, wiring-or-superseding, Burgess, humans — that
