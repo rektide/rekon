@@ -15,7 +15,8 @@ not moving or deleting evidence.
 
 In upstream-owned repositories, fit upstream documentation conventions when
 work is intended upstream. Otherwise keep workspace-specific knowledge in one
-domain subtree so it remains easy to filter and carry across upstream changes.
+domain subtree (commonly `design/<topic>/`) so it remains easy to filter and
+carry across upstream changes.
 
 Give durable sections explicit semantic anchors. Local anchors omit the beads
 project prefix; the qualified knowledge ID restores it. Tickets coordinate work

@@ -353,7 +353,7 @@ posture:
 | Intent | Knowledge location | Exposure posture |
 |---|---|---|
 | Known upstream contribution | Fit the upstream project's existing documentation directories, names, tone, and tooling. Map the knowledge contract onto its native surfaces. | Keep workspace-only skill and global machinery out of the upstream patch unless upstream adopts those concepts. |
-| Upstream intent absent or uncertain | Use one documented, domain-grouped **carry island**, commonly `design/<topic>/`, `.design/<topic>/`, `doc/<topic>/`, or a local equivalent. | Skill and global projections may live in the island or a rekon-owned overlay. |
+| Upstream intent absent or uncertain | Use a domain-grouped **carry island**, commonly `design/<topic>/`. If the name collides with an upstream convention, choose another subtree. | Skill and global projections may live in the island or a rekon-owned overlay. |
 | First-party project under our control | Apply the module contract prospectively while preserving any stronger established convention. | Native README/SKILL/GLOBAL modules are available. |
 | Read-only mirror or reference checkout | Put notes in the depending project's design module or a workspace knowledge home. | Do not migrate or overlay the mirror merely because it is small. |
 
@@ -365,8 +365,10 @@ knowledge without being renamed to our preferred shape.
 ## Carry Islands Reduce Local Burden
 
 A carry island contains workspace-specific design, research, agent guidance,
-and support artifacts under one domain subtree. It remains README-led and
-domain-grouped rather than becoming a flat dump.
+and support artifacts under one domain subtree. The default root is
+`design/<topic>/`; older `.design/` trees remain valid where they already
+exist. It remains README-led and domain-grouped rather than becoming a flat
+dump.
 
 Path locality makes the work easier to:
 
@@ -389,22 +391,25 @@ contribute a local ambient rule without forking the upstream explanation.
 <a id="doc-constitution-adoption-small"></a>
 ## Small-Project Proposal Path
 
-When adoption is under consideration for a project with **fewer than 16
+When adoption is under consideration for a repository with **fewer than 16
 maintained documentation files**, a background Flash Max agent SHOULD inspect
-the complete surface and propose a migration. The threshold is a dispatch
-heuristic for affordable whole-corpus understanding, not an architectural
-boundary and never authorization to edit.
+the complete surface and propose a migration. The threshold counts the
+repository as a whole: documentation roots inside a monorepo are not counted
+separately. The threshold is a dispatch heuristic for affordable whole-corpus
+understanding, not an architectural boundary and never authorization to edit.
 
 Count first-party, human-maintained documents across the text formats the
-project actually uses, including root and package READMEs, guides, ADRs, design
-notes, and user documentation. Resolve symlinked canonical documents once.
-Exclude generated output, vendored or mirrored material, dependencies, build
-and cache trees, scratch, issue exports, transcripts, and machine logs unless
-the project deliberately maintains them as documentation. The proposal MUST
-report its search roots, exclusions, exact inventory, commands, and final count.
+repository actually uses, including root and package READMEs, guides, ADRs,
+design notes, and user documentation. Resolve symlinked canonical documents
+once. Exclude generated output, vendored or mirrored material, dependencies,
+build and cache trees, scratch, issue exports, transcripts, and machine logs
+unless the project deliberately maintains them as documentation. The proposal
+MUST report its search roots, exclusions, exact inventory, commands, and final
+count.
 
 At 16 or more, the lightweight path stops; deliberate human-led planning is
-still available. Borderline projects must not manipulate exclusions to qualify.
+still available. Borderline repositories must not manipulate exclusions to
+qualify.
 
 <a id="doc-constitution-adoption-proposal"></a>
 ## Proposal Contract And Human Gate
