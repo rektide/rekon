@@ -21,6 +21,10 @@ export const DEFAULT_MANIFEST = "doc/agents.manifest.json";
 declare const manifestRelativeBrand: unique symbol;
 export type ManifestRelativePath = string & { readonly [manifestRelativeBrand]: true };
 
+/** A normalized output path declared relative to the manifest directory. */
+declare const manifestOutputBrand: unique symbol;
+export type ManifestOutputPath = string & { readonly [manifestOutputBrand]: true };
+
 /**
  * A repository-root-relative canonical path, as declared by fragment
  * `source` metadata. Parsed form: leading `/`, normalized, no traversal,
@@ -61,13 +65,13 @@ export interface AssemblyManifest {
   /** Fragment paths, relative to the manifest file's directory. */
   fragments: ManifestRelativePath[];
   /** Output path, relative to the manifest file's directory. */
-  output: string;
+  output: ManifestOutputPath;
 }
 
 export interface AssemblyResult {
   fragments: Fragment[];
-  /** Assembled document bytes as a string. */
-  bytes: string;
+  /** Assembled Markdown content. */
+  content: string;
   /** UTF-8 length of the assembled document, in bytes. */
   totalBytes: number;
   /** Absolute output path, with any override applied. */
@@ -102,16 +106,31 @@ function isErrnoException(error: unknown, code: string): boolean {
 
 /**
  * Guard a value that is interpolated into an HTML provenance comment:
- * no `-->` that could close the comment early, no control characters.
+ * no double hyphen that could invalidate or close the comment, no control
+ * characters.
  */
 function safeCommentText(value: string, label: string, displayPath: string): string {
-  if (value.includes("-->")) {
-    throw new Error(`${displayPath}: ${label} must not contain "-->"`);
+  if (value.includes("--")) {
+    throw new Error(`${displayPath}: ${label} must not contain "--"`);
   }
   if (CONTROL_CHARS.test(value)) {
     throw new Error(`${displayPath}: ${label} must not contain control characters`);
   }
   return value;
+}
+
+/** Validate an output path as normalized and relative to its manifest. */
+function toManifestOutputPath(value: unknown, manifestPath: string): ManifestOutputPath {
+  if (typeof value !== "string" || value.trim() === "") {
+    throw new Error(`manifest 'output' must be a non-empty path string: ${manifestPath}`);
+  }
+  if (isAbsolute(value)) {
+    throw new Error(`manifest 'output' must be a relative path: "${value}" in ${manifestPath}`);
+  }
+  if (normalize(value) !== value) {
+    throw new Error(`manifest 'output' must be a normalized path: "${value}" in ${manifestPath}`);
+  }
+  return value as ManifestOutputPath;
 }
 
 /**
@@ -139,13 +158,19 @@ function toManifestRelativePath(entry: unknown, manifestPath: string): ManifestR
 
 /** Validate fragment `source` metadata as a bundle-root-relative canonical path. */
 function toBundleRootRelativePath(value: unknown, displayPath: string): BundleRootRelativePath {
-  if (typeof value !== "string" || !value.startsWith("/") || value.length < 2) {
+  if (
+    typeof value !== "string" ||
+    !value.startsWith("/") ||
+    value.startsWith("//") ||
+    value.length < 2
+  ) {
     throw new Error(
       `${displayPath}: frontmatter 'source' must be a bundle-root-relative path starting with '/' (e.g. /doc/README.md)`,
     );
   }
   const rest = value.slice(1);
-  if (normalize(rest) !== rest || rest.includes("..")) {
+  const segments = rest.split("/");
+  if (normalize(rest) !== rest || segments.some((segment) => segment === "." || segment === "..")) {
     throw new Error(
       `${displayPath}: frontmatter 'source' must be a normalized path without '.' or '..' segments: ${value}`,
     );
@@ -202,11 +227,7 @@ export async function readManifest(manifestPath: string): Promise<AssemblyManife
     entries.push(path);
   }
 
-  if (typeof output !== "string" || output.trim() === "") {
-    throw new Error(`manifest 'output' must be a non-empty path string: ${manifestPath}`);
-  }
-
-  return { fragments: entries, output };
+  return { fragments: entries, output: toManifestOutputPath(output, manifestPath) };
 }
 
 /**
@@ -408,8 +429,25 @@ async function loadDeclaredFragments(manifest: AssemblyManifest, dir: string): P
   return sortFragments(await Promise.all(pending));
 }
 
-function resolveOutput(dir: string, declared: string, override?: string): AbsolutePath {
+function resolveOutput(dir: string, declared: ManifestOutputPath, override?: string): AbsolutePath {
   return (override !== undefined ? resolve(override) : resolve(dir, declared)) as AbsolutePath;
+}
+
+function assertOutputDoesNotOverwriteInputs(
+  output: AbsolutePath,
+  manifestPath: string,
+  manifest: AssemblyManifest,
+  dir: string,
+): void {
+  const manifestAbsolute = resolve(manifestPath);
+  if (output === manifestAbsolute) {
+    throw new Error(`assembly output must not overwrite its manifest: ${output}`);
+  }
+  for (const fragmentPath of manifest.fragments) {
+    if (output === resolve(dir, fragmentPath)) {
+      throw new Error(`assembly output must not overwrite source fragment: ${fragmentPath}`);
+    }
+  }
 }
 
 /** Render the assembled document: generated marker, provenance, source prose. */
@@ -428,13 +466,15 @@ export async function assemble(
 ): Promise<AssemblyResult> {
   const manifest = await readManifest(manifestPath);
   const dir = dirname(resolve(manifestPath));
+  const output = resolveOutput(dir, manifest.output, outputOverride);
+  assertOutputDoesNotOverwriteInputs(output, manifestPath, manifest, dir);
   const fragments = await loadDeclaredFragments(manifest, dir);
-  const bytes = renderDocument(fragments);
+  const content = renderDocument(fragments);
   return {
     fragments,
-    bytes,
-    totalBytes: Buffer.byteLength(bytes, "utf8"),
-    output: resolveOutput(dir, manifest.output, outputOverride),
+    content,
+    totalBytes: Buffer.byteLength(content, "utf8"),
+    output,
   };
 }
 
@@ -446,7 +486,7 @@ export async function writeAssembly(
   const result = await assemble(manifestPath, outputOverride);
   await mkdir(dirname(result.output), { recursive: true });
   const temporary = `${result.output}.tmp-${process.pid}-${randomUUID().slice(0, 8)}`;
-  await writeFile(temporary, result.bytes);
+  await writeFile(temporary, result.content);
   await rename(temporary, result.output);
   return result;
 }
@@ -476,7 +516,7 @@ export async function checkAssembly(
     if (!isErrnoException(error, "ENOENT")) throw error;
     return { status: "stale", detail: `output missing: ${result.output}` };
   }
-  const expected = Buffer.from(result.bytes, "utf8");
+  const expected = Buffer.from(result.content, "utf8");
   if (expected.equals(actual)) {
     return { status: "fresh" };
   }

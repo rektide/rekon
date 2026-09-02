@@ -85,8 +85,8 @@ describe("assemble", () => {
 
     const result = await assemble(manifestPath);
     expect(result.fragments.map((fragment) => fragment.meta.id)).toEqual(["first", "second"]);
-    expect(result.bytes.indexOf("# First")).toBeGreaterThan(-1);
-    expect(result.bytes.indexOf("# First")).toBeLessThan(result.bytes.indexOf("# Second"));
+    expect(result.content.indexOf("# First")).toBeGreaterThan(-1);
+    expect(result.content.indexOf("# First")).toBeLessThan(result.content.indexOf("# Second"));
   });
 
   test("produces identical bytes for identical inputs", async () => {
@@ -96,7 +96,7 @@ describe("assemble", () => {
 
     const first = await assemble(manifestPath);
     const second = await assemble(manifestPath);
-    expect(first.bytes).toBe(second.bytes);
+    expect(first.content).toBe(second.content);
   });
 
   test("normalizes CRLF and trailing whitespace so boundaries are stable", async () => {
@@ -112,10 +112,10 @@ describe("assemble", () => {
     );
     const unix = await assemble(manifestPath);
 
-    expect(windows.bytes).toBe(unix.bytes);
-    expect(windows.bytes).not.toContain("\r");
-    expect(windows.bytes.endsWith("\n")).toBe(true);
-    expect(windows.bytes.endsWith("\n\n")).toBe(false);
+    expect(windows.content).toBe(unix.content);
+    expect(windows.content).not.toContain("\r");
+    expect(windows.content.endsWith("\n")).toBe(true);
+    expect(windows.content.endsWith("\n\n")).toBe(false);
   });
 
   test("strips frontmatter and records provenance while preserving prose", async () => {
@@ -124,13 +124,13 @@ describe("assemble", () => {
     const manifestPath = await writeManifest(root, ["a.md"], "out.md");
 
     const result = await assemble(manifestPath);
-    expect(result.bytes).not.toContain("order: 100");
-    expect(result.bytes).not.toContain("source: /doc/example/README.md\n");
-    expect(result.bytes).toContain(
+    expect(result.content).not.toContain("order: 100");
+    expect(result.content).not.toContain("source: /doc/example/README.md\n");
+    expect(result.content).toContain(
       "<!-- rekon-fragment: id=example order=100 path=a.md source=/doc/example/README.md -->",
     );
-    expect(result.bytes).toContain("# Example\n\nsome prose");
-    expect(result.bytes).toContain("<!-- GENERATED FILE - DO NOT EDIT");
+    expect(result.content).toContain("# Example\n\nsome prose");
+    expect(result.content).toContain("<!-- GENERATED FILE - DO NOT EDIT");
   });
 
   test("applies output override while fragment paths stay manifest-relative", async () => {
@@ -178,7 +178,7 @@ describe("context cost in UTF-8 bytes", () => {
     const prose = body.replace(/\r\n/g, "\n").trim();
     expect(result.fragments[0].proseBytes).toBe(Buffer.byteLength(prose, "utf8"));
     expect(result.fragments[0].proseBytes).not.toBe(prose.length);
-    expect(result.totalBytes).toBe(Buffer.byteLength(result.bytes, "utf8"));
+    expect(result.totalBytes).toBe(Buffer.byteLength(result.content, "utf8"));
     expect(result.totalBytes).toBeGreaterThan(result.fragments[0].proseBytes);
   });
 
@@ -211,6 +211,33 @@ describe("manifest failures", () => {
     await expect(assemble(manifestPath)).rejects.toThrow(/must be relative paths/);
   });
 
+  test("rejects absolute and unnormalized manifest output paths", async () => {
+    const root = await scratch();
+    await writeFragment(root, "a.md", BASE_META, "# Example\n\nprose");
+
+    const absolute = await writeManifest(root, ["a.md"], resolve(root, "out.md"));
+    await expect(assemble(absolute)).rejects.toThrow(/'output' must be a relative path/);
+
+    const unnormalized = await writeManifest(root, ["a.md"], "./out.md", "other.json");
+    await expect(assemble(unnormalized)).rejects.toThrow(/'output' must be a normalized path/);
+  });
+
+  test("rejects output paths that overwrite the manifest or a source fragment", async () => {
+    const root = await scratch();
+    await writeFragment(root, "a.md", BASE_META, "# Example\n\nprose");
+
+    const fragmentOutput = await writeManifest(root, ["a.md"], "a.md");
+    await expect(assemble(fragmentOutput)).rejects.toThrow(/must not overwrite source fragment/);
+
+    const manifestOutput = await writeManifest(root, ["a.md"], "self.json", "self.json");
+    await expect(assemble(manifestOutput)).rejects.toThrow(/must not overwrite its manifest/);
+
+    const overrideManifest = await writeManifest(root, ["a.md"], "out.md", "override.json");
+    await expect(assemble(overrideManifest, join(root, "a.md"))).rejects.toThrow(
+      /must not overwrite source fragment/,
+    );
+  });
+
   test("rejects fragment entries that escape the manifest directory", async () => {
     const root = await scratch();
     await writeFragment(root, "a.md", BASE_META, "# Example\n\nprose");
@@ -223,7 +250,7 @@ describe("manifest failures", () => {
     const root = await scratch();
     const manifestPath = await writeManifest(root, ["evil-->name.md"], "out.md");
 
-    await expect(assemble(manifestPath)).rejects.toThrow(/must not contain "-->"/);
+    await expect(assemble(manifestPath)).rejects.toThrow(/must not contain "--"/);
   });
 
   test("rejects missing fragment files", async () => {
@@ -322,6 +349,11 @@ describe("frontmatter validation", () => {
       /'source' must be a bundle-root-relative path starting with '\/'/,
     ],
     [
+      "protocol-relative source",
+      { ...BASE_META, source: "//other/doc/README.md" },
+      /'source' must be a bundle-root-relative path starting with '\/'/,
+    ],
+    [
       "traversal source",
       { ...BASE_META, source: "/doc/../secret.md" },
       /normalized path without '\.' or '\.\.' segments/,
@@ -347,13 +379,22 @@ describe("frontmatter validation", () => {
     );
   });
 
+  test("accepts source filenames containing two dots when they are not traversal segments", () => {
+    expect(() =>
+      parseFragment(
+        "---\nid: x\norder: 1\nsource: /doc/name..draft/README.md\nstatus: draft\n---\n\n# Example\n\nprose",
+        "a.md",
+      ),
+    ).not.toThrow();
+  });
+
   test("rejects fragment paths that would break provenance comments", () => {
     expect(() =>
       parseFragment(
         "---\nid: x\norder: 1\nsource: /s.md\nstatus: draft\n---\n\n# E\n\np",
-        "a-->b.md",
+        "a--b.md",
       ),
-    ).toThrow(/fragment path must not contain "-->"/);
+    ).toThrow(/fragment path must not contain "--"/);
   });
 });
 
@@ -491,7 +532,7 @@ describe("write and check", () => {
     const manifestPath = await writeManifest(root, ["a.md"], "unicode.md");
 
     const result = await writeAssembly(manifestPath);
-    expect(result.totalBytes).not.toBe(result.bytes.length);
+    expect(result.totalBytes).not.toBe(result.content.length);
 
     const output = join(root, "unicode.md");
     const expected = await readFile(output);

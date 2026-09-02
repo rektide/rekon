@@ -100,6 +100,8 @@ status: draft
 Validation failures are errors, not warnings: missing or invalid metadata,
 duplicate `id`, and duplicate `order` all stop assembly with a thrown error.
 
+<a id="agents-assembly-link-destinations"></a>
+
 ### Link destinations
 
 Fragments assemble into documents that live somewhere else, so
@@ -136,7 +138,11 @@ there is no auto-discovery of `GLOBAL.md` files.
   relative, normalized (no `.`, `..`, or redundant separators), and contained
   under the manifest's directory — absolute paths and traversal escapes are
   rejected. The same file may not be declared twice.
-- `output` is a path string, also relative to the manifest directory.
+- `output` is a normalized path relative to the manifest directory. It may use
+  `..` to target a deliberate parent location (for example, a manifest under
+  `doc/` targeting `../AGENTS.md`), but it may not be absolute. Neither the
+  declared output nor an override may overwrite the manifest or a source
+  fragment.
 - Duplicate fragment `id`s and `order`s across the declared set are rejected.
 
 The default manifest path is `doc/agents.manifest.json`. It does not exist yet
@@ -181,9 +187,9 @@ thin command wiring. Tests live beside the module in
 ## Generated Output
 
 Assembled output is normalized so identical inputs produce identical bytes:
-fragment bodies keep their source prose byte-for-byte (no render round-trip),
-with CRLF normalized to LF and boundary whitespace trimmed; sections join with
-exactly one blank line; the file ends with a single newline.
+fragment bodies keep their source text without a render round-trip, with CRLF
+normalized to LF and boundary whitespace trimmed; sections join with exactly
+one blank line; the file ends with a single newline.
 
 Output starts with a do-not-edit marker, and each fragment is preceded by a
 provenance comment:
@@ -212,6 +218,8 @@ string lengths (which undercount multibyte text). `assemble` exposes
 command prints both per fragment and in total, making each fragment's ambient
 price visible next to its identity.
 
+<a id="agents-assembly-provenance-safety"></a>
+
 ### Provenance Safety
 
 Provenance fields are interpolated into HTML comments, so identity values are
@@ -232,7 +240,7 @@ provenance comment or inject markup into the generated file.
 - **Provenance is mandatory.** Every assembled fragment records its `id`,
   `order`, fragment path, and canonical `source` README, keeping the ambient
   contribution traceable to its module. Field validation (see
-  [provenance safety](#agents-assembly-context-cost)) keeps those comments
+  [provenance safety](#agents-assembly-provenance-safety)) keeps those comments
   well-formed.
 - **Failures surface.** Missing files, invalid manifests, bad metadata,
   duplicate identity, structurally invalid Markdown, and fragment-relative
