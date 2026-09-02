@@ -6,6 +6,10 @@ small ambient contribution. `design/<topic>/` is for building, exploring, and
 learning; `doc/<topic>/` is stable user-facing knowledge. Promotion is synthesis,
 not moving or deleting evidence.
 
+In upstream-owned repositories, fit upstream documentation conventions when
+work is intended upstream. Otherwise keep workspace-specific knowledge in one
+domain subtree so it remains easy to filter and carry across upstream changes.
+
 Give durable sections explicit semantic anchors. Local anchors omit the beads
 project prefix; the qualified knowledge ID restores it. Tickets coordinate work
 lifecycle and may forward-anchor unwritten knowledge, but documents and sections

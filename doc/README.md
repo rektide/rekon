@@ -18,6 +18,10 @@ sources:
     resource: /design/doc-constitution/syn0.gpt56t.md
     title: Self-explaining documentation constitution synthesis
     author: model:gpt-5.6-terra
+  - id: adoption-synthesis
+    resource: /design/doc-constitution/adoption-syn0.sol56x.md
+    title: Pilot adoption and upstream carry synthesis
+    author: model:gpt-5.6-sol-max
   - id: sol-draft
     resource: /design/doc-constitution/draft0.sol56m.md
     title: Workspace document constitution vision
@@ -98,11 +102,11 @@ The compact promise is:
 <a id="doc-constitution-scope"></a>
 ## Scope And Normative Language
 
-This constitution is the workspace default for new knowledge work. Existing
-documents are grandfathered; adoption is prospective rather than a demand to
-rewrite the corpus. A project MAY document a local deviation while preserving
-the underlying contracts of honest identity, navigable evidence, and stable
-references.
+This constitution is the prospective workspace default for new knowledge work
+and an active pilot for existing corpora. Existing documents are grandfathered;
+adoption is not a demand to rewrite the corpus. A project MAY document a local
+deviation while preserving the underlying contracts of honest identity,
+navigable evidence, and stable references.
 
 This constitution governs deliberate knowledge modules, not every temporary
 Markdown file. Scratch notes, transcripts, generated reports, and small local
@@ -111,8 +115,9 @@ justify.
 
 `MUST`, `MUST NOT`, `SHOULD`, `SHOULD NOT`, and `MAY` identify requirements,
 recommendations, cautions, and permissions. A document's `status` remains
-authoritative: this constitution is draft until the human torch-pass recorded
-by `rekon-doc-constitution-torch` is complete.
+authoritative. The human torch-pass settles this first direction; the
+constitution remains draft while real projects shake out its adoption,
+assembly, and maintenance contracts.
 
 <a id="doc-constitution-flow"></a>
 # Knowledge Flow
@@ -324,6 +329,131 @@ reason to rewrite those documents as part of this constitution.
 This repository also uses some top-level topic directories. That is a
 rekon-specific composition choice to be documented by
 `rekon-doc-constitution-rekon-skill`, not a general recommendation.
+
+<a id="doc-constitution-adoption"></a>
+# Pilot Adoption And Upstream Boundaries
+
+The constitution governs new work prospectively. It does not yet establish
+that existing projects should be reorganized around its preferred layout.
+**Knowledge-contract adoption** and **layout migration** are separate changes:
+a project can gain canonical ownership, honest status, durable anchors, source
+lineage, and explicit exposure without moving its files.
+
+Corpus migration remains a hypothesis under assessment. Declining a migration
+proposal, keeping an established layout, or adopting only the knowledge
+contract are normal outcomes.
+
+<a id="doc-constitution-adoption-upstream"></a>
+## Establish Upstream Intent Before Layout
+
+Much workspace work happens in repositories whose shared structure is owned
+upstream. The intended destination of the work determines its directory
+posture:
+
+| Intent | Knowledge location | Exposure posture |
+|---|---|---|
+| Known upstream contribution | Fit the upstream project's existing documentation directories, names, tone, and tooling. Map the knowledge contract onto its native surfaces. | Keep workspace-only skill and global machinery out of the upstream patch unless upstream adopts those concepts. |
+| Upstream intent absent or uncertain | Use one documented, domain-grouped **carry island**, commonly `design/<topic>/`, `.design/<topic>/`, `doc/<topic>/`, or a local equivalent. | Skill and global projections may live in the island or a rekon-owned overlay. |
+| First-party project under our control | Apply the module contract prospectively while preserving any stronger established convention. | Native README/SKILL/GLOBAL modules are available. |
+| Read-only mirror or reference checkout | Put notes in the depending project's design module or a workspace knowledge home. | Do not migrate or overlay the mirror merely because it is small. |
+
+Upstream-native layout is not a constitutional exception: layout is not
+identity. An upstream `docs/index.md` or package README may own canonical
+knowledge without being renamed to our preferred shape.
+
+<a id="doc-constitution-adoption-carry"></a>
+## Carry Islands Reduce Local Burden
+
+A carry island contains workspace-specific design, research, agent guidance,
+and support artifacts under one domain subtree. It remains README-led and
+domain-grouped rather than becoming a flat dump.
+
+Path locality makes the work easier to:
+
+- include or exclude with one path filter;
+- review separately from upstream-compatible changes;
+- carry across upstream rebases with fewer overlapping paths;
+- move between workspaces without reconstructing scattered files;
+- promote selectively into upstream-native documents;
+- remove deliberately if the local experiment is abandoned.
+
+Transient islands MAY be ignored through local repository excludes without
+editing upstream-owned ignore files. Durable local knowledge MAY be committed
+on a local line of development; its containment still keeps that carry visible
+and separable.
+
+`SKILL.md` and `GLOBAL.md` need not appear in upstream-owned trees. A
+workspace-owned overlay may expose an upstream canonical document on demand or
+contribute a local ambient rule without forking the upstream explanation.
+
+<a id="doc-constitution-adoption-small"></a>
+## Small-Project Proposal Path
+
+When adoption is under consideration for a project with **fewer than 16
+maintained documentation files**, a background Flash Max agent SHOULD inspect
+the complete surface and propose a migration. The threshold is a dispatch
+heuristic for affordable whole-corpus understanding, not an architectural
+boundary and never authorization to edit.
+
+Count first-party, human-maintained documents across the text formats the
+project actually uses, including root and package READMEs, guides, ADRs, design
+notes, and user documentation. Resolve symlinked canonical documents once.
+Exclude generated output, vendored or mirrored material, dependencies, build
+and cache trees, scratch, issue exports, transcripts, and machine logs unless
+the project deliberately maintains them as documentation. The proposal MUST
+report its search roots, exclusions, exact inventory, commands, and final count.
+
+At 16 or more, the lightweight path stops; deliberate human-led planning is
+still available. Borderline projects must not manipulate exclusions to qualify.
+
+<a id="doc-constitution-adoption-proposal"></a>
+## Proposal Contract And Human Gate
+
+The Flash Max run starts only when a human or coordinating session is
+considering adoption. Merely entering a small repository does not trigger it.
+It runs in the background and treats the target corpus as read-only. It MUST
+NOT edit, move, delete, commit, symlink, configure, reconcile, or prune target
+artifacts. It may write one model-suffixed proposal under the project's ignored
+topic scratch directory.
+
+The proposal returns:
+
+1. the counted corpus and exclusions;
+2. upstream-intent classification;
+3. current authority, replacement, and link map;
+4. proposed module boundaries and a credible no-change option;
+5. path-by-path changes and explicit non-actions;
+6. separate skill and global decisions, with new `GLOBAL.md` defaulting to none;
+7. compatibility, carry, and upstream interaction plan;
+8. ticket recommendation, validation plan, risks, and human acceptance choices.
+
+Only explicit human acceptance authorizes implementation. Adoption never
+prunes stale or undeclared artifacts; proposals report them for deliberate
+disposition.
+
+Not every exploratory proposal needs a ticket. A proposal that crosses
+sessions, is issued for human review, or records an acceptance or rejection
+SHOULD use a beads ticket as its durable lifecycle handle. Since scratch is
+ignored, consequential findings must be summarized in that ticket or promoted
+to committed design evidence.
+
+<a id="doc-constitution-adoption-assessment"></a>
+## What The Pilot Must Establish
+
+Before migration becomes a general target, pilots should show repeatable
+improvement in:
+
+- finding the canonical current account;
+- loading useful skill depth without duplicate bodies;
+- reducing monolith history while keeping global context coherent and visible;
+- using ticket-derived anchors without ticket bureaucracy;
+- synthesizing stable docs without losing design provenance;
+- filtering and carrying workspace-only work across upstream changes;
+- producing contributions that remain native to upstream projects.
+
+Record recurring success and friction as design evidence. The complete
+proposal procedure and cross-comparison live in
+[`adoption-syn0.sol56x.md`](/design/doc-constitution/adoption-syn0.sol56x.md).
 
 <a id="doc-constitution-references"></a>
 # Durable Referentiability
@@ -640,9 +770,10 @@ error, or materially misleading instruction. Historical artifacts retain the
 constitution they actually used. Durable anchors receive compatibility aliases
 rather than silent reassignment.
 
-The first constitution remains draft while `rekon-doc-constitution-torch` is
-open. Review should resolve or explicitly preserve material tensions; model
-agreement alone is not human acceptance.
+The first human torch-pass resolves its initial material tensions, but the
+constitution remains draft during the adoption pilot. Stable status requires
+evidence from real modules and an operable assembly/validation path, not model
+agreement alone.
 
 <a id="doc-constitution-lineage"></a>
 # Lineage And Cross-References
@@ -666,6 +797,9 @@ agreement alone is not human acceptance.
   warning, and concrete assembly pressure.
 - [`syn0.gpt56t.md`](/design/doc-constitution/syn0.gpt56t.md) **records** the
   cross-comparison, selected choices, and tool questions deliberately deferred.
+- [`adoption-syn0.sol56x.md`](/design/doc-constitution/adoption-syn0.sol56x.md)
+  **reconciles** the independent Sol Max and Flash Max proposals into the pilot,
+  small-project, upstream-fit, and carry-island policy.
 - [`AGENTS.md`](/AGENTS.md) **contains** the existing operational practice this
   module will progressively own through `GLOBAL.md` and future assembly.
 - Beads epic `rekon-doc-constitution` **tracks** acceptance and demonstrates
