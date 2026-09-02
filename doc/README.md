@@ -851,6 +851,9 @@ agreement alone.
 - [`adoption.md`](/design/doc-constitution/adoption.md) **records** the
   reconciled pilot, small-project, upstream-fit, and carry-island policy and
   its accepted revisions; the full wave is preserved beside it.
+- The [design record index](/design/doc-constitution/README.md) **catalogues**
+  the constitution's evidence wave and accepted tips; pointers here target
+  stable tip names so retargeting a tip never breaks these links.
 - [`AGENTS.md`](/AGENTS.md) **contains** the existing operational practice this
   module will progressively own through `GLOBAL.md` and future assembly.
 - Beads epic `rekon-doc-constitution` **tracks** acceptance and demonstrates
