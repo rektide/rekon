@@ -1,3 +1,10 @@
+---
+id: doc-constitution
+order: 100
+source: doc/README.md
+status: draft
+---
+
 # Documentation
 
 Knowledge lives in domain modules: `README.md` is canonical, `SKILL.md` is an
