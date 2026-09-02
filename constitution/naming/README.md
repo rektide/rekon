@@ -17,10 +17,12 @@ agents, humans, computations — and how those names join the namespace that
 topics and issues already share. A concern of the
 [constitution](/constitution/README.md), subdividing into:
 
-- [`exploration/`](/constitution/naming/exploration/) — the naming-agents
-  wave workspace. Start at
-  [`proposal0.glm53m.md`](/constitution/naming/exploration/proposal0.glm53m.md):
-  the concrete center, the swirl of ideas with identifiers, and the held
-  launch kit for the five-agent exploration.
+- [`exploration/`](/constitution/naming/exploration/) — the naming wave
+  workspace. Start at
+  [`proposal1.glm53m.md`](/constitution/naming/exploration/proposal1.glm53m.md),
+  the current tip: the center, the swirl with identifiers, the name grammar
+  this concern demonstrates, and the held launch kit for the five-agent
+  exploration. [`proposal0.glm53m.md`](/constitution/naming/exploration/proposal0.glm53m.md)
+  is retained as the critiqued first pass.
 
 Nothing here is accepted practice yet; everything is under exploration.
