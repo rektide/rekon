@@ -37,6 +37,11 @@ artifact.
 - [`syn0.gpt56t.md`](syn0.gpt56t.md) compares the drafts, records the choices
   made while producing the first canonical constitution, and preserves the
   unresolved tool-design questions.
+- [`adoption0.sol56x.md`](adoption0.sol56x.md) and
+  [`adoption0.glm53fm.md`](adoption0.glm53fm.md) independently develop the
+  prospective pilot, small-project proposal, and upstream carry policy.
+- [`adoption-syn0.sol56x.md`](adoption-syn0.sol56x.md) reconciles that pair and
+  records the policy integrated into the canonical constitution.
 
 ## Status
 
