@@ -1,7 +1,7 @@
 ---
 id: doc-constitution
 order: 100
-source: doc/README.md
+source: /doc/README.md
 status: draft
 ---
 

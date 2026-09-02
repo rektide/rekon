@@ -7,6 +7,8 @@ resource: /doc/agents-assembly.md
 tags: [documentation, agents, tooling]
 status: draft
 generated: { by: "model:glm-5.3-flash", at: 2026-09-02T02:00:00Z }
+verified: { by: "model:glm-5.3-flash", at: 2026-09-02T02:45:00Z }
+stale_after: 2026-12-01
 extensions:
   ticket: rekon-agents-maintenance-assembler
   fragment_ticket: rekon-doc-constitution-global
@@ -45,6 +47,10 @@ This is the implementation of
 contract lives there; this document owns the exact metadata, manifest, and
 command syntax.
 
+Implementation status: the assembler has been implemented and independently
+standards/spec reviewed (2026-09-02); fixes from that review are applied and
+covered by tests in [`src/agents/assemble.test.ts`](/src/agents/assemble.test.ts).
+
 <a id="agents-assembly-status"></a>
 
 ## Migration Status: Deliberately Deferred
@@ -75,7 +81,7 @@ assembled prose.
 ---
 id: doc-constitution
 order: 100
-source: doc/README.md
+source: /doc/README.md
 status: draft
 ---
 
@@ -88,11 +94,27 @@ status: draft
 | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `id`     | Stable lowercase kebab-case identifier (`[a-z0-9]+(-[a-z0-9]+)*`). Unique across the manifest. Use the module's local knowledge ID, matching the [shared ticket and anchor namespace](/doc/README.md#doc-constitution-namespace). |
 | `order`  | Unique integer. Assembly is ascending by `order`, regardless of manifest order. Leave gaps (100, 200, ...) so new fragments can slot between neighbors without renumbering.                                                       |
-| `source` | The fragment's canonical source README, relative to the repository root. Recorded in output provenance.                                                                                                                           |
+| `source` | The fragment's canonical source README as a **bundle-root-relative** path: leading `/`, normalized (no `.` or `..` segments), no control characters, no `--`. Recorded in output provenance.                                      |
 | `status` | `draft` or `stable`. Ambient context should not broadcast unsettled design; volatile knowledge faces a higher stability bar.                                                                                                      |
 
 Validation failures are errors, not warnings: missing or invalid metadata,
 duplicate `id`, and duplicate `order` all stop assembly with a thrown error.
+
+### Link destinations
+
+Fragments assemble into documents that live somewhere else, so
+location-ambiguous links would silently retarget. The assembler therefore
+**rejects** any link, image, or reference-definition destination that resolves
+against the fragment's own directory (marked resolves reference-style links
+before the check). Permitted destinations are location-independent:
+
+- anchors (`#section`) and empty self-references;
+- bundle-root-relative paths (`/doc/README.md`) — a single leading `/`;
+- protocol URIs (`https://…`, `mailto:…`, `file:…`).
+
+Destinations inside code spans and code blocks are not links and are ignored.
+When a fragment needs to point at module material, use the bundle-root form,
+not a relative hop.
 
 <a id="agents-assembly-manifest"></a>
 
@@ -110,8 +132,10 @@ there is no auto-discovery of `GLOBAL.md` files.
 
 - Paths inside the manifest resolve **relative to the manifest file's
   directory**, so a manifest is movable with its declaration intact.
-- `fragments` must be a non-empty array of path strings; the same file may not
-  be declared twice (two spellings that resolve to one file are rejected).
+- `fragments` must be a non-empty array of path strings. Each entry must be
+  relative, normalized (no `.`, `..`, or redundant separators), and contained
+  under the manifest's directory — absolute paths and traversal escapes are
+  rejected. The same file may not be declared twice.
 - `output` is a path string, also relative to the manifest directory.
 - Duplicate fragment `id`s and `order`s across the declared set are rejected.
 
@@ -171,12 +195,30 @@ Edit the fragment sources and re-run `node rekon.ts agents`;
 `node rekon.ts agents --check` detects hand edits to this file.
 -->
 
-<!-- rekon-fragment: id=doc-constitution order=100 path=doc/GLOBAL.md source=doc/README.md -->
+<!-- rekon-fragment: id=doc-constitution order=100 path=doc/GLOBAL.md source=/doc/README.md -->
 
 # Documentation
 
 ...
 ```
+
+<a id="agents-assembly-context-cost"></a>
+
+### Context Cost
+
+Context is a budget, so the assembler reports real UTF-8 byte costs, never JS
+string lengths (which undercount multibyte text). `assemble` exposes
+`proseBytes` per fragment and `totalBytes` for the assembled document; the
+command prints both per fragment and in total, making each fragment's ambient
+price visible next to its identity.
+
+### Provenance Safety
+
+Provenance fields are interpolated into HTML comments, so identity values are
+guarded: `id` is restricted to kebab-case, `source` and manifest fragment
+paths reject `--`/`-->` sequences and control characters, and `order` is an
+integer. A hostile or careless metadata value cannot break out of the
+provenance comment or inject markup into the generated file.
 
 <a id="agents-assembly-policy"></a>
 
@@ -189,14 +231,21 @@ Edit the fragment sources and re-run `node rekon.ts agents`;
   line with workspace conventions.
 - **Provenance is mandatory.** Every assembled fragment records its `id`,
   `order`, fragment path, and canonical `source` README, keeping the ambient
-  contribution traceable to its module.
+  contribution traceable to its module. Field validation (see
+  [provenance safety](#agents-assembly-context-cost)) keeps those comments
+  well-formed.
 - **Failures surface.** Missing files, invalid manifests, bad metadata,
-  duplicate identity, and structurally invalid Markdown all throw with the
-  offending path in the message; nothing is silently skipped.
+  duplicate identity, structurally invalid Markdown, and fragment-relative
+  link destinations all throw with the offending path in the message; nothing
+  is silently skipped. `--check` compares UTF-8 buffers and reports the true
+  first differing byte; only a missing output counts as missing — permission
+  and I/O errors surface.
 
 Markdown structure is validated with the [marked](https://github.com/markedjs/marked)
-lexer: a fragment must be meaningful Markdown led by exactly one top-level
-(`#`) heading, with content beyond that heading. Frontmatter is parsed with
+lexer: a fragment must be meaningful Markdown with exactly one top-level (`#`)
+heading, in leading position, with content beyond that heading, and no
+fragment-relative link destinations (see [link destinations](#agents-assembly-metadata)).
+Frontmatter is parsed with
 [gray-matter](https://github.com/jonschlinkert/gray-matter); command wiring
 uses [gunshi](https://github.com/kazupon/gunshi).
 
