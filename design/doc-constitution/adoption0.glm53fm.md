@@ -11,7 +11,7 @@ status: draft
 generated: { by: "model:glm-5.3-flash-max", at: 2026-09-01T22:15:08-04:00 }
 sources:
   - id: constitution
-    resource: /doc/README.md
+    resource: /constitution/README.md
     title: Self-Explaining Documentation Constitution (draft)
     author: model:gpt-5.6-terra
   - id: synthesis
@@ -31,10 +31,10 @@ sources:
 <a id="adoption-clause"></a>
 # Adoption And Migration Restraint
 
-The constitution ([`/doc/README.md`](/doc/README.md)) already says it is a
+The constitution ([`/constitution/README.md`](/constitution/README.md)) already says it is a
 prospective default: existing documents are grandfathered and adoption is not a
 demand to rewrite the corpus
-([`doc-constitution-lifecycle-existing`](/doc/README.md#doc-constitution-lifecycle-existing)).
+([`doc-constitution-lifecycle-existing`](/constitution/README.md#doc-constitution-lifecycle-existing)).
 This artifact turns that posture into an operable adoption clause responding to
 a specific human direction (Sep 1 2026):
 
@@ -55,17 +55,17 @@ a specific human direction (Sep 1 2026):
    upstream layouts.
 
 Sections below deliver, in order: the normative clause ready to synthesize into
-[`/doc/README.md`](/doc/README.md); the operational procedure for the <16-doc
+[`/constitution/README.md`](/constitution/README.md); the operational procedure for the <16-doc
 proposal flow; the upstream-intent decision table; safeguards; and unresolved
 ambiguities for human attention.
 
 ---
 
 <a id="adoption-clause-normative"></a>
-# 1. Normative Adoption Clause (for `/doc/README.md`)
+# 1. Normative Adoption Clause (for `/constitution/README.md`)
 
 Ready to synthesize as a new section following
-[`doc-constitution-lifecycle-existing`](/doc/README.md#doc-constitution-lifecycle-existing).
+[`doc-constitution-lifecycle-existing`](/constitution/README.md#doc-constitution-lifecycle-existing).
 Suggested anchor IDs follow the constitution's inductive refinement
 (`doc-constitution-adoption-*` under `doc-constitution`).
 
@@ -118,7 +118,7 @@ Notes for the synthesizer:
   the constitution's proportional-process principle.
 - "Explicitly documented local equivalent" inherits the constitution's
   permission for local deviation
-  ([`doc-constitution-scope`](/doc/README.md#doc-constitution-scope)); where
+  ([`doc-constitution-scope`](/constitution/README.md#doc-constitution-scope)); where
   the documentation of the deviation lives is an open question
   (see §5.6).
 - The threshold number (16) is stated as a constitutional constant but is
@@ -201,7 +201,7 @@ Machinery decisions are conservative by default:
 
 - `SKILL.md` symlinks: propose only where on-demand routing value is concrete;
   state the discovery caveat from
-  [`doc-constitution-skill`](/doc/README.md#doc-constitution-skill).
+  [`doc-constitution-skill`](/constitution/README.md#doc-constitution-skill).
 - `GLOBAL.md` fragments: default to **none**. Ambient context is a budget and
   a fresh migration has not earned ambient load.
 - Anchors and OKF frontmatter: proposed for module READMEs, not sprayed over
@@ -286,7 +286,7 @@ or the workspace, not the shared tree.
    torch passes (`rekon-doc-constitution-torch`). No batch conversions, no
    compliance sweeps, no "bring the corpus into conformance" passes.
    Grandfathering
-   ([`doc-constitution-lifecycle-existing`](/doc/README.md#doc-constitution-lifecycle-existing))
+   ([`doc-constitution-lifecycle-existing`](/constitution/README.md#doc-constitution-lifecycle-existing))
    remains in force; repair happens only when a file is materially reworked
    anyway.
 3. **No pruning, ever, by adoption.** Adoption never deletes or relocates-to-
@@ -308,7 +308,7 @@ or the workspace, not the shared tree.
    adoption.
 8. **Scratch discipline.** Proposal artifacts are model-suffixed, live in
    ignored paths, and never overwrite peers — the same-wave rules of
-   [`doc-constitution-history`](/doc/README.md#doc-constitution-history)
+   [`doc-constitution-history`](/constitution/README.md#doc-constitution-history)
    apply to proposals too.
 9. **Auditability.** Every proposal carries the count command and raw output
    so its classification can be reproduced; miscounts invalidate the proposal,
@@ -359,8 +359,8 @@ or the workspace, not the shared tree.
 <a id="adoption-clause-crossrefs"></a>
 # Cross-References
 
-- [`/doc/README.md`](/doc/README.md)
-  [**Prospective Adoption And Existing Files**](/doc/README.md#doc-constitution-lifecycle-existing)
+- [`/constitution/README.md`](/constitution/README.md)
+  [**Prospective Adoption And Existing Files**](/constitution/README.md#doc-constitution-lifecycle-existing)
   — the clause here operationalizes its grandfathering posture and adds the
   <16 proposal path and upstream boundaries it does not yet cover.
 - [`syn0.gpt56t.md`](/design/doc-constitution/syn0.gpt56t.md) — records

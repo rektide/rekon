@@ -3,7 +3,7 @@ name: agents-assembly
 description: Deterministic AGENTS.md assembly from declared GLOBAL.md fragments - fragment metadata, manifest format, and the rekon agents command.
 type: Reference
 title: Assembling AGENTS.md from GLOBAL.md fragments
-resource: /doc/agents-assembly.md
+resource: /constitution/agents-assembly.md
 tags: [documentation, agents, tooling]
 status: draft
 generated: { by: "model:glm-5.3-flash", at: 2026-09-02T02:00:00Z }
@@ -14,11 +14,11 @@ extensions:
   fragment_ticket: rekon-doc-constitution-global
 sources:
   - id: constitution
-    resource: /doc/README.md
+    resource: /constitution/README.md
     title: Self-Explaining Documentation Constitution
     author: model:gpt-5.6-terra
   - id: global-fragment
-    resource: /doc/GLOBAL.md
+    resource: /constitution/GLOBAL.md
     title: Constitution ambient fragment
     author: project:rekon
   - id: marked
@@ -42,8 +42,8 @@ document deterministically with per-fragment provenance. Contributors edit
 their local fragment, not a monolith.
 
 This is the implementation of
-[Assembled `AGENTS.md`](/doc/README.md#doc-constitution-global-assembly) in the
-[Self-Explaining Documentation Constitution](/doc/README.md). The module
+[Assembled `AGENTS.md`](/constitution/README.md#doc-constitution-global-assembly) in the
+[Self-Explaining Documentation Constitution](/constitution/README.md). The module
 contract lives there; this document owns the exact metadata, manifest, and
 command syntax.
 
@@ -57,7 +57,7 @@ covered by tests in [`src/agents/assemble.test.ts`](/src/agents/assemble.test.ts
 
 **No production manifest exists, and the current hand-maintained
 [`/AGENTS.md`](/AGENTS.md) is untouched.** Only one fragment
-([`/doc/GLOBAL.md`](/doc/GLOBAL.md)) has been extracted so far. A production
+([`/constitution/GLOBAL.md`](/constitution/GLOBAL.md)) has been extracted so far. A production
 manifest that would overwrite the monolith must not be created until every
 section it contains has a declared `GLOBAL.md` source fragment; otherwise
 assembly would silently discard unpromoted operating rules.
@@ -81,7 +81,7 @@ assembled prose.
 ---
 id: doc-constitution
 order: 100
-source: /doc/README.md
+source: /constitution/README.md
 status: draft
 ---
 
@@ -92,7 +92,7 @@ status: draft
 
 | Field    | Requirement                                                                                                                                                                                                                       |
 | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `id`     | Stable lowercase kebab-case identifier (`[a-z0-9]+(-[a-z0-9]+)*`). Unique across the manifest. Use the module's local knowledge ID, matching the [shared ticket and anchor namespace](/doc/README.md#doc-constitution-namespace). |
+| `id`     | Stable lowercase kebab-case identifier (`[a-z0-9]+(-[a-z0-9]+)*`). Unique across the manifest. Use the module's local knowledge ID, matching the [shared ticket and anchor namespace](/constitution/README.md#doc-constitution-namespace). |
 | `order`  | Unique integer. Assembly is ascending by `order`, regardless of manifest order. Leave gaps (100, 200, ...) so new fragments can slot between neighbors without renumbering.                                                       |
 | `source` | The fragment's canonical source README as a **bundle-root-relative** path: leading `/`, normalized (no `.` or `..` segments), no control characters, no `--`. Recorded in output provenance.                                      |
 | `status` | `draft` or `stable`. Ambient context should not broadcast unsettled design; volatile knowledge faces a higher stability bar.                                                                                                      |
@@ -111,7 +111,7 @@ against the fragment's own directory (marked resolves reference-style links
 before the check). Permitted destinations are location-independent:
 
 - anchors (`#section`) and empty self-references;
-- bundle-root-relative paths (`/doc/README.md`) — a single leading `/`;
+- bundle-root-relative paths (`/constitution/README.md`) — a single leading `/`;
 - protocol URIs (`https://…`, `mailto:…`, `file:…`).
 
 Destinations inside code spans and code blocks are not links and are ignored.
@@ -127,7 +127,7 @@ there is no auto-discovery of `GLOBAL.md` files.
 
 ```json
 {
-  "fragments": ["doc/GLOBAL.md", "modules/other/GLOBAL.md"],
+  "fragments": ["constitution/GLOBAL.md", "modules/other/GLOBAL.md"],
   "output": "AGENTS.md"
 }
 ```
@@ -145,7 +145,7 @@ there is no auto-discovery of `GLOBAL.md` files.
   fragment.
 - Duplicate fragment `id`s and `order`s across the declared set are rejected.
 
-The default manifest path is `doc/agents.manifest.json`. It does not exist yet
+The default manifest path is `constitution/agents.manifest.json`. It does not exist yet
 (see [migration status](#agents-assembly-status)).
 
 <a id="agents-assembly-command"></a>
@@ -157,18 +157,18 @@ The assembler is the `agents` command of the
 
 ```sh
 # Assemble to the manifest's declared output
-node rekon.ts agents --manifest doc/agents.manifest.json
+node rekon.ts agents --manifest constitution/agents.manifest.json
 
 # Verify without writing; exits nonzero and reports the first differing byte when stale
-node rekon.ts agents --manifest doc/agents.manifest.json --check
+node rekon.ts agents --manifest constitution/agents.manifest.json --check
 
 # Write to an alternate path (resolved against the working directory)
-node rekon.ts agents --manifest doc/agents.manifest.json --output /tmp/AGENTS.preview.md
+node rekon.ts agents --manifest constitution/agents.manifest.json --output /tmp/AGENTS.preview.md
 ```
 
 | Option           | Default                    | Meaning                                                                          |
 | ---------------- | -------------------------- | -------------------------------------------------------------------------------- |
-| `-m, --manifest` | `doc/agents.manifest.json` | Manifest path.                                                                   |
+| `-m, --manifest` | `constitution/agents.manifest.json` | Manifest path.                                                                   |
 | `-o, --output`   | manifest's `output`        | Output override, resolved against the working directory.                         |
 | `-c, --check`    | off                        | Compare assembled bytes to the output; fail nonzero on mismatch without writing. |
 
@@ -201,7 +201,7 @@ Edit the fragment sources and re-run `node rekon.ts agents`;
 `node rekon.ts agents --check` detects hand edits to this file.
 -->
 
-<!-- rekon-fragment: id=doc-constitution order=100 path=doc/GLOBAL.md source=/doc/README.md -->
+<!-- rekon-fragment: id=doc-constitution order=100 path=constitution/GLOBAL.md source=/constitution/README.md -->
 
 # Documentation
 
@@ -261,10 +261,10 @@ uses [gunshi](https://github.com/kazupon/gunshi).
 
 ## Cross-References
 
-- [`/doc/README.md#doc-constitution-global-assembly`](/doc/README.md#doc-constitution-global-assembly)
+- [`/constitution/README.md#doc-constitution-global-assembly`](/constitution/README.md#doc-constitution-global-assembly)
   **specifies** the assembler's obligations (identity, order, provenance,
   duplicate rejection, generated markers); this document implements them.
-- [`/doc/GLOBAL.md`](/doc/GLOBAL.md) **is** the first declared fragment and
+- [`/constitution/GLOBAL.md`](/constitution/GLOBAL.md) **is** the first declared fragment and
   the worked example of fragment metadata.
 - [`/AGENTS.md`](/AGENTS.md) **is** the future assembly target, still
   hand-maintained until its sections each gain a fragment source.

@@ -12,7 +12,7 @@ extensions:
   independence: Written without reading the same-wave Flash Max proposal.
 sources:
   - id: canonical-constitution
-    resource: /doc/README.md
+    resource: /constitution/README.md
     title: Self-Explaining Documentation Constitution
     author: model:gpt-5.6-terra with human direction
   - id: constitution-synthesis

@@ -11,7 +11,7 @@ import { dirname, isAbsolute, normalize, relative, resolve } from "node:path";
  * must not be overwritten until every section it contains has a declared
  * `GLOBAL.md` source fragment.
  */
-export const DEFAULT_MANIFEST = "doc/agents.manifest.json";
+export const DEFAULT_MANIFEST = "constitution/agents.manifest.json";
 
 /**
  * A path declared inside a manifest, relative to the manifest file's
@@ -165,7 +165,7 @@ function toBundleRootRelativePath(value: unknown, displayPath: string): BundleRo
     value.length < 2
   ) {
     throw new Error(
-      `${displayPath}: frontmatter 'source' must be a bundle-root-relative path starting with '/' (e.g. /doc/README.md)`,
+      `${displayPath}: frontmatter 'source' must be a bundle-root-relative path starting with '/' (e.g. /constitution/README.md)`,
     );
   }
   const rest = value.slice(1);

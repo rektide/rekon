@@ -110,7 +110,7 @@ own history, and its own claim on the global stage. The compact version:
 ## C1.4 Self-similarity requirement
 
 The constitution must land practicing its own rules: it is itself a knowledge module
-(`doc/README.md` canonical, `doc/SKILL.md → README.md`, `doc/GLOBAL.md` carrying the
+(`constitution/README.md` canonical, `constitution/SKILL.md → README.md`, `constitution/GLOBAL.md` carrying the
 distilled ambient core). A constitution whose storage shape contradicts its content is
 a memo, not a constitution.
 
@@ -151,7 +151,7 @@ break on clone, move, or archive.
 ## C2.4 GLOBAL.md is a claim on ambient attention, not a copy
 
 `GLOBAL.md` holds what must be true even when nobody loaded anything: a pointer to
-the module ("X exists; load doc/SKILL.md for depth") plus the few norms that must hold
+the module ("X exists; load constitution/SKILL.md for depth") plus the few norms that must hold
 in every session. It should mostly **point, rarely restate**. When a rule must appear
 verbatim ambiently, that duplication is deliberate, tiny, and owned — it is the
 module paying rent on global context.
@@ -162,7 +162,7 @@ Deterministic tooling assembles AGENTS.md from declared fragments:
 
 ```mermaid
 flowchart LR
-    fragDoc["doc/GLOBAL.md<br/>(constitution core)"] --> asm["assembler<br/>(declared manifest order)"]
+    fragDoc["constitution/GLOBAL.md<br/>(constitution core)"] --> asm["assembler<br/>(declared manifest order)"]
     fragBeads["beads skill GLOBAL.md"] --> asm
     fragJJ["jj skill GLOBAL.md"] --> asm
     fragN["... module GLOBAL.md ..."] --> asm
@@ -360,7 +360,7 @@ law.
 ## C6.3 Presenting the opt-ins
 
 The constitution's own GLOBAL.md carries a one-line pointer: *for waves, coordinates,
-evidence rubrics, promotion, and doc-pass procedure, load `doc/SKILL.md`*.
+evidence rubrics, promotion, and doc-pass procedure, load `constitution/SKILL.md`*.
 Availability is ambient; machinery is on demand. A concrete draft of the fragment is
 Appendix A.
 
@@ -499,7 +499,7 @@ documents, acceptance criteria naming documents into existence.
 <a id="c-appendix-global"></a>
 # C12 Appendix A: Draft GLOBAL.md for the Constitution Module
 
-A concrete, reviewable artifact — what `doc/GLOBAL.md` could contain on day one:
+A concrete, reviewable artifact — what `constitution/GLOBAL.md` could contain on day one:
 
 ```markdown
 ## Documents
@@ -516,7 +516,7 @@ before headings — never renderer-generated slugs. Cross-references explain rel
 Label claims as observed / inference / recommendation / hypothesis.
 
 Waves, coordinates, evidence rubrics, design→doc promotion, doc-pass: load
-`doc/SKILL.md`.
+`constitution/SKILL.md`.
 ```
 
 That fragment is the whole ambient cost of this constitution: nine lines, one

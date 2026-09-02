@@ -1,7 +1,7 @@
 ---
 id: doc-constitution
 order: 100
-source: /doc/README.md
+source: /constitution/README.md
 status: draft
 ---
 
@@ -24,4 +24,4 @@ lifecycle and may forward-anchor unwritten knowledge, but documents and sections
 do not require ticket parity. Cross-references explain why their targets matter.
 
 For waves, evidence classes, ticket-anchor details, promotion, history, and
-opt-in research patterns, load `/home/rektide/src/rekon/doc/SKILL.md`.
+opt-in research patterns, load `/home/rektide/src/rekon/constitution/SKILL.md`.

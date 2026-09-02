@@ -23,7 +23,7 @@ sources:
     title: Adoption, migration restraint, and upstream intent
     author: model:glm-5.3-flash-max
   - id: canonical-constitution
-    resource: /doc/README.md
+    resource: /constitution/README.md
     title: Self-Explaining Documentation Constitution
     author: model:gpt-5.6-terra
   - id: human-decisions
@@ -38,7 +38,7 @@ sources:
 The [synthesis](adoption-syn0.sol56x.md) left the adoption policy sound but with
 three deliberately unsettled points. The human settled all three on 2026-09-02.
 This revision records those decisions and the amended clauses now integrated
-into [`/doc/README.md`](/doc/README.md#doc-constitution-adoption). The wave-0
+into [`/constitution/README.md`](/constitution/README.md#doc-constitution-adoption). The wave-0
 proposals and synthesis remain untouched history.
 
 <a id="doc-constitution-adoption-revision-count"></a>
@@ -92,7 +92,7 @@ the canonical adoption clauses no longer use "documented."
 ## Amended Canonical Clauses
 
 The following replacements are integrated into
-[`/doc/README.md`](/doc/README.md#doc-constitution-adoption):
+[`/constitution/README.md`](/constitution/README.md#doc-constitution-adoption):
 
 ```markdown
 | Upstream intent absent or uncertain | Use a domain-grouped **carry island**,
@@ -134,7 +134,7 @@ not manipulate exclusions to qualify.
 - [`adoption0.glm53fm.md`](adoption0.glm53fm.md) **raised** per-repo versus
   per-root counting and the deviation-documentation question in its
   ambiguities section.
-- [`/doc/README.md#doc-constitution-adoption`](/doc/README.md) **carries** the
+- [`/constitution/README.md#doc-constitution-adoption`](/constitution/README.md) **carries** the
   amended clauses as the canonical account.
 - The grandfathered `.design/` constitutions (is-tree, dolt-rs, execsnoop-rc,
   opencode-otel, first-compute) **precede** this spelling decision and keep

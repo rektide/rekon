@@ -17,7 +17,7 @@ sources:
 # Document Constitution Design Record
 
 This directory preserves the argument behind the maintained constitution at
-[`/doc/README.md`](/doc/README.md). The files here are evidence and design
+[`/constitution/README.md`](/constitution/README.md). The files here are evidence and design
 history, not competing current guidance.
 
 ## Independent Drafts
@@ -56,5 +56,5 @@ artifact.
 
 The constitution remains `status: draft` while its adoption pilot shakes out;
 the initial torch-pass review is closed. Accepted changes belong in the
-coherent canonical [`/doc/README.md`](/doc/README.md); materially distinct
+coherent canonical [`/constitution/README.md`](/constitution/README.md); materially distinct
 proposals belong in new model-suffixed files here.

@@ -3,7 +3,7 @@ name: doc
 description: Write and evolve referentiable knowledge modules across design/ and doc/. Use when creating documentation, research waves, skill-backed topic directories, GLOBAL.md fragments, semantic anchors, or ticket-linked knowledge.
 type: Constitution
 title: Self-Explaining Documentation Constitution
-resource: /doc/README.md
+resource: /constitution/README.md
 tags: [documentation, design, skills, agents, beads, hypermedia]
 status: draft
 generated: { by: "model:gpt-5.6-terra", at: 2026-09-01T17:32:46-04:00 }
@@ -11,8 +11,8 @@ extensions:
   ticket: rekon-doc-constitution
   local_knowledge_id: doc-constitution
   qualified_knowledge_id: rekon-doc-constitution
-  skill: /doc/SKILL.md
-  global_fragment: /doc/GLOBAL.md
+  skill: /constitution/SKILL.md
+  global_fragment: /constitution/GLOBAL.md
 sources:
   - id: synthesis
     resource: /design/doc-constitution/syn0.gpt56t.md
@@ -538,7 +538,7 @@ The project prefix is implicit in local document anchors:
 | Local knowledge ID and anchor               | `doc-constitution`                |
 | Qualified knowledge ID                      | `rekon-doc-constitution`          |
 | Corresponding beads ticket, when one exists | `rekon-doc-constitution`          |
-| Resolvable local target                     | `/doc/README.md#doc-constitution` |
+| Resolvable local target                     | `/constitution/README.md#doc-constitution` |
 
 The qualified form is mechanically:
 
@@ -742,7 +742,7 @@ The assembler specified by `rekon-agents-maintenance-assembler` MUST:
 
 The exact manifest and metadata syntax belong to that implementation ticket;
 the implemented assembler is documented in
-[`/doc/agents-assembly.md`](/doc/agents-assembly.md). Until a production
+[`/constitution/agents-assembly.md`](/constitution/agents-assembly.md). Until a production
 manifest exists, `AGENTS.md` remains hand-maintained and `GLOBAL.md` fragments
 can land beside it as declared future inputs.
 

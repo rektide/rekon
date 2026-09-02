@@ -15,7 +15,7 @@ extensions:
   global_fragment: none (deliberate; default-zero for new modules)
 sources:
   - id: constitution
-    resource: /doc/README.md
+    resource: /constitution/README.md
     title: Self-Explaining Documentation Constitution
     author: model:gpt-5.6-terra with human direction
   - id: synthesis
@@ -23,7 +23,7 @@ sources:
     title: Constitution synthesis and deferred tool questions
     author: model:gpt-5.6-terra
   - id: assembler-doc
-    resource: /doc/agents-assembly.md
+    resource: /constitution/agents-assembly.md
     title: AGENTS.md assembly manifest and CLI
     author: agent:flash with review fixes
   - id: writing-great-skills
@@ -45,7 +45,7 @@ canonical `README.md`, may expose it on demand as a skill, and may contribute a
 small ambient fragment to assembled global context.
 
 It is the operational companion to the
-[constitution](/doc/README.md#doc-constitution). The constitution says what a
+[constitution](/constitution/README.md#doc-constitution). The constitution says what a
 module *is*; this pattern says when and how to *make* one.
 
 > One body, three exposures: **read** the README, **load** the SKILL,
@@ -57,7 +57,7 @@ module *is*; this pattern says when and how to *make* one.
 Skillify a section when it has become a *topic*: a cohesive domain a reader or
 agent could name in two words (`jj`, `beads`, `waves`, `rust-deps`). Apply the
 tiering tests from the constitution's
-[ambient cut](/doc/README.md#doc-constitution-context-ambient):
+[ambient cut](/constitution/README.md#doc-constitution-context-ambient):
 
 | Question | If yes |
 |---|---|
@@ -101,7 +101,7 @@ module *earns*; neither follows automatically from creating the directory.
 A skill-exposed README must carry routing metadata in its frontmatter — `name`,
 a `description` written *for routing* (see below), and an honest `status`
 (`draft` modules are loadable but flagged unstable). `doc/` already practices
-this: [`/doc/SKILL.md`](/doc/SKILL.md) → `/doc/README.md`.
+this: [`/constitution/SKILL.md`](/constitution/SKILL.md) → `/constitution/README.md`.
 
 <a id="skillify-descriptions"></a>
 # Descriptions Route; Bodies Do
@@ -141,7 +141,7 @@ Defaults that keep the budget honest:
 - **Point, rarely restate.** A pointer plus one or two guardrails beats a
   compressed copy of the README.
 - **Fragments assemble; they are not the monolith relocated.** See
-  [agents-assembly](/doc/agents-assembly.md) for the manifest, provenance
+  [agents-assembly](/constitution/agents-assembly.md) for the manifest, provenance
   markers, and `rekon agents --check`.
 
 <a id="skillify-procedure"></a>
@@ -203,9 +203,9 @@ Defaults that keep the budget honest:
 <a id="skillify-cross-references"></a>
 # Cross-References
 
-- [/doc/README.md](/doc/README.md#doc-constitution) **governs** this pattern:
+- [/constitution/README.md](/constitution/README.md#doc-constitution) **governs** this pattern:
   module contract, namespace, ambient tests, promotion.
-- [/doc/agents-assembly.md](/doc/agents-assembly.md) **implements** the
+- [/constitution/agents-assembly.md](/constitution/agents-assembly.md) **implements** the
   assembly half: manifests, provenance, `rekon agents`.
 - [syn0.gpt56t.md](/design/doc-constitution/syn0.gpt56t.md) **defers** the tool
   questions this pattern inherits.

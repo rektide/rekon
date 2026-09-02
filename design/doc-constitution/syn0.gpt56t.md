@@ -66,7 +66,7 @@ Markdown URL resolves the latter. No new punctuation language is needed.
 
 ### Mutable README, durable evidence
 
-The canonical `doc/README.md` is a real maintained file, not a symlink to one
+The canonical `constitution/README.md` is a real maintained file, not a symlink to one
 wave. Design drafts remain exact, immutable evidence. This preserves both an
 usable current account and honest history.
 

@@ -345,12 +345,12 @@ describe("frontmatter validation", () => {
     ["missing source", { id: "x", order: 1, status: "draft" }, /'source' must be a bundle-root/],
     [
       "relative source",
-      { ...BASE_META, source: "doc/README.md" },
+      { ...BASE_META, source: "constitution/README.md" },
       /'source' must be a bundle-root-relative path starting with '\/'/,
     ],
     [
       "protocol-relative source",
-      { ...BASE_META, source: "//other/doc/README.md" },
+      { ...BASE_META, source: "//other/constitution/README.md" },
       /'source' must be a bundle-root-relative path starting with '\/'/,
     ],
     [
@@ -476,7 +476,7 @@ describe("link destination validation", () => {
     const prose = [
       "# E",
       "",
-      "[anchor](#section), [root](/doc/README.md), [site](https://example.com/x), [mail](mailto:a@b.c), [self]()",
+      "[anchor](#section), [root](/constitution/README.md), [site](https://example.com/x), [mail](mailto:a@b.c), [self]()",
     ].join("\n");
     expect(() => validateProse(prose, "a.md")).not.toThrow();
   });
@@ -668,12 +668,12 @@ describe("agents CLI end to end", () => {
     expect(await readFile(overridePath, "utf8")).toContain("# Override Example");
     await expect(stat(join(root, "declared-out.md"))).rejects.toMatchObject({ code: "ENOENT" });
 
-    // with no --manifest, the default doc/agents.manifest.json is wired in
+    // with no --manifest, the default constitution/agents.manifest.json is wired in
     // (and correctly absent: no production manifest exists)
     const missing = await runAgentsExpectingFailure();
     expect(missing.code).not.toBe(0);
     expect(`${missing.stderr ?? ""}${missing.stdout ?? ""}`).toContain(
-      "manifest not readable: doc/agents.manifest.json",
+      "manifest not readable: constitution/agents.manifest.json",
     );
   }, 30_000);
 });

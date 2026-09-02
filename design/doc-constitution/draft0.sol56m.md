@@ -375,7 +375,7 @@ local knowledge ID:   doc-constitution
 Beads ticket ID:      rekon-doc-constitution
 HTML anchor ID:       doc-constitution
 qualified ID:         rekon-doc-constitution
-resolvable location:  /doc/README.md#doc-constitution
+resolvable location:  /constitution/README.md#doc-constitution
 ```
 
 The **local form** omits the project prefix because the repository already supplies that
@@ -619,7 +619,7 @@ Use both layers:
   changed.
 
 The constitution itself should follow this model. Significant contested amendments can
-be developed under `design/`, reviewed, and then integrated into `doc/README.md`.
+be developed under `design/`, reviewed, and then integrated into `constitution/README.md`.
 Evolution should be prospective unless correcting broken references, factual errors, or
 materially misleading guidance. Existing documents need not be churned into compliance
 with every new stylistic rule.
