@@ -2,7 +2,7 @@ import matter from "gray-matter";
 import { randomUUID } from "node:crypto";
 import { mkdir, readFile, rename, writeFile } from "node:fs/promises";
 import { lexer } from "marked";
-import { dirname, resolve } from "node:path";
+import { dirname, isAbsolute, normalize, relative, resolve } from "node:path";
 
 /**
  * Default manifest path, resolved against the working directory.
@@ -13,14 +13,34 @@ import { dirname, resolve } from "node:path";
  */
 export const DEFAULT_MANIFEST = "doc/agents.manifest.json";
 
+/**
+ * A path declared inside a manifest, relative to the manifest file's
+ * directory. Parsed form: relative, normalized (no `.`, `..`, or redundant
+ * separators), and contained under the manifest directory.
+ */
+declare const manifestRelativeBrand: unique symbol;
+export type ManifestRelativePath = string & { readonly [manifestRelativeBrand]: true };
+
+/**
+ * A repository-root-relative canonical path, as declared by fragment
+ * `source` metadata. Parsed form: leading `/`, normalized, no traversal,
+ * no control characters, and no `--` that could break an HTML comment.
+ */
+declare const bundleRootRelativeBrand: unique symbol;
+export type BundleRootRelativePath = string & { readonly [bundleRootRelativeBrand]: true };
+
+/** A resolved absolute filesystem path. */
+declare const absoluteBrand: unique symbol;
+export type AbsolutePath = string & { readonly [absoluteBrand]: true };
+
 /** Identity and assembly metadata declared in a fragment's frontmatter. */
 export interface FragmentMeta {
   /** Stable fragment identity; must be unique across a manifest. */
   id: string;
   /** Assembly position; unique integer across a manifest, ascending in output. */
   order: number;
-  /** Canonical source README the fragment condenses. */
-  source: string;
+  /** Canonical source README the fragment condenses, bundle-root relative. */
+  source: BundleRootRelativePath;
   /** Maturity of the fragment. */
   status: "draft" | "stable";
 }
@@ -28,26 +48,30 @@ export interface FragmentMeta {
 /** A declared `GLOBAL.md` fragment with its frontmatter stripped. */
 export interface Fragment {
   /** Fragment path exactly as written in the manifest, relative to it. */
-  path: string;
+  path: ManifestRelativePath;
   meta: FragmentMeta;
   /** Fragment Markdown body; frontmatter omitted, newlines normalized. */
   prose: string;
+  /** UTF-8 context cost of the fragment prose, in bytes. */
+  proseBytes: number;
 }
 
 /** Explicit declaration of which fragments assemble and where output lands. */
 export interface AssemblyManifest {
   /** Fragment paths, relative to the manifest file's directory. */
-  fragments: string[];
+  fragments: ManifestRelativePath[];
   /** Output path, relative to the manifest file's directory. */
   output: string;
 }
 
 export interface AssemblyResult {
   fragments: Fragment[];
-  /** Assembled document bytes. */
+  /** Assembled document bytes as a string. */
   bytes: string;
+  /** UTF-8 length of the assembled document, in bytes. */
+  totalBytes: number;
   /** Absolute output path, with any override applied. */
-  output: string;
+  output: AbsolutePath;
 }
 
 export type CheckResult = { status: "fresh" } | { status: "stale"; detail: string };
@@ -62,14 +86,80 @@ const GENERATED_HEADER = [
 
 const ID_PATTERN = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 
+/** Control characters (including newlines) that have no place in identity fields. */
+// eslint-disable-next-line no-control-regex -- detecting control characters is this regex's purpose
+const CONTROL_CHARS = /[\u0000-\u001f\u007f]/;
+
 function errorMessage(error: unknown): string {
   return error instanceof Error ? error.message : String(error);
 }
 
+function isErrnoException(error: unknown, code: string): boolean {
+  return (
+    typeof error === "object" && error !== null && (error as NodeJS.ErrnoException).code === code
+  );
+}
+
 /**
- * Read and shape-check a manifest. Paths are kept as written; resolution
- * against the manifest directory happens when fragments are loaded.
+ * Guard a value that is interpolated into an HTML provenance comment:
+ * no `-->` that could close the comment early, no control characters.
  */
+function safeCommentText(value: string, label: string, displayPath: string): string {
+  if (value.includes("-->")) {
+    throw new Error(`${displayPath}: ${label} must not contain "-->"`);
+  }
+  if (CONTROL_CHARS.test(value)) {
+    throw new Error(`${displayPath}: ${label} must not contain control characters`);
+  }
+  return value;
+}
+
+/**
+ * Validate a manifest fragment entry: relative, normalized (no `.`, `..`,
+ * or redundant separators), and free of comment-breaking text. Containment
+ * under the manifest directory is asserted again at load time.
+ */
+function toManifestRelativePath(entry: unknown, manifestPath: string): ManifestRelativePath {
+  if (typeof entry !== "string" || entry.trim() === "") {
+    throw new Error(`manifest 'fragments' entries must be non-empty strings: ${manifestPath}`);
+  }
+  if (isAbsolute(entry)) {
+    throw new Error(
+      `manifest fragment entries must be relative paths: "${entry}" in ${manifestPath}`,
+    );
+  }
+  if (normalize(entry) !== entry) {
+    throw new Error(
+      `manifest fragment entries must be normalized paths without '.', '..', or redundant separators: "${entry}" in ${manifestPath}`,
+    );
+  }
+  safeCommentText(entry, "fragment path", manifestPath);
+  return entry as ManifestRelativePath;
+}
+
+/** Validate fragment `source` metadata as a bundle-root-relative canonical path. */
+function toBundleRootRelativePath(value: unknown, displayPath: string): BundleRootRelativePath {
+  if (typeof value !== "string" || !value.startsWith("/") || value.length < 2) {
+    throw new Error(
+      `${displayPath}: frontmatter 'source' must be a bundle-root-relative path starting with '/' (e.g. /doc/README.md)`,
+    );
+  }
+  const rest = value.slice(1);
+  if (normalize(rest) !== rest || rest.includes("..")) {
+    throw new Error(
+      `${displayPath}: frontmatter 'source' must be a normalized path without '.' or '..' segments: ${value}`,
+    );
+  }
+  if (value.includes("--")) {
+    throw new Error(`${displayPath}: frontmatter 'source' must not contain "--"`);
+  }
+  if (CONTROL_CHARS.test(value)) {
+    throw new Error(`${displayPath}: frontmatter 'source' must not contain control characters`);
+  }
+  return value as BundleRootRelativePath;
+}
+
+/** Read and shape-check a manifest, with fragment entries parsed and deduplicated. */
 export async function readManifest(manifestPath: string): Promise<AssemblyManifest> {
   let raw: string;
   try {
@@ -95,20 +185,68 @@ export async function readManifest(manifestPath: string): Promise<AssemblyManife
       `manifest 'fragments' must be a non-empty array of fragment paths: ${manifestPath}`,
     );
   }
+
+  const dir = dirname(resolve(manifestPath));
+  const seen = new Map<string, ManifestRelativePath>();
+  const entries: ManifestRelativePath[] = [];
   for (const entry of fragments) {
-    if (typeof entry !== "string" || entry.trim() === "") {
-      throw new Error(`manifest 'fragments' entries must be non-empty strings: ${manifestPath}`);
+    const path = toManifestRelativePath(entry, manifestPath);
+    const resolved = resolve(dir, path);
+    const prior = seen.get(resolved);
+    if (prior !== undefined) {
+      throw new Error(
+        `manifest lists the same fragment twice: "${prior}" and "${path}" both resolve to ${resolved}`,
+      );
     }
+    seen.set(resolved, path);
+    entries.push(path);
   }
 
   if (typeof output !== "string" || output.trim() === "") {
     throw new Error(`manifest 'output' must be a non-empty path string: ${manifestPath}`);
   }
 
-  return { fragments: fragments as string[], output };
+  return { fragments: entries, output };
 }
 
-/** Validate fragment Markdown: meaningful content led by a top-level heading. */
+/**
+ * Destinations that mean the same thing regardless of where the fragment
+ * file lives: self-references, anchors, bundle-root-relative paths, and
+ * protocol URIs. Anything else resolves against the fragment's own
+ * directory and would silently retarget when assembled elsewhere.
+ */
+function isLocationIndependent(href: string): boolean {
+  if (href === "" || href.startsWith("#")) return true;
+  if (href === "/" || (href.startsWith("/") && !href.startsWith("//"))) return true;
+  return /^[a-zA-Z][a-zA-Z0-9+.-]*:/.test(href);
+}
+
+interface LinkDestination {
+  type: string;
+  href: string;
+}
+
+/** Walk every nested token array, collecting link, image, and definition hrefs. */
+function collectLinkDestinations(value: unknown, found: LinkDestination[]): void {
+  if (Array.isArray(value)) {
+    for (const item of value) collectLinkDestinations(item, found);
+    return;
+  }
+  if (typeof value !== "object" || value === null) return;
+  const record = value as Record<string, unknown>;
+  if (typeof record.type === "string" && typeof record.href === "string") {
+    if (record.type === "link" || record.type === "image" || record.type === "def") {
+      found.push({ type: record.type, href: record.href });
+    }
+  }
+  for (const nested of Object.values(record)) collectLinkDestinations(nested, found);
+}
+
+/**
+ * Validate fragment Markdown structure: exactly one depth-1 heading in
+ * leading position, content beyond it, and no fragment-relative link or
+ * image destinations that would silently retarget once assembled.
+ */
 export function validateProse(prose: string, displayPath: string): void {
   const tokens = lexer(prose);
   const meaningful = tokens.filter((token) => token.type !== "space");
@@ -132,8 +270,26 @@ export function validateProse(prose: string, displayPath: string): void {
   if (first.text.trim() === "") {
     throw new Error(`${displayPath}: fragment top-level heading has no text`);
   }
+
+  const headings = meaningful.filter(
+    (token) => token.type === "heading" && (token as { depth: number }).depth === 1,
+  );
+  if (headings.length !== 1) {
+    throw new Error(
+      `${displayPath}: fragment must contain exactly one top-level (#) heading, found ${headings.length}`,
+    );
+  }
   if (meaningful.length < 2) {
     throw new Error(`${displayPath}: fragment needs content beyond its top-level heading`);
+  }
+
+  const destinations: LinkDestination[] = [];
+  collectLinkDestinations(tokens, destinations);
+  for (const destination of destinations) {
+    if (isLocationIndependent(destination.href)) continue;
+    throw new Error(
+      `${displayPath}: ${destination.type} destination "${destination.href}" is fragment-relative and would retarget when assembled; use a bundle-root-relative (/...) or protocol destination`,
+    );
   }
 }
 
@@ -148,12 +304,7 @@ function fragmentMeta(data: Record<string, unknown>, displayPath: string): Fragm
     throw new Error(`${displayPath}: frontmatter 'order' must be an integer`);
   }
 
-  const source = data.source;
-  if (typeof source !== "string" || source.trim() === "") {
-    throw new Error(
-      `${displayPath}: frontmatter 'source' must name the fragment's canonical source README`,
-    );
-  }
+  const source = toBundleRootRelativePath(data.source, displayPath);
 
   const status = data.status;
   if (status !== "draft" && status !== "stable") {
@@ -169,8 +320,9 @@ function normalizeProse(content: string): string {
 
 /**
  * Parse and validate fragment source text: frontmatter metadata, Markdown
- * shape, and normalized prose. The fragment body is preserved as source
- * bytes (modulo boundary whitespace/newline normalization), never rendered.
+ * shape, link destinations, and normalized prose. The fragment body is
+ * preserved as source bytes (modulo boundary whitespace/newline
+ * normalization), never rendered.
  */
 export function parseFragment(raw: string, displayPath: string): Fragment {
   if (!matter.test(raw)) {
@@ -188,11 +340,17 @@ export function parseFragment(raw: string, displayPath: string): Fragment {
     });
   }
 
+  safeCommentText(displayPath, "fragment path", displayPath);
   const meta = fragmentMeta(parsed.data, displayPath);
   const prose = normalizeProse(parsed.content);
   validateProse(prose, displayPath);
 
-  return { path: displayPath, meta, prose };
+  return {
+    path: displayPath as ManifestRelativePath,
+    meta,
+    prose,
+    proseBytes: Buffer.byteLength(prose, "utf8"),
+  };
 }
 
 async function loadFragment(dir: string, fragmentPath: string): Promise<Fragment> {
@@ -231,25 +389,27 @@ function sortFragments(fragments: Fragment[]): Fragment[] {
   return fragments.sort((a, b) => a.meta.order - b.meta.order);
 }
 
+/**
+ * Load every declared fragment. Duplicate manifest paths were already
+ * rejected by readManifest; here each declared path is asserted to stay
+ * inside the manifest directory, and the fragment reads run concurrently.
+ */
 async function loadDeclaredFragments(manifest: AssemblyManifest, dir: string): Promise<Fragment[]> {
-  const seen = new Map<string, string>();
-  const fragments: Fragment[] = [];
-  for (const fragmentPath of manifest.fragments) {
-    const resolved = resolve(dir, fragmentPath);
-    const prior = seen.get(resolved);
-    if (prior !== undefined) {
+  const pending = manifest.fragments.map((fragmentPath) => {
+    const absolute = resolve(dir, fragmentPath);
+    const contained = relative(dir, absolute);
+    if (contained.startsWith("..") || isAbsolute(contained)) {
       throw new Error(
-        `manifest lists the same fragment twice: "${prior}" and "${fragmentPath}" both resolve to ${resolved}`,
+        `manifest fragment escapes the manifest directory: "${fragmentPath}" (${absolute})`,
       );
     }
-    seen.set(resolved, fragmentPath);
-    fragments.push(await loadFragment(dir, fragmentPath));
-  }
-  return sortFragments(fragments);
+    return loadFragment(dir, fragmentPath);
+  });
+  return sortFragments(await Promise.all(pending));
 }
 
-function resolveOutput(dir: string, declared: string, override?: string): string {
-  return override !== undefined ? resolve(override) : resolve(dir, declared);
+function resolveOutput(dir: string, declared: string, override?: string): AbsolutePath {
+  return (override !== undefined ? resolve(override) : resolve(dir, declared)) as AbsolutePath;
 }
 
 /** Render the assembled document: generated marker, provenance, source prose. */
@@ -269,9 +429,11 @@ export async function assemble(
   const manifest = await readManifest(manifestPath);
   const dir = dirname(resolve(manifestPath));
   const fragments = await loadDeclaredFragments(manifest, dir);
+  const bytes = renderDocument(fragments);
   return {
     fragments,
-    bytes: renderDocument(fragments),
+    bytes,
+    totalBytes: Buffer.byteLength(bytes, "utf8"),
     output: resolveOutput(dir, manifest.output, outputOverride),
   };
 }
@@ -289,7 +451,7 @@ export async function writeAssembly(
   return result;
 }
 
-function firstDifference(expected: string, actual: string): number {
+function firstByteDifference(expected: Buffer, actual: Buffer): number {
   const shared = Math.min(expected.length, actual.length);
   for (let index = 0; index < shared; index++) {
     if (expected[index] !== actual[index]) return index;
@@ -297,24 +459,30 @@ function firstDifference(expected: string, actual: string): number {
   return shared;
 }
 
-/** Compare assembled bytes against the output without writing anything. */
+/**
+ * Compare assembled bytes against the output without writing anything.
+ * Only a missing output counts as missing/stale: permission, directory,
+ * and other I/O failures surface.
+ */
 export async function checkAssembly(
   manifestPath: string,
   outputOverride?: string,
 ): Promise<CheckResult> {
   const result = await assemble(manifestPath, outputOverride);
-  let actual: string;
+  let actual: Buffer;
   try {
-    actual = await readFile(result.output, "utf8");
-  } catch {
+    actual = await readFile(result.output);
+  } catch (error) {
+    if (!isErrnoException(error, "ENOENT")) throw error;
     return { status: "stale", detail: `output missing: ${result.output}` };
   }
-  if (actual === result.bytes) {
+  const expected = Buffer.from(result.bytes, "utf8");
+  if (expected.equals(actual)) {
     return { status: "fresh" };
   }
-  const offset = firstDifference(result.bytes, actual);
+  const offset = firstByteDifference(expected, actual);
   return {
     status: "stale",
-    detail: `output differs from assembly at byte ${offset} (expected ${result.bytes.length} bytes, found ${actual.length}): ${result.output}`,
+    detail: `output differs from assembly at byte ${offset} (expected ${expected.length} bytes, found ${actual.length}): ${result.output}`,
   };
 }
