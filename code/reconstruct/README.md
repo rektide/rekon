@@ -586,3 +586,8 @@ Before presenting a plan, verify:
   is the motivating example. Its requirements and failure research are strong;
   its historical compression, fixed commit ladder, and dual implementation
   strategy illustrate the path-dependence this guide is intended to break.
+- [`/code/reconstruction/README.md`](/code/reconstruction/README.md) is the
+  executable counterpart of this guide for the docs-preservation constraint:
+  the jj procedure (snapshot first, audit, unmix, replay onto the upstream
+  tip with author dates intact) that builds the carrier line a restart
+  composes from.
