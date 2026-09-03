@@ -1,7 +1,7 @@
 ---
 type: Guide
 title: "Reconstruction with docs preservation — the jj procedure"
-description: Step-by-step procedure for restarting a code line on the upstream tip while preserving every docs commit and its author date; snapshot-first doctrine, mixed-commit unmixing, verification, and the git fallback for committer dates.
+description: Step-by-step procedure for restarting a code line on the upstream tip while preserving every docs commit and its author date; snapshot-first doctrine, mixed-commit unmixing, verification, and the author-date guarantee (the committer-date aside lives in vcs/jj/rewrites.md).
 resource: /code/reconstruction/README.md
 tags: [code, reconstruction, jj, docs, preservation, snapshot, split, replay]
 status: draft
@@ -27,6 +27,11 @@ sources:
   - id: worked-example
     resource: file:///home/rektide/src/watchwoman-systemd
     title: Watchwoman repo where this procedure ran end-to-end 2026-09-03
+  - id: jj-guide
+    resource: /vcs/jj/README.md
+    title: The promoted jj+git working guide (vcs/jj set) — rewrites.md there is the canonical home of the committer-date aside
+    author: model:zai-coding-plan/glm-5.3-max
+    last_modified: 2026-09-03
 ---
 
 # Reconstruction with docs preservation — the jj procedure
@@ -53,9 +58,12 @@ jj keep my dates?"
    addressable in tool-call history.
 2. **Every docs commit survives** — including docs-only commits, the docs
    half of mixed commits, and empty-but-described docs commits.
-3. **Commit dates are preserved** — author dates exactly (what `git log` and
-   GitHub display); committer dates via a documented git fallback when they
-   matter (jj cannot preserve them across rewrites).
+3. **Author dates are preserved** — exactly, and natively: jj keeps author
+   dates across `duplicate`/`split`/`rebase`, and author date is what
+   `git log` and GitHub display. (Committer dates cannot be preserved across
+   jj rewrites; that case and its git fallback are an aside in
+   [`/vcs/jj/rewrites.md`](/vcs/jj/rewrites.md), not part of this
+   procedure.)
 4. **jj is the primary tool**; git is a fallback for date surgery only.
 5. Originals and snapshots are **never rewritten**: all work happens on
    duplicates.
@@ -187,28 +195,25 @@ Three situations, three tools:
 
    Then `jj rebase` the pair into place, or use them as the replay source.
 
-## Dates: what jj preserves, and the git fallback
+## Dates: the author-date guarantee
 
-Measured on jj 0.40.0 ([experiments0](/code/reconstruction/experiments0.glm53h.md)):
+**jj preserves author dates across `duplicate`, `split`, and `rebase` —
+natively, zero extra machinery.** The whole replay above keeps them without
+any date work. Author date is what `git log` and GitHub display, so **jj
+alone meets the hard requirement** (measured on jj 0.40.0:
+[experiments0](/code/reconstruction/experiments0.glm53h.md)).
 
-- Author dates survive `duplicate`, `split`, and `rebase` natively — the
-  whole replay above preserves them with zero extra machinery. Author date
-  is what `git log` and GitHub show, so for most purposes **jj alone meets
-  the hard requirement**.
-- jj has no way to *set* a timestamp, and committer timestamps reset to now
-  on every rewrite.
-- If committer dates must be pinned, finish in a **colocated** repo:
+One-line verification — run it over the replayed line before bookmarking:
 
-  ```sh
-  git checkout -b datefix <commit>
-  GIT_COMMITTER_DATE="<orig>" git commit --amend --allow-empty --no-edit \
-    --date "<orig>"
-  jj git import
-  ```
+```sh
+jj log -r 'main@origin..'"$TIP" --no-graph -T 'author.timestamp() ++ " " ++ description.first_line() ++ "\n"'
+```
 
-  Do this as the last step (any later jj rewrite resets the committer
-  again), and expect `(divergent)` bookmarks until the pre-amend twins are
-  abandoned.
+Committer dates reset to now on every rewrite, and jj cannot *set* either
+timestamp; if committer dates genuinely matter, that case — the
+git-colocation pinning recipe, its `(divergent)` bookmark trap, and the
+lock-dates-last rule — is an aside kept in
+[`/vcs/jj/rewrites.md`](/vcs/jj/rewrites.md).
 
 ## Worked example — watchwoman, 2026-09-03
 
@@ -228,9 +233,10 @@ upstream default branch; the phrase carries over from the opencode flow.)
 
 One incident during the run: the first pass used `split -A` and dragged the
 source line's bookmarks (content untouched, ancestry spliced). Detected via
-`jj op log` / `jj --at-op` walk, restored with `--allow-backwards` bookmark
-moves and shadow abandons, procedure fixed, replay re-run clean. The final
-line comes from the fixed procedure.
+`jj op log` / `jj --at-op` walk (deep dive:
+[`/vcs/jj/oplog-forensics.md`](/vcs/jj/oplog-forensics.md)), restored with
+`--allow-backwards` bookmark moves and shadow abandons, procedure fixed,
+replay re-run clean. The final line comes from the fixed procedure.
 
 ## What this gives the rebuild
 
@@ -255,5 +261,8 @@ never from the old code path by default.
 - [`patches.md`](file:///home/rektide/archive/doc/opencode/patches.md) — the
   opencode working-stack flow whose bookmark conventions and
   duplicate-then-rebase doctrine this generalizes.
-- [`jj.md`](file:///home/rektide/archive/doc/jj.md) — jj/git command
-  equivalences and traps; the op-log forensics used here extend that sheet.
+- [`/vcs/jj/README.md`](/vcs/jj/README.md) — the promoted jj+git working
+  guide: command equivalences, traps, and the op-log forensics used here
+  (provenance: the paste-tested
+  [`jj.md`](file:///home/rektide/archive/doc/jj.md) cheat sheet it grew
+  from, 2026-08-29/30).
