@@ -18,16 +18,23 @@ topics and issues already share. A concern of the
 [constitution](/constitution/README.md), subdividing into:
 
 - [`exploration/`](/constitution/naming/exploration/) — the naming wave
-  workspace. Start at
-  [`proposal2.glm53m.md`](/constitution/naming/exploration/proposal2.glm53m.md),
-  the proposal tip: the center, the one-name discipline, the swirl with
-  identifiers, the name grammar demonstrated, and the supersede ambition —
-  naming as the kernel of a new core for rekon. The wave it launched is
-  complete and awaits comparison: the beads system inventory
+  workspace. The proposal chain runs `proposal0` → `proposal1` →
+  [`proposal2.glm53m.md`](/constitution/naming/exploration/proposal2.glm53m.md)
+  (the last single-voice proposal: center, one-name discipline, grammar,
+  supersede ambition), and now forks into two independent syntheses of the
+  whole corpus, awaiting comparison:
+  [`proposal3.glm53m.md`](/constitution/naming/exploration/proposal3.glm53m.md)
+  (weaver/glm-5.3-max — settled-law consolidation with an identifier
+  ledger resolving the wave's duplicate mints) and
+  [`proposal3.sol56x.md`](/constitution/naming/exploration/proposal3.sol56x.md)
+  (federated semantic fabric, bilateral actor naming, reference-pressure
+  thresholds). Both carry the second-round reference-register material and
+  the deferred tool seam. Supporting them: the beads system inventory
   [`beads-offerings0.sol56x.md`](/constitution/naming/exploration/beads-offerings0.sol56x.md)
-  plus five independent drafts — `draft0.sol56m.md`, `draft0.glm53m.md`,
-  `draft0.glm53fm.md`, `draft0.gpt56lx.md`, `draft0.sol56x.md` — each
-  minting its own identifiers; two agents self-named during the wave.
-  Revisions 0 and 1 of the proposal are retained as the critiqued passes.
+  and five independent drafts — `draft0.sol56m.md`, `draft0.glm53m.md`,
+  `draft0.glm53fm.md`, `draft0.gpt56lx.md`, `draft0.sol56x.md` — the last
+  two with carrier-pattern addenda. Three agents self-named during the
+  waves: `herald/glm-5.3-max`, `rekon-naming-parallax`, and
+  `weaver/glm-5.3-max`.
 
 Nothing here is accepted practice yet; everything is under exploration.
