@@ -33,8 +33,7 @@ Reading timestamps:
 
 ```sh
 jj log -r <rev> --no-graph \
-  -T 'author A:' ++ author.timestamp().format("%Y-%m-%d %H:%M:%S") \
-    ++ ' C:' ++ committer.timestamp().format("%Y-%m-%d %H:%M:%S") ++ '\n'
+  -T '"A:" ++ author.timestamp().format("%Y-%m-%d %H:%M:%S") ++ " C:" ++ committer.timestamp().format("%Y-%m-%d %H:%M:%S") ++ "\n"'
 ```
 
 jj 0.40 has **no CLI flag and no config key to set either timestamp** — checked
