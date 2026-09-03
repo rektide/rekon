@@ -5,7 +5,7 @@ description: An independent exploration of naming as Rekon's new core, joining o
 resource: /constitution/naming/exploration/draft0.sol56x.md
 tags: [naming, identity, agents, humans, namespace, semantic-space, certainty, beads, okf]
 status: draft
-generated: { by: "model:openai/gpt-5.6-sol#max", at: 2026-09-02T17:40:21-04:00 }
+generated: { by: "model:openai/gpt-5.6-sol#max", at: 2026-09-03T14:42:46-04:00 }
 stale_after: 2026-12-02T00:00:00-05:00
 extensions:
   ticket: rekon-con-naming
@@ -97,6 +97,11 @@ sources:
   - id: burgess-trust-project
     resource: https://markburgess.org/trustproject.html
     title: Trust in Network Society project
+  - id: watchman-carrier-reference-pattern
+    resource: file:///home/rektide/src/opencode-watchman/.design/watchman/carrier0.gpt56s.md
+    title: Watchman clean-slate replacement carrier
+    author: model:gpt-5.6-sol
+    last_modified: 2026-09-03
 ---
 
 <a id="naming-semantic-fabric"></a>
@@ -957,8 +962,10 @@ the nebula has already become a tree.
 <a id="naming-identifier-ledger"></a>
 # Identifier Ledger
 
-This ledger makes the one-name discipline auditable. The following conceptual
-and actor identifiers are minted by this artifact and used above:
+This ledger makes the original wave body's one-name discipline auditable. The
+following conceptual and actor identifiers were minted in that body and used
+above. The later carrier-pattern addendum keeps its own R0-R8 declaration map
+rather than retroactively folding new identifiers into this evidence table:
 
 | Identifier | Sole referent in this artifact |
 |---|---|
@@ -1018,7 +1025,8 @@ wave comparison:
 `burgess-semantic-spacetime1`, `burgess-semantic-spacetime2`,
 `burgess-semantic-spacetime3`, `burgess-semantic-spacetime-project`,
 `burgess-addressability-essay`, `burgess-nlnet-trust-interview`, and
-`burgess-trust-project`.
+`burgess-trust-project`; the later addendum adds
+`watchman-carrier-reference-pattern`.
 
 Other identity-bearing values introduced by this artifact, but not peer names
 for the concepts above, are `rekon-constitution-naming-semantic-fabric` (the
@@ -1100,3 +1108,283 @@ Beads; `agent-naming` from the naming topic public presence; and
 [^burgess-trust-project]: Mark Burgess, [Trust in Network Society](https://markburgess.org/trustproject.html).
 [^rekon-beads-export]: [`/.beads/issues.jsonl`](/.beads/issues.jsonl), inspected as the current exported work corpus; descriptive and older generated IDs coexist.
 [^beads-cli-help]: Installed `bd --help`, `bd create --help`, `bd rename --help`, and `bd find-duplicates --help`, inspected 2026-09-02.
+
+# Addendum R0: `naming-carrier-reference-pattern`
+
+This addendum incorporates a concrete pattern from the Watchman clean-slate
+replacement carrier without rewriting the original wave argument. The carrier
+maps `C1` through `C12` to elaborated Conventional Commit subjects, repeats
+both forms in each section heading, and then reasons densely with statements
+such as "C5 later depends on C2." Its dependency and test tables continue to
+use the short forms. No explicit HTML anchors appear; GitHub-flavored Markdown
+derives section targets from the headings, while source evidence is often
+located with `#L...-L...` line ranges.[^watchman-carrier-reference-pattern]
+
+The pattern does not merely add convenient aliases. It shows that an entity
+wants a **family of references**, each optimized for a different operation.
+That evidence revises the original body's tendency to defend
+`naming-one-name-locality` by declaring every other identifying token an
+attribute or locator. The distinctions remain useful, but they do not erase
+the practical fact that a reader can use any of those tokens to pick out the
+entity.
+
+The addendum intentionally uses the carrier form. The table is the declared
+map; each heading below carries its dense coordinate and elaborated semantic
+name; subsequent prose uses the dense coordinates. The GFM targets shown were
+confirmed with `pandoc --from=gfm --to=html`.
+
+| Dense coordinate | Elaborated semantic name | Generated GFM target | Relation to the original body |
+|---|---|---|---|
+| R0 | `naming-carrier-reference-pattern` | [`#addendum-r0-naming-carrier-reference-pattern`](#addendum-r0-naming-carrier-reference-pattern) | Packages this incorporation as later evidence |
+| R1 | `naming-reference-family-binds-many-references-to-one-entity` | [`#r1-naming-reference-family-binds-many-references-to-one-entity`](#r1-naming-reference-family-binds-many-references-to-one-entity) | Revises `naming-one-name-locality` |
+| R2 | `naming-dense-coordinate-compresses-declared-local-context` | [`#r2-naming-dense-coordinate-compresses-declared-local-context`](#r2-naming-dense-coordinate-compresses-declared-local-context) | Extends `naming-contextual-elision` |
+| R3 | `naming-heading-bound-anchor-derives-link-from-section-text` | [`#r3-naming-heading-bound-anchor-derives-link-from-section-text`](#r3-naming-heading-bound-anchor-derives-link-from-section-text) | Offers a self-consistent alternative to hand-authored anchors |
+| R4 | `naming-reference-role-distinguishes-name-coordinate-locator-and-proof` | [`#r4-naming-reference-role-distinguishes-name-coordinate-locator-and-proof`](#r4-naming-reference-role-distinguishes-name-coordinate-locator-and-proof) | Generalizes `naming-actor-braid` |
+| R5 | `naming-multiple-anchor-policy-requires-one-owner-and-declared-precedence` | [`#r5-naming-multiple-anchor-policy-requires-one-owner-and-declared-precedence`](#r5-naming-multiple-anchor-policy-requires-one-owner-and-declared-precedence) | Constrains `naming-resolution-promise` |
+| R6 | `naming-slug-durability-tension-opposes-self-consistency-and-rename-stability` | [`#r6-naming-slug-durability-tension-opposes-self-consistency-and-rename-stability`](#r6-naming-slug-durability-tension-opposes-self-consistency-and-rename-stability) | Holds a tension with `naming-location-separation` |
+| R7 | `naming-cross-medium-reference-map-unifies-projections-without-flattening` | [`#r7-naming-cross-medium-reference-map-unifies-projections-without-flattening`](#r7-naming-cross-medium-reference-map-unifies-projections-without-flattening) | Extends `naming-semantic-fabric` |
+| R8 | `naming-reference-family-open-tensions` | [`#r8-naming-reference-family-open-tensions`](#r8-naming-reference-family-open-tensions) | Preserves unresolved policy and mechanics |
+
+### R1 `naming-reference-family-binds-many-references-to-one-entity`
+
+R1 distinguishes **canonicality** from **cardinality**. One entity can have one
+canonical semantic name while legitimately carrying several declared
+references. The carrier's planned C2 slice can be reached or discussed through:
+
+- `C2`, a dense coordinate within the carrier;
+- `refactor(core): reconcile source watch interests`, its elaborated semantic
+  name and intended commit subject;
+- `#c2-refactorcore-reconcile-source-watch-interests`, the GFM-derived section
+  locator;
+- a future jj/Git commit ID, the immutable object reference after execution;
+- a commit-pinned file URL and line range, an exact evidence locator.
+
+It is unhelpful to insist that only the second one "really" names the entity.
+All five can identify it for an observer. It is still useful to say that only
+one is the canonical semantic name because that declaration settles which form
+explains the entity and owns changes to its meaning.
+
+R1 therefore amends `naming-one-name-locality` to:
+
+> Within one authority at one recorded time, one live entity has one canonical
+> semantic name. It may have multiple declared references, provided each has a
+> scope and role, each resolves to that one semantic owner, and precedence is
+> explicit.
+
+This preserves the anti-duplication goal while admitting actual use. Two prose
+names competing as canonical descriptions remain a violation. A dense code and
+a long semantic name joined by a declared map are not accidental peers. R1
+also sharpens `naming-resolution-promise`: resolution should return the whole
+reference family, not merely one normalized string.
+
+### R2 `naming-dense-coordinate-compresses-declared-local-context`
+
+R2 explains why `C2` is not a regrettable abbreviation. "C5 later depends on
+C2" makes a dependency legible at a glance; repeating two full commit subjects
+would bury the edge in its endpoints. The C1-C12 map behaves like a local
+coordinate basis. Once a reader has loaded the table, each short form compresses
+that shared context.
+
+This is the concrete value of the [constitution's display-coordinate
+distinction](/constitution/README.md#doc-constitution-references-anchors).
+Coordinates can optimize reading while semantic anchors preserve durable
+identity. R2 extends `naming-contextual-elision` beyond removing a recoverable
+prefix: a declared map can compress an entire elaborated reference into a
+scoped token.
+
+The cost is equally concrete. `C2` is meaningless outside the carrier scope,
+can collide with every other document's `C2`, and can become misleading if the
+ladder is reordered. Before publication, the map may renumber. Once external
+prose or links rely on R2, the coordinate becomes a compatibility obligation
+even though it remains subordinate to the semantic name. Dense references are
+cheap to read because their context has already been paid for; they are not
+context-free global identifiers.
+
+### R3 `naming-heading-bound-anchor-derives-link-from-section-text`
+
+R3 identifies the carrier's most attractive property: the section name and its
+link target have one source. The heading
+
+```markdown
+### C2 `refactor(core): reconcile source watch interests`
+```
+
+produces `#c2-refactorcore-reconcile-source-watch-interests`. Editing the
+heading necessarily edits the generated target. There is no hidden
+`<a id="...">` whose spelling can silently continue to assert an obsolete
+meaning while the visible heading says something else.
+
+Text and link are not identical strings because GFM normalizes case, spaces,
+punctuation, and code markup. They are mechanically corresponding projections:
+the heading implies the target, and the target can be traced back to the
+heading. In R3, the renderer is a resolver. The source heading is the declared
+mapping operation.
+
+R3 fits `naming-coordinate-context` particularly well. The heading contains
+both the dense coordinate and the semantic explanation; the generated anchor
+combines both into one document locator. It also reveals a validation need.
+GitHub's slug algorithm, Pandoc's GFM reader, and other renderers must be tested
+for punctuation, duplicate headings, and normalization rather than assumed to
+agree forever.
+
+### R4 `naming-reference-role-distinguishes-name-coordinate-locator-and-proof`
+
+R4 generalizes `naming-actor-braid` from actors to every named entity. The
+carrier's references are plural, but not interchangeable:
+
+| Reference role | Carrier instance | Promise |
+|---|---|---|
+| Canonical semantic name | `refactor(core): reconcile source watch interests` | Explain the intended unit |
+| Dense coordinate | `C2` | Compress local discourse and graph edges |
+| Heading-derived locator | `#c2-refactorcore-reconcile-source-watch-interests` | Navigate to the section in a rendered document |
+| Substrate object reference | Future commit ID | Select one immutable commit object exactly |
+| Evidence range | `#L348-L385` at a specific file revision | Select the source span describing C2 |
+
+Calling all five "names" loses useful promises. Declaring that only one is a
+reference loses observed behavior. R4 keeps both truths: they form one reference
+family, and each member has a distinct role, scope, authority, mutability, and
+failure mode.
+
+R4 also clarifies why link text matters. A link whose visible text repeats the
+elaborated name lets a reader inspect the semantic claim before navigation. A
+bare "here" preserves only the locator. A dense `C2` link is appropriate after
+R2's map has established its meaning.
+
+### R5 `naming-multiple-anchor-policy-requires-one-owner-and-declared-precedence`
+
+R5 separates legitimate plurality from anchor accumulation. Multiple anchors
+or reference forms are legitimate when:
+
+1. one semantic entity owns them;
+2. one declared map binds them;
+3. every form has a named role and scope;
+4. canonical precedence is explicit;
+5. no form is silently reassigned to a different entity;
+6. retirement and compatibility behavior are recorded;
+7. a resolver can report the family and any conflict.
+
+They are accidental duplicates when a visible heading, hidden HTML anchor,
+index key, and ticket ID independently drift with no authoritative mapping.
+The number of strings is not the decisive fact. Their governance is.
+
+The carrier itself demonstrates multiple references but only one generated
+HTML heading ID per commit section. `C2` in prose resolves cognitively through
+the table; `#c2-refactorcore-reconcile-source-watch-interests` resolves directly
+in the renderer. If Rekon wants both `#c2` and the composite slug to navigate
+directly, plain GFM does not derive both from one heading. Something must add an
+alias anchor or perform resolution.
+
+R5 recommends that such aliases be generated from the declared map, not
+hand-authored as independent HTML. The source remains the row binding `C2` to
+its elaborated name; tooling may emit a short compatibility anchor and the GFM
+renderer emits the composite one. This accepts multiple anchors while giving
+them one semantic owner and one maintenance point. It also revises the original
+"contort the name in a hostile medium" rule: lossy or compressed projections
+should be declared, not disguised as unchanged spelling.
+
+### R6 `naming-slug-durability-tension-opposes-self-consistency-and-rename-stability`
+
+R6 remains a genuine tension. A GFM slug cannot drift from its heading because
+it is recomputed from the heading, but it breaks when the heading changes. An
+explicit semantic anchor can survive wording changes, but precisely because it
+is independent, it can survive after its visible meaning has drifted.
+
+The right choice depends on artifact mutability and citation scope:
+
+| Artifact posture | Primary section reference | Compatibility treatment |
+|---|---|---|
+| Immutable or commit-pinned evidence | Heading-derived GFM slug | The pinned revision preserves both heading and slug |
+| Mutable canonical public presence | Stable semantic reference declared independently of display wording | Current GFM slug is a convenience; prior cited forms resolve through generated compatibility anchors |
+| Dense discourse inside one mapped artifact | R2 coordinate through the map | Generate a direct short anchor only when navigation pressure justifies it |
+| Exact source evidence | Commit-pinned `#Lx-Ly` range | Treat as a locator, never the section's semantic identity |
+
+The carrier is especially friendly to R3 because it is model-suffixed evidence
+describing a frozen commit ladder. A link to a specific carrier revision can
+rely on its generated slugs. Its root-relative `#L883-L929` links are useful
+current-tree evidence, but line numbers drift when the target file changes; a
+commit-pinned URL is required when the exact range must endure.
+
+R6 does not repeal the constitution's durable-anchor law. It narrows it:
+durability should come from the declared reference map and artifact history,
+not necessarily from manually writing an invisible anchor before every
+heading. For mutable tips, whether generated compatibility anchors are enough
+remains an implementation question.
+
+### R7 `naming-cross-medium-reference-map-unifies-projections-without-flattening`
+
+R7 makes the broader unification concern explicit. Names, prose references,
+Markdown headings, URL fragments, YAML keys, Mermaid IDs, Beads IDs, and
+version-control object IDs are not separate naming systems to reconcile after
+the fact. They are media-specific members of a declared reference family.
+
+The map records the transformation and what it preserves:
+
+| Projection | Example operation | Information behavior |
+|---|---|---|
+| Exact reuse | Semantic name used as a YAML key or Mermaid ID | Preserves spelling when the medium accepts it |
+| Qualification | Project authority prepended to `naming-canonical-stem` | Adds resolution scope |
+| Contextual elision | Known project/topic prefix omitted locally | Reversible from declared context |
+| Dense compression | Elaborated commit subject mapped to `C2` | Lossy without the local map |
+| GFM slugging | Heading normalized to a URL fragment | Deterministic but punctuation-losing and renderer-dependent |
+| Native substrate binding | Semantic commit plan bound to a commit ID | Adds immutable object identity without semantic explanation |
+
+R7 **extends** `naming-semantic-fabric`, **uses** `naming-native-authority`, and
+**is served by** `naming-resolution-promise`. It also corrects
+`naming-canonical-stem`: the canonical stem remains the semantic authority, but
+it sits inside a first-class reference map rather than pretending all useful
+forms are merely incidental attributes.
+
+The corresponding amendment to `naming-core-compact` is:
+
+> Every durable entity has one canonical semantic name within an authority and
+> may expose a declared family of references. Each reference states its role,
+> scope, derivation, and lifecycle; all resolve to one semantic owner. Dense
+> coordinates and medium-specific anchors are legitimate when their mapping is
+> explicit. Unmapped competing semantic names remain a collision.
+
+This formulation unifies without flattening. The same resolver can present all
+references, while callers can still distinguish meaning, navigation,
+compression, and proof.
+
+### R8 `naming-reference-family-open-tensions`
+
+R8 records what this incorporation cannot settle:
+
+- **Is a dense reference a second name?** Functionally, `C2` names its entity
+  in conversation. Constitutionally, treating it as a subordinate coordinate
+  preserves canonical precedence. The policy is clear; the best umbrella
+  vocabulary remains open.
+- **Can pure GFM provide multiple direct anchors?** One combined heading yields
+  one generated ID. Direct short and long fragments require generated HTML
+  aliases, a resolver, or a renderer extension. R5 chooses generated aliases
+  tentatively, not conclusively.
+- **How stable must heading text be?** R3 rewards making section names part of
+  the contract; R6 preserves the freedom to improve mutable public prose. No
+  single default fits immutable evidence and maintained READMEs equally.
+- **Which slug algorithm is authoritative?** GitHub behavior is the motivating
+  medium and Pandoc reproduces these carrier examples, but punctuation and
+  duplicate-heading behavior need a conformance fixture before generated slugs
+  become a cross-renderer promise.
+- **Are elaborated subjects unique enough to be canonical?** Conventional
+  Commit subjects describe intent but are not required to be unique. The
+  carrier map disambiguates them locally; a system that promotes the subject
+  itself to canonical identity still needs authority qualification or a
+  collision rule.
+- **When does a display coordinate become durable?** Internal density argues
+  for easy renumbering; external citation creates compatibility pressure. The
+  first published use may be too accidental to serve as the only threshold.
+- **Who maintains the map?** R5 requires one owner, but distributed documents,
+  generated indexes, and Beads references still need an authority and update
+  transaction when one member changes.
+- **How should line anchors age?** Commit pinning makes a line range exact but
+  freezes context; branch-tip lines stay current but drift. Both are useful,
+  and neither replaces a semantic section reference.
+
+R1-R8 shift the original position in one important way: plurality is not only
+an unfortunate compatibility condition. Deliberately different references can
+make one entity easier to think about, navigate, serialize, and prove. The
+one-name discipline survives as canonical semantic ownership, while the wider
+`naming-semantic-fabric` gains an explicit reference family instead of a hidden
+collection of aliases.
+
+[^watchman-carrier-reference-pattern]: [`carrier0.gpt56s.md`](file:///home/rektide/src/opencode-watchman/.design/watchman/carrier0.gpt56s.md), especially the [C1-C12 map and dual-form headings](file:///home/rektide/src/opencode-watchman/.design/watchman/carrier0.gpt56s.md#L300-L385), [dependency map](file:///home/rektide/src/opencode-watchman/.design/watchman/carrier0.gpt56s.md#L827-L846), and [dense test references plus line-anchor use](file:///home/rektide/src/opencode-watchman/.design/watchman/carrier0.gpt56s.md#L848-L929). Generated heading IDs were checked with Pandoc's GFM reader on 2026-09-03.
