@@ -1023,6 +1023,15 @@ than new semantic owners. Minted here for reorder-safe provenance, they are:
 `constitution-readme`, `hierarchy1-glm53m`, `agents-guidance`, and
 `okf-v0-2`.
 
+Three other identity-bearing values are used but not independently minted as
+semantic names: `rekon-constitution-naming-proposal3` is the mechanically
+qualified resolution form of `naming-proposal3`; `rekon-con-naming` is the
+already-existing work entity adopted as this proposal's coordinating ticket;
+and `model:openai/gpt-5.6-sol#max` is the environment-provided generating model
+identity. Historical actor `rekon-naming-parallax`, topic ID `agent-naming`, and
+carrier token `C2` appear only as source referents or examples; this synthesis
+does not adopt them for a new owner.
+
 The following identifiers are adopted exactly as minted in the source corpus.
 They are the synthesis's current vocabulary and are used above under these
 names:
