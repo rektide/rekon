@@ -56,7 +56,7 @@ The right column is owned by [`git-only.md`](/vcs/jj/git-only.md); the surgery r
 | file | open when… |
 | --- | --- |
 | this README | you are interrogating an existing repo: bookmarks, merged-ness, contents, PRs |
-| [`rewrites.md`](/vcs/jj/rewrites.md) | you are changing history: timestamps, split mechanics, bookmark forwarding, date pinning |
+| [`rewrites.md`](/vcs/jj/rewrites.md) | you are changing history: timestamps, split mechanics, bookmark forwarding, date pinning, unmixing docs from code |
 | [`oplog-forensics.md`](/vcs/jj/oplog-forensics.md) | something moved and you need to know what and when; recovering a dragged bookmark |
 | [`git-only.md`](/vcs/jj/git-only.md) | the job has no jj equivalent: live remotes, conflict dry-runs, patch-ids, exact counts |
 
@@ -177,28 +177,18 @@ jj log -r <b>@origin --no-graph -T 'committer.timestamp().format("%Y-%m-%d %H:%M
 # ^ verified byte-equal to %ci; `author.timestamp()` ≡ %ai (exact). %ad/--date=short ≡ author.timestamp().format("%Y-%m-%d")
 ```
 
-## Dates across rewrites
+## The date guarantee (author dates)
 
-Author and committer timestamps behave very differently under jj rewrites, and the difference is load-bearing for replay/reconstruction work:
+**jj preserves author dates across `duplicate`, `split`, and `rebase` — natively, zero extra machinery.** Author date is what `git log` and GitHub display, so for replay/reconstruction work this is the load-bearing guarantee: replayed lines keep the dates that say when the work was actually written. Measured in [experiments0](/code/reconstruction/experiments0.glm53h.md); re-spot-checked at promotion (a duplicate and both halves of a split kept the original author timestamp).
 
-| operation | author date | committer date |
-| --- | --- | --- |
-| `jj duplicate X` | preserved from X | set to now |
-| `jj split` (plain, both halves) | preserved from X | set to now |
-| `jj rebase -r X -d Y` (and descendants) | preserved | set to now |
-| set a date explicitly | **impossible in jj 0.40** | **impossible** |
-| git `commit --amend --date` + `GIT_COMMITTER_DATE`, then `jj git import` | preserved from git | preserved from git |
-| any jj rewrite after that import | preserved | reset to now |
-| `jj git push` to a remote | exported as stored | exported as stored |
-
-**The mainstream guarantee: jj preserves author dates across `duplicate`/`split`/`rebase` — natively, zero extra machinery.** Author date is what `git log` and GitHub display by default, so jj alone satisfies "preserve commit dates" end-to-end for replay work. One-line check:
+One-line verification — run it over any replayed line before bookmarking it:
 
 ```sh
 jj log -r 'main@origin..<tip>' --no-graph \
   -T 'author.timestamp() ++ " " ++ description.first_line() ++ "\n"'
 ```
 
-Committer dates reset on every rewrite and jj 0.40 cannot *set* either timestamp; the git-colocation pinning recipe and its `(divergent)` trap live in [`rewrites.md`](/vcs/jj/rewrites.md). Full measurements: [experiments0](/code/reconstruction/experiments0.glm53h.md).
+Committer dates reset to now on every rewrite, and jj 0.40 cannot *set* either timestamp — that material, including the git-colocation recipe for pinning dates when committer timestamps genuinely matter, is kept as an aside in [`rewrites.md`](/vcs/jj/rewrites.md).
 
 ## PR & issue forensics (gh)
 
@@ -286,7 +276,7 @@ jj file show -r <rev> <path> >/dev/null 2>&1; echo $?   # 1 = "No such path", 0 
 - **2026-08-29** — the source review: five parallel review agents plus an orchestrating session interrogated 50 bookmarks of `anomalyco/opencode`; afterwards each agent reported exactly which commands they used and which misled them. Full narrative in [`branch-review.glm53.md`](file:///home/rektide/archive/anomalyco/opencode/.design/branch-review/branch-review.glm53.md).
 - **2026-08-29/30** — every `# jj:` line in the cheat sheet was paste-tested 1:1 against its git counterpart (jj 0.40.0, collocated clone): identical output or documented divergence.
 - **2026-09-03** — rewrite-surgery, timestamp, and op-log behavior measured in scratch repos and the live watchwoman replay ([experiments0](/code/reconstruction/experiments0.glm53h.md)); the applied procedure lives in [`code/reconstruction/README.md`](/code/reconstruction/README.md).
-- **2026-09-03 (promotion)** — this reorganization. The promoting agent re-spot-checked core claims in a fresh scratch repo (jj 0.40.0): exit codes (empty revset rc 0 silent; unknown symbol rc 1 + did-you-mean hint; `jj file show` missing path rc 1), the path-filter warning text with rc 0, `files()` counts (file 1, dir glob 3), the `heads(::A & ::B)` merge-base idiom against `git merge-base` (same sha), containment both ways, `duplicate` stderr output + author-preserved/committer-now timestamps, plain-`split` change-id assignment + bookmark forwarding to the remainder, headless split without `-m` failing with "Failed to edit description", and the `bookmark set` backwards refusal + `--allow-backwards` acceptance.
+- **2026-09-03 (promotion)** — this reorganization. The promoting agent re-spot-checked core claims in a fresh scratch repo (jj 0.40.0): exit codes (empty revset rc 0 silent; unknown symbol rc 1 + did-you-mean hint; `jj file show` missing path rc 1), the path-filter warning text with rc 0, `files()` counts (file 1, dir glob 3), the `heads(::A & ::B)` merge-base idiom against `git merge-base` (same sha), containment both ways, `duplicate` stderr output + author-preserved/committer-now timestamps, plain-`split` change-id assignment + bookmark forwarding to the remainder, headless split without `-m` failing with "Failed to edit description", the `bookmark set` backwards refusal + `--allow-backwards` acceptance, and the `jj-hunk` list → dry-run → single-hunk commit flow.
 
 **The famous correction.** The original cheat sheet once claimed "jj log can't path-filter". It was wrong — `jj log -r <range> & files(<path>)` and positional `jj log ... -- <path>` both path-filter commits, set-identically to `git log -- <path>` (26=26 on a file, 375=375 on a directory). The false claim survived a "verification" pass because a `2>&1 | wc -c` count read the zero-match warning text as output (trap 13): *the paste-test ran, but its stderr discipline didn't.* Kept here deliberately — it is the doc's own cautionary tale about verification discipline, and it recurs: at promotion time, the `description(exact:)` newline trap bit the verifying agent's first script the same way a documented trap always does, quietly.
 
