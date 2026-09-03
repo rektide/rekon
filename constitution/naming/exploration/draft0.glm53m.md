@@ -5,7 +5,7 @@ description: Independent exploration of naming as the kernel of rekon's new core
 resource: /constitution/naming/exploration/draft0.glm53m.md
 tags: [naming, identity, agents, promises, burgess, certainty, namespace, anchors, census, rekon-core, okf, beads]
 status: draft
-generated: { by: herald/glm-5.3-max, at: 2026-09-02T18:10:00-04:00 }
+generated: { by: herald/glm-5.3-max, at: 2026-09-03T12:40:00-04:00 }
 stale_after: 2026-12-01
 extensions:
   ticket: rekon-con-naming
@@ -50,6 +50,11 @@ sources:
     resource: urn:cli:bd-help
     title: bd --help command surface as installed
     author: project:gastownhall/beads
+  - id: carrier-pattern
+    resource: file:///home/rektide/src/opencode-watchman/.design/watchman/carrier0.gpt56s.md
+    title: Watchman clean-slate replacement carrier — the C1-C12 commit-reference pattern
+    author: model:gpt-5.6-sol
+    last_modified: 2026-09-03
   - id: burgess-certainty-page
     resource: http://markburgess.org/certainty.html
     title: "In Search of Certainty — book page with 79 tweet summaries of the argument"
@@ -730,6 +735,10 @@ they would be premature.
 | `naming-promotion-move` | on acceptance, promote `constitution/naming/` to root topic `naming/` with hierarchy1's migration machinery |
 | `naming-supersede-proof` | the falsifiable tests the successor must pass to earn the home |
 | `naming-alias-collapse` | the line where an alias's expansion stops being a pure function and becomes a second name |
+| `naming-citation-token` | a per-corpus terse reference token with a *declared* (not derived) expansion — the carrier's C-codes; display coordinates promoted to any dense corpus |
+| `naming-derived-vs-declared` | the two addressing regimes: address derived from heading text (GFM auto-slugs) vs declared as its own pinned artifact (explicit anchors) |
+| `naming-slug-at-mint` | mint the explicit anchor as the heading's derived slug at creation, then pin it — self-consistent at birth, stable under rewording, divergence stays visible |
+| `naming-reference-registers` | the unification: four registers around one entity — name, resolution forms, display tokens, exact addresses — with a law per register |
 
 Plus one actor name, minted by the practice it advocates: **`herald/glm-5.3-max`**.
 
@@ -752,3 +761,249 @@ already named, cited here without re-minting: `naming-center`,
 [^burgess-semantic-spacetime]: [Semantic spacetime](http://markburgess.org/semantic_spacetime.html) — points as functional agents; adjacency requiring cooperation from both endpoints; scaling of semantics; index information in coarse grains.
 
 [^burgess-namespaces-paper]: Burgess, [*Testing the Quantitative Spacetime Hypothesis using Artificial Narrative Comprehension (II)*](https://arxiv.org/abs/2010.08125), arXiv:2010.08125 (2020) — recovering the geometry of invariant concepts, themes, and namespaces from narrative, unsupervised.
+
+<a id="addendum-the-carrier-pattern--tokens-regimes-registers"></a>
+# Addendum: The Carrier Pattern — Tokens, Regimes, Registers
+
+Direction arrived after the wave draft above was committed (commit `2e3a1041`),
+from a neighbor corpus rather than a wave sibling —
+[`carrier0.gpt56s.md`](file:///home/rektide/src/opencode-watchman/.design/watchman/carrier0.gpt56s.md),
+an execution plan in opencode-watchman — so reading it does not disturb this
+wave's independence evidence. The original argument above stands as committed;
+this addendum incorporates what the carrier taught about naming, without
+rewriting it. The carrier's ladder maps short codes C1–C12 to elaborated
+commit subjects; its headings carry both forms; its prose cites the short
+form densely; it uses no explicit anchors at all. That pattern is not a
+sibling to be critiqued — it is evidence, and it extends the argument above
+in four places, each minted below and added to
+[the identifier index](#identifier-index).
+
+<a id="the-pattern-as-observed"></a>
+## The Pattern, As Observed
+
+**Observed** in the carrier[^carrier-pattern]:
+
+- a **mapping table** — the commit ladder — declaring `ID ↔ commit title ↔
+  purpose ↔ size` for twelve entities that do not exist yet (frozen
+  end-state commits, subjects pinned by the direction decision);
+- **headings that carry both forms at once**: `### C2 `refactor(core):
+  reconcile source watch interests`` — the section heading *is* the declared
+  mapping, in place;
+- **dense short-form citation**: "C5 later depends on C2", a dependency map
+  whose cells say `C1-C2`, `C8-C9`, test matrices citing `C1-C3, C9` —
+  dozens of references where the long form would be unbearable;
+- **no explicit HTML anchors** — navigation rides GFM heading auto-slugs
+  (text implies the link) plus 34 `#L883-L929`-style line anchors for
+  precision;
+- a bonus: the commit subjects follow the conventional-commit grammar
+  `type(scope): subject` — `fix`, `refactor`, `feat`, `docs` — which is a
+  speech-act taxonomy embedded in the name itself, corroborating
+  [`naming-speech-acts`](#census): work-item names want to announce what
+  kind of promise they are.
+
+<a id="citation-tokens-declared-density-naming-citation-token"></a>
+## Citation Tokens: Declared Density (`naming-citation-token`)
+
+The C-codes are not a second name and not a glossary alias; they are a third
+thing. **`naming-citation-token`: a per-corpus, deliberately terse reference
+token whose expansion is *declared* — in a mapping table carried by the
+corpus itself — rather than *derived* from the name's spelling.** The
+[canonical constitution](/constitution/README.md#doc-constitution-references-anchors)
+already holds the prior art: "Display coordinates such as `D4.2` are
+available for formal corpora, but they are reading aids rather than
+identity. Coordinates may renumber; anchors do not." The carrier promotes
+display coordinates from formal corpora to any corpus with dense local
+citation — the promotion is earned when the table pays for itself in
+reference compression.
+
+Three relations, in words. `naming-citation-token` **contrasts**
+`naming-aliases` ([above](#grammar-operations)): a glossary alias expands by
+rule (`con` → `constitution`, derivable from the glossary); a token expands
+only by lookup in the declared table (nothing about `C5` predicts
+`feat(core): watch VCS metadata interests`). Both are resolution forms of
+the one name, so one-name holds — the name is still the commit subject; the
+token is how you cite it at density. `naming-citation-token` **lives at**
+the narrowest scale of `naming-scale-of-resolution`: it resolves inside its
+corpus (and in importers that explicitly cite the table) and does not
+travel — which is exactly why it can afford to be information-free. And it
+**refines** `naming-low-information`: information content is a dial per
+register, not a global virtue. Self-describing names win at first mention
+and in grep; near-zero-information tokens win at dense re-mention. The
+ceremony budget applies to tokens too — this addendum mints no `A1`-style
+codes for its own sections because four sections do not generate the
+citation density that would pay for a table.
+
+Two cautions from the carrier's own structure. Ordered tokens (`C1..C12`)
+carry sequence semantics; re-sequencing the plan renumbers them, so tokens
+bind tightest in frozen or short-lived corpora — the constitution's
+"coordinates may renumber" is the standing risk, and the carrier mitigates
+it by freezing the ladder. And the ladder is more than a token table: it is
+a **roll for prospective entities** — the
+[constitution's forward anchors](/constitution/README.md#doc-constitution-namespace-forward)
+applied to commits, and a live instance of bequeathal from
+[`naming-acceptance`](#flagship-protocol): subjects are bequeathed by the
+plan and accepted when each commit lands bearing its subject; deviation is
+a visible rename. Rolls, it turns out, are not only for actors
+(`naming-actor-registry`) — any dense corpus of citable entities wants its
+declared mapping in-corpus.
+
+<a id="derived-versus-declared-addressing-naming-derived-vs-declared"></a>
+## Derived Versus Declared Addressing (`naming-derived-vs-declared`)
+
+The carrier's anchorlessness is not sloppiness; it is a different addressing
+regime, and naming the pair dissolves what looks like a conflict with the
+constitution's durable-anchor law. **`naming-derived-vs-declared**: an
+address can be *derived* — computed from the heading text by the renderer
+(GFM auto-slugs: text and link imply each other, zero dual maintenance, but
+the address churns whenever the rhetoric does) — or *declared* — pinned as
+its own artifact (explicit anchors: stable under rewording, but the
+text↔anchor correspondence is conventional and can drift silently).**
+
+The selection criterion is expected lifetime and rewording pressure, which
+is `naming-scale-of-resolution` applied in the time dimension. A frozen
+execution plan with pinned subjects loses nothing by derived addressing —
+self-consistency is the honest choice there. A durable knowledge corpus
+that expects to be reworded while cited — the constitution's whole case —
+needs declared addressing. Neither regime is wrong; each is a bet about how
+the document will age. Two genuine costs stay on the derived side: the
+derivation function itself is renderer-relative (GitHub and pandoc differ
+at the punctuation and unicode edges — evidenced
+[below](#self-application-verified-by-pandoc)), and GitHub's collision
+dedupe appends `-1` suffixes, which is silent contortion of a sort
+`naming-cross-modal` would never sign off on for durable names.
+
+<a id="mint-the-slug-pin-the-anchor-naming-slug-at-mint"></a>
+## Mint The Slug, Pin The Anchor (`naming-slug-at-mint`)
+
+The regimes reconcile. **`naming-slug-at-mint`: at creation, set the
+explicit anchor equal to the derived slug of the heading, then pin it.**
+The anchor is self-describing at birth (the GFM virtue — text and address
+imply each other exactly once, at mint) and stable thereafter (the
+constitution's virtue). When a heading is later reworded, the divergence
+becomes *visible* — the anchor no longer equals the heading's fresh slug —
+which forces the conscious keep-or-stub decision the constitution already
+demands, instead of silent drift between two parallel artifacts.
+
+Applied to this very document, honestly: the original draft above mints
+loose anchors — `id="burgess"` under "In Search of Certainty — The Research
+Movement", `id="stage"` under a longer title — correspondence by convention,
+which is precisely the drift risk `naming-derived-vs-declared` names. The
+wave sections are preserved as committed evidence and not retro-fitted; the
+addendum's own sections practice slug-at-mint, verified below; auditing the
+original sections' shadow addresses is named as synthesis follow-up, and if
+the [home](#home-earn) is earned, promoting slug-at-mint into the
+constitution's anchor law is exactly the kind of absorption
+`naming-supersede-proof` anticipates — a law change for the human to
+accept, not for this wave to enact.
+
+<a id="reference-registers-the-unification-naming-reference-registers"></a>
+## Reference Registers: The Unification (`naming-reference-registers`)
+
+The human's third takeaway names the broader concern — unification across
+names, references, anchors, and mediums — and the carrier completes the
+picture my draft only half-drew. **`naming-reference-registers`: around one
+entity there are four registers, and every naming practice is a statement
+about which register it operates in:**
+
+| Register | What it is | Carrier instance | This wave's instance | Law |
+|---|---|---|---|---|
+| **Name** | the semantic identity | commit subject `feat(core): watch VCS metadata interests` | `naming-citation-token`; `herald/glm-5.3-max` | one per entity (mint-time, one-name) |
+| **Resolution forms** | expansions of the one name | — | glossary aliases; implied names | derivable by rule |
+| **Display tokens** | semantic compressions for dense citation | `C5` | (none minted — density insufficient) | declared mapping, scope-bound |
+| **Exact addresses** | pointers to places, semantics-free | future commit hash; `#L883-L929`; heading auto-slug | session id; jj change id; routing string | churn freely, carry no meaning |
+
+The distinction that keeps the table honest: a **token stands for the
+name** (its mapping is semantic — declared, in the roll), while an
+**address points at a place** (line 384 is just where something sits). The
+GFM auto-slug is an address that happens to be computed from text —
+machinery, not meaning. `naming-reference-registers` **generalizes**
+`naming-layer-split` (the exact/semantic cut survives; the registers refine
+what lives inside each) and **collects** `naming-aliases`,
+`naming-citation-token`, medium contortion, and addresses under one
+grammar. Burgess anticipated the shape: semantics "arise in science, in the
+form of complementary names, types and labels"[^burgess-semantic-spacetime]
+— the registers are those complementary names, types, and labels given
+workspace law.
+
+And the multiple-anchor question this addendum was asked to face, answered
+within the register grammar: multiple anchors per entity are **legitimate**
+when each is a different register entry or resolution form with a mapping
+to the one name — an explicit anchor plus a derived auto-slug plus a legacy
+compatibility alias may all point at one section, provided the document
+declares or derives the correspondence. Multiplicity is **accidental
+duplication** when two forms compete for identity with no mapping between
+them — which extends the `naming-alias-collapse` test from the original
+draft: expansion must be *mechanically recoverable in context* — by rule or
+by declared table — never by negotiation or history.
+
+<a id="self-application-verified-by-pandoc"></a>
+## Self-Application, Verified By Pandoc
+
+The addendum practices what it mints. Its headings' explicit anchors were
+derived by running the document through `pandoc --from=gfm --to=html` and
+reading the auto-generated identifiers — slug-at-mint, executed with pandoc
+as the deriving renderer (the OKF-title treatment for an addendum,
+repurposed: the tool that would mint the slug is the tool that verifies
+it). Two findings came back with it:
+
+1. **Hand-minting diverges from derivation — five of eight times.** The
+   anchors pinned before verification disagreed with pandoc's derived slugs
+   for five of the addendum's eight headings: the title's em dash derives
+   as a *double* hyphen where intuition wrote one, and every heading that
+   carries its minted identifier in a parenthetical code span has that
+   identifier included in its derived slug where intuition dropped it. The
+   declared anchors were then corrected to the derived forms — that
+   correction loop *is* the mint — and the pre-verification guesses are
+   transcribed in the table below rather than hidden, because they are the
+   evidence for `naming-derived-vs-declared`'s renderer-relativity claim:
+   derived addresses are only as canonical as the deriving renderer, and
+   pandoc-verified is not yet GitHub-verified.
+2. **My original sections already carry undeclared second addresses.**
+   GFM renders every heading above with an auto-slug — "The Grammar: Mint,
+   Resolve, Cite" is *also* reachable as
+   `#the-grammar-mint-resolve-cite` today, with no mapping declared between
+   that shadow address and `#grammar`. The dual-anchor condition this
+   addendum describes is not hypothetical; it is the current state of the
+   draft above, awaiting the synthesis-time audit.
+
+The declared mapping for this addendum's own sections — the carrier's
+ladder pattern, applied to itself at honest scale (long form | derived
+address | declared anchor, one entity per row):
+
+| Long form (heading) | Hand guess (pre-verification) | Derived slug (pandoc-verified) | Declared anchor (mint) |
+|---|---|---|---|
+| Addendum: The Carrier Pattern — Tokens, Regimes, Registers | `addendum-the-carrier-pattern-tokens-registers-registers` | `addendum-the-carrier-pattern--tokens-regimes-registers` | same as derived |
+| The Pattern, As Observed | `the-pattern-as-observed` | `the-pattern-as-observed` | same |
+| Citation Tokens: Declared Density (`naming-citation-token`) | `citation-tokens-declared-density` | `citation-tokens-declared-density-naming-citation-token` | same |
+| Derived Versus Declared Addressing (`naming-derived-vs-declared`) | `derived-versus-declared-addressing` | `derived-versus-declared-addressing-naming-derived-vs-declared` | same |
+| Mint The Slug, Pin The Anchor (`naming-slug-at-mint`) | `mint-the-slug-pin-the-anchor` | `mint-the-slug-pin-the-anchor-naming-slug-at-mint` | same |
+| Reference Registers: The Unification (`naming-reference-registers`) | `reference-registers-the-unification` | `reference-registers-the-unification-naming-reference-registers` | same |
+| Self-Application, Verified By Pandoc | `self-application-verified-by-pandoc` | `self-application-verified-by-pandoc` | same |
+| What Remains Unresolved | `what-remains-unresolved` | `what-remains-unresolved` | same |
+
+One continuity note, because it demonstrates the flagship rather than
+decorating it: this addendum was written in a *different session* than the
+draft above, yet signs as the same `herald/glm-5.3-max` — the name persisted
+across address churn exactly as `naming-archive-actors` and
+`naming-address-vs-identity` say identity should.
+
+<a id="what-remains-unresolved"></a>
+## What Remains Unresolved
+
+- **Renderer relativity of derived addresses.** GitHub and pandoc disagree
+  at the edges (evidence above); a cross-renderer slug probe is a cheap
+  follow-up experiment the synthesis should run before any slug-at-mint
+  law is proposed for adoption.
+- **Cross-corpus token import.** When corpus B cites corpus A's tokens
+  (rather than A's addresses), B inherits A's table — the glossary
+  federation problem again. The carrier avoids it by staying in-corpus;
+  whether import is ever worth it stays open.
+- **Ordered tokens and re-sequencing.** Density loves sequence (`C7`
+  after `C6` reads as order), sequence invites renumbering, and renumbering
+  is the constitution's standing warning about coordinates. Frozen corpora
+  dodge it; living ones need a policy.
+- **Slug-at-mint as law.** Promoting it into the constitution's anchor
+  rules is a law change with a human gate (`rekon-con-naming`), not a wave
+  edit. This addendum practices it; it does not enact it.
+
+[^carrier-pattern]: [`carrier0.gpt56s.md`](file:///home/rektide/src/opencode-watchman/.design/watchman/carrier0.gpt56s.md) — commit ladder at lines 300-315; dual-form headings at lines 320, 348, 387, 436; dense short citations at lines 287, 384-385, 649, 655, 821, 835; zero explicit HTML anchors; 34 `#L` line-anchor citations.
