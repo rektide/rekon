@@ -1,21 +1,27 @@
 ---
 type: NamingProposal
 title: Naming and the new core - synthesis proposal, revision 3
-description: "A candidate successor naming compact: one canonical semantic name per entity within an authority, a declared family of reference registers, federated native planes, self-proposed and accepted actor identity, earned naming, bounded certainty, and a deliberately deferred tooling seam."
+description: "Synthesis proposal with an append-only override response: tree location plus pinned anchor is knowledge identity; canonicality governs plural reference registers; native planes, actor self-naming and hats, earned aliases, bounded certainty, and a deferred tool seam compose around it."
 resource: /constitution/naming/exploration/proposal3.sol56x.md
-tags: [naming, identity, references, agents, anchors, namespace, beads, okf, synthesis, rekon-core]
+tags: [naming, identity, location, references, agents, hats, aliases, anchors, namespace, beads, okf, synthesis, override, rekon-core]
 status: draft
-generated: { by: "model:openai/gpt-5.6-sol#max", at: 2026-09-03T14:47:02-04:00 }
+generated: { by: "model:openai/gpt-5.6-sol#max", at: 2026-09-03T21:55:28-04:00 }
 stale_after: 2026-12-03T00:00:00-05:00
 extensions:
   local_knowledge_id: naming-proposal3
   qualified_knowledge_id: rekon-constitution-naming-proposal3
+  identity_under_ruling: constitution/naming/exploration/proposal3.sol56x
+  identity_fields_disposition: local_knowledge_id and qualified_knowledge_id are resolution forms after proposal4
   revision_of: /constitution/naming/exploration/proposal2.glm53m.md
   ticket: rekon-con-naming
   wave: naming exploration proposal revision 3 synthesis
   actor: rekon-naming-concordance
   actor_status: self-proposed
   independence: No sibling proposal3 artifact was consulted.
+  responds_to:
+    - /constitution/naming/exploration/proposal4.glm53m.md
+    - /constitution/naming/exploration/proposal4.sol56x.md
+    - /constitution/naming/exploration/ask-audit0.glm53m.md
   succession_candidate_for:
     - /constitution/naming/exploration/proposal2.glm53m.md
     - /constitution/README.md#doc-constitution-references
@@ -78,6 +84,18 @@ sources:
     title: Open Knowledge Format v0.2
     author: project:knowledge-catalog
     last_modified: 2026-06-30
+  - id: proposal4-ruling
+    resource: /constitution/naming/exploration/proposal4.glm53m.md
+    title: Naming for rekon revision 4 - the human override, location is identity
+    author: steward/glm-5.3-max
+  - id: proposal4-companion
+    resource: /constitution/naming/exploration/proposal4.sol56x.md
+    title: Naming for rekon revision 4 companion override
+    author: model:openai/gpt-5.6-sol#max
+  - id: ask-audit0-glm53m
+    resource: /constitution/naming/exploration/ask-audit0.glm53m.md
+    title: Naming ask audit, revision 0
+    author: steward/glm-5.3-max
 ---
 
 <a id="naming-proposal3"></a>
@@ -1136,3 +1154,619 @@ when references occupy declared registers and one authority remains the
 canonical semantic owner. What remains genuinely unsettled is not whether the
 fabric has many references, but who may promise their mappings, how long those
 promises should live, and what evidence earns wider trust.
+
+<a id="addendum-location-identity-override-response"></a>
+# Addendum Location Identity Override Response
+
+This addendum responds to the human ruling recorded in
+[`proposal4.glm53m.md`](/constitution/naming/exploration/proposal4.glm53m.md),
+the consequence analysis in
+[`proposal4.sol56x.md`](/constitution/naming/exploration/proposal4.sol56x.md),
+and the receipts in
+[`ask-audit0.glm53m.md`](/constitution/naming/exploration/ask-audit0.glm53m.md).
+The original proposal above remains unchanged as wave evidence. Its categorical
+kill list is therefore still visible at the point where it was argued, while
+this addendum records which judgments are now revised, overruled, or retained.
+
+I answer as the same resumed execution actor that self-proposed
+`rekon-naming-concordance`, not as the separate companion author that happened
+to use the same model. The continuity evidence here is the resumed session and
+the append-only response in the same artifact. That is narrower than claiming
+that every future invocation of this model continues the actor.
+
+The answer is **revise**, not defend. The human ruling exposes a preference I
+had priced as architectural necessity: move-stable semantic stems are useful,
+but the federated semantic fabric does not require them for tree-resident
+knowledge. Location can occupy the canonical-name register because regular-file
+placement and anchor ownership are themselves public declarations. The same
+architecture then prices movement as identity change rather than hiding it as a
+locator update.
+
+<a id="response-disposition"></a>
+## Response Disposition
+
+| Ruling question | Defended or revised | Answer |
+|---|---|---|
+| Can declared registers express location identity? | **Revised** | Yes. For tree-resident knowledge, bundle path plus pinned anchor occupies the canonical-name register; placement and anchor ownership are the declaration. |
+| What actually breaks under location identity? | **Revised** | Several normative classifications and every knowledge-move row break; the fabric, locality, native planes, contextual resolution, and trust boundaries survive. My earlier settlement was a stability preference presented as law. |
+| How does the proposal reconcile with OKF Concept ID? | **Revised** | It now adopts OKF's path-without-`.md` identity at document grain and extends it with a pinned anchor at section grain. The earlier proposal did not acknowledge that it had forked this concept. |
+| Do declared hats satisfy one-name locality? | **Revised** | Yes. A hat is an alias in the reference family, mapped to one canonical actor. Role relations remain complementary and do not exhaust what hats do. |
+
+Two defenses remain because the ruling explicitly leaves them standing. One
+byte string across hostile media stays dead: contortion, qualification, and
+aliases are declared projections, not accidental duplicate entities. And an
+actor may unilaterally promise a self-name or hat, but cannot unilaterally grant
+that declaration global currency. The receiving authority still decides what
+it resolves in its own scope.
+
+<a id="question-1-can-declared-registers-express-location-identity"></a>
+## Question 1 Can Declared Registers Express Location Identity
+
+Yes. My own K3 account already contained the bridge I failed to follow. It said
+that register membership depends on use rather than syntax, and that one value
+can be a canonical name in its native plane while acting as a locator from
+another plane. A regular knowledge path is exactly such a value.
+
+For tree-resident knowledge under the ruling:
+
+```text
+document identity = <bundle-relative path without .md>
+section identity  = <document identity>#<pinned anchor>
+external identity = <project or bundle authority> + <document or section identity>
+```
+
+The canonical identity of this artifact is therefore
+`constitution/naming/exploration/proposal3.sol56x`, not the independent stem
+`naming-proposal3`. Its root section is
+`constitution/naming/exploration/proposal3.sol56x#naming-proposal3`. The
+frontmatter `local_knowledge_id: naming-proposal3` remains a useful local
+resolution form and historical statement of the original synthesis, while
+`rekon-constitution-naming-proposal3` remains a flattened, model-elided
+cross-modal form. Neither silently outranks the location declaration.
+
+That correction adopts `naming-implied-names` in the strong sense the proposal
+chain originally intended. The anchor supplies the terminal section segment;
+the document location supplies the rest. Project qualification adds authority
+scope. No shadow stem-to-path registry is needed to discover the canonical
+local owner.
+
+The uniqueness argument is also decisive at the knowledge-file grain. Two
+regular files cannot occupy one path at the same time in one tree. Placement
+therefore supplies ceremony-free collision exclusion. Anchors still need unique
+ownership within a file, but `naming-slug-at-mint` and mechanical checking
+already address that narrower pressure. `naming-ceremony-budget` favors using
+the tree's existing invariant rather than allocating a second knowledge-name
+layer in advance.
+
+<a id="corrected-reference-registers"></a>
+### Corrected Reference Registers
+
+`naming-reference-registers` is adopted, with its knowledge row corrected rather
+than replaced:
+
+| Register | Form after the ruling | Mapping and precedence |
+|---|---|---|
+| Canonical semantic name | Bundle path without `.md`; for a section, that path plus its pinned anchor | Regular-file placement and anchor ownership declare one live owner in the bundle authority |
+| Resolution form | Contextual elision, project qualification, model elision, flattened spelling, glossary alias, symlink, or retired compatibility input | Context or a nearby declaration recovers the canonical location identity |
+| Citation token | Dense local token such as `C2` or this artifact's `K3` | Scoped table declares expansion and canonical precedence |
+| Locator | Root-relative link, repository URL, session handle, native work pointer, external resource | Reaches a presence; a knowledge path may overlap this register and canonical-name identity |
+| Evidence binding | Revision-pinned path and line range, commit identity, receipt, or signature | Binds one observation and proves only its stated scope |
+
+The overlap is not an exception. Registers classify promises a reference makes;
+they do not partition strings into exclusive character sets. A knowledge path
+both identifies and locates. A session handle locates an execution but does not
+name its actor. A Beads ID canonically names native work and can be a locator
+when a knowledge document points into that work plane.
+
+`naming-semantic-fabric` therefore survives with a corrected center: **the tree
+names knowledge; the fabric relates, qualifies, evidences, and federates what
+the tree names with entities native to other planes.** It is not an alternative
+identity authority hovering behind the filesystem.
+
+<a id="location-separation-disposition"></a>
+### Location Separation Disposition
+
+I adopt the companion's surgical disposition of `naming-location-separation`
+and make its scope explicit:
+
+- **Overruled on tree-resident knowledge.** Moving or renaming a regular concept
+  file changes its OKF Concept ID and the composed identities of its anchored
+  sections. A separate stem does not remain canonically untouched behind the
+  move.
+- **Retained in substance for non-identifying locators.** Session handles,
+  routing strings, external resource URLs, and similar locations can change
+  without renaming an actor or another native entity.
+- **Delegated on actors to `naming-address-vs-identity`.** That existing
+  identifier states the valid actor-side distinction more precisely, so
+  `naming-location-separation` is no longer adopted as a general current law or
+  reminted as an actor-only synonym.
+
+`naming-canonical-stem` receives the same bounded correction. It remains useful
+for actors and other non-tree native entities whose authority accepts a lexical
+stem. It is overruled as an independent, move-stable identity above regular
+knowledge paths. For knowledge, the canonical lexical form is the location
+identity itself.
+
+<a id="question-2-what-actually-breaks-under-location-identity"></a>
+## Question 2 What Actually Breaks Under Location Identity
+
+The architecture does not break. These claims in the original proposal do:
+
+| Original settlement | Disposition after the ruling |
+|---|---|
+| A path only resolves identity and does not define it | **Overruled for tree-resident knowledge.** Placement mints the document identity; a pinned anchor extends it. |
+| A locator move preserves the canonical name | **Overruled for files, anchors, directories, and docroots.** Those moves rename knowledge identities. Retained for genuinely non-identifying locators. |
+| The canonical stem remains stable when a knowledge path moves | **Overruled.** The old full name retires and the new location is the successor name. |
+| A canonical knowledge path may churn because it is a locator | **Overruled.** It may move only by paying `naming-rename-ripple`; session and runtime locators may still churn. |
+| `naming-home-not-layout` makes layout irrelevant to identity | **Retained only as sequencing.** Contract adoption need not force a move, but a later move is identity change, not neutral storage work. |
+| Path-defined identity belongs on the kill list | **Reversed.** It is law for tree-resident knowledge. |
+| Hats as actor aliases belong on the kill list | **Reversed.** Declared hats are valid resolution forms. |
+| Aliases without advance governance belong on the kill list | **Reversed.** Local declared practice precedes centralized governance; pressure earns stronger machinery. |
+
+My previous position optimized every read for move stability and charged every
+read the indirection cost of a semantic stem. The ruling chooses the opposite
+economics: mint and ordinary local lookup are cheap because the name is the
+place; moves are expensive because they are renames. I still prefer move-stable
+stems in systems where movement is routine or topology must remain private, but
+that is a design preference, not a consequence of one-name locality, native
+authority, or federation. The human has chosen wiki economics for Rekon.
+
+<a id="rename-ripple-cost"></a>
+### Rename Ripple Cost
+
+`naming-rename-ripple` is adopted as deliberate cost, not treated as evidence
+against location identity. A file move changes one document identity plus every
+section identity composed from that path. The migration bill includes:
+
+- each old path and new path in the migration map;
+- every pinned anchor whose full name changes with the enclosing path;
+- controlled inbound links, frontmatter resources and source paths, indexes,
+  symlinks, and ticket forward references;
+- deep-fragment compatibility, not merely an old file that opens;
+- unknown external citations that only the old authority can preserve or allow
+  to fail loudly;
+- cross-authority cooperation when the new owner cannot publish compatibility
+  inside the old namespace.
+
+This is not a demand for global atomicity. `naming-rename-covenant` records the
+old owner, successor, authorizing actor, and compatibility disposition.
+`naming-convergence-repair` describes controlled rewrites, stubs, and repeated
+link maintenance as repair toward the declared state. Hierarchy1 already gives
+those actions their migration map, inbound-link inventory, human gate, and
+compatibility-stub vocabulary.
+
+The revised `naming-identity-change` classification is:
+
+| Change | Identity result under location law |
+|---|---|
+| Heading prose changes while pinned anchor stays | Same section identity; visible wording and anchor correspondence need review |
+| Non-tree locator changes | Same native entity; locator register changes |
+| Anchor changes | Section rename; retire and map the old fragment |
+| File changes path | Document rename and rename of every anchored section |
+| Directory or docroot moves | Batch rename of the descendant knowledge namespace |
+| Symlink or compatibility exposure appears | A mapped resolution form, not a second canonical regular body |
+| Regular content is copied elsewhere | A second artifact identity exists; equivalence or derivation must be explicit |
+| Semantic content splits or merges | New location identities plus explicit predecessor and successor relations |
+
+What does **not** break is equally important. A body edit does not rename its
+path identity. A heading edit need not rename a pinned anchor. Trust and
+disposition do not rise or fall because a file occupies a path. Actor identity
+still survives session-address churn. Work remains natively named by its work
+authority. The work/knowledge seam remains explicit. The reference, evidence,
+and certainty registers continue to say what location alone cannot.
+
+<a id="trust-remains-orthogonal-to-location-identity"></a>
+### Trust Remains Orthogonal To Location Identity
+
+The ruling does not reverse hierarchy1's "disposition replaces location"
+settlement because that sentence answers a different question. Location answers
+**which knowledge artifact is this?** Frontmatter disposition answers **what
+posture and trust signals does this artifact currently claim?**
+
+A path-derived concept can be draft, stable, deprecated, stale, generated, or
+verified. A human-reviewed artifact can move and thereby be renamed without
+losing the historical fact of its review, although the applicability of that
+review after migration may need reassessment. `naming-observer-relative-certainty`,
+`naming-certainty-bundle`, and `naming-attestation-boundary` all survive because
+identity never proved truth in the original compact.
+
+<a id="question-3-reconciliation-with-okf-concept-id"></a>
+## Question 3 Reconciliation With OKF Concept ID
+
+The original proposal did not reconcile its identity layer with OKF. It quoted
+OKF as a neighboring standard and adopted its provenance, actor, lifecycle, and
+computation machinery, but it replaced OKF's primary concept identity without
+naming that divergence. The format would have permitted producer extensions;
+the conceptual omission was still mine.
+
+The corrected account adopts OKF section 2 directly:
+
+- an OKF Concept is one Markdown document;
+- its Concept ID is the bundle-relative file path with `.md` removed;
+- the bundle directory tree is the identity namespace at document grain;
+- Rekon extends the Concept ID with `#<pinned-anchor>` for section-grain
+  knowledge identity;
+- project or bundle qualification composes that local identity across
+  authorities;
+- frontmatter local IDs, flattened cross-modal forms, and model-elided forms
+  are resolution or indexing references when present, not hidden canonical
+  owners above the path.
+
+The scope boundary remains important. OKF does not define section IDs, actor
+identity, Beads work identity, runtime occurrence identity, or cross-project
+equivalence. `naming-native-authority` supplies the reconciliation: the OKF
+bundle names its knowledge concepts by path, the work graph names work through
+its native IDs, actors make and receive actor identity promises, and version
+history names exact evidence. `naming-plane-federation` lets those identities
+relate without forcing the knowledge rule onto every plane.
+
+`naming-one-name-locality` becomes simpler at the OKF document grain. One
+regular path has at most one current file owner. Old paths retained as symlinks
+or stubs are resolution mappings to the successor, not live canonical concept
+owners. A copied regular file at a second path is a second concept artifact even
+when its bytes match; sameness of subject or derivation must be stated rather
+than inferred.
+
+<a id="question-4-do-declared-hats-satisfy-one-name-locality"></a>
+## Question 4 Do Declared Hats Satisfy One Name Locality
+
+Yes. I withdraw the exclusive claim that hats must be modeled only as roles.
+Under `naming-reference-registers`, a declared hat is an actor resolution form
+with a mapping to one canonical actor. That satisfies
+`naming-one-name-locality` exactly as a dense token or contextual elision does:
+canonicality remains singular while reference cardinality is plural.
+
+The primary ruling's `steward/glm-5.3-max` example makes the distinction
+concrete. `proposer`, `coordinator`, and `archivist` are concern-scoped names by
+which discourse can reach one actor. They do not assert three independent
+agencies merely because all three strings are useful. The actor declaration is
+the nearby map and its frontmatter supplies scope.
+
+`naming-promise-currency-split` gives the restored practice its honest boundary:
+
+- **Promise is unilateral.** An actor may self-declare its canonical name and
+  hats. A coordinator cannot make that identity promise on the actor's behalf.
+- **Currency is bilateral.** A receiving authority chooses which declaration
+  and mappings it will resolve in its scope. Self-declaration does not allocate
+  a globally accepted string.
+- **Canonicality remains singular.** Hats lead to the one actor owner and carry
+  canonical precedence explicitly.
+- **Promotion remains possible.** A concern that develops independent intent,
+  continuity, accountability, and reference pressure may become a distinct
+  actor rather than remain a hat.
+
+My original kill of **unilateral global self-naming** is therefore retained only
+when parsed precisely: unilateral self-*declaration* is valid; unilateral
+global *currency* is not. The ruling restores the former and does not require
+the latter.
+
+<a id="hats-and-roles-both-survive"></a>
+### Hats And Roles Both Survive
+
+`naming-role-is-relation` is retained-in-part and loses its exclusive force. A
+hat and a role relation answer different questions:
+
+| Actor braid strand | Question answered | Canonical actor owner? |
+|---|---|---|
+| Canonical actor name | Who promises continuity | Yes |
+| Hat alias | Which concern-specific reference reaches that actor here | No; declared mapping to the actor |
+| Role relation | What responsibility the actor undertook, for what scope and history | No; typed contextual edge |
+| Model identity | What producer or model generated the run | No; provenance |
+| Session or task handle | Where the execution can be resumed or inspected | No; exact locator |
+| Artifact or signature binding | What evidence connects output to the actor claim | No; evidence binding |
+
+`naming-actor-braid` is adopted with the hat-alias row restored.
+`naming-actor-handshake` remains the acceptance boundary. A single action may
+need both a hat, for address in dense concern-specific discourse, and a role
+relation, for durable responsibility. Neither should be forced to impersonate
+the other.
+
+<a id="cross-modal-aliases-restored"></a>
+### Cross Modal Aliases Restored
+
+I also withdraw the kill of aliases lacking advance centralized governance.
+`naming-cross-modal` and `naming-aliases` are adopted in the restored reading:
+abbreviations may cross Markdown, filenames, frontmatter, diagrams, actor
+declarations, and native work IDs when context or a nearby declaration makes
+their mapping recoverable.
+
+`rekon-con-naming` is precedent, not anomaly. The complete string canonically
+names a work entity in its native plane. Its `con` component demonstrates a
+cross-modal abbreviation for `constitution`; it does not make the ticket and
+knowledge artifact one entity. `naming-work-knowledge-seam` continues to keep
+their speech acts and lifecycles distinct.
+
+No central permission service is required before a useful alias can exist. A
+readable local convention, actor declaration, frontmatter mapping, symlink, or
+glossary can be enough. Governance is earned when actual ambiguity, collision,
+cross-project export, mapping volume, or compatibility history exceeds what
+nearby declaration can carry.
+
+`naming-alias-collapse` remains the guard. If context or declaration no longer
+recovers one canonical owner, the alias has become ambiguous or is competing as
+a peer name. The correction is that I previously conflated "ungoverned" with
+"unmapped." The ruling permits the former in the sense of no advance central
+gate; K3 still rejects the latter when a durable reference claims resolution.
+
+The audit's byte-identity clarification is retained. Cross-modal sympathy does
+not require identical bytes in hostile media. Contortion adapts the canonical
+form where syntax requires it; aliases abbreviate or redirect by declaration;
+citation tokens compress local discourse. These are different reference
+operations, and none silently creates a second entity.
+
+<a id="federation-after-location-identity"></a>
+## Federation After Location Identity
+
+`naming-federated-authority` and `naming-native-authority` are the strongest
+surviving parts of the synthesis. Location identity makes their cross-authority
+costs more concrete rather than weakening them.
+
+Within one knowledge authority, a path is collision-free and self-locating.
+Across authorities, the qualified identity is the authority plus that local
+path and optional anchor. Two projects may own the same relative path without
+collision because their authorities differ. Matching paths still do not prove
+semantic equivalence, and different paths do not prove semantic difference;
+explicit sourced relations carry those claims.
+
+A cross-authority move is a succession of identity, not a route update:
+
+1. The old authority retires the old qualified document and section names.
+2. The new authority mints new identities by placement and anchor ownership.
+3. Controlled references are repaired or left deliberately on compatibility.
+4. Only the old authority can preserve ordinary resolution from its old names.
+5. If the old authority is unavailable, external breakage is an accepted limit,
+   not something the new authority can repair by assertion.
+
+This is the rename ripple on federation's home turf. The former architecture
+already rejected global atomicity and required explicit cross-project
+relations. What changes is the identity judgment: the entity's continuity may
+be asserted across the move, but its canonical name changes because authority
+and tree location changed.
+
+`naming-resolution-promise` remains valuable after local path lookup becomes
+simple. It carries aliases, retired names, cross-project qualification,
+visibility, provenance, conflict, and contextual relations. A plain tree can
+tell an observer where a local concept lives; it cannot alone explain whether a
+remote successor continues it or which authority's equivalence claim to trust.
+
+<a id="corrected-compact"></a>
+## Corrected Compact
+
+The original compact is revised by the following ruling-conformant account. No
+new semantic identifier is minted for it:
+
+> Within a declared bundle or project authority, a regular knowledge artifact's
+> canonical identity is its tree path with the Markdown suffix removed. A
+> section extends that identity with one pinned semantic anchor. The tree is the
+> knowledge namespace; authority qualification composes those local identities
+> across projects.
+>
+> One current regular location owns one knowledge identity. Contextual elisions,
+> model-elided forms, cross-modal abbreviations, citation tokens, symlinks,
+> exposures, and historical paths may resolve to that owner when their mapping
+> and precedence are recoverable. Hostile-media contortion need not preserve one
+> byte string.
+>
+> At creation, `naming-slug-at-mint` derives the section-local anchor from the
+> visible heading and pins it. Later heading prose may change without renaming
+> the section. Moving a file or anchor changes the full identities it composes
+> and invokes `naming-rename-ripple`.
+>
+> Identity and trust remain orthogonal. Path says which knowledge artifact;
+> disposition, provenance, verification, and attestation say what an observer
+> may infer about it.
+>
+> Actors self-declare canonical names and may declare concern-scoped hats as
+> aliases. Receiving authorities decide which claims and mappings have currency.
+> Roles remain explicit relations, and independent agency can promote a concern
+> from hat to actor.
+>
+> Aliases may emerge locally and cross media without advance central permission.
+> Mapping obligations begin with use; stronger governance is earned by observed
+> ambiguity, collision, export, or maintenance pressure.
+>
+> Knowledge, work, actors, occurrences, computations, evidence, and orchestration
+> retain native authorities and explicit relationships. The tree names
+> knowledge; the federated semantic fabric makes the named world contextual,
+> evidential, and navigable.
+
+<a id="override-disposition-ledger"></a>
+## Override Disposition Ledger
+
+This ledger is authoritative for how the addendum uses identifiers. It does not
+erase their original use in the preserved synthesis above.
+
+| Identifier or prior disposition | Status after response | Meaning carried forward |
+|---|---|---|
+| `naming-proposal3` | **Retained as local resolution form; overruled as independent document identity** | The canonical artifact identity is `constitution/naming/exploration/proposal3.sol56x`; this string remains its root anchor and local reference |
+| `rekon-constitution-naming-proposal3` | **Retained-in-part as model-elided cross-modal form** | It resolves toward this proposal in context but does not outrank the model-bearing path identity |
+| `rekon-naming-concordance` | **Retained as self-proposed actor identity** | This resumed session supplies continuity for the addendum without claiming all same-model runs |
+| `rekon-con-naming` | **Adopted as work identity and alias precedent** | It canonically names the native work entity and demonstrates `con` crossing modality |
+| `naming-implied-names` | **Adopted, restored** | Tree location supplies document identity; pinned anchor supplies the terminal section segment |
+| `naming-reference-registers` | **Adopted, revised row** | Location identity occupies the knowledge canonical-name register and may overlap the locator register |
+| `naming-one-name-locality` | **Adopted unchanged** | One current regular path owner per knowledge authority; aliases and retired paths map to it |
+| `naming-name-promise` | **Adopted unchanged** | A move keeps continuity honest through disclosed rename, not by pretending the name stayed fixed |
+| `naming-location-separation` | **Overruled on knowledge; retained-in-part on non-tree locators** | Not current general law; actor-side substance is carried by `naming-address-vs-identity` |
+| `naming-address-vs-identity` | **Adopted** | Session and routing locations remain distinct from actor identity |
+| `naming-canonical-stem` | **Retained-in-part** | Valid for actor and non-tree native naming; no independent move-stable stem above a regular knowledge path |
+| `naming-contextual-elision` | **Adopted unchanged** | Context may remove recoverable location or authority segments |
+| `naming-citation-token` | **Adopted unchanged** | Dense scoped token maps to the canonical location identity |
+| `naming-derived-vs-declared` | **Adopted unchanged** | Location and heading derivation coexist with pinned anchors and compatibility mappings |
+| `naming-slug-at-mint` | **Adopted unchanged** | The section-local anchor is derived at creation and then pinned |
+| `naming-identity-change` | **Adopted, move rows revised** | File and anchor moves are canonical renames; non-tree locator changes remain neutral |
+| `naming-rename-ripple` | **Adopted, restored as accepted cost** | A location move deliberately renames documents and composed sections |
+| `naming-rename-covenant` | **Adopted** | Rename records predecessor, successor, authority, and compatibility disposition |
+| `naming-convergence-repair` | **Adopted** | Controlled rewrites and compatibility surfaces converge references without global atomicity |
+| `naming-coordinate-context` | **Adopted unchanged** | Tree coordinates locate but do not create semantic relations |
+| `naming-resolution-promise` | **Adopted unchanged** | Resolution remains contextual for aliases, history, visibility, and federation |
+| `naming-observer-relative-certainty` | **Adopted unchanged** | Exact location identity remains distinct from an observer's confidence in content or continuity |
+| `naming-certainty-bundle` | **Adopted unchanged** | Path, provenance, history, verification, and evidence contribute separate signals |
+| `naming-attestation-boundary` | **Adopted unchanged** | Mechanical binding still does not prove semantic truth |
+| `naming-semantic-fabric` | **Adopted, identity source revised** | The tree names knowledge; the fabric relates all native planes |
+| `naming-native-authority` | **Adopted unchanged** | Knowledge paths, work IDs, actor claims, and evidence remain native to their authorities |
+| `naming-federated-authority` | **Adopted unchanged** | Project-qualified location identities compose without a global sovereign |
+| `naming-plane-federation` | **Adopted unchanged** | Distinct planes share references and relations, not one store |
+| `naming-work-knowledge-seam` | **Adopted unchanged** | Shared aliases or subjects do not collapse ticket and explanation into one entity |
+| `naming-agents-hats` | **Adopted, restored** | Actors may declare concern-specific aliases mapping to one canonical actor |
+| `naming-role-is-relation` | **Retained-in-part, non-exclusive** | Roles remain contextual edges; they coexist with hats rather than replacing them |
+| `naming-actor-braid` | **Adopted, extended** | Hat alias is restored as a distinct strand beside role, model, locator, and evidence |
+| `naming-actor-handshake` | **Adopted unchanged** | Self-declared promise and authority-granted currency remain separate acts |
+| `naming-promise-currency-split` | **Adopted** | Self-naming and hats are unilateral promises; shared resolution is bilateral currency |
+| `naming-cross-modal` | **Adopted, restored** | Names and aliases may cross media with recoverable mappings |
+| `naming-aliases` | **Adopted, restored** | Local aliases need no advance central permission |
+| `naming-alias-collapse` | **Adopted as pressure guard** | Governance becomes necessary when one owner can no longer be recovered |
+| `naming-reference-pressure` | **Adopted unchanged** | Alias and governance ceremony are earned by durable use and consequence |
+| `naming-ceremony-budget` | **Adopted unchanged** | Location identity removes unnecessary independent-stem allocation |
+| `naming-home-not-layout` | **Retained-in-part** | Adoption need not move files immediately; any eventual move is identity change |
+| `naming-tooling-seam` | **Superseded identifier** | Original addendum evidence remains; current corpus vocabulary uses `naming-tool-seam` |
+| `naming-tool-seam` | **Adopted** | Tool assistance remains required in intent and deliberately unspecified here |
+| Kill of path-defined identity | **Overruled** | Location identity is law for tree-resident knowledge |
+| Kill of hats as actor names | **Overruled** | Hats are declared aliases, not canonical peer actors |
+| Kill of ungoverned aliases | **Overruled as advance-governance requirement** | Nearby mapping is enough until pressure earns stronger governance |
+| Kill of one-byte identity across hostile media | **Retained** | Contortion and aliasing are not duplicate entities |
+| Kill of unilateral global self-naming | **Retained only for global currency** | Self-declaration is unilateral; authority-wide acceptance is not |
+| Kill of Beads as universal entity store | **Retained** | Beads remains the native work plane inside the wider fabric |
+
+The original K-map is historical evidence and is not silently retargeted. In
+particular, its `K9` token still maps to the original
+`naming-tooling-seam` section. Current prose adopts `naming-tool-seam` as the
+corpus-selected identifier; a new token would require a new declared map, and
+this addendum does not need one.
+
+<a id="what-i-concede-and-still-hold"></a>
+## What I Concede And Still Hold
+
+**Conceded:**
+
+- I treated move stability as though one-name locality required it. It did not.
+- I cited OKF while failing to name my departure from its path-based Concept ID.
+- I overlooked regular-file placement as a public, collision-free identity
+  declaration.
+- I made roles and hats mutually exclusive when they answer different questions.
+- I conflated freedom from advance central alias governance with absence of an
+  inspectable mapping.
+- I treated `rekon-con-naming` too narrowly as a native work ID and not also as
+  precedent for an alias component crossing modalities.
+
+**Still held:**
+
+- One canonical owner per authority remains the invariant; restored aliases and
+  hats are subordinate mapped references, not competing canonical owners.
+- Register membership follows use rather than syntax; paths can identify
+  knowledge while session paths only locate executions.
+- Byte-for-byte identity across media remains unnecessary and often impossible.
+- Local self-declaration does not manufacture global acceptance or trust.
+- Trust, verification, and attestation remain independent of successful name
+  resolution.
+- Lexical tree ancestry remains navigation, not ontology.
+- Native authorities and explicit relations remain preferable to a universal
+  entity database.
+- Work and knowledge remain different entities by default even when aliases or
+  semantic components cross their media.
+- The rename ripple is finite only inside controlled authorities; unknown
+  external references and abandoned old authorities remain real limits.
+- Tool assistance is required by intent, while tool design remains deferred at
+  `naming-tool-seam`.
+
+<a id="override-tensions"></a>
+## Override Tensions
+
+The ruling settles policy, but these costs cannot be reasoned away:
+
+- **Bundle boundary.** Path identity requires a declared answer to where the
+  knowledge bundle begins. Different bundle roots yield different Concept IDs.
+- **Wave filenames.** For exact evidence, `proposal3.sol56x` rightly includes
+  model identity in its path. A promoted public presence may intentionally take
+  a model-free path and therefore a new canonical identity.
+- **Cross-authority abandonment.** A new project cannot preserve an old
+  qualified name when the old authority no longer exists or refuses a stub.
+- **Topology disclosure.** A globally cited location identity exposes part of
+  the authority's tree. The ruling accepts that for wiki knowledge; private
+  actor and system identities may need different native naming.
+- **Alias discoverability before governance.** Nearby declaration is cheap, but
+  readers can still arrive below the context that explains an alias. The point
+  where volume earns a glossary remains empirical.
+- **Hat scope collisions.** `coordinator` can resolve cleanly inside one effort
+  and collide across a workspace. Currency remains observer- and scope-relative.
+- **Deep-fragment compatibility.** Preserving an old file route does not
+  necessarily preserve every old anchored section on every publication surface.
+- **Copied bodies.** Location law correctly creates two artifacts for two
+  regular paths, but collaborators must still decide whether their semantic
+  relationship is derivation, mirror, replacement, or accidental duplication.
+- **Anchor dual declaration.** Slug-at-mint can still produce co-located explicit
+  and heading-derived targets. Location identity does not settle that rendering
+  conformance question.
+- **Semantic drift without movement.** A path and pinned anchor can remain exact
+  while the prose beneath them changes meaning. Stewardship, review, and
+  supersession remain necessary; self-location is not self-verification.
+
+I cannot eliminate the core trade without reversing the ruling: location
+identity buys self-location and ceremony-free uniqueness by making topology
+change semantically expensive. The human has selected that exchange. The
+unresolved task is to operate it honestly, especially at cross-authority and
+deep-fragment boundaries, not to smuggle the move-stable stem back underneath.
+
+<a id="addendum-identifier-ledger"></a>
+## Addendum Identifier Ledger
+
+This addendum mints **no new free-standing `naming-*` semantic concept**. It
+adopts or dispositions identifiers already present in the proposal chain,
+independent drafts, ruling, companion, and audit.
+
+It mints these section-anchor identifiers, each equal at mint to its heading's
+derived GFM slug:
+
+`addendum-location-identity-override-response`, `response-disposition`,
+`question-1-can-declared-registers-express-location-identity`,
+`corrected-reference-registers`, `location-separation-disposition`,
+`question-2-what-actually-breaks-under-location-identity`,
+`rename-ripple-cost`, `trust-remains-orthogonal-to-location-identity`,
+`question-3-reconciliation-with-okf-concept-id`,
+`question-4-do-declared-hats-satisfy-one-name-locality`,
+`hats-and-roles-both-survive`, `cross-modal-aliases-restored`,
+`federation-after-location-identity`, `corrected-compact`,
+`override-disposition-ledger`, `what-i-concede-and-still-hold`,
+`override-tensions`, `addendum-identifier-ledger`,
+`addendum-cross-references`, and `addendum-anchor-verification`.
+
+The three new frontmatter provenance keys are `proposal4-ruling`,
+`proposal4-companion`, and `ask-audit0-glm53m`. They are scoped source
+references, not semantic owners. The disposition table above is the complete
+list of existing semantic identifiers newly adopted, overruled, retained in
+part, restored, revised, or superseded by this response.
+
+<a id="addendum-cross-references"></a>
+## Addendum Cross References
+
+- [`proposal4.glm53m.md`](/constitution/naming/exploration/proposal4.glm53m.md)
+  **governs** this response. Its human-authorized location, ripple, hats, and
+  alias rulings are accepted rather than averaged back into model consensus.
+- [`proposal4.sol56x.md`](/constitution/naming/exploration/proposal4.sol56x.md)
+  **prices and applies** the ruling. Its corrected register table,
+  knowledge-versus-actor disposition of `naming-location-separation`, migration
+  cost vector, promise/currency hat analysis, and Concordance-specific breakage
+  assessment are adopted and independently answered here.
+- [`ask-audit0.glm53m.md`](/constitution/naming/exploration/ask-audit0.glm53m.md)
+  **audits** the human asks and supplies exact receipts for this proposal's kill
+  list. Its byte-identity clarification constrains what this response does not
+  concede.
+- [OKF v0.2](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md#L71-L94)
+  **defines** document-grain Concept ID as bundle path without `.md`; this
+  response adopts it and identifies pinned section anchors as Rekon's extension.
+- [`README-heirarchy1.glm53m.md`](/constitution/README-heirarchy1.glm53m.md)
+  **prices** path identity change with migration maps, inbound-link inventories,
+  human gates, and compatibility stubs while keeping trust disposition in
+  frontmatter.
+- The [original proposal above](#naming-proposal3) **is revised by** this
+  addendum but intentionally remains readable as evidence of the rejected
+  move-stable-stem, role-only, and advance-alias-governance settlement.
+
+<a id="addendum-anchor-verification"></a>
+## Addendum Anchor Verification
+
+All twenty addendum headings were minted with explicit anchors equal to their
+GFM-derived heading slugs. The addendum and complete artifact were rendered
+mechanically, and declared anchor order was compared with derived heading-ID
+order. This verifies the source-level slug-at-mint correspondence used here; it
+does not resolve the co-located-target or cross-renderer tensions retained
+above.
