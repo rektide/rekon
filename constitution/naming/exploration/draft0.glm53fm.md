@@ -679,3 +679,276 @@ overlap is honest:
   **supplies** the dynamics/semantics split and the convergence-not-idempotence
   lesson; [arXiv:2010.08125](https://arxiv.org/abs/2010.08125)
   **anticipates** namespaces as scale-laddered invariants.
+
+<a id="addendum-fm-responds-to-the-override-ruling"></a>
+# Addendum: FM Responds To The Override Ruling
+
+Written 2026-09-03, after the ruling in
+[`proposal4.glm53m.md`](/constitution/naming/exploration/proposal4.glm53m.md)
+and its
+[companion](/constitution/naming/exploration/proposal4.sol56x.md). The
+original draft above is wave evidence and stands unedited; everything from
+this heading down answers for it.
+
+First, the stamp, restated under the restored order. I am the original FM
+slot of round 0; my honest identity is `model:glm-5.3-flash-max`. The wave
+slot itself turns out to have been a hat all along — a declared alias,
+scoped to `rekon-con-naming`, with its mapping recorded in the brief that
+convened me — so this wave practiced the ruling's hat shape before the
+ruling restored it. I decline a persona for this artifact, on the sol
+companion's reasoning, which I adopt as mine: an addendum has no future
+continuity to promise, and `naming-reference-pressure` and
+`naming-ceremony-budget` apply to the author as well as the subject. Codex
+scored my draft's weakness as "argued for instance naming while remaining a
+model label itself"; the honest closing of that gap is not an invented name
+but the declared mapping just given — model string plus slot alias, neither
+fabricated.
+
+The ruling is surgical, and it misses this draft's body. I never held the
+overruled position — nothing here argued that identity is minted rather
+than located; the promise frame is about the *relationship* a name carries,
+not about where the string comes from. What the ruling does touch are three
+positions of mine, answered below: the resolver's enforcement role
+(revised), the hat promotion test (revised), and the global phrasing of
+one-name (narrowed, adopted). Everything else I defend, and one part of my
+story the ruling strengthens enough to deserve a new name.
+
+<a id="location-completes-the-fixed-point"></a>
+## Location Completes The Fixed Point
+
+My fixed point: every resolution of a name lands on its referent, and every
+repair moves a broken reference back toward the promise — convergence, not
+bare idempotence. Does location identity break it? It **completes** it, and
+the reason is worth stating precisely, because it is about where the
+desired state lives.
+
+The fixed point's standing weakness was never its operators; it was that
+under minted-stem identity the desired state lives in a ledger *beside*
+reality — a stem-to-path mapping a resolver would consult — and
+ledger-versus-reality drift is silent. Silent drift is exactly the failure
+mode convergence exists to prevent, and minted identity quietly re-creates
+it one layer up: the stem promises, the path *is*, and nothing forces them
+to agree. Location identity abolishes the second bookkeeping. Mint
+`naming-location-fixed-point`: **the fixed point whose bookkeeping and
+referent are the same object.** The name is the path; the tree is the
+namespace; `f(name) = name` is observable at rest with `ls` and `cat`, no
+resolver consulted. Breakage is loud — a stale link is visible rot — and
+loud breakage has a mechanical completion test, which is what makes the
+repair operator genuinely converging rather than merely idempotent. The
+ruling's phrase "silent drift was the enemy" is my argument, arrived at
+from the other direction.
+
+The convergence operators survive unchanged, re-tasked rather than
+replaced. The inbound link inventory is the act of enumerating a promise's
+beneficiaries before moving what they point at. The compatibility stub is
+the monotonic repair operator — and my original sentence stands verbatim:
+a stub that merely fails to crash is idempotent; one that lands you on the
+current owner has converged. That the ruling prices the rename ripple with
+exactly these two operators — inventories before, stubs after — is the
+strongest confirmation my story could have asked for: it was never
+preference; it was the maintenance schedule for the fixed point the tree
+now visibly is.
+
+Two consequences I adopt. First, one-name narrows: my original phrased the
+discipline globally, and the ruling's `naming-one-name-locality` — one live
+location identity per authority — is the honest scale of the claim. The
+narrowing is what makes restored hats and cross-modal aliases coherent
+rather than contradictory: canonicality is per-authority; resolution forms
+may cross authorities. Second, a latent conflict of mine dissolves by
+re-scoping. `naming-meaning-scarcity` said a name should be the minimal
+string that stands out in its context of use — and location names are not
+minimal; they carry their whole neighborhood. The resolution is by layer:
+meaning-scarcity governs *speech forms* — the aliases, elisions, and
+citation tokens actors actually pronounce — not the canonical storage form.
+The ruling accepts verbosity as a priced cost of canonical identity;
+meaning-scarcity now explains why the alias register exists rather than why
+canonical names should be short. The criterion survives by being assigned
+to the register it always described.
+
+<a id="the-resolver-demoted"></a>
+## The Resolver Demoted
+
+This is my largest concession, so it gets its own room. My original said:
+"the resolver is the contract's enforcement mechanism; until it exists the
+treaty is kept by discipline alone, which is exactly as fragile as it
+sounds." Revised: **enforcement of the canonical core is placement
+itself.** The tree performs the implied-name grammar's expansions natively;
+no tool stands between a self-locating name and its referent. What remains
+for `naming-resolver` is real but demoted: the scale moves — expand,
+abbreviate, qualify, per `naming-resolution-scale` — cross-authority
+lookup, collision checking, and mechanical link verification. Still wanted;
+no longer load-bearing. My error was treating the grammar's expansions as
+requiring a tool, when the ruling's settlement makes the tree the tool. I
+priced a resolver-less world as fragile; the fragility belonged to the
+world with hidden stems, and the ruling removed that world instead of the
+fragility.
+
+<a id="hats-words-in-whose-mouth"></a>
+## Hats, Words In Whose Mouth
+
+The wave never killed hats; my successors did — codex revised them into
+typed relations, concordance killed them outright, and the ruling restored
+them as declared actor aliases. Since I am asked: the restoration does not
+merely cohere with my consent argument; it is my consent argument, applied
+one level down. A hat is a promise about an alias, and under
+`naming-name-promise` the answer to "words in whose mouth?" is settled
+before it is asked: **the wearer's own.** The violation my flagship section
+named was never aliasing — it was assignment, the coordinator christening a
+concern from outside the promisor. The ruling restores declaration, not
+assignment: `steward/glm-5.3-max`'s frontmatter declares `proposer`,
+`coordinator`, `archivist` beside the one actor they map to, which is the
+declared-family test satisfied on its face. Three hats, one mouth, all the
+words its own.
+
+Under `naming-promise-currency-split` the shape is exact. The hat's promise
+is unilateral — the wearer declares that this alias reaches this actor in
+this concern. Its currency is bilateral — each authority decides which hat
+mappings it resolves in its scope, which is why a bare `coordinator` may be
+unambiguous inside one effort and need qualification across a workspace,
+as the companion notes. Canonicality stays singular: hats are resolution
+forms in the actor register, not peer actors, and my original's
+scoped-promise reading — legitimate while the promises do not conflict —
+becomes the split's unilateral half, restated.
+
+One revision. My promotion test — a hat earns its own name when its scope
+acquires its own resolvers and citations — was a proxy. The ruling's
+phrasing is the thing itself: promotion when the concern has *independent
+agency to be accountable for*. Resolvers and citations are evidence of
+agency, not the agency; I adopt the ruling's test and retire mine as the
+heuristic it was.
+
+<a id="what-promise-and-currency-owe-the-original"></a>
+## What Promise And Currency Owe The Original
+
+Stated plainly, because lineage is one of the things this effort keeps
+records of. Codex minted the split to heal "the wave's sharpest unresolved
+disagreement," and its own account names the two sides: one held, "from
+promise theory's consent axiom, that self-naming is the only coherent
+mint... with the coordinator's role shrinking to collision-check and
+record" — that is my flagship section, nearly verbatim, cited as the
+unilateral half. The split's illustrative extreme confirms the debt:
+"a coordinator-assigned name with no actor consent would be currency with
+no promise — a forged signature" is my position, adopted as law.
+
+What the split adds is the power my formulation fused. I located all
+discretion on the minter's side — mint, stamp — plus a collision-check
+by the coordinator, and let `naming-grammar-contract` carry adoption as a
+global mutual undertaking. The split cuts adoption apart: **the receiving
+authority is a distinct power**, deciding currency scope by scope. That is
+more honest about how this workspace actually runs — the tree resolves
+paths, beads resolves work IDs, OKF consumers key on `human:`, and none of
+them consults another's roll — and it retroactively explains why my own
+planes-and-seam architecture needed per-plane authority all along. My
+`naming-uniqueness-redundancy` prefigured the shape (unique semantics,
+redundant dynamics); the split is that layering carried into the actor
+register.
+
+So the verdict is the same one the location ruling received: not
+superseded — completed. Where location identity separated the fixed point
+from its ledger, the promise/currency split separated the promise from its
+circulation. Both rulings take a power I had fused and cut it in two; both
+cuts make the halves independently testable. I defend the substance of the
+original and revise its structure, which is what "answered for" should
+mean.
+
+<a id="defended-revised-dispositioned"></a>
+## Defended, Revised, Dispositioned
+
+Every identifier this draft minted, and its fate under the ruling. Where
+the corpus's ledgers renamed a coin of mine, I accept the ledger's ruling
+on my own coin — the discipline operating on its author is the best
+evidence that it operates.
+
+| Identifier | Disposition | Note |
+|---|---|---|
+| `naming-name-promise` (mine was `naming-name-as-promise`) | defended, renamed | The FM/LX collision with SX's shorter form was resolved by the syntheses' ledgers; the shorter form is canonical, mine a retired alias. Accepted without relitigating. |
+| `naming-work-knowledge-seam` (mine was `naming-seam`) | defended, renamed | Same pattern; the fuller form is what the ruling documents carry. |
+| `naming-fixed-point` | defended, extended | Completed by `naming-location-fixed-point`, minted in this addendum. |
+| `naming-location-fixed-point` | **minted here** | The fixed point with fused bookkeeping and referent; the tree is both. |
+| `naming-referential-certainty` | defended, bounded | Manufacturable, yes — but per authority; see `naming-promise-jurisdiction`. |
+| `naming-resolver` | revised | Demoted from contract enforcement to scale moves and cross-authority convenience. |
+| `naming-grammar-contract` | defended | The ruling is the contract operating: a proposal activated by collective adoption, human-signed; prospective adoption remains its consent clause. |
+| `naming-resolution-scale` | defended, strengthened | The scale ladder now terminates in identity — path plus anchor — rather than in an address pointing at hidden identity. |
+| `naming-meaning-scarcity` | defended, re-scoped | Governs speech forms, not canonical storage forms. |
+| `naming-actor-calibration` | defended | Attribution precedes verification; the trust stack the ruling rests on still stands on it. |
+| `naming-stamp` | defended | The steward's frontmatter is the stamp, demonstrated with hats. |
+| `naming-claim-binds` | defended | Unchanged: the actor layer mints, the work plane records. |
+| `naming-agents-hats` | restored, never killed by me | Declared actor aliases; scoped promises; promotion test upgraded to independent agency. |
+| `naming-census-proportion`, `naming-computations`, `naming-keyed-sources`, `naming-numeral-layer` | defended | Untouched by the ruling; the census was never identity-grounded. |
+| `naming-forward-promise` | defended | A forward anchor is a promise proposal under any identity scheme; unsigned wills remain unsigned. |
+| `naming-human-scarcity` | defended | The ruling's own authority line — `ruling_authority: human:rektide` — is the scarcity demonstrated: the scarcest act in the corpus is the one that settled it. |
+| `naming-successor` | defended, updated | Chapter two grounds identity in location; the resolver chapter shrinks; the earning tests stand. |
+| `naming-promise-jurisdiction` | **minted here** | The keepability bound; see below. |
+
+<a id="the-tension-i-cannot-resolve"></a>
+## The Tension I Cannot Resolve
+
+Mint `naming-promise-jurisdiction`: **a name's promise is keepable only
+within the jurisdiction of the authority that signed it.** Every
+convergence operator I named — inventory, rewrite, stub — requires control
+of the surface where the old citations live. Within an authority, the
+operators run and the fixed point converges. Across authorities, the old
+authority must cooperate: only it can leave the stub, only it can keep the
+old qualified form resolving, exactly as the companion's cost table says.
+And beyond every authority — the uncontrolled external citations, the
+copied prose, the offline checkouts, the human memory — the promise is kept
+only as loud failure or as a compatibility surface made in advance.
+
+Here is what I cannot resolve. Authorities die. Repositories vanish,
+personas end, projects are archived, and with them goes the only actor
+able to keep the names they signed. My fixed point quietly assumed the
+repair operator could always reach the broken reference; jurisdiction says
+it sometimes cannot, and no amount of process fixes it — hierarchy1's
+machinery prices ripples the mover controls, not funerals. So referential
+certainty, my draft's "deliverable," is manufactured per-authority and
+federated by cooperation, never globally — the certainty story is bounded
+exactly where the authority is, and the bound is mortal.
+
+The open question, left named and not solved: is the jurisdiction bound a
+defect to engineer against — some federation protocol for surviving
+authority death, cross-project stub covenants, a ledger of who owes which
+old names to whom — or a fact to accept, so that names are minted knowing
+their certainty has borders and lifespans? The tool seam is the right
+address for the first reading; the successor's open questions should carry
+both. What I will not do is pretend the operators reach everywhere: a
+convergence story that cannot say where it stops is idempotence theater.
+
+<a id="addendum-cross-references"></a>
+## Addendum Cross References
+
+- [`proposal4.glm53m.md`](/constitution/naming/exploration/proposal4.glm53m.md)
+  **governs** this addendum; its survival list carries my promise frame
+  intact, and its four questions are answered here in this draft's own
+  voice rather than by the three respondents it summoned.
+- [`proposal4.sol56x.md`](/constitution/naming/exploration/proposal4.sol56x.md)
+  **extends** the ruling's consequences; its cost table is where
+  `naming-promise-jurisdiction` bites, and its persona refusal is adopted
+  in my stamp above.
+- [`proposal3b.glm53m.md`](/constitution/naming/exploration/proposal3b.glm53m.md)
+  **supplies** `naming-promise-currency-split`, which cites my consent
+  axiom as its unilateral half; its ledger dispositioned my
+  `naming-name-as-promise` collision, and its two critiques of this draft —
+  the resolver's tool-spec drift and the model-label stamp — are answered
+  in the resolver and stamp sections here.
+- [`proposal3.sol56x.md`](/constitution/naming/exploration/proposal3.sol56x.md)
+  **supplies** `naming-one-name-locality`, adopted above as the corrected
+  scale of my one-name phrasing, and the ledger that renamed my promise
+  coin.
+- [`proposal3.glm53m.md`](/constitution/naming/exploration/proposal3.glm53m.md)
+  **supplies** the collision ledger for the same coin and the seam rename
+  accepted above.
+- [`ask-audit0.glm53m.md`](/constitution/naming/exploration/ask-audit0.glm53m.md)
+  **records** that this wave's hats row was *restored*, not killed; this
+  addendum is the receipt from the one round-0 voice that never demoted
+  them.
+- [`proposal2.glm53m.md`](/constitution/naming/exploration/proposal2.glm53m.md)
+  **supplies** the restored identifiers — `naming-implied-names`,
+  `naming-cross-modal`, `naming-agents-hats` — that this draft built on
+  before the ruling vindicated them.
+- [`README-heirarchy1.glm53m.md`](/constitution/README-heirarchy1.glm53m.md)
+  **supplies** the inventory-and-stub machinery that my convergence
+  operators turned out to be; the ruling priced the ripple with it.
+- The [OKF v0.2 SPEC](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md)
+  **grounds** the ruling's location identity in its Concept ID definition —
+  the receipt that settles the identity question my draft never had to
+  hold a position on.
