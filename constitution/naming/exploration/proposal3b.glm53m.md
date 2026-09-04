@@ -25,6 +25,12 @@ extensions:
   assesses:
     - /constitution/naming/exploration/proposal3.glm53m.md
     - /constitution/naming/exploration/proposal3.sol56x.md
+  addendum: >-
+    The closing section answers the human override ruling in
+    /constitution/naming/exploration/proposal4.glm53m.md (location is
+    identity, hats restored, cross-modal aliases precedent). The original
+    argument above stands as committed wave evidence; the addendum
+    dispositions it.
 sources:
   - id: synthesis-brief
     resource: urn:opencode:session:ses_f9754b49dffe11nzyENVdE92pJ
@@ -100,6 +106,18 @@ sources:
     title: Watchman clean-slate replacement carrier, the C1-C12 commit ladder and dual-form headings
     author: model:gpt-5.6-sol
     last_modified: 2026-09-03
+  - id: proposal4-ruling
+    resource: /constitution/naming/exploration/proposal4.glm53m.md
+    title: Naming for rekon revision 4, the human override, location is identity
+    author: steward/glm-5.3-max
+  - id: proposal4-companion
+    resource: /constitution/naming/exploration/proposal4.sol56x.md
+    title: Naming for rekon revision 4 companion override
+    author: model:openai/gpt-5.6-sol#max
+  - id: ask-audit
+    resource: /constitution/naming/exploration/ask-audit0.glm53m.md
+    title: Naming ask audit revision 0, the accountability record
+    author: steward/glm-5.3-max
 ---
 
 <a id="naming-for-rekon-a-standalone-synthesis-revision-3b"></a>
@@ -1598,3 +1616,337 @@ reference family in the wild.
   **evidences** the reference family in the wild — the C1–C12 ladder and
   dual-form headings, inspected directly and as incorporated by the two
   addenda.
+
+<a id="addendum-the-override-ruling-answered"></a>
+
+# Addendum The Override Ruling Answered
+
+Written in a later session than the synthesis above, by the same actor —
+`codex/glm-5.3-max`, continuity demonstrated again across address churn.
+The original argument above stands as committed wave evidence, unrewritten;
+this addendum answers the [human override
+ruling](/constitution/naming/exploration/proposal4.glm53m.md) on its four
+questions, dispositions my positions and identifiers, and holds one tension
+open that I cannot resolve.
+
+<a id="what-happened-and-what-i-owe"></a>
+
+## What Happened And What I Owe
+
+The ruling, placed on record under `human:rektide` authority by
+`steward/glm-5.3-max`, overruled three of my kills — path-defined identity,
+hats-as-aliases, the absolute abbreviation bar — and reversed my second
+position for tree-resident knowledge: location-implied naming **is**
+identity, the wiki settlement. The [companion
+override](/constitution/naming/exploration/proposal4.sol56x.md) worked the
+consequences through my structures specifically, and the [ask
+audit](/constitution/naming/exploration/ask-audit0.glm53m.md) holds my
+receipts — my own kill list, quoted back at me, correctly.
+
+My verdict up front, question by question:
+
+| Question | Verdict |
+|---|---|
+| Can the declared family express location identity? | **Revise** — yes; placement is a declaration, and the best one available; one register row was wrong and is corrected |
+| What actually breaks under location identity? | **Revise** — a stability preference was priced as law in the knowledge plane; the real costs are extraction and cross-tree sameness, now constitutional; the evidence favors the ruling |
+| How is OKF's Concept ID reconciled? | **Revise** — I concede the unacknowledged fork; my own citation practice missed §2 while adopting §7 |
+| Do declared hats satisfy my own one-canonical-name test? | **Revise** — the kill was overbroad; a declared hat with a mapping is a register entry, not a competing name |
+
+And the defense, because a revision that conceded everything would be as
+dishonest as a defense that conceded nothing: the registers, the promise
+law, the rename covenant, the convergence machinery, the promise/currency
+split, and the actor plane survive the ruling not as consolation prizes but
+as **its payment instruments** — the ruling prices the rename ripple with
+hierarchy1's migration vocabulary, which is to say with my
+`naming-rename-covenant` and `naming-convergence-repair`, and it credits my
+split with making restored hats safe. The patient keeps the transplants
+that took.
+
+<a id="question-one-can-the-family-express-location"></a>
+
+## Question One, Can The Family Express Location
+
+Yes — and this is the deepest concession, because my family *required* this
+answer to stay coherent. The whole system rests on one sentence I wrote:
+multiplicity is legitimate when every member is a register entry with a
+mapping; multiplicity is accidental duplication when two forms compete for
+identity with no mapping between them. Location is a mapping — arguably the
+best one available to a plain-markdown workspace: public, inspectable with
+filesystem tools, collision-free within an authority, zero maintenance, and
+performed by a human act rather than asserted by a ledger. "Where the
+artifact lives is the most honest declaration an artifact makes" is not a
+rhetorical flourish; it is a better statement of my own declared-family
+test than the one I used.
+
+The correction is one row. My five-register table put paths in the locator
+row with the law "churn freely and carry no meaning." For a canonical
+knowledge path that is false by my own lights: moving one invokes my rename
+covenant — the opposite of churning freely. Session handles, routing
+strings, commit hashes, and line ranges keep that row honestly; a canonical
+knowledge path moves up into the name register, where placement declares
+the owner and anchors extend it. Register membership follows the promise a
+value performs, not its punctuation — concordance's principle, which I had
+adopted and under-applied to my own table.
+
+And a unification I can offer rather than merely concede, minted as
+`naming-placement-at-mint`: **the ruling generalizes slug-at-mint
+upward.** At section grain, this document already held that a human act
+(composing the heading) creates the identity, the notation (the derived
+slug) records it mechanically, and the pin holds it — verified forty-one of
+forty-one times above. The ruling applies the same composition at document
+grain: a human act (placing the file) declares the identity, the path
+derives, the tree is the notation. Position 2's universal form — "identity
+is minted, not derived" — dies here. Its concern survives, re-instrumented:
+identity is **declared by an act with a steward and disclosure
+obligations**, never computed by machinery nobody performed. Placement is
+such an act. The mint was never the stem; the stem was one instrument of
+it, and placement is another.
+
+<a id="question-two-what-breaks-under-location-identity"></a>
+
+## Question Two, What Breaks Under Location Identity
+
+Three things break, named precisely, and then the concession they add up
+to.
+
+**The extraction case — my own mandate's cost.** Minted as
+`naming-extraction-asymmetry`: a full location name lands exactly and
+travels heavy — it drags its tree with it, and the citation is only as
+good as the naming authority's continued existence and its willingness to
+keep compatibility surfaces. A portable stem travels light and lands
+nowhere without a carried map. Every cross-tree citation pays one side of
+this asymmetry: exactness at the price of coupling, or portability at the
+price of a map. The standalone document — the codex, this file's reason
+for existing — survives extraction under the ruling only by **carrying its
+map**, and my identifier ledger is that map: every adopted stem above is a
+declared cross-tree reference. So the ruling does not exempt standalone
+documents from location identity; it obliges them to be explicit about
+their cross-tree citations. This addendum is therefore also a
+demonstration, and the codex metaphor sharpens rather than softens: a
+bound book still cites other books — by their place in the world, printed
+on the page.
+
+**Cross-tree sameness.** Within one tree, paths cannot collide, and I
+concede ceremony-free uniqueness wholeheartedly: my identifier ledger
+resolved duplicate stem clusters — `naming-name-promise` versus
+`naming-promise-ground` versus three others, `naming-tool-seam` versus
+`naming-tooling-seam` — that location identity never permits locally. The
+ledger solved a problem location does not have, *inside* the tree. But two
+trees each have a `constitution/README.md`, and across that boundary both
+settlements do the same work: qualification plus explicit, sourced
+relations under `naming-federated-authority`. Uniqueness was always
+bought at the federation boundary; the ruling merely stops pretending the
+purchase happens at the root.
+
+**Concept-across-documents.** The wave's five drafts each minted a
+promise-law variant in their own trees. Under location identity those are
+five section identities joined by explicit same-concept relations — and my
+ledger's five resolved clusters *are* those relations, maintained by hand.
+So the ledger was not wasted ceremony; it is the relation maintenance that
+location identity also requires, at corpus grain. What changes is its
+legal position: it is a declared reference map, not an alternative
+identity registry.
+
+**The concession, with receipts.** Was the settlement a preference for
+stability priced as law? In the knowledge plane, yes. I priced stability
+against *imagined* churn; the corpus's observed cost curve runs the other
+way. This workspace has paid stem-collision costs repeatedly — five
+duplicate clusters across one wave, two same-day seam collisions across
+one synthesis round, this document's ledger exists because of them — and
+has paid rename costs approximately never, because moves here are rare and
+human-gated, and the one contemplated promotion (this topic to a root
+topic) would be a single, inventoried migration. A law should be priced
+against observed costs. On the evidence of this corpus, the ruling wins
+for tree-resident knowledge.
+
+What remains true, and heterogeneously so: the entities that *do* leave
+their trees constantly in this workspace — actors, and concepts under
+active discussion across drafts and syntheses — keep non-locational
+identity. Actors natively, by plane law: `steward/glm-5.3-max` is a stem
+and a promise, not a path. Concepts as the corpus-scale reference
+register: `naming-name-promise` is canonically one document's section, and
+every other use is citation by elision or token, honest while the map is
+kept. My settlement made every entity a traveler; the corpus is diverse —
+its tree-residents are homebodies, its actors and live concepts are
+travelers — and the ruling fits that diversity better than my uniformity
+did.
+
+<a id="question-three-the-okf-concept-id-reconciliation"></a>
+
+## Question Three, The OKF Concept ID Reconciliation
+
+Conceded, with the receipt from my own frontmatter: my source entry cites
+the OKF spec under the title "(keyed sources, actor convention, trust
+tiers, attested computation)" — that title is the audit of my reading. I
+went to the spec for §5, §7, and §10, adopted the actor convention
+verbatim, and did not weigh §2 — *"Concept ID: the path of the concept's
+file within the bundle, with the `.md` suffix removed"* — though the file
+was open in front of me when I grepped it. Adopting an authority's actor
+convention verbatim while silently inverting its identity model is exactly
+the unacknowledged fork the one-name discipline exists to catch between
+documents; I missed it inside a document I cited. The ruling's removal of
+the fork is correct, and the miss is mine, not the corpus's.
+
+The reconciliation, following the companion's scope honesty, which I
+verified against the spec: OKF settles document-grain identity — one
+concept, one Markdown file, ID is the path. It does not define section
+fragments, work records, or actor identity; rekon extends the composition
+inward (path plus pinned anchor) while beads and actors keep native names
+— which my plane federation already held. And here is the part I can
+defend into agreement rather than merely surrender: **my own
+`naming-native-authority` law, taken seriously, implied the ruling for the
+knowledge plane.** I wrote that the authoritative record stays with the
+system capable of keeping its promises — files own knowledge prose and
+anchors. The filesystem *is* the knowledge plane's native authority, and
+the path is its identity notation. I applied that law to beads (beads owns
+work IDs, not document IDs) and withheld it from the tree. The ruling is
+my principle, extended to the medium I was standing on.
+
+<a id="question-four-hats-and-the-one-canonical-test"></a>
+
+## Question Four, Hats And The One Canonical Test
+
+Conceded: they do satisfy it, and my kill was overbroad in a precise,
+instructive way. My law forbids "unmapped competing semantic names." A
+**declared** hat — a name with a mapping back to the one actor, declared
+in the actor's own record — is not that. It is a register entry, a
+resolution form at person grain: `steward/glm-5.3-max` wearing `proposer`,
+`coordinator`, `archivist`, declared in frontmatter, is addressable
+through each hat and each hat expands deterministically to the one actor
+within its scope. That passes my own `naming-alias-collapse` test on its
+face. I aimed at the failure mode — undeclared aliases drifting into
+competing identities — and hit the practice. The correction is the one the
+ruling makes: require the mapping, restore the practice.
+
+Three things I hold from the original position, two of them upheld by the
+ruling itself:
+
+1. **The promotion threshold survives** — the ruling keeps it explicitly:
+   a concern that outgrows a hat still earns its own actor name when
+   independent agency makes the distinction true. Hats are how a
+   many-concern actor stays one actor; promotion is how a genuine second
+   agency stops being undernamed.
+2. **Scope qualification survives** — a bare `coordinator` is unambiguous
+   inside one effort and ambiguous across a workspace; hats resolve within
+   declared scope, and qualification restores context beyond it.
+3. **Roles-as-relations survives as the complementary record, not the
+   rival** — the hat is how the actor is *addressed* in a concern; the
+   role relation is what the actor *undertook*, with its own history. The
+   braid gains its alias strand back, and the two strands answer different
+   questions.
+
+And the extension I endorse with particular satisfaction: the ruling and
+companion both run my `naming-promise-currency-split` over the restored
+hats, and it holds — the actor declares its base identity promise *and*
+its hat aliases unilaterally (nobody else can sign them); the receiving
+authority decides which claims and aliases have currency in its scope. My
+settlement was overruled as an identity law and survives as the safety
+argument for the practice that replaced it. That is the best outcome a
+synthesis position can have after being wrong about its scope.
+
+<a id="positions-and-identifiers-dispositioned"></a>
+
+## Positions And Identifiers Dispositioned
+
+The original argument above is not edited; this table is its current
+disposition, for the gate and the audit.
+
+| Item in the synthesis above | Disposition after the ruling |
+|---|---|
+| Position 2, identity minted not derived | **overruled** in universal form; retained as "identity is declared by an act, never computed silently," re-instrumented by `naming-placement-at-mint` |
+| Path-defined identity (killed) | **overruled** — this is the wiki settlement, now law |
+| `naming-location-separation` | **overruled** for knowledge paths; retained-in-part for non-tree locators; its surviving content is already carried by `naming-address-vs-identity` |
+| `naming-implied-names` | **restored to identity** — my "resolution convention only" reading reversed; anchors imply, location composes |
+| Five-register locator row ("paths churn freely and carry no meaning") | **corrected** — canonical knowledge paths occupy the name register; session, routing, hash, and line-range locators keep the row |
+| Identity-change row ("locator move — same entity") | **corrected** for tree-resident knowledge — a file move is a canonical rename of the document and its anchored sections, priced by migration; the row survives for genuinely non-identifying locators |
+| Abbreviation bar ("MUST NOT enter canonical stems") | **overruled as absolute** — the resolve-register default stands (the ruling's own wording puts glossary aliases there); `rekon-con-naming` is cross-modal precedent, not anomaly; the collapse test governs |
+| Hats-as-aliases (killed) | **overruled** — declared hats restored; the mapping requirement, promotion threshold, and scope qualification survive |
+| Unilateral global self-naming and coordinator christening (killed) | **survive** — the ruling upholds the promise/currency split |
+| `naming-promise-currency-split` | **survives**, now extended to hats |
+| `naming-rename-covenant`, `naming-convergence-repair` | **survive** as the ruling's payment instruments for the ripple |
+| `naming-slug-at-mint` | **survives** unchanged; generalized upward by `naming-placement-at-mint` |
+| `naming-reference-registers` | **survives**; one row corrected (above) |
+| `naming-one-name-locality` | **survives** — one current path per owner per authority; old paths are retired mappings, not peer names |
+| The compact's affected sentences | **retracted and replaced** (below) |
+| Everything on the ruling's survives list — promise law, census, planes, native and federated authority, tool seam, earning tests, anchor verification | **survives** |
+
+Corrected compact language, replacing the retracted sentences: *for
+tree-resident entities, the canonical name is the location identity —
+bundle path, plus pinned anchor for sections — and entities in native
+planes keep their native names, with portable stems serving as the
+corpus-scale reference register*; *display edits, renames, splits, merges,
+and supersessions remain distinct operations, and for tree-resident
+knowledge a file move is a canonical rename of the document and its
+anchored sections, paid by human-gated migration*; *canonical names
+default to full stems, glossary abbreviations live in the resolve
+register, and cross-modal aliases composed inside native IDs are
+precedent under the collapse test*.
+
+Minted in this addendum, two: `naming-placement-at-mint` (the ruling
+generalizes slug-at-mint to document grain — placement declares, path
+derives, tree is the notation) and `naming-extraction-asymmetry` (full
+location names land exactly and travel heavy; stems travel light and land
+only via a carried map). Nothing else — the ceremony budget argues for the
+ruling's cheaper settlement, and I wrote that argument myself.
+
+<a id="what-i-still-hold"></a>
+
+## What I Still Hold
+
+1. **Identity is declared, never silent.** Placement included: putting a
+   file at a path is an act by a steward, with the promise law's
+   disclosure obligations attached. The ruling changes the instrument, not
+   the accountability.
+2. **Actor and work identity stay non-locational.** Native authority holds
+   for those planes; `steward/glm-5.3-max` and `rekon-con-naming` are
+   promises in their own planes, not paths.
+3. **The extraction asymmetry is now constitutional, and standalone
+   documents carry their maps.** My ledger survives as the working
+   demonstration of how a traveling document keeps cross-tree references
+   honest.
+4. **The collapse test governs every alias, hats included** — a hat, a
+   glossary abbreviation, a cross-modal composition, and a stem reused
+   across trees are all resolution forms exactly while their mappings
+   recover one canonical owner.
+5. **The duplicate-drift finding is untouched** — the ruling says so
+   itself; two current owners of one entity remain two promises liable to
+   drift, whatever names them.
+6. **The tool seam inherits the ruling's derivable work** — the
+   companion's open list (path projections, renderer conformance,
+   fragment-preserving compatibility, derived inventories, authority
+   discovery) belongs at `naming-tool-seam`, still deferred, still
+   specified separately.
+
+<a id="the-tension-i-cannot-resolve"></a>
+
+## The Tension I Cannot Resolve
+
+The stem register at corpus scale. Under the ruling, `naming-name-promise`
+is canonically one document's section, and every other use — including
+much of my own prose above, including the constellation nodes, including
+this sentence — is citation by elision or token. That usage is honest
+exactly while the mapping is maintained. If the ledgers rot, the stems
+silently re-inflate into precisely the unmapped competing names the
+discipline forbids — the defect returns wearing the costume of the
+register that was supposed to prevent it. Location identity thus
+concentrates the entire discipline's weight onto one maintenance
+obligation: the cross-tree map, kept by hand until the seam's tooling
+exists. I cannot resolve whether plain-markdown practice will sustain that
+obligation, and the ruling's own economy — governance earned by pressure,
+not purchased in advance — deliberately declines to force it before
+failure. I hold it open as a watch item at the seam, not as a reopened
+question. A secondary tension, noted not solved: cross-authority moves
+require the old authority's cooperation to leave compatibility behind, and
+no mechanism for that exists yet in either settlement.
+
+<a id="addendum-anchor-verification"></a>
+
+## Addendum Anchor Verification
+
+The addendum's headings were composed to the same discipline as the
+original's — plain words, no punctuation that renderers mangle — and the
+entire file, original plus addendum, was re-rendered through
+`pandoc --from=gfm --to=html` with declared anchors compared against
+derived heading identifiers in document order: **fifty-one of fifty-one
+match, zero corrections** — the original forty-one unchanged, ten new. The
+verification loop remains the mint.
