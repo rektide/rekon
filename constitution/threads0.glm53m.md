@@ -271,7 +271,7 @@ explicitly a *conversation between documents* — answer, criticize, revise:
 > plans you see." —
 > [`/prompt/.archive/workflows/review-appendix.md` lines 3-7](/prompt/.archive/workflows/review-appendix.md)
 
-And the one-line commit workflow is the ancestor of Thread 8 (commits as
+And the one-line commit workflow is the ancestor of Thread 9 (commits as
 thinking): "jj commit your changes with a verbose justification / exposition on
 your changes"
 ([`/prompt/.archive/workflows/commit.md` line 1](/prompt/.archive/workflows/commit.md)).
@@ -368,7 +368,7 @@ relies on are:
    appends, supersession rather than overwrite.
 5. **Resuming** — recovery guides, present-tense briefs, ask audits: picking a
    thread back up after loss, sessions, or months.
-6. **Narrating change** — commit messages as exposition (Thread 8).
+6. **Narrating change** — commit messages as exposition (Thread 9).
 
 The human's framing — "Markdown is the place thinking and exchange happens,
 not merely an archive produced after reasoning" — is therefore not an
@@ -410,7 +410,7 @@ a second identity for every target it selects"
 ([`draft2-discussion0` lines 327-337](/constitution/naming/exploration/draft2-discussion0.sol56x.md#tip)).
 The thinking-in-Markdown thread adds the *process* reading: the present
 account is not just a publishing convenience, it is re-thought understanding —
-see Thread 7's "reconstruction is not replay."
+see Thread 8's "reconstruction is not replay."
 
 **Handoff/resumption vs universal transcript retention.** The workspace saves
 *selected* transcripts ([`/doc/transcript/pluginification.md`](/doc/transcript/pluginification.md),
@@ -419,7 +419,7 @@ database under loss, but never treats retention as the default; scratch is
 "pre-history" and evaporates unless promoted
 ([`draft0.glm53m.md` lines 389-395](/design/doc-constitution/draft0.glm53m.md#c-lifecycle)).
 Resumption is achieved by *distilled re-entry documents* (recovery guides,
-present-tense briefs), not by keeping every word. See Thread 7.
+present-tense briefs), not by keeping every word. See Thread 8.
 
 **Authorship/voice vs model/session.** Every durable artifact names its actual
 model, never the harness ([`AGENTS.md` lines 38-41](/AGENTS.md)); actors
@@ -479,7 +479,7 @@ listing them as available machinery.
    ([`draft0.glm53m.md` C7.3](/design/doc-constitution/draft0.glm53m.md#c-lifecycle)).
    The value is not "write everything down," it is "make the thinking that
    matters citable before it cools."
-3. **Ceremony budget** (Thread 5): mandating stage-setting or addenda for
+3. **Ceremony budget** (Thread 6): mandating stage-setting or addenda for
    every note would strangle the small-document case — "It should not demand
    research-program ceremony from a two-paragraph user guide"
    ([`draft0.sol56m.md` lines 113-115](/design/doc-constitution/draft0.sol56m.md#doc-constitution-principles)).
@@ -494,3 +494,340 @@ phrased as a value with proportional practice — something like: *thinking
 happens in the files; keep the medium of thought citable while it is still
 thinking.* Individual mechanics (waves, addenda, doc-pass) remain opt-in
 below it.
+
+---
+
+<a id="threads-family"></a>
+
+# Thread 2: Referentiality And Identity Are A Family, Not A Law
+
+**Provisional classification: a family of principles (value + method
+members) — do not flatten.** The commission explicitly warns against
+flattening this one by default, and the corpus agrees with the warning: every
+time the wave tried to compress identity into a single rule, the disagreement
+ledger grew. The current ledger runs to fifty numbered disagreements
+([`draft2-discussion0` lines 405-456](/constitution/naming/exploration/draft2-discussion0.sol56x.md#disagreements)).
+
+The family, as the corpus actually splits it:
+
+1. **Referability** (make thoughts citable): anchors, short-names, exact
+   citations. Founder evidence: short-names are "a hyperlink internal to the
+   textual world of this project... we want to be increasing the hypermedia
+   referentiality of the rekon system"
+   ([`draft.md` line 96](/prompt/.archive/workflows/draft.md)). Current law:
+   semantic anchors with compatibility obligations
+   ([`/constitution/README.md` lines 494-518](/constitution/README.md#doc-constitution-references-anchors)).
+2. **Ownership/authority** (who may mint): "At canonical tips, one qualified
+   ID has one semantic owner"
+   ([line 577-580](/constitution/README.md#doc-constitution-namespace-ownership));
+   "Canonical authority URI; `rekon` is local elision" (ledger #5).
+3. **Channel vs artifact** (accepted tips): the suffixless symlink is "the
+   mutable accepted-adoption channel," not a second identity for its target
+   ([`draft2-discussion0` lines 322-329](/constitution/naming/exploration/draft2-discussion0.sol56x.md#tip)).
+4. **Citation intents** (current / exact / channel / maintained): the typed
+   citation rule table
+   ([lines 331-337](/constitution/naming/exploration/draft2-discussion0.sol56x.md#tip));
+   ledger #24-26.
+5. **Address vs name**: session IDs and routing strings are "exact-layer
+   handles doing semantic-layer work" — the confusion named
+   `naming-address-vs-identity`
+   ([`draft0.glm53m.md` lines 373-387](/constitution/naming/exploration/draft0.glm53m.md)).
+6. **Voice/actor naming**: model suffixes, self-names, hats
+   ([`proposal4` lines 96-100](/constitution/naming/exploration/proposal4.glm53m.md#the-override-stated-as-ruling));
+   promise/currency split for self-naming (ledger, ask-audit line 69).
+7. **Cross-modal aliasing**: `rekon-con-naming` living inside a beads ID is
+   "the endorsed practice of cross-modal sympathy"
+   ([`proposal4` lines 101-108](/constitution/naming/exploration/proposal4.glm53m.md#the-override-stated-as-ruling)).
+8. **Plane separation**: beads is the work/coordination plane, documents the
+   knowledge plane, "without pretending that a ticket and the knowledge it
+   commissions are always the same entity" (Derived,
+   [`beads-offerings0` lines 124-128](/constitution/naming/exploration/beads-offerings0.sol56x.md#beads-offerings-answer)).
+9. **Migration/compatibility**: inbound inventories, compatibility stubs,
+   tombstones ([`README-heirarchy1` lines 355-366](/constitution/README-heirarchy1.glm53m.md#doc-constitution-hierarchy1-migration));
+   ledger #32-35, #37-40.
+10. **Ruling genre**: human direction recorded as law distinct from proposal
+    or synthesis ([`proposal4`](/constitution/naming/exploration/proposal4.glm53m.md#the-override-stated-as-ruling);
+    [`adoption1`](/design/doc-constitution/adoption1.glm53m.md)).
+11. **Ask accounting**: "Every ask the human has made across six direction
+    rounds, what the three syntheses did to it, and where it stands now...
+    **no ask silently disappears again**"
+    ([`ask-audit0` lines 48-51](/constitution/naming/exploration/ask-audit0.glm53m.md#what-this-audits)).
+
+**Situation of origin:** each member crystallized under a different pressure —
+anchor rot under rewording, duplicate minting during waves, ticket/doc
+coupling, actor churn across sessions, human asks lost in synthesis. That is
+precisely why one law keeps failing: the pressures are independent.
+
+**Coverage vs gap:** the naming wave holds members 2-11 in unsettled
+proposals; the maintained constitution covers members 1, 2, and parts of 9.
+The *family shape itself* — that identity is several coordinated principles —
+is the finding this round contributes; the broader core should present it as
+a family with a map, not seek one grammar to rule them.
+
+**Counterpressure:** the ceremony budget again — fifty ledger rows is itself
+evidence of how expensive full distinction-holding is; the ruling explicitly
+priced "ceremony-free uniqueness" as an argument for location identity
+([`proposal4` lines 124-126](/constitution/naming/exploration/proposal4.glm53m.md#the-case-for-location-identity)).
+
+**Hypothesis worth testing:** some members (referability, ownership,
+migration) are constitutional; others (citation-intent typing, alias
+registers) may be tool contracts; others (actor naming, hats) are still
+exploration. The broader constitution should say *which kind* each member is
+rather than constitutionalizing all of them.
+
+---
+
+<a id="threads-loud"></a>
+
+# Thread 3: Loud Over Silent — Visibility As A Change-Mode Value
+
+**Provisional classification: value.** Scattered through the corpus as
+clauses, never named as a principle: *when something breaks or changes, it
+should break or change visibly.*
+
+Strongest statement, from the human override ruling on rename ripple:
+
+> "Breakage under this ruling is loud — a stale link is visible rot — and
+> **loud breakage is the kind a plain-markdown workspace can live with.
+> Silent drift was the enemy**; the duplicate-drift finding stands untouched."
+> — [`proposal4` lines 93-95](/constitution/naming/exploration/proposal4.glm53m.md#what-the-rename-ripple-costs)
+
+The same preference recurs as a family of "visible X" clauses:
+
+- visible **cost**: "make per-fragment and total context cost visible"
+  ([`/constitution/README.md` line 735](/constitution/README.md#doc-constitution-global-assembly));
+  "an invisible ambient budget" as a monolith cost
+  ([`draft0.glm53m.md` lines 65-68](/design/doc-constitution/draft0.glm53m.md#c-vision));
+- visible **drift**: assembler "detects unassembled hand edits"
+  ([line 734](/constitution/README.md#doc-constitution-global-assembly));
+- visible **staleness**: "`stale_after` makes review debt visible instead of
+  latent" ([`README-heirarchy1` line 223](/constitution/README-heirarchy1.glm53m.md#doc-constitution-hierarchy1-disposition));
+- visible **parity**: the migration inventory as "parity ledger... prevents
+  attractive new module prose from quietly dropping awkward but important
+  guardrails"
+  ([`agents-modularization0` lines 252-254](/design/rekon/agents-modularization0.sol56x.md#agents-maintenance-skillify-procedure-inventory));
+- loud **non-change**: "Nothing demotes silently: retiring a doc/ topic is
+  explicit... never deletion"
+  ([`draft0.glm53m.md` lines 238-239](/design/doc-constitution/draft0.glm53m.md#c-lifecycle));
+  "Do not break knowledge links merely to mirror work-tracker cleanup"
+  ([`/constitution/README.md` lines 584-585](/constitution/README.md#doc-constitution-namespace-ownership));
+- deliberate **cleanup**: "Adoption never prunes stale or undeclared
+  artifacts" ([line 456](/constitution/README.md#doc-constitution-adoption-proposal));
+  "leave cleanup deliberate" ([`AGENTS.md` line 119](/AGENTS.md)); skillify's
+  assembler requirements end with "no automatic pruning of undeclared
+  artifacts" ([`README1.sol56x.md` line 456](/design/skillify/README1.sol56x.md#skillify-host-global)).
+
+**Situation of origin:** agentic editing at scale — many actors, model churn,
+session mortality. When change is constant, the survivable failure mode is the
+*noticeable* one. The reconstruct guide states the epistemic version: loud
+breakage is checkable, silent drift is not.
+
+**Distinction from neighbors:** not the context budget (that is about cost of
+*presence*); not referentiality (that is about *identity*). This is about the
+*mode of failure and change*: prefer gates, markers, ledgers, and rot you can
+see over automation that quietly heals or quietly loses.
+
+**Coverage vs gap:** every document *practices* it; none *names* it. It is
+arguably the implicit justification for half the constitution's machinery
+(markers, validation, parity, human gates).
+
+**Counterpressure:** noise fatigue — if everything is loud, nothing is; the
+naming ruling itself warns governance is "earned when volume demands it, not
+purchased in advance" ([`proposal4` lines 106-108](/constitution/naming/exploration/proposal4.glm53m.md#the-override-stated-as-ruling)).
+
+---
+
+<a id="threads-unconflate"></a>
+
+# Thread 4: Anti-Conflation — Split The Question Before Writing The Rule
+
+**Provisional classification: method (with principle backing).** The corpus's
+characteristic move when confused is not to compromise; it is to *de-compose
+the question* and coin a term for each part.
+
+Cleanest statement, from the naming discussion:
+
+> "A canonical grammar answers seven independent questions: ... Treating
+> those as one punctuation question **caused much of the draft2 confusion.
+> They should be decided separately.**"
+> — [`draft2-discussion0` lines 82-95](/constitution/naming/exploration/draft2-discussion0.sol56x.md#grammar)
+
+The same move recurs everywhere:
+
+- hierarchy revision 1's stage-setting: "What was missing was **vocabulary** —
+  for the root document directory, for legacy structures, for disposition,
+  for migration moves. This revision adds that terms-of-art layer and
+  re-grounds the hierarchy on it"
+  ([`README-heirarchy1` lines 52-55](/constitution/README-heirarchy1.glm53m.md#doc-constitution-hierarchy1));
+- claim classes: "distinguish Observed, Derived, Inference, Recommendation,
+  and Hypothesis where confusing them would change a decision"
+  ([`/constitution/README.md` lines 638-642](/constitution/README.md#doc-constitution-references-evidence));
+- reference types: "sources ground claims... knowledge links connect...
+  tickets connect" (three different jobs,
+  [lines 630-637](/constitution/README.md#doc-constitution-references-evidence));
+- reconstruction modes: "The word 'reconstruct' is ambiguous. **Classify the
+  requested outcome before planning implementation**" with a five-mode table
+  ([`/code/reconstruct/README.md` lines 97-106](/code/reconstruct/README.md#reconstruct-job));
+- skillify's delivery-channel split: "Documentation, automation, ambient
+  policy, and skills overlap, but they solve different delivery problems"
+  ([`README1.sol56x.md` lines 92-94](/design/skillify/README1.sol56x.md#skillify-not));
+- the oldest instance: short-names minted "as we go... so we are clear that
+  we are referring to the same thing"
+  ([`draft.md` lines 19-21](/prompt/.archive/workflows/draft.md)).
+
+**Situation of origin:** multi-model work makes conflation expensive — when
+several independent authors share a word that bundles two questions, their
+agreements and disagreements become uninterpretable. The disagreement ledger
+is the diagnostic instrument: most rows are *separable questions that had been
+glued together*.
+
+**Distinction from neighbors:** not naming (Thread 2) — anti-conflation is
+what naming is *for*; and not the disagreement practice (Thread 5) — this is
+the pre-condition that makes disagreement legible.
+
+**Coverage vs gap:** practiced constantly; stated nowhere in rekon's
+constitution. (Predecessor lineage reportedly had "terminology and
+anti-conflation rules" in first-compute, per
+[`draft0.sol56m.md` lineage table line 580-583](/design/doc-constitution/draft0.sol56m.md#doc-constitution-history-lineage) —
+external verification out of scope this round.)
+
+**Counterpressure:** vocabulary inflation — every split mints terms, and
+terms are ceremony (Thread 6); skillify names the failure mode "Sediment:
+old branches and caveats accumulate because deletion feels risky"
+([`README1.sol56x.md` line 684](/design/skillify/README1.sol56x.md#skillify-failures)).
+The discipline needs a pairing rule: split only where the distinction would
+change a decision (the claim-class wording already models this).
+
+---
+
+<a id="threads-independence"></a>
+
+# Thread 5: Independence Is Evidence; Disagreement Is A Product; Convergence Is Not Authority
+
+**Provisional classification: principle + method (epistemic machinery).**
+Under this value, multiple models are not redundant labor — their
+independence is the *instrument*, their disagreement is the *data*, and their
+convergence proves less than it appears to.
+
+- Independence as evidence: same-wave authors "are expected to do your own
+  work and not pollute your thinking with their results; we want independent
+  results, that's why we are asking multiple models"
+  ([`AGENTS.md` line 46](/AGENTS.md)); "The agents wrote these independently
+  and did not read one another's same-wave artifact"
+  ([`/design/doc-constitution/README.md` lines 42-43](/design/doc-constitution/README.md)).
+- Disagreement as a deliverable: the full disagreement ledger is an artifact
+  in its own right — "This is the complete disagreement ledger after the new
+  direction"
+  ([`draft2-discussion0` lines 400-403](/constitution/naming/exploration/draft2-discussion0.sol56x.md#disagreements)) —
+  and the ask-audit records which human asks each synthesis *killed*,
+  restoring several by ruling
+  ([lines 65-85](/constitution/naming/exploration/ask-audit0.glm53m.md#the-matrix)).
+- Convergence is not authority, twice over: "convergence under a shared
+  corpus is evidence of a shared reading, **not of correctness**"
+  ([`proposal4` lines 114-116](/constitution/naming/exploration/proposal4.glm53m.md#the-case-for-location-identity));
+  ledger #49: "Shared reading is evidence, not authority. Human acceptance
+  decides"
+  ([line 455](/constitution/naming/exploration/draft2-discussion0.sol56x.md#disagreements)).
+- Synthesis reconciles rather than averages: "Adversarial and synthesis waves
+  — drafts must be challenged and reconciled rather than averaged"
+  ([`/constitution/README.md` line 793](/constitution/README.md#doc-constitution-patterns)).
+- The rhythm is constitutional: "we ping pong between design... and synthesis
+  review. design -> syn -> design2 -> design2-syn"
+  ([`AGENTS.md` line 43](/AGENTS.md)).
+
+**Situation of origin:** the wave system itself, plus the naming episode where
+three syntheses converged on a position the human then overruled — the
+sharpest demonstration that model consensus is one input to acceptance, not
+the acceptance mechanism.
+
+**Coverage vs gap:** mechanics are opt-in patterns; the epistemic stance
+(independence is *why*; disagreement is kept, not averaged away; convergence
+is weak evidence) is unstated. The ask-audit practice — accounting for every
+human ask across rounds — is an even younger, unmapped member of this family.
+
+**Counterpressure:** cost and latency (waves multiply work); deliberative
+sequencing requires waiting ("documents get built deliberatively,"
+[`AGENTS.md` line 4](/AGENTS.md)); and over-formalization risk — the seal and
+manifest machinery of predecessor projects was deliberately left as opt-in.
+
+---
+
+<a id="threads-ceremony"></a>
+
+# Thread 6: The Ceremony Budget — Proportionality As An Explicit Currency
+
+**Provisional classification: value with tool consequences.** The corpus
+repeatedly reasons about process cost as a *budget* that rules compete for,
+the same way context-as-budget disciplines attention.
+
+- "Process is proportional | Strong research protocols are available without
+  burdening every note or user guide"
+  ([`/constitution/README.md` line 167](/constitution/README.md#doc-constitution-principles));
+- "It should not demand research-program ceremony from a two-paragraph user
+  guide" ([`draft0.sol56m.md` lines 113-115](/design/doc-constitution/draft0.sol56m.md#doc-constitution-principles));
+- the ruling's "ceremony-free uniqueness... The **ceremony budget** — a
+  discipline all three syntheses claimed to honor — argues for the cheaper
+  settlement"
+  ([`proposal4` lines 124-126](/constitution/naming/exploration/proposal4.glm53m.md#the-case-for-location-identity));
+- skillify's canvas is "a design prompt, not mandatory ceremony"
+  ([`README1.sol56x.md` line 690](/design/skillify/README1.sol56x.md#skillify-canvas));
+- hierarchy tension: "How much frontmatter is justified for small support
+  docs before the ceremony exceeds the audience?"
+  ([`README-heirarchy1` lines 387-389](/constitution/README-heirarchy1.glm53m.md#doc-constitution-hierarchy1-tensions)).
+
+The most instructive evidence is a *reversal*: adoption revision 1, Decision 3
+removed a codification the agents had invented — "The phrase 'explicitly
+documented local equivalent' was an agent invention from the wave-0 drafting,
+not a human requirement... demanding a statement would add noise and one more
+thing to maintain" — deviations stay tacit
+([`adoption1` lines 79-89](/design/doc-constitution/adoption1.glm53m.md#doc-constitution-adoption-revision-deviations)).
+The constitution era has already once over-documentation'd and been corrected.
+
+**Distinction from neighbors:** context-as-budget governs *attention paid by
+readers/agents*; ceremony budget governs *effort paid by authors*. They point
+in the same direction (less is more) but fail differently (an unreadable
+skill vs. an unowned deviation).
+
+**Coverage vs gap:** named as a principle ("Process is proportional") but not
+developed as a budget with the same rigor as the ambient cut's
+corruption/cheapness/universality tests
+([`/constitution/README.md` lines 693-705](/constitution/README.md#doc-constitution-context-ambient)).
+A broader constitution could give ceremony an admission test of its own.
+
+---
+
+<a id="threads-selfdemo"></a>
+
+# Thread 7: Self-Demonstration — The Document Practices What It Proposes
+
+**Provisional classification: principle.** Founding statement:
+
+> "The constitution must land practicing its own rules... **A constitution
+> whose storage shape contradicts its content is a memo, not a
+> constitution.**"
+> — [`draft0.glm53m.md` lines 110-115 (C1.4)](/design/doc-constitution/draft0.glm53m.md#c-vision)
+
+Recurrences: the naming discussion "uses short explicit anchors and cites
+them actively, so **the document demonstrates the proposed practice rather
+than merely describing it**"
+([`draft2-discussion0` lines 74-76](/constitution/naming/exploration/draft2-discussion0.sol56x.md#discussion));
+the naming draft0 "practices what it explores, so I have done the thing under
+study first: I name myself `herald`"
+([lines 88-89](/constitution/naming/exploration/draft0.glm53m.md)); the
+ruling's own frontmatter is "the worked example" of hats
+([`proposal4` lines 162-165](/constitution/naming/exploration/proposal4.glm53m.md#hats-and-cross-modal-aliases-restored)).
+
+**Situation of origin:** constitutions about documents are unusually testable
+— their claims are checkable against their own bytes. The workspace learned
+to exploit that: every major proposal ships with its own worked specimen.
+
+**Coverage vs gap:** stated in a founding draft, *absent from the maintained
+constitution*. The canonical README anchors itself and links its sources but
+never requires self-demonstration of future amendments. An easy, cheap
+candidate for the broader core.
+
+**Counterpressure:** performing can shade into theater (skillify's "rubric
+theater" failure mode is the adjacent warning,
+[line 683](/design/skillify/README1.sol56x.md#skillify-failures)); a
+demonstration is evidence, not proof — the ruling's own caution that
+convergence is not correctness applies to self-demonstrations too.
