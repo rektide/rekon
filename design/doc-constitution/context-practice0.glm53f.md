@@ -1,7 +1,7 @@
 ---
 type: ResearchNote
 title: "Recent practical work informing the broader constitution — context and practice scan 0"
-description: What the 2026-09-03/04 rekon modules (code/reconstruct, code/reconstruction, vcs/jj, js, atproto) actually establish, which relationships a broader root constitution should express, and what must stay domain-owned.
+description: What the 2026-09-03/04 rekon modules (code/reconstruct, code/reconstruction, vcs/jj, js, atproto) establish, which relationships a broader root constitution should express, and what stays domain-owned.
 resource: /design/doc-constitution/context-practice0.glm53f.md
 tags: [doc-constitution, evidence, skillification, jj, navigation, naming]
 status: draft
@@ -53,12 +53,13 @@ not author that document.
   [`code/reconstruction/`](/code/reconstruction/README.md), [`vcs/jj/`](/vcs/jj/README.md),
   [`js/`](/js/README.md), [`atproto/`](/atproto/README.md) — read from local files and
   `jj log` (draft3 = `b2551121`, draft2-discussion0 = `416f2ec4` confirmed as named).
-- **Antecedents (older, read only for contrast):** dolt-rs constitution and is-tree v2; the
+- **Antecedents (older, contrast only):** dolt-rs constitution and is-tree v2; the
   constitution already cites compute-fabric, which I only spot-checked (Reading Map,
-  [`compute-fabric/README.md`](file:///home/rektide/archive/doc/compute-fabric/README.md) L655+).
-- **Limits:** local primary documents only, no web. Naming/skillify design waves (`draft3`,
-  siblings) treated as *unimplemented draft policy*; nothing below claims they are in force. I
-  did not read new sibling drafts in this wave. Recent-vs-old provenance is stated per claim.
+  [`compute-fabric/README.md`](file:///home/rektide/archive/doc/compute-fabric/README.md)
+  L655+).
+- **Limits:** local primary documents only, no web. Naming/skillify design waves are treated
+  as *unimplemented draft policy*; nothing below claims they are in force. New sibling drafts
+  in this wave were not read. Recent-vs-old provenance is stated per claim.
 
 <a id="inventory"></a>
 
@@ -67,16 +68,15 @@ not author that document.
 Four distinct postures landed in two days:
 
 1. **Philosophy guide** — [`code/reconstruct/README.md`](/code/reconstruct/README.md):
-   reconstruction modes table (L100-106), labeled claim classes (Required outcome / Current
-   constraint / Design decision / Implementation hypothesis / Historical evidence, L287-294),
-   stop-and-reassess triggers (L458-477). Sources cite a human directive plus four precursor
-   docs with exact line links (L564-593).
+   reconstruction modes table (L100-106), labeled claim classes (L287-294), stop-and-reassess
+   triggers (L458-477). Sources cite a human directive plus four precursor docs with exact
+   line links (L564-593).
 2. **Executable procedure + measured evidence** —
    [`code/reconstruction/README.md`](/code/reconstruction/README.md) (snapshot-first, audit,
-   unmix, replay, verify; author-date guarantee L198-216; worked watchwoman run + incident
-   L218-239), [`experiments0.glm53h.md`](/code/reconstruction/experiments0.glm53h.md)
-   (measured jj 0.40.0 tables L39-51; the `split -A` incident and recovery L109-157; trap log
-   L159-177), and [`replay-docs.sh`](/code/reconstruction/replay-docs.sh).
+   unmix, replay, verify; author-date guarantee L198-216; watchwoman run + incident L218-239),
+   [`experiments0.glm53h.md`](/code/reconstruction/experiments0.glm53h.md) (measured jj 0.40.0
+   tables L39-51; `split -A` incident and recovery L109-157; traps L159-177), and
+   [`replay-docs.sh`](/code/reconstruction/replay-docs.sh).
 3. **Promoted reference set** — [`vcs/jj/`](/vcs/jj/README.md) grew from the archive cheat
    sheet into README + `rewrites.md` + `oplog-forensics.md` + `git-only.md`, with a
    `verified:` frontmatter field (L9), a dated Provenance section (L274-281), job-organized
@@ -93,7 +93,7 @@ broader constitution answers — "should this project and `dolt-rs` converge on 
 constitution template while retaining project-specific dispatch rules?"
 ([`topic-document-constitution2.gpt56t.md`](file:///home/rektide/src/is-tree/.design/research/topic-document-constitution/topic-document-constitution2.gpt56t.md)
 L219-220). The dolt-rs constitution's **inherited / value-add / stop boundary** discipline
-(L265-270, worked example L584) is the pre-existing law that the vcs/jj set then instantiates.
+(L265-270, example L584) is pre-existing law that the vcs/jj set then instantiates.
 
 <a id="relationships"></a>
 
@@ -101,89 +101,86 @@ L219-220). The dolt-rs constitution's **inherited / value-add / stop boundary** 
 
 **R1. Philosophy ↔ procedure ↔ evidence ↔ tool is a reusable layer topology.**
 `code/reconstruct` (why/modes) → `code/reconstruction` (how) → `experiments0` (measured proof)
-→ `replay-docs.sh` (executable) is the constitution's promotion-as-synthesis and
-sources-ground-claims principles realized as a *domain-internal shape* with reciprocal
-cross-references on both ends (reconstruction L251-268; reconstruct L589-593). A broader
-constitution can name this four-layer pattern once; each domain keeps its own layers.
+→ `replay-docs.sh` (executable) realizes promotion-as-synthesis and sources-ground-claims as a
+*domain-internal shape* with reciprocal cross-references on both ends (reconstruction L251-268;
+reconstruct L589-593). Name the pattern once; each domain keeps its own layers.
 
 **R2. Verification provenance needs an inherited-vs-rechecked distinction.**
 `vcs/jj/README.md` L9 records verification as a compound claim (inherited paste-tests +
-promotion-time re-spot-checks), and `oplog-forensics.md` honestly marks itself "not
-independently re-run at promotion". The constitution's rule "MUST NOT claim verification merely
-because its author reread it" ([`/constitution/README.md`](/constitution/README.md) L203-204)
-is necessary but weaker than what practice now does. Root law should standardize the
-`verified:` field's vocabulary (measured / paste-tested / inherited / re-spot-checked) — the
-*methods* stay domain-owned.
+promotion-time re-spot-checks); `oplog-forensics.md` honestly marks itself "not independently
+re-run at promotion". The constitution's "MUST NOT claim verification merely because its author
+reread it" ([`/constitution/README.md`](/constitution/README.md) L203-204) is weaker than what
+practice now does. Root law can standardize the `verified:` vocabulary (measured /
+paste-tested / inherited / re-spot-checked); the *methods* stay domain-owned.
 
 **R3. Skillification passes through a declared dual-authority window.**
 `js/README.md` L9-11 is the first live transition contract: content moved out of the AGENTS.md
 monolith, precedence stays with the global file until acceptance, and divergence must be
 reconciled rather than grown. The constitution describes the assembly target (L721-751) but has
-no named interim state for "module promoted, authority not yet flipped". This window — and its
-exit condition — is exactly what a root constitution owning skillification should specify.
+no named interim state for "module promoted, authority not yet flipped" — nor its exit
+condition. A root constitution owning skillification should specify both.
 
 **R4. Modules contain canonically-owned sub-documents; placement is a declared rule.**
 `vcs/jj/rewrites.md` L38 states a *Placement rule*: the mainstream case lives in the README,
 and rewrites.md is "the canonical home" of the committer-date aside;
-[`code/reconstruction/README.md`](/code/reconstruction/README.md) respects it by pointing there
-twice (L62-66, L212-216) instead of absorbing the material. This is dolt-rs's stop-boundary
-law in daily use. Root law should require *a declared canonical home per shared aside*; which
-home wins is a domain decision, not constitutional text.
+[`code/reconstruction/README.md`](/code/reconstruction/README.md) respects it (L62-66,
+L212-216) instead of absorbing the material. This is dolt-rs's stop-boundary law in daily use.
+Root law should require *a declared canonical home per shared aside*; which home wins is a
+domain decision, not constitutional text.
 
 **R5. Failure evidence has a pipeline: incident → forensics → generalizable guide → fixed tool.**
 The `split -A` bookmark drag was diagnosed live, recorded exactly in `experiments0` (L109-157),
 generalized into `oplog-forensics.md`, warned against in the procedure (L138-143), and fixed in
-`replay-docs.sh` (plain split → abandon → rebase) with re-rehearsal. The constitution's "two
-truths" (L757-761) and friction-triggers-rule-change (L809-811) describe this; a broader
-constitution could name the pipeline as an expected motion, including that exact failure
-records stay model-suffixed and revision-pinned while the lesson is promoted.
+`replay-docs.sh` with re-rehearsal. The constitution's "two truths" (L757-761) and
+friction-triggers-rule-change (L809-811) describe this; root law could name the pipeline as an
+expected motion: exact failure records stay model-suffixed and revision-pinned; the promoted
+lesson is not.
 
 **R6. Exact evidence preservation has a working mechanism, not just a principle.**
 Snapshot-first dated bookmarks, never-rewrite duplicate-then-rebase, and author-date
-preservation (reconstruction L53-69, experiments0 L43-51) are how "exact evidence artifacts
-preserve what an author argued" is actually *guaranteed* at the VCS layer. Draft3's "revision
-binding" glossary entry anticipates this but is unimplemented policy; the practice itself is
-real and citable today. Root law can require revision-pinned citations; the bookmark doctrine
-stays vcs-owned.
+preservation (reconstruction L53-69; experiments0 L43-51) are how "exact evidence artifacts
+preserve what an author argued" is *guaranteed* at the VCS layer. Draft3's "revision binding"
+glossary entry anticipates this but is unimplemented policy; the practice itself is real and
+citable today. Root law can require revision-pinned citations; the bookmark doctrine stays
+vcs-owned.
 
 <a id="domain-owned"></a>
 
 # What Should Stay Domain-Owned
 
-- **jj/git mechanics** — command tables, trap lists, exit-code semantics, the DSL warnings
-  (`vcs/jj/`); useful law is only "traps are durable knowledge with mechanism".
-- **Reconstruction mode taxonomy** — the five modes and counterfactual questions are
-  code-work judgment; root law should link, not absorb.
-- **Verification methods per domain** — paste-tests, scratch repos, live-repo replays,
-  cross-check ladders (atproto's Constellation-vs-PDS checks, L76-84).
-- **External-service facts and their staleness** — Constellation coverage numbers, AppView
-  behaviors; they decay on their own schedule and belong in the atproto module.
-- **Toolchain choices** — pnpm/vite-plus/tsdown versions and recipes in `js/`.
+- **jj/git mechanics** — command tables, trap lists, exit-code semantics (`vcs/jj/`); the only
+  general law is "traps are durable knowledge with mechanism".
+- **Reconstruction mode taxonomy** — the five modes and counterfactuals are code-work
+  judgment; link, don't absorb.
+- **Verification methods per domain** — paste-tests, scratch repos, live replays, atproto's
+  Constellation-vs-PDS cross-check ladder (L76-84).
+- **External-service facts and their staleness** — Constellation coverage, AppView behaviors;
+  they decay on their own schedule.
+- **Toolchain choices** — pnpm/vite-plus/tsdown recipes in `js/`.
 - **Placement decisions themselves** — which document canonically owns each aside.
 - **All naming/core vocabulary** (draft3's glossary, channels, tombstones) — parent-owned
-  draft; nothing in the recent practice depends on it being accepted.
+  draft; no recent practice depends on its acceptance.
 
 <a id="absences"></a>
 
 # Notable Absences And Frictions
 
 - **Frontmatter split-brain:** `code/*` and `vcs/jj/*` carry full OKF frontmatter; `js/` and
-  `atproto/` (the two newest modules) carry none. Two identity styles now coexist from the
-  same week; the constitution's frontmatter SHOULD has no tooling or gate behind it.
+  `atproto/` (the two newest modules) carry none. Two identity styles coexist from the same
+  week; the frontmatter SHOULD has no tooling or gate behind it.
 - **Anchor practice regression:** `code/reconstruct` uses explicit `<a id>` anchors; `vcs/jj/`,
-  `js/`, `atproto/` rely on heading slugs. The newest modules don't follow the constitution's
-  anchor recommendation (L496-518).
+  `js/`, `atproto/` rely on heading slugs, against the constitution's recommendation
+  (L496-518).
 - **Symlink naming drift:** `vcs/jj/SKILLS.md` (plural) vs `SKILL.md` in `js/`/`atproto/` and
-  the constitution's MUST (L227-231). Unresolved which name harnesses actually honor.
+  the constitution's MUST (L227-231). Unresolved which name harnesses honor.
 - **No `GLOBAL.md` anywhere yet;** the js skill overlaps live AGENTS.md sections in both
-  directions, making the declared window (R3) load-bearing right now.
+  directions, making the declared window (R3) load-bearing now. `js/` also uses a `## Log`
+  section (L186-189) instead of the reserved `log.md`.
 - **No ticket linkage in the four practical modules** (no `extensions.ticket`), while the
-  naming drafts carry them. Balanced ticketing may be fine with this — but it is untested
-  against the constitution's namespace section.
-- **`js/README.md` uses a `## Log` section** instead of the reserved `log.md` file (L186-189).
+  naming drafts carry them — the shared namespace is untested against real modules.
 - **Worked examples cite `file:///home/rektide/src/watchwoman-systemd`** — a volatile local
-  path carrying load-bearing evidence; no pattern exists for stable external worked-example
-  citation.
+  path carrying load-bearing evidence; no stable external worked-example citation pattern
+  exists.
 
 <a id="recommendations"></a>
 
@@ -192,11 +189,11 @@ stays vcs-owned.
 1. Express R1-R6 as *contracts with local ownership*, not procedures: name the layer topology,
    the verified-field vocabulary, the dual-authority window, placement rules, the failure
    pipeline, and revision-pinned evidence — then stop.
-2. Resolve the two live inconsistencies before they calcify: frontmatter-or-not for skills, and
-   `SKILL.md` vs `SKILLS.md` symlink naming.
-3. Treat `js/`'s promotion rule as the seed of the skillification lifecycle section; `atproto/`
-   shows the no-monolith variant that needs no transition contract.
-4. Keep the draft3 vocabulary out of root law until accepted; cite the *practices* (dated
+2. Resolve the two live inconsistencies before they calcify: frontmatter-or-not for skills,
+   and `SKILL.md` vs `SKILLS.md` symlink naming.
+3. Treat `js/`'s promotion rule as the seed of the skillification lifecycle section;
+   `atproto/` shows the no-monolith variant needing no transition contract.
+4. Keep draft3 vocabulary out of root law until accepted; cite the *practices* (dated
    snapshots, model-suffixed evidence, accepted-tip symlinks like
    [`adoption.md`](/design/doc-constitution/adoption.md)) as the evidence layer those terms
    would name.
@@ -205,14 +202,12 @@ stays vcs-owned.
 
 # Cross-References
 
-- [`/constitution/README.md`](/constitution/README.md) — current law this note tests against;
-  sections cited by line above.
+- [`/constitution/README.md`](/constitution/README.md) — current law this note tests against.
 - [`/constitution/naming/exploration/draft3.sol56x.md`](/constitution/naming/exploration/draft3.sol56x.md)
-  — parent-owned draft whose glossary (revision, channel, move) *names* several practices
-  documented here as already real; cited as design intent only.
-- [`/code/reconstruction/README.md`](/code/reconstruction/README.md) **evidences** R1, R5, R6.
-- [`/vcs/jj/README.md`](/vcs/jj/README.md) **evidences** R2, R4 and the absences (anchors,
-  SKILLS.md naming).
-- [`/js/README.md`](/js/README.md) **evidences** R3 and the dual-authority window.
+  — parent-owned draft whose glossary *names* practices documented here as already real;
+  cited as design intent only.
+- [`/vcs/jj/README.md`](/vcs/jj/README.md) **evidences** R2, R4, and the absences;
+  [`/code/reconstruction/README.md`](/code/reconstruction/README.md) **evidences** R1, R5, R6;
+  [`/js/README.md`](/js/README.md) **evidences** R3.
 - dolt-rs constitution (L265-270) **pre-establishes** the stop-boundary law R4 instantiates;
   is-tree v2 (L219-220) **poses** the convergence question this broader constitution answers.
