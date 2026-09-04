@@ -118,6 +118,7 @@ A doc-pass may use a subagent to independently search the corpus. Ask it to retu
 - "Let It Fail" principle, when it makes sense. Do not create a try-catch just to print an error: the stack trace will show what is wrong.
 - pruning stale or undeclared artifacts is usually outside Compfuzor's scope. do not add automatic prune/reconciliation behavior unless the user explicitly requests it; create and update declared state, and leave cleanup deliberate.
 - please jj commit as you go! commit pro-actively in logical groups.
+  - when comments come in for review, check in before making edits. break up corrections from review into individual well argued cohesive commits.
 
 # Rust instructions
 
