@@ -831,3 +831,340 @@ theater" failure mode is the adjacent warning,
 [line 683](/design/skillify/README1.sol56x.md#skillify-failures)); a
 demonstration is evidence, not proof — the ruling's own caution that
 convergence is not correctness applies to self-demonstrations too.
+
+---
+
+<a id="threads-resumption"></a>
+
+# Thread 8: Sessions, Loss, And Resumption — The Present Account Over The Transcript
+
+**Provisional classification: method, with a principle core.** The workspace
+has a well-developed practice for *resuming* thought across session death,
+history resets, and months of drift — and it deliberately does not practice
+universal transcript retention. The principle core: resumption is achieved by
+distilled re-entry documents, not by keeping everything.
+
+The loss story is real, not hypothetical: a "massive architectural refactor
+that was lost when jj/git history was reset" motivated the Phase A recovery
+guide, whose stance is:
+
+> "The goal is NOT to mechanically replay diffs. The goal is for the agent to
+> **understand what was done and why**, then implement equivalent changes
+> fresh against whatever the current codebase looks like."
+> — [`/doc/opencode-session.md` line 591](/doc/opencode-session.md)
+
+Its procedure ranks *reasoning over patches*:
+
+> "1. **Read the reasoning first.** Start with the 97 reasoning blocks. They
+> contain the agent's design decisions, vocabulary choices, and architectural
+> rationale. **Understanding these is more valuable than any patch.**"
+> (line 1330) ... "6. **Adapt, don't copy.**"
+> (line 1350)
+
+The same stance was later promoted into a standing guide:
+
+> "Reconstruction is not replay... **Recover the intent. Recheck the
+> constraints. Redesign the destination. Use history as evidence, not
+> gravity.**"
+> — [`/code/reconstruct/README.md` lines 42-57](/code/reconstruct/README.md#reconstruct)
+
+with a sharp test for whether a brief still describes the ask rather than the
+path: "Test the brief by removing historical proper nouns"
+([lines 163-166](/code/reconstruct/README.md#reconstruct-present-brief)).
+
+The retention boundary is equally deliberate:
+
+- transcripts are saved *selectively* —
+  [`/doc/transcript/pluginification.md`](/doc/transcript/pluginification.md)
+  is one curated session;
+  [`.transcript/PLAN-combine.md`](file:///home/rektide/src/rekon/.transcript/PLAN-combine.md)
+  pairs a plan with its completion log; the big loss dumps
+  (`loss1.md`, `loss2.md`, `rebuild.md` in `.test-agent/`) live in ignorable
+  scratch;
+- the session database is treated as a *mine* for recovery, never a canon
+  ([`/doc/opencode-session.md`](/doc/opencode-session.md), "Quick Start:
+  Finding where something was built");
+- "Scratch is pre-history" — evidence that stays load-bearing at acceptance
+  must be absorbed or promoted, and that rule "binds this very effort"
+  ([`draft0.glm53m.md` lines 389-395](/design/doc-constitution/draft0.glm53m.md#c-lifecycle);
+  [`/constitution/README.md` lines 778-780](/constitution/README.md#doc-constitution-history));
+- session URNs appear in frontmatter as *sources of direction*
+  (`urn:opencode:session:...` in
+  [`draft0.glm53m.md` lines 10-13](/design/doc-constitution/draft0.glm53m.md)
+  and [`adoption1` lines 29-32](/design/doc-constitution/adoption1.glm53m.md)) —
+  the session is citable as provenance while being explicitly not the medium
+  of record.
+
+**Situation of origin:** catastrophic loss (the history reset) plus routine
+loss (session death, compaction). The workspace's answer was a genre: the
+recovery guide / present-tense brief that converts a dead transcript back
+into living direction.
+
+**Distinction from neighbors:** this is Thread 1's "coherent present vs exact
+past" distinction under failure conditions; and it is the quiet partner of
+Thread 3 — silent loss is the enemy just as silent drift is.
+
+**Coverage vs gap:** the [index](/constitution/index.md) links the
+reconstruct/reconstruction pair as "a neighboring practice," but the
+constitution proper never connects session mortality to its own
+scratch/pre-history and promotion rules. The genre (recovery guide) and its
+stance (reasoning over patches) are uncodified.
+
+**Counterpressure:** distillation costs effort and can launder history — the
+reconstruct guide guards this with "mine history by claim, not chronology"
+([lines 188-201](/code/reconstruct/README.md#reconstruct-mine-history)) and
+the evidence-authority ladder; a present account that forgets *why* something
+was rejected will re-litigate it.
+
+---
+
+<a id="threads-commits"></a>
+
+# Thread 9: Commits As Thinking-Out-Loud — The Version-Control Stream As Reasoning Surface
+
+**Provisional classification: method.** Commissioned explicitly this round:
+"intentional clear commits as we go, with distinct explained changes/new
+revisions, are themselves part of this thinking-out-loud practice, not final
+housekeeping." The corpus has carried this since the one-line workflow "jj
+commit your changes with a verbose justification / exposition on your
+changes" ([`/prompt/.archive/workflows/commit.md` line 1](/prompt/.archive/workflows/commit.md)).
+
+Evidence of practice:
+
+- "please jj commit as you go! commit pro-actively in logical groups. when
+  comments come in for review, check in before making edits. **break up
+  corrections from review into individual well argued cohesive commits.**"
+  ([`AGENTS.md` lines 120-121](/AGENTS.md));
+- the empty-commit license: "do not be afraid of empty commits!" with the
+  explanation that jj's auto-staging keeps the stream moving
+  ([line 217](/AGENTS.md)); "you do not need to verify your commit has
+  happened... move on" (line 218) — commit narration is cheap enough to be
+  casual;
+- commit *content* discipline: ticket ids in the body but never the title;
+  no "phases" in titles because that is "short-term planning information, not
+  long term meaningful" ([lines 228-230](/AGENTS.md));
+- the planning-era rationale: "having a stream of commits made during the
+  plan will help insure maximum flexibility in revising, allowing us to
+  re-do specific narrow bits of work" ([`draft.md` lines 37-39](/prompt/.archive/workflows/draft.md));
+- jj-hunk exists specifically to make *logical* commits when file boundaries
+  and logical changes diverge ([`AGENTS.md` lines 234-259](/AGENTS.md));
+- live practice in this very repository's log: subjects like "naming:
+  override response draft1 — glm53m" (per-wave, per-model commits) and the
+  checkpoint commits composing this document.
+
+**Situation of origin:** agentic work sessions that die without warning; the
+commit stream is the one narration layer that survives automatically, is
+ordered, and is diffable. It became the de facto heartbeat of reasoning.
+
+**Distinction from neighbors:** the constitution treats version control as
+*history* — "Version control remains the complete file history"
+([`/constitution/README.md` line 272](/constitution/README.md#doc-constitution-module-support));
+"File history under jj is the real log" ([`draft0.glm53m.md` line 389](/design/doc-constitution/draft0.glm53m.md#c-lifecycle)).
+The thread's claim is stronger and different: commit messages are *thinking
+in real time* (forward-looking, argumentative, directed at future resumption),
+not just an audit trail. History is what commits leave behind; narration is
+what they are.
+
+**Coverage vs gap:** entirely operational (AGENTS.md), absent from the
+constitution. Note also the friction: humans must review all changes before
+squash, never `jj edit` ([`AGENTS.md` line 219](/AGENTS.md)) — the stream's
+integrity is protected precisely because it is a reasoning record.
+
+**Counterpressure:** narration can bloat; the hunk-tooling gotcha section
+shows how easily commit logic and file logic tangle; and diffs do not carry
+*why* unless the author writes it — which is why the "verbose justification"
+instinct matters more than the mechanics.
+
+---
+
+<a id="threads-wiki"></a>
+
+# Thread 10: Wiki-Ness As Founding Aspiration — The Unrecorded Pre-History
+
+**Provisional classification: value (identity-level).** The workspace's
+referentiality values have a *pre-history* that the constitution's lineage
+section does not record, because it predates the constitution lineage
+entirely. The oldest artifact in the corpus states it in the workspace's own
+unrevised voice:
+
+> "[a short-name] is **a hyperlink internal to the textual world of this
+> project**. **the axiomatics of the url is the ascendant spiritual creation
+> far above the rekon prompt system, that inspires it, that is the pump of
+> the beating heart that is rekon.** we want to be increasing the hypermedia
+> referentiality of the rekon system by referring to things by their SHORT
+> NAMES."
+> — [`/prompt/.archive/workflows/draft.md` line 96](/prompt/.archive/workflows/draft.md)
+
+Corroborating pre-history: the January 2026 creative project
+([`/prompt/.archive/uri-axioms/`](/prompt/.archive/README.md)) — a
+two-model parallel effort (glm47/k2 suffixes, "which predates the formal wave
+conventions in `AGENTS.md`," archive README line 57) generating image prompts
+for Tim Berners-Lee's URI axioms and *Cool URIs don't change*. The
+workspace's first multi-model wave was an homage to durable naming.
+
+The aspiration reappears as settled language in the constitution era:
+
+- "The workspace should behave like a plain-Markdown wiki. A reader can cite
+  a section, follow its evidence... and return later without relying on one
+  renderer's generated heading slug"
+  ([`/constitution/README.md` lines 486-490](/constitution/README.md#doc-constitution-references));
+- the ruling: "This is **the wiki settlement**, and the stated ambition of
+  this effort has been a wiki-ish system from the start... the tree is the
+  namespace"
+  ([`proposal4` lines 86-88](/constitution/naming/exploration/proposal4.glm53m.md#the-override-stated-as-ruling));
+- and the wiki's economics accepted as livable: stale links as "visible rot"
+  ([lines 93-95](/constitution/naming/exploration/proposal4.glm53m.md#what-the-rename-ripple-costs)).
+
+**Situation of origin:** the prompt-system era, where "rekon" *was* its
+prompt system and hypermedia referentiality was the explicit telos.
+
+**Coverage vs gap:** the constitution's [lineage section](/constitution/README.md#doc-constitution-lineage)
+begins at the predecessor project constitutions (is-tree, dolt-rs); the
+workspace's own pre-constitutional roots — short-names, the URI-axioms
+project, the workflow set — are unrecorded there. This matters for a broader
+core: the wiki settlement is being treated as law without its own history
+being part of the record (the archive README is the only account, and it is a
+retirement notice).
+
+**Counterpressure:** romantic pre-history can over-bind the present; the
+ruling's OKF case shows the aspiration must still be argued on current
+mechanics, not ancestry. Record it as lineage, not as authority.
+
+---
+
+<a id="threads-weaker"></a>
+
+# Weaker Or Single-Site Observations (Honest Bounds)
+
+These recurred weakly or live in single documents; recorded so the next round
+can test rather than rediscover them:
+
+- **Structured questions to the human.** "prefer multiple choice to single
+  choice questions... give the user a chance to weigh the options with
+  multiple choice options" ([`AGENTS.md` lines 64-65](/AGENTS.md)); the
+  reconstruct guide operationalizes it ("ask a short multiple-choice
+  question... Several answers may apply. State which objective wins when
+  they conflict," [lines 117-124](/code/reconstruct/README.md#reconstruct-job)).
+  Candidate member of the thinking-and-talking family: even *questions* are
+  structured documents. Evidence thin: two sites.
+- **Deliberative pacing.** Waiting for subagents so later documents benefit
+  from earlier ones ([`AGENTS.md` line 4](/AGENTS.md)); the ruling's "The
+  ruling does not skip the process; it orients it"
+  ([`proposal4` lines 213-215](/constitution/naming/exploration/proposal4.glm53m.md#the-process-from-here));
+  the design→syn→design2 rhythm ([`AGENTS.md` line 43](/AGENTS.md)). Possibly
+  just Thread 5's rhythm under another name. The current "come up for air"
+  round is itself the newest instance — a scheduled zoom-out — but I found no
+  corpus rule *mandating* periodic reassessment. Hypothesis only.
+- **No time estimates, ever** ([`AGENTS.md` line 111](/AGENTS.md)); **never
+  flat layouts** (line 114); **let it fail** (line 118); **assume sole
+  actor** (line 231). Each is a strong rule in AGENTS.md with constitutional
+  gravity but no anchoring argument recorded anywhere. If the broader core
+  wants them, their *why* needs recovery first.
+- **Index-maintenance honesty.** "maintaining an index.md during this is hard
+  but is encouraged once we start accepting the work as good"
+  ([`AGENTS.md` line 45](/AGENTS.md)) — a rare admission of practice
+  difficulty; the `summarizer` tool note (line 23) shows the intended relief
+  is tooling, not more rules. Relevant to whoever owns the reading-map
+  maintenance burden.
+- **The recovery-guide genre as knowledge type.**
+  [`/doc/opencode-session.md`](/doc/opencode-session.md) is simultaneously
+  reference (database schemas), procedure (queries), and recovery brief
+  (Phase A). None of the current lifecycle vocabularies (posture, disposition,
+  wave role) name it. Weak signal, real gap in vocabulary.
+
+---
+
+<a id="threads-table"></a>
+
+# Summary Table
+
+| # | Thread | Class (provisional) | Present coverage | Strongest counterpressure |
+|---|---|---|---|---|
+| 1 | Thinking/talking in Markdown | value | mechanics only; principle unstated | context budget; scratch mortality |
+| 2 | Referentiality/identity as family | family (values + methods) | naming wave (unsettled); anchors/namespace in law | ceremony budget; fifty-row ledger cost |
+| 3 | Loud over silent | value | practiced everywhere, named nowhere | noise fatigue; governance earned by volume |
+| 4 | Anti-conflation | method | practiced; unstated in rekon law | vocabulary inflation / sediment |
+| 5 | Independence as evidence; convergence is not authority | principle + method | opt-in patterns; stance unstated | cost; deliberative latency |
+| 6 | Ceremony budget | value (+tool) | one principle row; reversal precedent exists | under-documentation risk |
+| 7 | Self-demonstration | principle | founding draft only; absent from canon | demonstration is not proof; theater risk |
+| 8 | Resumption over transcript retention | method (+principle core) | neighbor guides; unlinked to constitution | distillation can launder history |
+| 9 | Commits as thinking-out-loud | method | AGENTS.md only; constitution sees history, not narration | bloat; hunk/file logic tangles |
+| 10 | Wiki-ness as founding aspiration | value (identity) | one aspiration sentence; pre-history unrecorded | ancestry is not authority |
+
+<a id="threads-open"></a>
+
+# Open Questions For The Broader Constitution (Discussion, Not Rules)
+
+1. Which threads are *constitutional* (stated in the core) versus *procedural*
+   (belonging in skills like doc-pass or reconstruct) versus *tool contracts*
+   (anchor tooling, assembler)? My provisional splits are marked per thread;
+   they are inputs to the discussion, not conclusions.
+2. Can Thread 1 be stated without collapsing Threads 3-10 into it — is
+   "thinking in Markdown" the genus of which the others are species, or a
+   peer value among several? The corpus suggests peer: loudness, ceremony,
+   and independence each constrain *any* medium, not only Markdown.
+3. Does the identity family (Thread 2) want a map in the core (a "family
+   register"), or does a register reintroduce the registry machinery the
+   ruling just declined?
+4. Should ask-accounting (the ask-audit genre) generalize beyond naming —
+   "no ask silently disappears" as a workspace-wide accountability rule for
+   commissioned waves? It is one round old; evidence is thin, but the failure
+   it answers (human asks killed silently by syntheses) is general.
+5. Where does the pre-history (Thread 10) get recorded? The constitution's
+   lineage section currently starts one era too late; the archive README is a
+   retirement notice, not an account.
+6. Hypothetical work this suggests (explicitly *not* filed, per commission
+   and the [index](/constitution/index.md)'s caution against a second work
+   tracker): a constitution-principles wave drafting candidate statements for
+   threads 1, 3, 5, 7; a pre-history lineage note; a recovery-guide
+   vocabulary decision.
+
+<a id="threads-cross-references"></a>
+
+# Cross-References
+
+- The [maintained constitution](/constitution/README.md) **is the account this
+  round reassesses**; its opt-in patterns table holds the mechanics that
+  Thread 1 argues are the residue of an unstated value.
+- The [reading map](/constitution/index.md) **orients** this document among
+  the maintained account, recorded decisions, and the naming exploration; its
+  "do not infer acceptance" rule (lines 99-100) grounds Thread 1's
+  referable-vs-authoritative distinction.
+- The [naming override](/constitution/naming/exploration/proposal4.glm53m.md#the-override-stated-as-ruling)
+  **supplies** the wiki-settlement, loud-breakage, ceremony-budget, and
+  convergence-not-correctness passages; it is the single richest source for
+  Threads 2, 3, 5, 6, and 10.
+- The [ask audit](/constitution/naming/exploration/ask-audit0.glm53m.md#what-this-audits)
+  **evidences** ask-accounting (Thread 2, member 11; Thread 5) and the
+  restored/killed status vocabulary.
+- The [draft2 discussion](/constitution/naming/exploration/draft2-discussion0.sol56x.md#disagreements)
+  **evidences** anti-conflation (the seven-questions move, Thread 4), the
+  channel/artifact split (Thread 2, member 3), and the full disagreement
+  ledger (Thread 5).
+- The founding drafts ([`glm`](/design/doc-constitution/draft0.glm53m.md#c-vision),
+  [`sol`](/design/doc-constitution/draft0.sol56m.md#doc-constitution))
+  **carry** the Thread 1 openings, the self-similarity requirement (Thread 7),
+  scratch mortality, and the mutable-tips-over-durable-evidence pairing.
+- [`AGENTS.md`](/AGENTS.md) **remains the operational home** of the wave,
+  doc-pass, addendum, and commit practices (Threads 1, 5, 9); nothing here
+  proposes moving it — only connecting the constitution to what it already
+  says.
+- The [prompt archive](/prompt/.archive/README.md) and its
+  [workflows](/prompt/.archive/workflows/draft.md) **are the pre-history**
+  (Thread 10 and Thread 1's origin): plan-as-heart, journaling, self-review
+  dialogue, verbose commits, short-names-as-hypermedia.
+- The [reconstruct guide](/code/reconstruct/README.md#reconstruct) and the
+  [session recovery doc](/doc/opencode-session.md) **form** Thread 8's
+  evidence pair; the latter's Phase A guide is the genre specimen.
+- [`adoption1`](/design/doc-constitution/adoption1.glm53m.md#doc-constitution-adoption-revision-deviations)
+  **records** the ceremony-budget reversal (Thread 6) and the
+  recorded-decision genre (Thread 2, member 10).
+- The [hierarchy revision](/constitution/README-heirarchy1.glm53m.md#doc-constitution-hierarchy1-terms)
+  **demonstrates** anti-conflation by terms-of-art (Thread 4) and carries the
+  disposition/trust-tier machinery cited in Thread 1's
+  referable-vs-authoritative distinction.
+- The [skillify design](/design/skillify/README1.sol56x.md#skillify-not) and
+  the [agents modularization plan](/design/rekon/agents-modularization0.sol56x.md#agents-maintenance-skillify-two-transformations)
+  **bound** Threads 1 and 3: transcript-like material stays out of skill
+  machinery; parity ledgers and no-automatic-pruning are loudness applied to
+  delivery.
