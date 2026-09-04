@@ -74,10 +74,6 @@ sources:
     resource: file:///home/rektide/archive/doc/opencode/patches.md
     title: OpenCode patch directions
     author: project:archive-doc
-  - id: opencode-plugin-redirect
-    resource: file:///home/rektide/archive/doc/opencode/plugin.md
-    title: Retired OpenCode plugin guide redirect
-    author: project:archive-doc
   - id: rekon-log-successor
     resource: /doc/log2.md
     title: Reporting and structured log design
@@ -867,6 +863,3 @@ agreement alone.
 - [`jj.md`](file:///home/rektide/archive/doc/jj.md) **evidences** how an
   on-demand stable reference can preserve agent provenance, live verification,
   corrected claims, and failure traps without loading globally.
-- The retired OpenCode [`plugin.md`](file:///home/rektide/archive/doc/opencode/plugin.md)
-  **demonstrates** a compatibility stub that preserves old links while assigning
-  one canonical owner to the maintained content.
