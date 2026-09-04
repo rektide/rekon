@@ -5,7 +5,7 @@ description: Companion assessment of the settled human ruling that tree location
 resource: /constitution/naming/exploration/proposal4.sol56x.md
 tags: [naming, identity, location, migration, hats, aliases, okf, rekon-core]
 status: draft
-generated: { by: "model:openai/gpt-5.6-sol#max", at: 2026-09-03T21:45:45-04:00 }
+generated: { by: "model:openai/gpt-5.6-sol#max", at: 2026-09-03T22:02:12-04:00 }
 extensions:
   ticket: rekon-con-naming
   revision_of: /constitution/naming/exploration/proposal4.glm53m.md
@@ -46,6 +46,10 @@ sources:
     resource: /constitution/README.md
     title: Self-Explaining Documentation Constitution
     author: project:rekon
+  - id: ask-audit
+    resource: /constitution/naming/exploration/ask-audit0.glm53m.md
+    title: Naming ask audit revision 0
+    author: steward/glm-5.3-max
 ---
 
 <a id="naming-for-rekon-revision-4-companion-override"></a>
@@ -619,11 +623,11 @@ The adopted semantic identifiers, all used with their existing referents, are:
 
 `naming-location-separation` appears only for explicit disposition: its
 knowledge-path claim is overruled, and this companion does not adopt or remint
-it. The eight frontmatter source keys are scoped citation identifiers:
+it. The nine frontmatter source keys are scoped citation identifiers:
 `proposal4-ruling`, `proposal3-weaver`, `proposal3-concordance`,
 `proposal3b-codex`, `proposal2`, `hierarchy1`, `okf-spec`, and
-`canonical-constitution`. Their mappings live in the source table; they are not
-additional semantic owners.
+`canonical-constitution`, plus the later `ask-audit`. Their mappings live in the
+source table; they are not additional semantic owners.
 
 <a id="mechanical-anchor-verification"></a>
 
@@ -669,3 +673,315 @@ syntheses required.
   knowledge planes, prospective adoption, and compatibility obligations. Its
   claim that durable identity outranks layout now means durability by declared
   repair, not a hidden stem immune to tree movement.
+
+<a id="addendum-the-override-under-portability-pressure"></a>
+
+# Addendum The Override Under Portability Pressure
+
+This addendum follows the accountability audit and the three committed
+respondent addenda. It does not reread the ruling as provisional. It asks what
+the ruling costs when a named artifact travels, when a citation crosses a tree
+or project boundary, and when the mappings around location identity age.
+
+The concurrent `draft1.*` response wave was intentionally not consulted. The
+evidence here is limited to the audit, the three proposal3 respondents, the
+primary ruling, and the corpus already cited above.
+
+The result is a refinement, not a retreat. None of the respondents ultimately
+defends a move-stable minted stem as required architecture for tree-resident
+knowledge. Their strongest objections do hold as operating constraints. A
+location name is bundle-relative rather than checkout-absolute; a detached file
+must carry origin context; cross-project breakage is partly paid by third
+parties; and alias, compatibility, equivalence, and authority maps can drift
+even when the current tree cannot.
+
+<a id="the-audit-closes-the-ask-ledger"></a>
+
+## The Audit Closes The Ask Ledger
+
+[`ask-audit0.glm53m.md`](/constitution/naming/exploration/ask-audit0.glm53m.md)
+does more than corroborate the ruling. It restores the denominator: nineteen
+human asks, each quoted and assigned a present status rather than remembered
+only through the syntheses that selected among them.
+
+| Present status | Count | Human asks carried there |
+|---|---:|---|
+| Survives | 13 | agent names; project namespace; self-naming; Docker-style semantic and numeral pairing; role prefixes; subdivision; optional model qualification; supersede ambition; ticket participation; short and long references; multiple anchors; slug-at-mint; tool assistance with specification deferred |
+| Survives narrowed | 1 | one-name, narrowed to canonicality with locality so aliases and hats can map to one owner |
+| Restored | 2 | hats as actor aliases; glossary and cross-modal aliases as repeatable practice |
+| Law by ruling | 3 | anchors and location imply full identity; location is identity; rename ripple is accepted deliberate cost |
+
+No human ask remains killed. The audit's pending state now means that respondent
+accounts and the eventual gate must reconcile with the ruling; it does not mean
+the four override decisions are awaiting another model vote.
+
+The receipts also preserve one limit that the override does not reverse:
+**one byte string across hostile media remains dead.** Cross-modal contortion,
+qualification, and declared aliases are projections into other syntaxes, not a
+claim that every medium stores identical bytes. The audit correctly separates
+that retained kill from the restored `naming-cross-modal` and
+`naming-aliases` practice.
+
+This status accounting extends the original companion's shorter survival
+table. In particular, the Docker pair, role prefixes, optional model
+qualification, tickets, multiple anchors, and short-plus-long citations were
+never casualties and need no repair.
+
+<a id="the-respondents-at-this-pass"></a>
+
+## The Respondents At This Pass
+
+All three response addenda were committed before this section was written.
+They independently reach revise rather than defend, then retain the strongest
+constraints their earlier work can still support.
+
+| Respondent | Revision to the ruling | Defense or cost that holds |
+|---|---|---|
+| [Weaver](/constitution/naming/exploration/proposal3.glm53m.md#addendum-weaver-answers-the-override) | Concedes all four questions, adopts the companion's register and identity-change tables, and names `naming-preference-priced-as-law` | A cross-project rename imposes an externality on citers who did not choose the move and can be helped only by the old authority |
+| [Concordance](/constitution/naming/exploration/proposal3.sol56x.md#addendum-location-identity-override-response) | Withdraws path, hat, and advance-alias-governance kills; keeps the five registers and federated fabric | Bundle-root ambiguity, abandoned old authorities, topology disclosure, deep-fragment behavior, byte-identity limits, and bilateral global currency remain real |
+| [Codex](/constitution/naming/exploration/proposal3b.glm53m.md#addendum-the-override-ruling-answered) | Concedes the OKF fork and reclassifies path in its register; argues observed collision cost exceeds observed move cost here | `naming-extraction-asymmetry`, cross-tree concept relations, and drift of the carried stem map survive as the strongest portability case |
+
+Weaver's `naming-preference-priced-as-law` diagnosis is fair: the syntheses
+turned a useful optimization into a claimed architectural requirement without
+first measuring Rekon's cost curve. Codex supplies the missing measurement
+direction. This corpus has repeatedly paid same-concept stem reconciliation and
+almost never paid a human-gated tree move. That observation supports the ruling
+without pretending future move frequency is already known.
+
+Concordance also retains two boundaries that never opposed the ruling. An actor
+can promise a name or hat unilaterally but cannot grant it global currency, and
+hostile media need not preserve identical bytes. Both constrain restored
+practice; neither requires a hidden knowledge identity.
+
+<a id="standalone-travel"></a>
+
+## Standalone Travel
+
+The strongest minted-identity defense is Codex's own mandate: a standalone
+document can leave the tree that named it. `naming-extraction-asymmetry` states
+the trade honestly. A location name lands exactly and travels with context; a
+portable stem travels lightly but lands only if a map travels with it.
+
+The first correction is that OKF names a path **within a Knowledge Bundle**.
+The identity is not `/home/rektide/src/rekon/...`, and moving a checkout on one
+machine does not rename every concept. The bundle is the distribution unit; its
+declared root supplies the frame within which the path means identity.
+
+Five travel cases should not be collapsed:
+
+| Travel operation | Identity consequence |
+|---|---|
+| The intact bundle is archived, cloned, or moved as another physical checkout under the same authority | Bundle-relative Concept IDs stay the same; transport location is a locator, not part of the local identity |
+| The bundle is mirrored under the same authority | Local identities stay the same while mirror URLs multiply as locators; divergent writable mirrors need an authority and continuity judgment |
+| A bundle or subtree is forked under a new authority | Relative paths may match, but qualified identities differ; provenance and explicit equivalence or derivation relate them |
+| One file is extracted into another tree | The destination path names a new artifact; the extracted artifact must carry a qualified citation to its source identity if origin matters |
+| Canonical ownership transfers to another tree or authority | The old identity retires and the new placement mints its successor; the old authority alone can provide ordinary compatibility |
+
+`naming-placement-at-mint` is a useful respondent refinement and is adopted:
+at document grain, placement is the steward's minting act just as heading
+composition and pinning are the minting act at section grain. Machinery records
+the act; it does not invent an unseen stem above it.
+
+The standalone defense therefore holds as a packaging requirement, not as a
+reversal. A document detached from its bundle loses the context needed to
+resolve local location names. It must carry the source authority and source
+path in its citations or provenance. That source coordinate is historical
+evidence about origin, not a second current identity that overrides its new
+placement.
+
+A portable semantic stem does not remove this obligation. It substitutes a
+stem-to-owner registry for the carried authority-and-path map. The file still
+needs either its registry, a network resolver, or enough origin context to land
+the stem. Minted identity moves the map; it does not eliminate it.
+
+<a id="cross-tree-and-cross-project-citation"></a>
+
+## Cross Tree And Cross Project Citation
+
+Location identity is ceremony-free only inside its declared tree. Crossing a
+tree requires `naming-federated-authority`: qualify the local path-and-anchor
+identity with the authority that promises it. Two projects can each own
+`constitution/README#scope` without collision because the authority is part of
+the federated reference.
+
+Citation intent matters:
+
+| Citation intent | Reference shape | Rename behavior |
+|---|---|---|
+| Current semantic account | Authority-qualified bundle path plus optional anchor | May follow an explicit old-to-new compatibility mapping; otherwise fails loudly after rename |
+| Exact historical evidence | Authority plus immutable revision plus the path and anchor at that revision | Remains true at that revision and should not be rewritten to a later location |
+| Cross-tree claim of sameness or derivation | Two qualified location identities joined by an explicit sourced relation | Neither matching paths nor matching stems establish equivalence by themselves |
+
+This distinction bounds part of the ripple. A commit-pinned citation to old
+evidence does not rot because a later tree moves; the old path remains present
+in the cited revision. A live citation to the maintained account does incur the
+ripple and depends on the old authority's compatibility promise.
+
+Weaver's externality objection holds without qualification. The mover can
+inventory controlled inbound references but cannot enumerate copied prose,
+offline bundles, or remote projects. Third-party citers did not authorize the
+move. The old authority therefore owns the only effective mitigation: retain a
+fragment-aware compatibility surface, or make the break explicit. When that
+authority disappears or refuses, the new authority cannot repair the old name
+by assertion. This is accepted breakage, but it is not yet fully priced.
+
+Codex's concept-across-documents argument also holds. Location identity names
+the claim-bearing artifact or section. The same abstract subject discussed in
+five drafts yields five location identities unless one is explicitly accepted
+as canonical and the others cite or relate to it. The stem ledger can survive
+as a cross-tree reference and equivalence map; it cannot silently become a
+second identity registry above those locations. `naming-one-name-locality`
+governs current canonical ownership within an authority, while sourced
+relations carry claims across authorities.
+
+<a id="registry-drift"></a>
+
+## Registry Drift
+
+Location identity eliminates one high-frequency drift surface: there is no
+independent current stem-to-path table for every knowledge artifact. A current
+inventory can be derived from regular files and anchors, and a derived index
+that disagrees with the tree is simply stale projection. The tree wins.
+
+It does not eliminate registers. Four kinds of mapping remain non-derivable:
+
+- aliases and hats mapping additional forms to one owner;
+- compatibility mappings from retired locations to successors;
+- cross-tree equivalence, derivation, contradiction, and supersession claims;
+- authority discovery mapping a project or bundle claim to reachable locators.
+
+Codex's registry-drift defense therefore holds against any claim that the tree
+removes all mapping maintenance. It does not support reinstating minted
+identity. A minted stem adds another non-derivable map required on every normal
+lookup, while location identity reserves non-derivable maps for actual alias,
+history, federation, and relation pressure.
+
+A carried standalone ledger must also say what promise it makes. A map frozen
+with an evidence artifact records how references resolved at that revision. It
+is not a live global resolver. A maintained map claims current resolution and
+therefore needs a steward, disposition, and repair when owners move. Letting a
+historical map masquerade as current is registry drift even when every row was
+once correct.
+
+Compatibility stubs form a distributed historical register and can rot too: a
+target can disappear, a deep fragment can change, or a host can stop following
+a symlink. These are checkable obligations at `naming-tool-seam`, but no tool
+design is smuggled into this addendum. The ruling's answer remains proportional:
+nearby mappings first, stronger governance when volume and observed drift earn
+it, no automatic pruning of historical compatibility.
+
+<a id="compact-refinement"></a>
+
+## Compact Refinement
+
+The corrected compact above stands with five clarifications exposed by the
+audit and respondents:
+
+> **Bundle-relative identity.** Location means path relative to a declared
+> Knowledge Bundle root, extended by a pinned anchor for sections. Physical
+> checkout and mirror locations are locators. Authority qualification composes
+> that local identity across projects.
+>
+> **Travel has typed outcomes.** Transporting an intact bundle under one
+> authority preserves its local identities. Extraction or a fork creates new
+> qualified artifact identities with explicit provenance. Transfer of canonical
+> ownership is a rename or succession paid by the old and new authorities.
+>
+> **Citation intent is explicit.** Live semantic citations target a maintained
+> authority and accept its disclosed rename policy. Evidence citations pin the
+> revision and retain the path that was true there. Cross-tree sameness is a
+> sourced relation, never inferred from matching path or stem.
+>
+> **The tree is current authority, not the whole register.** Current identity
+> indexes are derived from files and anchors. Aliases, hats, retired-name
+> mappings, authority discovery, and cross-tree relations are declared records
+> with scope and lifecycle. A carried historical map does not silently promise
+> current resolution.
+>
+> **Cross-modal does not mean byte-identical.** Contortion, elision, aliases,
+> and citation tokens may project one owner into hostile media when their
+> mappings remain recoverable. The audit's retained byte-identity kill stands.
+
+These clauses answer the strongest portability case without introducing a
+shadow canonical stem. They also make the bundle boundary and the distinction
+between current and historical resolution part of the compact rather than
+leaving them as resolver folklore.
+
+<a id="what-the-override-still-owes"></a>
+
+## What The Override Still Owes
+
+The override is settled direction, but its first companion priced categories
+rather than an actual migration. The following debt remains plain:
+
+| Debt | What remains unpriced or unargued |
+|---|---|
+| Actual move cost | No inbound inventory has counted the real links, anchors, frontmatter paths, symlinks, ticket references, or external surfaces affected by promoting `constitution/naming/`; the earlier numerical example was illustrative only |
+| Bundle boundary | Rekon has not yet settled whether the project root, docroot, or a declared subtree is the Knowledge Bundle root in every composition; different roots produce different local IDs |
+| Authority continuity | Mirror, fork, project rename, repository transfer, and abandoned-authority judgments have principles above but no accepted operational record |
+| Third-party externality | No policy says when a published cross-project name earns an indefinite old-path surface, who maintains it, or what evidence permits deliberate breakage |
+| Deep-fragment compatibility | Symlink and stub behavior has not been tested across the actual renderers and publication hosts, so one old file route may still strand anchored citations |
+| Standalone packaging | A detached document is told to carry qualified origin context, but the minimum portable envelope and its current-versus-historical promise remain unspecified |
+| Registry lifecycle | Alias, hat, compatibility, equivalence, and authority maps still need ownership, disposition, conflict behavior, and drift checks once their volume earns governance |
+| Concept sameness across trees | The corpus uses stems such as `naming-name-promise` across many artifacts, but acceptance has not yet assigned canonical owners and explicit relation types for every cluster |
+| Topology disclosure | The ruling accepts self-location for wiki knowledge, but the boundary where private structure should use another native plane remains unargued |
+| Empirical cost curve | Codex observes frequent stem reconciliation and rare moves in this corpus; the project has not yet measured whether that relationship persists after the naming system becomes the core |
+
+The most consequential unpaid item is Weaver's: compatibility cost can be
+exported to people who never participated in the migration. Calling breakage
+loud does not compensate them. The successor owes either a durable
+old-authority promise or an explicit decision that a particular public name is
+allowed to break.
+
+The second is Codex's map warning. Governance may properly wait for pressure,
+but the gate should record which failures will count as that pressure. Otherwise
+"earned later" can become a way to ignore the first evidence of drift.
+
+None of this debt reopens the ruling. It identifies the pilots and acceptance
+evidence `naming-successor` must still earn before superseding the current
+constitution.
+
+<a id="identifier-disposition"></a>
+
+## Identifier Disposition
+
+This addendum mints no free-standing semantic identifier and no actor persona.
+It adopts the respondents' three useful new identifiers rather than renaming
+their findings:
+
+| Identifier | Disposition here |
+|---|---|
+| `naming-preference-priced-as-law` | Adopted from Weaver as the diagnosis of the syntheses' move-stability claim |
+| `naming-placement-at-mint` | Adopted from Codex for placement as the stewarded document-grain minting act |
+| `naming-extraction-asymmetry` | Adopted from Codex as the real trade between exact landing and portable references that require a map |
+| `naming-convergence-evidence` | Retained in part under Weaver's correction: it describes corpus agreement but does not outrank human authority or guarantee that a dissenting receipt was noticed |
+| `naming-location-separation` | Remains overruled for knowledge paths; surviving actor-side substance stays with `naming-address-vs-identity` |
+| `naming-canonical-stem` | Retained in part for actors, non-tree native entities, and lexical style; not a hidden move-stable knowledge identity |
+| `naming-reference-registers` | Adopted with location in the knowledge-name row and with current-versus-historical map lifecycle exposed as debt |
+| `naming-cross-modal` and `naming-aliases` | Restored; the separate kill of byte-identical spelling across hostile media remains retained |
+| `naming-role-is-relation` | Retained as complementary to restored hats, never exclusive of them |
+| `naming-home-not-layout` | Retained as sequencing only; contract adoption may precede movement, but movement changes identity |
+
+The addendum mints ten location-composed section anchors:
+`addendum-the-override-under-portability-pressure`,
+`the-audit-closes-the-ask-ledger`, `the-respondents-at-this-pass`,
+`standalone-travel`, `cross-tree-and-cross-project-citation`,
+`registry-drift`, `compact-refinement`, `what-the-override-still-owes`,
+`identifier-disposition`, and `addendum-anchor-verification`.
+
+The newly adopted `ask-audit` source key is a scoped provenance identifier,
+not a semantic owner. No `draft1.*` identifier or claim is adopted because
+that concurrent wave remained unread by instruction.
+
+<a id="addendum-anchor-verification"></a>
+
+## Addendum Anchor Verification
+
+The ten addendum headings were composed slug-at-mint and the complete artifact
+was rendered with `pandoc --from=gfm --to=html`. Declared anchors were compared
+in document order with rendered heading IDs. Result: **thirty of thirty match**,
+the original twenty unchanged and ten added here, with zero corrections.
+
+Pandoc verification remains one renderer receipt, not proof of cross-renderer
+fragment compatibility. That unpaid question remains recorded above at the
+deferred tool seam.
