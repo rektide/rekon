@@ -20,6 +20,16 @@ This directory preserves the argument behind the maintained constitution at
 [`/constitution/README.md`](/constitution/README.md). The files here are evidence and design
 history, not competing current guidance.
 
+## Current Constitutional Map
+
+- [`/constitution/index.md`](/constitution/index.md) maps the maintained pilot,
+  recorded decisions, and active work across hierarchy, naming, capability,
+  context delivery, and Navigation.
+- [Broader reassessment](/constitution/reassessment0.gpt6a.md) asks what a new
+  constitutional README should hold together without absorbing its domain docs.
+- [Work and connection map](/constitution/work-map0.gpt6a.md) distinguishes
+  existing commitments from hypothetical, unfiled follow-ups.
+
 ## Independent Drafts
 
 - [`draft0.sol56m.md`](draft0.sol56m.md) develops the knowledge-flow model,
