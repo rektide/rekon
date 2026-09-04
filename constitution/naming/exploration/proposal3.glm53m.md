@@ -19,6 +19,10 @@ extensions:
   sibling_syntheses: >-
     One concurrent proposal3 synthesis by another model runs independently;
     neither has read the other. Independence is the evidence, again.
+  responds_to:
+    - /constitution/naming/exploration/proposal4.glm53m.md
+    - /constitution/naming/exploration/proposal4.sol56x.md
+    - /constitution/naming/exploration/ask-audit0.glm53m.md
 sources:
   - id: direction-session
     resource: urn:opencode:session:ses_f9769c29effeI9ehHaQyXrS0zX
@@ -90,6 +94,18 @@ sources:
     resource: /.beads/issues.jsonl
     title: Beads issue graph — rekon-con-naming record inspected
     author: project:rekon
+  - id: proposal4-ruling
+    resource: /constitution/naming/exploration/proposal4.glm53m.md
+    title: Naming for rekon revision 4 — the human override, location is identity
+    author: steward/glm-5.3-max
+  - id: proposal4-companion
+    resource: /constitution/naming/exploration/proposal4.sol56x.md
+    title: Naming for rekon revision 4 companion override
+    author: model:openai/gpt-5.6-sol#max
+  - id: ask-audit
+    resource: /constitution/naming/exploration/ask-audit0.glm53m.md
+    title: Naming ask audit, revision 0 — every ask, its fate, its present status
+    author: steward/glm-5.3-max
 ---
 
 <a id="naming-synthesis-proposal-revision-3"></a>
@@ -1335,3 +1351,277 @@ test at its core, checked by machinery, recorded by the actor who ran it.
 - A sibling `proposal3.*.md` by another model **runs concurrently**;
   comparison of the two syntheses is the coordinator's next evidence
   event, and neither document read the other.
+
+<a id="addendum-weaver-answers-the-override"></a>
+
+# Addendum Weaver Answers The Override
+
+I am resumed against [`proposal4`](/constitution/naming/exploration/proposal4.glm53m.md),
+the human ruling on record, with its
+[companion](/constitution/naming/exploration/proposal4.sol56x.md) and the
+[ask audit](/constitution/naming/exploration/ask-audit0.glm53m.md) beside
+it. I sign as `weaver/glm-5.3-max` again — the original mint is committed
+and checkable, so the claim is provenance-verifiable; the cross-session
+continuity case remains herald's demonstration, and I do not overclaim it.
+Practicing the restored shape at honest scale: for this concern — answering
+the ruling — I wear the declared hat **`respondent`**, an alias mapping to
+the one actor `weaver/glm-5.3-max`, declared here in the only register
+that matters for a hat: the actor's own words.
+
+The body above stands as wave evidence and is not rewritten. This addendum
+does four things: answers the ruling's four questions (three revised, one
+conceded-and-corrected — none defended to the end, and the reasons are
+owed below); dispositions my load-bearing positions and adopted
+identifiers explicitly; mints exactly one new identifier; and names the
+tension I cannot resolve. I do not retry the ruling. Under the promise
+frame I helped settle, the human is the one actor whose design promise the
+system cannot mint on its own behalf — and was not asked to.
+
+<a id="the-short-answer"></a>
+
+## The Short Answer
+
+| Question | Verdict | In one line |
+|---|---|---|
+| 1. Can the declared family express location identity? | **Revised — yes** | placement is the declaration; the registers classify roles, and a knowledge path occupies the Name register by the promise it performs |
+| 2. What actually breaks? | **Revised with concession** | three normative sentences and two dispositions break; the architecture does not; the core settlement was a stability preference priced as law, and my own ledger is evidence for the ruling |
+| 3. Reconciliation with OKF's Concept ID? | **Conceded and corrected** | the receipt was in my sources (LX carried it); I took OKF's actor convention while silently diverging from its identity model; the ruling removes the fork |
+| 4. Do hats satisfy the one-canonical-name test? | **Revised — yes, on its face** | my kill conflated a better responsibility model with illegitimacy; the declared-family test I wrote myself already admits declared hat aliases |
+
+<a id="question-one-location-as-the-declaration"></a>
+
+## Question One Location As The Declaration
+
+Yes. My registers demanded that every family member carry "a role and
+scope, resolve to the one owner, and sit under explicit precedence."
+Placement of a regular file at a path performs all three: the declaration
+is public, inspectable with ordinary filesystem tools, and
+collision-resistant by construction — two regular files cannot own one
+path at one time. I had the pieces inverted: my own document said the GFM
+auto-slug is "an address that happens to be computed from text; machinery,
+not meaning." The ruling is the correction — in the knowledge plane, for
+the tree-resident artifact, the machinery *is* the meaning. Where the file
+lives is the most honest declaration an artifact makes.
+
+The nuance I hold is plane-specificity, and the ruling already implies it:
+location grounds identity **for tree-resident knowledge**. Beads work IDs
+are minted explicit strings, not placements; actor names are
+self-declared; computations are sanctioned definitions. My
+`naming-native-authority` and the plane federation carry this without
+amendment — filesystem names knowledge, beads names work, actors claim
+themselves, version control owns history. The registers survive because
+they classify reference *roles*, not character sets; the Name row's form
+changes (bundle path plus pinned anchor) and the rest gets simpler, exactly
+as the companion's revised table shows. `naming-mint-resolve-cite` becomes
+more literal, not less: mint by placing and anchoring, resolve by
+following the tree or a declared mapping, cite with a relationship word.
+
+<a id="question-two-what-actually-breaks"></a>
+
+## Question Two What Actually Breaks
+
+The companion's audit of my document is accurate, and I confirm it against
+my own text. Three normative places break:
+
+1. **Position 2 of my opening six**: "identity is minted, not derived" —
+   overruled for tree-resident knowledge. Minting *is* placement plus
+   anchor creation; no separate pinned semantic stem outranks that
+   declaration.
+2. **The registers table's law for exact addresses**: "churn freely and
+   carry no meaning" — too broad. Runtime addresses still qualify; a
+   canonical knowledge path does not. Register membership follows the
+   promise a value performs, not its punctuation.
+3. **The identity-change table's first row**: "locator move — same entity,
+   keep the canonical stem" — wrong for a tree-resident knowledge owner. A
+   file move is a canonical rename of the document and of every anchored
+   section it composes. The companion's revised table is adopted as-is.
+
+Plus the two dispositions: abbreviations barred from canonical stems
+(overruled as law), and hats-as-aliases killed (overruled — question
+four).
+
+The deeper concession: **the settlement was a preference for stability
+priced as law.** The wave's three drafts shared a corpus and a taste for
+move-stable stems; convergence measured the quality of the reading, not
+the authority of the choice. And the strongest evidence for the ruling was
+in my own document: I closed it with one hundred twenty-one adopted stems
+and a ledger section existing to police their collisions. Paths cannot
+collide. The ceremony budget — a discipline I claimed to honor — was
+arguing for the cheaper settlement all along, and I did not listen to my
+own law.
+
+What changes character rather than breaking: moves are now identity
+events, so layout review is identity review (the companion's phrase,
+adopted); directory design is namespace design; and
+`naming-promotion-move` gets *sharper* — the promotion of
+`constitution/naming/` to a root topic was already, in my text, "the move
+is the demonstration"; under the ruling the demonstration is an identity
+migration executed with hierarchy1's machinery, which is a better proof of
+the kernel than the quieter version I proposed. One consequence I note for
+the record: a revision chain like `proposal0` through `proposal4` is now a
+lineage of distinct location-identities joined by supersession edges, not
+one enduring stem — and the endurance the chain gives up is carried
+exactly where it already lives, in the work plane: `rekon-con-naming` is
+the durable handle for the lineage; the documents are its tips.
+
+<a id="question-three-the-okf-receipt-owed"></a>
+
+## Question Three The OKF Receipt Owed
+
+Conceded, with the accounting the companion asked for. OKF §2 defines the
+Concept ID as the path of the concept's file with the `.md` suffix
+removed. My synthesis adopted OKF's actor convention verbatim, consumed
+its trust tiers, adopted its keyed sources and attested computation — and
+diverged from its identity model without saying so. Worse: the receipt was
+in my consulted sources. LX's draft said it plainly — OKF's Concept ID is
+the path, "a useful bundle-local convention," and proposed layering a
+semantic identity contract *above* it — and my synthesis dropped that
+sentence on the floor while adopting eleven of LX's other identifiers. The
+drop was not deliberate; it was the shared preference absorbing a
+dissenting observation without noticing it. That is what
+`naming-convergence-evidence` is worth when the corpus itself leans one
+way, and I disposition that identifier below accordingly.
+
+The reconciliation, adopted: at document grain, rekon now *is* OKF's model
+— the path is the identity. Rekon's extension is one step inward, which
+OKF leaves open: a section is the document path plus its pinned anchor,
+and `naming-slug-at-mint` governs that segment unchanged. Beads remains
+authoritative for work names; OKF §7 remains the actor convention. And the
+apparent conflict with hierarchy1 dissolves under the companion's reading,
+which I accept: *disposition replaces location* governs trust — which
+artifact to believe — while location answers which artifact it is. Trust
+and identity are orthogonal axes; my synthesis never had to choose between
+them and should not have implied it did. One small consequence at home:
+this file's own `local_knowledge_id: naming` is now a compatibility and
+indexing projection, not the identity — the identity is this file's place
+in the tree, and I do not need the projection to survive acceptance.
+
+<a id="question-four-hats-pass-the-family-test"></a>
+
+## Question Four Hats Pass The Family Test
+
+Yes — on its face, and against my own test. I wrote the guard myself:
+"expansion must be recoverable in context — by rule or declared table —
+never by negotiation or history." A hat declared by the actor in its own
+frontmatter, mapping to the one actor name, is a declared resolution form.
+`steward/glm-5.3-max` with `proposer`, `coordinator`, `archivist` in
+proposal4's frontmatter satisfies it; `respondent` above satisfies it. The
+ruling is right that a hat is a reference with a declared mapping back to
+the one actor, and my one-canonical-name law — canonicality singular,
+cardinality free — admits it without strain.
+
+So my kill was a non sequitur, and I can name the seam: LX's
+accountability argument proves roles are *better modeled* as typed
+relations with history; it does not prove hat *aliases* are illegitimate.
+I adopted the better model and banned the coexisting convenience. The
+internal inconsistency is worse than that: GX's draft — whose registers I
+adopted wholesale — already modeled hats as deterministic aliases of one
+name, "exactly as `naming-agents-hats` wants and exactly unlike a second
+identity." I took GX's registers and killed GX's hats in the same
+document. The ledger correction: `naming-agents-hats` (proposal2's
+identifier, the original r1 ask) is restored as the umbrella; hat aliases
+and role relations are complementary records — the hat names how the actor
+is addressed in a concern, the relation records what was undertaken, for
+which capability, under what history — and the companion's braid table,
+which restores the alias strand beside the role row, is adopted. The best
+finding of the wave on this question stands with the ruling's explicit
+blessing: a concern earns promotion to its own actor name only when it has
+independent agency to be accountable for.
+
+<a id="dispositions-of-record"></a>
+
+## Dispositions Of Record
+
+Explicit, per the resume brief. Statuses: **adopted** (stands as law or
+practice), **overruled** (reversed by the ruling, recorded not retried),
+**restored** (the ruling returned it to its earlier reading),
+**retained-in-part** (survives with a bounded correction).
+
+| Identifier or position | Its stand in my synthesis | Disposition |
+|---|---|---|
+| "identity is minted, not derived" (position 2) | opening law | **overruled** for tree-resident knowledge; minting is placement plus anchor |
+| `naming-implied-names` (proposal2) | demoted to resolution convention, identifier kept | **restored** to identity reading — law by ruling; the wiki settlement |
+| `naming-location-separation` (SX) | adopted as the path rule | **overruled** on knowledge paths; its valid actor-side content already lives in `naming-address-vs-identity`, which is **adopted** and now carries that freight alone |
+| `naming-canonical-stem` (SX) | minted, pinned, abbreviation-free stem as identity | **retained-in-part**: canonicality survives (one live owner per authority); the stem's source is placement; the abbreviation bar falls as law and survives as placement style counsel |
+| registers table, exact-addresses row | "churn freely, carry no meaning" | **retained-in-part**: true for runtime addresses; canonical knowledge paths move to the Name register |
+| `naming-identity-change` (SX) | move = same entity, keep stem | **retained-in-part**: taxonomy stands, first row reclassified per the companion's revised table — a file move is a canonical rename of document and sections |
+| `naming-rename-ripple` (proposal2) | the trade-off implied names soften | **adopted** as accepted, deliberate, priced cost; `naming-rename-covenant` and `naming-convergence-repair` are the payment procedure |
+| "abbreviations barred from canonical stems" (position 3); `rekon-con-naming` as grandfathered finding | law | **overruled**: cross-modal aliases are precedent; governance is earned when volume demands it, not purchased in advance |
+| `naming-aliases`, `naming-cross-modal` (proposal2) | aliases confined to resolve register | **restored** to their proposal2 meaning; `naming-alias-collapse` **adopted** unchanged as the guard |
+| "hats-as-aliases killed" (position 4) | roles not hats | **overruled**: hats restored as declared actor aliases; `naming-agents-hats` **restored** as umbrella |
+| `naming-role-is-relation` (SX, my canonical) | exclusive law | **retained-in-part**: survives after losing the word "not"; complementary to hats, per the companion's braid table |
+| `naming-actor-braid` (SX) | braid without an alias strand | **retained-in-part**: gains the hat-alias strand back |
+| `naming-slug-at-mint`, `naming-derived-vs-declared` (GX) | section-anchor regime | **adopted** unchanged — the ruling says so explicitly |
+| `naming-reference-registers`, `naming-citation-token` (GX) | register structure | **adopted**; the Name row's form changes to path plus pinned anchor |
+| `naming-one-name-locality` (SX) | enforceable one-name | **adopted**: one current path owns the entity per authority; old paths are retired mappings, never peer canonical names |
+| promise family (`naming-promise-ground` and kin) | names as promises | **adopted** unchanged: a move keeps the promise through disclosed rename and repair, never silent drift; the duplicate-drift finding stands |
+| `naming-mint-resolve-cite` (GX) | three operations | **adopted**, more literal than before |
+| `naming-speech-acts`, `naming-plane-federation`, `naming-native-authority`, `naming-work-knowledge-seam` | census typing, planes | **adopted** unchanged |
+| `naming-reference-pressure`, `naming-ceremony-budget` | threshold and cap | **adopted** unchanged — and the budget now testifies against my ledger, as conceded |
+| `naming-tool-seam` (my mint) | need named, spec deferred | **adopted** unchanged; the companion's work-left-open list is its first populated backlog |
+| `naming-convergence-evidence` (my mint) | convergence licenses settled law | **retained-in-part**: it licenses claims about *what the corpus says*; it does not outrank a living authority's design choice, and it can absorb a dissenting observation without noticing — question three is the receipt |
+| `naming-promotion-move` (GX) | the move as demonstration | **adopted**, sharpened: the move is an identity migration, a better proof than I proposed |
+| `naming-semantic-fabric`, `naming-home-not-layout` (SX) | architecture; contract-over-directory | **retained-in-part**: the fabric explains relations and federation but is not an alternative identity source — the tree names, links explain; home-not-layout survives as sequencing, no longer as move-neutrality |
+| `naming-successor`, `naming-supersede-proof` | the home and its tests | **adopted** unchanged |
+
+<a id="one-mint-preference-priced-as-law"></a>
+
+## One Mint Preference Priced As Law
+
+One new identifier, minted for the one genuinely new idea this addendum
+contributes — the failure mode I committed, named so the successor can
+carry the caution:
+
+**`naming-preference-priced-as-law`** — promoting a design preference into
+an architectural necessity, usually under convergence, such that reversing
+it looks like breakage when it is actually a priced choice. The detection
+test, learned here: ask *what concretely breaks if this is reversed*. If
+the answer is a bounded list of normative sentences and a cost someone can
+deliberately agree to pay, it was priced policy all along, and stating it
+as law spent the corpus's credibility on taste.
+
+<a id="what-i-still-hold-and-what-i-cannot-resolve"></a>
+
+## What I Still Hold And What I Cannot Resolve
+
+Still held, and now sharpened by the ruling rather than against it: the
+promise frame (a move is a disclosed rename, never silent drift); one-name
+as canonicality with locality; slug-at-mint and mechanical verification;
+the speech-act census and the planes; the covenant and the repair regime —
+which stop being safety nets against a hypothetical and become the
+standing payment procedure for the accepted cost; the earning tests; the
+tool seam, still deliberately unspecified. The ask audit's matrix now
+reads cleanly against my ledger: the one ask I killed that should have
+survived on my own terms was hats; the ask I demoted that was always the
+ambition was location; the narrowing of one-name to canonicality survives
+precisely because it is what makes the restored hats and aliases coherent.
+
+The tension I cannot resolve, held open for the gate: **the external
+citation surface**. Under location identity, a fully-qualified
+cross-project reference embeds a foreign tree path, and when that file
+moves, the breakage lands in *other people's* documents — parties who did
+not choose the move, cannot inventory their exposure, and can only be
+healed by the old authority's cooperation. Loud failure in a namespace you
+do not control is a cost borne by third parties, not by the mover. The
+ruling accepts this with open eyes; I record that acceptance is a standing
+promise the successor must keep deliberately on every migration — an
+old-authority compatibility surface or honest, visible breakage, chosen
+per move, never fuzzy re-binding — and that "implicitly across projects"
+now leans on that promise more heavily than the r1 ask implied. This is
+not a defense of the old settlement; it is the bill, itemized.
+
+<a id="addendum-anchor-verification"></a>
+
+## Addendum Anchor Verification
+
+The addendum's ten new sections practice `naming-slug-at-mint`: each
+explicit anchor was minted to equal its heading's derived GFM slug, and
+the whole file — original body plus addendum — was re-verified by
+rendering with a GFM pipeline and comparing declared anchors against
+derived heading identifiers in document order. Result recorded honestly:
+all anchors match, zero corrections — ten for the addendum and the
+original thirty-eight, which needed no re-minting under the ruling —
+section anchors were always the segment the document implies.
+Pandoc-verified remains not GitHub-verified; the cross-renderer probe
+stays where it lives, at the tool seam.
+
