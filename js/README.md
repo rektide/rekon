@@ -19,8 +19,9 @@ pnpm init
 pnpm install -D vite-plus vitest @typescript/native-preview
 ```
 
-`package.json` essentials — `"type": "module"`, `"packageManager": "pnpm@<version>"`, and the
-vite-plus override wiring so transitive `vite`/`vitest` resolve to the vite-plus builds:
+`package.json` essentials — `"type": "module"`, and (as of vite-plus 0.3) a direct
+`vite` alias devDependency so `vite/client` types and vite-plugin peers resolve to the
+vite-plus core build:
 
 ```json
 {
@@ -33,20 +34,31 @@ vite-plus override wiring so transitive `vite`/`vitest` resolve to the vite-plus
 	},
 	"devDependencies": {
 		"@typescript/native-preview": "7.0.0-dev.<current>",
+		"vite": "npm:@voidzero-dev/vite-plus-core@latest",
 		"vite-plus": "latest",
-		"vitest": "npm:@voidzero-dev/vite-plus-test@latest"
-	},
-	"pnpm": {
-		"overrides": {
-			"vite": "npm:@voidzero-dev/vite-plus-core@latest",
-			"vitest": "npm:@voidzero-dev/vite-plus-test@latest"
-		}
+		"vitest": "<version bundled by your vite-plus, e.g. 4.1.11>"
 	}
 }
 ```
 
+> **vite-plus ≥0.3 bundles vitest, oxlint, and oxfmt itself.** Install `vitest` directly at
+> the version your `vite-plus` bundles (check `node_modules/vite-plus/package.json`) and
+> import test APIs from `vitest`. The older `vitest: npm:@voidzero-dev/vite-plus-test`
+> override pattern now pins a stale core whose rolldown native binding fails to load.
+
+If a pnpm override is needed (e.g. forcing transitive `vite` deps to the vite-plus build),
+pnpm 11 no longer reads `pnpm.overrides` from package.json — put it in
+`pnpm-workspace.yaml`:
+
+```yaml
+overrides:
+  vite: npm:@voidzero-dev/vite-plus-core@latest
+```
+
 Libraries bundle with `vp pack` (tsdown). Applications instead use `vp dev` / `vp build` /
-`vp preview` with a dev server and an `index.html` entry.
+`vp preview` with a dev server and an `index.html` entry. Scope `vp lint` / `vp fmt` to
+your source paths (`vp lint src tests vite.config.ts`) or they will walk every file in the
+tree.
 
 A minimal `vite.config.ts`:
 
@@ -108,8 +120,9 @@ Add `"isolatedDeclarations": true` when emitting `.d.ts` for a published library
 
 ## Testing
 
-`vp test` runs vitest. Import test APIs from `vite-plus/test` when using the vite-plus override
-wiring. With no prior test tooling, pick vitest.
+`vp test` runs the bundled vitest. Keep the project's `vitest` devDependency at the same
+version `vite-plus` bundles, and import test APIs from `vitest`. With no prior test tooling,
+pick vitest.
 
 ## npm script structure with concurrently
 
@@ -178,12 +191,16 @@ manifest generation as part of `build:` or `check:` scripts.
 
 ## Reference projects
 
-- `~/src/ocif-schema/package/effect-schema-v4` — canonical vite-plus library setup (package.json
-  overrides, `vite.config.ts`, `tsconfig.json`).
-- `~/src/seven-ten` — vite-plus application (dev server + custom elements + preact), including
-  the OAuth browser dev-server pattern.
+- `~/src/ocif-schema/package/effect-schema-v4` — canonical vite-plus **library** setup
+  (`vite.config.ts`, `tsconfig.json`).
+- `~/src/seven-ten` — canonical vite-plus **application** setup (dev server + custom
+  elements + preact): concurrently script structure, scoped `vp lint`/`vp fmt`, matching
+  standalone vitest, and the AT Protocol OAuth `127.0.0.1` dev-server pattern.
 
 ## Log
 
 - 2026-09-04: created; distilled from global `AGENTS.md` npm/Node sections plus the
-  `effect-schema-v4` vite-plus setup.
+  `effect-schema-v4` vite-plus setup. Later the same day: corrected for vite-plus ≥0.3
+  (bundled vitest/oxlint/oxfmt; direct vitest install instead of the vite-plus-test
+  override; pnpm 11 overrides in `pnpm-workspace.yaml`), learned while building
+  `~/src/seven-ten`.
