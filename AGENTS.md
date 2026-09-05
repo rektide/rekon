@@ -233,30 +233,11 @@ Include a `dev` target for watch/development mode (e.g. `wxt watch`).
 
 # jj-hunk
 
-- programmatic hunk selection for jj. lets you commit/split/squash specific hunks instead of whole files — use it when logical changes are intermingled within a file and you want clean commits.
-- subcommands (run `jj-hunk <sub> --help` to confirm flags):
-  - `jj-hunk list` — emit JSON of all hunks in current `@` change (use `-r <rev>` for other revisions). each hunk has an `id` (`hunk-<sha256>`); this is how you discover IDs.
-    - `--format text` — compact human-readable output (file, hunk index, type, ID, and the added/removed lines); great for quick visual scanning instead of parsing JSON.
-    - `--files` — just file + hunk counts, no content.
-    - `--spec '<spec>'` — **dry-run**: preview which hunks a spec would select. returns `{"files": []}` if nothing matches. always run this before committing to catch mismatched IDs.
-    - `--spec-template` — print a starter spec populated with every hunk ID; delete the IDs you don't want and pipe it back in.
-    - `-i '<glob>'` / `-x '<glob>'` — include/exclude file patterns (repeatable) to filter noisy diffs.
-  - `jj-hunk commit [SPEC] [MESSAGE]` — commit selected hunks; SPEC is a JSON/YAML string (inline works fine for a hunk or two), `-` for stdin, or `--spec-file <path>`.
-  - `jj-hunk split [SPEC] [MESSAGE]` — split current `@` into two commits, selected hunks go into the new child.
-  - `jj-hunk squash [SPEC]` — squash selected hunks into the parent.
-- spec shape (same for all three): `{"files": {"<path>": {"ids": ["hunk-<id>", ...]}}}`.
-- **CRITICAL: use the full `hunk-<sha256>` ID.** short prefixes silently match nothing and `jj-hunk commit` happily creates an empty commit with no error. guard against this with the `--spec` dry-run above.
-- extracting IDs: `jj-hunk list | jq -r '.files[].hunks[].id'` prints just the IDs; pipe through `head`/`grep` as needed. to grab a specific file's ID: `jq -r '.files[] | select(.path=="<path>") | .hunks[].id'`.
-- discovery + commit workflow:
-  - `jj-hunk list --format text` to eyeball hunks and their IDs (or `jj-hunk list > /tmp/hunks.json` for full detail; match on `added`/`removed`/`context.pre`)
-  - hand-write a spec: `{"files": {"<path>": {"ids": ["hunk-<full-id>", ...]}}}`
-  - **verify**: `jj-hunk list --spec '<spec>'` — confirm it lists the hunks you expect before committing
-  - commit: `jj-hunk commit '<spec>' "<message>"` (inline), or for large specs pipe via stdin (`jj-hunk commit - "<message>" < /tmp/spec.json`) or file (`jj-hunk commit --spec-file /tmp/spec.json "<message>"`)
-- when to use vs alternatives:
-  - jj-hunk: changes intermingled in a file, you want clean commits, no TTY (agents, CI)
-  - plain `jj commit -m "<msg>" <files>`: file boundaries already align with logical commits (preferred when it works — simpler)
-  - `jj split -p` / `jj squash -i`: interactive flows when a TTY is available
-- gotcha: when a file has been wholesale rewritten, hunk-based splitting won't produce clean intermediate states (hunks reference a diff against the parent, and a rewrite's hunks don't compose into the intended intermediate). in that case, restore the file from the parent rev (`jj file show -r @- <file> > <file>`), apply the minimal change, commit, then write the full version back and commit again.
+- `jj-hunk` selects individual hunks of a diff and commits/splits/squashes only those. it is the tool for logical changes intermingled **within** files, and for clean hunk commits without a TTY (agents, CI). when file boundaries already align with the logical change, plain `jj commit -m "<msg>" <files>` is simpler — prefer it.
+- spec shape: `{"files": {"<path>": {"ids": ["hunk-<sha256>", ...]}}}`. use **full** `hunk-<sha256>` IDs: short prefixes silently match nothing and `jj-hunk commit` happily creates an empty commit with no error.
+- always dry-run before committing: `jj-hunk list --spec '<spec>'` must list exactly the hunks you expect.
+- wholesale-rewritten files don't hunk-split into clean intermediates: restore the file from the parent rev, apply the minimal change, commit, then write the full version back and commit again.
+- full subcommand reference, ID-extraction recipes, and worked flows: [`code/jj-hunk.md`](/code/jj-hunk.md) — load it when doing hunk-level work.
 
 # beads
 
