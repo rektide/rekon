@@ -1,5 +1,5 @@
 ---
-description: "Rapid read-only preflight for implementation work: constraints, repository state, relevant architecture, risks, and verification commands. Alias PF."
+description: "Read-only scout that prepares an implementation task before any edits. Pins the requested outcome and non-goals; loads the applicable AGENTS.md rules from root to target; snapshots VCS state via jj/git status, log, and diff without mutating; maps the implementation seam with narrow-to-broad search, file:line references, and closest precedent; prefers ~/archive and ~/wiki over external fetches; lists required test, generation, typecheck, and lint commands without running them. Returns a sub-1,000-word Preflight brief ending in risks, verification, and a recommended first change. Never edits, builds, tests, or commits."
 mode: subagent
 model: zai-coding-plan/glm-5.3-flash#high
 steps: 12
