@@ -60,7 +60,7 @@ The right column is owned by [`git-only.md`](/vcs/jj/git-only.md); the surgery r
 | [`oplog-forensics.md`](/vcs/jj/oplog-forensics.md) | something moved and you need to know what and when; recovering a dragged bookmark |
 | [`git-only.md`](/vcs/jj/git-only.md) | the job has no jj equivalent: live remotes, conflict dry-runs, patch-ids, exact counts |
 
-`SKILLS.md` is a symlink to this file so the set can be consumed as a skill.
+`SKILL.md` is a symlink to this file so the set can be consumed as a skill.
 
 ## Inventory & topology
 
