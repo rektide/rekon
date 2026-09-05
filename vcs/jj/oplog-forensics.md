@@ -10,12 +10,12 @@ verified: { by: inherited from experiments0 — used for real to diagnose and re
 stale_after: 2027-03-03
 sources:
   - id: experiments0
-    resource: /code/reconstruction/experiments0.glm53h.md
+    resource: /code/task-reconstruction/experiments0.glm53h.md
     title: "jj date preservation and split mechanics — measured on jj 0.40.0 (contains the incident this file generalizes)"
     author: model:zai-coding-plan/glm-5.3
     last_modified: 2026-09-03
   - id: reconstruction-readme
-    resource: /code/reconstruction/README.md
+    resource: /code/task-reconstruction/README.md
     title: "Reconstruction with docs preservation — the run that produced the incident"
     author: model:zai-coding-plan/glm-5.3
     last_modified: 2026-09-03
@@ -55,7 +55,7 @@ This is read-only time travel: `--at-op` never writes, it just views the repo at
 
 The first live replay of the watchwoman docs line used `jj split -r <dup> -A <tip> <docs paths>` for mixed commits. `-A` rebases `<dest>`'s descendants on top of the extracted commit, and `<dest>` was an ancestor of the entire source line — so every split dragged the whole source line, including the `systemd` and dated `systemd-20260903` snapshot bookmarks, onto the docs line, four times over. Symptoms: bookmark targets that made no narrative sense; a `--allow-backwards` refusal when trying to re-point one.
 
-The walk above pinned each bookmark move to a "split commit \<sha\>" op, and `jj op show` exposed the rebase of the bookmarked tip and the working-copy commit. Full narrative in [`experiments0`](/code/reconstruction/experiments0.glm53h.md); the mechanics of why `-A` drags in [`rewrites.md`](/vcs/jj/rewrites.md).
+The walk above pinned each bookmark move to a "split commit \<sha\>" op, and `jj op show` exposed the rebase of the bookmarked tip and the working-copy commit. Full narrative in [`experiments0`](/code/task-reconstruction/experiments0.glm53h.md); the mechanics of why `-A` drags in [`rewrites.md`](/vcs/jj/rewrites.md).
 
 **Damage assessment**: `jj diff --from <old-tip> --to <new-tip>` printed `0 files changed` — same trees, spliced ancestry. Metadata-only damage is the common case for bookmark drags; verify it before panicking.
 
@@ -80,6 +80,6 @@ jj new <original-tip>                                            # re-seat the e
 
 - [`vcs/jj/rewrites.md`](/vcs/jj/rewrites.md) — why rewrites move bookmarks: split mechanics, `-A` semantics, change-id tracking.
 - [`vcs/jj/README.md`](/vcs/jj/README.md) — the set's entry point; exit-code and stderr discipline.
-- [`code/reconstruction/experiments0.glm53h.md`](/code/reconstruction/experiments0.glm53h.md) — the primary incident record and measurements.
-- [`code/reconstruction/README.md`](/code/reconstruction/README.md) — the procedure as fixed after this incident.
+- [`code/task-reconstruction/experiments0.glm53h.md`](/code/task-reconstruction/experiments0.glm53h.md) — the primary incident record and measurements.
+- [`code/task-reconstruction/README.md`](/code/task-reconstruction/README.md) — the procedure as fixed after this incident.
 - [jj operation log](https://jj-vcs.github.io/jj/latest/operation-log/) — upstream concept page.

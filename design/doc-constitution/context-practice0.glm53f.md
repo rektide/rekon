@@ -10,9 +10,9 @@ stale_after: 2026-12-04
 sources:
   - { id: constitution, resource: /constitution/README.md, title: "Self-Explaining Documentation Constitution (current law, draft)" }
   - { id: naming-draft3, resource: /constitution/naming/exploration/draft3.sol56x.md, title: "Rekon core draft 3 (draft policy, not implemented)", author: "integrator/gpt-5.6-sol-max" }
-  - { id: reconstruct, resource: /code/reconstruct/README.md, title: "Reconstruct From The Present" }
-  - { id: reconstruction, resource: /code/reconstruction/README.md, title: "Reconstruction with docs preservation — the jj procedure" }
-  - { id: experiments0, resource: /code/reconstruction/experiments0.glm53h.md, title: "jj date preservation and split mechanics (measured evidence)" }
+  - { id: reconstruct, resource: /code/task-reconstruction/philosophy.md, title: "Reconstruct From The Present" }
+  - { id: reconstruction, resource: /code/task-reconstruction/README.md, title: "Reconstruction with docs preservation — the jj procedure" }
+  - { id: experiments0, resource: /code/task-reconstruction/experiments0.glm53h.md, title: "jj date preservation and split mechanics (measured evidence)" }
   - { id: jj-set, resource: /vcs/jj/README.md, title: "jj + git working guide set" }
   - { id: js-skill, resource: /js/README.md, title: "JavaScript / TypeScript development skill" }
   - { id: atproto-skill, resource: /atproto/README.md, title: "ATProto lookup skill" }
@@ -28,8 +28,8 @@ Evidence gathering for a **broader root constitution/README.md candidate**; the 
 owns constitution, naming, hierarchy, skillification, navigation, and assembly. This note does
 not author that document.
 
-- **Window:** work dated 2026-09-03/04 — [`code/reconstruct/`](/code/reconstruct/README.md),
-  [`code/reconstruction/`](/code/reconstruction/README.md), [`vcs/jj/`](/vcs/jj/README.md),
+- **Window:** work dated 2026-09-03/04 — [`code/reconstruct/`](/code/task-reconstruction/philosophy.md),
+  [`code/task-reconstruction/`](/code/task-reconstruction/README.md), [`vcs/jj/`](/vcs/jj/README.md),
   [`js/`](/js/README.md), [`atproto/`](/atproto/README.md) — read from local files and
   `jj log` (draft3 = `b2551121`, draft2-discussion0 = `416f2ec4` confirmed as named).
 - **Antecedents (older, contrast only):** dolt-rs constitution and is-tree v2; compute-fabric
@@ -45,8 +45,8 @@ not author that document.
 
 | Posture | Module(s) | Establishes |
 | --- | --- | --- |
-| Philosophy guide | [`code/reconstruct/README.md`](/code/reconstruct/README.md) | Reconstruction modes table (L100-106); labeled claim classes (L287-294); stop-and-reassess triggers (L458-477); sources cite a human directive plus four precursors with exact line links (L564-593) |
-| Procedure + evidence | [`code/reconstruction/README.md`](/code/reconstruction/README.md), [`experiments0.glm53h.md`](/code/reconstruction/experiments0.glm53h.md), [`replay-docs.sh`](/code/reconstruction/replay-docs.sh) | Snapshot-first/audit/unmix/replay/verify (L53-69); author-date guarantee (L198-216); watchwoman run + incident (L218-239); measured jj 0.40.0 tables (L39-51); `split -A` incident + recovery (L109-157); traps (L159-177) |
+| Philosophy guide | [`code/task-reconstruction/philosophy.md`](/code/task-reconstruction/philosophy.md) | Reconstruction modes table (L100-106); labeled claim classes (L287-294); stop-and-reassess triggers (L458-477); sources cite a human directive plus four precursors with exact line links (L564-593) |
+| Procedure + evidence | [`code/task-reconstruction/README.md`](/code/task-reconstruction/README.md), [`experiments0.glm53h.md`](/code/task-reconstruction/experiments0.glm53h.md), [`replay-docs.sh`](/code/task-reconstruction/replay-docs.sh) | Snapshot-first/audit/unmix/replay/verify (L53-69); author-date guarantee (L198-216); watchwoman run + incident (L218-239); measured jj 0.40.0 tables (L39-51); `split -A` incident + recovery (L109-157); traps (L159-177) |
 | Promoted reference set | [`vcs/jj/README.md`](/vcs/jj/README.md) + `rewrites.md` + `oplog-forensics.md` + `git-only.md` | Grew from the archive cheat sheet; `verified:` frontmatter (L9); dated Provenance section (L274-281); "using this set" routing (L54-62); retained false-claim correction, "the famous correction" (L281) |
 | First skill extractions | [`js/README.md`](/js/README.md), [`atproto/README.md`](/atproto/README.md) | js distilled from global AGENTS.md (commit `b0fc7117`) with declared "promoted home … global file remains authoritative where they overlap" (L9-11); atproto is new recipes with absence-is-not-proof caveats (L70-74). Both `SKILL.md -> README.md`; neither has OKF frontmatter |
 
@@ -85,7 +85,7 @@ condition. A root constitution owning skillification should specify both.
 **R4. Modules contain canonically-owned sub-documents; placement is a declared rule.**
 `vcs/jj/rewrites.md` L38 states a *Placement rule*: the mainstream case lives in the README,
 and rewrites.md is "the canonical home" of the committer-date aside;
-[`code/reconstruction/README.md`](/code/reconstruction/README.md) respects it (L62-66,
+[`code/task-reconstruction/README.md`](/code/task-reconstruction/README.md) respects it (L62-66,
 L212-216) instead of absorbing the material — dolt-rs's stop-boundary law in daily use. Root
 law should require *a declared canonical home per shared aside*; which home wins is a domain
 decision, not constitutional text.
@@ -165,7 +165,7 @@ today. Root law can require revision-pinned citations; the bookmark doctrine sta
   — parent-owned draft whose glossary *names* practices documented here as already real;
   cited as design intent only.
 - [`/vcs/jj/README.md`](/vcs/jj/README.md) **evidences** R2, R4, and the absences;
-  [`/code/reconstruction/README.md`](/code/reconstruction/README.md) **evidences** R1, R5, R6;
+  [`/code/task-reconstruction/README.md`](/code/task-reconstruction/README.md) **evidences** R1, R5, R6;
   [`/js/README.md`](/js/README.md) **evidences** R3.
 - dolt-rs constitution (L265-270) **pre-establishes** the stop-boundary law R4 instantiates;
   is-tree v2 (L219-220) **poses** the convergence question this broader constitution answers.

@@ -291,7 +291,7 @@ people's documents — has, measured today, **zero payers into this
 subtree**. More broadly, the entire live external citation surface into
 rekon is five links, all `file://`-absolute, all in the
 `~/archive/doc` corpus: four from `jj.md` into `vcs/jj/` and one from
-`opencode/patches.md` into `code/reconstruction/README.md`. And the
+`opencode/patches.md` into `code/task-reconstruction/README.md`. And the
 federation story — project-qualified names resolved across authorities —
 has **zero live instances anywhere**: no document outside this repository
 cites a rekon entity in qualified form, and no rekon document cites an

@@ -15,7 +15,7 @@ sources:
     author: glm-5.3 orchestrator + verification subagent (opencode)
     last_modified: 2026-08-30
   - id: experiments0
-    resource: /code/reconstruction/experiments0.glm53h.md
+    resource: /code/task-reconstruction/experiments0.glm53h.md
     title: "jj 0.40.0 measured behavior — the version pin for the absences claimed here"
     author: model:zai-coding-plan/glm-5.3
     last_modified: 2026-09-03
@@ -86,5 +86,5 @@ jj file show -r <b>@origin <path> | grep -o '<pat>' | sort -u    # extraction vi
 
 - [`vcs/jj/README.md`](/vcs/jj/README.md) — everything that *does* have a jj pairing: inventory, merged-ness, reading without a checkout, revsets/templates.
 - [`vcs/jj/rewrites.md`](/vcs/jj/rewrites.md) — the one place git is also canonical inside jj work: pinning committer dates via colocation.
-- [`code/reconstruction/experiments0.glm53h.md`](/code/reconstruction/experiments0.glm53h.md) — the git-colocation escape hatch measurements.
+- [`code/task-reconstruction/experiments0.glm53h.md`](/code/task-reconstruction/experiments0.glm53h.md) — the git-colocation escape hatch measurements.
 - [jj git command table](https://jj-vcs.github.io/jj/latest/git-command-table/) — upstream's own git↔jj mapping; useful for spotting what moved between versions.

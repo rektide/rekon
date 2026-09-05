@@ -1,8 +1,8 @@
 ---
 type: Guide
-title: "Reconstruction with docs preservation — the jj procedure"
+title: "Task reconstruction with docs preservation — the jj procedure"
 description: Step-by-step procedure for restarting a code line on the upstream tip while preserving every docs commit and its author date; snapshot-first doctrine, mixed-commit unmixing, verification, and the author-date guarantee (the committer-date aside lives in vcs/jj/rewrites.md).
-resource: /code/reconstruction/README.md
+resource: /code/task-reconstruction/README.md
 tags: [code, reconstruction, jj, docs, preservation, snapshot, split, replay]
 status: draft
 generated: { by: model:zai-coding-plan/glm-5.3, at: 2026-09-03 }
@@ -19,10 +19,10 @@ sources:
     resource: file:///home/rektide/archive/doc/jj.md
     title: jj/git spelunking cheat sheet
   - id: reconstruct-philosophy
-    resource: /code/reconstruct/README.md
+    resource: /code/task-reconstruction/philosophy.md
     title: Reconstruction is not replay — the philosophy this implements
   - id: experiments
-    resource: /code/reconstruction/experiments0.glm53h.md
+    resource: /code/task-reconstruction/experiments0.glm53h.md
     title: Measured jj 0.40.0 date/split behavior backing every claim here
   - id: worked-example
     resource: file:///home/rektide/src/watchwoman-systemd
@@ -34,9 +34,9 @@ sources:
     last_modified: 2026-09-03
 ---
 
-# Reconstruction with docs preservation — the jj procedure
+# Task reconstruction with docs preservation — the jj procedure
 
-[Reconstruction is not replay](/code/reconstruct/README.md): the old code is
+[Reconstruction is not replay](/code/task-reconstruction/philosophy.md): the old code is
 evidence, not the plan. But one class of history must survive a restart
 intact — **the docs**. Design waves, deployment notes, decision records
 (`.design/` and friends) are the accumulated understanding that the rebuild
@@ -86,7 +86,7 @@ jj bookmark create <feature>-YYYYMMDD -r @-   # immutable dated snapshot
 The dated bookmark is the point-in-time snapshot you can always come back to.
 Never move it later; if a rewrite ever drags it, restore with
 `jj bookmark set --allow-backwards` (see
-[experiments](/code/reconstruction/experiments0.glm53h.md)).
+[experiments](/code/task-reconstruction/experiments0.glm53h.md)).
 
 ### 1. Audit the line
 
@@ -114,7 +114,7 @@ the classifier in awk (unquoted `$var` does not word-split), and remember
 
 ### 2. Replay onto the upstream tip
 
-Per commit, oldest first (see [`replay-docs.sh`](/code/reconstruction/replay-docs.sh)
+Per commit, oldest first (see [`replay-docs.sh`](/code/task-reconstruction/replay-docs.sh)
 for the executable version):
 
 - **docs** → duplicate, rebase onto the growing tip.
@@ -140,7 +140,7 @@ descendants — your entire source line, bookmarks included — on top of the
 extracted commit. In the watchwoman run this dragged the dated snapshot
 bookmark four times before it was caught and restored. Plain split of a leaf
 duplicate touches nothing else. Full incident and forensics in
-[experiments0](/code/reconstruction/experiments0.glm53h.md).
+[experiments0](/code/task-reconstruction/experiments0.glm53h.md).
 
 Because docs paths and code paths are disjoint, these replays are
 conflict-free by construction; treat any conflict as a bail-out signal, not
@@ -201,7 +201,7 @@ Three situations, three tools:
 natively, zero extra machinery.** The whole replay above keeps them without
 any date work. Author date is what `git log` and GitHub display, so **jj
 alone meets the hard requirement** (measured on jj 0.40.0:
-[experiments0](/code/reconstruction/experiments0.glm53h.md)).
+[experiments0](/code/task-reconstruction/experiments0.glm53h.md)).
 
 One-line verification — run it over the replayed line before bookmarking:
 
@@ -241,7 +241,7 @@ replay re-run clean. The final line comes from the fixed procedure.
 ## What this gives the rebuild
 
 The docs line is the **carrier** across the restart (see the
-[carrier pattern](/code/reconstruct/README.md)): a small, dated, verifiable
+[carrier pattern](/code/task-reconstruction/philosophy.md)): a small, dated, verifiable
 line holding every decision record, pinned to the upstream tip, with dates
 that still tell the truth about when understanding was written down. The code
 halves stay on the snapshotted source line as evidence. New work starts from
@@ -250,13 +250,13 @@ never from the old code path by default.
 
 ## Cross-references
 
-- [`code/reconstruct/README.md`](/code/reconstruct/README.md) — the
+- [`code/task-reconstruction/philosophy.md`](/code/task-reconstruction/philosophy.md) — the
   philosophy: reconstruct from present intent, history as evidence. This
   document is its executable counterpart for the docs-preservation
   constraint.
-- [`experiments0.glm53h.md`](/code/reconstruction/experiments0.glm53h.md) —
+- [`experiments0.glm53h.md`](/code/task-reconstruction/experiments0.glm53h.md) —
   measured jj behavior and the incident log backing every claim above.
-- [`replay-docs.sh`](/code/reconstruction/replay-docs.sh) — the replay as a
+- [`replay-docs.sh`](/code/task-reconstruction/replay-docs.sh) — the replay as a
   parameterized, rehearsed script (repo, base, line).
 - [`patches.md`](file:///home/rektide/archive/doc/opencode/patches.md) — the
   opencode working-stack flow whose bookmark conventions and

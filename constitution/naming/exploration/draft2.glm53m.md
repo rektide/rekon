@@ -123,7 +123,7 @@ smaller tree.
 | Claim carried forward | My verification |
 |---|---|
 | The naming tree is citatorily isolated | confirmed — zero markdown links from the rest of the repository into `constitution/naming/`; the only external referents are two beads records in the epic |
-| The external surface into rekon is near-zero | confirmed — five workspace-absolute references in `~/archive/doc` (`jj.md` into `vcs/jj/` ×4, `opencode/patches.md` into `code/reconstruction/` ×1); none into naming; zero federated citations in either direction |
+| The external surface into rekon is near-zero | confirmed — five workspace-absolute references in `~/archive/doc` (`jj.md` into `vcs/jj/` ×4, `opencode/patches.md` into `code/task-reconstruction/` ×1); none into naming; zero federated citations in either direction |
 | Duplicate anchors are harmless under paths, catastrophic under stems | confirmed, and stronger than claimed — 555 explicit anchor instances across 22 files resolve to 432 distinct strings; 123 are exact cross-file duplicates; terminal slugs like `references` (×23), `identity` (×15), `verification` (×13) recur freely. Under minted stems this tree would have been a collision emergency; under location identity it is simply a corpus |
 | Section grain dominates | confirmed — 432 of 454 identities (95%) are section-grain; OKF's receipt settles only the document shell |
 | `resource` equals own path, corpus-wide | confirmed — all 22 files pass; the one file with two `resource:` lines (`draft1.sol56x.md`) carries the second inside a fenced YAML example, which is specimen, not self-reference |

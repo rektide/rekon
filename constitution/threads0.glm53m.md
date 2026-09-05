@@ -92,7 +92,7 @@ sources:
     title: Modularizing rekon's global agent context
     author: model:gpt-5.6-sol-max
   - id: reconstruct
-    resource: /code/reconstruct/README.md
+    resource: /code/task-reconstruction/philosophy.md
     title: Reconstruct from the present
     author: model:openai-gpt-5.6-sol
   - id: opencode-session
@@ -173,7 +173,7 @@ capability line
 the naming exploration (topic README, `draft0.glm53m`, `draft2-discussion0`,
 `proposal4`, `ask-audit0`, `beads-offerings0`, `draft3` frontmatter), the
 reconstruction neighbors
-([`/code/reconstruct/README.md`](/code/reconstruct/README.md),
+([`/code/task-reconstruction/philosophy.md`](/code/task-reconstruction/philosophy.md),
 [`/doc/opencode-session.md`](/doc/opencode-session.md)), and the historical
 prompt archive ([`/prompt/.archive/`](/prompt/.archive/README.md)) with its
 workflows — the oldest evidence in the corpus.
@@ -667,7 +667,7 @@ The same move recurs everywhere:
   [lines 630-637](/constitution/README.md#doc-constitution-references-evidence));
 - reconstruction modes: "The word 'reconstruct' is ambiguous. **Classify the
   requested outcome before planning implementation**" with a five-mode table
-  ([`/code/reconstruct/README.md` lines 97-106](/code/reconstruct/README.md#reconstruct-job));
+  ([`/code/task-reconstruction/philosophy.md` lines 97-106](/code/task-reconstruction/philosophy.md#reconstruct-job));
 - skillify's delivery-channel split: "Documentation, automation, ambient
   policy, and skills overlap, but they solve different delivery problems"
   ([`README1.sol56x.md` lines 92-94](/design/skillify/README1.sol56x.md#skillify-not));
@@ -866,11 +866,11 @@ The same stance was later promoted into a standing guide:
 > "Reconstruction is not replay... **Recover the intent. Recheck the
 > constraints. Redesign the destination. Use history as evidence, not
 > gravity.**"
-> — [`/code/reconstruct/README.md` lines 42-57](/code/reconstruct/README.md#reconstruct)
+> — [`/code/task-reconstruction/philosophy.md` lines 42-57](/code/task-reconstruction/philosophy.md#reconstruct)
 
 with a sharp test for whether a brief still describes the ask rather than the
 path: "Test the brief by removing historical proper nouns"
-([lines 163-166](/code/reconstruct/README.md#reconstruct-present-brief)).
+([lines 163-166](/code/task-reconstruction/philosophy.md#reconstruct-present-brief)).
 
 The retention boundary is equally deliberate:
 
@@ -912,7 +912,7 @@ stance (reasoning over patches) are uncodified.
 
 **Counterpressure:** distillation costs effort and can launder history — the
 reconstruct guide guards this with "mine history by claim, not chronology"
-([lines 188-201](/code/reconstruct/README.md#reconstruct-mine-history)) and
+([lines 188-201](/code/task-reconstruction/philosophy.md#reconstruct-mine-history)) and
 the evidence-authority ladder; a present account that forgets *why* something
 was rejected will re-litigate it.
 
@@ -1044,7 +1044,7 @@ can test rather than rediscover them:
   multiple choice options" ([`AGENTS.md` lines 64-65](/AGENTS.md)); the
   reconstruct guide operationalizes it ("ask a short multiple-choice
   question... Several answers may apply. State which objective wins when
-  they conflict," [lines 117-124](/code/reconstruct/README.md#reconstruct-job)).
+  they conflict," [lines 117-124](/code/task-reconstruction/philosophy.md#reconstruct-job)).
   Candidate member of the thinking-and-talking family: even *questions* are
   structured documents. Evidence thin: two sites.
 - **Deliberative pacing.** Waiting for subagents so later documents benefit
@@ -1153,7 +1153,7 @@ can test rather than rediscover them:
   [workflows](/prompt/.archive/workflows/draft.md) **are the pre-history**
   (Thread 10 and Thread 1's origin): plan-as-heart, journaling, self-review
   dialogue, verbose commits, short-names-as-hypermedia.
-- The [reconstruct guide](/code/reconstruct/README.md#reconstruct) and the
+- The [reconstruct guide](/code/task-reconstruction/philosophy.md#reconstruct) and the
   [session recovery doc](/doc/opencode-session.md) **form** Thread 8's
   evidence pair; the latter's Phase A guide is the genre specimen.
 - [`adoption1`](/design/doc-constitution/adoption1.glm53m.md#doc-constitution-adoption-revision-deviations)

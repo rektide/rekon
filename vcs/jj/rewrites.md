@@ -10,12 +10,12 @@ verified: { by: inherited from experiments0 (paste-tested in scratch repos + the
 stale_after: 2027-03-03
 sources:
   - id: experiments0
-    resource: /code/reconstruction/experiments0.glm53h.md
+    resource: /code/task-reconstruction/experiments0.glm53h.md
     title: "jj date preservation and split mechanics — measured on jj 0.40.0"
     author: model:zai-coding-plan/glm-5.3
     last_modified: 2026-09-03
   - id: reconstruction-readme
-    resource: /code/reconstruction/README.md
+    resource: /code/task-reconstruction/README.md
     title: "Reconstruction with docs preservation — the applied procedure"
     author: model:zai-coding-plan/glm-5.3
     last_modified: 2026-09-03
@@ -37,7 +37,7 @@ Open this when you are **changing history** rather than reading it: duplicating,
 
 **Placement rule**: the mainstream case — *jj preserves author dates across rewrite operations, which is all replay work usually needs* — is stated in the [`README.md`](/vcs/jj/README.md#the-date-guarantee-author-dates). This file is the canonical home of everything aside from that: the full both-timestamp semantics, the committer-reset behavior, and the git-colocation recipe for the rare case where committer dates genuinely matter.
 
-Everything here was measured on **jj 0.40.0** — either in the reconstruction experiments (2026-09-03, [`experiments0`](/code/reconstruction/experiments0.glm53h.md)) or re-spot-checked at promotion in a scratch repo. The applied end-to-end procedure (snapshot → unmix → replay → verify) lives in [`code/reconstruction/README.md`](/code/reconstruction/README.md); this file is the mechanics underneath it.
+Everything here was measured on **jj 0.40.0** — either in the reconstruction experiments (2026-09-03, [`experiments0`](/code/task-reconstruction/experiments0.glm53h.md)) or re-spot-checked at promotion in a scratch repo. The applied end-to-end procedure (snapshot → unmix → replay → verify) lives in [`code/task-reconstruction/README.md`](/code/task-reconstruction/README.md); this file is the mechanics underneath it.
 
 ## Reading timestamps
 
@@ -96,7 +96,7 @@ Plain `jj split -r <rev> -m "<msg>" <paths>`:
 
 ### The `split -A` descendant-drag hazard
 
-`-A` does not merely extract: to keep the DAG connected it **rebases `<dest>`'s descendants on top of the extracted commit**. If `<dest>` is an ancestor of a whole line you care about (it usually is — e.g. a growing replay tip), every split drags that line — bookmarks included — onto the extracted commit. In the watchwoman replay this dragged the source line and its dated snapshot bookmarks four times before it was caught; the damage was metadata-only (same trees, spliced ancestry), and it was diagnosed and recovered via the op log. Full incident, forensics walk, and recovery: [`oplog-forensics.md`](/vcs/jj/oplog-forensics.md) and [`experiments0`](/code/reconstruction/experiments0.glm53h.md). Plain split of a *leaf duplicate* touches nothing else — which is why the replay procedure is duplicate → split → abandon remainder → rebase.
+`-A` does not merely extract: to keep the DAG connected it **rebases `<dest>`'s descendants on top of the extracted commit**. If `<dest>` is an ancestor of a whole line you care about (it usually is — e.g. a growing replay tip), every split drags that line — bookmarks included — onto the extracted commit. In the watchwoman replay this dragged the source line and its dated snapshot bookmarks four times before it was caught; the damage was metadata-only (same trees, spliced ancestry), and it was diagnosed and recovered via the op log. Full incident, forensics walk, and recovery: [`oplog-forensics.md`](/vcs/jj/oplog-forensics.md) and [`experiments0`](/code/task-reconstruction/experiments0.glm53h.md). Plain split of a *leaf duplicate* touches nothing else — which is why the replay procedure is duplicate → split → abandon remainder → rebase.
 
 ## Unmixing docs from code
 
@@ -138,6 +138,6 @@ Three situations, three tools — prevention first:
 
 - [`vcs/jj/README.md`](/vcs/jj/README.md) — the set's entry point: reading and interrogating repos, revset/template cheats, traps.
 - [`vcs/jj/oplog-forensics.md`](/vcs/jj/oplog-forensics.md) — what moved, when, and how to recover.
-- [`code/reconstruction/README.md`](/code/reconstruction/README.md) — the applied procedure built on these mechanics (snapshot-first doctrine, unmix, verify, bookmark).
-- [`code/reconstruction/experiments0.glm53h.md`](/code/reconstruction/experiments0.glm53h.md) — the primary measurements, including the colocation experiment (E5) and the split-`-A` incident.
+- [`code/task-reconstruction/README.md`](/code/task-reconstruction/README.md) — the applied procedure built on these mechanics (snapshot-first doctrine, unmix, verify, bookmark).
+- [`code/task-reconstruction/experiments0.glm53h.md`](/code/task-reconstruction/experiments0.glm53h.md) — the primary measurements, including the colocation experiment (E5) and the split-`-A` incident.
 - [jj divergence guide](https://jj-vcs.github.io/jj/latest/guides/divergence/) — upstream explanation of `(divergent)` changes and change-id twins.

@@ -2,7 +2,7 @@
 type: ExperimentLog
 title: "jj date preservation and split mechanics — measured on jj 0.40.0"
 description: Verified behavior of duplicate/split/rebase/git-import on author and committer timestamps, the split -A descendant-drag incident from the real replay, and its op-log forensics and recovery.
-resource: /code/reconstruction/experiments0.glm53h.md
+resource: /code/task-reconstruction/experiments0.glm53h.md
 tags: [jj, reconstruction, dates, split, op-log, forensics]
 status: stable
 generated: { by: model:zai-coding-plan/glm-5.3, at: 2026-09-03 }
@@ -13,7 +13,7 @@ sources:
     resource: file:///home/rektide/archive/doc/jj.md
     title: jj/git branch spelunking cheat sheet
   - id: replay-script
-    resource: /code/reconstruction/replay-docs.sh
+    resource: /code/task-reconstruction/replay-docs.sh
     title: The replay procedure this log validates
   - id: subject-repo
     resource: file:///home/rektide/src/watchwoman-systemd
@@ -22,7 +22,7 @@ sources:
 
 # jj date preservation and split mechanics — measured on jj 0.40.0
 
-Supporting evidence for [`README.md`](/code/reconstruction/README.md). Every
+Supporting evidence for [`README.md`](/code/task-reconstruction/README.md). Every
 claim below was paste-tested either in a scratch repo under
 `~/src/rekon/.test-agent/reconstruction/` or against the live watchwoman repo
 (jj 0.40.0, `jj --version` = `0.40.0-cc1aa776f6f0eb1f78da33f690fd5ef869ba3e79`).
@@ -152,7 +152,7 @@ jj new <original-tip>                                 # re-seat the empty @
 After recovery the docs line itself re-verified clean (23 commits, docs-only
 diff, author dates intact, docs trees byte-identical to the source line) —
 the extracted parts were never wrong, only the collateral rebases were. The
-procedure in [`replay-docs.sh`](/code/reconstruction/replay-docs.sh) was then
+procedure in [`replay-docs.sh`](/code/task-reconstruction/replay-docs.sh) was then
 changed to plain split → abandon remainder → rebase, re-rehearsed in scratch
 (bookmarks provably stationary), and re-run for the final line.
 

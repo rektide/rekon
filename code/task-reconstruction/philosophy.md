@@ -2,7 +2,7 @@
 type: Guide
 title: Reconstruct From The Present
 description: Guidance for rebuilding software from current goals and constraints without letting historical implementation paths dictate the new design.
-resource: /code/reconstruct/README.md
+resource: /code/task-reconstruction/philosophy.md
 tags: [code, reconstruction, rework, redesign, migration, carriers, agents]
 status: draft
 generated: { by: model:openai-gpt-5.6-sol, at: 2026-09-03 }
@@ -586,7 +586,7 @@ Before presenting a plan, verify:
   is the motivating example. Its requirements and failure research are strong;
   its historical compression, fixed commit ladder, and dual implementation
   strategy illustrate the path-dependence this guide is intended to break.
-- [`/code/reconstruction/README.md`](/code/reconstruction/README.md) is the
+- [`/code/task-reconstruction/README.md`](/code/task-reconstruction/README.md) is the
   executable counterpart of this guide for the docs-preservation constraint:
   the jj procedure (snapshot first, audit, unmix, replay onto the upstream
   tip with author dates intact) that builds the carrier line a restart

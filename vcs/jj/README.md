@@ -15,12 +15,12 @@ sources:
     author: glm-5.3 orchestrator + verification subagent (opencode)
     last_modified: 2026-08-30
   - id: experiments0
-    resource: /code/reconstruction/experiments0.glm53h.md
+    resource: /code/task-reconstruction/experiments0.glm53h.md
     title: "jj date preservation and split mechanics — measured on jj 0.40.0"
     author: model:zai-coding-plan/glm-5.3
     last_modified: 2026-09-03
   - id: reconstruction-readme
-    resource: /code/reconstruction/README.md
+    resource: /code/task-reconstruction/README.md
     title: "Reconstruction with docs preservation — the applied procedure that consumed this knowledge"
     author: model:zai-coding-plan/glm-5.3
     last_modified: 2026-09-03
@@ -32,7 +32,7 @@ sources:
 
 # jj + git working guide
 
-This set promotes the [jj/git branch spelunking cheat sheet](file:///home/rektide/archive/doc/jj.md) — born from a 50-branch review of `anomalyco/opencode` (2026-08-29) — into a small knowledge home for jj+git work, folding in the measured rewrite and op-log behavior from the [reconstruction experiments](/code/reconstruction/experiments0.glm53h.md) (2026-09-03). Everything here was verified on **jj 0.40.0**; both sources paste-tested their commands against live repos, and the core claims were re-spot-checked at promotion time ([Provenance](#provenance--the-verification-story)).
+This set promotes the [jj/git branch spelunking cheat sheet](file:///home/rektide/archive/doc/jj.md) — born from a 50-branch review of `anomalyco/opencode` (2026-08-29) — into a small knowledge home for jj+git work, folding in the measured rewrite and op-log behavior from the [reconstruction experiments](/code/task-reconstruction/experiments0.glm53h.md) (2026-09-03). Everything here was verified on **jj 0.40.0**; both sources paste-tested their commands against live repos, and the core claims were re-spot-checked at promotion time ([Provenance](#provenance--the-verification-story)).
 
 The organization is by **job to be done**. Command blocks pair git with its jj equivalent (`# jj:` comments) wherever the pairing was actually tested; where jj has no honest equivalent, that is stated and the git command stays canonical. House rule from both sources: jj has its own DSL for revsets and templates — consult `jj help -k revsets` / `jj help -k templates` rather than guessing syntax.
 
@@ -179,7 +179,7 @@ jj log -r <b>@origin --no-graph -T 'committer.timestamp().format("%Y-%m-%d %H:%M
 
 ## The date guarantee (author dates)
 
-**jj preserves author dates across `duplicate`, `split`, and `rebase` — natively, zero extra machinery.** Author date is what `git log` and GitHub display, so for replay/reconstruction work this is the load-bearing guarantee: replayed lines keep the dates that say when the work was actually written. Measured in [experiments0](/code/reconstruction/experiments0.glm53h.md); re-spot-checked at promotion (a duplicate and both halves of a split kept the original author timestamp).
+**jj preserves author dates across `duplicate`, `split`, and `rebase` — natively, zero extra machinery.** Author date is what `git log` and GitHub display, so for replay/reconstruction work this is the load-bearing guarantee: replayed lines keep the dates that say when the work was actually written. Measured in [experiments0](/code/task-reconstruction/experiments0.glm53h.md); re-spot-checked at promotion (a duplicate and both halves of a split kept the original author timestamp).
 
 One-line verification — run it over any replayed line before bookmarking it:
 
@@ -275,7 +275,7 @@ jj file show -r <rev> <path> >/dev/null 2>&1; echo $?   # 1 = "No such path", 0 
 
 - **2026-08-29** — the source review: five parallel review agents plus an orchestrating session interrogated 50 bookmarks of `anomalyco/opencode`; afterwards each agent reported exactly which commands they used and which misled them. Full narrative in [`branch-review.glm53.md`](file:///home/rektide/archive/anomalyco/opencode/.design/branch-review/branch-review.glm53.md).
 - **2026-08-29/30** — every `# jj:` line in the cheat sheet was paste-tested 1:1 against its git counterpart (jj 0.40.0, collocated clone): identical output or documented divergence.
-- **2026-09-03** — rewrite-surgery, timestamp, and op-log behavior measured in scratch repos and the live watchwoman replay ([experiments0](/code/reconstruction/experiments0.glm53h.md)); the applied procedure lives in [`code/reconstruction/README.md`](/code/reconstruction/README.md).
+- **2026-09-03** — rewrite-surgery, timestamp, and op-log behavior measured in scratch repos and the live watchwoman replay ([experiments0](/code/task-reconstruction/experiments0.glm53h.md)); the applied procedure lives in [`code/task-reconstruction/README.md`](/code/task-reconstruction/README.md).
 - **2026-09-03 (promotion)** — this reorganization. The promoting agent re-spot-checked core claims in a fresh scratch repo (jj 0.40.0): exit codes (empty revset rc 0 silent; unknown symbol rc 1 + did-you-mean hint; `jj file show` missing path rc 1), the path-filter warning text with rc 0, `files()` counts (file 1, dir glob 3), the `heads(::A & ::B)` merge-base idiom against `git merge-base` (same sha), containment both ways, `duplicate` stderr output + author-preserved/committer-now timestamps, plain-`split` change-id assignment + bookmark forwarding to the remainder, headless split without `-m` failing with "Failed to edit description", the `bookmark set` backwards refusal + `--allow-backwards` acceptance, and the `jj-hunk` list → dry-run → single-hunk commit flow.
 
 **The famous correction.** The original cheat sheet once claimed "jj log can't path-filter". It was wrong — `jj log -r <range> & files(<path>)` and positional `jj log ... -- <path>` both path-filter commits, set-identically to `git log -- <path>` (26=26 on a file, 375=375 on a directory). The false claim survived a "verification" pass because a `2>&1 | wc -c` count read the zero-match warning text as output (trap 13): *the paste-test ran, but its stderr discipline didn't.* Kept here deliberately — it is the doc's own cautionary tale about verification discipline, and it recurs: at promotion time, the `description(exact:)` newline trap bit the verifying agent's first script the same way a documented trap always does, quietly.
@@ -285,6 +285,6 @@ jj file show -r <rev> <path> >/dev/null 2>&1; echo $?   # 1 = "No such path", 0 
 - [`vcs/jj/rewrites.md`](/vcs/jj/rewrites.md) — history surgery: timestamp semantics, split mechanics, bookmark forwarding/divergence, date pinning via git colocation.
 - [`vcs/jj/oplog-forensics.md`](/vcs/jj/oplog-forensics.md) — op-log walks with `--at-op`, diagnosing "what moved my bookmark", and recovery.
 - [`vcs/jj/git-only.md`](/vcs/jj/git-only.md) — the jobs git keeps canonically, with the no-jj-equivalent table.
-- [`code/reconstruction/README.md`](/code/reconstruction/README.md) — the applied replay procedure that consumed this knowledge (snapshot-first, unmix, verify, bookmark).
-- [`code/reconstruction/experiments0.glm53h.md`](/code/reconstruction/experiments0.glm53h.md) — the measured jj 0.40.0 behavior backing the rewrite claims.
+- [`code/task-reconstruction/README.md`](/code/task-reconstruction/README.md) — the applied replay procedure that consumed this knowledge (snapshot-first, unmix, verify, bookmark).
+- [`code/task-reconstruction/experiments0.glm53h.md`](/code/task-reconstruction/experiments0.glm53h.md) — the measured jj 0.40.0 behavior backing the rewrite claims.
 - [jj-vcs/jj](https://github.com/jj-vcs/jj) — upstream; [docs](https://jj-vcs.github.io/jj/latest/), [revsets](https://jj-vcs.github.io/jj/latest/revsets/), [templates](https://jj-vcs.github.io/jj/latest/templates/), [filesets](https://jj-vcs.github.io/jj/latest/filesets/), [git command table](https://jj-vcs.github.io/jj/latest/git-command-table/).

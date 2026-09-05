@@ -37,10 +37,10 @@ sources:
     resource: file:///home/rektide/src/opencode-watchman/.design/watchman/nav0-syn0.gpt56sol.md
     title: Watchman assurance navigation synthesis
   - id: reconstruction
-    resource: /code/reconstruct/README.md
+    resource: /code/task-reconstruction/philosophy.md
     title: Reconstruct From The Present
   - id: preservation
-    resource: /code/reconstruction/README.md
+    resource: /code/task-reconstruction/README.md
     title: Reconstruction with docs preservation
   - id: assembly
     resource: /constitution/agents-assembly.md
@@ -121,7 +121,7 @@ not the responsibility to explain every neighboring concern.
 | [Skillification](/design/skillify/README1.sol56x.md#skillify-contract) | Knowledge becomes capability through activation, scope, process, completion, evidence, and maintenance. | Skill forms, routing scenarios, host profiles, and branch-specific procedures. |
 | [AGENTS modularization](/design/rekon/agents-modularization0.sol56x.md#agents-maintenance-skillify-two-transformations) | Ownership decomposition and attention reduction are different changes. Preserve behavior before changing delivery. | Parity ledgers, fragment inventory, production cutover, and per-domain tiering. |
 | [Assembly](/constitution/agents-assembly.md#agents-assembly-policy) | Derived delivery must retain provenance and make drift visible without taking editorial authority. | Manifest syntax, path rules, command options, and output mechanics. |
-| [Reconstruction](/code/reconstruct/README.md#reconstruct-from-top) and [docs preservation](/code/reconstruction/README.md) | Preserve understanding while reopening mechanisms against present intent. Exact recovery and clean redesign are different jobs. | Snapshot, replay, split, carrier, and tool-version-specific procedures. |
+| [Reconstruction](/code/task-reconstruction/philosophy.md#reconstruct-from-top) and [docs preservation](/code/task-reconstruction/README.md) | Preserve understanding while reopening mechanisms against present intent. Exact recovery and clean redesign are different jobs. | Snapshot, replay, split, carrier, and tool-version-specific procedures. |
 | [jj reference](/vcs/jj/README.md), [JavaScript](/js/README.md), and [ATProto lookups](/atproto/README.md) | The architecture already has practical consumers: job-oriented references, activated recipes, and explicit limits on what a signal proves. | Command semantics, toolchain choices, API recipes, and their verification. |
 
 This is not a stack in which each row must be completed before the next starts.

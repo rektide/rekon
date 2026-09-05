@@ -85,9 +85,9 @@ disposition are related choices, not interchangeable ones.
   — a source-grounded account of native work ownership and the boundaries of
   work, knowledge, actors, occurrences, and orchestration. A study, not a new
   requirement to make everything a ticket.
-- [Reconstruct from the present](/code/reconstruct/README.md) — a neighboring
+- [Reconstruct from the present](/code/task-reconstruction/philosophy.md) — a neighboring
   practice that preserves requirements and learning while reopening mechanisms.
-- [Reconstruction with docs preservation](/code/reconstruction/README.md) — its
+- [Reconstruction with docs preservation](/code/task-reconstruction/README.md) — its
   narrower operational companion; snapshot and replay procedures stay here
   rather than becoming constitutional law.
 
