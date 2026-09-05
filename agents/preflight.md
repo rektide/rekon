@@ -85,3 +85,11 @@ Return one concise **Preflight brief** with these headings:
 - **Recommended first change**
 
 Use concrete paths, symbols, revisions, and commands. Separate observed facts from recommendations. Keep the brief under 1,000 words; omit empty sections and routine detail.
+
+## This definition is open to change
+
+This agent is a starting point, not a settled contract. Its procedure,
+permissions, model, step budget, and return format may all be modified as
+real preflight runs reveal what helps and what drags — edit this file
+freely; changes apply the next time the agent loads (it is symlinked into
+`~/.config/opencode/agents/` from this repository).
