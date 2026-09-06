@@ -13,6 +13,11 @@ sources:
     title: "The jj/git and commit-message rules of the workspace operating manual (human-codified)"
     author: human:rektide
     last_modified: 2026-09-04
+  - id: checkpoint-direction
+    resource: urn:opencode:session:ses_f872bf58affeS5IBlC38cA6iYX
+    title: Capture each stage before review-driven revamp; track the delta and destination
+    author: human:rektide
+    last_modified: 2026-09-06
 ---
 
 <a id="commits"></a>
@@ -22,6 +27,43 @@ sources:
 The everyday loop: do a logical unit of work, commit it with the files that
 belong to it, describe it honestly, move on. Depth behind the
 [README committing section](/code/README.md#code-committing).
+
+<a id="commits-checkpoints"></a>
+
+## Capture the stage before changing direction
+
+**Commit a coherent stage when it exists.** Do not accumulate several stages
+until a feature, conversation, or wave is finished. This applies equally to
+code, prompts, research, assessments, design drafts, and agent guidance. A draft
+can be worth preserving while its conclusions are still open.
+
+The loop is **capture → revise → compare**:
+
+1. Before applying review feedback, revamping, replacing, or removing current
+   work, commit the present **owned** changes with explicit paths or hunks.
+   If that state is already committed, use its existing identity; do not invent
+   a redundant checkpoint merely to perform a ritual.
+2. State the new direction: what pressure or feedback motivates it, what should
+   remain, and what destination the revision heads toward.
+3. Revise in a distinct logical change. Commit that change separately and
+   explain the delta against its predecessor. For independent or substantially
+   different documents, prefer a new artifact and cite the earlier one.
+
+Useful save points include a first usable prompt, an independent report, a
+source-grounded finding, a completed synthesis, or a proposal about to be
+reworked. These are coherent states, not a demand to commit every keystroke.
+Do not combine a draft, its criticism, and its replacement into a single
+history entry that erases the intermediate argument.
+
+**A checkpoint is not acceptance, completion, publication, or permission to
+act.** An evidence gate may postpone comparison, but each author should still
+commit their result when it is available. Waiting for the slowest participant
+is not a reason to leave completed artifacts uncommitted.
+
+An uncommitted `AGENTS.md` edit is still an active instruction in hosts that
+reload it. Stage unsettled policy in an ordinary proposal document, not in the
+live instruction file. Preserve existing user and peer changes outside your
+commit; use [hunk selection](/code/jj-hunk.md) when ownership shares a file.
 
 <a id="commits-mechanics"></a>
 

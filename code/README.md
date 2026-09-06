@@ -59,8 +59,11 @@ owns the documentation module system itself.
 
 ## Committing
 
-- Commit proactively as you go, in logical groups — do not bank work for
-  one giant commit.
+- Commit each coherent stage as it becomes available—code, prompts, research,
+  drafts, and guidance. Do not bank stages until the task or wave ends.
+- Before a review-driven revision or revamp, commit the current owned state;
+  then commit the revision separately and explain its delta and destination.
+  A checkpoint preserves an argument; it does not declare acceptance.
 - `jj commit -m "<description>" <files...>` — explicitly provide the paths
   that belong to the commit; everything else stays in the working copy.
 - The empty working-copy commit `jj commit` leaves behind is expected
@@ -84,8 +87,9 @@ Depth: [`commits.md`](/code/commits.md).
 
 ## Responding to review
 
-- When comments come in for review, **check in before making edits** —
-  do not silently rework.
+- When comments arrive, **commit the present owned state before revising it**
+  and discuss the direction with the human. Saving a predecessor and checking
+  in conversationally are separate obligations; do not silently rework.
 - Break corrections up into individual, well-argued, cohesive commits:
   one logical correction per commit, with a commit message that argues
   the change.
