@@ -29,9 +29,11 @@ taxonomy for Rekon.
 
 ## Two initial practices
 
-- [Review form 0](/assess/review/form0.gpt6a.md) — a frozen, reusable brief for
-  both high-level architecture assessment and close code review. Load it when a
-  review should explain the system, not merely inspect a diff.
+- [Review form 1](/assess/review/form1.glm53.md) — the current reusable brief
+  for both high-level architecture assessment and close code review, revised
+  from the Lastact cohort's reflections. Load it when a review should explain
+  the system, not merely inspect a diff. [Form 0](/assess/review/form0.gpt6a.md)
+  stays frozen as the protocol that experiment actually used.
 - [Evidence gates](/assess/gates/README.md) — decide in advance what must become
   available before comparison, judgment, or action. Load it when work depends
   on multiple agents, investigations, or unresolved contracts.
@@ -40,6 +42,15 @@ The [Lastact case study](/assess/case-studies/lastact/wave0.gpt6a.md) tests both
 independent reviewers use one form and one baseline, the parent writes its own
 review before reading theirs, and comparison waits for the runnable cohort to
 resolve. An unserved Terra request remains explicit.
+
+## Results and workshop
+
+Start with [Did our review prompt serve the ask?](/assess/review/prompt-assessment0.gpt6a.md):
+the complete-cohort parent self-assessment of prompting, alignment, and
+orchestration. The reviews were useful, but the prompt underweighted its own
+evaluation. The [ambient candidate](/assess/review/ambient-candidate0.gpt6a.md)
+keeps suggested AGENTS language outside the active instruction file while that
+discussion remains open. No issue or product mutations were made by this wave.
 
 ## Working boundaries
 

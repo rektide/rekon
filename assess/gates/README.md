@@ -78,7 +78,7 @@ passing tests, model agreement, and human acceptance are different signals.
 
 ## Cross-references
 
-- [Review form](/assess/review/form0.gpt6a.md) **uses** a full-wave gate to protect
+- [Review form](/assess/review/form1.glm53.md) **uses** a full-wave gate to protect
   independent assessment and subsequent comparative reading.
 - [Constitution's opt-in patterns](/constitution/README.md#doc-constitution-patterns)
   **provides prior art**: assignment manifests, wave seals, dependency gates,
