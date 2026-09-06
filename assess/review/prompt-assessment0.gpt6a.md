@@ -218,3 +218,45 @@ The strongest new praxis distinction is:
 We demonstrated the first boundary through the completed wave and discovered a
 coordinator mistake at the second. That is better material for improving Rekon
 than pretending the first draft of the rules was already the finished practice.
+
+# Addendum — verification tests a different prompt
+
+The subsequently completed [tooling verification](/assess/rekon/verification0.glm53.md)
+checks the **separate tooling-research assignment**, not another Lastact review.
+Its results must not be counted as another vote in the product run-off. They do
+supply additional evidence about the parent's prompting and research practice.
+
+The original [tooling report](/assess/rekon/tooling0.glm53.md) received explicit
+instructions to distinguish implemented, proposed, absent-in-search, and
+unverified capabilities. Despite that, it made three overbroad transitions:
+
+- Finding no native subprocess variable became “the agent cannot know its
+  native session ID.” V2 actually supplies that ID in the model's environment
+  instruction. **Model context, protocol replies, and subprocess environment
+  are different delivery surfaces.**
+- An independently started server process became “sessions/config are not
+  shared.” The inspected source uses common database/config resolution under
+  matching environment and channel. **Process isolation does not establish
+  durable-store isolation.** Live multi-process coherence was not tested.
+- Rich issue-row history became a “complete” changelog substrate. The verified
+  command does not include comments, dependencies, or labels; committed history
+  also differs from working state. **A record timeline is not every work event.**
+
+The confirmed ACP `--server` attachment gap and hyalo capabilities remain
+useful. This is not a failed research effort in its entirety; it is evidence of
+specific inference errors that a general “be source-grounded” instruction did
+not prevent.
+
+The prompting lesson is more precise than “ask for more verification”:
+
+> For a capability or absence claim, identify the observable ability, the
+> surfaces through which it might be supplied, the owners/lifetimes involved,
+> and the search boundary. Do not promote an absent spelling or one missing
+> delivery surface into a claim that the capability does not exist.
+
+The verification prompt worked better here because it named **particular
+suspect implications** and asked the agent to test them, without handing over
+architectural responsibility. That targeted question was possible only after
+the first report arrived and was read. It is a useful second-wave pattern:
+independent acquisition, complete reading, then a focused challenge—not an
+endless stream of generic reviews.

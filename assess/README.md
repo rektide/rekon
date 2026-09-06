@@ -52,6 +52,11 @@ evaluation. The [ambient candidate](/assess/review/ambient-candidate0.gpt6a.md)
 keeps suggested AGENTS language outside the active instruction file while that
 discussion remains open. No issue or product mutations were made by this wave.
 
+The [Rekon research results](/assess/rekon/README.md) connect the two September 6
+sessions and route through the tooling map **with its verification corrections**.
+They also supply a second prompting lesson: explicit evidence labels do not by
+themselves prevent an overbroad capability or absence claim.
+
 ## Working boundaries
 
 `assess/` owns the method and its evaluation, not every project's findings or
