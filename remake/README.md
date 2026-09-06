@@ -7,6 +7,8 @@ tags: [remake, architecture, sequencing, assessment, reconstruction]
 status: draft
 generated: { by: "model:gpt-6-astra", at: 2026-09-06 }
 stale_after: 2026-12-06
+extensions:
+  ticket: rekon-phoenix
 sources:
   - { resource: /remake/design/brief0.gpt6a.md, title: Human commission and Rekon scope }
   - { resource: /remake/research/precedents0.gpt56s.md, title: Existing practice ownership and missing stage-relative assessment }

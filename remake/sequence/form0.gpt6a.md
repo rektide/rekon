@@ -7,6 +7,8 @@ tags: [remake, sequence, checkpoints, assessment]
 status: draft
 generated: { by: "model:gpt-6-astra", at: 2026-09-06 }
 stale_after: 2026-12-06
+extensions:
+  ticket: rekon-phoenix
 sources:
   - { resource: /remake/README.md, title: Remake practice }
   - { resource: /remake/research/precedents0.gpt56s.md, title: Precedent and missing distinctions }

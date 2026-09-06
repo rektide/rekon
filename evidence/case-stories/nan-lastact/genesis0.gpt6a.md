@@ -8,6 +8,7 @@ status: draft
 generated: { by: "model:gpt-6-astra", at: 2026-09-06 }
 stale_after: 2026-12-06
 extensions:
+  ticket: rekon-phoenix
   session: urn:opencode:session:ses_f86f757c0ffe5G5aHU26e2evOL
   posture: Current-session observation and cited prior author self-assessment; not an independent outcome evaluation
 sources:
@@ -30,6 +31,11 @@ Rekon to define the practice before applying it.
 The association is useful because both ask a second-order question: **did the
 action help in the way the human wanted?** A technically competent deliverable
 can still spend its effort on the wrong object.
+
+**Work anchor: `rekon-phoenix`, in Rekon Beads.** The human explicitly requested
+the ticket as the traceability anchor after these initial drafts were written.
+Its notes record the native session and saved stages; this case story explains
+their relationship rather than keeping a competing current-state work log.
 
 ## Native lineage and the scope change
 
@@ -92,6 +98,11 @@ homes have not yet demonstrated that they make a future effort easier to steer.
   breaking session lineage or relocating product evidence.
 - **Record restraint as conduct, not completion.** Avoiding unauthorized code
   changes matters; it does not establish that the proposed practice works.
+- **Preserve stages promptly.** The parent saved the brief early but allowed
+  several later drafts to accumulate before committing them. The human called
+  this out. Those stages were then committed in coherent groups, and later
+  integration changes were kept separate. This is a recorded pacing correction,
+  not evidence that the initial cadence already met the requested practice.
 - **Keep the next trial small enough to learn from.** A real digest can test
   state recovery and steering usefulness; a paper remake can test sequencing
   clarity; a separately authorized landing can test intermediate correctness.

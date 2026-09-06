@@ -7,6 +7,8 @@ tags: [remake, sequencing, assessment, example, state-ownership]
 status: draft
 generated: { by: "model:gpt-6-astra", at: 2026-09-06 }
 stale_after: 2026-12-06
+extensions:
+  ticket: rekon-phoenix
 sources:
   - { resource: /remake/design/brief0.gpt6a.md, title: Remake commissioning question }
   - { resource: /code/task-reconstruction/philosophy.md#reconstruct-landing, title: Dependency-ordered coherent changes }

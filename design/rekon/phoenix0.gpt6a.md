@@ -8,6 +8,7 @@ status: draft
 generated: { by: "model:gpt-6-astra", at: 2026-09-06 }
 stale_after: 2026-12-06
 extensions:
+  ticket: rekon-phoenix
   session: urn:opencode:session:ses_f86f757c0ffe5G5aHU26e2evOL
   basis: Eight essays and the series index read directly on 2026-09-06; conceptual synthesis, not validation of regenerative tooling
 sources:
@@ -34,6 +35,12 @@ on command—a way to make renewal possible without forgetting.
 That extends the existing [cumulative-work thesis](/constitution/reassessment0.gpt6a.md#situation).
 It does not establish a new constitution, authorize migration, or declare the
 current implementation disposable.
+
+**The work anchor is `rekon-phoenix` in Rekon Beads** (`bd show rekon-phoenix`).
+It holds scope, work state, evolving notes, and native session/commit references.
+This document owns the source reading and architectural argument, not a second
+lifecycle. The ticket was created at the human's explicit direction after the
+first draft had been preserved.
 
 <a id="rekon-phoenix-reading"></a>
 ## The sample, and why the later writing matters

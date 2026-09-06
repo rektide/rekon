@@ -7,6 +7,8 @@ tags: [evidence, reference, provenance, case-stories, learning]
 status: draft
 generated: { by: "model:gpt-6-astra", at: 2026-09-06 }
 stale_after: 2026-12-06
+extensions:
+  ticket: rekon-phoenix
 sources:
   - { resource: "urn:opencode:session:ses_f86f757c0ffe5G5aHU26e2evOL", title: Human direction on evidence as referentiality and on learning from action case stories }
   - { resource: /constitution/README.md, title: Documentation and evidence contracts }

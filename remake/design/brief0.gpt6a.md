@@ -7,6 +7,8 @@ tags: [remake, assessment, architecture, sequencing, provenance]
 status: draft
 generated: { by: "model:gpt-6-astra", at: 2026-09-06 }
 stale_after: 2026-12-06
+extensions:
+  ticket: rekon-phoenix
 sources:
   - { resource: "urn:opencode:session:ses_f86f757c0ffe5G5aHU26e2evOL", title: Human commission and redirection from NAN to the Rekon practice }
   - { resource: /assess/README.md, title: Assessment practice }
@@ -99,3 +101,25 @@ not a multi-model vote. No code action is authorized when that gate opens.
   actual redesign and implementation require their own chosen work mode.
 - [Evidence gates](/assess/gates/README.md) **provides the release discipline**
   for the bounded source investigation above.
+
+# Addendum — broader direction and work anchor, 2026-09-06
+
+The human subsequently broadened this commission to define `digest/`, explain
+`evidence/` as referentiality rather than necessarily a new artifact kind, and
+update Rekon's root README around the growing family of action practices.
+The human also supplied Chad Fowler's Phoenix Architecture series and asked
+how Rekon itself might be reborn. These directions are preserved in the
+[NAN–Lastact case story](/evidence/case-stories/nan-lastact/genesis0.gpt6a.md)
+and [Phoenix reading](/design/rekon/phoenix0.gpt6a.md).
+
+At explicit human request, **`rekon-phoenix` is now the work's Beads anchor in
+Rekon**. This supersedes the initial no-ticket scope only for the authorized
+Rekon work; it does not authorize NAN tickets or product changes. Use
+`bd show rekon-phoenix` for current work state and notes, including the session,
+artifact, and commit receipts. The initial brief remains as the record of the
+earlier scope rather than being rewritten to predict the later request.
+
+The required precedent report returned as `c71028b1` and was read in full
+before the parent finalized the first remake definition. Its relevant
+reconstruction and assessment claims were checked against their source
+documents. That satisfied the drafting dependency, not an implementation gate.

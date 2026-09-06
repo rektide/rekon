@@ -7,6 +7,8 @@ tags: [digest, architecture, intent, assessment, steering]
 status: draft
 generated: { by: "model:gpt-6-astra", at: 2026-09-06 }
 stale_after: 2026-12-06
+extensions:
+  ticket: rekon-phoenix
 sources:
   - { resource: "urn:opencode:session:ses_f86f757c0ffe5G5aHU26e2evOL", title: Human definition of digest and action practices }
   - { resource: /constitution/reassessment0.gpt6a.md, title: Coming up for air }
