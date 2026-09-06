@@ -78,6 +78,14 @@ whole.
 
 ## Cross-references
 
+- [Digest](/digest/README.md) **recovers the present state and intent fronts**
+  that can guide assessment; [remake](/remake/README.md) **applies architectural
+  judgment to a proposed sequence of intermediate states**. Neither implies a
+  mandatory workflow or authorizes product changes.
+- [Evidence case stories](/evidence/README.md#evidence-case-stories) **connect
+  expected and actual helpfulness**. The [NAN–Lastact association](/evidence/case-stories/nan-lastact/genesis0.gpt6a.md)
+  links this experiment to the later, Rekon-owned `rekon-phoenix` inquiry
+  without treating the deferred NAN assessment as another completed trial.
 - [Constitution](/constitution/README.md#doc-constitution-references-evidence)
   **constrains** evidence honesty: source inspection, inference, recommendation,
   and acceptance are distinct.

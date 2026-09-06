@@ -30,6 +30,24 @@ the local documents and live Beads records on **2026-09-04**.
 - [Original constitution design record](/design/doc-constitution/README.md) —
   independent drafts, synthesis, and adoption history behind the pilot account.
 
+## Action Practices And Regenerative Inquiry
+
+Added 2026-09-06 from the documents and the new Rekon work anchor
+`rekon-phoenix`; this is not a fresh audit of the older ticket statuses above.
+
+- [Root orientation](/README.md) — explains the growing family of actions around
+  technical efforts and distinguishes their draft guidance from existing tools.
+- [Digest](/digest/README.md) and [remake](/remake/README.md) — new practice
+  definitions for present-state/intent recovery and defensible landing sequences.
+- [Evidence](/evidence/README.md) — a relational account of sources bearing on
+  judgments, with case stories of expected versus actual helpfulness; no central
+  evidence store or universal schema is being introduced.
+- [NAN–Lastact association](/evidence/case-stories/nan-lastact/genesis0.gpt6a.md)
+  — the commission's lineage and scope changes, including the move into Rekon.
+- [Rekon as Phoenix](/design/rekon/phoenix0.gpt6a.md) — a source-cited reading of
+  Fowler and a broader renewal direction. Exploratory, not a replacement
+  constitution, project rename, or authorized regeneration program.
+
 ## Knowledge Organization And Identity
 
 - [Hierarchy revision 1](/constitution/README-heirarchy1.glm53m.md) — proposes

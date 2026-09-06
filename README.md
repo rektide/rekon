@@ -115,7 +115,8 @@ by these documents.
 
 The TypeScript CLI lives in [`rekon.ts`](/rekon.ts). Its registered commands
 are `agents`, `combine`, `install-commands`, `interpolate`, `project-files`, and
-`ln`; their implementations live in [`src/command/`](/src/command/).
+`ln`; their implementations live in [`src/command/`](/src/command/). The
+completion plugin also supplies `complete`.
 
 During development, run the source directly:
 

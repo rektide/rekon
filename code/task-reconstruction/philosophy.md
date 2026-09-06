@@ -565,6 +565,11 @@ Before presenting a plan, verify:
 
 # Cross-References
 
+- [Remake](/remake/README.md) extends this guide's destination-derived landing
+  structure with explicit assessment of intermediate states: what each prefix
+  claims, which obligations are already active, and what evidence would justify
+  proceeding. Its default is a sequence proposal, not an implementation or
+  branch-reconstruction mandate.
 - [`/constitution/README.md`](/constitution/README.md#L318-L331) explains why
   promotion is synthesis rather than movement: current guidance should
   reconcile design evidence instead of copying one historical artifact by
