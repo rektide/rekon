@@ -45,6 +45,12 @@ resolve. An unserved Terra request remains explicit.
 
 ## Results and workshop
 
+The latest direction is [high/low passes](/assess/strategies/high-low0.gpt6a.md):
+different agents should pursue different aim points, including expansive
+possibilities and close evidence, with effort allocated to high-interest
+fronts. This challenges the predecessor experiment's overly uniform restraint;
+it is a strategy draft, not another dispatched wave.
+
 Start with [Did our review prompt serve the ask?](/assess/review/prompt-assessment0.gpt6a.md):
 the complete-cohort parent self-assessment of prompting, alignment, and
 orchestration. The reviews were useful, but the prompt underweighted its own
