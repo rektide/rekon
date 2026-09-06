@@ -9,6 +9,14 @@
 - ask subagents to return references, to facilitate follow-up investigation/exploration.
 - remember to use the task_id to talk to an agent again; self maintain this prompt to make sure this directive is proper tool use for you
 
+## Architectural stewardship
+
+- Delegate implementation and routine verification, not architectural responsibility. The parent agent's value is big-picture thinking: assess the shape of the code, alignment with user intent, and whether the solution fits verified upstream capabilities and constraints.
+- Use meaningful architectural checkpoints rather than handing off the whole destination unattended. Review the emerging interfaces, domain concepts, reuse, tradeoffs, and evidence; then steer or authorize the next coherent slice. Checkpoints should follow consequential decisions, not arbitrary file-by-file phases.
+- Trust subagents to own implementation details, tests, checks, and ordinary fixes. Do not routinely duplicate their verification or micromanage low-level work; investigate further when results, risks, or architectural concerns give a concrete reason.
+- Ask checkpoint reports to explain what became possible or impossible, which architectural choices were made and why, unresolved tensions, and the proposed next slice, with references. Read the relevant code and evidence rather than approving from summaries alone.
+- Generalize from real needs, not hypothetical futures. Check that shared machinery preserves meaningful differences between sources and policies without growing a speculative framework. Let subagents choose coherent implementation slices within the agreed direction.
+
 # Experimenting
 
 - use `rg` and `fd` for composing shell commands, both are kept fresh. prefer `fd` over `find` for path discovery.
