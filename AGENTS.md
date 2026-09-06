@@ -126,8 +126,9 @@ A doc-pass may use a subagent to independently search the corpus. Ask it to retu
 
 - "Let It Fail" principle, when it makes sense. Do not create a try-catch just to print an error: the stack trace will show what is wrong.
 - pruning stale or undeclared artifacts is usually outside Compfuzor's scope. do not add automatic prune/reconciliation behavior unless the user explicitly requests it; create and update declared state, and leave cleanup deliberate.
-- please jj commit as you go! commit pro-actively in logical groups.
-  - when comments come in for review, check in before making edits. break up corrections from review into individual well argued cohesive commits.
+- Commit **each coherent stage as it becomes available**, including prompts, research, drafts, and guidance—not just code. Do not bank several stages until the task, conversation, or wave ends.
+  - Before applying review feedback, revamping, replacing, or removing your current work, **commit its present state first**. Then make the revision as a separate, well-argued commit: preserve the predecessor, explain the delta, and say what destination the revision heads toward. Saving a stage is not declaring it accepted or finished.
+  - Check in with the human about review direction as well; conversation and a version-control checkpoint are different obligations. Wave gates delay dependent analysis, **not authors' commits**. See [checkpoint discipline](/code/commits.md#commits-checkpoints).
 
 # Rust instructions
 
