@@ -211,6 +211,7 @@ Include a `dev` target for watch/development mode (e.g. `wxt watch`).
 
 # jj / git
 
+- name dated feature bookmarks `<feature>-<YYYYMMDD>`. use the local calendar date when that line of work was last active (recover it from `jj op log` when resuming old work), rather than blindly using today's date.
 - use `jj commit -m "<description>" <files...>` to make commits as you go.
   - explicitly provide the files/directories that belong to this commit
   - you do not need to add files ahead of time; it will commit all changes.
