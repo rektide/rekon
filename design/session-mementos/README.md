@@ -56,6 +56,16 @@ the drafts exist.
 5. [OpenCode display evidence](file:///home/rektide/src/opencode-term-v2/.design/term-v2/multi-session-evidence0.gpt6a.md)
    — retained batch seam, shared tabs, loaded-history limitations and test plan.
 
+## Executable progress
+
+The [pure selector checkpoint](file:///home/rektide/src/opencode-term-v2/.design/term-v2/selection-checkpoint0.gpt6a.md)
+implements ordered narrowing and terminating authority in OpenCode commit
+`1b1ff39bb787`. The [parent and independent review](file:///home/rektide/src/opencode-term-v2/.design/term-v2/selection-review0.gpt6a.md)
+found no actionable Standards or Spec issues and accepts the bounded kernel as
+the next integration basis. Focused tests pass; the package typecheck has an
+unchanged Core blocker. **The visible epilogue is still unchanged**: inventory,
+batch output, lookers, visit recording and bookmarks remain separate work.
+
 ## Related inquiry
 
 [Ordered capability pipelines](/design/ordered-pipelines/README.md) preserves the
