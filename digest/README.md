@@ -136,3 +136,6 @@ differences between expected and actual usefulness so the practice can improve.
 - [Phoenix reading](/design/rekon/phoenix0.gpt6a.md) **offers an extension**:
   digest as a question-shaped view of durable knowledge, not a replacement
   source of truth.
+- [Forge](/forge/README.md) **supplies upstream evidence**: when a digest's
+  subject is a dependency, a forge corpus of its tracker and role evidence is
+  how "what is changing" claims stay citable rather than folklore.

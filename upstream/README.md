@@ -146,6 +146,10 @@ collection of dated snapshot directories.
   adaptation as separate reviewable checkpoints.
 - [Evidence](/evidence/README.md) — explains what provenance supports, and why
   source identity is not a behavioral verification claim.
+- [Forge](/forge/README.md) — the tracker-side sibling: an upstream reference
+  mirror snapshots upstream *code* with provenance, while a forge pass
+  snapshots upstream *decision state* (issues, PRs, discussions, roles) under
+  the same evidence discipline.
 - [Task reconstruction](/code/task-reconstruction/philosophy.md) — related but
   different: reconstructing desired behavior need not replay an old patch line;
   the mirror preserves a concrete comparison baseline when direct adaptation is

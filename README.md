@@ -75,6 +75,7 @@ help looks like before prescribing a particular prompt or orchestration.
 | “Having built the vertical, which architectural wins and new possibilities can we pursue?” | [Post-build](/praxis/post-build/README.md) | Shared guarantees worth strengthening, promising new offerings, and a few evidence-grounded next investments. |
 | “How should this have been built and landed, knowing what we know now?” | [Remake](/remake/README.md) | A defensible sequence of coherent changes, with assessment of each consequential intermediate state. |
 | “What should a historically informed implementation become now?” | [Reconstruct](/code/task-reconstruction/philosophy.md) | A chosen work mode and destination, retaining verified outcomes without inheriting accidental mechanisms. Actual implementation needs authorization. |
+| “What is our upstream actually about to do, and which of it matters to us?” | [Forge](/forge/README.md) | A provenance-marked corpus of the dependency's issues, PRs, discussions, and verified roles, triaged into real movement versus ideas, so downstream choices cite upstream evidence instead of rumor. |
 
 These are the kinds of tasks and **“en-shippenings”** we have been developing:
 actions that help an effort regain direction, reach a useful result, or learn
