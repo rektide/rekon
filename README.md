@@ -103,6 +103,8 @@ by these documents.
 - [Constitution](/constitution/README.md) and its [reading map](/constitution/index.md)
   — knowledge ownership, identity, references, and current versus proposed guidance.
 - [Coding practice](/code/README.md) — commits, review handling, planning, and posture.
+- [Upstream reference mirrors](/upstream/README.md) — inactive vendor snapshots,
+  provenance, and deliberate refresh of independently maintained adaptations.
 - [Skillification](/design/skillify/README1.sol56x.md) — the proposal for turning
   knowledge into scoped, activatable capability; not a universal deployed contract.
 - [AGENTS assembly](/constitution/agents-assembly.md) — implemented fragment
