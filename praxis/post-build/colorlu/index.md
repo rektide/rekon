@@ -6,6 +6,9 @@ accepted product roadmap or authorization to change the products.
 
 ## start here
 
+- [Wind-down and fresh-session map](/praxis/post-build/colorlu/session-map0.gpt6a.md)
+  — current branch/workspace receipts, unmerged foundation work, open co-design
+  gates, and distinct restart briefs. **Use this when resuming the effort.**
 - [Architectural wins and recommended courses](/praxis/post-build/colorlu/possibilities0.gpt6a.md)
   — parent synthesis: trustworthy settings, hosted execution and project activation,
   the recovered v4 Differ direction, and deeper stream machinery.
