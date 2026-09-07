@@ -138,6 +138,10 @@ collection of dated snapshot directories.
 
 ## Cross-references
 
+- [Chase the future](/praxis/chase-future/chase-future0.gpt6a.md#frontier) —
+  **complementary direction**: current upstream guides opportunities; a pinned
+  mirror makes provenance reproducible, not a permanent capability ceiling.
+  Keeping the reference current and porting the active adaptation remain distinct.
 - [Commit discipline](/code/commits.md) — preserves snapshot refresh and local
   adaptation as separate reviewable checkpoints.
 - [Evidence](/evidence/README.md) — explains what provenance supports, and why

@@ -104,6 +104,10 @@ disposition are related choices, not interchangeable ones.
 - [Navigation in the work map](/constitution/work-map0.gpt6a.md#navigation) — the
   open `rekon-navigation` program and its relationship to the constitution,
   naming, and skills. There is not yet an accepted Navigation module to link.
+- [Chase the future](/praxis/README.md) — a 2026-09-06 draft praxis contribution:
+  current-upstream, opportunity-opening action with enduring alternate courses.
+  It connects to Navigation without settling its open contract or replacing its
+  work owner; this entry does not re-audit the older ticket statuses.
 - [Beads offerings study](/constitution/naming/exploration/beads-offerings0.sol56x.md#beads-offerings-mapping-core)
   — a source-grounded account of native work ownership and the boundaries of
   work, knowledge, actors, occurrences, and orchestration. A study, not a new

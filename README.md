@@ -80,6 +80,10 @@ actions that help an effort regain direction, reach a useful result, or learn
 why the previous action missed. New action homes are **draft guidance**, not
 new CLI subcommands or automatically installed skills.
 
+[Chase the future](/praxis/README.md) connects these actions through a shared
+praxis: build from current upstream possibilities, choose opportunity-opening
+slices, and preserve alternate courses without turning them all into scope.
+
 <a id="rekon-evidence"></a>
 ## Evidence and case stories
 

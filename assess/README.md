@@ -78,6 +78,9 @@ whole.
 
 ## Cross-references
 
+- [Chase the future](/praxis/README.md) **extends the high/low posture into action
+  selection**: use current upstream possibilities, implement a justified next
+  slice, and retain other interesting courses without confusing them with scope.
 - [Digest](/digest/README.md) **recovers the present state and intent fronts**
   that can guide assessment; [remake](/remake/README.md) **applies architectural
   judgment to a proposed sequence of intermediate states**. Neither implies a

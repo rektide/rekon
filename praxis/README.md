@@ -69,6 +69,14 @@ remain usefully ambiguous while the next action has a clear boundary.
   owns the broader question of a revisable course. This contribution preserves
   opportunity beyond the chosen route; it does not declare that program complete.
 
+### Motivating application
+
+- [Linux wireless timing: implement the reachable seam](/praxis/chase-future/linux-wireless0.gpt6a.md)
+  captures the user's correction toward immediate Rust netlink work, the new
+  RAX120 v2/OpenWrt/all-Linux and NAN context, and the difference between a
+  selected implementation priority and preserved hardware-gated options.
+  It is a source-grounded case seed, not a completed timing experiment.
+
 <a id="engine-the-practice"></a>
 
 ## Make the practice easier to do

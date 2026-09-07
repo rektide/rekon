@@ -218,6 +218,10 @@ all of them implementation obligations? Revise the practice from that experience
 
 ## Cross-references and deliberate tensions
 
+- [Linux wireless case](/praxis/chase-future/linux-wireless0.gpt6a.md) is the
+  **motivating application**: reachable Rust netlink work now, with separate
+  source support, hardware evidence, and synchronization/audio claims. Its
+  course comparison is an illustration, not this practice's universal roadmap.
 - [High/low passes](/assess/strategies/high-low0.gpt6a.md) are **prior art** for
   complementary expansive and grounded thinking. This practice adds the choice
   of an immediate opportunity-opening investment; it does not require an agent
