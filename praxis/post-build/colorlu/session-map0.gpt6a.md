@@ -11,6 +11,7 @@ sources:
   - { resource: "urn:opencode:session:ses_f94a351a4ffeUxKaQ8GK4oFeBU", title: Human direction — finish at natural checkpoints, cycle agents, map distinct future meta-sessions }
   - { resource: /praxis/post-build/colorlu/possibilities0.gpt6a.md, title: Architectural opportunity assessment }
   - { resource: "file:///home/rektide/src/luffect-file-resources/.design/finalizer-causes/checkpoint0.gpt56s.md", title: Completed Sol lane }
+  - { resource: "file:///home/rektide/src/luffect-stream-foundation/.design/stream-foundation/handoff0.gpt6a.md", title: Completed Astra stream lane and integration instructions }
   - { resource: "file:///home/rektide/src/luffect/.design/foundations/dispatch0.gpt6a.md", title: Two-lane commission and design gates }
 ---
 
@@ -26,19 +27,19 @@ for the opportunities; this document records what happened afterward and how to
 continue without rereading the full conversation. It is not a new accepted
 roadmap or an authorization to implement every course below.
 
-## live gate at this save point
+## terminal gate: this session is wound down
 
 - **Sol:** finished. Do not resume it for another assignment.
-- **Astra streams:** finishing its current coherent slice under an explicit
-  wind-down instruction. No follow-on has been authorized. Its terminal tip and
-  final report are **pending in this version of the map**.
-- **Parent:** assembling receipts and handoff; no broad integration tail or
-  further product implementation is started here.
+- **Astra streams:** finished at a coherent committed foundation. Its final
+  receipt is now captured below. Do not resume it for another assignment.
+- **Parent:** read the final handoff/public contract and the temporary stream
+  aggregation site; recorded the integration gate. No broad integration tail,
+  new agents, or further product implementation is started here.
 
-When the stream completion arrives, append its exact tip, scope and integration
-hazards to this map and checkpoint the update. If resuming after a restart,
-inspect the retained stream checkpoint/bookmark before assuming work is still
-running or redoing it. Do not poll an agent or require its whole transcript.
+Both required results have arrived. This completes **receipt gathering**, not
+integration or human acceptance. Use fresh sessions/agents for the next chosen
+course. The earlier version of this map recorded Astra pending; that is now
+historical, not an outstanding task to rerun.
 
 ## repository and work-lane receipts
 
@@ -53,7 +54,7 @@ at this save point; no product suites were rerun for this map.
 | `~/src/luffect` | `c227a9f05941c2590c4cd3ba3b0c860def4bcbdc` | Default parent: two-lane commission above code `e6d74195`; default working copy clean; parallel lane code **not integrated** |
 | `~/src/luffect-file-resources` | `file-resources-20260906` → `98b14e12853f854f7fec0f919a9a862f7ed86c93` | Reviewed/corrected file-resource stage retained separately |
 | same workspace | `finalizer-causes-20260906` → `6e73f15945a9a9a7583f350bbf68f931b65bbd0c` | **Latest Sol tip; includes the resource stage**, then shared runtime correction and compensation removal |
-| `~/src/luffect-stream-foundation` | based on `c227a9f0`; terminal tip pending | Isolated Astra lane; do not mistake its in-flight work for default-workspace behavior |
+| `~/src/luffect-stream-foundation` | `stream-foundation-20260906` → `b1f6f40657e9d0810c0dcc2f6599f51df02cbdc8` | Completed isolated Astra lane; implementation commit `5ce06329902b345838423b80f06486870b46a462`; **not integrated** |
 | `~/src/rekon/praxis/post-build/` | [method][praxis], [case index][index], this map | Inquiry, evidence and navigation, not the product code owner |
 
 ```text
@@ -61,7 +62,7 @@ luffect code e6d74195
   └─ commission c227a9f0                 ← default workspace parent
        ├─ file resources 98b14e12
        │    └─ finalizer causes 6e73f159 ← latest completed Sol lane
-       └─ stream foundation             ← final receipt pending
+       └─ stream foundation b1f6f406     ← completed Astra lane, unmerged
 ```
 
 The file-resource bookmark is an ancestor of the finalizer bookmark, not a
@@ -85,6 +86,64 @@ The finalizer author reports **659 passing tests on Lua 5.1, LuaJIT and Lua 5.4*
 including exact reason counts/order and resource non-duplication. Parent read
 the narrow runtime/FileSystem diff; **combined stream-lane integration has not
 been reviewed or tested**. The `FsError` name remains deliberately unchanged.
+
+### what the completed Astra lane actually established
+
+Read [the stream handoff][stream-handoff] and [the public subset guide][stream-guide].
+The result is a focused **scalar pull-transform Channel** backing Stream and
+connecting to scoped Sink transforms—not a full chunked port or new interpreter.
+Shared producer/queue/scope machinery replaces duplicated processing loops.
+
+Important interface facts for a new session:
+
+- Existing `Stream.callback` retains synchronous-emitter/returned-cleanup semantics;
+  `callbackSync` names that contract explicitly. New `callbackEffect` and
+  `Channel.callback` execute effectful registration over the actual ingress Queue.
+- Scalar values include nil, false and Effectable values carried as data. Nil-bearing
+  collections use conventional `n` extent; dense results retain their existing shape.
+  This **does not** select a JSON representation or change every collection module.
+- Sink completion is `{ value, leftovers }`. Buffer, merge, switch and queue
+  transfer preserve different resource/termination policies. Already-admitted
+  history is not rolled back by switching.
+- Unsafe queue operations are not a universal Neovim-safe host admission adapter.
+  Capacity and source lifetime do not settle scheduling or application authority.
+
+The author reports **669 passing tests on each of Lua 5.1, LuaJIT and Lua 5.4**;
+22 colorlu workflow tests with explicit stream-workspace dependency selection;
+a real-host bounded-ingress result of **4 admitted / 124 rejected / maximum queued 4**;
+and an isolated installed-rock consumer check. These are the stream lane's scoped
+checks, not an integrated test count. The parent has not performed a full
+independent review of that implementation.
+
+### critical integration instruction: one owner of cause combination
+
+**Do not blindly merge and declare the union correct.** At the stream tip,
+[`Processing.close` lines 21–31][processing] manually combines the original body
+cause with a failed cleanup cause. Sol's core `OnExit.contE` now performs that
+combination. Leaving both in place risks counting the body failure twice.
+
+The [stream handoff's integration section][stream-integration] tells the integrator
+to remove the local terminal-failure combination and let the core own it, while
+retaining:
+
+1. Done normalization of the exit supplied to resource finalizers;
+2. cleanup-only `job.cleanupCause` capture for awaited stops;
+3. `job.settling` protection against duplicate reporting during reentrant delivery.
+
+Review the call sites and revalidate exact reason ordering/counts, Done plus cleanup,
+switch cleanup defects and consumer interruption. Generic cause aggregation and
+operator supervision remain different responsibilities.
+
+Reconcile additive changes in **`luffect/init.lua`**, **`luffect-dev-1.rockspec`**,
+**`README.md`**, and **`doc/caveats.md`** as applicable. Preserve both lanes' module
+exports and installed-consumer proofs; neither lane claimed to repair every
+pre-existing package omission.
+
+**Separate recorded runtime observation:** Astra reproduced non-progress at operation
+budget 1 with a minimal Effect and no streams; budget 8 completed. This pre-existing
+observation was documented, not fixed. Its [handoff evidence section][stream-handoff]
+points to the isolated scratch probe. Do not turn it into either a universal
+stream failure claim or an unrequested scheduler-redesign tail.
 
 ### upstream basis
 
@@ -118,7 +177,7 @@ Use fresh implementation/review agents, not the long-running Sol/Astra sessions.
 > integrated guarantees and colorlu compatibility using explicit dependency paths.
 > Do not start the settings redesign or another breadth wave.
 
-Read first: [Sol finalizers][finalizers], the pending Astra checkpoint, and
+Read first: [Sol finalizers][finalizers], [Astra's stream handoff][stream-handoff], and
 [the two-lane commission][dispatch].
 
 **Consequential checks:** shared core `onExit` behavior beneath stream finalizers;
@@ -164,10 +223,12 @@ format migration or assumption that atomic rename is transactional.
 > the substrate. Do not repeat the completed stream work or port a catalog of
 > operators by default.
 
-The final Astra receipt must determine the starting state; this map does not
-predict which architecture it will land. The parent [architectural fronts][fronts]
-explain the question: bounded ingress, effectful registration, shared processing,
-and meaningful differences between lossless events and coalesced state.
+Start from [Astra's actual scalar Channel/Stream/Sink contract][stream-guide],
+not the earlier operator-only baseline. A particularly useful next consumer is
+one incremental byte/process pipeline: decide whether scalar byte strings and
+explicit batches suffice or upstream-style array pulls earn a migration. The
+parent [architectural fronts][fronts] explain the larger question: shared processing
+that retains meaningful differences between lossless events and coalesced state.
 
 **Useful stopping point:** a clear account of the offering and one selected
 consumer/proof. Generic runtime changes must reconcile with the Sol tip.
@@ -251,7 +312,7 @@ parent and human instead of automatically extending every agent's mandate.
 
 - Originating parent: `ses_f94a351a4ffeUxKaQ8GK4oFeBU`.
 - Finished Sol lane: `ses_f8672253affe42RsA2PupMS7GM`.
-- Winding-down Astra stream lane: `ses_f867224d2ffe63A1ogRNZMQiXj`.
+- Finished Astra stream lane: `ses_f867224d2ffe63A1ogRNZMQiXj`.
 
 These IDs locate provenance; they are **not an instruction to reactivate the old
 sessions**. Future sessions should start fresh from the map, native checkpoints
@@ -279,5 +340,9 @@ The durable owner is this Rekon map, not the temporary note.
 [file-review]: file:///home/rektide/src/luffect-file-resources/.design/file-resources/review0.gpt6a.md
 [file-corrections]: file:///home/rektide/src/luffect-file-resources/.design/file-resources/review-followup0.gpt56s.md
 [finalizers]: file:///home/rektide/src/luffect-file-resources/.design/finalizer-causes/checkpoint0.gpt56s.md
+[stream-handoff]: file:///home/rektide/src/luffect-stream-foundation/.design/stream-foundation/handoff0.gpt6a.md
+[stream-guide]: file:///home/rektide/src/luffect-stream-foundation/doc/stream-foundation.md
+[stream-integration]: file:///home/rektide/src/luffect-stream-foundation/.design/stream-foundation/handoff0.gpt6a.md#critical-integration-gate-remove-temporary-cause-aggregation
+[processing]: https://github.com/rektide/luffect/blob/b1f6f40657e9d0810c0dcc2f6599f51df02cbdc8/luffect/internal/stream/processing.lua#L21-L31
 [dispatch]: file:///home/rektide/src/luffect/.design/foundations/dispatch0.gpt6a.md
 [first-light]: https://github.com/rektide/colorlu/blob/222bd7ce472fee9f1f5cc1ce5796b82d42f19762/.design/first-light/first-light.gpt6astra.md
