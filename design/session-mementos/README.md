@@ -72,3 +72,18 @@ batch output, lookers, visit recording and bookmarks remain separate work.
 [Ordered capability pipelines](/design/ordered-pipelines/README.md) preserves the
 broader reusable-pattern ambition and the Watchwoman precedent. It is a memento
 and possible future trial, not a framework dependency for this feature.
+
+## Cross-session links and temporal context
+
+The later [session-linking desire](file:///home/rektide/archive/doc/opencode/patches.md#session-links)
+is tracked separately as `rekon-session-mementos-links`: make one canonical
+session referable from other sessions without copying, moving or reparenting it.
+Links can later supply an explicit epilogue inventory alongside tabs and visits;
+Cotail's source-qualified targets are a possible shared foundation, not a chosen
+link schema. Moving this coordinating session to Rekon remains undecided.
+
+[Lastact](file:///home/rektide/src/opencode-lastact/README.md) already contains
+activity clocks and transcript time-shift notices. It is relevant to modular
+last-activity lookers, but actual prompt/part/settled evidence, metadata recency
+and local visit time are different clocks. No Lastact integration or installation
+has been requested unambiguously or performed here.
