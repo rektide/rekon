@@ -72,6 +72,7 @@ help looks like before prescribing a particular prompt or orchestration.
 |---|---|---|
 | “Where are we now, and what is this becoming?” | [Digest](/digest/README.md) | A recency-aware architectural account, practical differences, and active intent fronts that equip steering or renewed shipping. |
 | “Does this fit its purpose, and what earns confidence?” | [Assess](/assess/README.md) | Architectural and close judgment, strengths to preserve, scoped findings, and evidence sufficient for the next decision. |
+| “Having built the vertical, which architectural wins and new possibilities can we pursue?” | [Post-build](/praxis/post-build/README.md) | Shared guarantees worth strengthening, promising new offerings, and a few evidence-grounded next investments. |
 | “How should this have been built and landed, knowing what we know now?” | [Remake](/remake/README.md) | A defensible sequence of coherent changes, with assessment of each consequential intermediate state. |
 | “What should a historically informed implementation become now?” | [Reconstruct](/code/task-reconstruction/philosophy.md) | A chosen work mode and destination, retaining verified outcomes without inheriting accidental mechanisms. Actual implementation needs authorization. |
 

@@ -141,6 +141,10 @@ explicit conflict policy. None of those guarantees comes merely from `Differ`.
 
 ## cross-references and basis
 
+The completed [post-build assessment](/praxis/post-build/colorlu/possibilities0.gpt6a.md)
+combines these fronts with the storage evidence and makes ranked recommendations.
+This pre-synthesis account remains intact to preserve how those possibilities arose.
+
 This note is source inspection plus architectural inference; it did not rerun
 the author-reported suites. Source coordinates use the pinned revisions in the
 [brief](/praxis/post-build/colorlu/brief0.gpt6a.md); some local product commits are

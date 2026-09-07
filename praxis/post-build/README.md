@@ -32,6 +32,12 @@ mandatory gate after every change. Its first case is the
 The human explicitly requested the home `~/src/rekon/praxis/`; this directory
 does not relocate or supersede Rekon's other practice homes.
 
+**Read the first result:** [architectural wins after colorlu first light](/praxis/post-build/colorlu/possibilities0.gpt6a.md).
+It connects the value/snapshot and file-resource gaps to hosted execution,
+project activation, inspectable patches, and deeper stream machinery. The
+[case index](/praxis/post-build/colorlu/index.md) preserves its brief, parent
+exploration, and bounded storage evidence.
+
 ## The posture
 
 Hold three questions together:
@@ -177,6 +183,10 @@ offering proved valuable.
 
 ## Cross-references
 
+- [Chase the future](/praxis/chase-future/chase-future0.gpt6a.md) **connects
+  opportunity to a selected action** while preserving other courses. Post-build
+  supplies a particular vantage point for that choice: the evidence and new
+  possibilities of a completed vertical, not a competing general workflow.
 - [Digest](/digest/README.md) provides the living state and intent fronts. This
   practice asks what that state makes possible after a consequential build.
 - [Assessment](/assess/README.md) owns broader judgment about fitness and evidence;

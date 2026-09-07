@@ -77,6 +77,17 @@ remain usefully ambiguous while the next action has a clear boundary.
   selected implementation priority and preserved hardware-gated options.
   It is a source-grounded case seed, not a completed timing experiment.
 
+## Related practice: after the build
+
+[Post-build possibility gathering](/praxis/post-build/README.md) starts from a
+completed vertical and asks which shared foundations and broader offerings are
+now worth pursuing. Its separate motivating commission is the
+[colorlu / luf-settings / luffect assessment](/praxis/post-build/colorlu/possibilities0.gpt6a.md):
+turn the first application's special knowledge into stronger shared contracts,
+and preserve the newly reachable paths rather than merely add another module.
+This complements Chase the future; it does not inherit the wireless case's
+product work anchor or turn its proposals into authorized implementation.
+
 <a id="engine-the-practice"></a>
 
 ## Make the practice easier to do

@@ -382,6 +382,11 @@ architecture sign-off or implementation authorization.
 
 # cross-references
 
+- [The parent architectural assessment](/praxis/post-build/colorlu/possibilities0.gpt6a.md)
+  combines these bounded storage findings with host/project lifecycle evidence,
+  recovers the upstream JSON Patch/Differ course, and ranks the shared investments.
+  The recommendations here remain evidence for that judgment, not a separate
+  accepted implementation plan.
 - [The post-build praxis](/praxis/post-build/README.md) supplies the distinction
   between a working path and the scope of a reusable promise; the adapter parity
   findings are a concrete instance of that distinction.
