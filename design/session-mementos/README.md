@@ -37,6 +37,10 @@ the drafts exist.
 - Cotail owns source-qualified bookmarks and explicit selectable storage; Rekon
   owns marking semantics and the authoring practice. No bookmark runtime or
   marking guidance has been installed.
+- `rekon-session-mementos-tools` separately tracks how deployable tools belong in
+  Rekon. The subagent precedent already separates generic host-read patches from
+  the standalone `opencode-subagent-control` plugin; a Rekon home need not mean
+  copying that code or rebuilding the tool into OpenCode core.
 
 ## Read in this order
 
