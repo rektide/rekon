@@ -78,12 +78,29 @@ and possible future trial, not a framework dependency for this feature.
 The later [session-linking desire](file:///home/rektide/archive/doc/opencode/patches.md#session-links)
 is tracked separately as `rekon-session-mementos-links`: make one canonical
 session referable from other sessions without copying, moving or reparenting it.
-Links can later supply an explicit epilogue inventory alongside tabs and visits;
-Cotail's source-qualified targets are a possible shared foundation, not a chosen
-link schema. Moving this coordinating session to Rekon remains undecided.
+The requested ownership direction is now **Cotail bookmarks with key/value
+metadata**, including exact reference values for links. Links can later supply
+an explicit epilogue inventory alongside tabs and visits and be browsed in
+[Opensesser](file:///home/rektide/src/opensesser/design/bookmark-links/consumer0.gpt6a.md).
+The wire/schema choices remain under design. Moving this coordinating session
+to Rekon remains undecided.
 
 [Lastact](file:///home/rektide/src/opencode-lastact/README.md) already contains
 activity clocks and transcript time-shift notices. It is relevant to modular
 last-activity lookers, but actual prompt/part/settled evidence, metadata recency
 and local visit time are different clocks. No Lastact integration or installation
 has been requested unambiguously or performed here.
+
+## Tool prerequisite and namespace application
+
+**Cotail's agent-callable surface is now the near-term prerequisite**: existing
+bounded query tools first, then exact bookmark/key-value link tools and shared
+browser reads. Do not wait for automatic next-response binding or a universal
+namespace implementation. Rekon owns the authoring practice and alignment, not a
+duplicate bookmark tool implementation.
+
+[Native references across sessions, tickets and knowledge](/design/session-mementos/references0.gpt6a.md)
+connects this real application to the existing `rekon-con-naming` inquiry and
+documents Beads' native external-capability/hydration mechanisms. It distinguishes
+foreign-ticket references from operational cross-project dependency satisfaction;
+no such bridge has been configured or tested here yet.

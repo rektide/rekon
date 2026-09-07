@@ -101,6 +101,10 @@ disposition are related choices, not interchangeable ones.
 
 ## Navigation, Work, And Evidence
 
+- [Native-reference application](/design/session-mementos/references0.gpt6a.md)
+  — Cotail key/value bookmark links, Opensesser browsing and cross-project Beads
+  references as a concrete namespace trial. Reuses the existing naming inquiry;
+  does not adopt a new grammar or make a global resolver block callable tools.
 - [Navigation in the work map](/constitution/work-map0.gpt6a.md#navigation) — the
   open `rekon-navigation` program and its relationship to the constitution,
   naming, and skills. There is not yet an accepted Navigation module to link.
