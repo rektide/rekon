@@ -28,6 +28,30 @@ but for actions around an effort: finding its present state, understanding its
 architecture, revisiting its direction, preparing coherent changes, and learning
 whether those actions helped.
 
+The [naming and constitutional work](/constitution/index.md) is the north star
+this grows from: wiki-native names, native owners, explicit relations, and
+understanding that survives changes in its expression. Phoenix and the newer
+action vocabulary extend that work; they do not replace its recorded rulings.
+
+<a id="rekon-sense-map"></a>
+## Terms above the fold
+
+| Terms | Their relationship |
+|---|---|
+| **Name → reference → home** | A scoped identity can be reached through different references; its maintained home explains the concern and where its evidence lives. |
+| **Actor → hat / role** | An actor may have concern-specific aliases and scoped responsibilities without becoming a new actor each time. |
+| **Effort → intent front → action** | A continuing pursuit develops directions; a bounded action should help one of them. A practice supplies a repeatable way to do so. |
+| **Work anchor ↔ knowledge** | The native ticket holds work scope and lifecycle; documents hold arguments and connect the work to its sources. |
+| **Claim ↔ evidence ↔ provenance** | Evidence bears on a claim under stated conditions; provenance explains the source and how it arose. |
+| **Home → exposure → activation** | A body of knowledge may be read, loaded, or supplied ambiently through different surfaces. Having a surface is not proof it was used. |
+| **Honing → promotion** | We refine candidates before deciding their standing. Repetition may be useful while honing; actual activation is a separate fact. |
+
+The [working glossary](/CONTEXT.md) gives these words short, linked definitions.
+The [constitution's candidate GLOBAL](/constitution/GLOBAL.md) deliberately
+repeats their operating significance for a reader who has not loaded a skill.
+We are [hand-weaving the context](/design/rekon/context-weave/north-star0.gpt6a.md),
+not yet replacing the live AGENTS manuscript or promoting the candidate GLOBALs.
+
 The emerging Phoenix inquiry asks what should survive when we replace a prompt,
 workflow, tool, or implementation: intent, promises, evaluations, reasons,
 boundaries, and provenance. **The work anchor is the Rekon Beads epic

@@ -249,13 +249,45 @@ not a symlink.
 
 Every global line imposes repeated context cost on agents that may never need
 the topic. A fragment therefore SHOULD point to its README for rationale,
-exceptions, examples, and maintenance. Verbatim overlap is allowed only when a
-rule must stand alone before skill discovery; that small duplication remains
-owned and reviewable beside its module.
+exceptions, examples, and maintenance. The normal compact profile repeats what
+must stand alone before skill discovery. The current **honing workshop** below
+deliberately permits broader overlap before that compact profile is settled.
 
 An ambient contribution MUST remain traceable to its module. Assembly tooling
 must preserve source identity and either preserve, rewrite, or reject links
 whose meaning would change outside the source directory.
+
+<a id="doc-constitution-honing"></a>
+
+## Honing The Shared Context
+
+Human direction on 2026-09-06 asks us to read the root README's purpose and
+AGENTS' operating guidance together, hand-assemble a view, and accept deliberate
+redundancy between the README/SKILL body and GLOBAL while we **hone**. This is a
+workshop within `rekon-phoenix`, related to the existing AGENTS-maintenance work;
+it is not acceptance of every candidate GLOBAL or a production cutover.
+
+During this workshop:
+
+- Start a GLOBAL with the small **terms in use** that make its guidance legible,
+  linked to the [shared glossary](/CONTEXT.md). Constitutional and naming
+  vocabulary belongs above the fold, not behind a route that already assumes it.
+- Repetition may supply orientation, reinforce an invariant, or let an exposure
+  stand on its own. Keep its owner and purpose clear. Compare and reconcile
+  divergent meanings; do not remove useful repetition merely to satisfy DRY.
+- Existing `SKILL.md -> README.md` symlinks remain intact. Redundancy across
+  GLOBAL and that shared body does not require forking README from SKILL.
+- **Candidate, accepted/promoted, selected for assembly, and actually loaded**
+  are different states. `status: draft` does not deactivate a loaded instruction.
+- Preserve the live manuscript until human-steered extraction accounts for its
+  passages. A manual view may keep awkward or duplicated material visible so
+  the human can decide where it belongs, rather than silently throwing it away.
+
+The [north-star account](/design/rekon/context-weave/north-star0.gpt6a.md)
+connects this experiment to earlier naming rulings, vocabulary, and contested
+proposals. It does not restart their debate from zero. The eventual compact
+GLOBAL profile should emerge from reading and using the combined context,
+with the human deciding which material to promote, relocate, shorten, or remove.
 
 <a id="doc-constitution-module-support"></a>
 
