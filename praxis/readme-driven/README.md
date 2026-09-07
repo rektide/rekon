@@ -126,9 +126,17 @@ consumer choice: embedded applications, reference-app users, or local processes
 using a broker. The human selected the first two; broker operation remains an
 option, not an accidental commitment.
 
-That is an early steering result, not a delivered connection or proof that the
-whole method worked. The README revision and implementation evidence remain
-subsequent checkpoints. The committed [iroh-aware learning report](file:///home/rektide/src/iroh-aware/.design/readme-direction/learning0.gpt6a.md)
+The collaborator then rewrote the [iroh-aware README](file:///home/rektide/src/iroh-aware/README.md)
+around that direction (`b923869f`). Parent review retained the story and clarified
+the private/public key relationship and protocol-negotiation timing in a separate
+commit (`fc79b4c2`). Source-backed disagreement changed the binding claims rather
+than merely polishing them; the README now distinguishes reusable integration as
+a destination from today's Android experiment.
+
+These are steering and documentation results, not a delivered connection or proof
+that the whole method worked. The human's response to the revised introduction
+and the next implementation's evidence remain to be learned. The committed
+[iroh-aware learning report](file:///home/rektide/src/iroh-aware/.design/readme-direction/learning0.gpt6a.md)
 and [human-selected direction](file:///home/rektide/src/iroh-aware/.design/readme-direction/steering0.gpt6a.md)
 remain in the local product checkout; the commissioning session in this
 document's sources retains their conversational provenance. Product proposals
