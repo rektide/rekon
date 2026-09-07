@@ -55,10 +55,14 @@ covered by tests in [`src/agents/assemble.test.ts`](/src/agents/assemble.test.ts
 
 ## Migration Status: Deliberately Deferred
 
-**No production manifest exists, and the current hand-maintained
-[`/AGENTS.md`](/AGENTS.md) is untouched.** Only one fragment
-([`/constitution/GLOBAL.md`](/constitution/GLOBAL.md)) has been extracted so far. A production
-manifest that would overwrite the monolith must not be created until every
+**No production manifest exists; [`/AGENTS.md`](/AGENTS.md) remains a
+hand-maintained manuscript, not this tool's generated output.** At the original
+implementation checkpoint only the constitution fragment had been extracted.
+The 2026-09-06 [manual honing workshop](/design/rekon/context-weave/README.md)
+now has glossary-first candidates in [`constitution/GLOBAL.md`](/constitution/GLOBAL.md)
+and [`code/GLOBAL.md`](/code/GLOBAL.md), both with fragment metadata. Neither
+their existence nor that metadata establishes promotion or runtime selection.
+A production manifest that would overwrite the monolith must not be created until every
 section it contains has a declared `GLOBAL.md` source fragment; otherwise
 assembly would silently discard unpromoted operating rules.
 

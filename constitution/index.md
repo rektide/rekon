@@ -47,6 +47,10 @@ Added 2026-09-06 from the documents and the new Rekon work anchor
 - [Rekon as Phoenix](/design/rekon/phoenix0.gpt6a.md) — a source-cited reading of
   Fowler and a broader renewal direction. Exploratory, not a replacement
   constitution, project rename, or authorized regeneration program.
+- [Context-weaving workshop](/design/rekon/context-weave/README.md) — starts
+  from the earlier naming/constitution north star, puts a shared sense-map above
+  the fold, and maps all AGENTS material into three human-steered source lanes.
+  Reuses the existing maintenance epic with five records total; no live excision.
 
 ## Knowledge Organization And Identity
 
@@ -88,9 +92,10 @@ disposition are related choices, not interchangeable ones.
   metadata, manifest, validation, and CLI behavior. Its
   [migration status](/constitution/agents-assembly.md#agents-assembly-status)
   explicitly says that no production cutover has occurred.
-- [Constitution GLOBAL fragment](/constitution/GLOBAL.md) — a declared future
-  assembly input carrying the existing pilot wording, not a projection of the
-  new naming or hierarchy proposals.
+- [Constitution GLOBAL fragment](/constitution/GLOBAL.md) — now a glossary-first
+  honing candidate grounded in the pilot and prior naming rulings. It deliberately
+  overlaps the body while being evaluated; it is not a promoted fragment or an
+  acceptance of the disputed grammar/hierarchy proposals.
 - [Current AGENTS](/AGENTS.md) — still hand-maintained operational guidance;
   assembler availability does not change its source of authority by itself.
 

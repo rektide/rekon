@@ -122,3 +122,6 @@ compare it with what the reader actually did or said afterward.
   this association does not promote a new product conclusion.
 - [Phoenix inquiry](/design/rekon/phoenix0.gpt6a.md) **extends the question**
   from improving a task to preserving understanding across replacement.
+- [NAN restart briefs](/evidence/case-stories/nan-lastact/resume0.gpt6a.md)
+  **supports a human-launched return**: existing Burn B test receipts are
+  distinguished from not-yet-run practice trials and future hwsim integration.
