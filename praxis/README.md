@@ -88,6 +88,15 @@ and preserve the newly reachable paths rather than merely add another module.
 This complements Chase the future; it does not inherit the wireless case's
 product work anchor or turn its proposals into authorized implementation.
 
+## Related tactic: README-driven development
+
+[README-driven development](/praxis/readme-driven/README.md) starts with the
+experience we want the project to offer. A future-forward README makes that
+destination readable, distinguishes it from what works today, and equips a
+human and collaborating agents to steer the next coherent slice against real
+upstream possibilities. Its motivating use is the iroh-aware direction inquiry;
+it is draft guidance, not a new implementation mandate or installed skill.
+
 <a id="engine-the-practice"></a>
 
 ## Make the practice easier to do
@@ -124,6 +133,7 @@ register a CLI command, or change ambient AGENTS guidance.
   identity still matters. Their responsibilities remain separate.
 
 This is initial, human-directed draft guidance, not an independently validated
-method. The motivating work anchor remains **`wifi-ptp-now:wiptpn-modern-praxis`**
-in its native repository; this home is the general Rekon contribution, not a
-second product roadmap or ticket lifecycle.
+method. Chase the future's motivating work anchor remains
+**`wifi-ptp-now:wiptpn-modern-praxis`** in its native repository. Related practices
+retain their own motivating sources; this home connects the general Rekon
+contributions, not a second product roadmap or ticket lifecycle.
