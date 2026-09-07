@@ -143,3 +143,10 @@ The immediate fix is Mode 1 — remove the mutual exclusion guard from shorthand
 For `mary.my.id/atcute` specifically, adding `"tangled.org"` to `defaultHosts` would make shorthand produce `https://tangled.org/mary.my.id/atcute`, which would resolve successfully. The hostPath candidate `https://mary.my.id/atcute` would fail verification and be skipped.
 
 Mode 2 (round-robin) is the natural next evolution if the candidate space grows large and we want to control probe costs. It requires changing the Expander interface from `expand(): URL[]` to something like `expand(input: string): AsyncIterable<URL>` or `expand(input: string, depth: number): URL[]`.
+
+## Later composition inquiry
+
+The [ordered-pipeline memento](/design/ordered-pipelines/memento0.gpt6a.md) uses
+this historical expansion problem as a counterexample to universal first-match
+chains: candidate generation and authoritative policy need different composition
+laws. It does not update or re-verify this document's historical runtime claims.

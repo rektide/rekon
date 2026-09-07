@@ -131,6 +131,12 @@ by these documents.
   provenance, and deliberate refresh of independently maintained adaptations.
 - [Skillification](/design/skillify/README1.sol56x.md) — the proposal for turning
   knowledge into scoped, activatable capability; not a universal deployed contract.
+- [Session mementos](/design/session-mementos/README.md) — multi-session terminal
+  epilogues, explicit summary marks and agent marking tools; evolving capability
+  tickets and source-cited designs, not a shipped bookmark system.
+- [Ordered capability pipelines](/design/ordered-pipelines/README.md) — a memento
+  of reusable rule assembly and termination authority, preserving the differences
+  between policy, stream filtering and accumulating output.
 - [AGENTS assembly](/constitution/agents-assembly.md) — implemented fragment
   assembly and its separately governed production cutover.
 - [jj and Git](/vcs/jj/README.md), [JavaScript](/js/README.md), and
