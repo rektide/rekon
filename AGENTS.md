@@ -223,6 +223,7 @@ Include a `dev` target for watch/development mode (e.g. `wxt watch`).
 # jj / git
 
 - name dated feature bookmarks `<feature>-<YYYYMMDD>`. use the local calendar date when that line of work was last active (recover it from `jj op log` when resuming old work), rather than blindly using today's date.
+- commit author dates go stale the same way: the working-copy commit is author-stamped at *creation*, edits never restamp it. when the author date should say when the work was actually edited (the files' mtime), make the commit through git in the colocated repo (`GIT_AUTHOR_DATE=… git commit`, then any jj command auto-imports it) and `jj abandon` the stale change. jj itself cannot set timestamps: [`vcs/jj/rewrites.md`](/vcs/jj/rewrites.md#backdating-a-fresh-commit-stale-working-copy-dates)
 - use `jj commit -m "<description>" <files...>` to make commits as you go.
   - explicitly provide the files/directories that belong to this commit
   - you do not need to add files ahead of time; it will commit all changes.

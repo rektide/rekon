@@ -35,7 +35,7 @@ sources:
 
 Open this when you are **changing history** rather than reading it: duplicating, splitting, rebasing, unmixing, pinning dates, or dealing with bookmarks that a rewrite moved or diverged. For reading/interrogating, start at [`README.md`](/vcs/jj/README.md); for "what operation moved my ref", see [`oplog-forensics.md`](/vcs/jj/oplog-forensics.md).
 
-**Placement rule**: the mainstream case — *jj preserves author dates across rewrite operations, which is all replay work usually needs* — is stated in the [`README.md`](/vcs/jj/README.md#the-date-guarantee-author-dates). This file is the canonical home of everything aside from that: the full both-timestamp semantics, the committer-reset behavior, and the git-colocation recipe for the rare case where committer dates genuinely matter.
+**Placement rule**: the mainstream case — *jj preserves author dates across rewrite operations, which is all replay work usually needs* — is stated in the [`README.md`](/vcs/jj/README.md#the-date-guarantee-author-dates). This file is the canonical home of everything aside from that: the full both-timestamp semantics, the committer-reset behavior, and the git-colocation recipes — pinning committer dates on an existing commit (rare), or backdating a **fresh** commit whose working-copy date went stale (everyday; [below](#backdating-a-fresh-commit-stale-working-copy-dates)).
 
 Everything here was measured on **jj 0.40.0** — either in the reconstruction experiments (2026-09-03, [`experiments0`](/code/task-reconstruction/experiments0.glm53h.md)) or re-spot-checked at promotion in a scratch repo. The applied end-to-end procedure (snapshot → unmix → replay → verify) lives in [`code/task-reconstruction/README.md`](/code/task-reconstruction/README.md); this file is the mechanics underneath it.
 
@@ -56,6 +56,7 @@ jj 0.40 has **no CLI flag and no config key to set either timestamp** — checke
 | `jj split` (plain, both halves) | preserved from X | set to now |
 | `jj rebase -r X -d Y` (and descendants) | preserved | set to now |
 | set a date explicitly | **impossible in jj 0.40** | **impossible** |
+| `git add` + `GIT_AUTHOR_DATE=… git commit`, auto-import (fresh commit, colocated) | **set from git env** | now |
 | git `commit --amend --date` + `GIT_COMMITTER_DATE`, then `jj git import` | preserved from git | preserved from git |
 | any jj rewrite after that import | preserved | reset to now |
 | `jj git push` to a remote | exported as stored | exported as stored |
@@ -83,6 +84,28 @@ Traps measured while doing this:
 - `git commit --amend` without `--allow-empty` refuses when the amended commit would become empty (jj had already made that commit empty relative to its parent).
 - After the amend, the bookmark that pointed at the pre-amend jj commit showed as **`(divergent)`** until cleaned up — the git-side branch and the jj-side bookmark resolve to two commits with the same change id ([divergence guide](https://jj-vcs.github.io/jj/latest/guides/divergence/)).
 - A later `jj rebase` of the imported commit reset the committer timestamp to now while keeping the 2020 author date. **Lock dates last, in git, or accept committer drift.**
+
+## Backdating a fresh commit (stale working-copy dates)
+
+The everyday date problem is not rewriting old commits — it is that **the working-copy commit `@` is author-stamped when it is *created*** (by the previous `jj commit`/`jj new`), and snapshotting later edits into it **never restamps** (observed live: `@` created 01:06, files edited until 01:41, author stayed 01:06). A plain `jj commit` after a long or resumed editing session therefore ships a stale author date, even though jj alone cannot set timestamps at all.
+
+In a colocated repo, make the commit through git with the edit date and let jj import it:
+
+```sh
+stat -c '%y %n' <changed-files>        # latest mtime of the commit's files = the work's date
+git add <paths>
+GIT_AUTHOR_DATE='2026-09-04 01:41:41 -0400' git commit -m "<msg>"
+jj st      # auto-import: "Reset the working copy parent to the new Git HEAD." @ becomes an empty child, working copy clean
+jj abandon <old-@-change-id>   # clears the stale duplicate change left holding the same diff
+```
+
+Measured behavior (scratch rehearsal + real use, jj 0.40.0, 2026-09-07):
+
+- git HEAD in a colocated repo sits **detached at `@-`**, so `git add` + `git commit` builds the commit on exactly the right parent — no checkout dance needed.
+- The next jj command auto-imports the git commit and **reparents `@` onto it**; no `jj git import` call is required.
+- The git-made commit gets a **fresh change id** (no shared change id with the old `@`), so unlike the amend variant above there is **no divergence** — only a stale, undescribed duplicate change to `jj abandon`.
+- Committer date stays "now", which is git's honest author/committer split (written vs committed). Pin `GIT_COMMITTER_DATE` too only if both must match.
+- If git's configured identity differs from the repo's jj identity, pass it explicitly: `git -c user.name=… -c user.email=… commit …`.
 
 ## Split mechanics
 

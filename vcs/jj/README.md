@@ -188,7 +188,7 @@ jj log -r 'main@origin..<tip>' --no-graph \
   -T 'author.timestamp() ++ " " ++ description.first_line() ++ "\n"'
 ```
 
-Committer dates reset to now on every rewrite, and jj 0.40 cannot *set* either timestamp — that material, including the git-colocation recipe for pinning dates when committer timestamps genuinely matter, is kept as an aside in [`rewrites.md`](/vcs/jj/rewrites.md).
+Committer dates reset to now on every rewrite, and jj 0.40 cannot *set* either timestamp — that material, including the git-colocation recipes for pinning dates when committer timestamps genuinely matter or for backdating a fresh commit whose working-copy date went stale (`@` keeps its *creation* date; edits never restamp it), is kept as an aside in [`rewrites.md`](/vcs/jj/rewrites.md).
 
 ## PR & issue forensics (gh)
 
