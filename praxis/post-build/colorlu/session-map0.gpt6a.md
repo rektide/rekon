@@ -27,7 +27,35 @@ for the opportunities; this document records what happened afterward and how to
 continue without rereading the full conversation. It is not a new accepted
 roadmap or an authorization to implement every course below.
 
-## terminal gate: this session is wound down
+## selected continuation: a fresh Sol foundation-integration assignment
+
+After the completed wind-down below, the human explicitly asked to launch a
+fresh Sol to improve the foundation. The bounded selected course is **A: land
+and harden the completed foundations**, not the unanswered storage-seam A/B/C
+decision. The [new commission](/praxis/post-build/colorlu/integration-brief0.gpt6a.md)
+states scope, proof obligations and the stopping point.
+
+- Workspace: `~/src/luffect-foundation-integration` (`foundation-integration`).
+- Working merge parents: the final Sol tip `6e73f159` and Astra tip `b1f6f406`
+  recorded below. Automatic textual merge succeeded; semantic integration and
+  its verification are still pending.
+- Two attempts through the subagent tool failed with the harness error
+  `Effect.catchAll is not a function`; a child-session lookup found no new child.
+- A fresh CLI session was then submitted with `opencode2 run --agent sol-xhigh-gpt`,
+  title **Luffect foundation integration — fresh Sol**, from the integration
+  workspace, with the committed brief attached. No permission auto-approval or
+  service restart was used.
+- **Startup confirmed:** the CLI emitted a new session receipt and tool execution
+  in the integration workspace: `ses_f85fc5d5affeUpoAqPrgRNAi8r`.
+  Background shell receipt: `sh_07a03a131001m9RB3GcDxjMgdX`. The configured agent
+  was `sol-xhigh-gpt`; do not launch a duplicate.
+- CLI output is retained at
+  `/home/rektide/.local/share/opencode/shell/ff8f821dc25cf7052df5546d3da3f0227835bdf1/sh_07a03a131001m9RB3GcDxjMgdX.out`.
+
+The old agent sessions remain closed. This assignment does not advance default
+luffect, choose settings policy, authorize publication, or reopen every course.
+
+## completed predecessor wind-down
 
 - **Sol:** finished. Do not resume it for another assignment.
 - **Astra streams:** finished at a coherent committed foundation. Its final
