@@ -119,10 +119,21 @@ another grounding source. Those paths record the research commission, not a
 claim that all integrations already work.
 
 The immediate pressure was many competing threads, an accidental NDN direction,
-and an unclear identity story. The first application of this tactic is underway;
-its outcome is not yet evidence that the method worked. Product proposals and
-implementation lifecycle stay in iroh-aware. This home records the general
-tactic, not a second product roadmap.
+and an unclear identity story. The first teaching checkpoint challenged earlier
+socket-integration assumptions and distinguished generic NAN responsibilities
+from the application's iroh integration. It also surfaced a consequential
+consumer choice: embedded applications, reference-app users, or local processes
+using a broker. The human selected the first two; broker operation remains an
+option, not an accidental commitment.
+
+That is an early steering result, not a delivered connection or proof that the
+whole method worked. The README revision and implementation evidence remain
+subsequent checkpoints. The committed [iroh-aware learning report](file:///home/rektide/src/iroh-aware/.design/readme-direction/learning0.gpt6a.md)
+and [human-selected direction](file:///home/rektide/src/iroh-aware/.design/readme-direction/steering0.gpt6a.md)
+remain in the local product checkout; the commissioning session in this
+document's sources retains their conversational provenance. Product proposals
+and implementation lifecycle stay in iroh-aware. This home records the general
+tactic, not a second roadmap.
 
 ## Cross-references
 
