@@ -23,6 +23,15 @@ sources:
 <a id="forge"></a>
 # Forge
 
+> **Revision 1 (2026-09-07).** Hardened after a parent review of both the
+> Iggy case study and this guide: threads must be read to their *late*
+> comments (the #2854 approval lived past the disagreement), identity
+> mappings are inferred until authoritatively linked (never
+> "name+activity = verified"), merged/completed features can be currently
+> unshippable (`archive_expired` boot guard), engagement and readiness are
+> separate columns, and query logs must be JSON-safe with originals
+> preserved through repair.
+
 **Read an upstream project's tracker the way an archivist would, then judge
 it the way an engineer would.** A *forge* pass gathers the project's issues,
 pull requests, discussions, reviews, and role evidence under explicit
@@ -53,9 +62,10 @@ fan-out" by code at the pin, but the surrounding futures that made it matter
 to us (server-push, offset custody, connector guarantees) split into: merged
 but unreleased ([VSR / 0.9.0 release discussion](https://github.com/apache/iggy/discussions/3885)),
 in active review ([sink-controlled offset commit #3954](https://github.com/apache/iggy/pull/3954)),
-design-only ([deferred-response long polling #2854](https://github.com/apache/iggy/discussions/2854)),
+maintainer-approved but not yet implemented ([deferred-response long
+polling #2854 → approved issue #3470](https://github.com/apache/iggy/discussions/2854)),
 explicitly rejected ([queue semantics #3648](https://github.com/apache/iggy/discussions/3648)),
-and maintainer-sequenced-behind-something-else ([transport work after VSR,
+and maintainer-sequenced-behind-something-else ([per-request timeout, on
 #3419](https://github.com/apache/iggy/issues/3419)). One number or one label
 cannot hold that; a corpus plus a disciplined reading can.
 
@@ -98,11 +108,15 @@ checked.
 - **Full pagination where the question is "what exists."** All open issues
   were enumerated (`/issues?state=open`, 2 pages × 100, Link-header-driven)
   and reconciled against the repo's own `open_issues_count` (186 = 186).
-- **Sampling where the question is "what shape."** Merged PRs in a 180-day
+- **Sampling where the question is "what shape."** Merged PRs in a 185-day
   window were *counted* via search (682) but only *sampled* (100 most
-  recently updated); the volume and authorship claims were then
-  cross-checked against local `git log` (681 first-parent commits) — free,
-  complete, and independent of API budgets.
+  recently updated); authorship was then measured independently from local
+  `git log` with pinned commands (681 first-parent commits) — free,
+  complete for that population, and independent of API budgets. The two
+  counts are *different populations* (commit-date first-parent history vs
+  `merged_at` PR events): their closeness is consistency evidence, not a
+  completeness proof, and a forge report should say which population each
+  number comes from.
 - **Targeted depth over breadth.** Comment threads and review streams were
   fetched in full only for the ~20 threads that carried frontier questions.
 - **Honest absences.** The dev@iggy.apache.org mailing list (the official
@@ -111,9 +125,23 @@ checked.
   ([#3597](https://github.com/apache/iggy/discussions/3597)) rather than
   pretending the list was captured.
 
-Every fetch is one line in a `queries.jsonl` (timestamp, path, HTTP code),
-and the fetch helpers (`ghget.sh`, `ghsearch.sh`) are part of the corpus, so
-a future pass can re-run or extend rather than guess what happened.
+Every fetch should be one line in a `queries.jsonl` (timestamp, path,
+HTTP code), written through JSON-aware serialization — the Iggy corpus
+learned this by shipping an original log with 7 invalid lines (unescaped
+quotes in search queries from printf templating). The discipline that
+followed: preserve the invalid original as `queries.original-invalid.jsonl`,
+reconstruct losslessly with a documented script (records flagged
+`repaired: true`, never passed off as untouched primary), and rewrite the
+helpers to encode logs via `json.dumps`, fail if the output file already
+exists (explicit FORCE to overwrite), capture headers and curl errors, and
+be mock-testable without spending API calls. Also record what was *not*
+logged: the Iggy README lists every plain-curl HTML capture (discussions,
+roster, registries) as unlogged captures with their session date, because
+"probably fine" provenance is how phantom facts enter reports. And when a
+claim depends on the public branch, capture it live with provenance: the
+"local checkout equals origin/master" statement only became evidence when a
+logged `/commits/master` API call returned the same SHA; before that it was
+a cached local ref.
 
 ## Reading the tracker correctly
 
@@ -179,6 +207,12 @@ Treat each thread as a node and follow its links before judging it:
   (concurrent QUIC streams, merged 2024) mattered only until the legacy
   server it touched was deleted by the server-ng promotion; the current
   transport is serial by design and names pipelining as *future* work.
+- Merged-then-completed can still be *currently unshippable*: Iggy's 2024
+  archiver "closed as implemented" ([#290](https://github.com/apache/iggy/issues/290)),
+  yet at the 2026 pin enabling `archive_expired=true` **aborts boot** as an
+  unsupported setting (config validators reject it, with a regression
+  test). The config knob's existence is not the feature's existence;
+  verify against the pin, not the issue's closing comment.
 - A proposal "closing" into a bigger venue is progress:
   [#2927](https://github.com/apache/iggy/issues/2927) →
   [unified design discussion #3518](https://github.com/apache/iggy/discussions/3518).
@@ -192,25 +226,38 @@ Three different systems are constantly confused. Keep them separate:
 
 1. **Governance roles** (committer, PMC, chair) come from the project's
    official roster, not GitHub. Iggy's [team
-   page](https://iggy.apache.org/community/team/) lists 9 PPMC members and
-   12 committers with Apache IDs — that page is the citation, not a badge.
+   page](https://iggy.apache.org/community/team/) lists 1 chair, 8 PMC
+   members, and 11 committers with Apache IDs — that page is the citation,
+   not a badge. Check the naming against the platform's own status: Iggy
+   self-labels "PMC" while the ASF [Incubator
+   listing](https://incubator.apache.org/projects/) still shows it as a
+   podling (PPMC under ASF usage) — record the conflict rather than
+   harmonizing it by inference.
 2. **GitHub metadata** (`author_association`, Collaborator badge) is
    context: "has had a PR merged" or "has repo write access," respectively.
    The Iggy corpus carries a built-in falsification example: `numinnex` and
-   `slbotbm` hold Collaborator badges but appear on no Apache roster, while
-   most PMC members' day-to-day GitHub associations read mere CONTRIBUTOR.
+   `slbotbm` hold Collaborator badges but do not appear on the *captured
+   team-page roster* — which is a statement about that capture, not a claim
+   that they hold no Apache role anywhere. Meanwhile most PMC members'
+   day-to-day GitHub associations read mere CONTRIBUTOR.
 3. **Inferred maintainership** from merged work (e.g., Grzegorz Koszyk's 47
-   core-crate commits in 180 days) is a separately labeled inference —
+   core-crate commits in the window) is a separately labeled inference —
    strong, but say what it is.
+   Comment counts, stars, and assignments are never role evidence. Bots
+   are identified and excluded from human claims — dependabot authored 142
+   of Iggy's 681 first-parent commits in the measured window, which would
+   otherwise make it the project's second most active "engineer."
 
-Name-to-identity mappings (which GitHub account *is* this Apache committer)
-should be verified by name + activity overlap and recorded with their basis
-(Iggy: `derived/people.json` marks `hubcio` = Hubert Gruszecki as verified,
-and leaves Koszyk's GitHub account honestly unmapped). Comment counts,
-stars, and assignments are never role evidence. Bots are identified and
-excluded from human claims — dependabot authored 142 of Iggy's 681 merged
-commits in the window, which would otherwise make it the project's second
-most active "engineer."
+Name-to-identity mappings (which GitHub account *is* this Apache
+committer) are **inferred until an authoritative link exists** (a profile
+explicitly tying the accounts, an @apache.org address in commits, or the
+project's own mapping). Name + activity overlap is the *basis of an
+inference*, recorded per row with its evidence — the Iggy `people.json`
+labels `hubcio` = Hubert Gruszecki as *inferred (strong)* on git-author +
+activity overlap, keeps `ryerraguntla` one notch stronger because a git
+author string equals the login exactly, and leaves Grzegorz Koszyk's
+GitHub account *unmapped* rather than guessed. Never place a speculative
+login in a data field; `null` plus basis is the honest state.
 
 ## Substantive engagement vs popularity
 
@@ -224,13 +271,25 @@ Record *support and dissent as arguments*, not tallies. From the Iggy pass:
   would like to incorporate in the near future," and the top committer
   pushed back on vagueness — capturing the objection matters more than the
   +1 that opened the thread.
-- Lively disagreement *inside* the maintainers: on
+- Lively disagreement *inside* the maintainers, then resolution: on
   [#2854](https://github.com/apache/iggy/discussions/2854) the top committer
-  rejected a collaborator's WASM-notification idea in favor of long polling;
-  both positions are recorded, and neither is yet "the roadmap."
+  rejected a collaborator's WASM-notification idea in favor of long
+  polling — and then, in the *same thread*, explicitly approved a
+  contributor's scoped implementation issue
+  ([#3470](https://github.com/apache/iggy/issues/3470)) with the founder
+  seconding. An early-thread read would report "still contested"; the
+  late comments record approval, a wire-form refinement (u64
+  microseconds), a community fork prototype, and two design corrections.
+  **Read threads to the end, and date every characterization** — this
+  lesson was learned the hard way when a parent review of the Iggy report
+  itself found the approval the first pass had missed.
 - Silence is data: a well-formed proposal with zero maintainer response
   ([message filtering #3428](https://github.com/apache/iggy/discussions/3428))
-  is *low signal*, not *negative* signal — say so rather than guessing.
+  is *unanswered*, which is absence of signal, not negative signal — say so
+  rather than guessing. Don't let a "low engagement" bucket silently merge
+  "nobody replied" with "a maintainer said no": rejection is a recorded
+  position ([EOS #426](https://github.com/apache/iggy/issues/426)),
+  silence is not.
 
 ## Assessment: separate dimensions, then triage
 
@@ -239,25 +298,40 @@ In Iggy terms:
 
 | Dimension | Question | Iggy illustration |
 |---|---|---|
-| **Engagement** | Who is actually carrying it, with what effort? | #3975: 39 review events, two maintainers. #3428: nobody replied. |
-| **Readiness** | Idea / discussion / RFC / open PR / merged / released? | VSR: merged, unreleased. Long polling: design text only. Tiering: explicitly deferred "until after VSR." |
+| **Engagement** | Who is actually carrying it, with what effort? | #3975: 39 review events, two maintainers. #3428: nobody replied. #2854: maintainer approval + contributor implementation issue. |
+| **Readiness** | Idea / unanswered / discussion / approved issue / open PR / merged / released? | VSR: merged, not on the captured release listing. Long polling: approved issue #3470, no wire field at pin. Tiering: explicitly deferred "until after VSR." |
 | **Relevance** | Does it change *our* design, whoever wants it? | QUIC pipelining is low upstream urgency but directly shapes our ingress runner's concurrency contract. |
-| **Risk** | What does trusting it cost if it stalls or breaks? | Core carried by ~2-3 people (bus factor); 0.9.0 break means probes must pin exact edge pairs and may not transfer. |
+| **Risk** | What does trusting it cost if it stalls or breaks? | Core activity concentrated in ~2-3 authors in the measured slice (authorship, not measured bus factor); 0.9.0 break means probes must pin exact edge pairs and may not transfer. |
 
 Then triage with **interpretable levels and stated bases**, never a magic
-numeric score. The Iggy report used high / medium / low / rejected /
-unclear, each with its evidence list attached — a reader can disagree with
-the level because they can see the basis. "High" meant *merged code at the
-pin plus named verified-role carriers*; "medium" meant *open PR or design
-with substantive maintainer engagement*; "rejected" required a maintainer
-saying so on the record.
+numeric score — and keep engagement and readiness as separate columns
+rather than one "signal" grade, so an approved-but-unimplemented design
+(#2854/#3470) is not flattened into either "real" or "vapor." A revision of
+the Iggy report did exactly this after review exposed the conflation.
+
+A workable priority method for the *consumer* side, illustrated with Iggy:
+
+1. **Relevance** — would this thread change a decision we actually have to
+   make? (Long polling changes our poll-loop contract; SHM transport does
+   not, we run off-host.)
+2. **Urgency of decision** — does our design fork on it *soon*? (The 0.9.0
+   protocol break gates every probe result; RocketMQ-style filtering
+   doesn't gate anything we're building.)
+3. **Leverage vs effort of watching** — cheap watch-conditions (an open
+   PR's merge + release) beat deep study of speculative threads.
+4. **Uncertainty discount** — engagement and readiness bound how much the
+   thread's promises are worth today.
 
 One more separation the Iggy case forced: **research priority is not
 upstream priority.** Iggy's maintainers sequence VSR → SDK migration →
 everything else; our ingress questions ranked connector custody and QUIC
 concurrency first even though upstream defers both. Report both orderings:
 what the project will build next, and what matters to the consumer anyway,
-so nobody mistakes their queue for ours.
+so nobody mistakes their queue for ours. And when evidence changes,
+*re-price* — do not treat "PR merged" alone as proof of anything: #3954
+merging would not by itself make the connector sink receipt-safe for cell
+delivery; that re-pricing also needs the DLQ design resolved and our own
+custody contract honored.
 
 ## Limits, noise, and ethics
 
@@ -293,7 +367,8 @@ Translate, don't transcribe:
   (`intrlnk-iggy-ingress-spike`). The corpus is citable backing, not a
   backlog copy.
 - **Encode futures as conditions, not dependencies.** "Re-price the
-  connector sink path *when* #3954 merges and releases" watches upstream
+  connector sink path *when* #3954's evidence changes — merge plus release,
+  or the DLQ design resolving" watches upstream
   without fabricating a dependency on volunteers we don't employ.
 - **Don't mark open questions settled.** Fan-out semantics, offset
   durability, and delivery model each got "as of pin/capture" phrasing with
