@@ -51,9 +51,12 @@ the drafts exist.
    ownership and review gates.
 3. [Rekon marking proposal](/design/session-mementos/marking0.gpt6a.md) — exact and
    child targets, pending next-response intent, external tool feasibility and gaps.
-4. [Cotail bookmark proposal](file:///home/rektide/src/cotail/.design/bookmarks/summary0.gpt6a.md)
+4. [Cotail key/value links and tools](file:///home/rektide/src/cotail/.design/bookmarks/links-tools0.gpt6a.md)
+   — latest proposed reference-valued metadata contract and P1 callable-tool
+   slices; host runtime choice remains under compatibility verification.
+5. [Cotail bookmark proposal](file:///home/rektide/src/cotail/.design/bookmarks/summary0.gpt6a.md)
    — verified source/channel limits and selectable `rektide_cotail_*` storage.
-5. [OpenCode display evidence](file:///home/rektide/src/opencode-term-v2/.design/term-v2/multi-session-evidence0.gpt6a.md)
+6. [OpenCode display evidence](file:///home/rektide/src/opencode-term-v2/.design/term-v2/multi-session-evidence0.gpt6a.md)
    — retained batch seam, shared tabs, loaded-history limitations and test plan.
 
 ## Executable progress

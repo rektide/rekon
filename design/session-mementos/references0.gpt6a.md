@@ -160,6 +160,11 @@ canonical links even if an optional resolver is unavailable.
 
 ## Cross-references
 
+- [Cotail key/value links and tools](file:///home/rektide/src/cotail/.design/bookmarks/links-tools0.gpt6a.md)
+  — owner proposal now spells out plain JSON versus exact Target values, bounded
+  outgoing/backlink queries and independently deliverable read/exact-write tools.
+  The proposed host adapter still needs runtime verification; the namespace
+  application does not endorse a subprocess or universal reference schema.
 - [Constitutional reading map](/constitution/index.md) — distinguishes the pilot,
   human rulings, later proposals and unresolved decisions. This application must
   not silently upgrade any of them into accepted implementation.
