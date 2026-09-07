@@ -62,8 +62,9 @@ The [pure selector checkpoint](file:///home/rektide/src/opencode-term-v2/.design
 implements ordered narrowing and terminating authority in OpenCode commit
 `1b1ff39bb787`. The [parent and independent review](file:///home/rektide/src/opencode-term-v2/.design/term-v2/selection-review0.gpt6a.md)
 found no actionable Standards or Spec issues and accepts the bounded kernel as
-the next integration basis. Focused tests pass; the package typecheck has an
-unchanged Core blocker. **The visible epilogue is still unchanged**: inventory,
+the next integration basis. The full TUI suite passed once: **1,291 passed,
+4 skipped, 0 failed**; the package typecheck has an unchanged Core blocker.
+**The visible epilogue is still unchanged**: inventory,
 batch output, lookers, visit recording and bookmarks remain separate work.
 
 ## Related inquiry
