@@ -69,3 +69,6 @@ flowchart LR
   when a plan's output gets reviewed.
 - [`/code/task-reconstruction/README.md`](/code/task-reconstruction/README.md)
   — when a plan should restart a line rather than extend it.
+- [Workflow diagrams](/praxis/workflow-diagrams/README.md) — applies consistent
+  naming to Mermaid nodes and shows feedback, evidence, conditional courses, and
+  the distinction between informing relations and actual blocking dependencies.

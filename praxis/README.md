@@ -97,6 +97,14 @@ human and collaborating agents to steer the next coherent slice against real
 upstream possibilities. Its motivating use is the iroh-aware direction inquiry;
 it is draft guidance, not a new implementation mandate or installed skill.
 
+## Related practice: workflow diagrams
+
+[Workflow diagrams](/praxis/workflow-diagrams/README.md) make actions, evidence,
+feedback, release conditions, and preserved options visible as named Mermaid
+maps. The PTP/Sol rotation case shows why a scoped negative capability result
+can inform tooling work without blocking independent product work. This applies
+the existing naming and evidence-gate policies; it creates no second tracker.
+
 <a id="engine-the-practice"></a>
 
 ## Make the practice easier to do
