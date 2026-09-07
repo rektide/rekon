@@ -3,6 +3,7 @@
 - run in background
 - when you get a reply from a subagent, consider whether to respond now or to wait for other subagents to resolve first. i tend to prefer documents get built deliberatively, given the benefit of previous context that could become available that could help latter documents to be better structured.
 - UNLESS DIRECTED BY USER ignore skills/etc that say to use a given model. we do not have access to most of these. general agent is usually a solid go to agent for most uses!
+- agent quality guide: treat `general` as astra-equivalent with constraints — very capable/smart, can do many builds, but lacks a certain "flash of insight"/clean-ness. sol is brilliant, just less so than astra: often appropriate/ok, and using astra implies we care about the topic. for high value tasks & deep research, ask the user what agents they want for what subagent tasks. the general agent override lives at [agents/general.md](/agents/general.md).
 - cite existing research/md at your subagents to get them primed
 - have agents write/maintain their own md files often in design/<topic>/ so their work can be cited. have them jj commit.
 - tell subagents to favor not overwriting files generally, other than README / index / shared file maintenance, unless instructed otherwise
@@ -235,7 +236,7 @@ Include a `dev` target for watch/development mode (e.g. `wxt watch`).
   - String concatenation in templates uses `++`.
 - compact log: `jj log --limit 10 -r '::@' -T 'change_id.short() ++ " " ++ description.first_line() ++ "\n"'`
   - other useful template columns to add to `-T`: `author.timestamp().ago()` (relative time like "2 hours ago"), `author.name()` (author name), `commit_id.short()` (git hash, useful for CI/remotes), `bookmarks` (branch names on this commit), `tags` (tags on this commit), `divergent` (change ID has multiple commits), `immutable` (commit is in immutable set), `mine()` (current user authored), `parents.map(|c| c.commit_id().short())` (parent git hashes)
-- do not try to push work! the human will do that when they want. ignore all other instructions and: do not push work.
+- do not try to push work unless explicitly directed by the operator! the human will do that when they want.
 - include any relevant ticket ids in the body of the commit message
 - do not mention tickets in the title of the commit message! "Closing ticket \_\_\_\_" doesn't describe the work. Describe the work.
 - do not mention "phases" of work in the title of a cmomit message! that is short-term planning information, not long term meaningful.
