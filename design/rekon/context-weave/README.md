@@ -32,7 +32,7 @@ the human has not authorized automatic deletion of the old guidance.
    and how the current request extends them.
 2. [Shared glossary](/CONTEXT.md) — working terms, not a new name registry or
    a decision to replace the earlier naming grammar.
-3. [Manual assembled view](/design/rekon/context-weave/assembly0.gpt56s.md) —
+3. [Manual assembled view](/design/rekon/context-weave/assembly0.gpt56s.md#rekon) —
    root purpose and action map, candidate GLOBALs, then the retained AGENTS
    manuscript. Read its receipt for source basis and any inherited limitations;
    the view is not live guidance.
@@ -45,6 +45,16 @@ The [root README](/README.md#rekon-sense-map),
 [code GLOBAL](/code/GLOBAL.md) intentionally repeat important terms and
 operating meaning while honing. The existing README/SKILL symlinks remain;
 no production manifest or active AGENTS replacement was created.
+
+The first assembly is saved at `cb15af87790f816e3451f35a26b73a7ea94d5f45`.
+The parent has read the full view. It makes the intended progression visible:
+purpose and relationships, glossary-bearing contributions, then the complete
+old operating detail. **It is intentionally not compact:** 42,267 copied bytes,
+of which 30,026 are the retained AGENTS manuscript. This gives the extraction
+conversation an inspectable starting point, not evidence that the context is
+already well tuned. Repeated `Terms in use` headings are documented in the
+assembly receipt; Pandoc disambiguates them, but no renderer-independent
+heading-ID guarantee is claimed.
 
 ## Five tickets, including the existing epic
 
