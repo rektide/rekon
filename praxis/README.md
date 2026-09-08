@@ -77,6 +77,16 @@ remain usefully ambiguous while the next action has a clear boundary.
   selected implementation priority and preserved hardware-gated options.
   It is a source-grounded case seed, not a completed timing experiment.
 
+## Related practice: candidates
+
+[Candidates](/praxis/candidates/README.md) gives meaningfully different
+possibilities a fair hearing before choosing a course. The human explicitly
+wants more than a single predetermined answer: develop candidates, compare
+their strengths and costs, and retain worthwhile alternatives. Regathering
+and focusing after expansion are part of the practice, not a rejection of it.
+This first account is draft guidance; it does not require a multi-agent wave
+for every choice.
+
 ## Related practice: after the build
 
 [Post-build possibility gathering](/praxis/post-build/README.md) starts from a
