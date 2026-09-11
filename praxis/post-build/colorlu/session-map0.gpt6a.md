@@ -374,3 +374,29 @@ The durable owner is this Rekon map, not the temporary note.
 [processing]: https://github.com/rektide/luffect/blob/b1f6f40657e9d0810c0dcc2f6599f51df02cbdc8/luffect/internal/stream/processing.lua#L21-L31
 [dispatch]: file:///home/rektide/src/luffect/.design/foundations/dispatch0.gpt6a.md
 [first-light]: https://github.com/rektide/colorlu/blob/222bd7ce472fee9f1f5cc1ce5796b82d42f19762/.design/first-light/first-light.gpt6astra.md
+
+
+## addendum: integration reviewed and receipt corrected (2026-09-11)
+
+The fresh Sol integration worker completed its bounded assignment
+(`88769a8086` implementation, `50a502ef` worker checkpoint). The parent then
+reviewed the delta and **corrected one provenance defect**: the worker's
+colorlu run loaded default luffect through colorlu's `.busted` lpath despite
+supplying `LUA_PATH`. A targeted helper with an explicit source assertion
+(`debug.getinfo(Effect.runSync,'S').source`) re-established the result against
+the actual integration workspace: **22/22 workflow tests, verified source**.
+The integrated real-host ingress check also passed (4 admitted / 124 rejected /
+max queued 4), all 47 lazy namespace exports are now declared in the rockspec,
+and the suites reported 707/707 on Lua 5.1, LuaJIT, and Lua 5.4.
+
+The review document and corrected checkpoint live at
+`.design/foundation-integration/review0.gpt6a.md` in the integration workspace.
+**`foundation-integration-20260906` now points at the reviewed tip
+`muxluuxr` (e9e0e9b0)**, not the pre-review worker checkpoint. Default luffect
+and `main` remain untouched; nothing was pushed.
+
+Loose ends found while reviewing: the worker's attempted upstream `git show`
+checks ran in the wrong repositories (recorded, not counted as inspection);
+the checkpoint's original model attribution was corrected to the configured
+agent; two test failures at merge time (705/2) were the double-count the
+removal fixed — the focused processing suite then passed.
