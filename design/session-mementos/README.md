@@ -44,16 +44,17 @@ the drafts exist.
 
 ## Read in this order
 
-1. [Capability checkpoint](/design/session-mementos/checkpoint0.gpt6a.md) — latest
-   human refinements, bounded selector authorization, ticket split and contract
-   disagreements still needing review.
+1. [Retained multi-session implementation](file:///home/rektide/src/opencode-term-v2/.design/term-v2/multi-session-implementation0.gpt56sx.md)
+   — current display/reporting code, scoped registries and verification. The
+   [capability checkpoint](/design/session-mementos/checkpoint0.gpt6a.md) preserves
+   the earlier ticket split and unresolved bookmark-contract discussion.
 2. [Initial brief](/design/session-mementos/brief0.gpt6a.md) — original request,
    ownership and review gates.
 3. [Rekon marking proposal](/design/session-mementos/marking0.gpt6a.md) — exact and
    child targets, pending next-response intent, external tool feasibility and gaps.
 4. [Cotail key/value links and tools](file:///home/rektide/src/cotail/.design/bookmarks/links-tools0.gpt6a.md)
-   — latest proposed reference-valued metadata contract and P1 callable-tool
-   slices; host runtime choice remains under compatibility verification.
+   — proposed reference-valued metadata and exact-write work; the direct read
+   tool/RPC was subsequently implemented and reviewed in Cotail.
 5. [Cotail bookmark proposal](file:///home/rektide/src/cotail/.design/bookmarks/summary0.gpt6a.md)
    — verified source/channel limits and selectable `rektide_cotail_*` storage.
 6. [OpenCode display evidence](file:///home/rektide/src/opencode-term-v2/.design/term-v2/multi-session-evidence0.gpt6a.md)
@@ -61,14 +62,19 @@ the drafts exist.
 
 ## Executable progress
 
-The [pure selector checkpoint](file:///home/rektide/src/opencode-term-v2/.design/term-v2/selection-checkpoint0.gpt6a.md)
-implements ordered narrowing and terminating authority in OpenCode commit
-`1b1ff39bb787`. The [parent and independent review](file:///home/rektide/src/opencode-term-v2/.design/term-v2/selection-review0.gpt6a.md)
-found no actionable Standards or Spec issues and accepts the bounded kernel as
-the next integration basis. The full TUI suite passed once: **1,291 passed,
-4 skipped, 0 failed**; the package typecheck has an unchanged Core blocker.
-**The visible epilogue is still unchanged**: inventory,
-batch output, lookers, visit recording and bookmarks remain separate work.
+The [retained multi-session implementation](file:///home/rektide/src/opencode-term-v2/.design/term-v2/multi-session-implementation0.gpt56sx.md)
+now connects the earlier selector kernel to current/visible-tab inventory, separate
+global/per-session reporter registries, retained publication, live rule edits and
+atomic exit output. Sol implemented it and applied parent/GX review corrections;
+the final full TUI suite reported **1,302 passed, 4 skipped, 0 failed**. Real
+exit/signal, narrow/wide and live-expiry checks passed. The TUI typecheck still
+has the unchanged Core FFI blocker; no live deployment or push is claimed.
+
+The user deferred exit-time collection. Its
+[callback design](file:///home/rektide/src/opencode-term-v2/.design/term-v2/callbacks0.gpt6a.md)
+was written after this verified implementation and adds no runtime. Visit records,
+Q/response excerpts, Cotail summaries and bookmark integration remain separate
+work; the Cotail durable foundation is still at its schema checkpoint.
 
 ## Related inquiry
 
