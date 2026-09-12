@@ -70,11 +70,14 @@ the final full TUI suite reported **1,302 passed, 4 skipped, 0 failed**. Real
 exit/signal, narrow/wide and live-expiry checks passed. The TUI typecheck still
 has the unchanged Core FFI blocker; no live deployment or push is claimed.
 
-The user deferred exit-time collection. Its
-[callback design](file:///home/rektide/src/opencode-term-v2/.design/term-v2/callbacks0.gpt6a.md)
-was written after this verified implementation and adds no runtime. Visit records,
-Q/response excerpts, Cotail summaries and bookmark integration remain separate
-work; the Cotail durable foundation is still at its schema checkpoint.
+The user subsequently authorized the deferred exit-time collection direction. Its
+[bounded callback implementation](file:///home/rektide/src/opencode-term-v2/.design/term-v2/callbacks-implementation0.gpt6a.md)
+dispatches one preselected-Session batch, waits up to four shared seconds through
+`waitUntil` and an `AbortSignal`, and reuses retained handles for output. The full
+TUI suite reported **1,306 passed, 4 skipped, 0 failed** after review corrections.
+Visit records, Q/response excerpts, Cotail summaries and bookmark integration
+remain separate work; the Cotail durable foundation is still at its schema
+checkpoint.
 
 ## Related inquiry
 
