@@ -28,13 +28,13 @@
 # Documentation / reference materials
 
 - make markdown links to the canonical url for entries, for example [`/README.md`](/README.md) for local files or [`rektide/compfuzor` `README.md`](https://github.com/rektide/compfuzor/blob/main/README.mdL10-20) for a remote canonical reference to lines 10-20 of `README.md` in `rektide/compfuzor` project, file `README.md` (for the main branch). the org/repository isn't required each time but should be explicitly included in the link text if we haven't been talking about that org/repository recently.
-- either `.test-agent/<topic>/` or `design/<topic>/` (sometimes `doc/`, rarely `docs/`) are typical places for docs, the first being gitignored, and used before we are ready to "promote" (move out of gitingore and commit) the work.
+- `doc/<topic>/` is the go-to for maintained topic docs; `design/<topic>/` holds inquiry (waves, drafts, proposals); `.test-agent/<topic>/` stays gitignored scratch for work not ready to promote. promotion synthesizes accepted inquiry into `doc/` deliberately — no bulk moves of existing design/ trees. postures and promotion: [design and documentation](/constitution/README.md#doc-constitution-lifecycle).
 - a technique that can be helpfu: an addendum. this ia new top level h1 section at the end of a markdown that packages new information / in the document, but not inline. use pandoc to write OKF tags for the title. you are free to mix inline edits and addendum in to commits!
 - the `summarizer` tool is WIP and not done yet. but will latter be a tool to write and read INDEX files in documentation directories to be aware of what's included in the directory.
 
 ## wave
 
-often we want to do a "wave" of review, where multiple llms produce their own independent output for the wave. this is typically in design/<short-feature-name>/ , usually two maybe three words. sometimes .test-agent/. we'll end up with a bunch of design/<feature>/<wave>.<model-name>.md files.
+often we want to do a "wave" of review, where multiple llms produce their own independent output for the wave. this is typically in design/<short-feature-name>/ , usually two maybe three words. sometimes .test-agent/. we'll end up with a bunch of design/<feature>/<wave>.<model-name>.md files. waves are inquiry — they live in design/ — and accepted explanation promotes to doc/<topic>/ as a synthesis, not a move.
 
 - common waves:
   - `init` for initial exploration / problem write ups
