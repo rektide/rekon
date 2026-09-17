@@ -115,6 +115,17 @@ maps. The PTP/Sol rotation case shows why a scoped negative capability result
 can inform tooling work without blocking independent product work. This applies
 the existing naming and evidence-gate policies; it creates no second tracker.
 
+## Related practice: ticket pointers
+
+[Ticket pointers](/praxis/ticket-pointers/ticket-pointers0.glm53fx.md) keep each
+work ticket a curated pointer at the two to four documents that currently best
+explain its work, moved to the tip as design waves, roadmaps, and check-ins
+emerge. A ticket is a pointer to the tip, not a snapshot; pointer rot is the
+named failure mode, and an explorer for ticket link history is a filed desire
+(`rekon-ticket-link-explorer`), not an installed tool. This uses the existing
+beads append-notes mechanics and the balanced ticket coordination division of
+labor; it creates no second tracker.
+
 <a id="engine-the-practice"></a>
 
 ## Make the practice easier to do
