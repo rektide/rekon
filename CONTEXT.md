@@ -132,6 +132,25 @@ _Do not conflate with:_ global authority or proof that the contribution is loade
 **Context pointer:** A reference that explains when and why its deeper material
 should enter attention.
 
+<a id="bookmark"></a>
+**Bookmark:** A durable, owner-native mark on session material worth returning
+to: a resolvable session target, a note saying why it exists, and free-form
+tags saying what kind of mark it is. Practice and engine:
+[bookmarking](/praxis/bookmarking/README.md).
+_Do not conflate with:_ the session itself, or acceptance of the marked work.
+
+<a id="bookmark-tag"></a>
+**Bookmark tag:** A free-form, case-sensitive label on a bookmark. Seeds such
+as `crossroads` or `review` are recorded convention, not enforced vocabulary;
+the live inventory is cotail's tag listing. Seed meanings:
+[bookmarking's glossary](/praxis/bookmarking/README.md).
+
+<a id="crossroads"></a>
+**Crossroads:** A decision-dense junction in an effort — verified ground, open
+paths, and the paths that lead back — marked while the reasoning is still
+inspectable. Anchor example: [ocyc's fleet junction](file:///home/rektide/src/ocyc/design/fleet/crossroads0.glm53max.md).
+Home: [bookmarking](/praxis/bookmarking/README.md).
+
 ## Honing and commitment
 
 <a id="honing"></a>

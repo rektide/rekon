@@ -126,6 +126,19 @@ named failure mode, and an explorer for ticket link history is a filed desire
 beads append-notes mechanics and the balanced ticket coordination division of
 labor; it creates no second tracker.
 
+## Related practice: bookmarking
+
+[Bookmarking](/praxis/bookmarking/README.md) marks the session material worth
+returning to — decision-dense junctions, explicit summaries, review and design
+gates — as durable, owner-native bookmarks in cotail's landed engine, with a
+seed tag glossary (`crossroads`, `summary`, `review`, `design-gate`) whose
+canonical meanings stay cotail-side (`doc/bookmarks/tag-glossary.md`, ticket
+`cotail-bookmark-praxis`). One naming caution for readers of this tree:
+"praxis" also names [doc/praxis.glm.md](file:///home/rektide/src/doc/praxis.glm.md),
+the xstate-as-execution-model practice guide — a **domain technique guide** in
+the doc repo, not a Rekon action posture. Rekon's `praxis/` holds the latter
+sense; the two share a word, not a home.
+
 <a id="engine-the-practice"></a>
 
 ## Make the practice easier to do
