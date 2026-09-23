@@ -169,12 +169,43 @@ checkpoints. A separate
 returns motivation, verified fit, and open needs upstream without making Kubeless
 the owner of Cyclrs policy or claiming a dependency that has not been implemented.
 
-This case is **in progress**. FX hit a usage limit before returning its initial
-research; paired quality conclusions have not been earned. The case's source
-briefs, outputs, and eventual synthesis stay
+This case is **in progress**. FX resumed after a capacity limit; both paired source
+studies and focused corrections are now available. The
+[journal comparison](file:///home/rektide/src/cyclrs/design/architecture-refresh/journal-syn0.gpt6astra.md)
+found an important low-code alternative in FX's account—stock telemetry plus
+required exact read-back—while Luna better separated synchronization and persistence
+guarantees. The [timer comparison](file:///home/rektide/src/cyclrs/design/architecture-refresh/timer-syn0.gpt6astra.md)
+found useful FX implementation detail but stronger initial guarantee calibration
+in Luna; even a correction mistakenly turned one creation call into atomic setup.
+These judgments are scoped to the actual reports, not model-family rankings.
+
+Three complementary design axes are committed, and a fresh independent design
+assessment pair is reviewing their joins. The parent integration draft is withheld
+from that pair: cross-review of the candidates is intentional, ratification of the
+parent's preferences is not. No compiled integration or promoted crate map is
+claimed. The case's source briefs, outputs, and eventual synthesis stay
 [Cyclrs-side](file:///home/rektide/src/cyclrs/design/architecture-refresh/README.md).
 This praxis records the method and its current motivation, not a second product
 roadmap or an invented success story.
+
+## Lessons from the still-running case
+
+- **A correction is not proof.** Check whether a repaired sentence imports a new
+  unsupported guarantee. “One request” and “transactional setup” can still differ.
+- **Use counterexamples, not bigger taxonomies.** An older valid snapshot with a
+  missing newer tail exposed an evidence limit more clearly than adding another
+  generic failure state. The human's “systemd is the supervisor” direction then
+  simplified recovery ownership without changing that factual limit.
+- **Keep original and revised evidence distinguishable.** A source review that
+  supplied the missing insight is not evidence that the original author discovered
+  it independently. Compare initial calibration and revision behavior separately.
+- **Recovery must preserve authorship and inputs.** Restart/duplicate-dispatch
+  artifacts produced different texts at the same path. Commit both rather than
+  discard one; designate exact assessment inputs; use unique output paths; verify
+  file contents instead of assuming a final summary describes the current bytes.
+  Cancellation acknowledgement alone did not prevent a previously running task
+  from later producing output in this case. This is an orchestration lesson, not
+  an architectural advantage earned by adding agents.
 
 # How to tell whether parallax helped
 
