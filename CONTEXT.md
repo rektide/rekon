@@ -76,6 +76,18 @@ repositories, and work items without making those things one identity.
 **Intent front:** An active line along which an effort's desired outcomes,
 obligations, or ownership are being developed or reconsidered.
 
+<a id="opportunity-front"></a>
+**Opportunity front:** A coherent possible direction of work with a
+recognizable payoff. It may become an active intent front, but naming it is
+not selection, a ticket, or implementation authorization. Practice:
+[fronts and horizons](/praxis/fronts/README.md).
+
+<a id="payoff-horizon"></a>
+**Payoff horizon:** The adoption, composition, evidence, or commitment
+separating work from its useful return—not a calendar estimate. A tactical
+move can have both immediate and strategic yield. Practice:
+[fronts and horizons](/praxis/fronts/README.md#distinctions).
+
 <a id="work-anchor"></a>
 **Work anchor:** The native work item holding an undertaking's scope,
 lifecycle, decisions, and links to the records through which it proceeds.
@@ -150,6 +162,9 @@ the live inventory is cotail's tag listing. Seed meanings:
 paths, and the paths that lead back — marked while the reasoning is still
 inspectable. Anchor example: [ocyc's fleet junction](file:///home/rektide/src/ocyc/design/fleet/crossroads0.glm53max.md).
 Home: [bookmarking](/praxis/bookmarking/README.md).
+For equipping the choice at that junction, see
+[fronts and horizons](/praxis/fronts/README.md#crossroads-relation): strategic
+options and tactical moves, compared across different payoff horizons.
 
 ## Honing and commitment
 

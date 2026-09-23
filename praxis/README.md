@@ -106,6 +106,16 @@ and preserve the newly reachable paths rather than merely add another module.
 This complements Chase the future; it does not inherit the wireless case's
 product work anchor or turn its proposals into authorized implementation.
 
+## Related practice: fronts and horizons
+
+[Fronts and horizons](/praxis/fronts/README.md) compares strategic directions
+with tactical next moves at different payoff horizons: put the foundation
+to use, compose adjacent capabilities, or change the offering. It asks what
+each direction buys and separates a direct practical recommendation from
+preserved options. This equips the choice at a crossroads; bookmarking makes
+that junction recoverable. Horizons are not delivery dates, and a front map
+is not an automatically authorized roadmap.
+
 ## Related tactic: README-driven development
 
 [README-driven development](/praxis/readme-driven/README.md) starts with the

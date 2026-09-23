@@ -183,6 +183,10 @@ offering proved valuable.
 
 ## Cross-references
 
+- [Fronts and horizons](/praxis/fronts/README.md) **structures the next-choice
+  report** across strategic directions, concrete tactical moves, and different
+  kinds of payoff distance. Use it when this post-build vantage point needs
+  both a larger possibility map and a direct practical recommendation.
 - [Chase the future](/praxis/chase-future/chase-future0.gpt6a.md) **connects
   opportunity to a selected action** while preserving other courses. Post-build
   supplies a particular vantage point for that choice: the evidence and new
