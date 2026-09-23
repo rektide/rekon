@@ -87,6 +87,14 @@ and focusing after expansion are part of the practice, not a rejection of it.
 This first account is draft guidance; it does not require a multi-agent wave
 for every choice.
 
+## Related practice: parallax
+
+Before selecting or integrating a design, [parallax](/praxis/parallax/README.md)
+develops deliberately different positions on the same system. Independent
+same-question research and complementary design axes expose different kinds of
+evidence; the parent compares and synthesizes after the relevant gates rather
+than predetermining the architecture or averaging the outputs.
+
 ## Related practice: after the build
 
 [Post-build possibility gathering](/praxis/post-build/README.md) starts from a

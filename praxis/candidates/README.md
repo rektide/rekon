@@ -155,6 +155,10 @@ when it teaches something; do not require a report after every choice.
 
 ## Cross-references
 
+- [Parallax](/praxis/parallax/README.md) **develops contrasting positions**:
+  independent readings of one question or complementary design axes, followed by
+  evidence-gated comparison and often synthesis. It need not produce rival whole
+  architectures to be useful.
 - [Praxis](/praxis/README.md) **holds the wider posture** of useful action and
   preserved alternate courses; candidates gives that plurality a concrete form.
 - [README-driven development](/praxis/readme-driven/README.md) **provides a
