@@ -20,6 +20,12 @@ sources:
     title: Expansive possibilities grounded in close evidence
   - resource: file:///home/rektide/src/opencoattails/design/selection-cursor/hardening-build0.gpt6a.md
     title: Opencoattails core-hardening checkpoint that prompted the question
+  - resource: "urn:opencode:session:ses_f2ebf7b1effewnCNYbBQ8Ewey2"
+    title: Human direction to hub the fronts thread here and adopt the ⇄ maintained-link convention
+  - resource: file:///home/rektide/src/kube-kubeless/design/horizon/frontiers0.gpt.md
+    title: Project-native fronts-as-campaigns briefing, external prior art
+  - resource: file:///home/rektide/src/kube-kubeless/design/horizon/vision0.gpt56t.md
+    title: Four-horizons candidate visions, external prior art
 ---
 
 <a id="fronts-and-horizons"></a>
@@ -245,3 +251,60 @@ Why this next; what could change the order; paths back and revisit triggers.
   map, six distinct directions and their gains, followed by a separate tactical
   choice between navigable queries and exact forensic inspection. Its proposals
   are not implementation commitments or proof of realized payoff.
+
+---
+
+<a id="fronts-thread"></a>
+
+# Addendum: the fronts thread
+
+Added 2026-09-23 from the wiring session
+(`urn:opencode:session:ses_f2ebf7b1effewnCNYbBQ8Ewey2`): the human confirmed
+this practice as the hub of the surrounding map/orientation family, adopted
+the **⇄** [bidirectional-link convention](/CONTEXT.md#bidirectional-link) for
+its maintained pairs, and asked for external prior art as pointers only. The
+body above is unchanged; this addendum states the grouping.
+
+## Map → choose → act → return
+
+The nearby practices describe one maneuver at different moments. This page is
+the hub of that thread; each member keeps a distinct job rather than a
+competing table:
+
+| Moment | Practice | What it owns |
+|---|---|---|
+| Map | this page | The map's structure: strategic directions × tactical moves × payoff horizons; the yield questions; the report shape |
+| Map (generate) | [Candidates](/praxis/candidates/README.md) ⇄ | Plurality before the map hardens — genuinely different possibilities, not a preselected answer |
+| Map (feed) | [Parallax](/praxis/parallax/README.md) | Contrasting positions and design axes that populate the map |
+| Choose | [Chase the future](/praxis/chase-future/chase-future0.gpt6a.md#courses) ⇄ | Turning a map into a selected course and a bounded next slice; dispositions; the preservation duty |
+| Trigger | [Post-build](/praxis/post-build/README.md) ⇄ | The vantage point — when a completed vertical makes redrawing the map worthwhile |
+| Altitude | [High/low passes](/assess/strategies/high-low0.gpt6a.md) ⇄ | Where inquiry aims: high passes generate the front map; low passes ground the tactical moves |
+| Maintain | [Digest](/digest/README.md#digest-attention) ⇄ | The map's living instance — intent fronts — between deliberate passes |
+| Origin | [Lineage research fronts](/assess/rekon/lineage0.gpt6a.md#fronts) ⇄ | Where the fronts vocabulary first crystallized in rekon |
+| Junction | [Bookmarking](/praxis/bookmarking/README.md#tag-crossroads) ⇄ | Recovering the crossroads this page equips |
+| Return | [Case stories](/evidence/README.md#evidence-case-stories) | Did the predicted yield appear when the move met use |
+
+Three lenses run through the thread and are worth keeping unconfused:
+**altitude** (where inquiry aims), **horizon** (payoff distance of a
+direction), and **structure** (strategic vs tactical within one report).
+Digest maintains the map's instance; this practice is the maneuver that
+redraws it.
+
+## External prior art — pointers, not merges
+
+These stay project-native; a ⇄ pair is not maintained across repositories.
+
+- [kube-kubeless frontiers briefing](file:///home/rektide/src/kube-kubeless/design/horizon/frontiers0.gpt.md)
+  runs **fronts as campaign units with lifecycle** — "loop front closed",
+  "families front accepted" — closed by consolidated verification and opened
+  by human sign-off. Its [four-horizons vision](file:///home/rektide/src/kube-kubeless/design/horizon/vision0.gpt56t.md)
+  predates this page's horizon lens. Vocabulary bridge: a kube-kubeless
+  *front* is a campaign; an *opportunity front* here is a possible direction,
+  not a ticket or authorization.
+- [cotail's future fronts](file:///home/rektide/src/cotail/design/engine/future-fronts0.gpt6a.md)
+  is the worked application cited above.
+- [ocyc's fleet crossroads](file:///home/rektide/src/ocyc/design/fleet/crossroads0.glm53max.md)
+  is the junction-recovery anchor cited above.
+
+The ⇄ reciprocity itself has a filed desire, not a build:
+`rekon-bidi-link-checker`.
