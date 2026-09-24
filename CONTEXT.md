@@ -16,6 +16,7 @@ sources:
   - { resource: /constitution/README.md, title: Knowledge modules and exposures }
   - { resource: /evidence/README.md, title: Evidence relationships and case stories }
   - { resource: /digest/README.md, title: Action and intent fronts }
+  - { resource: "urn:opencode:session:ses_f2ebf7b1effewnCNYbBQ8Ewey2", title: Human adoption of the ⇄ maintained-link convention for the fronts thread }
 ---
 
 # Rekon working vocabulary
@@ -53,6 +54,14 @@ A role can explain a hat without being the actor's identity.
 <a id="home"></a>
 **Home:** The maintained account a reader should consult first for a concern;
 it connects current understanding to its sources and unresolved alternatives.
+
+<a id="bidirectional-link"></a>
+**Bidirectional link (⇄):** A link marked to show that its far side links
+back and that the pair is deliberately maintained together. The glyph is
+recorded convention — a visible maintenance duty for readers and search, not
+an enforcement mechanism. First adopted for the fronts thread:
+[fronts and horizons](/praxis/fronts/README.md#fronts-thread).
+_Do not conflate with:_ a mere backlink, or acceptance of the linked work.
 
 <a id="channel"></a>
 **Channel:** A named selection of a current artifact, distinct from each
