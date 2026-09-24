@@ -114,7 +114,11 @@ to use, compose adjacent capabilities, or change the offering. It asks what
 each direction buys and separates a direct practical recommendation from
 preserved options. This equips the choice at a crossroads; bookmarking makes
 that junction recoverable. Horizons are not delivery dates, and a front map
-is not an automatically authorized roadmap.
+is not an automatically authorized roadmap. It is also the hub of the fronts
+thread: its [addendum](/praxis/fronts/README.md#fronts-thread) groups the
+nearby map/orientation practices — chase-future, post-build, candidates,
+high/low assessment, digest's intent fronts, the lineage research-fronts
+origin, and bookmarking's crossroads — around it with ⇄ maintained links.
 
 ## Related tactic: README-driven development
 

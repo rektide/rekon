@@ -226,6 +226,11 @@ all of them implementation obligations? Revise the practice from that experience
   complementary expansive and grounded thinking. This practice adds the choice
   of an immediate opportunity-opening investment; it does not require an agent
   wave before a straightforward implementation.
+- [Fronts and horizons](/praxis/fronts/README.md#fronts-thread) ⇄ **owns the
+  map-structuring lenses this practice chooses from**: strategic directions,
+  tactical moves, and payoff horizons in one report. Chase the future keeps
+  the choose-and-slice half — course selection, dispositions, the bounded
+  next action — and shares the preservation duty with that map.
 - [Reconstruction's baseline guidance](/code/task-reconstruction/philosophy.md#reconstruct-current-baseline)
   is **foundation and tension**: start from current upstream and pin the work;
   its preference for refresh after a complete green implementation avoids churn.

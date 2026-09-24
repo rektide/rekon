@@ -169,3 +169,7 @@ when it teaches something; do not require a report after every choice.
 - [Regathering direction](/design/feature-lines/init1.gpt.md) **places this
   practice in the current documentation work**, without making its first draft
   an installed GLOBAL or treating every interesting candidate as active scope.
+- [Fronts and horizons](/praxis/fronts/README.md#fronts-thread) ⇄ **gives the
+  comparison its structure once candidates harden into directions**: yield
+  questions, payoff horizons, and the separate tactical section. Candidates
+  keeps the generation-phase duty that precedes any map.

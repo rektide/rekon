@@ -161,3 +161,10 @@ Commit every coherent artifact when it exists. Preserve the completed wave
 before changing its aims. Explain the next destination rather than silently
 rewriting the earlier attempt. The gate protects interpretation; checkpoints
 preserve how the interpretation became possible.
+
+## Cross-references
+
+- [Fronts and horizons](/praxis/fronts/README.md#fronts-thread) ⇄ **composes
+  altitude with the rest of the map**: a high pass is one way a front map gets
+  generated, and a low pass is how tactical moves get grounded. Altitude is
+  where inquiry aims; horizon is how a capability reaches useful return.

@@ -384,6 +384,10 @@ transport or `--server` implementation.
   **bounds the wiki/changelog ambition with an existing capability study**.
   Work ownership is useful infrastructure, not proof that every kind of knowledge
   or occurrence should be a ticket.
+- [Fronts and horizons](/praxis/fronts/README.md#fronts-thread) ⇄ **carries
+  the research-fronts vocabulary forward**: the numbered fronts in this report
+  are where that vocabulary first crystallized in rekon; digest's intent
+  fronts and the fronts-and-horizons praxis generalized it.
 
 <a id="method"></a>
 

@@ -166,11 +166,12 @@ cotail bookmark create -s ses_f5199d455ffeHrDu9Ci2eh6PhX \
 
 (The extra tags are the target document's own suggested payload.)
 
-[Fronts and horizons](/praxis/fronts/README.md#crossroads-relation) is a
+[Fronts and horizons](/praxis/fronts/README.md#crossroads-relation) ⇄ is a
 complementary practice for **equipping the choice at the junction**: compare
 strategic directions and their gains, then name practical next moves at
-different payoff horizons. Bookmarking preserves and retrieves that
-crossroads; it does not select the course or authorize the proposed work.
+different payoff horizons (it also hubs the wider fronts thread). Bookmarking
+preserves and retrieves that crossroads; it does not select the course or
+authorize the proposed work.
 
 <a id="tag-summary"></a>
 

@@ -139,3 +139,8 @@ differences between expected and actual usefulness so the practice can improve.
 - [Forge](/forge/README.md) **supplies upstream evidence**: when a digest's
   subject is a dependency, a forge corpus of its tracker and role evidence is
   how "what is changing" claims stay citable rather than folklore.
+- [Fronts and horizons](/praxis/fronts/README.md#fronts-thread) ⇄ **is the
+  deliberate pass that redraws what digest maintains**: a digest's intent
+  fronts are the map's living instance between passes; the fronts-and-horizons
+  maneuver is how that map is restructured — strategic directions, tactical
+  moves, payoff horizons — at a checkpoint.
