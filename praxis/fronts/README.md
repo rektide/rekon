@@ -240,3 +240,8 @@ Why this next; what could change the order; paths back and revisit triggers.
 - [Opencoattails hardening acceptance](file:///home/rektide/src/opencoattails/design/selection-cursor/hardening-build0.gpt6a.md)
   is the **motivating checkpoint**, not evidence that all proposed future
   fronts have been implemented or that this praxis is independently proven.
+- [Opencoattails future fronts](file:///home/rektide/src/opencoattails/design/engine/future-fronts0.gpt6a.md)
+  is a **worked application** of the prompting technique: a grounded capability
+  map, six distinct directions and their gains, followed by a separate tactical
+  choice between navigable queries and exact forensic inspection. Its proposals
+  are not implementation commitments or proof of realized payoff.
