@@ -72,7 +72,7 @@ silently disappears again. The status vocabulary:
 | research-/design- prefixes factor into names (r1) | Survives as role prefixes in the resolve register | survives |
 | Names subdivide by suffix (r1) | Survives (stems, subdivision) | survives |
 | Anchors imply the rest of the name structure (r2, "i like that a lot") | Demoted by all three: weaver killed the identity equation keeping only a resolution convention; concordance and codex killed path-defined identity | **law (ruling)** — location-implied naming is identity; the wiki settlement |
-| Optional model-qualified resolution, usually deliberately omitted (r2) | Survives (model-qualified, registers) | survives |
+| Optional model-qualified resolution, usually deliberately omitted (r2) | Survives (model-qualified, registers) | survives, inverted — under location identity the model suffix is in every exact path name; elision yields set-valued chain-position references (assay's correction, applied 2026-09-23) |
 | Project glossary aliases, `con-naming-exp-agent-naming` endorsed (r2) | Demoted: "ungoverned aliases" killed (concordance), abbreviations barred from canonical stems, `rekon-con-naming` grandfathered as finding not precedent (weaver) | **restored** — cross-modal aliases are precedent; glossary aliases free; governance earned when volume demands |
 | One name per entity, on alert, make good (r3) | Survives as central law; concordance narrowed to canonicality-with-locality | survives, narrowed — the narrowing let stand (it is what makes restored hats and aliases coherent) |
 | Supersede, don't decorate — the new core (r3) | Survives; earning tests added | survives |
@@ -112,6 +112,15 @@ dead. Contortion is not duplication.
 <a id="pending-before-the-gate"></a>
 
 ## Pending Before The Gate
+
+*Gate update, 2026-09-23:* the gate's substance resolved across the
+continuation sessions — all three syntheses revised, the draft1 wave
+synthesized (`draft1-syn0.glm53fm.md`), the successor compact and 45-row
+decision table written (`draft2.glm53m.md`,
+`draft2-discussion0.sol56x.md`), and the candidate core drafted
+(`draft3.sol56x.md`). This matrix's statuses are current through the
+ruling; the resume map lives in
+[`state0.glm53h.md`](/constitution/naming/exploration/state0.glm53h.md).
 
 Three syntheses are resumed against the ruling. Each must answer
 proposal4's four questions — can the declared family express location

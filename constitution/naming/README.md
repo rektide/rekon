@@ -18,30 +18,15 @@ topics and issues already share. A concern of the
 [constitution](/constitution/README.md), subdividing into:
 
 - [`exploration/`](/constitution/naming/exploration/) — the naming wave
-  workspace. The proposal chain runs `proposal0` → `proposal1` →
-  [`proposal2.glm53m.md`](/constitution/naming/exploration/proposal2.glm53m.md)
-  (the last single-voice proposal: center, one-name discipline, grammar,
-  supersede ambition), and now forks into two independent syntheses of the
-  whole corpus, awaiting comparison:
-  [`proposal3.glm53m.md`](/constitution/naming/exploration/proposal3.glm53m.md)
-  (weaver/glm-5.3-max — settled-law consolidation with an identifier
-  ledger resolving the wave's duplicate mints) and
-  [`proposal3.sol56x.md`](/constitution/naming/exploration/proposal3.sol56x.md)
-  (federated semantic fabric, bilateral actor naming, reference-pressure
-  thresholds). Both carry the second-round reference-register material and
-  the deferred tool seam. A third candidate holds the standalone mandate:
-  [`proposal3b.glm53m.md`](/constitution/naming/exploration/proposal3b.glm53m.md)
-  (codex/glm-5.3-max) — read and peer-reviewed both syntheses, resolved
-  the `naming-tool-seam` collision, settled the promise/currency split,
-  and is written to stand alone with no corpus open. Supporting them: the
-  beads system inventory
-  [`beads-offerings0.sol56x.md`](/constitution/naming/exploration/beads-offerings0.sol56x.md)
-  and five independent drafts — `draft0.sol56m.md`, `draft0.glm53m.md`,
-  `draft0.glm53fm.md`, `draft0.gpt56lx.md`, `draft0.sol56x.md` — the last
-  two with carrier-pattern addenda. Five actors have self-named across the
-  waves: `herald/glm-5.3-max`, `rekon-naming-parallax`,
-  `weaver/glm-5.3-max`, `rekon-naming-concordance`, and
-  `codex/glm-5.3-max`.
+  workspace, twenty-six artifacts deep. Start at
+  [`state0.glm53h.md`](/constitution/naming/exploration/state0.glm53h.md),
+  the state record: the full arc from the proposal chain
+  (`proposal0`–`proposal4`), the beads system inventory, the five-draft
+  exploration wave and its override responses, through the continuation
+  sessions' successor compact (`draft2.glm53m.md`), 45-row decision table,
+  and candidate core (`draft3.sol56x.md`). The human ruling — location is
+  identity — stands; acceptance is the remaining decision, with the resume
+  map in the state record. Twelve actors self-named across the effort.
 
 The topic remains under exploration; that does not erase the human rulings
 recorded in its later rounds. The older wave map above preserves its original
