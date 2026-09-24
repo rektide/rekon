@@ -1,17 +1,18 @@
 ---
 type: Praxis
 title: Ticket pointers — tickets point at the living tip
-description: Keep each work ticket a curated pointer at the two to four documents that currently best explain its work, move those pointers to the tip as documents emerge, and make pointer drift auditable over time.
+description: Help tickets point to current explanatory documents and preserve concise implementation reports when useful, while letting users choose how much work to coordinate through tickets.
 resource: /praxis/ticket-pointers/ticket-pointers0.glm53fx.md
-tags: [praxis, tickets, beads, pointers, drift, history, documentation]
+tags: [praxis, tickets, beads, pointers, implementation-reports, drift, history, documentation]
 status: draft
 generated: { by: "model:glm-5.3-flash-max", at: 2026-09-17 }
 verified: { by: none, at: never }
 stale_after: 2026-12-17
 extensions:
-  ticket: rekon-ticket-link-explorer
+  tickets: [rekon-ticket-link-explorer, rekon-ticket-agent]
 sources:
   - { resource: "urn:opencode:session:ses_f4f6e3a46ffeHZhJlkIVQcoKYL", title: "Human direction: tickets should point at their two to four most relevant documents, stay pointed at the tip, and deserve a link-history explorer" }
+  - { resource: "urn:opencode:session:ses_f2f224b43ffeFFCVKEFko1ondu", title: "Human direction: ticket pointers, user-shaped ticketing, implementation reports, and a possible ticket agent" }
   - { resource: /AGENTS.md#beads, title: Beads command patterns, including append-only note history }
   - { resource: /design/session-mementos/references0.gpt6a.md, title: Qualified references across bookmarks, tickets, and knowledge }
 ---
@@ -32,7 +33,23 @@ uses the ticket mechanics rekon already runs — beads descriptions and
 append-only notes — and the [balanced ticket coordination](/constitution/README.md#doc-constitution-tickets)
 division of labor: tickets hold intent, lifecycle, and acceptance; documents
 hold arguments, evidence, and contracts. The pointer is the edge between them.
-It installs no skill, no tracker, and no new command.
+It installs no skill, no tracker, and no new command. Its companion
+[`GLOBAL.md`](/praxis/ticket-pointers/GLOBAL.md) carries only condensed ambient
+guidance.
+
+## Ticketing follows the user's desired coordination
+
+Treat ticketing as a conversation, not a universal gate. When a user is working
+under tickets, help keep the relevant ticket current; when ticketing would add
+noise, don't force it. If the right level of coordination is unclear, ask the
+user how they want the work tracked. Creating a ticket is one possible pointer
+to the work, not a prerequisite for implementation or a report.
+
+When work materially advances an existing ticket, consider appending a concise
+implementation report as a Beads note. Include the current OpenCode session ID
+so the work can be traced to its context. Keep the report proportional: what
+changed, what was checked, and what remains or is blocked. This is guidance to
+consider, not a requirement to manufacture a ticket or report every small edit.
 
 ## The practice
 
@@ -110,6 +127,16 @@ documents. The tickets hold desire and lifecycle; the pointed documents hold
 the actual arguments. Both are exactly the kind of ticket that will accumulate
 new waves and check-ins — and exactly the kind whose pointers will go quiet
 unless someone moves them to the tip.
+
+## Possible ticket agent
+
+**`rekon-ticket-agent`** records an unimplemented possibility: a well-known
+project-level agent session that other agents can contact to understand the
+board and help place or coordinate work. It may be one instance of a broader
+family of project agents. The ticket is an inquiry marker, not build
+authorization; see **`rekon-ticket-agent`**. This possibility stays here rather
+than in ambient `GLOBAL.md` because it is exploratory and should not silently
+impose a new workflow.
 
 ## Common ways to miss
 
