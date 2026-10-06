@@ -21,11 +21,11 @@ sources:
     title: Phase A recovery guide
     author: project:rekon
   - id: phase3-calibration
-    resource: /doc/phase3.md
+    resource: https://github.com/rektide/dl/blob/e9c7c401725a93d2c4d56f41851fdb832d772b09/doc/phase3.md
     title: Phase 3 calibration against original intent
     author: project:rekon
   - id: graph-caution
-    resource: /doc/fancy-graph.md
+    resource: https://github.com/rektide/dl/blob/e9c7c401725a93d2c4d56f41851fdb832d772b09/doc/fancy-graph.md
     title: Explicit stepping stone before general graph machinery
     author: project:rekon
   - id: watchman-carrier
@@ -579,12 +579,12 @@ Before presenting a plan, verify:
   implement it fresh against the current codebase. Its [later reconstruction
   procedure](/doc/opencode-session.md#L1326-L1357) ends with the concise rule
   "adapt, don't copy."
-- [`/doc/phase3.md`](/doc/phase3.md#L18-L32) is a worked example of calibrating
+- [`phase3.md` in rektide/dl](https://github.com/rektide/dl/blob/e9c7c401725a93d2c4d56f41851fdb832d772b09/doc/phase3.md#L18-L32) is a worked example of calibrating
   current reality against original intent and accepting "same goal, different
-  mechanism." Its [rejected legacy adapter](/doc/phase3.md#L66-L87) also shows
+  mechanism." Its [rejected legacy adapter](https://github.com/rektide/dl/blob/e9c7c401725a93d2c4d56f41851fdb832d772b09/doc/phase3.md#L66-L87) also shows
   that a migration can fail by preserving the bridge it was meant to
   eliminate.
-- [`/doc/fancy-graph.md`](/doc/fancy-graph.md#L79-L105) supplies the balancing
+- [`fancy-graph.md` in rektide/dl](https://github.com/rektide/dl/blob/e9c7c401725a93d2c4d56f41851fdb832d772b09/doc/fancy-graph.md#L79-L105) supplies the balancing
   caution: escaping old structure does not justify premature general machinery
   when a smaller explicit design can prove the needed architecture.
 - [Watchman clean-slate replacement carrier](file:///home/rektide/src/opencode-watchman/.design/watchman/carrier0.gpt56s.md)

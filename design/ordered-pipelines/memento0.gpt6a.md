@@ -13,8 +13,8 @@ sources:
   - { resource: "urn:opencode:session:ses_f86cfeb14ffev9dX8mwiS0sZIm", title: Human request for a reusable-pattern memento and termination authority }
   - { resource: "file:///home/rektide/src/watchwoman-systemd-vcs-config/docs/CONFIGURATION.md", title: Implemented Watchwoman ordered filtering contract }
   - { resource: "file:///home/rektide/src/watchwoman-systemd-vcs-config/crates/watchwoman/src/daemon/view_filter.rs", title: Staged fact requests and classification }
-  - { resource: /doc/expansion-heads.md, title: Historical Rekon expansion versus fallback inquiry }
-  - { resource: /doc/flow-runtime-stage-plan.md, title: Historical stream-stage and reinjection design }
+  - { resource: "https://github.com/rektide/dl/blob/e9c7c401725a93d2c4d56f41851fdb832d772b09/doc/expansion-heads.md", title: Historical Rekon expansion versus fallback inquiry }
+  - { resource: "https://github.com/rektide/dl/blob/e9c7c401725a93d2c4d56f41851fdb832d772b09/doc/flow-runtime-stage-plan.md", title: Historical stream-stage and reinjection design }
 ---
 
 <a id="ordered-pipelines"></a>
@@ -181,12 +181,12 @@ Possible topic-first homes if this earns implementation:
 
 - [Session checkpoint](/design/session-mementos/checkpoint0.gpt6a.md) — immediate
   application and implementation gate; the generic inquiry does not block it.
-- [Historical expansion-heads inquiry](/doc/expansion-heads.md) — especially useful
+- [Historical expansion-heads inquiry in rektide/dl](https://github.com/rektide/dl/blob/e9c7c401725a93d2c4d56f41851fdb832d772b09/doc/expansion-heads.md) — especially useful
   counterexample: first-producer exclusivity destroyed intended multi-candidate
   expansion. Its code claims are historical, not verified current Rekon runtime.
-- [Historical flow-runtime plan](/doc/flow-runtime-stage-plan.md) — explicit stream
+- [Historical flow-runtime plan in rektide/dl](https://github.com/rektide/dl/blob/e9c7c401725a93d2c4d56f41851fdb832d772b09/doc/flow-runtime-stage-plan.md) — explicit stream
   composition and reinjection, showing where a filter becomes an execution model.
-- [Historical preliminary execution design](/doc/dl-preliminary-execution-design.md)
+- [Historical preliminary execution design in rektide/dl](https://github.com/rektide/dl/blob/e9c7c401725a93d2c4d56f41851fdb832d772b09/doc/dl-preliminary-execution-design.md)
   — known/unknown facts, dependency scheduling and ordered reporting. Supporting
   design vocabulary only; not evidence these modules exist in this checkout.
 - [Phoenix inquiry](/design/rekon/phoenix0.gpt6a.md) — keeping the intent, reasons

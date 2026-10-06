@@ -100,7 +100,7 @@ sources:
     title: opencode session storage, recovery, and Phase A recovery guide
     author: project:rekon
   - id: transcript-pluginification
-    resource: /doc/transcript/pluginification.md
+    resource: https://github.com/rektide/dl/blob/e9c7c401725a93d2c4d56f41851fdb832d772b09/doc/transcript/pluginification.md
     title: Saved pluginification session transcript
     author: project:rekon
   - id: plan-combine
@@ -413,7 +413,7 @@ account is not just a publishing convenience, it is re-thought understanding —
 see Thread 8's "reconstruction is not replay."
 
 **Handoff/resumption vs universal transcript retention.** The workspace saves
-*selected* transcripts ([`/doc/transcript/pluginification.md`](/doc/transcript/pluginification.md),
+*selected* transcripts ([pluginification in rektide/dl](https://github.com/rektide/dl/blob/e9c7c401725a93d2c4d56f41851fdb832d772b09/doc/transcript/pluginification.md),
 [`/doc/opencode-session.md`](/doc/opencode-session.md)) and mines the session
 database under loss, but never treats retention as the default; scratch is
 "pre-history" and evaporates unless promoted
@@ -875,7 +875,7 @@ path: "Test the brief by removing historical proper nouns"
 The retention boundary is equally deliberate:
 
 - transcripts are saved *selectively* —
-  [`/doc/transcript/pluginification.md`](/doc/transcript/pluginification.md)
+  [pluginification in rektide/dl](https://github.com/rektide/dl/blob/e9c7c401725a93d2c4d56f41851fdb832d772b09/doc/transcript/pluginification.md)
   is one curated session;
   [`.transcript/PLAN-combine.md`](file:///home/rektide/src/rekon/.transcript/PLAN-combine.md)
   pairs a plan with its completion log; the big loss dumps

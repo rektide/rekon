@@ -23,7 +23,7 @@ sources:
   - { id: documentation-constitution, resource: /constitution/README.md, title: Self-Explaining Documentation Constitution, author: "model:gpt-5.6-terra" }
   - { id: architectural-stewardship, resource: /AGENTS.md, title: Rekon workspace guidance, author: "human:rektide" }
   - { id: jj-reference, resource: /vcs/jj/README.md, title: jj + git working guide, author: "model:zai-coding-plan/glm-5.3-max" }
-  - { id: phase3-calibration, resource: /doc/phase3.md, title: "Phase 3: Actions Become Stages", author: unspecified }
+  - { id: phase3-calibration, resource: "https://github.com/rektide/dl/blob/e9c7c401725a93d2c4d56f41851fdb832d772b09/doc/phase3.md", title: "Phase 3: Actions Become Stages", author: unspecified }
 ---
 
 <a id="remake-precedents"></a>
@@ -247,4 +247,4 @@ for this report to define `digest`.
    by fiat.** Each encodes a different concern; correspondence must be explained
    where it matters rather than assumed globally.
 
-The strongest empirical local precedent is [`doc/phase3.md`](/doc/phase3.md#L18-L62): it calibrates completed work against intended outcomes, records “same goal, different mechanism,” and distinguishes delivered, partial, uncertain, and deferred claims without rewriting the earlier plan as foolish. It is a worked product-specific example, not yet reusable `remake` ownership.
+The strongest empirical local precedent is [`phase3.md` in rektide/dl](https://github.com/rektide/dl/blob/e9c7c401725a93d2c4d56f41851fdb832d772b09/doc/phase3.md#L18-L62): it calibrates completed work against intended outcomes, records “same goal, different mechanism,” and distinguishes delivered, partial, uncertain, and deferred claims without rewriting the earlier plan as foolish. It is a worked product-specific example, not yet reusable `remake` ownership.

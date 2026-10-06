@@ -75,7 +75,7 @@ sources:
     title: OpenCode patch directions
     author: project:archive-doc
   - id: rekon-log-successor
-    resource: /doc/log2.md
+    resource: https://github.com/rektide/dl/blob/e9c7c401725a93d2c4d56f41851fdb832d772b09/doc/log2.md
     title: Reporting and structured log design
     author: project:rekon
 ---
@@ -367,10 +367,15 @@ does not retroactively certify stability or conformance. Apply the constitution
 when creating a new module or materially reworking an old one; repair broken or
 misleading identity deliberately, without churn for stylistic compliance.
 
-For example, [`/doc/log2.md`](/doc/log2.md) says it replaces
-[`/doc/log.md`](/doc/log.md), but no module landing page yet owns that current
-tip. This is a migration candidate that illustrates the ambiguity; it is not a
-reason to rewrite those documents as part of this constitution.
+The reporting drafts were the live example while they lived here:
+[`log2.md` in rektide/dl](https://github.com/rektide/dl/blob/e9c7c401725a93d2c4d56f41851fdb832d772b09/doc/log2.md)
+says it replaces
+[`log.md` in rektide/dl](https://github.com/rektide/dl/blob/e9c7c401725a93d2c4d56f41851fdb832d772b09/doc/log.md)
+(links pinned to the fork-era commit). They illustrate supersession — a
+successor document with no module landing page owning its current tip — but
+they now belong to dl, not an outstanding Rekon migration candidate, and
+supersession was never a reason to rewrite those documents as part of this
+constitution.
 
 This repository also uses some top-level topic directories. That is a
 rekon-specific composition choice to be documented by

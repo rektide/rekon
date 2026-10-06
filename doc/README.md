@@ -5,7 +5,7 @@ description: The maintained-explanation surface for rekon. Use when deciding whe
 resource: /doc/README.md
 tags: [documentation]
 status: draft
-generated: { by: "model:glm-5.3-max", at: 2026-09-11 }
+generated: { by: "model:glm-5.3-max", at: 2026-10-06 }
 extensions:
   ticket: rekon-agents-maintenance
   related_work: [rekon-doc-constitution, rekon-phoenix]
@@ -32,3 +32,14 @@ an optional `log.md` records dated changes. See the
 [ambient fragment](/doc/GLOBAL.md) for the placement rule as candidate
 context, and the [constitutional reading map](/constitution/index.md) for
 related rulings.
+
+The first deliberate rework was the dl fork's leftovers: on 2026-10-06,
+26 dl-owned files were culled after a byte-level preservation audit. They are
+owned by the [rektide/dl](https://github.com/rektide/dl) fork
+([doc/ tree](https://github.com/rektide/dl/tree/main/doc); its local
+`doc/index.md` catalogs them). Five rekon-owned files remain: this landing
+page, [GLOBAL.md](/doc/GLOBAL.md), [interpolate.md](/doc/interpolate.md),
+[plan-parallelize.md](/doc/plan-parallelize.md), and
+[opencode-session.md](/doc/opencode-session.md). Inventory, evidence, and
+pinned recovery links are recorded in
+[doc-cull0](/design/rekon/doc-cull0.glm53m.md).
