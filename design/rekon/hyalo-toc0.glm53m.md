@@ -1,11 +1,12 @@
 ---
 type: ResearchReport
 title: Hyalo ToC lineage recovered
-description: cotail --since 30d recovery of the actual hyalo line-numbered ToC work (~/ado bin/hyalo-toc.ts), its session lineage, current hyalo 0.24.1 ToC surface, and relevance to Rekon's new t/ tool home.
+description: cotail --since 30d recovery of the actual hyalo line-numbered ToC work (~/ado bin/hyalo-toc.ts), its session lineage, current hyalo 0.24.1 ToC surface, and relevance to Rekon's new tool/ toolkit home.
 resource: /design/rekon/hyalo-toc0.glm53m.md
 tags: [rekon, hyalo, toc, cotail, ado, t-toolkit]
 status: draft
-generated: { by: "model:glm-5.3-max", at: 2026-10-07 }
+generated: { by: "model:glm-5.3-max", at: 2026-10-06 }
+
 sources:
   - { resource: "urn:opencode:session:ses_f160b81daffeQqQLu97GUaN9IR", title: ToC request and build session (2026-09-29), author: "session:stellar-planet" }
   - { resource: "urn:opencode:session:ses_f064908a", title: Later regeneration use (2026-10-01), author: "session:witty-rocket" }
@@ -24,17 +25,22 @@ Ran the real `cotail` CLI (v0.1.0, profile `opencode-local` →
 `~/.local/share/opencode/opencode-local.db`): `cotail search hyalo --since 30d`
 (top-level and `--subagent`), plus queries for `toc` and `table of contents`
 (`--title-only` and content). The `--since 30d` filter **is available** and was
-used as-is; executed 2026-10-07 ~00:30 local, so the content cutoff is ≈
-2026-09-07. (Without `--since`, cotail bounds content search to the last 31d
-anyway — the explicit 30d is slightly tighter; no broadening was needed or done.)
+used as-is; the queries ran 2026-10-07 00:30–01:00 **UTC** = 2026-10-06
+20:30–21:00 **EDT** host-local (receipt: this session, `ses_eec3b15f…`, started
+2026-10-07 00:30:34 UTC per the DB; DB timestamps render UTC), so the 30d
+content cutoff is ≈ **2026-09-07 00:30 UTC / 2026-09-06 20:30 EDT**. (Without
+`--since`, cotail bounds content search to the last 31d anyway — the explicit
+30d is slightly tighter; no broadening was needed or done.)
 Message-level detail was read via read-only SQLite against the same DB
 (`mode=ro`), because cotail's `tail` cannot yet filter to one arbitrary session
 ID — a documented CLI limit, worked around without widening time bounds.
 
 **Everything in the lineage (2026-09-28/29 request+build, 2026-10-01 reuse) is
-inside the window.** One older lead sits just outside it and is labeled:
-[`/assess/rekon/tooling0.glm53.md`](/assess/rekon/tooling0.glm53.md)
-(2026-09-06, found by repo inventory, not cotail).
+inside the window.** The one older lead,
+[`/assess/rekon/tooling0.glm53.md`](/assess/rekon/tooling0.glm53.md), was
+**not among the query's results** — found by repo inventory and inspected
+separately. Its exact jj commit time (2026-09-06 22:36:58 UTC / 18:36:58 EDT,
+commit `953258d2`) independently proves it ~2h outside the 30d cutoff.
 
 <a id="hyalo-toc0-request"></a>
 
@@ -133,15 +139,18 @@ spending tokens.
 ## Hyalo material in Rekon today
 
 - [`/assess/rekon/tooling0.glm53.md`](/assess/rekon/tooling0.glm53.md)
-  (2026-09-06 — **outside the 30d window**, older lead): thorough capability
-  map from the then-archive checkout (v0.20.0-13). Now stale on two points:
-  it says hyalo "not installed" (0.24.1 is installed, build stamp 2026-09-23),
-  and it predates both `madr toc` prominence and the whole ToC lineage. Its
-  boundary contract (hyalo = deterministic Markdown/OKF lifecycle; summarizer
-  = semantic production) still holds and is confirmed by this lineage.
+  (committed 2026-09-06 22:36:58 UTC, `953258d2` — not a query result,
+  recovered by repo inventory; provably ~2h outside the query's 30d cutoff):
+  thorough capability map from the then-archive checkout (v0.20.0-13). Now
+  stale on two points: it says hyalo "not installed" (0.24.1 is installed,
+  build stamp 2026-09-23), and it predates both `madr toc` prominence and the
+  whole ToC lineage. Its boundary contract (hyalo = deterministic Markdown/OKF
+  lifecycle; summarizer = semantic production) still holds and is confirmed by
+  this lineage.
 - [`/assess/rekon/README.md`](/assess/rekon/README.md) hyalo row repeats the
   "was not installed here" claim — same staleness.
-- [`/t/README.md`](/t/README.md) (2026-10-06, new tool home): already
+- [`/t/README.md`](/t/README.md) (2026-10-06, written into the then-`t/` home;
+  the layout ruling below supersedes its directory scheme): already
   anticipates this report — "The current Hyalo investigation is recovering the
   actual ToC implementation and its native owner before choosing an
   integration. A `hyalo/` source seam should follow a real consumer and API,
@@ -152,20 +161,30 @@ spending tokens.
 
 <a id="hyalo-toc0-next"></a>
 
-## Relevance to `t/` and next integration possibilities (parent's call)
+## Relevance to `tool/` and next integration possibilities (parent's call)
+
+> **Correction (2026-10-06, human ruling):** this report originally treated
+> `t` as the tool *directory* — that guidance was wrong. **`t` is a short
+> code** (g = global, p = praxis, t = tool), not a layout. The selected
+> physical layout is one `tool/` toolkit: entrypoints such as
+> `tool/agents.ts` at its root, with shared domain dirs `tool/cmd/`,
+> `tool/md/`, `tool/hyalo/` as the work justifies. Actionable references
+> below are corrected to that layout; observations of the superseded `t/`-era
+> docs remain as history. Shortcode lineage:
+> [`/design/rekon/shortcodes0.glm53m.md`](/design/rekon/shortcodes0.glm53m.md).
 
 The recovered consumer+API is now concrete: `find --fields sections,lines` →
 splice into `hyalo-toc` markers → gate with `--check`. Options, not decisions:
 
-1. **Adopt into `t/`** (e.g. `t/hyalo-toc/` with the entrypoint + README, per
-   the new [structure contract](/constitution/structure.md#tools)): the script
-   ports nearly verbatim; its only dependency is the `hyalo` binary (Rust,
-   installed 0.24.1) — a new kind of external dependency for Rekon's node-only
-   tool stack, worth stating explicitly in the tool's README.
+1. **Adopt into the `tool/` toolkit** (entrypoint `tool/hyalo-toc.ts` at the
+   toolkit root, shared domain dirs per the layout above): the script ports
+   nearly verbatim; its only dependency is the `hyalo` binary (Rust, installed
+   0.24.1) — a new kind of external dependency for Rekon's node-only tool
+   stack, worth stating explicitly in the tool's README.
 2. **Point it at Rekon's own corpus first** (constitution/, assess/, prompt/
    long-form docs) as the real consumer, mirroring how ado dogfoods it on its
    three big docs — the same "self documents structure" motive that launched
-   the `t/` home.
+   the tool home.
 3. **Generalize deliberately or not at all**: ado's version takes explicit
    file args; multi-vault/glob/config support is speculative until a second
    consumer exists (the t/README's own "no empty future subsystem" rule).
@@ -205,11 +224,13 @@ Sol's Effect CLI assembler
 - [`/assess/rekon/tooling0.glm53.md`](/assess/rekon/tooling0.glm53.md) — prior
   hyalo capability map; this report supersedes its install status and adds the
   ToC lineage it predates.
-- [`/t/README.md`](/t/README.md) — the tool home awaiting exactly this
-  recovered consumer/API before opening a `hyalo/` seam.
+- [`/t/README.md`](/t/README.md) — the tool-home README as it stood in the
+  `t/`-directory era (superseded by the `tool/` ruling; parent owns the
+  rewrite); it awaited exactly this recovered consumer/API before opening a
+  `hyalo/` seam.
 - [`/constitution/structure.md`](/constitution/structure.md) — named this
-  recovery as immediate work; defines the `t/<tool>/` layout an adopted
-  `hyalo-toc` would follow.
+  recovery as immediate work; its `t/<tool>/` layout rows predate the human's
+  `tool/` ruling and are the parent's to update.
 - [`/design/rekon/ado-recovery0.glm53m.md`](/design/rekon/ado-recovery0.glm53m.md)
   — sibling investigation of `~/ado` itself; the ToC artifacts live there and
   its README/docs conventions govern how the script is referenced.
