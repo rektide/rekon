@@ -1,16 +1,21 @@
 ---
 type: ImplementationDesign
 title: An independently owned Effect agents assembler
-description: Verified Effect 4 APIs, domain boundaries, and compatibility commitments for Rekon's first co-integrated tool in t/agents.
+description: Verified Effect 4 APIs, domain boundaries, and compatibility commitments for the agents assembler in Rekon's co-integrated tool/ toolkit.
 resource: /design/rekon/agents-effect0.sol61xh.md
 tags: [rekon, tools, agents, assembly, effect, cli]
 status: draft
 generated: { by: "model:gpt-6.1-sol-xhigh", at: 2026-10-06T20:33:11-04:00 }
+revised: { by: "model:gpt-6.1-sol-xhigh", at: 2026-10-06T20:37:58-04:00 }
 stale_after: 2026-11-06
 sources:
   - id: task
     resource: urn:opencode:session:ses_eec3a18b8ffeOUokLEAa8Fbqjk
     title: Parent-directed implementation and architectural checkpoint
+    author: agent:parent
+  - id: human-layout
+    resource: urn:opencode:session:ses_eec5afbf4ffeIhL6wxmv8NF3gn
+    title: Human clarification of shortcodes and selection of one tool/ toolkit
     author: human:rektide
   - id: contract
     resource: /constitution/agents-assembly.md
@@ -33,8 +38,9 @@ sources:
 # Situation and scope
 
 Rekon needs a new Effect CLI assembler, not a migration of the existing
-Gunshi command. The parent chose `t/` as the tools home and `t/agents/` as
-this tool's owner. This implementation will not import the old assembler,
+Gunshi command. The human chose one co-integrated `tool/` toolkit; `t` is only
+its shortcode namespace. The parent's initial `t/agents/` placement proposal
+conflated shortcodes with physical layout and is superseded. This implementation will not import the old assembler,
 alter its tests, create a production manifest, or regenerate the handwritten
 [`AGENTS.md`](/AGENTS.md). The parent owns shared tools/placement documentation.
 
@@ -80,13 +86,14 @@ pins the tested resolution; future package updates require CLI regression tests.
 # Domain layout and interface
 
 ```text
-t/agents/
+tool/
   agents.ts                  executable, import-safe entrypoint
-  README.md                  tool operation and ownership
+  README.md                  toolkit landing page (parent-owned)
   cmd/
-    command.ts               typed flags, command handler, reports
-    command.test.ts           actual source-executed CLI tests
+    agents.ts                typed flags, command handler, reports
+    agents.test.ts           actual source-executed CLI tests
   assembly/
+    README.md                assembler contract and implementation map
     manifest.ts              declaration schema, path planning, collision guards
     assemble.ts              read/parse/order/render, write/check effects
     assemble.test.ts          filesystem workflows and no-write guarantees
@@ -110,7 +117,7 @@ Expected manifest/fragment/identity/output-collision failures have specific
 schema-tagged errors with paths and messages. Output I/O failures remain
 upstream platform errors instead of being mislabeled staleness.
 
-The source command is `node t/agents/agents.ts [-m PATH] [-o PATH] [-c]`, with
+The source command is `node tool/agents.ts [-m PATH] [-o PATH] [-c]`, with
 the existing defaults and aliases. The entrypoint asynchronously realpaths
 `process.argv[1]` using `.then`, handles its absence, and launches the Node
 runtime only when the canonical file URL matches `import.meta.url`. Imports
@@ -124,7 +131,7 @@ must neither parse argv nor perform assembly. All local imports include `.ts`.
 - Preserve body bytes except CRLF-to-LF and boundary whitespace trimming.
   Fragment paths/source metadata reject comment-breaking text and controls;
   nested links/images/reference definitions are checked, while code is ignored.
-- The generated header intentionally names `node t/agents/agents.ts`, not
+- The generated header intentionally names `node tool/agents.ts`, not
   `rekon agents`. Thus legacy output is stale under the new tool until explicitly
   rewritten; do not claim cross-tool byte identity.
 - Preserve lexical filesystem path semantics. Fragment declarations have no
@@ -139,7 +146,7 @@ must neither parse argv nor perform assembly. All local imports include `.ts`.
 
 After parent approval, install `effect@latest` and
 `@effect/platform-node@latest`, add the editor language-service packages/plugin,
-extend Vitest discovery to `t/`, and implement the `md/` and manifest/planning
+extend Vitest discovery to `tool/`, and implement the `md/` and manifest/planning
 seams with focused tests. Commit that coherent slice before adding filesystem
 write/check orchestration and the CLI. The next checkpoint will show real types,
 error boundaries and rendering/path tests before the runnable command lands.
@@ -161,3 +168,14 @@ provenance/order/cost reports, import safety and symlink invocation.
 - [`ownership decomposition design`](/design/rekon/agents-modularization0.sol56x.md)
   distinguishes implementation ownership from changing ambient context behavior.
   This work adds a tool; it does not authorize either content migration or activation tiering.
+
+# Layout correction checkpoint
+
+The predecessor in commit `2d8e8717` records the parent's original placement
+assumption. The human then clarified that **`t` means tool, `p` praxis, and `g`
+global as shortcodes, not directories**, and selected the spelled-out `tool/`
+home. This correction preserves that design's verified Effect generation and
+domain split while replacing the mistaken physical placement. Command and
+implementation directories are shared toolkit domains, not nested beneath an
+`agents/` tool directory. The parent approved this corrected first slice before
+dependency installation or implementation began.
