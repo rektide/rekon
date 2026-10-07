@@ -8,9 +8,15 @@ importers:
 
   .:
     dependencies:
+      '@effect/platform-node':
+        specifier: ^4.0.1
+        version: 4.0.1(effect@4.0.1)(redis@6.3.0)
       '@gunshi/plugin-completion':
         specifier: ^0.28.0
         version: 0.28.0(@gunshi/plugin-i18n@0.28.0)(cac@6.7.14)
+      effect:
+        specifier: ^4.0.1
+        version: 4.0.1
       glob:
         specifier: ^13.0.0
         version: 13.0.0
@@ -27,6 +33,9 @@ importers:
         specifier: ^5.1.0
         version: 5.1.0
     devDependencies:
+      '@effect/language-service':
+        specifier: ^0.87.3
+        version: 0.87.3
       '@gunshi/plugin':
         specifier: ^0.28.0
         version: 0.28.0
@@ -38,7 +47,7 @@ importers:
         version: 7.0.0-dev.20260106.1
       msw:
         specifier: ^2.13.4
-        version: 2.13.4(@types/node@25.0.3)
+        version: 2.13.4(@types/node@25.0.3)(typescript@5.9.3)
       oxfmt:
         specifier: ^0.23.0
         version: 0.23.0
@@ -47,10 +56,13 @@ importers:
         version: 1.38.0
       tsdown:
         specifier: 0.19.0-beta.3
-        version: 0.19.0-beta.3(@typescript/native-preview@7.0.0-dev.20260106.1)
+        version: 0.19.0-beta.3(@typescript/native-preview@7.0.0-dev.20260106.1)(typescript@5.9.3)
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
       vitest:
         specifier: ^4.0.16
-        version: 4.0.16(@types/node@25.0.3)(msw@2.13.4(@types/node@25.0.3))
+        version: 4.0.16(@types/node@25.0.3)(msw@2.13.4(@types/node@25.0.3)(typescript@5.9.3))
 
 packages:
 
@@ -89,6 +101,23 @@ packages:
         optional: true
       commander:
         optional: true
+
+  '@effect/language-service@0.87.3':
+    resolution: {integrity: sha512-g1OmRBZF5chbW9QMNoirPo5Bb4zzU2HfP88tR7/VSZEUxHJ1/qVb8AQ0kUh2ggctLH1I715yCwP4gkw56PTjpQ==}
+    hasBin: true
+
+  '@effect/platform-node-shared@4.0.1':
+    resolution: {integrity: sha512-VanaejudEhKJ4mpmqnEzdncVUhN6sGSO9ZDND54mRxAlZxj+4dYAWjDTYAy9o4tJo9aALeP2U8cVcOFzEdSeLg==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      effect: ^4.0.1
+
+  '@effect/platform-node@4.0.1':
+    resolution: {integrity: sha512-FT0Fu5LO0/XP9zBpj0HqrtJNLluK4StNKqf6TSulUsjp8FPBsDVXGJiDuyoN5J2yVMT7tgvhxSwaDcObWVRIaQ==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      effect: ^4.0.1
+      redis: '>=5.0.0 <7.0.0'
 
   '@emnapi/core@1.8.1':
     resolution: {integrity: sha512-AvT9QFpxK0Zd8J0jopedNm+w/2fIzvtPKPjqyw9jwvBaReTTqPBk9Hixaz7KbjimP+QNz605/XnjFcDAL2pqBg==}
@@ -443,6 +472,42 @@ packages:
   '@quansync/fs@1.0.0':
     resolution: {integrity: sha512-4TJ3DFtlf1L5LDMaM6CanJ/0lckGNtJcMjQ1NAV6zDmA0tEHKZtxNKin8EgPaVX1YzljbxckyT2tJrpQKAtngQ==}
 
+  '@redis/bloom@6.3.0':
+    resolution: {integrity: sha512-NQ5poYpZr0jv6zazN1cy6JY5kIipKFZ3R9GTL4kOUTX3a9YAfY29U8bsE4lWhVQEM+G4V0BXVC57mubIdDijeA==}
+    engines: {node: '>= 20.0.0'}
+    peerDependencies:
+      '@redis/client': ^6.3.0
+
+  '@redis/client@6.3.0':
+    resolution: {integrity: sha512-fHrjwGCBvAANGi+TuRuwKi83sIOzgHr8eh+Uf48w3fSX7Hhrz174NrWqfJhAC2vnN0d/tfaZpdr6+o6JC3QHwg==}
+    engines: {node: '>= 20.0.0'}
+    peerDependencies:
+      '@node-rs/xxhash': ^1.1.0
+      '@opentelemetry/api': '>=1 <2'
+    peerDependenciesMeta:
+      '@node-rs/xxhash':
+        optional: true
+      '@opentelemetry/api':
+        optional: true
+
+  '@redis/json@6.3.0':
+    resolution: {integrity: sha512-yt6vRfPBXtW/3qm53cF81TSQpLMjWdW4/2E9WQ2GgbvsKkuCKCFQIcMiKlil1ZMnezK+IQuS795xKU5psbaegw==}
+    engines: {node: '>= 20.0.0'}
+    peerDependencies:
+      '@redis/client': ^6.3.0
+
+  '@redis/search@6.3.0':
+    resolution: {integrity: sha512-RPXAZmKjZZG7Tm7m1w9keFdXzbL91PiSHQBfQRe9xwW40jNsTRbG0FwhIz4QlHPU4gKDAsCy8IQHj4yZl4H9rw==}
+    engines: {node: '>= 20.0.0'}
+    peerDependencies:
+      '@redis/client': ^6.3.0
+
+  '@redis/time-series@6.3.0':
+    resolution: {integrity: sha512-+fJOB8mN1z5WRakCJNh5lVdz1KqvHGSOistsKeitD24QsCtPwyRQXWC0iq6T/i/ubLE/YcguZqPm8F598MKk4A==}
+    engines: {node: '>= 20.0.0'}
+    peerDependencies:
+      '@redis/client': ^6.3.0
+
   '@rolldown/binding-android-arm64@1.0.0-beta.58':
     resolution: {integrity: sha512-mWj5eE4Qc8TbPdGGaaLvBb9XfDPvE1EmZkJQgiGKwchkWH4oAJcRAKMTw7ZHnb1L+t7Ah41sBkAecaIsuUgsug==}
     engines: {node: ^20.19.0 || >=22.12.0}
@@ -689,6 +754,9 @@ packages:
   '@types/statuses@2.0.6':
     resolution: {integrity: sha512-xMAgYwceFhRA2zY+XbEA7mxYbA093wdiW8Vu6gZPGWy9cmOyU9XesH1tNcEWsKFd5Vzrqx5T3D38PWx1FIIXkA==}
 
+  '@types/ws@8.18.2':
+    resolution: {integrity: sha512-67MQl+fpWKVTT1NYdnmo3U4sc/xPo/zQBncVnI74qmQa0z/b+1g6iYqNmGCPbxO+zz2aklb08a0oHfegiVd0/w==}
+
   '@typescript/native-preview-darwin-arm64@7.0.0-dev.20260106.1':
     resolution: {integrity: sha512-9n7HIVP3UMgWSK8Yi2H+23hrrEDNNfkW78mbkxfatGh/ghU4m2QuO8R6MdMdPsSmmKDvbWOtpLEuSZFKNzu7eQ==}
     cpu: [arm64]
@@ -821,6 +889,9 @@ packages:
     peerDependenciesMeta:
       oxc-resolver:
         optional: true
+
+  effect@4.0.1:
+    resolution: {integrity: sha512-b1VlQG9g8fwxE5QnIZuPoOP/0MsqHJSRKxUijjoM80E5q95FXrX5yWtY5XI8G+GJsBQAVSDbLS458z9a++uVvw==}
 
   emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
@@ -1021,6 +1092,10 @@ packages:
   quansync@1.0.0:
     resolution: {integrity: sha512-5xZacEEufv3HSTPQuchrvV6soaiACMFnq1H8wkVioctoH3TRha9Sz66lOxRwPK/qZj7HPiSveih9yAyh98gvqA==}
 
+  redis@6.3.0:
+    resolution: {integrity: sha512-XFQbPie1lGpKeUZ8ySYY43yLnQy/iIQtHNvIr/1XdaABpb96rUSdm3Mfl+98FEVbv9ZJIzINMno5s0Nh8E5LEw==}
+    engines: {node: '>= 20.0.0'}
+
   require-directory@2.1.1:
     resolution: {integrity: sha512-fGxEI7+wsG9xrvdjsrlmL22OMTTiHRwAMroiEeMgq8gzoLC/PQr7RsRDSTLUg/bZAZtF+TVIkHc6/4RIKrui+Q==}
     engines: {node: '>=0.10.0'}
@@ -1181,11 +1256,20 @@ packages:
     resolution: {integrity: sha512-PlBfpQwiUvGViBNX84Yxwjsdhd1TUlXr6zjX7eoirtCPIr08NAmxwa+fcYBTeRQxHo9YC9wwF3m9i700sHma8g==}
     engines: {node: '>=20'}
 
+  typescript@5.9.3:
+    resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+
   unconfig-core@7.4.2:
     resolution: {integrity: sha512-VgPCvLWugINbXvMQDf8Jh0mlbvNjNC6eSUziHsBCMpxR05OPrNrvDnyatdMjRgcHaaNsCqz+wjNXxNw1kRLHUg==}
 
   undici-types@7.16.0:
     resolution: {integrity: sha512-Zz+aZWSj8LE6zoxD+xrjh4VfkIG8Ya6LvYkZqtUQGJPZjYl53ypCaUwWqo7eI0x66KBGeRo+mlBEkMSeSZ38Nw==}
+
+  undici@8.11.2:
+    resolution: {integrity: sha512-u4UB2/IrKdU6lFxumHmmo1a3fCQO5tzQllRorfoRS63txhrB7xTpSn1PftwC4qEHkOaqP95fCWW4lJzwErwzhQ==}
+    engines: {node: '>=22.19.0'}
 
   unrun@0.2.22:
     resolution: {integrity: sha512-vlQce4gTLNyCZxGylEQXGG+fSrrEFWiM/L8aghtp+t6j8xXh+lmsBtQJknG7ZSvv7P+/MRgbQtHWHBWk981uTg==}
@@ -1283,6 +1367,18 @@ packages:
     resolution: {integrity: sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==}
     engines: {node: '>=10'}
 
+  ws@8.22.0:
+    resolution: {integrity: sha512-Ydggc987+RO0AnWtZ/7Wq9FtNvcrL1b/RO0ud9mWjUPgDrsAAwQSF51sm2hm1XofbU/4jkpGEsLFsZZxU+1DOg==}
+    engines: {node: '>=10.0.0'}
+    peerDependencies:
+      bufferutil: ^4.0.1
+      utf-8-validate: '>=5.0.2'
+    peerDependenciesMeta:
+      bufferutil:
+        optional: true
+      utf-8-validate:
+        optional: true
+
   xdg-basedir@5.1.0:
     resolution: {integrity: sha512-GCPAHLvrIH13+c0SuacwvRYj2SxJXQ4kaVTT5xgL3kPrz56XxkF21IGhjSE1+W0aw7gpBWRGXLCPnPby6lSpmQ==}
     engines: {node: '>=12'}
@@ -1325,6 +1421,27 @@ snapshots:
   '@bomb.sh/tab@0.0.11(cac@6.7.14)':
     optionalDependencies:
       cac: 6.7.14
+
+  '@effect/language-service@0.87.3': {}
+
+  '@effect/platform-node-shared@4.0.1(effect@4.0.1)':
+    dependencies:
+      '@types/ws': 8.18.2
+      effect: 4.0.1
+      ws: 8.22.0
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+
+  '@effect/platform-node@4.0.1(effect@4.0.1)(redis@6.3.0)':
+    dependencies:
+      '@effect/platform-node-shared': 4.0.1(effect@4.0.1)
+      effect: 4.0.1
+      redis: 6.3.0
+      undici: 8.11.2
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
 
   '@emnapi/core@1.8.1':
     dependencies:
@@ -1564,6 +1681,24 @@ snapshots:
     dependencies:
       quansync: 1.0.0
 
+  '@redis/bloom@6.3.0(@redis/client@6.3.0)':
+    dependencies:
+      '@redis/client': 6.3.0
+
+  '@redis/client@6.3.0': {}
+
+  '@redis/json@6.3.0(@redis/client@6.3.0)':
+    dependencies:
+      '@redis/client': 6.3.0
+
+  '@redis/search@6.3.0(@redis/client@6.3.0)':
+    dependencies:
+      '@redis/client': 6.3.0
+
+  '@redis/time-series@6.3.0(@redis/client@6.3.0)':
+    dependencies:
+      '@redis/client': 6.3.0
+
   '@rolldown/binding-android-arm64@1.0.0-beta.58':
     optional: true
 
@@ -1708,6 +1843,10 @@ snapshots:
 
   '@types/statuses@2.0.6': {}
 
+  '@types/ws@8.18.2':
+    dependencies:
+      '@types/node': 25.0.3
+
   '@typescript/native-preview-darwin-arm64@7.0.0-dev.20260106.1':
     optional: true
 
@@ -1748,13 +1887,13 @@ snapshots:
       chai: 6.2.2
       tinyrainbow: 3.0.3
 
-  '@vitest/mocker@4.0.16(msw@2.13.4(@types/node@25.0.3))(vite@7.3.1(@types/node@25.0.3))':
+  '@vitest/mocker@4.0.16(msw@2.13.4(@types/node@25.0.3)(typescript@5.9.3))(vite@7.3.1(@types/node@25.0.3))':
     dependencies:
       '@vitest/spy': 4.0.16
       estree-walker: 3.0.3
       magic-string: 0.30.21
     optionalDependencies:
-      msw: 2.13.4(@types/node@25.0.3)
+      msw: 2.13.4(@types/node@25.0.3)(typescript@5.9.3)
       vite: 7.3.1(@types/node@25.0.3)
 
   '@vitest/pretty-format@4.0.16':
@@ -1823,6 +1962,8 @@ snapshots:
   defu@6.1.4: {}
 
   dts-resolver@2.1.3: {}
+
+  effect@4.0.1: {}
 
   emoji-regex@8.0.0: {}
 
@@ -1951,7 +2092,7 @@ snapshots:
 
   minipass@7.1.2: {}
 
-  msw@2.13.4(@types/node@25.0.3):
+  msw@2.13.4(@types/node@25.0.3)(typescript@5.9.3):
     dependencies:
       '@inquirer/confirm': 6.0.11(@types/node@25.0.3)
       '@mswjs/interceptors': 0.41.3
@@ -1971,6 +2112,8 @@ snapshots:
       type-fest: 5.5.0
       until-async: 3.0.2
       yargs: 17.7.2
+    optionalDependencies:
+      typescript: 5.9.3
     transitivePeerDependencies:
       - '@types/node'
 
@@ -2027,13 +2170,24 @@ snapshots:
 
   quansync@1.0.0: {}
 
+  redis@6.3.0:
+    dependencies:
+      '@redis/bloom': 6.3.0(@redis/client@6.3.0)
+      '@redis/client': 6.3.0
+      '@redis/json': 6.3.0(@redis/client@6.3.0)
+      '@redis/search': 6.3.0(@redis/client@6.3.0)
+      '@redis/time-series': 6.3.0(@redis/client@6.3.0)
+    transitivePeerDependencies:
+      - '@node-rs/xxhash'
+      - '@opentelemetry/api'
+
   require-directory@2.1.1: {}
 
   resolve-pkg-maps@1.0.0: {}
 
   rettime@0.11.7: {}
 
-  rolldown-plugin-dts@0.20.0(@typescript/native-preview@7.0.0-dev.20260106.1)(rolldown@1.0.0-beta.58):
+  rolldown-plugin-dts@0.20.0(@typescript/native-preview@7.0.0-dev.20260106.1)(rolldown@1.0.0-beta.58)(typescript@5.9.3):
     dependencies:
       '@babel/generator': 7.28.5
       '@babel/parser': 7.28.5
@@ -2046,6 +2200,7 @@ snapshots:
       rolldown: 1.0.0-beta.58
     optionalDependencies:
       '@typescript/native-preview': 7.0.0-dev.20260106.1
+      typescript: 5.9.3
     transitivePeerDependencies:
       - oxc-resolver
 
@@ -2163,7 +2318,7 @@ snapshots:
 
   tree-kill@1.2.2: {}
 
-  tsdown@0.19.0-beta.3(@typescript/native-preview@7.0.0-dev.20260106.1):
+  tsdown@0.19.0-beta.3(@typescript/native-preview@7.0.0-dev.20260106.1)(typescript@5.9.3):
     dependencies:
       ansis: 4.2.0
       cac: 6.7.14
@@ -2174,13 +2329,15 @@ snapshots:
       obug: 2.1.1
       picomatch: 4.0.3
       rolldown: 1.0.0-beta.58
-      rolldown-plugin-dts: 0.20.0(@typescript/native-preview@7.0.0-dev.20260106.1)(rolldown@1.0.0-beta.58)
+      rolldown-plugin-dts: 0.20.0(@typescript/native-preview@7.0.0-dev.20260106.1)(rolldown@1.0.0-beta.58)(typescript@5.9.3)
       semver: 7.7.3
       tinyexec: 1.0.2
       tinyglobby: 0.2.15
       tree-kill: 1.2.2
       unconfig-core: 7.4.2
       unrun: 0.2.22
+    optionalDependencies:
+      typescript: 5.9.3
     transitivePeerDependencies:
       - '@ts-macro/tsc'
       - '@typescript/native-preview'
@@ -2195,12 +2352,16 @@ snapshots:
     dependencies:
       tagged-tag: 1.0.0
 
+  typescript@5.9.3: {}
+
   unconfig-core@7.4.2:
     dependencies:
       '@quansync/fs': 1.0.0
       quansync: 1.0.0
 
   undici-types@7.16.0: {}
+
+  undici@8.11.2: {}
 
   unrun@0.2.22:
     dependencies:
@@ -2220,10 +2381,10 @@ snapshots:
       '@types/node': 25.0.3
       fsevents: 2.3.3
 
-  vitest@4.0.16(@types/node@25.0.3)(msw@2.13.4(@types/node@25.0.3)):
+  vitest@4.0.16(@types/node@25.0.3)(msw@2.13.4(@types/node@25.0.3)(typescript@5.9.3)):
     dependencies:
       '@vitest/expect': 4.0.16
-      '@vitest/mocker': 4.0.16(msw@2.13.4(@types/node@25.0.3))(vite@7.3.1(@types/node@25.0.3))
+      '@vitest/mocker': 4.0.16(msw@2.13.4(@types/node@25.0.3)(typescript@5.9.3))(vite@7.3.1(@types/node@25.0.3))
       '@vitest/pretty-format': 4.0.16
       '@vitest/runner': 4.0.16
       '@vitest/snapshot': 4.0.16
@@ -2267,6 +2428,8 @@ snapshots:
       ansi-styles: 4.3.0
       string-width: 4.2.3
       strip-ansi: 6.0.1
+
+  ws@8.22.0: {}
 
   xdg-basedir@5.1.0: {}
 

@@ -179,3 +179,38 @@ domain split while replacing the mistaken physical placement. Command and
 implementation directories are shared toolkit domains, not nested beneath an
 `agents/` tool directory. The parent approved this corrected first slice before
 dependency installation or implementation began.
+
+# First-slice implementation evidence
+
+The corrected slice now lives in `tool/md/` and `tool/assembly/`, with colocated
+tests and an assembler-domain [README](/tool/assembly/README.md). The schema and
+planning APIs need no filesystem runtime; pure lexical paths use `node:path`
+directly rather than inventing a service wrapper around deterministic functions.
+Filesystem orchestration will use upstream `FileSystem` at the next checkpoint.
+
+Actual installation resolved Effect/Node 4.0.1 and language-service 0.87.3.
+An attempted `typescript@latest` installation selected native TS 7.0.2; the
+language-service CLI explicitly rejected it (supports TS 5/6), and the existing
+`tsdown`/declaration plugin require TS 5. Installing `typescript@5` selected the
+latest compatible 5.9.3. `tsgo` remains the unchanged native-preview dependency
+and typecheck command. Effect diagnostics now run successfully without patching
+compiler binaries. `pnpm peers check` reports no peer issues.
+
+The dependency installer reports `ERR_PNPM_IGNORED_BUILDS` for the repository's
+existing `esbuild@0.27.2` and `msw@2.13.4` scripts after successfully updating
+dependencies. No build-script permissions were changed. These packages and
+their declarations predate this work; the added Effect packages need no script
+approval.
+
+One lexical edge is made explicit for parent review: `..notes/GLOBAL.md` is
+accepted because `..notes` is a directory name, not a `..` traversal segment.
+The legacy `startsWith("..")` containment guard rejects it. This implements the
+written segment contract rather than preserving that overbroad rejection;
+ordinary traversal remains rejected before reads.
+
+First-slice checks: 54 new tests and all 59 unchanged legacy assembler tests
+pass; `tsgo --noEmit`, targeted `oxlint`, formatting checks, and strict Effect
+language-service diagnostics pass. There is no new executable or filesystem
+write/check orchestration yet. The proposed next slice supplies those behaviors,
+unique-id/order rejection and sorting, bounded concurrent reads, scoped atomic
+staging, and source-executed CLI/alias/import tests after parent review.

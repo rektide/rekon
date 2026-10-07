@@ -12,7 +12,8 @@
     "resolveJsonModule": true,
     "allowImportingTsExtensions": true,
     "noEmit": true,
-    "moduleDetection": "force"
+    "moduleDetection": "force",
+    "plugins": [{ "name": "@effect/language-service" }]
   },
   "include": ["**/*.ts"],
   "exclude": ["node_modules", "dist", "build", "vendor"]
