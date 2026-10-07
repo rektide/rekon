@@ -28,7 +28,7 @@ sources:
 
 # ado-recovery0: can rekon delete doc/opencode-session.md?
 
-**Mandate.** Parent asked: compare [`doc/opencode-session.md`](/doc/opencode-session.md)
+**Mandate.** Parent asked: compare [`doc/opencode-session.md`, pinned](https://github.com/rektide/rekon/blob/ece454d44301fdf1a7b00a21eaf6b42ad6eeee90/doc/opencode-session.md)
 (1,367 lines) against `~/ado/` and its parent; identify covered / stale / uniquely
 useful material and the minimal transfer that would let rekon delete the file;
 propose faithful durable replacements for every inbound citation. Read-only
