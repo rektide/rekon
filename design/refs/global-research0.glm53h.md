@@ -30,7 +30,7 @@ sources:
   - { resource: /README.md, title: Root sense-map and starting points }
   - { resource: /code/README.md, title: Module landing page with Doc/Load-when routing table precedent }
   - { resource: /doc/README.md, title: Doc landing page as of the retiring-bucket era }
-  - { resource: /t/README.md, title: New tool home and t-agents rebuild standing }
+  - { resource: "https://github.com/rektide/rekon/blob/7f7f86d40aaf519ca4f0d0f0302397a09c22a71f/t/README.md", title: Tool-home proposal at this report's original snapshot }
   - { resource: /upstream/README.md, title: Upstream reference mirrors — refs' nearest neighbor practice }
   - { resource: /src/command/project-files.ts, title: Existing ~/archive and ~/wiki lookup convention }
   - { resource: /AGENTS.md, title: Live manuscript, archive-first and well-known-directories sections }
@@ -68,7 +68,9 @@ retiring in Rekon; tools to `t/<tool>/`), `/constitution/structure.md` now
 declares ``refs/` (being established) `` at line 40, and `doc/GLOBAL.md`
 changed from `status: draft` to `status: deprecated` mid-session. Line numbers
 below were accurate at read time (2026-10-07T00:37Z); re-verify before editing
-anything in `constitution/` or `doc/`.
+anything in `constitution/` or `doc/`. The subsequent structure correction uses
+[`tool/`](/tool/README.md) as the toolkit home and `t` as a shortcode; citations
+to the earlier `t/README.md` below retain that historical snapshot.
 
 <a id="global-research-classification"></a>
 
@@ -152,7 +154,7 @@ From [`/src/agents/assemble.ts`](/src/agents/assemble.ts) and
    body line — or the assembler should grow `status` in its provenance
    comment (a small change worth considering for the `t-agents` rebuild,
    which is being designed concurrently per
-   [`/t/README.md:29`](/t/README.md)).
+   [`t/README.md` at the research snapshot](https://github.com/rektide/rekon/blob/7f7f86d40aaf519ca4f0d0f0302397a09c22a71f/t/README.md#L29)).
 5. **No auto-discovery; manifest-driven** (agents-assembly.md lines 128–131;
    [assemble.ts:14](/src/agents/assemble.ts) — no production manifest
    exists). A GLOBAL file's existence asserts nothing about ambient load —
@@ -333,7 +335,7 @@ Ordered by leverage; all are parent-owned edits, none performed here:
   the pattern for new index-class fragments.
 - **R2 — Make posture assembly-visible cheaply.** Either add `status` to the
   provenance comment in the `t-agents` Effect rebuild (small, aligns with
-  [`/t/README.md:29`](/t/README.md)), or adopt the one-body-line convention
+   [`t/README.md` at the research snapshot](https://github.com/rektide/rekon/blob/7f7f86d40aaf519ca4f0d0f0302397a09c22a71f/t/README.md#L29)), or adopt the one-body-line convention
   for fragments that need it. Don't do both per fragment.
 - **R3 — Decide the retired-fragment story.** `doc/GLOBAL.md` now fails
   `fragmentMeta` on `status: deprecated`. Bless it as a tripwire (note it in
