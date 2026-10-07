@@ -140,6 +140,8 @@ by these documents.
 - [Coding practice](/code/README.md) — commits, review handling, planning, and posture.
 - [References](/refs/README.md) — archive-backed knowledge and our curated skill
   index; [skill curation](/refs/skills.md) owns selection and composition.
+- [Open Knowledge Format](/okf/README.md) — trustworthy knowledge labels;
+  [source citations](/refs/sources.md) preserve their grounds and native origins.
 - [Upstream reference mirrors](/upstream/README.md) — inactive vendor snapshots,
   provenance, and deliberate refresh of independently maintained adaptations.
 - [Skillification](/design/skillify/README1.sol56x.md) — the proposal for turning

@@ -6,6 +6,9 @@ tags: [sources, provenance, references, okf, sessions]
 status: draft
 generated: { by: "rekon/gpt-6-astra", at: 2026-10-06T20:40:40-04:00 }
 sources:
+  - id: writing-guidance
+    resource: /AGENTS.md
+    title: Existing Writing guidance and OKF sources example
   - id: source-direction
     resource: "urn:opencode:session:ses_eec6a0bd5ffe45v03zJ7px5vgb"
     title: Human direction to make native session provenance a refs practice
@@ -23,6 +26,11 @@ sources:
 material in [OKF](/okf/README.md) `sources:` and explain in the body what it
 supports. A specification, inspected code, a conversation containing human
 direction, and a measured result can all be sources; their roles differ.
+
+This elaborates the existing [Writing guidance in AGENTS](/AGENTS.md#writing):
+frontmatter is a trustworthy label, including where claims came from; the body
+explains them. Native session references extend the `sources:` practice already
+shown there.
 
 ## The small pattern
 

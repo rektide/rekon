@@ -6,6 +6,9 @@ tags: [okf, knowledge, frontmatter, provenance, verification]
 status: draft
 generated: { by: "rekon/gpt-6-astra", at: 2026-10-06T20:40:40-04:00 }
 sources:
+  - id: writing-guidance
+    resource: /AGENTS.md
+    title: Existing OKF Writing guidance, full frontmatter example, and index/log conventions
   - id: okf-spec
     resource: https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/86df01601733f93c0f243a727927d03ebf6d7e1d/okf/SPEC.md
     title: Open Knowledge Format v0.2
@@ -23,7 +26,13 @@ directories. The label tells a reader what the document describes, what informed
 it, who produced or checked it, and when its claims need another look. The body
 does the explaining.
 
-This is Rekon's home for using the format. The authoritative definition is
+This home formalizes the existing [Writing guidance in AGENTS](/AGENTS.md#writing)
+and [constitutional frontmatter contract](/constitution/README.md#doc-constitution-module-readme).
+The operating manual already supplies the full “Active customers” example,
+including `sources:`, and the `index.md` / `log.md` conventions. Here we explain
+those commitments and connect their supporting practices.
+
+The authoritative format definition is
 [GoogleCloudPlatform/knowledge-catalog — OKF specification](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md),
 also available in our
 [archive](file:///home/rektide/archive/GoogleCloudPlatform/knowledge-catalog/okf/SPEC.md).
@@ -67,6 +76,10 @@ are `<producer>/<version>` for agents/tools, `human:<id>` for people, and
 `process:<id>` for automated processes. Write a verification event only for a
 check that actually happened; human acceptance of a proposal does not itself
 verify its factual claims.
+
+One normalization from the existing AGENTS example: its date-only
+`stale_after` and `last_modified` should use full offset datetimes when producing
+v0.2-conformant metadata. Date-only headings remain correct in `log.md`.
 
 <a id="structure"></a>
 ## Bodies, links, and bundles
