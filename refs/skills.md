@@ -43,13 +43,11 @@ assembly mechanism.
    findings. Follow [our source practice](/refs/sources.md) for OKF `sources:`.
    One repository may contain several independently selected skills.
 4. **Publish a table row.** Add the skill to the table in `refs/GLOBAL.md`:
-   `Skill` (the registration name), `Cue` (a short task cue), `Entry` (a
-   concrete `file:///…/SKILL.md` link for this workspace), `Upstream` (the
-   canonical repository entry URL), and `Registered` (the discovery-root
-   symlink, or `—` when not registered). Keep the original directory intact,
-   including its references and scripts. Our process uses these sources in
-   place; upstream marketplace installers and copied skill folders are not
-   required.
+   `Skill` (the registration name), `Cue` (a short task cue), and `Source` (an
+   `[org/repo](…)` link to the upstream `SKILL.md`). Keep the original
+   directory intact, including its references and scripts. Our process uses
+   these sources in place; upstream marketplace installers and copied skill
+   folders are not required.
 5. **Check the route.** Open the advertised file, follow its support paths, and
    check that the cue leads to the intended capability. Having its instructions
    available does not establish that the accompanying program is installed.
@@ -83,19 +81,22 @@ when it must act before the linked material is loaded.
 
 ## Register with the harness
 
-Registration is a symlink, not a copy. OpenCode discovers `~/.agents/skills`,
-`~/.config/opencode/skills`, and `~/.claude/skills` plus project sources; we
-point one root at the archive skill directory so the loaded body is the checkout
-itself. A first-party skill can own its registration the same way — `cplace
-skill` symlinks itself in. Retired installations are parked under
-`~/.config/opencode/.bak` rather than deleted; that directory's README
-inventories them.
+Registration is a symlink, not a copy, and it is a disposable derivation of
+the [GLOBAL skills table](/refs/GLOBAL.md) rather than tracked state there.
+OpenCode discovers `~/.agents/skills`, `~/.config/opencode/skills`, and
+`~/.claude/skills` plus project sources; the table's install rule resolves a
+Source link to its local checkout (`~/archive/<org>/<repo>`, first-party
+`rektide/*` in `~/src/<repo>`) and symlinks the `SKILL.md` parent directory
+into one root, so the loaded body is the checkout itself. A first-party skill
+can own its registration the same way — `cplace skill` symlinks itself in.
+Parked registrations live under `~/.config/opencode/.bak`, origin-labeled with
+restore notes, rather than being deleted; that directory's README inventories
+them.
 
-The [GLOBAL skills table](/refs/GLOBAL.md) is the machine-readable index of
-registrations: each row's `Entry` plus the install rule printed there derive
-the symlink, and `Registered` records the current state. The planned
-skill-manager (`rekon-skill-management`) can parse that table instead of
-rediscovering the layout.
+The registrations cataloged here were parked on 2026-10-07 in
+`~/.config/opencode/.bak/registered-symlinks-2026-10-07/`, making the table
+the availability record. The planned skill-manager (`rekon-skill-management`)
+can parse the table and install on demand instead of keeping ambient state.
 
 ## Catalog
 
@@ -130,7 +131,7 @@ recorded at main `7feda456ccba`.
 
 Its support base is `effect-best-practices/references/`. The same repository
 carries `effect-review` and `effect-review-v4` review skills we have not
-cataloged. Registered by symlink at `~/.agents/skills/effect-best-practices`.
+cataloged.
 
 ### Railway operations
 
@@ -146,7 +147,7 @@ Its support base is `plugins/railway/skills/use-railway/`: task guides under
 `references/` and `scripts/railway-api.sh` for API access. Upstream moved the
 entry from `skills/use-railway` to `plugins/railway/skills/use-railway` — the
 changed-entry-path case [Maintain the selection](#maintain-the-selection)
-describes. Registered by symlink at `~/.agents/skills/use-railway`.
+describes.
 
 ### cplace
 
@@ -159,7 +160,7 @@ recorded at `b1e8f07f4d2b`.
 
 The entry is a single `SKILL.md`; its support base is the `cplace` program it
 documents. That same revision added the `cplace skill` subcommand, which
-performs this skill's own registration as `~/.agents/skills/cplace`.
+performs this skill's own registration into global AI tool directories.
 
 ## Maintain the selection
 
