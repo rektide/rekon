@@ -130,9 +130,15 @@ by these documents.
 <a id="rekon-map"></a>
 ## Other useful starting points
 
+- [Rekon's structure](/constitution/structure.md) — where concerns live, how
+  to place new explanations, and the [short codes](/constitution/naming/README.md#short-codes)
+  used to name them. [Tools (`t`)](/t/README.md) brings executable entrypoints,
+  documentation, and domain-grouped source into one home per tool.
 - [Constitution](/constitution/README.md) and its [reading map](/constitution/index.md)
   — knowledge ownership, identity, references, and current versus proposed guidance.
 - [Coding practice](/code/README.md) — commits, review handling, planning, and posture.
+- [References](/refs/README.md) — archive-backed knowledge and our curated skill
+  index; [skill curation](/refs/skills.md) owns selection and composition.
 - [Upstream reference mirrors](/upstream/README.md) — inactive vendor snapshots,
   provenance, and deliberate refresh of independently maintained adaptations.
 - [Skillification](/design/skillify/README1.sol56x.md) — the proposal for turning

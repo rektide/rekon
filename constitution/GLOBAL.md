@@ -63,8 +63,13 @@ Keep the owner and any disagreement visible; do not strip useful definitions
 merely to make a context count smaller. A tiny local glossary belongs before
 instructions that rely on its terms; it need not repeat the entire shared glossary.
 
-`design/<topic>/` holds inquiry and `doc/<topic>/` maintained explanation under
-the current pilot; later hierarchy proposals do not authorize bulk moves.
+In Rekon, maintained explanations live with their domain owners; `t/<tool>/`
+co-integrates each new tool's entrypoint, README, and domain-named source.
+Use the [structure map](/constitution/structure.md) and
+[short codes](/constitution/naming/README.md#short-codes); new Rekon topics do
+not enter the retiring `doc/` bucket. In other projects, `design/<topic>/`
+holds inquiry and `doc/<topic>/` is the default maintained home under the
+pilot, subject to native conventions. Existing inquiry is not bulk-moved.
 In upstream-owned repositories, fit upstream conventions for upstream work;
 keep workspace-specific knowledge in a coherent carryable domain subtree.
 Promotion synthesizes understanding rather than deleting the evidence it used.

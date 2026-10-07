@@ -1,10 +1,10 @@
 ---
 type: Module landing page
-title: doc/ — maintained explanation
-description: The maintained-explanation surface for rekon. Use when deciding where topic documentation lives, or when promoting accepted inquiry from design/ into a stable account.
+title: doc/ — retiring legacy home
+description: Redirects the former maintained-explanation bucket to Rekon's domain-owned structure and records the remaining migrations.
 resource: /doc/README.md
 tags: [documentation]
-status: draft
+status: deprecated
 generated: { by: "model:glm-5.3-max", at: 2026-10-06 }
 extensions:
   ticket: rekon-agents-maintenance
@@ -16,22 +16,18 @@ sources:
   - { resource: /AGENTS.md, title: Live placement guidance }
 ---
 
-# doc/ — maintained explanation
+# doc/ — retiring legacy home
 
-`doc/<topic>/` owns the maintained current account a reader should trust
-first. `design/<topic>/` holds inquiry — waves, drafts, proposals. Promotion
-synthesizes accepted inquiry into a `doc/<topic>/README.md` deliberately; it
-does not relocate evidence, and existing `design/` trees are not bulk-moved.
-The postures are recorded in
-[design and documentation](/constitution/README.md#doc-constitution-lifecycle).
+**Write new Rekon explanations with their domain owner.** The
+[working structure](/constitution/structure.md#placement) replaces this
+directory's former intake rule. [Tools](/t/README.md) own their explanation and
+code together; constitution owns the structural contract; praxis owns ways of
+working. Existing `design/` evidence remains citable in place.
 
-Much of this directory predates the pilot: loose files here do not
-retroactively certify stability, and they stay as-is until deliberately
-reworked. New topic work lands in `doc/<topic>/` with a README landing page;
-an optional `log.md` records dated changes. See the
-[ambient fragment](/doc/GLOBAL.md) for the placement rule as candidate
-context, and the [constitutional reading map](/constitution/index.md) for
-related rulings.
+This local decision supersedes the September landing-page proposal and its
+[candidate fragment](/doc/GLOBAL.md). The general documentation pilot remains
+available to other projects. Use the [constitutional reading map](/constitution/index.md)
+for its history and broader commitments.
 
 The dl fork's leftovers were reworked on 2026-10-06:
 26 dl-owned files were culled after a byte-level preservation audit. They are

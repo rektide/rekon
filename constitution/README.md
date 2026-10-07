@@ -84,6 +84,14 @@ sources:
 
 # Self-Explaining Documentation Constitution
 
+For **Rekon's own structure and placement**, start with the
+[working structure](/constitution/structure.md): shared commitments here,
+working postures in praxis, executable mechanisms under `t/`, and maintained
+explanations with their domain owners. Its local rule supersedes the generic
+`doc/<topic>/` destination in this repository. The knowledge contracts below
+remain the general documentation pilot; the broader Rekon compact is still
+being developed from the [reassessment](/constitution/reassessment0.gpt6a.md).
+
 Documentation here is not inert output. It is the durable substrate through
 which a workspace learns, explains itself, activates specialized behavior, and
 preserves enough history to learn again.

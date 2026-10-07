@@ -2,10 +2,10 @@
 id: doc
 order: 300
 source: /doc/README.md
-status: draft
+status: deprecated
 type: ContextFragment
 title: Doc — maintained explanation placement
-description: A glossary-first candidate exposure of the design/ versus doc/ placement ruling so sessions writing maintained docs keep the postures distinct.
+description: Retired candidate placement fragment; Rekon's domain-owned placement now lives in the constitutional structure contract and GLOBAL.
 resource: /doc/GLOBAL.md
 generated: { by: "model:glm-5.3-max", at: 2026-09-11 }
 extensions:
@@ -19,26 +19,14 @@ sources:
   - { resource: /AGENTS.md, title: Live placement guidance }
 ---
 
-# Doc — maintained explanation placement
+# Doc — retired placement candidate
 
-**Honing candidate, not a promoted GLOBAL.** It deliberately repeats the
-ruling already carried by the [constitution fragment](/constitution/GLOBAL.md)
-and the live AGENTS manuscript so this exposure stands on its own.
+**Retired on 2026-10-06.** The [structure contract](/constitution/structure.md#placement)
+and [constitution fragment](/constitution/GLOBAL.md) now own Rekon's placement
+guidance. New maintained explanations go to their domain home; executable tools
+use `t/<tool>/` with co-integrated entrypoints, documentation, and source.
 
-## Terms in use
-
-- **Inquiry / explanation:** the live argument in `design/<topic>/` / the
-  maintained current account in `doc/<topic>/`. Posture and audience, not
-  quality; both are durable and citable.
-- **Promotion:** synthesizing accepted inquiry into a `doc/<topic>/README.md`
-  deliberately — not relocating evidence, not bulk-moving existing trees.
-
-## Operating weight
-
-- write maintained topic docs in `doc/<topic>/`; keep waves, drafts, and
-  proposals in `design/<topic>/`; `.test-agent/<topic>/` stays gitignored
-  scratch. existing trees are grandfathered: location authorizes no bulk
-  moves. /constitution/README.md#doc-constitution-lifecycle
-- a doc module owns a README landing page; support artifacts stay linked, not
-  inlined. loose pre-pilot files in /doc/ remain as-is until deliberately
-  reworked. /doc/README.md
+This file remains a historical redirect, not an assembly input. Its original
+candidate was never selected for production. The broader `design/` inquiry and
+`doc/` explanation defaults remain available in other projects under their
+native conventions. See [doc's retirement note](/doc/README.md).

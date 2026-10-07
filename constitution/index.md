@@ -7,6 +7,11 @@ the local documents and live Beads records on **2026-09-04**.
 
 ## Maintained Account And Recorded Decisions
 
+- [Rekon's working structure](/constitution/structure.md) — the local placement
+  contract, responsibilities of constitution/praxis/references/tools, and the
+  user-selected `t/` co-integrated tool layout (2026-10-06). Start here to place
+  new Rekon explanations. [Short codes](/constitution/naming/README.md#short-codes)
+  restore a usable `con` / `t` / scoped `exp` / `res` reference table.
 - [Constitution README](/constitution/README.md) — the maintained pilot account:
   knowledge modules, evidence, references, context, adoption, and evolution.
   Still `draft`; later proposals below have not been silently integrated.
