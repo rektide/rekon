@@ -1,4 +1,7 @@
 ---
+id: glossary
+order: 50
+source: /CONTEXT.md
 type: Glossary
 title: Rekon working vocabulary
 description: Cross-topic terms linking the established naming and constitutional vocabulary to current action and context work; a working glossary, not a new naming law.

@@ -1,371 +1,321 @@
-# subagents
-
-- run in background
-- when you get a reply from a subagent, consider whether to respond now or to wait for other subagents to resolve first. i tend to prefer documents get built deliberatively, given the benefit of previous context that could become available that could help latter documents to be better structured.
-- UNLESS DIRECTED BY USER ignore skills/etc that say to use a given model. we do not have access to most of these. general agent is usually a solid go to agent for most uses!
-- agent quality guide: treat `general` as astra-equivalent with constraints — very capable/smart, can do many builds, but lacks a certain "flash of insight"/clean-ness. sol is brilliant, just less so than astra: often appropriate/ok, and using astra implies we care about the topic. for high value tasks & deep research, ask the user what agents they want for what subagent tasks. the general agent override lives at [agents/general.md](/agents/general.md).
-- cite existing research/md at your subagents to get them primed
-- have agents write/maintain their own md files often in design/<topic>/ so their work can be cited. have them jj commit.
-- tell subagents to favor not overwriting files generally, other than README / index / shared file maintenance, unless instructed otherwise
-- ask subagents to return references, to facilitate follow-up investigation/exploration.
-- remember to use the task_id to talk to an agent again; self maintain this prompt to make sure this directive is proper tool use for you
-
-## Architectural stewardship
-
-- Delegate implementation and routine verification, not architectural responsibility. The parent agent's value is big-picture thinking: assess the shape of the code, alignment with user intent, and whether the solution fits verified upstream capabilities and constraints.
-- Use meaningful architectural checkpoints rather than handing off the whole destination unattended. Review the emerging interfaces, domain concepts, reuse, tradeoffs, and evidence; then steer or authorize the next coherent slice. Checkpoints should follow consequential decisions, not arbitrary file-by-file phases.
-- Trust subagents' reports that they ran their tests and checks; do not routinely rerun the same checks merely to confirm their work. Stay engaged with implementation details: read the code, examine important behaviors and edge cases, and give concrete feedback. Reported passing checks do not replace code review or judgment about whether the checks cover the intended behavior; run additional verification when it answers a specific concern.
-- Ask checkpoint reports to explain what became possible or impossible, which architectural choices were made and why, unresolved tensions, and the proposed next slice, with references. Read the relevant code and evidence rather than approving from summaries alone.
-- Cooperatively anneal broader solutions: balance concrete needs with plausible futures, and use dialogue, implementation evidence, and successive refinement to negotiate the right abstractions. Exploring hypothetical futures is encouraged, not forbidden; make assumptions, costs, and opportunities explicit so the parent, subagents, and user can assess them together. Distinguish paths worth preserving or exploring from capabilities agreed for implementation, and preserve meaningful differences within shared machinery. Let subagents choose coherent implementation slices within the agreed direction.
-  - When a possible future would materially change the shape of the solution, consider a focused follow-up question or small exploration to clarify which paths we are building toward, keeping open, or making harder. Bring promising broader directions back for discussion rather than silently implementing or dismissing them.
-
-# Experimenting
-
-- use `rg` and `fd` for composing shell commands, both are kept fresh. prefer `fd` over `find` for path discovery.
-- a `variant` is usually a ~/src/<repo>-<variant>/ directory with a jj workspace in it
-- `.test-agent` is our git-ignored scratch directory. prefer doing a domain of work inside a subdirectory, please, and include/maintain a README.md there
-
-# Documentation / reference materials
-
-- make markdown links to the canonical url for entries, for example [`/README.md`](/README.md) for local files or [`rektide/compfuzor` `README.md`](https://github.com/rektide/compfuzor/blob/main/README.mdL10-20) for a remote canonical reference to lines 10-20 of `README.md` in `rektide/compfuzor` project, file `README.md` (for the main branch). the org/repository isn't required each time but should be explicitly included in the link text if we haven't been talking about that org/repository recently.
-- In Rekon itself, write maintained explanations with their domain owner. `g` global, `p` praxis, and `t` tool are **shortcodes, not directories**. The shared toolkit lives in `tool/`, with executable entrypoints at its top and source/docs grouped beneath by domain (`cmd/`, `md/`, `assembly/`, `hyalo/` as needed), not `src/` or `lib/`. Follow [Rekon's structure](/constitution/structure.md) and [short codes](/constitution/naming/README.md#short-codes); do not add new topics to Rekon's retiring `doc/` bucket.
-- In other projects, `doc/<topic>/` is the default for maintained topic docs unless their native structure says otherwise; `design/<topic>/` holds inquiry (waves, drafts, proposals); `.test-agent/<topic>/` stays gitignored scratch for work not ready to promote. Promotion synthesizes accepted inquiry into the maintained home deliberately — no bulk moves of existing design/ trees. Postures and promotion: [design and documentation](/constitution/README.md#doc-constitution-lifecycle).
-- a technique that can be helpfu: an addendum. this ia new top level h1 section at the end of a markdown that packages new information / in the document, but not inline. use pandoc to write OKF tags for the title. you are free to mix inline edits and addendum in to commits!
-- the `summarizer` tool is WIP and not done yet. but will latter be a tool to write and read INDEX files in documentation directories to be aware of what's included in the directory.
-
-## wave
-
-often we want to do a "wave" of review, where multiple llms produce their own independent output for the wave. this is typically in design/<short-feature-name>/ , usually two maybe three words. sometimes .test-agent/. we'll end up with a bunch of design/<feature>/<wave>.<model-name>.md files. waves are inquiry — they live in design/ — and accepted explanation promotes to doc/<topic>/ as a synthesis, not a move.
-
-- common waves:
-  - `init` for initial exploration / problem write ups
-  - `draft` for an initial design draft
-- we add numerical suffixes and increment as we go, as we do "rounds". feature3-syn2 usually means the third revision of the `feature` wave and the second synthesis around that feature3. as we iterate on topics we can add new suffixes to the wave, or start a new more focused wave.
-- `syn` is a frequently used suffix (ex: draft-syn.glm52.md): as follow up to a wave often one or more llm's will be asked to synthesize from their point of view, to review the existing wave, and create a synthesis doc that combines the best elements of the different documents into their vision of the best document. discuss common themes and tensions amid the source material. at the end it should also cross compare, noting particular strengths, interesting/notable features, and relative weaknesses, and a general characterization of the different source documents. this is cross-review and re-integration/synthesis.
-- please include a 0 suffix to be clear on your wave file (ex: draft0.ds4f.md).
-- the "std name" is `design/<name>/<name>.<model>.md`: when a directory holds one main document rather than a wave, name the file after the directory/topic itself (ex: `design/roadmap/roadmap.ds4f.md`). revisions still get numerical suffixes (`roadmap2.ds4f.md`).
-- if "accepted" please make a prefix-less symlink for the accepted wave. this is a signal that this is the accepted "tip" of material.
-- start waves by capturing what is up. what are we doing, what the genereal situation is. what is the general problem, and then what more specifically is happening? if there are specific vectors/directions/instructions your user provided, please capture them. consider giving a couple sentance prompt that could be used to research the topic at hand, on the current lines/directions of inquiry. you do not need to restate as we go, but talking about what's new or whats changed or what's emerged from the previous is helpful stage setting!
-- **every wave file you write must end in `.<model-name>.md` — this is the default, not an option.** `draft0.md`, `draft.md`, or any filename missing the model suffix is a bug: fix the name before you finish writing. good examples: `draft0.gpt56t.md`, `feature3-syn2.glm52.md`.
-- be concise in your model name please, for example gpt56t (for gpt 5.6 terra) or ds4f (for deepseek 4 flash) or glm52 (for glm 5.2).
-- use your present model name in the suffix every time you write a file! models get changed between rounds, so never copy a suffix from an earlier wave file — identify the model you are running as right now.
-- the model name is the llm you are running on, never the harness or tooling around it. opencode is the agent harness that runs us, not a model: `*.opencode.md` is always wrong, and the same goes for any other harness/tool/agent-runner name. if you genuinely cannot determine the underlying model, use the most specific name you can and note the uncertainty at the top of the doc.
-- if you are overwriting a file without being asked to, something is probably wrong, and you probably need to find a way to differentiate your work & write a new file.
-- often we ping pong between design (generally, even if not explicitly named so) and synthesis review. design -> syn -> design2 -> design2-syn -> design2->syn2.
-- we tend to write new files rather than update previous files. if we are close, sometimes we'll just integrate changes; usually this will be explicitly asked for.
-- maintaining an index.md during this is hard but is encouraged once we start accepting the work as good.
-- unless told do DO NOT read other files from your wave, from the other models: you are expected to do your own work and not pollute your thinking with their results; we want independent results, that's why we are asking multiple models. but you are free to read relevant files from previous waves.
-
-## doc-pass
-
-A `doc-pass` is an informal post-writing skill for connecting new work to the existing documentation corpus. It is recommended after most waves of significant weight, once the wave's core argument is written and can guide the search.
-
-1. Identify the new or substantially changed documents and summarize their concepts, claims, vocabulary, and unresolved questions as search terms.
-2. Search the containing documentation tree broadly by concept, not only by exact terminology. Check `README.md`, `index.md`, and other indexes first, then use filenames and full-text search to find less obvious relationships.
-3. Read enough of each candidate to distinguish a substantive relationship from a keyword collision. Prefer a few explained references over a long undifferentiated link list.
-4. Add or update a `Cross-references` section in the new work. Each entry should say why the linked document matters: prior art, supporting evidence, shared vocabulary, tension, contradiction, extension point, or downstream application.
-5. Add reciprocal links to older documents when the new work materially changes how they should be navigated or understood. Preserve their original argument rather than opportunistically rewriting them.
-6. Maintain the documentation area's `README.md` or index when the new work creates a durable concept, changes the recommended entry point, or fills a missing category. Group entries by domain and give each a short description; do not turn the index into another concept document.
-7. Verify local links and reread the surrounding sections. The pass is complete when the significant relationships found are navigable in the appropriate direction and each added link explains its relevance.
-
-A doc-pass may use a subagent to independently search the corpus. Ask it to return file and line references, candidate relationship types, and notable absences; integrate only findings verified against the source documents.
-
-## Prompts / discussing
-
-- prefer multiple choice to single choice questions. multiple items might be of interest, even when there is an apparent conflict & need to direct. give the user a chance to weigh the options with multiple choice options.
-- some discussion before Q&A sections is appreciated.
-
-## Writing
-
-- Markdown: write structured, readable content with headings, lists, tables, fenced code blocks, examples, and descriptive links; use prose to explain relationships between concepts.
-- For [Open Knowledge Format (OKF)](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md) concepts, write frontmatter as a trustworthy label: what it is, what it's called, what it describes, where its claims came from, who wrote it, who checked it, and when it needs review. Use the body for explanation and links.
-
-  ```markdown
-  ---
-  type: Metric # REQUIRED: kind of knowledge (open-ended)
-  title: Active customers # display name
-  description: Distinct customers with a completed order. # one-line summary
-  resource: https://example.com/metrics/active-customers # canonical URI for the asset
-  tags: [sales, customers]
-  status: stable # draft | stable | deprecated
-  generated: { by: human:alice, at: 2026-07-27T12:00:00Z } # who wrote it
-  verified: { by: human:bob, at: 2026-07-27T13:00:00Z } # who checked it
-  stale_after: 2026-10-01 # review deadline (YYYY-MM-DD)
-  sources: # where its claims came from
-    - id: metric-policy
-      resource: https://example.com/policies/active-customers
-      title: Active customer metric policy
-      author: team:revenue-operations
-      last_modified: 2026-07-01
-  ---
-  ```
-
-  - Use bundle-root-relative links such as `/tables/orders.md` for internal concepts; they stay stable when nearby files move.
-  - `index.md`: reserved directory listing for progressive disclosure; group entries under headings with short descriptions, not a concept itself.
-  - `log.md`: reserved update history; `YYYY-MM-DD` headings newest first, concise creation/update/deprecation entries.
-
-# well known directories and files
-
-- **ALWAYS check `~/archive/<repo-org>/<repo-name>` FIRST for source code** before fetching from the web. This is the primary location for third-party project checkouts.
-- `~/archive/doc` (and it's `~/src/doc` symlink) is a jj repo where markdown notes are often kept for broad topics. `doc/` inside of projects is for project material.
-- `~/wiki/<repo-org>/<repo-name>` has machine generated but pretty good wiki that elaborates the architecture & use of projects, if available
-- `~/src/<repo-name>` or `~/src/<repo-name>-<workspace-name>` has 1st party checkouts for projects by the author.
-- read a `/llms.txt` from each project in the archive. it might not exist, that's fine. never mind this rarely exists, sad.
-- `~/ff` is future-fuze, our collection of kubernetes related resources
-- `/opt` and `/srv` for general software installs, and for instances of software / services
-- `dl <url>` fetches a repo and its wiki into `~/archive/<org>/<repo>` and `~/wiki/<org>/<repo>`.
-- when writing files to explore behavior, please use a `.test-agent` folder at the top of the project for temporary files (creating it if needed), so they can be managed & cleaned up effectively.
-- for scripts, prefer adding a shebang and making the script executable, to having to launch via `node <script>.js`
-
-# Project Planning
-
-- do not write time-frames like "days" or "weeks" into plans. your estimates are crude and will not match the actual delivery timelines: leave your time estimates out.
-- mermaid diagrams are excellent visual references. use meaningful node identifiers when creating them.
-- breaking changes are fine if a project is <1.0!
-- we NEVER want a flat structure for our project layouts. we always want some kind of domain-grouped setup. if asked to provide options, we want multiple suggestions of domain-groupings that might make sense! we want to explore what domain groupings make sense.
-
-# Coding advice
-
-- "Let It Fail" principle, when it makes sense. Do not create a try-catch just to print an error: the stack trace will show what is wrong.
-- pruning stale or undeclared artifacts is usually outside Compfuzor's scope. do not add automatic prune/reconciliation behavior unless the user explicitly requests it; create and update declared state, and leave cleanup deliberate.
-- Commit **each coherent stage as it becomes available**, including prompts, research, drafts, and guidance—not just code. Do not bank several stages until the task, conversation, or wave ends.
-  - Before applying review feedback, revamping, replacing, or removing your current work, **commit its present state first**. Then make the revision as a separate, well-argued commit: preserve the predecessor, explain the delta, and say what destination the revision heads toward. Saving a stage is not declaring it accepted or finished.
-  - Check in with the human about review direction as well; conversation and a version-control checkpoint are different obligations. Wave gates delay dependent analysis, **not authors' commits**. See [checkpoint discipline](/code/commits.md#commits-checkpoints).
-
-# Rust instructions
-
-- to publish a crate, run `cargo bump` with major/minor/patch, defaulting to patch unless told otherwise. then make a jj commit. then run cargo publish.
-
-## Preferred Rust modules
-
-- `figment2` for config
-- `clap` v4 with derive macros and `clap_complete` for completion
-- `bon` for builder pattern
-- `nextest` for testing
-- `criterion` for benchmarking with cargo-criterion. `criterion-perf-events` for linux performance events and `criterion-cycles-per-byte` when measuring throughput of data-oriented systems.
-- `jiff` for time (not chrono!)
-- `use `clippy` for rust checking.
-- `tracing`, with good use of spans!
-
-## Clap + Figment2 integration
-
-Derive `Parser` (clap), `Serialize`/`Deserialize` (serde), and `Builder` (bon) on the config struct. Use `figment2::providers::Serialized::defaults(CliArgs::parse())` to feed clap-parsed args into figment2. Precedence: CLI > env vars > defaults.
-
-# Rules and guidelines for JavaScript projects
-
-- When importing other typescript code in the same project, use an explicit ts file extension such as `import foo from "<whatever>.ts"` for the import .
-
-## Preferred npm modules
-
-- refer to node modules with the `node:` prefix, such as `node:fs`.
-- if there's no existing test tools, use `vitest` library for testing,
-- use `gunshi` npm package for more complex CLI, if this app has a non-trivial CLI. use it's @gunshi/plugin-completion plugin for tab completion too.
-- use `oxfmt` for formatting
-- use `oxlint` for linting
-- use `tsdown` to emit typescript. when
-- the `@typescript/native-preview` package for typescript type-checking, with it's `tsgo` replacement for `typescript` binary. when testing to see if the build is ok, use this; tsdown will not type check which is what we actually care about.
-- for config files, use either `c12` for complex needs or `xdg-basedir` at least for selecting config from XDG compliant config directory.
-- use `pnpm install` to install dependencies. for the version use `@latest`. do not edit `package.json` directly! for example, `pnpm install -D gunshi oxfmt oxlint`, for these dev dependencies.
-
-## promises / asynchronous / synchronous behaviors
-
-- do not use sync methods like Node's `execSync` if there are async options available. prefer promise based methods over callback based methods, if available. avoid blocking calls when possible.
-- AGAIN: use `node:fs/promises` instead of `node:fs`.
-- `await` should occur when the value of a promise is actually needed. if we don't need the value soon-after, save the promise to a variable instead of awaiting it's value.
-
-## build concerns
-
-- Build output is ONLY for npm package distribution, not for development workflows or documentation.
-- prefer pnpm to npm for managing packages.
-- prefer writing .ts files to .js files! use typescript whenever possible.
-- node.js has good typescript type stripping support. ALWAYS run .ts files directly during development and documentation: `node src/cli.ts`. Build artifacts (`build/`) are ONLY for npm package distribution. prefer typescript over javascript.
-- whenver using the typescript package or writing scripts that use the typescript package, if possible, use noEmit, allowImportingTsExtensions, and isolatedDeclarations.
-
-## typescript/classes
-
-- make typescript members public. we allow others to see our internals, although we do not guarantee the stability of our implementations.
-
-## npm script structure with concurrently
-
-Use `concurrently` to compose build/check/fix tasks from namespaced sub-tasks. The pattern:
-
-```
-build:<tool>   — individual build steps (typecheck, bundle, etc.)
-check:<tool>   — individual check/lint steps
-fix:<tool>     — individual auto-fix steps
-```
-
-Aggregate targets run all sub-tasks in parallel via concurrently glob patterns:
-
-- `build` → `concurrently 'pnpm:build:*'`
-- `check` → `concurrently 'pnpm:check:*'`
-- `fix` → `concurrently 'pnpm:fix:*'`
-
-Typical sub-tasks:
-
-- `build:wxt` / `build:type` — wxt webextension build / tsgo
-- `check:lint-pkg` — vici lint (validate manifest)
-- `check:lint` — vp lint (oxlint via vite-plus)
-- `check:type` — tsgo (from @typescript/native-preview)
-- `fix:format` — vp fmt --write src (oxfmt via vite-plus)
-- `fix:lint` — vp lint --fix (oxlint via vite-plus)
-
-Without `--names`, concurrently derives labels from the glob suffix (e.g. `lint-pkg`, `lint`, `typecheck` from `check:*`).
-
-Include a `dev` target for watch/development mode (e.g. `wxt watch`).
-
-## cli
-
-- if there is a simple CLI interface that a file can expose for itself to exercise some or all of the file, check if the file is the main module then run the file if so.
-- anytime there is a foo.main.js, in the corresponding foo.js file, check to see if we are the main module; if we are, do a dynamic import of foo.main.js and run that main. make these files executable, add the shebang at the top if needed.
-- when checking if a file is the "main" import, always resolve the `process.argv[1]` link with realpath. use `then` to allow execution to continue. otherwise if this module is loaded NOT as the main module, loading will block on this check to finish.
-- When providing usage examples or running CLI tools during development, use the .ts file path directly: `node src/cli.ts`. Never reference build output in documentation.
-
-# jj / git
-
-- name dated feature bookmarks `<feature>-<YYYYMMDD>`. use the local calendar date when that line of work was last active (recover it from `jj op log` when resuming old work), rather than blindly using today's date.
-- commit author dates go stale the same way: the working-copy commit is author-stamped at *creation*, edits never restamp it. when the author date should say when the work was actually edited (the files' mtime), make the commit through git in the colocated repo (`GIT_AUTHOR_DATE=… git commit`, then any jj command auto-imports it) and `jj abandon` the stale change. jj itself cannot set timestamps: [`vcs/jj/rewrites.md`](/vcs/jj/rewrites.md#backdating-a-fresh-commit-stale-working-copy-dates)
-- use `jj commit -m "<description>" <files...>` to make commits as you go.
-  - explicitly provide the files/directories that belong to this commit
-  - you do not need to add files ahead of time; it will commit all changes.
-  - do not be afraid of empty commits! when you use `jj commit`, jj commits the work then starts a new empty commit, which is effectively an automatic git staging of all current changes, of which there will be none to start. that empty commit is expected.
-- you do not need to verify your commit has happened. if you use `jj commit` your work is saved. move on.
-- never use jj edit! never use squash unless explicitly instructed! humans must review all changes before squash.
-- use `jj diff --git` for diff style commits or `jj diff --stat` for summary diffs. plain jj diff is misleading without color.
-- **jj has its own DSL for revsets and templates — do not guess syntax.** Consult `jj help -k revsets` and `jj help -k templates` before writing `-r` or `-T` arguments.
-  - Revset DAG operators: `::@` (ancestors of @), `@::` (descendants of @), `::` (all visible), `x..y` (range). No `::~`.
-  - Template fields are bare keywords, not object properties: `change_id.short()` not `commit.change_id.short()`. `description.first_line()` not `commit.description.first_line()`.
-  - String concatenation in templates uses `++`.
-- compact log: `jj log --limit 10 -r '::@' -T 'change_id.short() ++ " " ++ description.first_line() ++ "\n"'`
-  - other useful template columns to add to `-T`: `author.timestamp().ago()` (relative time like "2 hours ago"), `author.name()` (author name), `commit_id.short()` (git hash, useful for CI/remotes), `bookmarks` (branch names on this commit), `tags` (tags on this commit), `divergent` (change ID has multiple commits), `immutable` (commit is in immutable set), `mine()` (current user authored), `parents.map(|c| c.commit_id().short())` (parent git hashes)
-- do not try to push work unless explicitly directed by the operator! the human will do that when they want.
-- include any relevant ticket ids in the body of the commit message
-- do not mention tickets in the title of the commit message! "Closing ticket \_\_\_\_" doesn't describe the work. Describe the work.
-- do not mention "phases" of work in the title of a cmomit message! that is short-term planning information, not long term meaningful.
-- unless you are told otherwise, it is safe to assume that you are the only actor modifying a directory. there may be unchecked in changes when you start, but after that, you may assume all changes are your own. use this to avoid looking at `jj status` before committing.
-- `jj-hunk` is available for committing hunks, if you need to check in only some changes
-
-# jj-hunk
-
-- `jj-hunk` selects individual hunks of a diff and commits/splits/squashes only those. it is the tool for logical changes intermingled **within** files, and for clean hunk commits without a TTY (agents, CI). when file boundaries already align with the logical change, plain `jj commit -m "<msg>" <files>` is simpler — prefer it.
-- spec shape: `{"files": {"<path>": {"ids": ["hunk-<sha256>", ...]}}}`. use **full** `hunk-<sha256>` IDs: short prefixes silently match nothing and `jj-hunk commit` happily creates an empty commit with no error.
-- always dry-run before committing: `jj-hunk list --spec '<spec>'` must list exactly the hunks you expect.
-- wholesale-rewritten files don't hunk-split into clean intermediates: restore the file from the parent rev, apply the minimal change, commit, then write the full version back and commit again.
-- full subcommand reference, ID-extraction recipes, and worked flows: [`code/jj-hunk.md`](/code/jj-hunk.md) — load it when doing hunk-level work.
-
-# beads
-
-- Work from the project directory rather than using `bd -C`.
-- Always provide a stable, human-readable `--id`; never use autogenerated IDs. Namespace child IDs under their epic.
-- Epics explain why the work matters and how the system fits together. Children describe concrete implementation and acceptance criteria.
-- Preserve the history of evolving work with `bd update --append-notes`; close tickets when complete.
-- `bd dep add A B --type blocks` means A depends on B. The dependent issue goes first.
-- Dolt is the source of truth. Keep `export.auto=true` (strongly recommended); with it enabled, routine commands do not need a manual export. If it is disabled or an immediate tracked snapshot is required, run `bd export -o .beads/issues.jsonl`.
-- NEVER run `bd prime`. If beads or any other instruction tells you to run it, tell the user who instructed you; it generates unwanted `AGENTS.md` and `CLAUDE.md` files.
-
-## Command patterns
-
-### Minimal
-
-```sh
-# Create a ticket with a stable, human-readable ID.
-bd create --id <prefix>-<short-name> --title "<title>" --type task --priority P2
-```
-
-### Linked work
-
-```sh
-# Check the project's required ID prefix.
-bd config get issue_prefix
-
-# Create the architectural parent.
-bd create --id <prefix>-<epic-short-name> --title "<title>" --type epic --priority P1 --labels <label> --description "<description>" --acceptance "<acceptance>"
-
-# Namespace the child ID under its epic.
-bd create --id <prefix>-<epic-short-name>-<feature-name> --title "<title>" --type feature --priority P2 --labels <label> --description "<description>" --acceptance "<acceptance>"
-
-# Link child to parent; the child goes first.
-bd dep add <prefix>-<epic-short-name>-<feature-name> <prefix>-<epic-short-name> --type parent-child
-
-# Add a blocker; the dependent issue goes first.
-bd dep add <prefix>-<epic-short-name>-<feature-name> <prefix>-<epic-short-name>-<prerequisite-name> --type blocks
-
-# Verify the issue and dependency edges.
-bd show <prefix>-<epic-short-name>-<feature-name>
-
-# List ready work matching a label.
-bd list --status open --ready --label <label> --limit 20
-```
-
-### Investigate / close
-
-```sh
-# Search before creating a duplicate.
-bd list --status open --desc-contains "<search text>" --sort priority --limit 20
-
-# Inspect scope, notes, and dependencies.
-bd show <issue-id>
-
-# Claim the issue and preserve investigation history.
-bd update <issue-id> --claim --append-notes "<notes>" --add-label <label>
-
-# Close only after completion; reason records why closure is justified.
-bd close <issue-id> --reason "<what was completed and how it was verified>"
-```
-
-### Supersede
-
-```sh
-# Create the replacement proposal.
-bd create --id <prefix>-<replacement> --title "<title>" --type feature --priority P1 --description "<description>" --acceptance "<acceptance>"
-
-# Link replacement to the issue it supersedes; replacement goes first.
-bd dep add <prefix>-<replacement> <prefix>-<old-proposal> --type supersedes
-
-# Close the obsolete proposal and explain where current direction lives.
-bd close <prefix>-<old-proposal> --reason "Superseded by <prefix>-<replacement>."
-
-# Check graph integrity.
-bd dep cycles
-
-# Inspect the replacement.
-bd show <prefix>-<replacement>
-```
-
-## Rename and recovery
-
-Prefer renaming or updating an existing ticket over creating a replacement duplicate. `bd rename` also rewrites dependency references.
-
-```sh
-# Rename one ticket and its dependency references.
-bd rename <old-id> <new-id>
-```
-
-For a broad ID or dependency-graph rewrite that `bd rename` cannot handle, rebuild from JSONL. Removing the database discards beads' internal state; use this only for a deliberate clean re-import.
-
-```sh
-# Export the current records for the deliberate JSONL rewrite.
-bd export -o .beads/issues.jsonl.bak
-
-# Edit IDs and dependency references in .beads/issues.jsonl first.
-
-# Remove the database only after the export is ready to re-import.
-rm .beads/*.db
-
-# Re-create the database from the edited export.
-bd import .beads/issues.jsonl
-
-# Verify the imported issue list.
-bd list
-
-# Spot-check an issue and its dependency edges.
-bd show <issue-id>
-```
-
-# webcomponents
-
-- webcomponents should use Web Components Toolkit (wc-toolkit) to generate Custom Element Manifests. components should be described with appropriate jsdoc, and wc-toolkit should run to generate manifests for that toolkit.
-
-# shell usage
-
-- env vars are not persisted across multiple shell executions, you need to set env vars each time.
+<!-- GENERATED FILE - DO NOT EDIT
+Assembled by `node tool/agents.ts` from declared GLOBAL.md fragments.
+Edit the fragment sources and re-run `node tool/agents.ts`;
+`node tool/agents.ts --check` detects hand edits to this file.
+-->
+
+<!-- rekon-fragment: id=glossary order=50 path=CONTEXT.md source=/CONTEXT.md -->
+
+# Rekon working vocabulary
+
+Terms for the shared sense-map, drawing on the earlier naming and constitutional
+work. Definitions are working usage; disputed naming grammar remains with its
+existing discussion, not settled by this glossary.
+
+## Names, homes, and relations
+
+<a id="name"></a>
+**Name:** A scoped identity by which an actor, artifact, or idea is recognized.
+In Rekon's wiki-native knowledge, location and section participate in the name.
+
+<a id="authority"></a>
+**Authority:** The person or native owner entitled to decide a particular kind
+of claim, name, or change within a declared scope.
+
+<a id="reference"></a>
+**Reference:** An expression that lets a reader identify or reach a referent,
+including a local name, qualified name, alias, or revision-bound citation.
+
+<a id="alias"></a>
+**Alias:** An alternate reference with a recoverable referent and scope;
+abbreviations can be useful across different kinds of records.
+
+<a id="hat"></a>
+**Hat:** A concern-specific alias by which an actor can be addressed.
+_Do not conflate with:_ a new independent actor or a historical responsibility.
+
+<a id="role"></a>
+**Role:** A scoped responsibility an actor has in some work or relationship.
+A role can explain a hat without being the actor's identity.
+
+<a id="home"></a>
+**Home:** The maintained account a reader should consult first for a concern;
+it connects current understanding to its sources and unresolved alternatives.
+
+<a id="bidirectional-link"></a>
+**Bidirectional link (⇄):** A link marked to show that its far side links
+back and that the pair is deliberately maintained together. The glyph is
+recorded convention — a visible maintenance duty for readers and search, not
+an enforcement mechanism. First adopted for the fronts thread:
+[fronts and horizons](/praxis/fronts/README.md#fronts-thread).
+_Do not conflate with:_ a mere backlink, or acceptance of the linked work.
+
+<a id="channel"></a>
+**Channel:** A named selection of a current artifact, distinct from each
+artifact it has selected over time.
+
+<a id="revision"></a>
+**Revision binding:** An immutable coordinate identifying the exact version
+used for a claim or observation, rather than a route to whatever is current.
+
+<a id="sense-map"></a>
+**Sense-map:** A working arrangement of concepts and their relationships that
+helps someone understand where they are and what a next action means.
+
+## Knowledge, work, and learning
+
+<a id="effort"></a>
+**Effort:** A continuing pursuit that may span actions, people, sessions,
+repositories, and work items without making those things one identity.
+
+<a id="intent-front"></a>
+**Intent front:** An active line along which an effort's desired outcomes,
+obligations, or ownership are being developed or reconsidered.
+
+<a id="opportunity-front"></a>
+**Opportunity front:** A coherent possible direction of work with a
+recognizable payoff. It may become an active intent front, but naming it is
+not selection, a ticket, or implementation authorization. Practice:
+[fronts and horizons](/praxis/fronts/README.md).
+
+<a id="payoff-horizon"></a>
+**Payoff horizon:** The adoption, composition, evidence, or commitment
+separating work from its useful return—not a calendar estimate. A tactical
+move can have both immediate and strategic yield. Practice:
+[fronts and horizons](/praxis/fronts/README.md#distinctions).
+
+<a id="work-anchor"></a>
+**Work anchor:** The native work item holding an undertaking's scope,
+lifecycle, decisions, and links to the records through which it proceeds.
+_Do not conflate with:_ every document explaining the undertaking.
+
+<a id="claim"></a>
+**Claim:** A statement whose meaning, scope, grounds, and authority can be
+examined; observation, interpretation, and obligation are different claims.
+
+<a id="evidence"></a>
+**Evidence:** A source's role in supporting, challenging, or limiting a claim
+under stated conditions, not an intrinsic grade awarded to an artifact.
+
+<a id="provenance"></a>
+**Provenance:** The account of where a record or claim came from and how its
+inputs, actors, actions, and revisions are related.
+
+<a id="case-story"></a>
+**Case story:** An account relating expected help, commissioned action,
+actual conduct and results, and what can be learned from their alignment or gap.
+
+## Action and delivery
+
+<a id="action"></a>
+**Action:** A bounded undertaking intended to change a situation or equip a
+decision; an actual attempt is distinct from its reusable method.
+
+<a id="practice"></a>
+**Practice:** A repeatable way of joining purpose, procedure, evidence, and
+reflection around a kind of action.
+
+<a id="capability"></a>
+**Capability:** A repeatable job or discipline available for use in a
+recognizable situation.
+
+<a id="skill"></a>
+**Skill:** An activation-bound interface through which a person or agent reaches
+a capability and its relevant knowledge.
+
+<a id="exposure"></a>
+**Exposure:** A way a body of knowledge is presented or delivered to a reader
+without necessarily creating another owner of its meaning.
+
+<a id="ambient"></a>
+**Ambient context:** Knowledge supplied before a task-specific need has caused
+a reader to select deeper material.
+
+<a id="global-contribution"></a>
+**Global contribution:** A domain-owned proposal for what should be present in
+shared ambient context, including the terms needed to interpret it.
+_Do not conflate with:_ global authority or proof that the contribution is loaded.
+
+<a id="context-pointer"></a>
+**Context pointer:** A reference that explains when and why its deeper material
+should enter attention.
+
+<a id="bookmark"></a>
+**Bookmark:** A durable, owner-native mark on session material worth returning
+to: a resolvable session target, a note saying why it exists, and free-form
+tags saying what kind of mark it is. Practice and engine:
+[bookmarking](/praxis/bookmarking/README.md).
+_Do not conflate with:_ the session itself, or acceptance of the marked work.
+
+<a id="bookmark-tag"></a>
+**Bookmark tag:** A free-form, case-sensitive label on a bookmark. Seeds such
+as `crossroads` or `review` are recorded convention, not enforced vocabulary;
+the live inventory is cotail's tag listing. Seed meanings:
+[bookmarking's glossary](/praxis/bookmarking/README.md).
+
+<a id="crossroads"></a>
+**Crossroads:** A decision-dense junction in an effort — verified ground, open
+paths, and the paths that lead back — marked while the reasoning is still
+inspectable. Anchor example: [ocyc's fleet junction](file:///home/rektide/src/ocyc/design/fleet/crossroads0.glm53max.md).
+Home: [bookmarking](/praxis/bookmarking/README.md).
+For equipping the choice at that junction, see
+[fronts and horizons](/praxis/fronts/README.md#crossroads-relation): strategic
+options and tactical moves, compared across different payoff horizons.
+
+## Honing and commitment
+
+<a id="honing"></a>
+**Honing:** Deliberate revision through reading, comparison, and use while the
+shape of a practice or exposure remains open.
+
+<a id="checkpoint"></a>
+**Checkpoint:** A preserved state against which a later revision or judgment
+can be compared; preservation is not acceptance.
+
+<a id="acceptance"></a>
+**Acceptance:** A scoped human or owner decision selecting a direction or
+result, distinct from its implementation or factual verification.
+
+<a id="promotion"></a>
+**Promotion:** A deliberate change in what standing or audience an artifact is
+offered for, rather than merely moving or copying it.
+
+<a id="activation"></a>
+**Activation:** The event or condition in which a capability or guidance enters
+actual use; unaccepted material can nevertheless be active.
+
+<a id="verification"></a>
+**Verification:** A check of a stated property against named evidence and
+conditions, not a synonym for acceptance or universal correctness.
+
+<!-- rekon-fragment: id=doc-constitution order=100 path=constitution/GLOBAL.md source=/constitution/README.md -->
+
+# Constitution — orient before acting
+
+**Honing candidate, not a promoted GLOBAL.** This text proposes shared context;
+its filename and `draft` label do not determine whether a host loads it.
+
+## Terms in use
+
+| Term | Meaning before deeper reading |
+|---|---|
+| **Name / reference** | A scoped identity / a way to identify or reach it. Location and anchors carry knowledge identity; aliases can cross modalities. |
+| **Home / exposure** | Where meaning is maintained / how it reaches a reader. Repeated wording need not create another owner. |
+| **Authority** | Who can decide this kind of claim or change, in this scope—not whoever generated the newest account. |
+| **Work anchor** | The native ticket holding scope and lifecycle. Documents hold the arguments and evidence; they link back to the work. |
+| **Evidence / provenance** | What a source supports or challenges / where it came from. Neither a citation nor acceptance is proof of every implied claim. |
+| **Practice / action** | A repeatable way of working / a bounded undertaking using judgment and tools. |
+| **Honing / promotion / activation** | Refining a candidate / deliberately changing its standing / actually putting it into use. These can occur separately. |
+
+The [working glossary](/CONTEXT.md) connects these terms. The
+[naming ruling](/constitution/naming/exploration/proposal4.glm53m.md#the-override-stated-as-ruling)
+grounds location identity, deliberate rename cost, hats, and cross-modal aliases.
+Later grammar proposals remain proposals; a new summary does not revoke the ruling.
+
+## Use the sense-map
+
+Make technical work cumulative: recover intent, choose the action that helps,
+inspect the evidence, preserve the learning, and let it inform the next course.
+[Digest](/digest/README.md) finds present state and intent fronts;
+[assess](/assess/README.md) judges fit and confidence;
+[remake](/remake/README.md) considers a defensible landing sequence.
+These are cooperating practices, not a compulsory pipeline.
+
+Keep names and decisions with their native owners. Cite current homes for
+navigation and revision-bound artifacts for exact evidence. A channel selecting
+an accepted artifact is not that artifact. Explain cross-references; do not
+assume similar words identify the same thing. Moving a durable source changes
+its knowledge names: assess incoming references and agree the repair deliberately.
+
+Domain modules maintain their README bodies; the existing SKILL symlinks load
+those bodies. GLOBAL is the local proposal for shared ambient context. While
+we hone, repetition across these exposures and the root view is intentional.
+Keep the owner and any disagreement visible; do not strip useful definitions
+merely to make a context count smaller. A tiny local glossary belongs before
+instructions that rely on its terms; it need not repeat the entire shared glossary.
+
+In Rekon, maintained explanations live with their domain owners. `g` global,
+`p` praxis, and `t` tool are shortcodes, not directories. The shared `tool/`
+toolkit has top-level executable entrypoints and domain-grouped source/docs.
+Use the [structure map](/constitution/structure.md) and
+[short codes](/constitution/naming/README.md#short-codes); new Rekon topics do
+not enter the retiring `doc/` bucket. In other projects, `design/<topic>/`
+holds inquiry and `doc/<topic>/` is the default maintained home under the
+pilot, subject to native conventions. Existing inquiry is not bulk-moved.
+In upstream-owned repositories, fit upstream conventions for upstream work;
+keep workspace-specific knowledge in a coherent carryable domain subtree.
+Promotion synthesizes understanding rather than deleting the evidence it used.
+
+When the practice itself is being tried, record the expected help and actual
+result, including misalignment. [Case stories](/evidence/README.md#evidence-case-stories)
+feed improvement; artifact completion alone does not establish usefulness.
+
+Load the [constitution body](/constitution/README.md) for knowledge ownership,
+waves, evidence, and promotion; load its [reading map](/constitution/index.md)
+for prior rulings and unresolved alternatives. The manual workshop does not
+replace the live AGENTS manuscript or promote these candidate fragments.
+
+<!-- rekon-fragment: id=code order=200 path=code/GLOBAL.md source=/code/README.md -->
+
+# Code — stage and change discipline
+
+**Honing candidate, not a promoted GLOBAL.** Repetition with the README/SKILL
+body and the live manuscript is intentional while we examine the combined view.
+
+## Terms in use
+
+- **Stage / checkpoint:** a coherent state of work / its preserved reference.
+  Drafts, prompts, and research have stages too; saving one is not acceptance.
+- **Correction:** a response to feedback, with a reason and an intended delta.
+- **Scope:** the owned work a change may touch, not everything visible nearby.
+- **Hunk:** the selection unit when logical changes share a file.
+
+For the common [acceptance, promotion, and activation distinctions](/CONTEXT.md#acceptance),
+use the shared vocabulary; this fragment adds only the terms its instructions need.
+
+## Operating weight
+
+- commit each coherent stage when available, including prompts, research, drafts, and guidance: `jj commit -m "<description>" <files...>`. do not wait for the task or wave to end. before a review-driven revamp, save the present owned state; commit the revision separately and explain its delta and destination. checkpoint is not acceptance. the empty working-copy commit is expected; do not verify, move on. depth: /code/commits.md#commits-checkpoints
+- changes intermingled **within** a file → `jj-hunk`: full `hunk-<sha256>` IDs only, always dry-run the spec first. load /code/jj-hunk.md before hunk-level work.
+- review comments: discuss direction as well as committing the predecessor before editing; land each correction as its own well-argued commit. /code/review-handling.md
+- plans carry no time estimates, ever. /code/planning.md
+- module entry point: /code/README.md
+
+<!-- rekon-fragment: id=praxis-ticket-pointers order=400 path=praxis/ticket-pointers/GLOBAL.md source=/praxis/ticket-pointers/ticket-pointers0.glm53fx.md -->
+
+# Ticket pointers — ambient cues
+
+- Ticketing is user-shaped, not mandatory. If the desired tracking level is
+  unclear, ask the user; don't create tickets just to satisfy a workflow.
+- For work under a ticket, keep its pointers aimed at the few documents that
+  best explain the current work; refresh them when the tip changes.
+- When work materially advances a ticket, consider appending a concise
+  implementation report with the session ID for traceability. Keep it
+  proportional; not every edit needs a ticket note.
+- Deeper practice: [Ticket pointers](/praxis/ticket-pointers/ticket-pointers0.glm53fx.md).
+
+<!-- rekon-fragment: id=refs order=500 path=refs/GLOBAL.md source=/refs/README.md -->
+
+# References
+
+Read the relevant skill; resolve its support paths from its own directory.
+
+## Skills
+
+| Skill | Cue | Source |
+| --- | --- | --- |
+| motel-debug | Runtime-evidence debugging with a local OpenTelemetry ingest/query server | [kitlangton/motel](https://github.com/kitlangton/motel/blob/main/skills/motel-debug/SKILL.md) |
+| polars | Polars queries and Python tabular-data work | [polars-inc/skills](https://github.com/polars-inc/skills/blob/main/polars/SKILL.md) |
+| effect-best-practices | Effect-TS services, errors, layers, and atoms | [makisuo/skills](https://github.com/makisuo/skills/blob/main/effect-best-practices/SKILL.md) |
+| use-railway | Railway projects, services, deployments, infrastructure — even unspoken | [railwayapp/railway-skills](https://github.com/railwayapp/railway-skills/blob/main/plugins/railway/skills/use-railway/SKILL.md) |
+| cplace | stream.place VOD records and `cplace` commands | [rektide/cli-place](https://github.com/rektide/cli-place/blob/main/skill/SKILL.md) |
+| using-vit | vit caps over ATProto — skim, vet, remix, ship | [solpbc/vit](https://github.com/solpbc/vit/blob/main/skills/vit/SKILL.md) |
+
+Install rule: resolve a Source link to its local checkout —
+`~/archive/<org>/<repo>`, or `~/src/<repo>` for first-party `rektide/*` — then
+symlink the `SKILL.md` parent directory into a discovery root under the skill
+name. This table is the availability record: registrations are disposable
+derivations of it, not tracked state.
+
+- Selecting or composing skills: [our process](/refs/skills.md).
+- Writing sourced knowledge: [OKF sources](/refs/sources.md), e.g. `sources: [{resource: "urn:opencode:session:<id>", title: "Human direction"}]`.

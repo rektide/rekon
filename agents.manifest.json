@@ -1,0 +1,10 @@
+{
+  "fragments": [
+    "CONTEXT.md",
+    "constitution/GLOBAL.md",
+    "code/GLOBAL.md",
+    "praxis/ticket-pointers/GLOBAL.md",
+    "refs/GLOBAL.md"
+  ],
+  "output": "AGENTS.md"
+}
