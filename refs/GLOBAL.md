@@ -18,6 +18,7 @@ Read the relevant skill; resolve its support paths from its own directory.
 | effect-best-practices | Effect-TS services, errors, layers, and atoms | [makisuo/skills](https://github.com/makisuo/skills/blob/main/effect-best-practices/SKILL.md) |
 | use-railway | Railway projects, services, deployments, infrastructure — even unspoken | [railwayapp/railway-skills](https://github.com/railwayapp/railway-skills/blob/main/plugins/railway/skills/use-railway/SKILL.md) |
 | cplace | stream.place VOD records and `cplace` commands | [rektide/cli-place](https://github.com/rektide/cli-place/blob/main/skill/SKILL.md) |
+| using-vit | vit caps over ATProto — skim, vet, remix, ship | [solpbc/vit](https://github.com/solpbc/vit/blob/main/skills/vit/SKILL.md) |
 
 Install rule: resolve a Source link to its local checkout —
 `~/archive/<org>/<repo>`, or `~/src/<repo>` for first-party `rektide/*` — then
