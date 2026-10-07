@@ -42,11 +42,14 @@ assembly mechanism.
    path in the supporting account, with a revision when recording source-specific
    findings. Follow [our source practice](/refs/sources.md) for OKF `sources:`.
    One repository may contain several independently selected skills.
-4. **Publish a direct pointer.** Add a short task cue and link to
-   `refs/GLOBAL.md`. Use a concrete `file:///home/rektide/archive/.../SKILL.md`
-   link for this workspace. Keep the original directory intact, including its
-   references and scripts. Our process uses these sources in place; upstream
-   marketplace installers and copied skill folders are not required.
+4. **Publish a table row.** Add the skill to the table in `refs/GLOBAL.md`:
+   `Skill` (the registration name), `Cue` (a short task cue), `Entry` (a
+   concrete `file:///…/SKILL.md` link for this workspace), `Upstream` (the
+   canonical repository entry URL), and `Registered` (the discovery-root
+   symlink, or `—` when not registered). Keep the original directory intact,
+   including its references and scripts. Our process uses these sources in
+   place; upstream marketplace installers and copied skill folders are not
+   required.
 5. **Check the route.** Open the advertised file, follow its support paths, and
    check that the cue leads to the intended capability. Having its instructions
    available does not establish that the accompanying program is installed.
@@ -87,6 +90,12 @@ itself. A first-party skill can own its registration the same way — `cplace
 skill` symlinks itself in. Retired installations are parked under
 `~/.config/opencode/.bak` rather than deleted; that directory's README
 inventories them.
+
+The [GLOBAL skills table](/refs/GLOBAL.md) is the machine-readable index of
+registrations: each row's `Entry` plus the install rule printed there derive
+the symlink, and `Registered` records the current state. The planned
+skill-manager (`rekon-skill-management`) can parse that table instead of
+rediscovering the layout.
 
 ## Catalog
 
