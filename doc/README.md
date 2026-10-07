@@ -20,7 +20,7 @@ sources:
 
 **Write new Rekon explanations with their domain owner.** The
 [working structure](/constitution/structure.md#placement) replaces this
-directory's former intake rule. [Tools](/t/README.md) own their explanation and
+directory's former intake rule. [Tools](/tool/README.md) own their explanation and
 code together; constitution owns the structural contract; praxis owns ways of
 working. Existing `design/` evidence remains citable in place.
 

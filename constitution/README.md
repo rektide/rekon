@@ -86,7 +86,7 @@ sources:
 
 For **Rekon's own structure and placement**, start with the
 [working structure](/constitution/structure.md): shared commitments here,
-working postures in praxis, executable mechanisms under `t/`, and maintained
+working postures in praxis, executable mechanisms under `tool/`, and maintained
 explanations with their domain owners. Its local rule supersedes the generic
 `doc/<topic>/` destination in this repository. The knowledge contracts below
 remain the general documentation pilot; the broader Rekon compact is still

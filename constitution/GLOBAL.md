@@ -63,8 +63,9 @@ Keep the owner and any disagreement visible; do not strip useful definitions
 merely to make a context count smaller. A tiny local glossary belongs before
 instructions that rely on its terms; it need not repeat the entire shared glossary.
 
-In Rekon, maintained explanations live with their domain owners; `t/<tool>/`
-co-integrates each new tool's entrypoint, README, and domain-named source.
+In Rekon, maintained explanations live with their domain owners. `g` global,
+`p` praxis, and `t` tool are shortcodes, not directories. The shared `tool/`
+toolkit has top-level executable entrypoints and domain-grouped source/docs.
 Use the [structure map](/constitution/structure.md) and
 [short codes](/constitution/naming/README.md#short-codes); new Rekon topics do
 not enter the retiring `doc/` bucket. In other projects, `design/<topic>/`

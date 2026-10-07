@@ -24,7 +24,8 @@ sources:
 **Retired on 2026-10-06.** The [structure contract](/constitution/structure.md#placement)
 and [constitution fragment](/constitution/GLOBAL.md) now own Rekon's placement
 guidance. New maintained explanations go to their domain home; executable tools
-use `t/<tool>/` with co-integrated entrypoints, documentation, and source.
+use the shared `tool/` toolkit with co-integrated entrypoints, documentation,
+and domain-grouped source. `t` is its shortcode, not a directory name.
 
 This file remains a historical redirect, not an assembly input. Its original
 candidate was never selected for production. The broader `design/` inquiry and

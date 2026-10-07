@@ -21,12 +21,20 @@ practice usable without loading the entire exploration wave.
 
 | Code | Expansion / scope | Current use |
 |---|---|---|
-| `con` | [Constitution](/constitution/README.md) | Existing cross-modal precedent: `rekon-con-naming` names the native Beads work. `con-structure` refers to the [structure contract](/constitution/structure.md). |
-| `t` | [Tools](/t/README.md) | User-selected directory prefix. `t-agents` names the assembler tool home under `t/agents/`. |
+| `g` | Global | Human-provided shortcode for global guidance; see its [current delivery and ownership](/constitution/structure.md#global). |
+| `p` | [Praxis](/praxis/README.md) | Human-provided shortcode. `p0` is the suggested opening “what we are / how we work” account, still being shaped. |
+| `t` | [Tool](/tool/README.md) | Human-provided shortcode; the physical toolkit directory is `tool/`, with entrypoints such as `tool/agents.ts`. |
+| `con` | [Constitution](/constitution/README.md) | Earlier cross-modal precedent: `rekon-con-naming` names the native Beads work. `con-structure` refers to the [structure contract](/constitution/structure.md). |
 | `exp` | `exploration`, relative to the named topic | An abbreviation inside a scoped reference, as in the recorded `con-naming-exp-…` example. It does not imply a root `exp/` directory. |
 | `res` | `research`, relative to the named topic | Same scoped use; the containing topic supplies the concrete path. |
 
-The [human ruling](/constitution/naming/exploration/proposal4.glm53m.md#the-override-stated-as-ruling)
+**Shortcodes are reference vocabulary, not directory names.** The human
+explicitly corrected that conflation on October 6: `g` global, `p` praxis,
+`t` tool. The chosen physical toolkit is one `tool/` tree with shared
+domain-grouped implementation. Numeric clauses need their own stated meanings;
+this table does not manufacture a `g0`/`p0`/`t0` numbering scheme.
+
+The [earlier human ruling](/constitution/naming/exploration/proposal4.glm53m.md#the-override-stated-as-ruling)
 explicitly restored glossary abbreviations and cross-modal aliases. Their use
 does not await adoption of every later grammar proposal. Short codes identify
 their concerns through declared context; ordinary links provide the actual
