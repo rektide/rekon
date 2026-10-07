@@ -7,8 +7,9 @@ scaffolding a new JavaScript/TypeScript package, wiring up its toolchain, or dec
 scripts, config, and module layout should be organized.
 
 This is the promoted home for the npm/Node.js guidance that previously lived only in the global
-`AGENTS.md`. Until this skill is fully accepted, the global file remains authoritative where
-they overlap; reconcile differences here rather than diverging silently.
+`AGENTS.md`, now retired to [`AGENTS.old.md`](/AGENTS.old.md). Where they overlap, treat that
+preserved monolith as the last hand-maintained account and reconcile differences here rather
+than diverging silently.
 
 ## Getting started: a new package
 

@@ -42,11 +42,13 @@ sources:
 [`tool/agents.ts`](/tool/agents.ts); its [domain guide](/tool/assembly/README.md)
 documents current invocation, implementation, and the deliberate generated-header
 difference. `node rekon.ts agents` continues to run the implementation described
-here. Both consume explicit manifests; production assembly remains deferred.
+here. Both consume explicit manifests; since 2026-10-07 production assembly is
+live through the Effect command and the root manifest
+[`agents.manifest.json`](/agents.manifest.json).
 
-`AGENTS.md` is becoming deterministic build output. Knowledge modules own small
+`AGENTS.md` is deterministic build output. Knowledge modules own small
 ambient fragments in their local `GLOBAL.md`; an explicit manifest declares
-which fragments assemble and where output lands; `rekon agents` assembles the
+which fragments assemble and where output lands; the assembler produces the
 document deterministically with per-fragment provenance. Contributors edit
 their local fragment, not a monolith.
 
@@ -62,25 +64,25 @@ covered by tests in [`src/agents/assemble.test.ts`](/src/agents/assemble.test.ts
 
 <a id="agents-assembly-status"></a>
 
-## Migration Status: Deliberately Deferred
+## Migration Status: Cutover Complete, Extraction Ongoing
 
-**No production manifest exists; [`/AGENTS.md`](/AGENTS.md) remains a
-hand-maintained manuscript, not this tool's generated output.** At the original
-implementation checkpoint only the constitution fragment had been extracted.
-The 2026-09-06 [manual honing workshop](/design/rekon/context-weave/README.md)
-now has glossary-first candidates in [`constitution/GLOBAL.md`](/constitution/GLOBAL.md)
-and [`code/GLOBAL.md`](/code/GLOBAL.md), both with fragment metadata. Neither
-their existence nor that metadata establishes promotion or runtime selection.
-A production manifest that would overwrite the monolith must not be created until every
-section it contains has a declared `GLOBAL.md` source fragment; otherwise
-assembly would silently discard unpromoted operating rules.
+**Since 2026-10-07 [`/AGENTS.md`](/AGENTS.md) is generated output**,
+assembled by `node tool/agents.ts` from the root manifest
+[`agents.manifest.json`](/agents.manifest.json); the hand-maintained monolith
+is preserved verbatim at [`/AGENTS.old.md`](/AGENTS.old.md).
 
-Until then:
+The original gate — no production manifest until every monolith section has a
+fragment source, lest assembly silently discard unpromoted operating rules —
+was superseded by explicit human direction: the cutover preserves the monolith
+rather than discarding it, and the sections without fragment sources
+(subagents, waves, beads, Rust/npm preferences, shell usage) remain readable
+in `AGENTS.old.md` pending deliberate extraction. The assembled set also
+selects [`/CONTEXT.md`](/CONTEXT.md) directly as the glossary fragment
+(`id: glossary`, order 50), settling the previously open question of whether
+the shared glossary compiles into ambient context.
 
-- `AGENTS.md` remains hand-maintained and is NOT generated output;
-- new `GLOBAL.md` fragments can land beside it as declared future inputs;
-- a production manifest lands in the same change that retires the monolith,
-  once its last section has a fragment source.
+Fragment bodies were assembled verbatim at cutover; their honing-candidate
+disclaimers predate promotion and are due revision in a later honing pass.
 
 <a id="agents-assembly-metadata"></a>
 
@@ -175,8 +177,11 @@ there is no auto-discovery of `GLOBAL.md` files.
   fragment.
 - Duplicate fragment `id`s and `order`s across the declared set are rejected.
 
-The default manifest path is `constitution/agents.manifest.json`. It does not exist yet
-(see [migration status](#agents-assembly-status)).
+The default manifest path is `constitution/agents.manifest.json`; the
+production manifest is the root [`agents.manifest.json`](/agents.manifest.json),
+because fragment paths reject `..` segments, so a manifest under
+`constitution/` could not select sibling trees (see
+[migration status](#agents-assembly-status)).
 
 <a id="agents-assembly-command"></a>
 
@@ -296,7 +301,8 @@ uses [gunshi](https://github.com/kazupon/gunshi).
   duplicate rejection, generated markers); this document implements them.
 - [`/constitution/GLOBAL.md`](/constitution/GLOBAL.md) **is** the first declared fragment and
   the worked example of fragment metadata.
-- [`/AGENTS.md`](/AGENTS.md) **is** the future assembly target, still
-  hand-maintained until its sections each gain a fragment source.
+- [`/AGENTS.md`](/AGENTS.md) **is** the live assembly output, generated from
+  the root manifest since 2026-10-07; [`/AGENTS.old.md`](/AGENTS.old.md)
+  preserves the hand-maintained predecessor.
 - Beads ticket `rekon-agents-maintenance-assembler` **tracks** this
   implementation; `rekon-doc-constitution-global` **tracks** the fragment.

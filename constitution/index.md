@@ -103,13 +103,14 @@ disposition are related choices, not interchangeable ones.
   The [legacy assembly reference](/constitution/agents-assembly.md) retains the
   Gunshi command's metadata, manifest, validation, and CLI behavior. Its
   [migration status](/constitution/agents-assembly.md#agents-assembly-status)
-  explicitly says that no production cutover has occurred.
-- [Constitution GLOBAL fragment](/constitution/GLOBAL.md) — now a glossary-first
-  honing candidate grounded in the pilot and prior naming rulings. It deliberately
-  overlaps the body while being evaluated; it is not a promoted fragment or an
-  acceptance of the disputed grammar/hierarchy proposals.
-- [Current AGENTS](/AGENTS.md) — still hand-maintained operational guidance;
-  assembler availability does not change its source of authority by itself.
+  records the 2026-10-07 production cutover.
+- [Constitution GLOBAL fragment](/constitution/GLOBAL.md) — a glossary-first
+  fragment grounded in the pilot and prior naming rulings, now assembled into
+  the live AGENTS.md verbatim; its honing-era disclaimers predate that
+  promotion and await revision.
+- [Current AGENTS](/AGENTS.md) — generated output of the root
+  [agents.manifest.json](/agents.manifest.json); the hand-maintained
+  predecessor is preserved at [AGENTS.old.md](/AGENTS.old.md).
 
 ## Navigation, Work, And Evidence
 

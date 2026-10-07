@@ -29,12 +29,16 @@ physical directory name.
 
 **Current standing:** the independently owned Effect command is runnable at
 [`tool/agents.ts`](/tool/agents.ts). Fragment/manifest validation, ordered
-assembly, atomic write/check, and CLI behavior have colocated tests. This does
-not select any generated document for production use.
+assembly, atomic write/check, and CLI behavior have colocated tests. Since
+2026-10-07 it is the production assembler: the root manifest
+[`agents.manifest.json`](/agents.manifest.json) selects five fragments
+(glossary, constitution, code, praxis-ticket-pointers, refs) into
+[`AGENTS.md`](/AGENTS.md), and the hand-maintained predecessor is preserved
+at [`AGENTS.old.md`](/AGENTS.old.md).
 
-No production manifest exists. The repository's [`AGENTS.md`](/AGENTS.md) is
-still hand-maintained and must not be regenerated as a side effect of tool work.
-No automatic discovery, pruning, or content migration is authorized here.
+Tool work must not regenerate or retarget that output as a side effect: edit
+fragments or the manifest deliberately, then re-run the command. No automatic
+discovery, pruning, or content migration is authorized here.
 
 ## Run the new command
 
@@ -46,6 +50,9 @@ node tool/agents.ts --manifest path/to/manifest.json
 node tool/agents.ts -m path/to/manifest.json --check
 node tool/agents.ts -m path/to/manifest.json --output .test-agent/agents-effect/preview.md
 ```
+
+The live document is regenerated with `node tool/agents.ts -m
+agents.manifest.json`; `--check` verifies it against the declared fragments.
 
 | Option           | Default                             | Meaning                                                                                         |
 | ---------------- | ----------------------------------- | ----------------------------------------------------------------------------------------------- |

@@ -33,9 +33,10 @@ most agents need most sessions — while the support docs hold the
 nitty-gritty for specific situations.
 
 This is the promoted home for coding-practice guidance that previously lived
-only in the global `AGENTS.md`. Until this skill is fully accepted, the
-global file remains authoritative where they overlap; reconcile differences
-here rather than diverging silently.
+only in the global `AGENTS.md`, now retired to [`AGENTS.old.md`](/AGENTS.old.md).
+Where they overlap, treat that preserved monolith as the last hand-maintained
+account and reconcile differences here rather than diverging silently; the
+live global file is assembled from [`code/GLOBAL.md`](/code/GLOBAL.md).
 
 <a id="code-inventory"></a>
 
@@ -126,8 +127,9 @@ Depth: [`coding-advice.md`](/code/coding-advice.md).
 
 ## Cross-references
 
-- [`/AGENTS.md`](/AGENTS.md) — the operating manual this module promotes
-  from; authoritative until this collection is accepted.
+- [`/AGENTS.old.md`](/AGENTS.old.md) — the retired operating manual this module
+  promoted from; the live [`/AGENTS.md`](/AGENTS.md) is assembled output whose
+  code section is [`/code/GLOBAL.md`](/code/GLOBAL.md).
 - [`/vcs/jj/README.md`](/vcs/jj/README.md) — jj+git reading and rewrite
   reference: revsets, templates, traps, forensics.
 - [`/js/README.md`](/js/README.md) — same promotion pattern, JavaScript

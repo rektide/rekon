@@ -26,10 +26,11 @@ directories. The label tells a reader what the document describes, what informed
 it, who produced or checked it, and when its claims need another look. The body
 does the explaining.
 
-This home formalizes the existing [Writing guidance in AGENTS](/AGENTS.md#writing)
-and [constitutional frontmatter contract](/constitution/README.md#doc-constitution-module-readme).
-The operating manual already supplies the full “Active customers” example,
-including `sources:`, and the `index.md` / `log.md` conventions. Here we explain
+This home formalizes the existing
+[Writing guidance in the retired monolith](/AGENTS.old.md#writing) and the
+[constitutional frontmatter contract](/constitution/README.md#doc-constitution-module-readme).
+That preserved manual supplies the full “Active customers” example, including
+`sources:`, and the `index.md` / `log.md` conventions. Here we explain
 those commitments and connect their supporting practices.
 
 The authoritative format definition is
