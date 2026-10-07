@@ -38,6 +38,12 @@ sources:
 
 # Assembling `AGENTS.md` from `GLOBAL.md` Fragments
 
+**Legacy Gunshi implementation reference.** The new Effect command lives at
+[`tool/agents.ts`](/tool/agents.ts); its [domain guide](/tool/assembly/README.md)
+documents current invocation, implementation, and the deliberate generated-header
+difference. `node rekon.ts agents` continues to run the implementation described
+here. Both consume explicit manifests; production assembly remains deferred.
+
 `AGENTS.md` is becoming deterministic build output. Knowledge modules own small
 ambient fragments in their local `GLOBAL.md`; an explicit manifest declares
 which fragments assemble and where output lands; `rekon agents` assembles the

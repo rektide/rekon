@@ -152,15 +152,25 @@ by these documents.
 - [Ordered capability pipelines](/design/ordered-pipelines/README.md) — a memento
   of reusable rule assembly and termination authority, preserving the differences
   between policy, stream filtering and accumulating output.
-- [AGENTS assembly](/constitution/agents-assembly.md) — implemented fragment
-  assembly and its separately governed production cutover.
+- [AGENTS assembly](/tool/assembly/README.md) — the new Effect CLI tool,
+  with its [legacy Gunshi reference](/constitution/agents-assembly.md) and
+  separately governed production cutover.
 - [jj and Git](/vcs/jj/README.md), [JavaScript](/js/README.md), and
   [ATProto](/atproto/README.md) — domain references and operating practices.
 
 <a id="rekon-tooling"></a>
 ## Existing tooling
 
-The TypeScript CLI lives in [`rekon.ts`](/rekon.ts). Its registered commands
+The shared [toolkit](/tool/README.md) has its first new Effect CLI entrypoint:
+
+```sh
+node tool/agents.ts --help
+```
+
+It assembles declared `GLOBAL.md` fragments and checks generated output; the
+[assembly home](/tool/assembly/README.md) co-locates its contract with its
+implementation. The original TypeScript CLI remains in [`rekon.ts`](/rekon.ts).
+Its registered commands
 are `agents`, `combine`, `install-commands`, `interpolate`, `project-files`, and
 `ln`; their implementations live in [`src/command/`](/src/command/). The
 completion plugin also supplies `complete`.

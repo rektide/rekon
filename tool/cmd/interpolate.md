@@ -7,7 +7,10 @@ tags: [tool, prompts, interpolation, legacy]
 status: draft
 generated: { by: "model:gpt-6-astra", at: 2026-10-06 }
 sources:
-  - { resource: "https://github.com/rektide/rekon/blob/ece454d44301fdf1a7b00a21eaf6b42ad6eeee90/doc/interpolate.md", title: Historical interpolation guide before rehoming }
+  - {
+      resource: "https://github.com/rektide/rekon/blob/ece454d44301fdf1a7b00a21eaf6b42ad6eeee90/doc/interpolate.md",
+      title: Historical interpolation guide before rehoming,
+    }
   - { resource: /src/command/interpolate.ts, title: Existing interpolate implementation }
   - { resource: /rekon.ts, title: Legacy command registry }
 ---
@@ -130,6 +133,7 @@ node src/command/interpolate.ts -t "Hello $1" world
 ## Argument Parsing
 
 Arguments are parsed using the same rules as opencode:
+
 - Quoted strings (`"arg with spaces"`, `'arg with spaces'`) are treated as single arguments
 - Unquoted sequences of non-space characters are individual arguments
 - Image references like `[Image N]` are treated as single tokens

@@ -98,8 +98,10 @@ disposition are related choices, not interchangeable ones.
   the cue-plus-link default, scoped honing exception, and
   [refs index](/refs/GLOBAL.md) as a concrete example; informed by the
   [GLOBAL research](/design/refs/global-research0.glm53h.md).
-- [Assembly reference](/constitution/agents-assembly.md) — implemented fragment
-  metadata, manifest, validation, and CLI behavior. Its
+- [Toolkit assembly](/tool/assembly/README.md) — the independently implemented
+  Effect CLI at `tool/agents.ts`, with domain-grouped source and behavior checks.
+  The [legacy assembly reference](/constitution/agents-assembly.md) retains the
+  Gunshi command's metadata, manifest, validation, and CLI behavior. Its
   [migration status](/constitution/agents-assembly.md#agents-assembly-status)
   explicitly says that no production cutover has occurred.
 - [Constitution GLOBAL fragment](/constitution/GLOBAL.md) — now a glossary-first

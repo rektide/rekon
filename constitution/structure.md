@@ -94,8 +94,9 @@ directories rather than a generic `src/` or `lib/` wrapper. Keep tests beside
 the behavior they exercise. Development invokes the TypeScript entrypoint
 directly; distribution builds are a separate concern.
 
-The first new implementation is the Effect CLI version of the GLOBAL-fragment
-assembler at `tool/agents.ts`. The Gunshi CLI in [`rekon.ts`](/rekon.ts)
+The first new implementation is the runnable Effect CLI version of the
+GLOBAL-fragment assembler at [`tool/agents.ts`](/tool/agents.ts), explained by
+its [assembly domain](/tool/assembly/README.md). The Gunshi CLI in [`rekon.ts`](/rekon.ts)
 and [`src/`](/src/) remains the legacy implementation while capabilities gain
 their new homes. Each command's guide must say which implementation it
 actually executes. Existing legacy tool guides can move first and identify
@@ -128,10 +129,12 @@ or an automatic assignment of numbered global clauses.
 <a id="evolution"></a>
 ## Making the skeleton real
 
-The immediate work is concrete: separate departed dl material, establish tool
-homes, build the new assembler alongside its predecessor, recover the Hyalo
-ToC lineage, and compare the OpenCode recovery guide with `~/ado/`. Those
-checks determine what is maintained here and what can be referenced elsewhere.
+The skeleton now has a runnable assembler, co-located command guides, and a
+maintained shortcode table. The [dl cull](/design/rekon/doc-cull0.glm53m.md)
+separated departed product history; the [recovery transfer](/design/rekon/ado-recovery1.glm53m.md)
+moved reusable OpenCode extraction knowledge to ado while preserving historical
+citations. The [Hyalo ToC lineage](/design/rekon/hyalo-toc0.glm53m.md) identifies
+the next concrete toolkit candidate and its current native implementation.
 
 The longer constitutional question is which commitments define Rekon beyond
 documentation mechanics. The [reassessment](/constitution/reassessment0.gpt6a.md#boundary)

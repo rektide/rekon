@@ -9,7 +9,7 @@ generated: { by: "model:glm-5.3-max", at: 2026-10-06 }
 extensions:
   ticket: rekon-agents-maintenance
   related_work: [rekon-doc-constitution, rekon-phoenix]
-  posture: honing; not promoted; landing page pending human acceptance
+  posture: compatibility landing; former intake rule superseded by domain-owned placement
 sources:
   - { resource: /constitution/README.md, title: Design and documentation postures }
   - { resource: /constitution/GLOBAL.md, title: Recorded placement ruling }
@@ -37,7 +37,9 @@ owned by the [rektide/dl](https://github.com/rektide/dl) fork
 [interpolation guide](/tool/cmd/interpolate.md) and
 [installer concurrency proposal](/tool/cmd/install-commands.md) now live with
 the toolkit, while this landing page and [GLOBAL.md](/doc/GLOBAL.md) redirect
-the old placement surfaces. The OpenCode recovery guide is being compared with
-ado before its own retirement. The first cull's inventory, evidence, and pinned
-recovery links are recorded in
+the old placement surfaces. Reusable OpenCode recovery knowledge now lives in
+[`ado/recovery.md`](file:///home/rektide/archive/doc/opencode/recovery.md);
+the [retirement record](/design/rekon/ado-recovery1.glm53m.md) preserves the
+historical guide's citations. Only these two retirement pointers remain here.
+The first cull's inventory and evidence are recorded in
 [doc-cull0](/design/rekon/doc-cull0.glm53m.md).

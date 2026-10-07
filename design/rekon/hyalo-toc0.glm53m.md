@@ -149,8 +149,8 @@ spending tokens.
   this lineage.
 - [`/assess/rekon/README.md`](/assess/rekon/README.md) hyalo row repeats the
   "was not installed here" claim — same staleness.
-- [`/t/README.md`](/t/README.md) (2026-10-06, written into the then-`t/` home;
-  the layout ruling below supersedes its directory scheme): already
+- [Toolkit map](/tool/README.md) (initially written at `t/README.md` on
+  2026-10-06, before the layout correction below): its initial draft already
   anticipates this report — "The current Hyalo investigation is recovering the
   actual ToC implementation and its native owner before choosing an
   integration. A `hyalo/` source seam should follow a real consumer and API,
@@ -224,13 +224,11 @@ Sol's Effect CLI assembler
 - [`/assess/rekon/tooling0.glm53.md`](/assess/rekon/tooling0.glm53.md) — prior
   hyalo capability map; this report supersedes its install status and adds the
   ToC lineage it predates.
-- [`/t/README.md`](/t/README.md) — the tool-home README as it stood in the
-  `t/`-directory era (superseded by the `tool/` ruling; parent owns the
-  rewrite); it awaited exactly this recovered consumer/API before opening a
-  `hyalo/` seam.
-- [`/constitution/structure.md`](/constitution/structure.md) — named this
-  recovery as immediate work; its `t/<tool>/` layout rows predate the human's
-  `tool/` ruling and are the parent's to update.
+- [Toolkit map](/tool/README.md) — the current `tool/` home now cites this
+  recovered consumer/API as the concrete candidate for a `hyalo/` seam.
+- [`/constitution/structure.md`](/constitution/structure.md) — names the
+  recovery's result and the human-selected shared `tool/` layout; the earlier
+  shortcode/path conflation has been corrected there.
 - [`/design/rekon/ado-recovery0.glm53m.md`](/design/rekon/ado-recovery0.glm53m.md)
   — sibling investigation of `~/ado` itself; the ToC artifacts live there and
   its README/docs conventions govern how the script is referenced.

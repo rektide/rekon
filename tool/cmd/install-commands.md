@@ -7,7 +7,10 @@ tags: [tool, prompts, commands, concurrency, history]
 status: deprecated
 generated: { by: "model:gpt-6-astra", at: 2026-10-06 }
 sources:
-  - { resource: "https://github.com/rektide/rekon/blob/ece454d44301fdf1a7b00a21eaf6b42ad6eeee90/doc/plan-parallelize.md", title: Original installer concurrency proposal }
+  - {
+      resource: "https://github.com/rektide/rekon/blob/ece454d44301fdf1a7b00a21eaf6b42ad6eeee90/doc/plan-parallelize.md",
+      title: Original installer concurrency proposal,
+    }
   - { resource: /src/command/install-commands.ts, title: Existing sequential Gunshi installer }
   - { resource: /prompt/.archive/README.md, title: Retired prompt inventory }
 ---
@@ -44,7 +47,7 @@ const BATCH_SIZE = 10;
 
 for (let i = 0; i < markdownFiles.length; i += BATCH_SIZE) {
   const batch = markdownFiles.slice(i, i + BATCH_SIZE);
-  await Promise.all(batch.map(file => processFile(file)));
+  await Promise.all(batch.map((file) => processFile(file)));
 }
 ```
 
@@ -56,12 +59,12 @@ To maintain consistent output order, collect results then sort by original index
 const results = await Promise.all(
   markdownFiles.map(async (file, index) => ({
     index,
-    result: await processFile(file)
-  }))
+    result: await processFile(file),
+  })),
 );
 
 results.sort((a, b) => a.index - b.index);
-results.forEach(r => console.log(r.result));
+results.forEach((r) => console.log(r.result));
 ```
 
 ### Error Handling
@@ -69,12 +72,10 @@ results.forEach(r => console.log(r.result));
 Use `Promise.allSettled()` to handle individual failures without stopping all work:
 
 ```typescript
-const settled = await Promise.allSettled(
-  markdownFiles.map(file => processFile(file))
-);
+const settled = await Promise.allSettled(markdownFiles.map((file) => processFile(file)));
 
-settled.forEach(result => {
-  if (result.status === 'fulfilled') {
+settled.forEach((result) => {
+  if (result.status === "fulfilled") {
     console.log(result.value);
   } else {
     console.error(result.reason);

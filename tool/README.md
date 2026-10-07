@@ -27,7 +27,7 @@ not abbreviated directory names.
 
 | Tool | Job | Implementation standing |
 |---|---|---|
-| `t-agents` | Assemble explicitly selected `GLOBAL.md` fragments into a provenance-marked `AGENTS.md`; check for drift | Effect CLI implementation being built at `tool/agents.ts`, with `cmd/`, `assembly/`, and `md/` source. The [Gunshi assembler](/constitution/agents-assembly.md) remains runnable. |
+| [`t-agents`](/tool/assembly/README.md) | Assemble explicitly selected `GLOBAL.md` fragments into a provenance-marked `AGENTS.md`; check for drift | Runnable Effect CLI at [`tool/agents.ts`](/tool/agents.ts), with `cmd/`, `assembly/`, and `md/` source. The [Gunshi assembler](/constitution/agents-assembly.md) remains runnable. |
 | [`t-interpolate`](/tool/cmd/interpolate.md) | Expand prompt-template arguments | Existing [Gunshi command](/src/command/interpolate.ts), with its guide now under `tool/cmd/`. |
 | [`t-install-commands`](/tool/cmd/install-commands.md) | Legacy prompt-command installer and its concurrency proposal | [Gunshi source](/src/command/install-commands.ts) remains; the prompt collection is [retired](/prompt/.archive/README.md). |
 
@@ -35,6 +35,18 @@ Run the existing tools from source with `node rekon.ts <command>`. Each new
 tool documents its own `node tool/<name>.ts` entrypoint when it is runnable.
 The original CLI also owns `combine`, `project-files`, and `ln`; their source
 remains in [`src/command/`](/src/command/) pending deliberate adoption here.
+
+The first new command is ready to use with an explicitly selected manifest:
+
+```sh
+node tool/agents.ts --help
+node tool/agents.ts --manifest path/to/manifest.json
+node tool/agents.ts --manifest path/to/manifest.json --check
+```
+
+The [assembly guide](/tool/assembly/README.md) owns the format, output behavior,
+and implementation map. Its command uses Effect 4's integrated CLI; the older
+`node rekon.ts agents` still invokes Gunshi.
 
 ## Markdown and knowledge tooling
 

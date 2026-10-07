@@ -801,8 +801,9 @@ The assembler specified by `rekon-agents-maintenance-assembler` MUST:
 - update declared output without silently pruning unrelated artifacts.
 
 The exact manifest and metadata syntax belong to that implementation ticket;
-the implemented assembler is documented in
-[`/constitution/agents-assembly.md`](/constitution/agents-assembly.md). Until a production
+the new Effect assembler is documented in the
+[toolkit's assembly domain](/tool/assembly/README.md), with the earlier Gunshi
+implementation retained in the [legacy reference](/constitution/agents-assembly.md). Until a production
 manifest exists, `AGENTS.md` remains hand-maintained and `GLOBAL.md` fragments
 can land beside it as declared future inputs.
 

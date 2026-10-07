@@ -11,7 +11,7 @@ sources:
     resource: /doc/opencode-session.md
     title: opencode session storage and recovery (the document under review)
     author: project:rekon
-    last_modified: 2026-05-08
+    last_modified: 2026-05-15
   - id: ado
     resource: file:///home/rektide/archive/doc/opencode/
     title: ~/ado — canonical opencode notes directory (README, history, store, sessions, reap, session-readers)
@@ -115,7 +115,7 @@ doc-cull0's repair practice and the "evidence, not gravity" stance of
    - **(a) pinned citations only** (recommended — cheapest, matches
      precedent; the underlying evidence — session rows, 539 parts, diff
      JSONs — remains on disk in `opencode-local.db` / `storage/`), or
-   - (b) archive L589–1367 into rekon [`.transcript/`](/transcript) (already
+    - (b) archive L589–1367 into rekon [`.transcript/`](/.transcript/) (already
      home to curated session artifacts like `PLAN-combine.md`) if a locally
      browsable copy is wanted. Pick one, not both.
 3. **Citation repairs** exactly per the table in §3, done in the same change

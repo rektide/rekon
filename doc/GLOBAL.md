@@ -11,7 +11,7 @@ generated: { by: "model:glm-5.3-max", at: 2026-09-11 }
 extensions:
   ticket: rekon-agents-maintenance
   related_work: [rekon-doc-constitution, rekon-phoenix]
-  posture: honing; not promoted; not selected for production assembly by this change
+  posture: retired placement candidate; historical redirect, not an assembly input
 sources:
   - { resource: /doc/README.md, title: Doc module landing page }
   - { resource: /constitution/GLOBAL.md, title: Recorded placement ruling }
