@@ -25,8 +25,7 @@ concern it explains; executable tools bring their explanation and code together.
 This is the Rekon-specific placement contract. The October 6 direction selects
 **`tool/` as one shared toolkit** and **`t` as its shortcode**. `p` names praxis
 and `g` names global guidance; shortcodes do not dictate directory spelling.
-The broader
-constitutional compact remains under development. Other repositories retain
+The broader constitutional compact remains under development. Other repositories retain
 their own documentation conventions and the constitution's general adoption
 guidance.
 
@@ -98,8 +97,8 @@ directly; distribution builds are a separate concern.
 The first new implementation is the Effect CLI version of the GLOBAL-fragment
 assembler at `tool/agents.ts`. The Gunshi CLI in [`rekon.ts`](/rekon.ts)
 and [`src/`](/src/) remains the legacy implementation while capabilities gain
-their new homes. A new tool's README must say which implementation its commands
-actually execute. Existing legacy tool guides can move first and identify
+their new homes. Each command's guide must say which implementation it
+actually executes. Existing legacy tool guides can move first and identify
 their current source explicitly; their code migration is a separate step.
 
 <a id="names"></a>

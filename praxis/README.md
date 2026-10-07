@@ -29,6 +29,11 @@ sources:
 
 # Praxis
 
+**Shortcode: `p`.** The [structure map](/constitution/structure.md) explains
+Praxis's place in Rekon; the [tool toolkit](/tool/README.md) supplies executable
+mechanisms for putting practices to use. The [shortcode table](/constitution/naming/README.md#short-codes)
+keeps these concise references connected to their maintained homes.
+
 **Become equipped, act, learn, and change the way we work.** Rekon already has
 praxis in [assessment](/assess/README.md), [digest](/digest/README.md),
 [remake](/remake/README.md), and its coding practices. This home connects a
