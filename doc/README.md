@@ -33,7 +33,7 @@ an optional `log.md` records dated changes. See the
 context, and the [constitutional reading map](/constitution/index.md) for
 related rulings.
 
-The first deliberate rework was the dl fork's leftovers: on 2026-10-06,
+The dl fork's leftovers were reworked on 2026-10-06:
 26 dl-owned files were culled after a byte-level preservation audit. They are
 owned by the [rektide/dl](https://github.com/rektide/dl) fork
 ([doc/ tree](https://github.com/rektide/dl/tree/main/doc); its local

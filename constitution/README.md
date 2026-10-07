@@ -372,9 +372,9 @@ The reporting drafts were the live example while they lived here:
 says it replaces
 [`log.md` in rektide/dl](https://github.com/rektide/dl/blob/e9c7c401725a93d2c4d56f41851fdb832d772b09/doc/log.md)
 (links pinned to the fork-era commit). They illustrate supersession — a
-successor document with no module landing page owning its current tip — but
-they now belong to dl, not an outstanding Rekon migration candidate, and
-supersession was never a reason to rewrite those documents as part of this
+successor document with no module landing page owning its current tip.
+Their history now belongs to dl; the Rekon copies have been retired.
+Supersession was never a reason to rewrite those documents as part of this
 constitution.
 
 This repository also uses some top-level topic directories. That is a

@@ -133,12 +133,13 @@ A revision-pinned count claim mentioning `doc/log.md`
 
 ## Checks performed
 
-Byte comparison of all 31 files against dl (current tree, pre-deletion
-blobs, and pinned `e9c7c401`); inbound-link sweep for every removed path
+Inventory of all 31 files, with byte comparisons for the 29 fork-era files
+against dl's current tree or pre-deletion blobs and all 26 removed files
+against pinned `e9c7c401`; inbound-link sweep for every removed path
 across rekon including `.beads` (no ticket references to removed files);
 pinned-blob existence and line-count validity for every fragment-bearing
 URL; post-edit sweep confirming no active rekon links remain to removed
-files; `.test-agent/` and the unrelated dirty praxis file untouched;
+files; `.test-agent/` excluded from the commit and the unrelated dirty praxis file untouched;
 `~/src/dl` never modified.
 
 ## References
