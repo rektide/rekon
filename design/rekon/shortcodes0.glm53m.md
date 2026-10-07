@@ -8,9 +8,9 @@ status: draft
 generated: { by: "model:glm-5.3-max", at: 2026-10-06 }
 sources:
   - { resource: "urn:opencode:session:ses_eec5afbf4ffeIhL6wxmv8NF3gn", title: Ruling session (2026-10-06/07), author: "session:happy-moon" }
-  - { resource: "urn:opencode:session:ses_f9cf5c4b", title: Naming wave session (2026-09-02→24), author: "session:playful-garden" }
-  - { resource: "urn:opencode:session:ses_eec6a0bd", title: Global AGENTS.md skill-manager session (2026-10-06), author: "session:brave-mountain" }
-  - { resource: /constitution/naming/exploration/proposal4.glm53m.md, title: Human ruling incl. glossary aliases, author: "model:gpt-6-astra" }
+  - { resource: "urn:opencode:session:ses_f9cf5c4bbffep3k7RE7wv2frLM", title: Naming wave session (2026-09-02→24), author: "session:playful-garden" }
+  - { resource: "urn:opencode:session:ses_eec6a0bd5ffe45v03zJ7px5vgb", title: Global AGENTS.md skill-manager session (2026-10-06), author: "session:brave-mountain" }
+  - { resource: /constitution/naming/exploration/proposal4.glm53m.md, title: Human ruling incl. glossary aliases, author: "steward/glm-5.3-max" }
   - { resource: /constitution/naming/README.md, title: Short codes in use table, author: "session:happy-moon" }
   - { resource: /constitution/structure.md#global, title: g as global guidance, author: "session:happy-moon" }
 ---
@@ -62,17 +62,18 @@ rekon):
   > this from history** this" · "**this is shortcodes yes**" · "**g is the
   > global shortcode, p praxis.**"
 
-The "unfuck" refers to the t/-as-directory conflation already propagated that
-evening into the provisional structure map, `t/README.md`, AGENTS.md, one
-subagent prompt, and
+The correction immediately followed the `t/`-as-path conflation that had
+propagated that evening into the provisional structure map, `t/README.md`,
+AGENTS.md, one subagent prompt, and
 [`hyalo-toc0.glm53m.md`](/design/rekon/hyalo-toc0.glm53m.md) (since
-corrected, commit `68cdfb9a`).
+corrected, commit `68cdfb9a`); the broader request asks to recover the
+shortcode practice from history. No sole intended referent is asserted.
 
 <a id="shortcodes0-earlier"></a>
 ## Earlier lineage (the practice the user was remembering)
 
-**Naming wave, `ses_f9cf5c4b` ("Glossary terms for constitution doc
-hierarchy", 2026-09-02 → 09-24):**
+**Naming wave, `ses_f9cf5c4bbffep3k7RE7wv2frLM` ("Glossary terms for
+constitution doc hierarchy", 2026-09-02 → 09-24):**
 
 - **seq 189, 2026-09-02 20:15:46 UTC** — origin of `con`/`exp` and the
   glossary-alias idea:
@@ -121,7 +122,7 @@ item 4, Sep wave) — the only pre-existing *governed* shortcode statement:
 - **Evidence (all of it):** seq 584 — "g is the global shortcode, p praxis."
   No older definition exists anywhere I searched. The concurrent referents in
   the same evening: (a) seq 396's "assembler thing for **global.md**";
-  (b) the sibling session `ses_eec6a0bd` (2026-10-06 23:39 UTC) on "our
+  (b) the sibling session `ses_eec6a0bd5ffe45v03zJ7px5vgb` (2026-10-06 23:39 UTC) on "our
   **global agents.md**" as skill index/citation entry point; (c) the Sep-wave
   "project namespace (within a **global namespace**)" concept
   (seq 128, 2026-09-02 19:59 UTC; survives in `ask-audit0` r1 as "locality +
@@ -140,15 +141,15 @@ item 4, Sep wave) — the only pre-existing *governed* shortcode statement:
 <a id="shortcodes0-numbered"></a>
 ## Numbered labels: p0, g0, t0
 
-- **`p0` — the only attested usage.** Exactly one human use, seq 396:
-  "maybe that's just like p0, what we are, of praxis" — an *opening account
-  slot* in praxis. Now landed as "suggested opening 'what we are / how we
-  work' account, still being shaped"
+- **`p0` — the only attested usage in the searched corpus.** One human use,
+  seq 396: "maybe that's just like p0, what we are, of praxis" — an *opening
+  account slot* in praxis. Now landed as "suggested opening 'what we are / how
+  we work' account, still being shaped"
   ([naming README](/constitution/naming/README.md#short-codes),
   [structure](/constitution/structure.md) "A proposed `p0`"). Both landings
-  are 2026-10-06; before that evening `p0` appears nowhere in sessions or
-  docs (git `-S` on structure.md returns only today's commits).
-- **`g0` / `t0` — zero attested usages.** All search hits were session-ID
+  are 2026-10-06; before that evening `p0` appears nowhere in the searched
+  sessions or docs (git `-S` on structure.md returns only today's commits).
+- **`g0` / `t0` — zero attested usages in the searched corpus.** All search hits were session-ID
   substring noise. The naming README explicitly disclaims manufacturing a
   `g0`/`p0`/`t0` numbering scheme.
 - **`C2` is a different thing** — per-document short citation registers
@@ -202,7 +203,8 @@ item 4, Sep wave) — the only pre-existing *governed* shortcode statement:
   the landed interpretation of `g`.
 - [`/design/rekon/hyalo-toc0.glm53m.md`](/design/rekon/hyalo-toc0.glm53m.md)
   — the report whose correction note links here; same evening, same ruling.
-- Sessions (full IDs): `ses_eec5afbf4ffeIhL6wxmv8NF3gn` (ruling),
-  `ses_f9cf5c4b…` (naming wave), `ses_eec6a0bd…` (global AGENTS.md),
+- Sessions (exact IDs): `ses_eec5afbf4ffeIhL6wxmv8NF3gn` (ruling),
+  `ses_f9cf5c4bbffep3k7RE7wv2frLM` (naming wave),
+  `ses_eec6a0bd5ffe45v03zJ7px5vgb` (global AGENTS.md),
   `ses_eec3b15f4ffegxdPubbIgSJ3VH` (this investigation's sibling Hyalo
   recovery, mine).
