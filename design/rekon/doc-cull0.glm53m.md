@@ -91,14 +91,23 @@ retired with its file and is recoverable at
 
 ## What stayed — 5 files, rekon-owned
 
+*This five-file disposition records the first cull (2026-10-06); links below
+now follow the files' later homes — `tool/cmd/…` for the moved pair, pinned
+historical bytes for `opencode-session.md` after its second-cull deletion.
+The count and argument are unchanged.*
+
 - [`doc/README.md`](/doc/README.md) — doc landing page; now notes this cull
   and the remaining inventory.
-- [`doc/GLOBAL.md`](/doc/GLOBAL.md) — candidate ambient exposure (honing).
-- [`doc/interpolate.md`](/doc/interpolate.md) — documents the live rekon
+- [`doc/GLOBAL.md`](/doc/GLOBAL.md) — candidate ambient exposure (honing);
+  later a deprecated redirect.
+- [`doc/interpolate.md`](/tool/cmd/interpolate.md) — documents the live rekon
   command `src/command/interpolate.ts`; dl itself classified it "non-dl".
-- [`doc/plan-parallelize.md`](/doc/plan-parallelize.md) — plan for rekon's
-  `install-commands`; also "non-dl" per dl.
-- [`doc/opencode-session.md`](/doc/opencode-session.md) — 1,367-line opencode
+  Later moved to `tool/cmd/interpolate.md`.
+- [`doc/plan-parallelize.md`](/tool/cmd/install-commands.md) — plan for rekon's
+  `install-commands`; also "non-dl" per dl. Later moved to
+  `tool/cmd/install-commands.md`.
+- [`doc/opencode-session.md` in rektide/rekon, pinned](https://github.com/rektide/rekon/blob/ece454d44301fdf1a7b00a21eaf6b42ad6eeee90/doc/opencode-session.md) —
+  1,367-line opencode
   session-storage/recovery guide, load-bearing for rekon citations
   (constitution threads, naming exploration, task-reconstruction
   philosophy); dl retired it as marginal. Kept path-stable to preserve

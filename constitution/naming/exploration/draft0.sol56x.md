@@ -42,8 +42,8 @@ sources:
     title: Rekon workspace agent guidance
     author: human:rektide
   - id: opencode-session-storage
-    resource: /doc/opencode-session.md
-    title: OpenCode session storage and recovery
+    resource: https://github.com/rektide/rekon/blob/ece454d44301fdf1a7b00a21eaf6b42ad6eeee90/doc/opencode-session.md
+    title: OpenCode session storage and recovery (pinned historical bytes; file since deleted from the tree)
     author: project:rekon
   - id: okf-v0-2
     resource: file:///home/rektide/archive/GoogleCloudPlatform/knowledge-catalog/okf/SPEC.md
@@ -494,7 +494,7 @@ locator may disappear while committed evidence remains. `naming-actor-braid`
 lets the resolver return all of them without violating
 `naming-one-name-locality`.
 
-The existing [OpenCode session storage account](/doc/opencode-session.md)
+The existing [OpenCode session storage account, pinned](https://github.com/rektide/rekon/blob/ece454d44301fdf1a7b00a21eaf6b42ad6eeee90/doc/opencode-session.md)
 evidences this separation in the substrate: session rows carry an opaque ID,
 parent/fork ID, human-readable title, project, and timestamps, while message
 metadata separately records agent and model. That store can recover an
@@ -1087,7 +1087,7 @@ Beads; `agent-naming` from the naming topic public presence; and
 - The [addressability essay](https://markburgess.org/blog_spacetime2.html)
   **contrasts** semantic labels with navigable coordinates and **motivates**
   the pairing of canonical stems, qualification, indexes, and relations.
-- [`/doc/opencode-session.md`](/doc/opencode-session.md) **evidences** opaque
+- [`doc/opencode-session.md`, pinned](https://github.com/rektide/rekon/blob/ece454d44301fdf1a7b00a21eaf6b42ad6eeee90/doc/opencode-session.md) **evidences** opaque
   session locators, parent/fork relations, human-readable titles, and separate
   model/agent metadata. It **supports** `naming-actor-braid` while remaining a
   recovery account rather than an actor public presence.

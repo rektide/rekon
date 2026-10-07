@@ -17,8 +17,8 @@ sources:
     title: Self-Explaining Documentation Constitution
     author: project:rekon
   - id: phase-a-recovery
-    resource: /doc/opencode-session.md
-    title: Phase A recovery guide
+    resource: https://github.com/rektide/rekon/blob/ece454d44301fdf1a7b00a21eaf6b42ad6eeee90/doc/opencode-session.md
+    title: Phase A recovery guide (pinned historical bytes; file since deleted from the tree)
     author: project:rekon
   - id: phase3-calibration
     resource: https://github.com/rektide/dl/blob/e9c7c401725a93d2c4d56f41851fdb832d772b09/doc/phase3.md
@@ -574,11 +574,11 @@ Before presenting a plan, verify:
   promotion is synthesis rather than movement: current guidance should
   reconcile design evidence instead of copying one historical artifact by
   default.
-- [`/doc/opencode-session.md`](/doc/opencode-session.md#L589-L591) contains the
-  direct precursor to this guide: understand what was done and why, then
-  implement it fresh against the current codebase. Its [later reconstruction
-  procedure](/doc/opencode-session.md#L1326-L1357) ends with the concise rule
-  "adapt, don't copy."
+- [`doc/opencode-session.md` in rektide/rekon, pinned](https://github.com/rektide/rekon/blob/ece454d44301fdf1a7b00a21eaf6b42ad6eeee90/doc/opencode-session.md#L589-L591)
+  contains the direct precursor to this guide: understand what was done and
+  why, then implement it fresh against the current codebase. Its [later
+  reconstruction procedure](https://github.com/rektide/rekon/blob/ece454d44301fdf1a7b00a21eaf6b42ad6eeee90/doc/opencode-session.md#L1326-L1357)
+  ends with the concise rule "adapt, don't copy."
 - [`phase3.md` in rektide/dl](https://github.com/rektide/dl/blob/e9c7c401725a93d2c4d56f41851fdb832d772b09/doc/phase3.md#L18-L32) is a worked example of calibrating
   current reality against original intent and accepting "same goal, different
   mechanism." Its [rejected legacy adapter](https://github.com/rektide/dl/blob/e9c7c401725a93d2c4d56f41851fdb832d772b09/doc/phase3.md#L66-L87) also shows

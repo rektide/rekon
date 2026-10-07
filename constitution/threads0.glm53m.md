@@ -96,8 +96,8 @@ sources:
     title: Reconstruct from the present
     author: model:openai-gpt-5.6-sol
   - id: opencode-session
-    resource: /doc/opencode-session.md
-    title: opencode session storage, recovery, and Phase A recovery guide
+    resource: https://github.com/rektide/rekon/blob/ece454d44301fdf1a7b00a21eaf6b42ad6eeee90/doc/opencode-session.md
+    title: opencode session storage, recovery, and Phase A recovery guide (pinned historical bytes; file since deleted from the tree)
     author: project:rekon
   - id: transcript-pluginification
     resource: https://github.com/rektide/dl/blob/e9c7c401725a93d2c4d56f41851fdb832d772b09/doc/transcript/pluginification.md
@@ -174,7 +174,7 @@ the naming exploration (topic README, `draft0.glm53m`, `draft2-discussion0`,
 `proposal4`, `ask-audit0`, `beads-offerings0`, `draft3` frontmatter), the
 reconstruction neighbors
 ([`/code/task-reconstruction/philosophy.md`](/code/task-reconstruction/philosophy.md),
-[`/doc/opencode-session.md`](/doc/opencode-session.md)), and the historical
+[`doc/opencode-session.md` in rektide/rekon, pinned](https://github.com/rektide/rekon/blob/ece454d44301fdf1a7b00a21eaf6b42ad6eeee90/doc/opencode-session.md)), and the historical
 prompt archive ([`/prompt/.archive/`](/prompt/.archive/README.md)) with its
 workflows — the oldest evidence in the corpus.
 
@@ -414,7 +414,7 @@ see Thread 8's "reconstruction is not replay."
 
 **Handoff/resumption vs universal transcript retention.** The workspace saves
 *selected* transcripts ([pluginification in rektide/dl](https://github.com/rektide/dl/blob/e9c7c401725a93d2c4d56f41851fdb832d772b09/doc/transcript/pluginification.md),
-[`/doc/opencode-session.md`](/doc/opencode-session.md)) and mines the session
+[`doc/opencode-session.md`, pinned](https://github.com/rektide/rekon/blob/ece454d44301fdf1a7b00a21eaf6b42ad6eeee90/doc/opencode-session.md)) and mines the session
 database under loss, but never treats retention as the default; scratch is
 "pre-history" and evaporates unless promoted
 ([`draft0.glm53m.md` lines 389-395](/design/doc-constitution/draft0.glm53m.md#c-lifecycle)).
@@ -851,7 +851,7 @@ guide, whose stance is:
 > "The goal is NOT to mechanically replay diffs. The goal is for the agent to
 > **understand what was done and why**, then implement equivalent changes
 > fresh against whatever the current codebase looks like."
-> — [`/doc/opencode-session.md` line 591](/doc/opencode-session.md)
+> — [`doc/opencode-session.md` line 591, pinned](https://github.com/rektide/rekon/blob/ece454d44301fdf1a7b00a21eaf6b42ad6eeee90/doc/opencode-session.md#L591)
 
 Its procedure ranks *reasoning over patches*:
 
@@ -882,7 +882,7 @@ The retention boundary is equally deliberate:
   (`loss1.md`, `loss2.md`, `rebuild.md` in `.test-agent/`) live in ignorable
   scratch;
 - the session database is treated as a *mine* for recovery, never a canon
-  ([`/doc/opencode-session.md`](/doc/opencode-session.md), "Quick Start:
+  ([`doc/opencode-session.md`, pinned](https://github.com/rektide/rekon/blob/ece454d44301fdf1a7b00a21eaf6b42ad6eeee90/doc/opencode-session.md), "Quick Start:
   Finding where something was built");
 - "Scratch is pre-history" — evidence that stays load-bearing at acceptance
   must be absorbed or promoted, and that rule "binds this very effort"
@@ -1067,7 +1067,7 @@ can test rather than rediscover them:
   is tooling, not more rules. Relevant to whoever owns the reading-map
   maintenance burden.
 - **The recovery-guide genre as knowledge type.**
-  [`/doc/opencode-session.md`](/doc/opencode-session.md) is simultaneously
+  [`doc/opencode-session.md`, pinned](https://github.com/rektide/rekon/blob/ece454d44301fdf1a7b00a21eaf6b42ad6eeee90/doc/opencode-session.md) is simultaneously
   reference (database schemas), procedure (queries), and recovery brief
   (Phase A). None of the current lifecycle vocabularies (posture, disposition,
   wave role) name it. Weak signal, real gap in vocabulary.
@@ -1154,7 +1154,7 @@ can test rather than rediscover them:
   (Thread 10 and Thread 1's origin): plan-as-heart, journaling, self-review
   dialogue, verbose commits, short-names-as-hypermedia.
 - The [reconstruct guide](/code/task-reconstruction/philosophy.md#reconstruct) and the
-  [session recovery doc](/doc/opencode-session.md) **form** Thread 8's
+  [session recovery doc, pinned](https://github.com/rektide/rekon/blob/ece454d44301fdf1a7b00a21eaf6b42ad6eeee90/doc/opencode-session.md) **form** Thread 8's
   evidence pair; the latter's Phase A guide is the genre specimen.
 - [`adoption1`](/design/doc-constitution/adoption1.glm53m.md#doc-constitution-adoption-revision-deviations)
   **records** the ceremony-budget reversal (Thread 6) and the
