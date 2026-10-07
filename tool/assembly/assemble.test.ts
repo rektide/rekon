@@ -1,4 +1,4 @@
-import { NodeFileSystem } from "@effect/platform-node";
+import * as NodeFileSystem from "@effect/platform-node/NodeFileSystem";
 import { Deferred, Effect, Fiber, FileSystem, Option, PlatformError } from "effect";
 import { mkdir, readFile, readdir, rm, stat, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
@@ -68,14 +68,16 @@ describe("declared filesystem assembly", () => {
       _tag: "PlatformError",
       reason: { _tag: "NotFound", pathOrDescriptor: missingFragment },
     });
+    expect(await snapshotTree(bundle.root)).toEqual(before);
     await rm(bundle.manifest);
+    const withoutManifest = await snapshotTree(bundle.root);
     await expect(
       Effect.runPromise(assemble(bundle.request).pipe(Effect.provide(NodeFileSystem.layer))),
     ).rejects.toMatchObject({
       _tag: "PlatformError",
       reason: { pathOrDescriptor: bundle.manifest },
     });
-    expect(before).not.toEqual(await snapshotTree(bundle.root)); // only the deliberate manifest removal changed it
+    expect(await snapshotTree(bundle.root)).toEqual(withoutManifest);
   });
 
   test("bounds concurrent reads while keeping results deterministic despite different completion order", async () => {

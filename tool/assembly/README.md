@@ -6,6 +6,7 @@ resource: /tool/assembly/README.md
 tags: [tool, agents, assembly, effect]
 status: draft
 generated: { by: "model:gpt-6.1-sol-xhigh", at: 2026-10-06 }
+verified: { by: "model:gpt-6.1-sol-xhigh", at: 2026-10-06 }
 sources:
   - {
       resource: /constitution/agents-assembly.md,
@@ -26,14 +27,44 @@ toolkit. **It is independent of the legacy Gunshi implementation**, which remain
 available through `node rekon.ts agents`. `t` is the toolkit's shortcode, not a
 physical directory name.
 
-**Current checkpoint:** fragment validation, rendering/byte comparison, and
-manifest/path planning are implemented and tested. Filesystem assembly,
-write/check orchestration, and the `node tool/agents.ts` command are the next
-reviewed slice; that executable does not exist yet.
+**Current standing:** the independently owned Effect command is runnable at
+[`tool/agents.ts`](/tool/agents.ts). Fragment/manifest validation, ordered
+assembly, atomic write/check, and CLI behavior have colocated tests. This does
+not select any generated document for production use.
 
 No production manifest exists. The repository's [`AGENTS.md`](/AGENTS.md) is
 still hand-maintained and must not be regenerated as a side effect of tool work.
 No automatic discovery, pruning, or content migration is authorized here.
+
+## Run the new command
+
+Execute TypeScript directly; no distribution build is needed:
+
+```sh
+node tool/agents.ts --help
+node tool/agents.ts --manifest path/to/manifest.json
+node tool/agents.ts -m path/to/manifest.json --check
+node tool/agents.ts -m path/to/manifest.json --output .test-agent/agents-effect/preview.md
+```
+
+| Option           | Default                             | Meaning                                                                                         |
+| ---------------- | ----------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `-m, --manifest` | `constitution/agents.manifest.json` | Manifest path, resolved from the invocation cwd. The production default is deliberately absent. |
+| `-o, --output`   | Manifest's `output`                 | Optional destination override, resolved from the invocation cwd.                                |
+| `-c, --check`    | Off                                 | Compare bytes without creating directories, staging artifacts, or output.                       |
+
+Write mode exits `0` and reports the output, total UTF-8 bytes and each ordered
+fragment's order, ID, path and prose-byte cost. Fresh check exits `0` with a
+`fresh:` report. Missing or differing output exits `1` with `stale:` detail;
+differences include the first differing UTF-8 byte and both byte lengths.
+Validation, input-read and nonmissing output I/O failures also exit `1`, retaining
+their path/error context rather than being mislabeled stale. Help exits `0`;
+unknown flags exit `1`. Imports do not execute the command, including imports
+without `argv[1]`; direct launch through a symlink is supported.
+
+These commands execute the **new Effect** implementation. The separate
+`node rekon.ts agents ...` command still executes the unchanged legacy Gunshi
+implementation; neither command forwards to the other.
 
 ## Declaration and fragment contract
 
@@ -55,9 +86,13 @@ are allowed. A CLI output override will instead resolve from the invocation cwd.
 Neither destination may overwrite the manifest or a selected fragment.
 These are lexical Node path guarantees, not symlink confinement.
 
+Directory names such as `..notes/` are accepted: `..notes` is not the `..`
+traversal segment. This corrects the legacy guard's overbroad rejection of any
+name beginning `..`; actual `.`/`..` segments remain rejected.
+
 Each fragment has frontmatter `id` (lowercase kebab-case), integer `order`,
-bundle-root-relative `source`, and `status` (`draft` or `stable`). Assembly will
-reject duplicate identity/order and sort by metadata order, not declaration
+bundle-root-relative `source`, and `status` (`draft` or `stable`). Assembly
+rejects duplicate identity/order and sorts by metadata order, not declaration
 order. Provenance fields reject `--` and control characters to keep HTML
 comments intact.
 
@@ -79,9 +114,18 @@ Context costs and comparison offsets count UTF-8 bytes, not JS character units.
 
 ## Implementation map
 
+- [`../agents.ts`](/tool/agents.ts) owns executable/main detection. It
+  asynchronously realpaths the invocation before dynamically loading the command.
+- [`../cmd/agents.ts`](/tool/cmd/agents.ts) owns Effect CLI flags, human reports
+  and stale-check failure. Its embeddable `runAgents(args)` is an Effect; `main`
+  supplies `NodeServices.layer` and runs it with the Node runtime.
 - [`manifest.ts`](/tool/assembly/manifest.ts) owns manifest schemas, selected
   input paths, output planning, duplicate-path and overwrite guards. Planning
   takes the invocation cwd explicitly and performs no I/O.
+- [`assemble.ts`](/tool/assembly/assemble.ts) owns filesystem orchestration,
+  unique identity/order, sorted rendering, publication, and checking. It reads
+  at most eight fragments concurrently while preserving declared results before
+  sorting. All validation finishes before any output directory or file is created.
 - [`../md/fragment.ts`](/tool/md/fragment.ts) owns assembler-specific fragment
   metadata/frontmatter, prose structure, and relocation safety. It returns
   named Effects with schema-tagged failures; it needs no runtime services.
@@ -89,6 +133,23 @@ Context costs and comparison offsets count UTF-8 bytes, not JS character units.
   byte comparison. Callers supply validated, ordered fragments.
 - Tests are colocated beside each boundary; Vitest discovers `tool/` as well as
   the unchanged legacy `src/` tests.
+
+The filesystem functions accept an `AssemblyRequest` containing `manifestPath`,
+explicit `cwd`, and `outputOverride: Option<string>`, and require upstream
+`FileSystem`. `assemble` returns the ordered fragments, document, UTF-8 byte
+cost and absolute output without writing. `writeAssembly` stages a complete
+document in a uniquely owned directory under the output parent, then renames
+it into place on the same filesystem. Scope cleanup removes that staging
+directory on success, failure and cooperative interruption; it never reconciles
+undeclared artifacts or removes the output parent. `checkAssembly` catches only
+`PlatformError` with `reason._tag === "NotFound"` when reading the output.
+Permission and directory/read errors remain platform failures.
+
+Atomic rename is not a promise of crash-durable/fsynced publication. Cleanup
+cannot run after forcible process termination (`SIGKILL`) or a host crash; an
+owned staging artifact may then remain for deliberate cleanup. Lexical path
+guards do not defend against symlink aliases or concurrent hostile filesystem
+changes. Those stronger policies are not part of this compatibility contract.
 
 ## Effect tooling
 
@@ -104,6 +165,20 @@ plugin, and the existing distribution tool requires TS 5. `pnpm typecheck` still
 uses the existing `tsgo`; adding editor support does not replace it. The actual
 language-service resolution is 0.87.3 after `pnpm install ...@latest`.
 
-Use `pnpm exec vitest run tool` for these tests. Source execution requires no
-distribution build. Review the [design checkpoint](/design/rekon/agents-effect0.sol61xh.md)
-for upstream evidence and the physical-layout correction.
+Verification commands:
+
+```sh
+pnpm exec vitest run tool
+pnpm exec tsgo --noEmit
+pnpm exec oxlint tool
+pnpm exec oxfmt --check tool/agents.ts tool/assembly tool/cmd tool/md
+pnpm exec effect-language-service diagnostics --project tsconfig.json --format text --severity error,warning --strict
+```
+
+Runtime tests cover bounded reads, unique order/identity, validation-before-write,
+exact snapshots around checks, parent/override paths, retained platform errors,
+publication failure and interrupted staging. Subprocess tests exercise real
+exit codes/reports, aliases, the default manifest, help/parser errors, import
+safety and symlink launch. Review the
+[design checkpoint](/design/rekon/agents-effect0.sol61xh.md) for upstream evidence
+and the physical-layout correction.

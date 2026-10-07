@@ -1,4 +1,7 @@
-import { Effect, Result, Schema } from "effect";
+/** Assembler-specific GLOBAL fragments; heading and relocation rules are not general Markdown policy. */
+import * as Effect from "effect/Effect";
+import * as Result from "effect/Result";
+import * as Schema from "effect/Schema";
 import matter from "gray-matter";
 import { lexer, walkTokens } from "marked";
 import { normalize } from "node:path";
@@ -69,7 +72,7 @@ export class FragmentLinkError extends Schema.TaggedError<FragmentLinkError>()(
   { path: Schema.String, destination: Schema.String, message: Schema.String },
 ) {}
 
-/** Validate relocation safety and structure without rendering or rewriting Markdown. */
+/** Validate an assembler fragment without rendering or rewriting its Markdown. */
 export function validateProse(
   prose: string,
   path: string,

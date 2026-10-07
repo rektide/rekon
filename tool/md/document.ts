@@ -8,7 +8,7 @@ export const GENERATED_HEADER = [
   "-->",
 ].join("\n");
 
-/** Rendering assumes validated, ordered fragments and never round-trips their prose. */
+/** Render assembler output from validated, ordered fragments without round-tripping their prose. */
 export function renderDocument(fragments: ReadonlyArray<Fragment>): string {
   const sections = fragments.map(({ path, meta, prose }) => {
     const provenance = `<!-- rekon-fragment: id=${meta.id} order=${meta.order} path=${path} source=${meta.source} -->`;

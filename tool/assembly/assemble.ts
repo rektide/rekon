@@ -1,4 +1,7 @@
-import { Effect, FileSystem, Option, Schema } from "effect";
+import * as Effect from "effect/Effect";
+import * as FileSystem from "effect/FileSystem";
+import * as Option from "effect/Option";
+import * as Schema from "effect/Schema";
 import { dirname, join, resolve } from "node:path";
 import { compareDocument, renderDocument, type DocumentCheck } from "../md/document.ts";
 import { parseFragment, type Fragment } from "../md/fragment.ts";

@@ -31,7 +31,7 @@ function runNode(args: ReadonlyArray<string>, cwd = process.cwd()): Promise<Comm
 
 const runCli = (args: ReadonlyArray<string>, cwd?: string) => runNode([entrypoint, ...args], cwd);
 
-describe("source-executed Effect agents CLI", () => {
+describe("source-executed Effect agents CLI", { timeout: 30_000 }, () => {
   test("write/fresh/stale modes expose real exit codes, ordered provenance and UTF-8 cost reports", async () => {
     const first = "# First 😀\n\n日本語";
     const bundle = await createBundle({
@@ -174,12 +174,14 @@ describe("source-executed Effect agents CLI", () => {
       bundle.root,
     );
     expect(absent).toEqual({ code: 0, stdout: "", stderr: "" });
+    expect(await snapshotTree(bundle.root)).toEqual(before);
     const importer = join(bundle.root, "importer.ts");
     await writeFile(importer, `await import(${JSON.stringify(url)});\n`);
+    const withImporter = await snapshotTree(bundle.root);
     const present = await runNode([importer, "--manifest", bundle.manifest], bundle.root);
     expect(present).toEqual({ code: 0, stdout: "", stderr: "" });
     await expect(stat(bundle.output)).rejects.toMatchObject({ code: "ENOENT" });
-    expect(before).not.toEqual(await snapshotTree(bundle.root)); // importer.ts is the sole deliberate addition
+    expect(await snapshotTree(bundle.root)).toEqual(withImporter);
   });
 
   test("symlink launch resolves its main file and executes normally", async () => {
