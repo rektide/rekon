@@ -5,8 +5,7 @@ description: Source-cited evidence on the GLOBAL.md fragment contract, existing 
 resource: /design/refs/global-research0.glm53h.md
 tags: [global, refs, skills, assembly, context, kiss, skillify]
 status: draft
-generated: { by: "model:zai-coding-plan/glm-5.3#high", at: 2026-10-07T00:45:00Z }
-verified: { by: none, at: never }
+generated: { by: "model:zai-coding-plan/glm-5.3#high", at: 2026-10-07T00:41:26Z }
 stale_after: 2026-11-06
 extensions:
   ticket: rekon-skill-management
@@ -35,7 +34,7 @@ sources:
   - { resource: /upstream/README.md, title: Upstream reference mirrors — refs' nearest neighbor practice }
   - { resource: /src/command/project-files.ts, title: Existing ~/archive and ~/wiki lookup convention }
   - { resource: /AGENTS.md, title: Live manuscript, archive-first and well-known-directories sections }
-  - { resource: ".beads/issues.jsonl", title: "rekon-skill-management epic: exposure direction and documentation-home question" }
+  - { resource: "/.beads/issues.jsonl", title: "rekon-skill-management epic: exposure direction and documentation-home question" }
   - { resource: "file:///home/rektide/archive/kitlangton/motel/skills/motel-debug/SKILL.md", title: Archive-backed skill entry, verified present }
   - { resource: "file:///home/rektide/archive/polars-inc/skills/polars/SKILL.md", title: Archive-backed skill entry, verified present }
 ---
@@ -81,7 +80,7 @@ anything in `constitution/` or `doc/`.
 | [`/constitution/README.md` §Honing](/constitution/README.md#doc-constitution-honing) (lines 260–290) | **Human-authorized exception, dated 2026-09-06** | During the rekon-phoenix workshop: start GLOBALs with "terms in use", accept deliberate redundancy, keep SKILL symlinks intact, distinguish candidate/promoted/selected/loaded. Explicitly "not acceptance of every candidate GLOBAL"; the compact profile "should emerge from reading and using the combined context". |
 | [`/constitution/README.md` §ambient cut](/constitution/README.md#doc-constitution-context-ambient) (lines 729–743) | **Current rule (test)** | A rule earns global load when its cost-of-absence exceeds its context cost: corruption, cheapness, universality. |
 | [`/constitution/agents-assembly.md`](/constitution/agents-assembly.md) + [`/src/agents/assemble.ts`](/src/agents/assemble.ts) | **Implementation constraint** | What the tool actually enforces: metadata, one-H1 shape, link-destination rules, manifest, provenance, byte costs. Detailed below. |
-| [`/design/skillify/README1.sol56x.md`](/design/skillify/README1.sol56x.md) (lines 417–465) | **Accepted design direction** | "One body, three exposures"; GLOBAL assembles into a parent AGENTS via manifest; **new modules default to no GLOBAL** — ambient cost must be demonstrated. |
+| [`/design/skillify/README1.sol56x.md`](/design/skillify/README1.sol56x.md) (lines 417–465) | **Design proposal (draft, unaccepted)** | "One body, three exposures"; GLOBAL assembles into a parent AGENTS via manifest; **new modules default to no GLOBAL** — ambient cost must be demonstrated. Its own frontmatter says `status: draft` / `skill: none until accepted`, and the [root README](/README.md#rekon-map) calls skillification "the proposal… not a universal deployed contract." |
 | KISS direction for refs (2026-10-06, human, via parent) | **Newest user direction** | GLOBAL must stay simple for refs. This is the compact-profile posture the honing section anticipated, applied from birth rather than honed down. It does not revoke the honing exception for the existing phoenix fragments — those remain human-steered per [`context-weave`](/design/rekon/context-weave/README.md) — but it governs new refs work. |
 
 The important reading: **the honing workshop's deliberate redundancy was an
@@ -106,10 +105,14 @@ Prose bytes measured with the implemented parser (`parseFragment`,
 | [`/praxis/ticket-pointers/GLOBAL.md`](/praxis/ticket-pointers/GLOBAL.md) | praxis-ticket-pointers / 400 | **614** | Leanest pre-existing precedent: plain cue bullets + one "Deeper practice" link. No terms section, no body banner. |
 | [`/refs/GLOBAL.md`](/refs/GLOBAL.md) | refs / 500 | **381** | Parent's new fragment: one instruction line + three cue links. Passes assembler validation (verified). |
 
-The ladder itself is evidence: fragment weight has fallen steadily
-(4148 → 1675 → 614 → 381) as the corpus moved from honing toward compact
-profile. `praxis/ticket-pointers` (2026-09-23) already shows the KISS shape
-the human is now asking to make explicit; refs/GLOBAL continues it.
+This table is a **cross-sectional snapshot**, not a measured trend: these are
+different modules' fragments at different moments and purposes, several have
+been revised since creation (the weave README records `code/GLOBAL.md` gaining
+fragment metadata at `198c302d`), so dates do not order composition and no
+steady shrinkage is claimed. What the contrast does show: alongside the
+heavier honing-era shapes, the corpus already contains compact cue+link
+fragments — `praxis/ticket-pointers` and now `refs/GLOBAL` — so the KISS
+direction has direct in-repo precedent.
 
 <a id="global-research-contract"></a>
 
@@ -347,12 +350,15 @@ Ordered by leverage; all are parent-owned edits, none performed here:
   standing policy for the phoenix fragments.
 - **R6 — Add the AGENTS.md pointer** from "well known directories" to
   `/refs/README.md` on the next AGENTS revision.
-- **R7 — Record curation scope in skills.md:** which skill classes earn
-  ambient cues (currently: archive-backed selections), which are reachable
-  via their own domains (the five in-repo SKILL modules), and which stay
-  harness-discovered (`~/.agents/skills/`, 42 entries incl. the matt-pocock
-  suite). The epic's "we decide which capabilities agents see" needs that
-  boundary written down before the catalog grows.
+- **R7 — Treat curation scope as an unresolved migration/integration choice.**
+  The human's direction is Rekon as the **sole entry point** for skill
+  selection and advertisement. How the currently harness-discovered
+  `~/.agents/skills/` cohort (42 entries, incl. the matt-pocock suite) and
+  native harness discovery relate to the catalog — migration in, deliberate
+  interoperation, or replacement — is unsettled. Do not record the present
+  split as standing policy: at most mark today's state as interim in
+  skills.md, and surface the integration decision to the human before the
+  catalog grows.
 - **R8 — Keep the tilde/file:// split and the provenance/reachability
   division** as documented above; they are load-bearing for assembly
   validity and portability respectively.
@@ -373,17 +379,19 @@ Ordered by leverage; all are parent-owned edits, none performed here:
   is being designed concurrently; my tooling suggestions may collide with
   that design's own choices.
 - **The `.agents/skills` relationship** (native harness discovery vs our
-  catalog as "single entry point") is unresolved in the epic; R7 is a
-  placeholder boundary, not a settled one.
+  catalog) is unresolved in the epic — the human wants Rekon as the sole
+  entry point, so the existing harness-discovered cohort is a migration
+  question, not a settled boundary (see R7).
 - **Not read:** sibling same-wave docs (none existed in `design/refs/` at
   start — the directory was created for this report), and the context-weave
   sub-artifacts (north-star, inventory, assembly) beyond their README
   summary.
 - Verification I ran and trust: assembler `parseFragment` probes over all
   five fragments (results above), archive-path existence checks, symlink
-  inventory, byte measurements. Verification I did not run: full `rekon.ts
-  agents` assembly (no manifest exists; would be a no-op) and link-target
-  resolution inside the archive skills' own bodies.
+  inventory, byte measurements. Verification I did not run: a full
+  `rekon.ts agents` invocation (no manifest exists; it would fail reading the
+  nonexistent default `constitution/agents.manifest.json` — an error, not a
+  no-op) and link-target resolution inside the archive skills' own bodies.
 
 <a id="global-research-references"></a>
 
@@ -408,7 +416,7 @@ Ordered by leverage; all are parent-owned edits, none performed here:
   [refs GLOBAL](/refs/GLOBAL.md) — the parent's new module, assessed above.
 - [praxis/ticket-pointers GLOBAL](/praxis/ticket-pointers/GLOBAL.md) — the
   lean precedent.
-- [rekon-skill-management epic](.beads/issues.jsonl) — exposure direction,
+- [rekon-skill-management epic](/.beads/issues.jsonl) — exposure direction,
   worked examples, documentation-home question this module answers.
 - [upstream mirrors](/upstream/README.md) and
   [project-files.ts](/src/command/project-files.ts) — neighboring practices
