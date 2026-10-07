@@ -10,6 +10,7 @@ extensions:
   ticket: rekon-skill-management
 sources:
   - { resource: "urn:opencode:session:ses_eec6a0bd5ffe45v03zJ7px5vgb", title: Human direction for archive-backed skill curation and a KISS global index }
+  - { resource: "urn:opencode:session:ses_eebb58c0fffeT6vJYam3OnUv6j", title: Human direction to register and catalog Effect, Railway, and cplace skills }
   - { resource: /design/skillify/README1.sol56x.md, title: Skillification and canonical bodies }
   - { resource: /constitution/agents-assembly.md, title: Implemented GLOBAL fragment assembly }
   - { resource: "https://github.com/kitlangton/motel/blob/31186212365f705ba539c4befbf34a9b9e4bbcfe/skills/motel-debug/SKILL.md", title: Motel debugging skill }
@@ -77,7 +78,17 @@ or in the owning skill. GLOBAL should let an agent recognize a need and reach
 the knowledge with minimal ambient text. Add a stand-alone instruction only
 when it must act before the linked material is loaded.
 
-## Initial sources
+## Register with the harness
+
+Registration is a symlink, not a copy. OpenCode discovers `~/.agents/skills`,
+`~/.config/opencode/skills`, and `~/.claude/skills` plus project sources; we
+point one root at the archive skill directory so the loaded body is the checkout
+itself. A first-party skill can own its registration the same way — `cplace
+skill` symlinks itself in. Retired installations are parked under
+`~/.config/opencode/.bak` rather than deleted; that directory's README
+inventories them.
+
+## Catalog
 
 ### Motel
 
@@ -98,6 +109,48 @@ for Polars queries and Python tabular-data work. Upstream:
 Its support base is `polars/`, with query recipes and API guidance under
 `references/`. The source recommends Polars for unspecified Python data work;
 decide that preference explicitly when composing it with other guidance.
+
+### Effect best practices
+
+Read [the archived Effect skill](file:///home/rektide/archive/makisuo/skills/effect-best-practices/SKILL.md)
+for Effect-TS patterns — `Effect.Service`, `Schema.TaggedError`, layer
+composition, and effect-atom React components — when writing or reviewing
+Effect code. Upstream:
+[makisuo/skills — `effect-best-practices`](https://github.com/makisuo/skills/blob/main/effect-best-practices/SKILL.md),
+recorded at main `7feda456ccba`.
+
+Its support base is `effect-best-practices/references/`. The same repository
+carries `effect-review` and `effect-review-v4` review skills we have not
+cataloged. Registered by symlink at `~/.agents/skills/effect-best-practices`.
+
+### Railway operations
+
+Read [the archived Railway skill](file:///home/rektide/archive/railwayapp/railway-skills/plugins/railway/skills/use-railway/SKILL.md)
+to operate Railway infrastructure: accounts and onboarding, projects, services,
+databases and buckets, deployments, environments and variables, domains,
+feature flags, tracing, metrics, and Railway agent tooling — including when the
+user does not say "Railway" explicitly. Upstream:
+[railwayapp/railway-skills — `use-railway`](https://github.com/railwayapp/railway-skills/blob/main/plugins/railway/skills/use-railway/SKILL.md),
+recorded at main `4db2ee90245d` ("document project webhooks…").
+
+Its support base is `plugins/railway/skills/use-railway/`: task guides under
+`references/` and `scripts/railway-api.sh` for API access. Upstream moved the
+entry from `skills/use-railway` to `plugins/railway/skills/use-railway` — the
+changed-entry-path case [Maintain the selection](#maintain-the-selection)
+describes. Registered by symlink at `~/.agents/skills/use-railway`.
+
+### cplace
+
+Read [the first-party cplace skill](file:///home/rektide/src/cli-place/skill/SKILL.md)
+when exploring stream.place VOD infrastructure: ATProto video records, DID
+resolution, PDS record fetching, HLS manifest inspection, local caching, and
+the `cplace` CLI itself. Upstream:
+[rektide/cli-place — `skill/SKILL.md`](https://github.com/rektide/cli-place/blob/main/skill/SKILL.md),
+recorded at `b1e8f07f4d2b`.
+
+The entry is a single `SKILL.md`; its support base is the `cplace` program it
+documents. That same revision added the `cplace skill` subcommand, which
+performs this skill's own registration as `~/.agents/skills/cplace`.
 
 ## Maintain the selection
 
