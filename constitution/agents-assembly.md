@@ -177,10 +177,10 @@ there is no auto-discovery of `GLOBAL.md` files.
   fragment.
 - Duplicate fragment `id`s and `order`s across the declared set are rejected.
 
-The default manifest path is `constitution/agents.manifest.json`; the
-production manifest is the root [`agents.manifest.json`](/agents.manifest.json),
-because fragment paths reject `..` segments, so a manifest under
-`constitution/` could not select sibling trees (see
+The default manifest path is the root [`agents.manifest.json`](/agents.manifest.json) —
+the production manifest. The original `constitution/agents.manifest.json`
+default could never have worked: fragment paths reject `..` segments, so a
+manifest under `constitution/` cannot select sibling trees (see
 [migration status](#agents-assembly-status)).
 
 <a id="agents-assembly-command"></a>
@@ -191,25 +191,31 @@ The assembler is the `agents` command of the
 [`rekon.ts` CLI](/rekon.ts), run directly from TypeScript source:
 
 ```sh
-# Assemble to the manifest's declared output
-node rekon.ts agents --manifest constitution/agents.manifest.json
+# Assemble to the manifest's declared output (the root agents.manifest.json is the default)
+node rekon.ts agents
 
 # Verify without writing; exits nonzero and reports the first differing byte when stale
-node rekon.ts agents --manifest constitution/agents.manifest.json --check
+node rekon.ts agents --check
 
 # Write to an alternate path (resolved against the working directory)
-node rekon.ts agents --manifest constitution/agents.manifest.json --output /tmp/AGENTS.preview.md
+node rekon.ts agents --output /tmp/AGENTS.preview.md
 ```
 
 | Option           | Default                    | Meaning                                                                          |
 | ---------------- | -------------------------- | -------------------------------------------------------------------------------- |
-| `-m, --manifest` | `constitution/agents.manifest.json` | Manifest path.                                                                   |
+| `-m, --manifest` | `agents.manifest.json`     | Manifest path.                                                                   |
 | `-o, --output`   | manifest's `output`        | Output override, resolved against the working directory.                         |
 | `-c, --check`    | off                        | Compare assembled bytes to the output; fail nonzero on mismatch without writing. |
 
 `--check` is the CI/verification mode: it detects both drifted fragments and
 unassembled hand edits to the generated file. Normal mode writes atomically
 (temporary file, then rename) and creates the output directory if needed.
+
+**Do not regenerate the live file with this legacy command.** [`/AGENTS.md`](/AGENTS.md)
+is owned by the Effect assembler; the two commands write different
+generated-file headers, so a legacy rewrite would flip the file's provenance
+header and appear stale under the production tool. This command remains the
+compatibility reference.
 
 The implementation is deliberately small and deep:
 [`src/agents/assemble.ts`](/src/agents/assemble.ts) owns loading, validation,

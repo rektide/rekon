@@ -5,7 +5,7 @@ import { dirname, isAbsolute, normalize, resolve } from "node:path";
 import { ProvenanceText } from "../md/fragment.ts";
 
 /** Deliberately absent in production until the handwritten AGENTS.md has been fully decomposed. */
-export const DEFAULT_MANIFEST = "constitution/agents.manifest.json";
+export const DEFAULT_MANIFEST = "agents.manifest.json";
 
 const relativePathChecks = [
   Schema.makeFilter((path: string) => path.trim().length > 0, {

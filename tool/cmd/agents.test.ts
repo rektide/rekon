@@ -92,7 +92,7 @@ describe("source-executed Effect agents CLI", { timeout: 30_000 }, () => {
   });
 
   test("default manifest works when explicitly supplied by the invocation workspace", async () => {
-    const bundle = await createBundle({ manifest: "constitution/agents.manifest.json" });
+    const bundle = await createBundle({ manifest: "agents.manifest.json" });
     const result = await runCli([], bundle.root);
     expect(result.code).toBe(0);
     expect(await readFile(bundle.output, "utf8")).toContain("# Example");
@@ -100,7 +100,7 @@ describe("source-executed Effect agents CLI", { timeout: 30_000 }, () => {
     const before = await snapshotTree(missing.root);
     const absent = await runCli([], missing.root);
     expect(absent.code).toBe(1);
-    expect(absent.stdout + absent.stderr).toContain("constitution/agents.manifest.json");
+    expect(absent.stdout + absent.stderr).toContain("agents.manifest.json");
     expect(await snapshotTree(missing.root)).toEqual(before);
   });
 

@@ -51,12 +51,13 @@ node tool/agents.ts -m path/to/manifest.json --check
 node tool/agents.ts -m path/to/manifest.json --output .test-agent/agents-effect/preview.md
 ```
 
-The live document is regenerated with `node tool/agents.ts -m
-agents.manifest.json`; `--check` verifies it against the declared fragments.
+The live document is regenerated with a bare `node tool/agents.ts` (the root
+`agents.manifest.json` is the default manifest); `--check` verifies it against
+the declared fragments.
 
 | Option           | Default                             | Meaning                                                                                         |
 | ---------------- | ----------------------------------- | ----------------------------------------------------------------------------------------------- |
-| `-m, --manifest` | `constitution/agents.manifest.json` | Manifest path, resolved from the invocation cwd. The production default is deliberately absent. |
+| `-m, --manifest` | `agents.manifest.json` | Manifest path, resolved from the invocation cwd. The default is the production root manifest. |
 | `-o, --output`   | Manifest's `output`                 | Optional destination override, resolved from the invocation cwd.                                |
 | `-c, --check`    | Off                                 | Compare bytes without creating directories, staging artifacts, or output.                       |
 

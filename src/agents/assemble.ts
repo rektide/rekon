@@ -11,7 +11,7 @@ import { dirname, isAbsolute, normalize, relative, resolve } from "node:path";
  * must not be overwritten until every section it contains has a declared
  * `GLOBAL.md` source fragment.
  */
-export const DEFAULT_MANIFEST = "constitution/agents.manifest.json";
+export const DEFAULT_MANIFEST = "agents.manifest.json";
 
 /**
  * A path declared inside a manifest, relative to the manifest file's

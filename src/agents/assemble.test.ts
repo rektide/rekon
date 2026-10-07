@@ -668,12 +668,21 @@ describe("agents CLI end to end", () => {
     expect(await readFile(overridePath, "utf8")).toContain("# Override Example");
     await expect(stat(join(root, "declared-out.md"))).rejects.toMatchObject({ code: "ENOENT" });
 
-    // with no --manifest, the default constitution/agents.manifest.json is wired in
-    // (and correctly absent: no production manifest exists)
-    const missing = await runAgentsExpectingFailure();
-    expect(missing.code).not.toBe(0);
-    expect(`${missing.stderr ?? ""}${missing.stdout ?? ""}`).toContain(
-      "manifest not readable: constitution/agents.manifest.json",
-    );
+    // with no --manifest, the default agents.manifest.json is wired in
+    // (correctly absent inside an empty workspace)
+    const emptyRoot = await scratch();
+    try {
+      await execFile("node", [resolve(process.cwd(), "rekon.ts"), "agents"], {
+        cwd: emptyRoot,
+        encoding: "utf8",
+      });
+      throw new Error("expected default manifest to be absent in empty workspace");
+    } catch (error) {
+      const missing = error as ExecError;
+      expect(missing.code).not.toBe(0);
+      expect(`${missing.stderr ?? ""}${missing.stdout ?? ""}`).toContain(
+        "manifest not readable: agents.manifest.json",
+      );
+    }
   }, 30_000);
 });
