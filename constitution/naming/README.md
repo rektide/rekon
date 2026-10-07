@@ -45,6 +45,12 @@ evidence, include its revision. Keep an alias's owner explicit when crossing
 from a document to a ticket, tool, actor, or source repository. Do not repurpose
 an existing code for a different concern without recording the change.
 
+The [recovered shortcode history](/design/rekon/shortcodes0.glm53m.md)
+locates the September requests for glossary aliases and short-plus-elaborated
+references. It also separates those earlier practices from the October `g` /
+`p` / `t` direction. The practical gap was a maintained table and habitual use;
+the earlier human ruling had already restored abbreviations.
+
 ## Naming inquiry and its lineage
 
 How the workspace gives enduring, self-describing names to its actors —
