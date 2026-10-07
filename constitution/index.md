@@ -94,6 +94,10 @@ disposition are related choices, not interchangeable ones.
 - [Rekon AGENTS modularization](/design/rekon/agents-modularization0.sol56x.md)
   — the local application: decompose ownership first, then evaluate changes to
   ambient delivery. Tracked by `rekon-agents-maintenance-skillify`.
+- [Compact GLOBAL writing](/constitution/README.md#doc-constitution-global) —
+  the cue-plus-link default, scoped honing exception, and
+  [refs index](/refs/GLOBAL.md) as a concrete example; informed by the
+  [GLOBAL research](/design/refs/global-research0.glm53h.md).
 - [Assembly reference](/constitution/agents-assembly.md) — implemented fragment
   metadata, manifest, validation, and CLI behavior. Its
   [migration status](/constitution/agents-assembly.md#agents-assembly-status)

@@ -29,6 +29,9 @@ sources:
     resource: https://github.com/kazupon/gunshi
     title: gunshi CLI framework (command definition)
     author: project:kazupon
+  - id: global-kiss-direction
+    resource: urn:opencode:session:ses_eec6a0bd5ffe45v03zJ7px5vgb
+    title: Human direction for compact GLOBAL indexes
 ---
 
 <a id="agents-assembly"></a>
@@ -79,7 +82,8 @@ Until then:
 
 Each `GLOBAL.md` declares its assembly identity in fragment-local frontmatter.
 Frontmatter is assembler metadata: it is consumed by the tool and omitted from
-assembled prose.
+assembled prose. The four fields below are sufficient; the owning documents
+carry richer knowledge labels and [source provenance](/refs/sources.md).
 
 ```markdown
 ---
@@ -103,6 +107,22 @@ status: draft
 
 Validation failures are errors, not warnings: missing or invalid metadata,
 duplicate `id`, and duplicate `order` all stop assembly with a thrown error.
+
+<a id="agents-assembly-kiss"></a>
+
+### Keep the body KISS
+
+Use a short task cue and a direct link; inline only what must act before that
+link is followed. [`refs/GLOBAL.md`](/refs/GLOBAL.md) is a working example.
+Keep the process and explanation in the linked owner, following the
+[GLOBAL writing contract](/constitution/README.md#doc-constitution-global).
+The parser checks structure and links; its byte report helps inspect ambient
+cost, but neither establishes editorial usefulness.
+
+`source` names the fragment's owning document. OKF `sources:` names the
+materials behind an explanation; these fields serve different jobs. Since
+frontmatter is stripped, any qualification essential to interpreting the
+assembled instruction needs a concise body statement.
 
 <a id="agents-assembly-link-destinations"></a>
 

@@ -70,7 +70,8 @@ conflict. Advertise the composition's entry when it is the intended route.
 
 ## Keep GLOBAL simple
 
-**A useful cue plus a direct link is the default.** Keep selection procedures,
+Follow the [GLOBAL writing contract](/constitution/README.md#doc-constitution-global):
+**a useful cue plus a direct link is the default.** Keep selection procedures,
 source history, installation details, examples, and composition rationale here
 or in the owning skill. GLOBAL should let an agent recognize a need and reach
 the knowledge with minimal ambient text. Add a stand-alone instruction only

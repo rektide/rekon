@@ -78,6 +78,12 @@ sources:
     resource: https://github.com/rektide/dl/blob/e9c7c401725a93d2c4d56f41851fdb832d772b09/doc/log2.md
     title: Reporting and structured log design
     author: project:rekon
+  - id: global-kiss-direction
+    resource: urn:opencode:session:ses_eec6a0bd5ffe45v03zJ7px5vgb
+    title: Human direction for a compact reference index and KISS GLOBAL guidance
+  - id: global-contract-research
+    resource: /design/refs/global-research0.glm53h.md
+    title: GLOBAL contract, existing fragment shapes, and compact-index evidence
 ---
 
 <a id="doc-constitution"></a>
@@ -207,9 +213,11 @@ It MUST be the single current authority for the module. Supporting files may
 own detailed evidence, one historical argument, examples, or specialized
 procedures. The README links to those files rather than duplicating them.
 
-A module README SHOULD carry trustworthy OKF-style frontmatter that states its
-identity, scope, status, authorship or generation, and sources actually
-consulted. It MUST NOT claim verification merely because its author reread it.
+A module README SHOULD carry trustworthy [OKF-style frontmatter](/okf/README.md)
+that states its identity, scope, status, authorship or generation, and sources
+actually consulted. [Source citations](/refs/sources.md) retain the native
+references behind those claims. It MUST NOT claim verification merely because
+its author reread it.
 
 If the module is skill-exposed, the same frontmatter also serves skill routing:
 
@@ -255,11 +263,22 @@ that every harness scans every project directory.
 `AGENTS.md`. It is a curated operational projection, not a README summary and
 not a symlink.
 
-Every global line imposes repeated context cost on agents that may never need
-the topic. A fragment therefore SHOULD point to its README for rationale,
-exceptions, examples, and maintenance. The normal compact profile repeats what
-must stand alone before skill discovery. The current **honing workshop** below
-deliberately permits broader overlap before that compact profile is settled.
+**Keep GLOBAL simple: a useful cue plus a direct link is the default.** It
+should help an agent recognize the need and reach the owning knowledge. Every
+line is paid for in sessions that may never need that topic.
+
+- Write a short task cue and link directly to the relevant skill or explanation.
+  The target may live in the module or in an archive checkout.
+- Inline only the small instruction that must act before the linked material
+  is loaded. A definition earns space when that instruction depends on it.
+- Keep procedures, rationale, source histories, and fuller examples with their
+  owner. A fragment SHOULD link to that depth rather than repeat it.
+
+[`refs/GLOBAL.md`](/refs/GLOBAL.md) is the concrete index pattern: direct skill
+links and a tiny provenance example, with the process behind those links. The
+2026-10-06 human direction makes this KISS posture explicit. The earlier
+**honing workshop** below permits deliberate overlap within that workshop;
+its glossary-first shape is not the default template for new fragments.
 
 An ambient contribution MUST remain traceable to its module. Assembly tooling
 must preserve source identity and either preserve, rewrite, or reject links
@@ -277,9 +296,9 @@ it is not acceptance of every candidate GLOBAL or a production cutover.
 
 During this workshop:
 
-- Start a GLOBAL with the small **terms in use** that make its guidance legible,
-  linked to the [shared glossary](/CONTEXT.md). Constitutional and naming
-  vocabulary belongs above the fold, not behind a route that already assumes it.
+- In the workshop's instruction-bearing GLOBALs, put the small **terms in use**
+  before guidance that relies on them, linked to the [shared glossary](/CONTEXT.md).
+  A self-explanatory routing index needs only its cues and links.
 - Repetition may supply orientation, reinforce an invariant, or let an exposure
   stand on its own. Keep its owner and purpose clear. Compare and reconcile
   divergent meanings; do not remove useful repetition merely to satisfy DRY.
