@@ -1,4 +1,28 @@
+---
+type: ToolGuide
+title: Legacy prompt interpolation
+description: The existing Gunshi interpolate command, rehomed with the toolkit while its implementation remains in the legacy CLI.
+resource: /tool/cmd/interpolate.md
+tags: [tool, prompts, interpolation, legacy]
+status: draft
+generated: { by: "model:gpt-6-astra", at: 2026-10-06 }
+sources:
+  - { resource: "https://github.com/rektide/rekon/blob/ece454d44301fdf1a7b00a21eaf6b42ad6eeee90/doc/interpolate.md", title: Historical interpolation guide before rehoming }
+  - { resource: /src/command/interpolate.ts, title: Existing interpolate implementation }
+  - { resource: /rekon.ts, title: Legacy command registry }
+---
+
 # Interpolate Command
+
+**`t-interpolate` — legacy implementation.** This guide moved from
+`doc/interpolate.md` into the shared [toolkit](/tool/README.md). Source remains
+in [`src/command/interpolate.ts`](/src/command/interpolate.ts), callable through
+`node rekon.ts interpolate` or directly with `node src/command/interpolate.ts`.
+The examples below run the legacy command's TypeScript source directly.
+The earlier guide's OpenCode compatibility claim has not been reverified against
+current OpenCode; use the linked Rekon source for the actual implementation.
+The current standalone CLI also prints Gunshi's `interpolate (interpolate)`
+heading; example output comments below show the substitution line.
 
 ## Overview
 
@@ -8,14 +32,14 @@ The `interpolate` command provides variable interpolation functionality compatib
 
 ```bash
 # Using --template flag
-rekon interpolate -t <template> [args...]
+node src/command/interpolate.ts -t <template> [args...]
 
 # Using --file flag
-rekon interpolate -f <template-file> [args...]
+node src/command/interpolate.ts -f <template-file> [args...]
 
 # Piping template via stdin
-echo '<template>' | rekon interpolate [args...]
-cat template.txt | rekon interpolate [args...]
+echo '<template>' | node src/command/interpolate.ts [args...]
+cat template.txt | node src/command/interpolate.ts [args...]
 ```
 
 ## Arguments
@@ -30,7 +54,7 @@ cat template.txt | rekon interpolate [args...]
 Placeholders `$1`, `$2`, `$3`, etc. are replaced with the corresponding positional arguments provided after the template:
 
 ```bash
-rekon interpolate -t 'Hello $1, you are $2 years old' Alice 30
+node src/command/interpolate.ts -t 'Hello $1, you are $2 years old' Alice 30
 # Output: Hello Alice, you are 30 years old
 ```
 
@@ -39,7 +63,7 @@ rekon interpolate -t 'Hello $1, you are $2 years old' Alice 30
 The highest-numbered placeholder will consume all remaining arguments from that position:
 
 ```bash
-rekon interpolate -t 'Files: $1, $2, and others' file1.txt file2.txt file3.txt file4.txt
+node src/command/interpolate.ts -t 'Files: $1, $2, and others' file1.txt file2.txt file3.txt file4.txt
 # Output: Files: file1.txt, file2.txt file3.txt file4.txt, and others
 ```
 
@@ -50,7 +74,7 @@ In this example, `$2` captures both "file2.txt", "file3.txt", and "file4.txt" jo
 The `$ARGUMENTS` placeholder is replaced with all arguments as a single string:
 
 ```bash
-rekon interpolate -t 'All arguments: $ARGUMENTS' one two three four
+node src/command/interpolate.ts -t 'All arguments: $ARGUMENTS' one two three four
 # Output: All arguments: one two three four
 ```
 
@@ -60,13 +84,13 @@ You can read template from a file using the `--file` or `-f` option:
 
 ```bash
 # Read template from file
-rekon interpolate -f template.txt arg1 arg2
+node src/command/interpolate.ts -f template.txt arg1 arg2
 
 # Relative paths work
-rekon interpolate -f ./templates/deploy.sh production
+node src/command/interpolate.ts -f ./templates/deploy.sh production
 
 # Absolute paths work
-rekon interpolate -f /path/to/template.txt value
+node src/command/interpolate.ts -f /path/to/template.txt value
 ```
 
 ## Piping Template via Stdin
@@ -75,14 +99,14 @@ You can pipe a template to the `interpolate` command instead of using the `--tem
 
 ```bash
 # Simple piped template
-echo 'Hello $1, you are $2' | rekon interpolate world friend
+echo 'Hello $1, you are $2' | node src/command/interpolate.ts world friend
 # Output: Hello world, you are friend
 
 # Multi-line template from file
-cat my-template.txt | rekon interpolate arg1 arg2
+cat my-template.txt | node src/command/interpolate.ts arg1 arg2
 
 # Using heredoc for complex templates
-rekon interpolate args << 'EOF'
+node src/command/interpolate.ts args << 'EOF'
 Edit file $1 with the following changes:
 - Add $2
 - Remove $3
@@ -97,10 +121,10 @@ Use single quotes for the template string to prevent shell expansion of `$` plac
 
 ```bash
 # Correct - single quotes preserve $1
-rekon interpolate -t 'Hello $1' world
+node src/command/interpolate.ts -t 'Hello $1' world
 
 # Incorrect - double quotes or no quotes may expand $1 in shell
-rekon interpolate -t "Hello $1" world
+node src/command/interpolate.ts -t "Hello $1" world
 ```
 
 ## Argument Parsing
@@ -117,12 +141,12 @@ Arguments are parsed using the same rules as opencode:
 ```bash
 # Simple file template
 echo 'Hello $1, you are $2' > template.txt
-rekon interpolate -f template.txt world friend
+node src/command/interpolate.ts -f template.txt world friend
 # Output: Hello world, you are friend
 
 # Using $ARGUMENTS with file
 echo 'Processing: $ARGUMENTS' > process.txt
-rekon interpolate -f process.txt --verbose --debug
+node src/command/interpolate.ts -f process.txt --verbose --debug
 # Output: Processing: --verbose --debug
 ```
 
@@ -130,40 +154,40 @@ rekon interpolate -f process.txt --verbose --debug
 
 ```bash
 # Pipe template from echo
-echo 'Hello $1, you are $2' | rekon interpolate world friend
+echo 'Hello $1, you are $2' | node src/command/interpolate.ts world friend
 # Output: Hello world, you are friend
 
 # Read template from file
 echo 'Edit $1 with $2' > template.txt
-cat template.txt | rekon interpolate main.ts --force
+cat template.txt | node src/command/interpolate.ts main.ts --force
 # Output: Edit main.ts with --force
 ```
 
 ### Simple Substitution
 
 ```bash
-rekon interpolate -t 'Edit file $1 with mode $2' src/main.ts dry-run
+node src/command/interpolate.ts -t 'Edit file $1 with mode $2' src/main.ts dry-run
 # Output: Edit file src/main.ts with mode dry-run
 ```
 
 ### Multiple Placeholders
 
 ```bash
-rekon interpolate -t 'Move $1 to $2' old-file.txt new-file.txt
+node src/command/interpolate.ts -t 'Move $1 to $2' old-file.txt new-file.txt
 # Output: Move old-file.txt to new-file.txt
 ```
 
 ### Mixed Placeholders
 
 ```bash
-rekon interpolate -t 'Processing $1 with $ARGUMENTS' main --verbose --debug
+node src/command/interpolate.ts -t 'Processing $1 with $ARGUMENTS' main --verbose --debug
 # Output: Processing main with --verbose --debug
 ```
 
 ### Quoted Arguments
 
 ```bash
-rekon interpolate -t 'Message: $1' 'Hello, world!'
+node src/command/interpolate.ts -t 'Message: $1' 'Hello, world!'
 # Output: Message: Hello, world!
 ```
 

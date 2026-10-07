@@ -28,8 +28,8 @@ not abbreviated directory names.
 | Tool | Job | Implementation standing |
 |---|---|---|
 | `t-agents` | Assemble explicitly selected `GLOBAL.md` fragments into a provenance-marked `AGENTS.md`; check for drift | Effect CLI implementation being built at `tool/agents.ts`, with `cmd/`, `assembly/`, and `md/` source. The [Gunshi assembler](/constitution/agents-assembly.md) remains runnable. |
-| `t-interpolate` | Expand prompt-template arguments | Existing [Gunshi command](/src/command/interpolate.ts); guide being brought into this home. |
-| `t-install-commands` | Install Markdown prompts as command links | Existing [Gunshi command](/src/command/install-commands.ts); historical concurrency proposal being brought into this home. |
+| [`t-interpolate`](/tool/cmd/interpolate.md) | Expand prompt-template arguments | Existing [Gunshi command](/src/command/interpolate.ts), with its guide now under `tool/cmd/`. |
+| [`t-install-commands`](/tool/cmd/install-commands.md) | Legacy prompt-command installer and its concurrency proposal | [Gunshi source](/src/command/install-commands.ts) remains; the prompt collection is [retired](/prompt/.archive/README.md). |
 
 Run the existing tools from source with `node rekon.ts <command>`. Each new
 tool documents its own `node tool/<name>.ts` entrypoint when it is runnable.

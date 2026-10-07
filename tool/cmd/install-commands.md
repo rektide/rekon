@@ -1,4 +1,26 @@
+---
+type: HistoricalPlan
+title: Parallelize the legacy install-commands tool
+description: Preserved concurrency proposal for the old prompt-command installer, with its present source and retired prompt context made explicit.
+resource: /tool/cmd/install-commands.md
+tags: [tool, prompts, commands, concurrency, history]
+status: deprecated
+generated: { by: "model:gpt-6-astra", at: 2026-10-06 }
+sources:
+  - { resource: "https://github.com/rektide/rekon/blob/ece454d44301fdf1a7b00a21eaf6b42ad6eeee90/doc/plan-parallelize.md", title: Original installer concurrency proposal }
+  - { resource: /src/command/install-commands.ts, title: Existing sequential Gunshi installer }
+  - { resource: /prompt/.archive/README.md, title: Retired prompt inventory }
+---
+
 # Parallelize install-commands
+
+**`t-install-commands` — historical proposal.** This material moved from
+`doc/plan-parallelize.md` into the [toolkit](/tool/README.md). The Gunshi
+implementation remains in
+[`src/command/install-commands.ts`](/src/command/install-commands.ts) and the
+root CLI still registers it. [`prompt/` now contains only archived material](/prompt/.archive/README.md),
+so this plan is context for a legacy tool, not a current instruction to revive
+the prompt installer. The original proposal follows.
 
 ## Problem
 

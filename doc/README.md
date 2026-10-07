@@ -33,9 +33,11 @@ The dl fork's leftovers were reworked on 2026-10-06:
 26 dl-owned files were culled after a byte-level preservation audit. They are
 owned by the [rektide/dl](https://github.com/rektide/dl) fork
 ([doc/ tree](https://github.com/rektide/dl/tree/main/doc); its local
-`doc/index.md` catalogs them). Five rekon-owned files remain: this landing
-page, [GLOBAL.md](/doc/GLOBAL.md), [interpolate.md](/doc/interpolate.md),
-[plan-parallelize.md](/doc/plan-parallelize.md), and
-[opencode-session.md](/doc/opencode-session.md). Inventory, evidence, and
-pinned recovery links are recorded in
+`doc/index.md` catalogs them). That first cull retained five files. The
+[interpolation guide](/tool/cmd/interpolate.md) and
+[installer concurrency proposal](/tool/cmd/install-commands.md) now live with
+the toolkit, while this landing page and [GLOBAL.md](/doc/GLOBAL.md) redirect
+the old placement surfaces. The OpenCode recovery guide is being compared with
+ado before its own retirement. The first cull's inventory, evidence, and pinned
+recovery links are recorded in
 [doc-cull0](/design/rekon/doc-cull0.glm53m.md).
