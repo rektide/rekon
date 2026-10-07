@@ -39,7 +39,8 @@ assembly mechanism.
    body: a narrower index description changes routing, not the loaded method.
 3. **Record its provenance.** Keep the canonical repository/entry URL and local
    path in the supporting account, with a revision when recording source-specific
-   findings. One repository may contain several independently selected skills.
+   findings. Follow [our source practice](/refs/sources.md) for OKF `sources:`.
+   One repository may contain several independently selected skills.
 4. **Publish a direct pointer.** Add a short task cue and link to
    `refs/GLOBAL.md`. Use a concrete `file:///home/rektide/archive/.../SKILL.md`
    link for this workspace. Keep the original directory intact, including its

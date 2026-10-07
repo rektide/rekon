@@ -22,6 +22,8 @@ Look first in `~/archive/<org>/<repo>` for upstream source and
 URL alongside local references so their origin stays clear.
 
 - [Skills](/refs/skills.md) — how we select, compose, and maintain skills.
+- [Sources](/refs/sources.md) — record what informed the work, including native
+  session references, using [OKF](/okf/README.md) provenance.
 - [Core index](/refs/GLOBAL.md) — brief cues and direct links for global context.
 - [Upstream reference mirrors](/upstream/README.md) — preserving a source
   baseline when maintaining our own adaptation.
