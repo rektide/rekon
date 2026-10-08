@@ -217,7 +217,11 @@ generated-file headers, so a legacy rewrite would flip the file's provenance
 header and appear stale under the production tool. This command remains the
 compatibility reference.
 
-The implementation is deliberately small and deep:
+The production implementation is the Effect CLI under [`tool/`](/tool/README.md)
+([`tool/assembly/README.md`](/tool/assembly/README.md) documents current
+invocation and behavior; a rust `rekon combine` is the accepted going-forward
+producer per the [toolchain design](/design/toolchain/draft0.glm53m.md)).
+The implementation described here is deliberately small and deep:
 [`src/agents/assemble.ts`](/src/agents/assemble.ts) owns loading, validation,
 ordering, and rendering; [`src/command/agents.ts`](/src/command/agents.ts) is
 thin command wiring. Tests live beside the module in

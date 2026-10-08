@@ -86,6 +86,7 @@ tool/
   assembly/               fragment assembly, manifest planning, write/check
   md/                     Markdown-specific logic
   hyalo/                  Hyalo integration when adopted
+  rust/                   rust super-tool crate (bin `rekon`)
 ```
 
 `cmd/`, `md/`, or a library-specific `hyalo/` seam are responsibilities justified
@@ -94,9 +95,16 @@ directories rather than a generic `src/` or `lib/` wrapper. Keep tests beside
 the behavior they exercise. Development invokes the TypeScript entrypoint
 directly; distribution builds are a separate concern.
 
+Since 2026-10-08 new capabilities are implemented **rust-first** in the
+single crate at [`tool/rust/`](/tool/rust/) (binary `rekon`), whose
+subcommands are the super-tool surface; the human direction and accepted
+design live in [toolchain draft0](/design/toolchain/draft0.glm53m.md). Its
+first subcommand is `rekon combine`, the rust assembler for `/AGENTS.md`.
 The first new implementation is the runnable Effect CLI version of the
 GLOBAL-fragment assembler at [`tool/agents.ts`](/tool/agents.ts), explained by
-its [assembly domain](/tool/assembly/README.md). The Gunshi CLI in [`rekon.ts`](/rekon.ts)
+its [assembly domain](/tool/assembly/README.md); it remains the production
+producer until the rust `combine` reaches parity and the producer flips
+deliberately. The Gunshi CLI in [`rekon.ts`](/rekon.ts)
 and [`src/`](/src/) remains the legacy implementation while capabilities gain
 their new homes. Each command's guide must say which implementation it
 actually executes. Existing legacy tool guides can move first and identify

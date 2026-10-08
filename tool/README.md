@@ -27,8 +27,9 @@ not abbreviated directory names.
 
 | Tool | Job | Implementation standing |
 |---|---|---|
-| [`t-agents`](/tool/assembly/README.md) | Assemble explicitly selected `GLOBAL.md` fragments into a provenance-marked `AGENTS.md`; check for drift | Runnable Effect CLI at [`tool/agents.ts`](/tool/agents.ts), with `cmd/`, `assembly/`, and `md/` source. The [Gunshi assembler](/constitution/agents-assembly.md) remains runnable. |
-| [`t-interpolate`](/tool/cmd/interpolate.md) | Expand prompt-template arguments | Existing [Gunshi command](/src/command/interpolate.ts), with its guide now under `tool/cmd/`. |
+| [`t-agents`](/tool/assembly/README.md) | Assemble explicitly selected `GLOBAL.md` fragments into a provenance-marked `AGENTS.md`; check for drift | Runnable Effect CLI at [`tool/agents.ts`](/tool/agents.ts), with `cmd/`, `assembly/`, and `md/` source. The [Gunshi assembler](/constitution/agents-assembly.md) remains runnable. **Production producer since 2026-10-07.** |
+| `t-combine` (rust) | Regenerate `/AGENTS.md` from the manifest as the `combine` subcommand of the rust super-tool | Crate at [`tool/rust/`](/tool/rust/) (bin `rekon`), accepted 2026-10-08 as the going-forward shape: rust-first new code, no TS composition layers. Parity-tested against the Effect tool before the producer flips. |
+| [`t-interpolate`](/tool/cmd/interpolate.md) | Expand prompt-template arguments | Existing [Gunshi command](/src/command/interpolate.ts), with its guide now under `tool/cmd/`. Adaptation deferred pending a value call. |
 | [`t-install-commands`](/tool/cmd/install-commands.md) | Legacy prompt-command installer and its concurrency proposal | [Gunshi source](/src/command/install-commands.ts) remains; the prompt collection is [retired](/prompt/.archive/README.md). |
 
 Run the existing tools from source with `node rekon.ts <command>`. Each new
@@ -56,8 +57,10 @@ ToCs, anchors, links, and navigable views are tool concerns too. The
 working script at [`~/ado/bin/hyalo-toc.ts`](file:///home/rektide/ado/bin/hyalo-toc.ts).
 It uses `hyalo find --fields sections,lines` to put hidden line ranges in a
 managed ToC, then converges after insertion shifts the indexed headings.
-Its `--check` mode detects drift; the script currently lives with the ado notes.
-This is a concrete candidate for a `hyalo/` integration here.
+Its `--check` mode detects drift. **Direction since 2026-10-08** (accepted
+[toolchain design](/design/toolchain/draft0.glm53m.md)): the TS script is a
+*reference* adapted into the legacy `src/` tree; the production ToC arrives
+as a rust subcommand of `rekon` after `combine`.
 
 ## Keeping a tool understandable
 

@@ -25,7 +25,9 @@
     "lint": "oxlint",
     "typecheck": "tsgo --noEmit",
     "test": "vitest",
-    "build": "tsdown"
+    "build": "tsdown",
+    "check:agents": "node tool/agents.ts --check",
+    "check": "pnpm run /^check:/"
   },
   "dependencies": {
     "@effect/platform-node": "^4.0.1",

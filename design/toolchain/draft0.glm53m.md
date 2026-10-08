@@ -311,3 +311,38 @@ flowchart TD
 - Beads `rekon-agents-maintenance` (epic) **owns** the extraction lanes; beads
   `rekon-combine`/`rekon-combine-glob`/`rekon-interp-exec` **await** the roster
   decisions above.
+
+# Addendum — acceptance with amendment (2026-10-08)
+
+The human accepted this draft's direction with binding amendments (session
+ses_ee7b24854ffeaBcZYqJWPg60CP). The accepted state is this document **as
+amended below**; the superseded recommendations remain above as the record of
+what was proposed.
+
+- **§3 rust boundary — overturned.** The recommended reading (wrap engines,
+  TS composition, upstream-first) is replaced by **rust-first new code**: new
+  capabilities are implemented in rekon-owned rust from the start. TS
+  composition layers are skipped — there will be **no Effect super-tool front
+  door**. The super-tool is the rust binary.
+- **§1 super-tool — mechanism amended.** A rust crate (single crate, bin
+  `rekon`) lives under `tool/rust/`; its subcommands are the super-tool
+  surface. The name `combine` is reclaimed for the assembler: the rust
+  `rekon combine` regenerates `/AGENTS.md` from the manifest. Per the human:
+  "that's the main function of this repo, the main thing it does, and we want
+  a working combiner that lets us regen /AGENTS.md" — **rust combine lands
+  before the rust ToC**.
+- **§2 roster — `toc` entry amended.** The TS `~/ado/bin/hyalo-toc.ts` comes
+  in **as a reference only**, adapted into the legacy `src/` tree where it
+  fits; the production ToC arrives later as a rust subcommand of `rekon`.
+- **§2 roster — confirmed as recommended:** `project-files`/`ln` held;
+  `agents` subcommand name kept. `interpolate` value is questioned and stays
+  open ("if we need interpolate i'm open to that but i'm not sure what the
+  value is"). Retirements of `install-commands`/`combine` (Gunshi) were not
+  confirmed — existing material is explicitly deprioritized ("let's not worry
+  too much about existing material here"); no beads closed on this basis.
+- **§4 roadmap — gates 1–2 (drift gate, contract-doc repair) proceed as
+  written**; gate 3 (legacy producer retirement) now anticipates the rust
+  producer flip instead: the TS Effect tool remains the production assembler
+  until rust `combine` reaches parity, then the producer flips deliberately.
+
+Accepted tip: `design/toolchain/draft.md` → this file.
