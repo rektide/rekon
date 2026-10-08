@@ -6,6 +6,7 @@ import installCommandsCommand from "./src/command/install-commands.ts";
 import interpolateCommand from "./src/command/interpolate.ts";
 import projectFilesCommand from "./src/command/project-files.ts";
 import lnCommand from "./src/command/ln.ts";
+import tocCommand from "./src/command/toc.ts";
 import completion from "@gunshi/plugin-completion";
 
 const subCommands = {
@@ -15,6 +16,7 @@ const subCommands = {
   interpolate: interpolateCommand,
   "project-files": projectFilesCommand,
   ln: lnCommand,
+  toc: tocCommand,
 };
 
 const mainCommand = define({
