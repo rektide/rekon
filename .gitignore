@@ -9,3 +9,6 @@ vendor
 
 # Beads / Dolt files (added by bd init)
 .beads-credential-key
+
+# Rust build output for the rekon super-tool crate
+/tool/rust/target/
