@@ -4,8 +4,10 @@ title: Open Knowledge Format in Rekon
 description: The format behind our self-describing knowledge documents, with honest provenance, verification, lifecycle, and links to the upstream specification.
 tags: [okf, knowledge, frontmatter, provenance, verification]
 status: draft
-generated: { by: "rekon/gpt-6-astra", at: 2026-10-06T20:40:40-04:00 }
+generated: { by: "rekon/gpt-6-astra", at: 2026-10-11T18:11:00-04:00 }
 sources:
+  - resource: "urn:opencode:session:ses_ed2fb6875ffe2HmO6fhnDZensz"
+    title: Human direction in lucky-eagle to emphasize current-session provenance as vital to OKF writing
   - id: writing-guidance
     resource: /AGENTS.md
     title: Existing OKF Writing guidance, full frontmatter example, and index/log conventions
@@ -60,6 +62,16 @@ sources:
 For ordinary concepts, `type` is the only always-required field. Use optional
 fields when they convey real information; specialized concept types can impose
 additional requirements.[^okf-spec]
+
+**Rekon requires session provenance when you create or substantively revise a
+knowledge document:** include your actual current session ID in `sources:` as
+`resource: "urn:opencode:session:<actual-session-id>"`, with a title explaining
+its contribution. Use the harness-supplied ID, not the example above or a
+petname. Retain earlier session sources when adding a revision's session.
+Maintain your session's own source entry over the course of the work, gradually
+updating its title to match its actual contribution while keeping the ID stable.
+This keeps the originating direction and reasoning recoverable. See
+[the session-source practice](/refs/sources.md#session-provenance).
 
 | Field | What it says |
 |---|---|

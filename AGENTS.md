@@ -270,6 +270,16 @@ the root manifest; edit its domain fragments, then regenerate. The preserved
   description, resource, status, author/model and date, sources actually read,
   and verification/review information only when justified. See
   [source practice](/refs/sources.md) and [the constitution](/constitution/README.md).
+- **Include your current native session ID in OKF `sources:` whenever you create
+  or substantively revise a knowledge document.** Use
+  `resource: "urn:opencode:session:<actual-session-id>"` and a title explaining
+  the session's contribution (direction, reasoning, research, or revision).
+  This is vital provenance: it lets the next reader recover why the document
+  exists and how it took shape. Use the ID supplied by the harness, not a
+  petname, placeholder, or another session's ID copied from an example.
+  Preserve earlier session sources; add the revising session's source.
+  Maintain your session's own source entry as the work develops, gradually
+  updating its title to match its actual contribution; keep the session ID stable.
 - `index.md` is a grouped progressive-disclosure listing, not another concept
   document. `log.md` is dated update history, newest first. An addendum can retain
   an earlier argument while recording new understanding; mutable READMEs may
@@ -561,4 +571,10 @@ name. This table is the availability record: registrations are disposable
 derivations of it, not tracked state.
 
 - Selecting or composing skills: [our process](/refs/skills.md).
-- Writing sourced knowledge: [OKF sources](/refs/sources.md), e.g. `sources: [{resource: "urn:opencode:session:<id>", title: "Human direction"}]`.
+- **Session provenance is required for knowledge writing:** include your actual
+  current session ID in OKF `sources:` when creating or substantively revising
+  a document. Use `resource: "urn:opencode:session:<actual-session-id>"` with a
+  title saying what this session contributed; retain prior session sources.
+  Maintain your session's own entry and gradually update its title as that
+  contribution develops, keeping its native ID stable.
+  [OKF sources](/refs/sources.md#session-provenance) owns the practice.

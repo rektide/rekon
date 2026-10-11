@@ -4,8 +4,10 @@ title: Sources and native references
 description: Record the material behind our knowledge in OKF sources, including native session identifiers, and explain which claims it supports.
 tags: [sources, provenance, references, okf, sessions]
 status: draft
-generated: { by: "rekon/gpt-6-astra", at: 2026-10-06T20:40:40-04:00 }
+generated: { by: "rekon/gpt-6-astra", at: 2026-10-11T18:11:00-04:00 }
 sources:
+  - resource: "urn:opencode:session:ses_ed2fb6875ffe2HmO6fhnDZensz"
+    title: Human direction in lucky-eagle to emphasize current-session provenance as vital to OKF writing
   - id: writing-guidance
     resource: /AGENTS.md
     title: Existing Writing guidance and OKF sources example
@@ -27,10 +29,37 @@ material in [OKF](/okf/README.md) `sources:` and explain in the body what it
 supports. A specification, inspected code, a conversation containing human
 direction, and a measured result can all be sources; their roles differ.
 
-This elaborates the existing [Writing guidance in AGENTS](/AGENTS.md#writing):
+This elaborates the existing [Writing guidance in AGENTS](/AGENTS.md#durable-writing):
 frontmatter is a trustworthy label, including where claims came from; the body
 explains them. Native session references extend the `sources:` practice already
 shown there.
+
+<a id="session-provenance"></a>
+## Always record the writing session
+
+**When creating or substantively revising a knowledge document, include your
+current native session ID in its OKF `sources:`.** This is a required Rekon
+writing practice: the session preserves the human direction, reasoning, and
+choices that a finished document often compresses away. Without that reference,
+the next reader can lose the way back to why the work took its shape.
+
+- Use `resource: "urn:opencode:session:<actual-session-id>"`, replacing the
+  placeholder with the current ID supplied by the harness. Never copy an
+  example's ID as your own. If the ID is unavailable, recover it from session
+  tooling or ask; do not invent one.
+- Give the source a title describing what this session contributed. A petname
+  can help recognition but does not replace the native ID.
+- On revision, retain earlier session sources and add the current session.
+  When another session supplies direction or evidence, cite that session too
+  with its own role.
+- Each session maintains its own source entry as its work develops. Gradually
+  update the title to reflect the contribution actually made: an initial request
+  may grow into investigation, decisions, implementation, or review. The title
+  need not be rewritten at every turn; bring it into alignment at meaningful
+  updates. Keep the native session ID stable and update the existing entry
+  rather than adding a duplicate for each change in the session's role.
+- Check the session source before saving the document. `generated.by` identifies
+  the producer; it does not supply the missing conversation provenance.
 
 ## The small pattern
 

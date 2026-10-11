@@ -27,4 +27,10 @@ name. This table is the availability record: registrations are disposable
 derivations of it, not tracked state.
 
 - Selecting or composing skills: [our process](/refs/skills.md).
-- Writing sourced knowledge: [OKF sources](/refs/sources.md), e.g. `sources: [{resource: "urn:opencode:session:<id>", title: "Human direction"}]`.
+- **Session provenance is required for knowledge writing:** include your actual
+  current session ID in OKF `sources:` when creating or substantively revising
+  a document. Use `resource: "urn:opencode:session:<actual-session-id>"` with a
+  title saying what this session contributed; retain prior session sources.
+  Maintain your session's own entry and gradually update its title as that
+  contribution develops, keeping its native ID stable.
+  [OKF sources](/refs/sources.md#session-provenance) owns the practice.
