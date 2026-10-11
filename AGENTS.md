@@ -2,33 +2,33 @@
 
 <nav id="rekon-toc" aria-label="Table of contents">
 
-- <a href="#fragment-glossary" data-line-start="43" data-line-end="50">Rekon working vocabulary</a>
-  - <a href="#fragment-glossary--names-homes-and-relations" data-line-start="51" data-line-end="128">Names, homes, and relations</a>
-  - <a href="#fragment-glossary--knowledge-work-and-learning" data-line-start="129" data-line-end="195">Knowledge, work, and learning</a>
-  - <a href="#fragment-glossary--action-and-delivery" data-line-start="196" data-line-end="280">Action and delivery</a>
-  - <a href="#fragment-glossary--honing-and-commitment" data-line-start="281" data-line-end="327">Honing and commitment</a>
-- <a href="#fragment-doc-constitution" data-line-start="328" data-line-end="334">Constitution — orient before acting</a>
-  - <a href="#fragment-doc-constitution--terms-in-use" data-line-start="335" data-line-end="355">Terms in use</a>
-  - <a href="#fragment-doc-constitution--use-the-sense-map" data-line-start="356" data-line-end="407">Use the sense-map</a>
-- <a href="#fragment-documentation-practice" data-line-start="408" data-line-end="411">Writing, independent waves, and document connections</a>
-  - <a href="#fragment-documentation-practice--durable-writing" data-line-start="412" data-line-end="444">Durable writing</a>
-  - <a href="#fragment-documentation-practice--waves" data-line-start="445" data-line-end="467">Waves</a>
-  - <a href="#fragment-documentation-practice--doc-pass" data-line-start="468" data-line-end="487">Doc-pass</a>
-- <a href="#fragment-collaboration" data-line-start="488" data-line-end="491">Collaboration and architectural stewardship</a>
-  - <a href="#fragment-collaboration--dispatch-and-return" data-line-start="492" data-line-end="510">Dispatch and return</a>
-  - <a href="#fragment-collaboration--stewardship" data-line-start="511" data-line-end="530">Stewardship</a>
-  - <a href="#fragment-collaboration--discussion" data-line-start="531" data-line-end="545">Discussion</a>
-- <a href="#fragment-workspace" data-line-start="546" data-line-end="572">Workspace, research locations, and shell</a>
-- <a href="#fragment-code" data-line-start="573" data-line-end="579">Code — stage and change discipline</a>
-  - <a href="#fragment-code--terms-in-use" data-line-start="580" data-line-end="594">Terms in use</a>
-  - <a href="#fragment-code--operating-weight" data-line-start="595" data-line-end="617">Operating weight</a>
-- <a href="#fragment-jj" data-line-start="618" data-line-end="648">jj and git operating rules</a>
-- <a href="#fragment-javascript" data-line-start="649" data-line-end="682">JavaScript and TypeScript</a>
-- <a href="#fragment-rust" data-line-start="683" data-line-end="707">Rust conventions</a>
-- <a href="#fragment-beads" data-line-start="708" data-line-end="745">Beads — readable work IDs and deliberate tracking</a>
-- <a href="#fragment-praxis-ticket-pointers" data-line-start="746" data-line-end="761">Ticket pointers — ambient cues</a>
-- <a href="#fragment-refs" data-line-start="762" data-line-end="767">References</a>
-  - <a href="#fragment-refs--skills" data-line-start="768" data-line-end="800">Skills</a>
+- <a href="#glossary" data-line-start="43" data-line-end="50">Rekon working vocabulary</a>
+  - <a href="#glossary--names-homes-and-relations" data-line-start="51" data-line-end="128">Names, homes, and relations</a>
+  - <a href="#glossary--knowledge-work-and-learning" data-line-start="129" data-line-end="195">Knowledge, work, and learning</a>
+  - <a href="#glossary--action-and-delivery" data-line-start="196" data-line-end="280">Action and delivery</a>
+  - <a href="#glossary--honing-and-commitment" data-line-start="281" data-line-end="327">Honing and commitment</a>
+- <a href="#doc-constitution" data-line-start="328" data-line-end="334">Constitution — orient before acting</a>
+  - <a href="#doc-constitution--terms-in-use" data-line-start="335" data-line-end="355">Terms in use</a>
+  - <a href="#doc-constitution--use-the-sense-map" data-line-start="356" data-line-end="407">Use the sense-map</a>
+- <a href="#documentation-practice" data-line-start="408" data-line-end="411">Writing, independent waves, and document connections</a>
+  - <a href="#documentation-practice--durable-writing" data-line-start="412" data-line-end="444">Durable writing</a>
+  - <a href="#documentation-practice--waves" data-line-start="445" data-line-end="467">Waves</a>
+  - <a href="#documentation-practice--doc-pass" data-line-start="468" data-line-end="487">Doc-pass</a>
+- <a href="#collaboration" data-line-start="488" data-line-end="491">Collaboration and architectural stewardship</a>
+  - <a href="#collaboration--dispatch-and-return" data-line-start="492" data-line-end="510">Dispatch and return</a>
+  - <a href="#collaboration--stewardship" data-line-start="511" data-line-end="530">Stewardship</a>
+  - <a href="#collaboration--discussion" data-line-start="531" data-line-end="545">Discussion</a>
+- <a href="#workspace" data-line-start="546" data-line-end="572">Workspace, research locations, and shell</a>
+- <a href="#code" data-line-start="573" data-line-end="579">Code — stage and change discipline</a>
+  - <a href="#code--terms-in-use" data-line-start="580" data-line-end="594">Terms in use</a>
+  - <a href="#code--operating-weight" data-line-start="595" data-line-end="617">Operating weight</a>
+- <a href="#jj" data-line-start="618" data-line-end="648">jj and git operating rules</a>
+- <a href="#javascript" data-line-start="649" data-line-end="682">JavaScript and TypeScript</a>
+- <a href="#rust" data-line-start="683" data-line-end="707">Rust conventions</a>
+- <a href="#beads" data-line-start="708" data-line-end="745">Beads — readable work IDs and deliberate tracking</a>
+- <a href="#praxis-ticket-pointers" data-line-start="746" data-line-end="761">Ticket pointers — ambient cues</a>
+- <a href="#refs" data-line-start="762" data-line-end="767">References</a>
+  - <a href="#refs--skills" data-line-start="768" data-line-end="800">Skills</a>
 
 </nav>
 
@@ -36,7 +36,7 @@ This document is generated by Rust `rekon combine` from the manifest-selected GL
 From Rekon's checkout, edit the sources and run `cargo run --quiet --manifest-path tool/rust/Cargo.toml -- combine`.
 Add `--check` to that command to detect stale output or hand edits.
 
-<section id="fragment-glossary" data-source="/CONTEXT.md">
+<section id="glossary" data-source="/CONTEXT.md">
 
 <Okf data={{"description":"Cross-topic terms linking the established naming and constitutional vocabulary to current action and context work; a working glossary, not a new naming law.","extensions":{"related_work":["rekon-con-naming","rekon-agents-maintenance"],"ticket":"rekon-phoenix"},"generated":{"at":"2026-09-06","by":"model:gpt-6-astra"},"id":"glossary","order":50,"resource":"/CONTEXT.md","source":"/CONTEXT.md","sources":[{"resource":"urn:opencode:session:ses_ed3000de2ffewvt4aDNZVE4O9R","title":"Semantic vocabulary conversion and MDX flow-boundary correction"},{"resource":"urn:opencode:session:ses_ed31715c4ffex2ROd2G2C617AF","title":"Semantic definition-list conversion commissioned for enriched assembly"},{"resource":"/constitution/naming/exploration/proposal4.glm53m.md","title":"Recorded human naming override"},{"resource":"/constitution/naming/exploration/draft2-discussion0.sol56x.md","title":"Shared glossary and remaining naming disagreements"},{"resource":"/design/skillify/README1.sol56x.md","title":"Capability and context vocabulary"},{"resource":"/constitution/README.md","title":"Knowledge modules and exposures"},{"resource":"/evidence/README.md","title":"Evidence relationships and case stories"},{"resource":"/digest/README.md","title":"Action and intent fronts"},{"resource":"urn:opencode:session:ses_f2ebf7b1effewnCNYbBQ8Ewey2","title":"Human adoption of the ⇄ maintained-link convention for the fronts thread"}],"status":"draft","tags":["glossary","naming","constitution","actions","context"],"title":"Rekon working vocabulary","type":"Glossary"}} />
 
@@ -46,7 +46,7 @@ Terms for the shared sense-map, drawing on the earlier naming and constitutional
 work. Definitions are working usage; disputed naming grammar remains with its
 existing discussion, not settled by this glossary.
 
-<section id="fragment-glossary--names-homes-and-relations">
+<section id="glossary--names-homes-and-relations">
 
 ### Names, homes, and relations
 
@@ -124,7 +124,7 @@ helps someone understand where they are and what a next action means.
 
 </section>
 
-<section id="fragment-glossary--knowledge-work-and-learning">
+<section id="glossary--knowledge-work-and-learning">
 
 ### Knowledge, work, and learning
 
@@ -191,7 +191,7 @@ actual conduct and results, and what can be learned from their alignment or gap.
 
 </section>
 
-<section id="fragment-glossary--action-and-delivery">
+<section id="glossary--action-and-delivery">
 
 ### Action and delivery
 
@@ -276,7 +276,7 @@ options and tactical moves, compared across different payoff horizons.
 
 </section>
 
-<section id="fragment-glossary--honing-and-commitment">
+<section id="glossary--honing-and-commitment">
 
 ### Honing and commitment
 
@@ -321,7 +321,7 @@ conditions, not a synonym for acceptance or universal correctness.
 </section>
 </section>
 
-<section id="fragment-doc-constitution" data-source="/constitution/GLOBAL.md">
+<section id="doc-constitution" data-source="/constitution/GLOBAL.md">
 
 <Okf data={{"description":"Active shared context joining naming, knowledge, work, and action before specialized reading.","extensions":{"posture":"active production fragment; guidance remains open to refinement","related_work":["rekon-con-naming","rekon-agents-maintenance-skillify"],"ticket":"rekon-phoenix"},"generated":{"at":"2026-09-06","by":"model:gpt-6-astra"},"id":"doc-constitution","order":100,"resource":"/constitution/GLOBAL.md","source":"/constitution/README.md","sources":[{"resource":"/constitution/README.md","title":"Constitution and the current honing exception"},{"resource":"/CONTEXT.md","title":"Shared working vocabulary"},{"resource":"/constitution/naming/exploration/proposal4.glm53m.md","title":"Recorded naming ruling"},{"resource":"/design/rekon/context-weave/north-star0.gpt6a.md","title":"Historical basis and scope of the manual weave"}],"status":"draft","title":"Constitution — the shared sense-map","type":"ContextFragment"}} />
 
@@ -330,7 +330,7 @@ conditions, not a synonym for acceptance or universal correctness.
 Selected for production assembly. `draft` marks guidance still being refined;
 it does not mean the fragment is absent from runtime context.
 
-<section id="fragment-doc-constitution--terms-in-use">
+<section id="doc-constitution--terms-in-use">
 
 ### Terms in use
 
@@ -351,7 +351,7 @@ Later grammar proposals remain proposals; a new summary does not revoke the ruli
 
 </section>
 
-<section id="fragment-doc-constitution--use-the-sense-map">
+<section id="doc-constitution--use-the-sense-map">
 
 ### Use the sense-map
 
@@ -401,13 +401,13 @@ the root manifest; edit its domain fragments, then regenerate. The preserved
 </section>
 </section>
 
-<section id="fragment-documentation-practice" data-source="/constitution/practice/GLOBAL.md">
+<section id="documentation-practice" data-source="/constitution/practice/GLOBAL.md">
 
 <Okf data={{"id":"documentation-practice","order":120,"source":"/constitution/README.md","sources":[{"resource":"opencode://ses_ed2db3069ffeQV7v6JC7p69Vte","title":"Align durable-writing provenance with keyed positional OpenCode URIs and session authority"},{"resource":"opencode://ses_ed2eda746ffefem0MPL9M5MYX7","title":"Human direction to adopt OpenCode URIs with keyed positional IDs as the canonical grammar"}],"status":"draft"}} />
 
 ## Writing, independent waves, and document connections
 
-<section id="fragment-documentation-practice--durable-writing">
+<section id="documentation-practice--durable-writing">
 
 ### Durable writing
 
@@ -440,7 +440,7 @@ the root manifest; edit its domain fragments, then regenerate. The preserved
 
 </section>
 
-<section id="fragment-documentation-practice--waves">
+<section id="documentation-practice--waves">
 
 ### Waves
 
@@ -463,7 +463,7 @@ the root manifest; edit its domain fragments, then regenerate. The preserved
 
 </section>
 
-<section id="fragment-documentation-practice--doc-pass">
+<section id="documentation-practice--doc-pass">
 
 ### Doc-pass
 
@@ -481,13 +481,13 @@ consult [the toolkit map](/tool/README.md) for current capabilities.
 </section>
 </section>
 
-<section id="fragment-collaboration" data-source="/agents/GLOBAL.md">
+<section id="collaboration" data-source="/agents/GLOBAL.md">
 
 <Okf data={{"id":"collaboration","order":150,"source":"/agents/GLOBAL.md","status":"draft"}} />
 
 ## Collaboration and architectural stewardship
 
-<section id="fragment-collaboration--dispatch-and-return">
+<section id="collaboration--dispatch-and-return">
 
 ### Dispatch and return
 
@@ -506,7 +506,7 @@ consult [the toolkit map](/tool/README.md) for current capabilities.
 
 </section>
 
-<section id="fragment-collaboration--stewardship">
+<section id="collaboration--stewardship">
 
 ### Stewardship
 
@@ -526,7 +526,7 @@ consult [the toolkit map](/tool/README.md) for current capabilities.
 
 </section>
 
-<section id="fragment-collaboration--discussion">
+<section id="collaboration--discussion">
 
 ### Discussion
 
@@ -539,7 +539,7 @@ Recovered from [the legacy operating manual](/AGENTS.old.md#subagents);
 </section>
 </section>
 
-<section id="fragment-workspace" data-source="/code/workspace/GLOBAL.md">
+<section id="workspace" data-source="/code/workspace/GLOBAL.md">
 
 <Okf data={{"id":"workspace","order":170,"source":"/code/workspace/GLOBAL.md","status":"draft"}} />
 
@@ -566,7 +566,7 @@ Recovered from [the legacy operating manual](/AGENTS.old.md#subagents);
 Source: [legacy workspace guidance](/AGENTS.old.md#well-known-directories-and-files).
 </section>
 
-<section id="fragment-code" data-source="/code/GLOBAL.md">
+<section id="code" data-source="/code/GLOBAL.md">
 
 <Okf data={{"description":"Active shared commit, review, planning, and coding discipline.","extensions":{"posture":"active production fragment; guidance remains open to refinement","related_work":["rekon-agents-maintenance","rekon-session-mementos"],"ticket":"rekon-phoenix"},"generated":{"at":"2026-09-06","by":"model:gpt-6-astra"},"id":"code","order":200,"resource":"/code/GLOBAL.md","source":"/code/README.md","sources":[{"resource":"/code/README.md","title":"Coding practice"},{"resource":"/code/commits.md","title":"Capture revise compare"},{"resource":"/CONTEXT.md","title":"Shared working vocabulary"}],"status":"draft","title":"Code — stage and change discipline","type":"ContextFragment"}} />
 
@@ -575,7 +575,7 @@ Source: [legacy workspace guidance](/AGENTS.old.md#well-known-directories-and-fi
 Selected for production assembly. The README/SKILL body owns the fuller practice;
 these rules must be usable before an agent chooses deeper reading.
 
-<section id="fragment-code--terms-in-use">
+<section id="code--terms-in-use">
 
 ### Terms in use
 
@@ -590,7 +590,7 @@ use the shared vocabulary; this fragment adds only the terms its instructions ne
 
 </section>
 
-<section id="fragment-code--operating-weight">
+<section id="code--operating-weight">
 
 ### Operating weight
 
@@ -611,7 +611,7 @@ use the shared vocabulary; this fragment adds only the terms its instructions ne
 </section>
 </section>
 
-<section id="fragment-jj" data-source="/vcs/jj/GLOBAL.md">
+<section id="jj" data-source="/vcs/jj/GLOBAL.md">
 
 <Okf data={{"id":"jj","order":220,"source":"/vcs/jj/README.md","status":"draft"}} />
 
@@ -642,7 +642,7 @@ use the shared vocabulary; this fragment adds only the terms its instructions ne
 - [The jj guide](/vcs/jj/README.md) owns command recipes and forensics.
 </section>
 
-<section id="fragment-javascript" data-source="/js/GLOBAL.md">
+<section id="javascript" data-source="/js/GLOBAL.md">
 
 <Okf data={{"id":"javascript","order":250,"source":"/js/README.md","status":"draft"}} />
 
@@ -676,7 +676,7 @@ use the shared vocabulary; this fragment adds only the terms its instructions ne
   to generate Custom Element Manifests; wire manifest generation into the toolkit.
 </section>
 
-<section id="fragment-rust" data-source="/code/rust/GLOBAL.md">
+<section id="rust" data-source="/code/rust/GLOBAL.md">
 
 <Okf data={{"id":"rust","order":260,"source":"/code/rust/GLOBAL.md","status":"draft"}} />
 
@@ -701,7 +701,7 @@ The precedence clarification preserves its intended ordering without treating
 the old single-provider example as a complete layering implementation.
 </section>
 
-<section id="fragment-beads" data-source="/praxis/beads/GLOBAL.md">
+<section id="beads" data-source="/praxis/beads/GLOBAL.md">
 
 <Okf data={{"id":"beads","order":390,"source":"/praxis/beads/README.md","status":"draft"}} />
 
@@ -739,7 +739,7 @@ bd close <issue-id> --reason "<completion and verification>"
   rename, and version-aware storage/recovery. Ticket pointer upkeep is below.
 </section>
 
-<section id="fragment-praxis-ticket-pointers" data-source="/praxis/ticket-pointers/GLOBAL.md">
+<section id="praxis-ticket-pointers" data-source="/praxis/ticket-pointers/GLOBAL.md">
 
 <Okf data={{"description":"Brief cues for user-shaped ticket coordination, useful ticket pointers, and traceable implementation notes.","generated":{"at":"2026-09-23","by":"model:openai/gpt-6-luna#medium"},"id":"praxis-ticket-pointers","order":400,"resource":"/praxis/ticket-pointers/GLOBAL.md","source":"/praxis/ticket-pointers/ticket-pointers0.glm53fx.md","sources":[{"resource":"/praxis/ticket-pointers/ticket-pointers0.glm53fx.md","title":"Ticket pointers praxis"},{"resource":"/constitution/README.md#doc-constitution-tickets","title":"Balanced ticket coordination"}],"status":"draft","title":"Ticket pointers — ambient cues","type":"ContextFragment"}} />
 
@@ -755,7 +755,7 @@ bd close <issue-id> --reason "<completion and verification>"
 - Deeper practice: [Ticket pointers](/praxis/ticket-pointers/ticket-pointers0.glm53fx.md).
 </section>
 
-<section id="fragment-refs" data-source="/refs/GLOBAL.md">
+<section id="refs" data-source="/refs/GLOBAL.md">
 
 <Okf data={{"id":"refs","order":500,"source":"/refs/README.md","sources":[{"resource":"opencode://ses_ed2db3069ffeQV7v6JC7p69Vte","title":"Align ambient provenance guidance with keyed positional OpenCode URIs and session authority"},{"resource":"opencode://ses_ed2eda746ffefem0MPL9M5MYX7","title":"Human direction to adopt OpenCode URIs with keyed positional IDs as the canonical grammar"}],"status":"draft"}} />
 
@@ -763,7 +763,7 @@ bd close <issue-id> --reason "<completion and verification>"
 
 Read the relevant skill; resolve its support paths from its own directory.
 
-<section id="fragment-refs--skills">
+<section id="refs--skills">
 
 ### Skills
 

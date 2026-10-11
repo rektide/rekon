@@ -7,7 +7,7 @@ tags: [tool, agents, assembly, rust, mdx, okf]
 status: draft
 generated: { by: "model:openai/gpt-6-astra", at: 2026-10-11 }
 sources:
-  - { resource: "opencode://ses_ed31715c4ffex2ROd2G2C617AF", title: Rust producer integration, cross-engine review, and enriched output contract }
+  - { resource: "opencode://ses_ed31715c4ffex2ROd2G2C617AF", title: Rust producer integration, cross-engine review, and concise section identities }
   - { resource: "urn:opencode:session:ses_ed31715c4ffex2ROd2G2C617AF", title: Enriched whole-file assembly commission, Rust integration, and producer cutover }
   - { resource: /design/toolchain/enriched-assembly0.gpt6a.md, title: Current integration contract }
   - { resource: /design/toolchain/draft0.glm53m.md, title: Earlier Rust-first and combine-first direction }
@@ -80,13 +80,13 @@ becomes a `<section>` carrying an assembly ID and `data-source` path. Its
 frontmatter is emitted as one static JSON-compatible object:
 
 ```mdx
-<section id="fragment-code" data-source="/code/GLOBAL.md">
+<section id="code" data-source="/code/GLOBAL.md">
 
 <Okf data={{"id":"code","order":200,"source":"/code/README.md","status":"draft"}} />
 
 ## Code
 
-<section id="fragment-code--terms">
+<section id="code--terms">
 
 ### Terms
 
@@ -95,6 +95,11 @@ Content remains here, including semantic definition elements.
 </section>
 </section>
 ```
+
+The document section uses its source's frontmatter `id` directly (`code`);
+nested sections extend it with heading slugs (`code--terms`). There is no
+generic `fragment-` prefix. Generated IDs are checked against all selected
+source anchors and section IDs; `rekon-toc` remains reserved for navigation.
 
 The source's leading H1 becomes H2; descendants shift consistently and form
 nested sections. Hashes inside code remain code. Definitions using `dl`, `dt`,

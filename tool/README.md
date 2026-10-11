@@ -48,7 +48,7 @@ The current assembly, navigation, and inspection commands are:
 cargo run --quiet --manifest-path tool/rust/Cargo.toml -- combine
 cargo run --quiet --manifest-path tool/rust/Cargo.toml -- combine --check
 cargo run --quiet --manifest-path tool/rust/Cargo.toml -- toc AGENTS.md --line-ranges --check
-cargo run --quiet --manifest-path tool/rust/Cargo.toml -- okf extract AGENTS.md --scope fragment-code
+cargo run --quiet --manifest-path tool/rust/Cargo.toml -- okf extract AGENTS.md --scope code
 ```
 
 The [assembly guide](/tool/assembly/README.md) owns the format, output behavior,

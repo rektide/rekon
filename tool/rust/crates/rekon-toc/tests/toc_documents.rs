@@ -81,7 +81,7 @@ fn enriched_sections_okf_and_dfn() {
         "\n",
         "# Enriched\n",
         "\n",
-        r#"<section id="fragment-terms">"#,
+        r#"<section id="terms">"#,
         "\n",
         "\n",
         r#"<Okf data={{"type":"Practice","title":"Terms"}} />"#,
@@ -95,7 +95,7 @@ fn enriched_sections_okf_and_dfn() {
         "<dd>A preserved state.</dd>\n",
         "</dl>\n",
         "\n",
-        r#"<section id="fragment-terms--extra">"#,
+        r#"<section id="terms--extra">"#,
         "\n",
         "\n",
         "### Extra terms\n",
@@ -134,8 +134,8 @@ fn enriched_sections_okf_and_dfn() {
     assert_eq!(
         targets,
         vec![
-            ("fragment-terms", TargetKind::EnclosingSection),
-            ("fragment-terms--extra", TargetKind::EnclosingSection),
+            ("terms", TargetKind::EnclosingSection),
+            ("terms--extra", TargetKind::EnclosingSection),
             ("explicit-heading", TargetKind::ExplicitAnchor),
             ("deploy", TargetKind::GeneratedSlug),
             ("checkpoint-term", TargetKind::GeneratedSlug),

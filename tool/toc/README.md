@@ -68,14 +68,14 @@ let structure = analyze(&text, &TocOptions::default())?;         // entries, ids
 ```md
 <nav id="rekon-toc" aria-label="Table of contents">
 
-- [Code](#fragment-code)
-  - [Terms](#fragment-code--terms)
+- [Code](#code)
+  - [Terms](#code--terms)
 
 </nav>
 ```
 
 With line ranges, each entry becomes an HTML anchor inside the same list:
-`- <a href="#fragment-code" data-line-start="12" data-line-end="40">Code</a>`.
+`- <a href="#code" data-line-start="12" data-line-end="40">Code</a>`.
 The first run inserts the region after the document's first H1 (or at the top
 when there is none); later runs replace the region wholesale and never touch
 prose outside it. A document with no listable headings keeps an empty region

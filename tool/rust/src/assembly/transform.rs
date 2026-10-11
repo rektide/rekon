@@ -43,7 +43,12 @@ struct SourceHeading {
 /// the leading H1 becomes the fragment section's H2, deeper headings shift by
 /// one and gain deterministic nested `<section>` wrappers, and prose is made
 /// MDX-safe. Code is never touched; unique wrapper IDs are enforced loudly.
-pub(crate) fn build_body(prose: &str, root_id: &str, path: &str) -> Result<String, FragmentError> {
+pub(crate) fn build_body(
+    prose: &str,
+    root_id: &str,
+    path: &str,
+    used_ids: &mut HashSet<String>,
+) -> Result<String, FragmentError> {
     let events: Vec<(Event<'_>, Range<usize>)> = Parser::new_ext(prose, parse_options())
         .into_offset_iter()
         .collect();
@@ -216,7 +221,7 @@ pub(crate) fn build_body(prose: &str, root_id: &str, path: &str) -> Result<Strin
         index += 1;
     }
 
-    wrap_sections(prose, &headings, root_id, &mut edits, &fail)?;
+    wrap_sections(prose, &headings, root_id, &mut edits, used_ids, &fail)?;
     Ok(apply_edits(prose, edits))
 }
 
@@ -227,10 +232,10 @@ fn wrap_sections(
     headings: &[SourceHeading],
     root_id: &str,
     edits: &mut Vec<Edit>,
+    used: &mut HashSet<String>,
     fail: &dyn Fn(String) -> FragmentError,
 ) -> Result<(), FragmentError> {
     let mut stack: Vec<(u8, String)> = Vec::new();
-    let mut used: HashSet<String> = HashSet::new();
     for heading in headings {
         if !heading.top_level || heading.depth == 1 {
             continue;
@@ -267,7 +272,7 @@ fn wrap_sections(
         id.push_str(&own);
         if !used.insert(id.clone()) {
             return Err(fail(format!(
-                "generated section id \"{id}\" is duplicated; make heading text unique so section ids stay stable"
+                "generated section id \"{id}\" is duplicated; use distinct heading text and source anchor ids"
             )));
         }
         if closers > 0 {
@@ -562,6 +567,10 @@ fn convert_html_comments(chunk: &str) -> Option<String> {
 mod tests {
     use super::*;
 
+    fn build_body(prose: &str, root: &str, path: &str) -> Result<String, FragmentError> {
+        super::build_body(prose, root, path, &mut HashSet::new())
+    }
+
     fn body(prose: &str, root: &str) -> String {
         build_body(prose, root, "t.md").unwrap()
     }
@@ -582,29 +591,26 @@ mod tests {
 
     #[test]
     fn wraps_nested_sections_with_stable_ids_and_closers() {
-        let out = body(
-            "# Doc\n\nintro\n\n## A\n\na\n\n### B\n\nb\n\ntail",
-            "fragment-x",
-        );
-        let expected = "## Doc\n\nintro\n\n<section id=\"fragment-x--a\">\n\n### A\n\na\n\n\
-                        <section id=\"fragment-x--a--b\">\n\n#### B\n\nb\n\ntail\n\n</section>\n\n</section>";
+        let out = body("# Doc\n\nintro\n\n## A\n\na\n\n### B\n\nb\n\ntail", "x");
+        let expected = "## Doc\n\nintro\n\n<section id=\"x--a\">\n\n### A\n\na\n\n\
+                        <section id=\"x--a--b\">\n\n#### B\n\nb\n\ntail\n\n</section>\n\n</section>";
         assert_eq!(out, expected);
     }
 
     #[test]
     fn closes_sibling_sections_between_headings() {
-        let out = body("# Doc\n\n## A\n\na\n\n## B\n\nb", "fragment-x");
+        let out = body("# Doc\n\n## A\n\na\n\n## B\n\nb", "x");
         assert_eq!(
             out,
-            "## Doc\n\n<section id=\"fragment-x--a\">\n\n### A\n\na\n\n</section>\n\n\
-             <section id=\"fragment-x--b\">\n\n### B\n\nb\n\n</section>"
+            "## Doc\n\n<section id=\"x--a\">\n\n### A\n\na\n\n</section>\n\n\
+             <section id=\"x--b\">\n\n### B\n\nb\n\n</section>"
         );
     }
 
     #[test]
     fn code_fences_anchors_and_definition_lists_survive_verbatim() {
         let prose = "# D\n\n<dl>\n<dt><dfn id=\"term\">T</dfn></dt>\n<dd>{kept} <b>bold</b></dd>\n</dl>\n\n```sh\n# not a heading\necho \"{raw}\"\n```\n";
-        let out = body(prose, "fragment-x");
+        let out = body(prose, "x");
         assert!(out.contains("<dfn id=\"term\">T</dfn>"));
         assert!(out.contains("<dd>{kept} <b>bold</b></dd>"));
         assert!(out.contains("# not a heading\necho \"{raw}\""));
@@ -616,7 +622,7 @@ mod tests {
         // Parsers can emit `<` as its own one-character event; event-final
         // `<` is escaped render-safely.
         let prose = "# D\n\na {x} and a <b look and < ok and \\{kept\\}\n\n<!-- note {fine} -->\n\n<https://e.x/p>\n";
-        let out = body(prose, "fragment-x");
+        let out = body(prose, "x");
         assert!(
             out.contains("a \\{x\\} and a \\<b look and \\< ok and \\{kept\\}"),
             "{out}"
@@ -637,10 +643,7 @@ mod tests {
     #[test]
     fn preserves_static_okf_elements_and_rejects_fake_ones() {
         let element = r#"<Okf data={{"type":"Reference","title":"Local terms"}} />"#;
-        let out = body(
-            &format!("# T\n\n{element} then {{x}}\n"),
-            "fragment-code--t",
-        );
+        let out = body(&format!("# T\n\n{element} then {{x}}\n"), "code--t");
         // The authored element is preserved verbatim; only the prose braces
         // around it are escaped.
         assert_eq!(out, format!("## T\n\n{element} then ") + "\\{x\\}\n");
@@ -671,15 +674,15 @@ mod tests {
 
     #[test]
     fn shifts_headings_inside_containers_without_wrapping_them() {
-        let out = body("# D\n\n> ## Quoted\n\nafter", "fragment-x");
+        let out = body("# D\n\n> ## Quoted\n\nafter", "x");
         assert_eq!(out, "## D\n\n> ### Quoted\n\nafter");
     }
 
     #[test]
     fn duplicate_slugs_and_h6_fail_loudly() {
-        let error = build_body("# D\n\n## Same\n\n## Same\n", "fragment-x", "t.md").unwrap_err();
+        let error = build_body("# D\n\n## Same\n\n## Same\n", "x", "t.md").unwrap_err();
         assert!(error.to_string().contains("duplicated"), "{error}");
-        let error = build_body("# D\n\n###### Six\n", "fragment-x", "t.md").unwrap_err();
+        let error = build_body("# D\n\n###### Six\n", "x", "t.md").unwrap_err();
         assert!(error.to_string().contains("H6"), "{error}");
     }
 

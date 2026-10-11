@@ -23,8 +23,7 @@ pub use document::{
     CheckResult, DOCUMENT_TITLE, GENERATED_NOTICE, compare_document, render_document,
 };
 pub use fragment::{
-    Fragment, FragmentError, FragmentMeta, FragmentStatus, RESERVED_TOC_ID,
-    RESERVED_WRAPPER_PREFIX, parse_fragment,
+    Fragment, FragmentError, FragmentMeta, FragmentStatus, RESERVED_TOC_ID, parse_fragment,
 };
 
 use std::collections::HashMap;

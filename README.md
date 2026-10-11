@@ -172,7 +172,7 @@ The shared [toolkit](/tool/README.md) provides the Rust super-tool:
 ```sh
 cargo run --manifest-path tool/rust/Cargo.toml -- --help
 cargo run --quiet --manifest-path tool/rust/Cargo.toml -- combine --check
-cargo run --quiet --manifest-path tool/rust/Cargo.toml -- okf extract AGENTS.md --scope fragment-code
+cargo run --quiet --manifest-path tool/rust/Cargo.toml -- okf extract AGENTS.md --scope code
 ```
 
 It assembles complete declared fragments into enriched guidance, generates

@@ -69,7 +69,7 @@ fn combined_semantic_content_is_mdx_and_its_metadata_is_recoverable() {
 
     let extraction = success(run(
         root,
-        &["okf", "extract", "AGENTS.md", "--scope", "fragment-code"],
+        &["okf", "extract", "AGENTS.md", "--scope", "code"],
     ));
     let extracted: Value = serde_json::from_slice(&extraction.stdout).unwrap();
     assert!(
@@ -78,13 +78,7 @@ fn combined_semantic_content_is_mdx_and_its_metadata_is_recoverable() {
     );
     let vocabulary = success(run(
         root,
-        &[
-            "okf",
-            "extract",
-            "AGENTS.md",
-            "--scope",
-            "fragment-vocabulary",
-        ],
+        &["okf", "extract", "AGENTS.md", "--scope", "vocabulary"],
     ));
     let vocabulary: Value = serde_json::from_slice(&vocabulary.stdout).unwrap();
     assert!(contains_value(
@@ -96,13 +90,7 @@ fn combined_semantic_content_is_mdx_and_its_metadata_is_recoverable() {
     assert!(!contains_value(&vocabulary, &metadata));
     let local = success(run(
         root,
-        &[
-            "okf",
-            "extract",
-            "AGENTS.md",
-            "--scope",
-            "fragment-code--terms",
-        ],
+        &["okf", "extract", "AGENTS.md", "--scope", "code--terms"],
     ));
     let local: Value = serde_json::from_slice(&local.stdout).unwrap();
     assert!(contains_value(

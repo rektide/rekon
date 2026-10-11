@@ -27,7 +27,7 @@ trust-tier policy.
 
 ```sh
 cargo run --quiet --manifest-path tool/rust/Cargo.toml -- okf extract AGENTS.md
-cargo run --quiet --manifest-path tool/rust/Cargo.toml -- okf extract AGENTS.md --scope fragment-code --format yaml
+cargo run --quiet --manifest-path tool/rust/Cargo.toml -- okf extract AGENTS.md --scope code --format yaml
 cargo run --quiet --manifest-path tool/rust/Cargo.toml -- okf extract code/GLOBAL.md
 ```
 
@@ -41,7 +41,7 @@ of the whole section body as a new concept document.
 ## Wire representation and ownership
 
 ```mdx
-<section id="fragment-code" data-source="/code/GLOBAL.md">
+<section id="code" data-source="/code/GLOBAL.md">
 
 <Okf data={{"type":"Practice","unknown":{"nested":[true,null,12]}}} />
 

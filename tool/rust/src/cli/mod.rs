@@ -138,14 +138,7 @@ mod tests {
         for args in [
             vec!["rekon", "combine", "--check"],
             vec!["rekon", "toc", "AGENTS.md", "--line-ranges"],
-            vec![
-                "rekon",
-                "okf",
-                "extract",
-                "AGENTS.md",
-                "--scope",
-                "fragment-code",
-            ],
+            vec!["rekon", "okf", "extract", "AGENTS.md", "--scope", "code"],
         ] {
             Cli::command().try_get_matches_from(args).unwrap();
         }

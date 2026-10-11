@@ -5,7 +5,7 @@ description: Implementation boundary for Rust combine, scoped OKF emission, sema
 status: draft
 generated: { by: "model:openai/gpt-6-astra", at: 2026-10-11 }
 sources:
-  - { resource: "opencode://ses_ed31715c4ffex2ROd2G2C617AF", title: Implementation integration, scoped metadata preservation, and ToC boundary review }
+  - { resource: "opencode://ses_ed31715c4ffex2ROd2G2C617AF", title: Enriched assembly integration, ToC review, and October 12 section-ID simplification }
   - { resource: "urn:opencode:session:ses_ed31715c4ffex2ROd2G2C617AF", title: Whole-file assembly, enriched output first, semantic definitions, and parallel Rust tooling commission }
   - { resource: /design/toolchain/handoff0.gpt6a.md, title: Earlier combiner handoff, superseded on output and scope }
   - { resource: /okf/README.md, title: Existing OKF conventions and file-level scope }
@@ -36,13 +36,13 @@ Actual headings, not heading-like code, define nested section boundaries.
 All selected body content is included; there is no subsection selection.
 
 ```mdx
-<section id="fragment-code" data-source="/code/GLOBAL.md">
+<section id="code" data-source="/code/GLOBAL.md">
 
 <Okf data={{"type":"Practice","title":"Code","status":"draft"}} />
 
 ## Code
 
-<section id="fragment-code--terms">
+<section id="code--terms">
 
 ### Terms
 
@@ -73,6 +73,12 @@ and origin separately from OKF's `resource` field.
 guidance in GLOBAL contributions. CONTEXT.md is the initial semantic conversion
 case; preserve its existing path/anchors while the broader home migration is
 considered. No separate GLOSSARY file format is introduced.
+
+**October 12 naming correction:** the human found that `fragment-` carried no
+useful meaning in IDs. Document sections now use the declared identity directly
+(`code`), with children such as `code--terms`. The renderer checks actual IDs
+against source anchors across the whole selection, replacing the old blanket
+prefix reservation. The examples above reflect this correction.
 
 ## Rust boundaries
 

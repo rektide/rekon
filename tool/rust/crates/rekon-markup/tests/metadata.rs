@@ -146,14 +146,14 @@ fn actual_global_metadata_survives_a_document_section() {
     let frontmatter = parse_frontmatter(source).unwrap();
     let metadata = frontmatter.metadata.as_ref().unwrap();
     let output = format!(
-        "<!-- generated test assembly -->\n\n# Combined\n\n<section id=\"fragment-code\" data-source=\"/code/GLOBAL.md\">\n\n{}\n\n{}\n\n</section>\n",
+        "<!-- generated test assembly -->\n\n# Combined\n\n<section id=\"code\" data-source=\"/code/GLOBAL.md\">\n\n{}\n\n{}\n\n</section>\n",
         render_okf(metadata).unwrap(),
         frontmatter.body
     );
     let records = extract(&output).unwrap();
     assert_eq!(records.len(), 1);
     assert_eq!(&records[0].metadata, metadata);
-    assert_eq!(records[0].owner.id.as_deref(), Some("fragment-code"));
+    assert_eq!(records[0].owner.id.as_deref(), Some("code"));
     assert_eq!(
         records[0].owner.data_source.as_deref(),
         Some("/code/GLOBAL.md")

@@ -23,9 +23,6 @@ use super::transform::parse_options;
 /// The final ToC pass owns this ID in the published document; a source using
 /// it could be mistaken for the assembly's own nav and silently replaced.
 pub const RESERVED_TOC_ID: &str = "rekon-toc";
-/// Every generated wrapper ID (`fragment-<id>`, `fragment-<id>--<slug>...`)
-/// lives in this namespace; sources may not claim it.
-pub const RESERVED_WRAPPER_PREFIX: &str = "fragment-";
 
 /// Assembler-specific fragment metadata; order composes the document.
 #[derive(Clone, Debug, PartialEq, Eq)]
@@ -399,12 +396,6 @@ fn check_anchor_id(
                 .into(),
         ));
     }
-    if id.starts_with(RESERVED_WRAPPER_PREFIX) {
-        return Err(reserved(
-            "the \"fragment-\" prefix namespaces generated section wrappers; rename this anchor"
-                .into(),
-        ));
-    }
     if !seen.insert(id.to_string()) {
         return Err(reserved(
             "this fragment already defines this explicit id".into(),
@@ -592,7 +583,8 @@ mod tests {
 
     #[test]
     fn guards_explicit_anchor_ids_against_reservation_and_duplicates() {
-        for id in [RESERVED_TOC_ID, "fragment-x"] {
+        {
+            let id = RESERVED_TOC_ID;
             let raw = fragment_source("alpha", &format!("# Alpha\n\n<a id=\"{id}\"></a>\n"));
             let error = parse_fragment(&raw, "bad.md").expect_err(id);
             let FragmentError::AnchorId {

@@ -1,7 +1,9 @@
 //! Pure rendering from validated, ordered fragments plus byte-exact freshness
 //! comparison. No filesystem effects; callers own publication and checking.
 
-use super::fragment::{Fragment, FragmentError};
+use std::collections::HashSet;
+
+use super::fragment::{Fragment, FragmentError, RESERVED_TOC_ID};
 use super::transform;
 
 /// The assembled document's own single H1; every fragment's H1 shifts to H2
@@ -37,10 +39,24 @@ pub enum CheckResult {
 /// records the actual selected fragment path (bundle-root-relative); the
 /// frontmatter `source` metadata is preserved unchanged inside `Okf`.
 pub fn render_document(fragments: &[Fragment]) -> Result<String, FragmentError> {
+    // Reserve actual identities, rather than an arbitrary prefix. Seed all
+    // sources first so a generated child cannot collide with a later input.
+    let mut used_ids = HashSet::from([RESERVED_TOC_ID.to_string()]);
+    for fragment in fragments {
+        for id in std::iter::once(&fragment.meta.id).chain(&fragment.anchor_ids) {
+            if !used_ids.insert(id.clone()) {
+                return Err(FragmentError::AnchorId {
+                    path: fragment.path.clone(),
+                    id: id.clone(),
+                    reason: "conflicts with another assembled section, source anchor, or reserved navigation ID".into(),
+                });
+            }
+        }
+    }
     let mut sections = Vec::with_capacity(fragments.len());
     for fragment in fragments {
-        let root_id = format!("fragment-{}", fragment.meta.id);
-        let body = transform::build_body(&fragment.prose, &root_id, &fragment.path)?;
+        let root_id = &fragment.meta.id;
+        let body = transform::build_body(&fragment.prose, root_id, &fragment.path, &mut used_ids)?;
         sections.push(format!(
             "<section id=\"{root_id}\" data-source=\"{}\">\n\n{}\n\n{body}\n</section>",
             escape_attribute(&format!("/{}", fragment.path)),
@@ -102,7 +118,7 @@ mod tests {
         assert_eq!(
             document,
             format!(
-                "# {DOCUMENT_TITLE}\n\n{GENERATED_NOTICE}\n\n<section id=\"fragment-a\" data-source=\"/a.md\">\n\n<Okf data={{{{\"id\":\"a\",\"order\":1,\"source\":\"/a.md\",\"status\":\"stable\"}}}} />\n\n## A\n\nbody a\n</section>\n\n<section id=\"fragment-b\" data-source=\"/b.md\">\n\n<Okf data={{{{\"id\":\"b\",\"order\":2,\"source\":\"/b.md\",\"status\":\"stable\"}}}} />\n\n## B\n\nbody b\n</section>\n"
+                "# {DOCUMENT_TITLE}\n\n{GENERATED_NOTICE}\n\n<section id=\"a\" data-source=\"/a.md\">\n\n<Okf data={{{{\"id\":\"a\",\"order\":1,\"source\":\"/a.md\",\"status\":\"stable\"}}}} />\n\n## A\n\nbody a\n</section>\n\n<section id=\"b\" data-source=\"/b.md\">\n\n<Okf data={{{{\"id\":\"b\",\"order\":2,\"source\":\"/b.md\",\"status\":\"stable\"}}}} />\n\n## B\n\nbody b\n</section>\n"
             )
         );
         // Exactly one document H1, visible ownership prose, no HTML comments.
@@ -113,6 +129,29 @@ mod tests {
             document.ends_with("</section>\n"),
             "single trailing newline"
         );
+    }
+
+    #[test]
+    fn checks_real_section_ids_against_all_source_anchors() {
+        // Roots and generated descendants share the source anchor namespace,
+        // including anchors contributed by later documents.
+        for anchor in ["a", "b", "a--details"] {
+            let a = fragment("a", 1, "# A\n\n## Details\n\nContent.");
+            let b = fragment(
+                "b",
+                2,
+                &format!("# B\n\n<a id=\"{anchor}\"></a>\n\nContent."),
+            );
+            let error = render_document(&[a, b]).unwrap_err();
+            assert!(error.to_string().contains(anchor), "{error}");
+        }
+        let reserved = fragment(RESERVED_TOC_ID, 1, "# Navigation\n\nContent.");
+        assert!(render_document(&[reserved]).is_err());
+
+        let old_prefix = fragment("a", 1, "# A\n\n<a id=\"fragment-example\"></a>\n\nContent.");
+        let document = render_document(&[old_prefix]).unwrap();
+        assert!(document.contains("<section id=\"a\""));
+        assert!(document.contains("<a id=\"fragment-example\"></a>"));
     }
 
     #[test]
