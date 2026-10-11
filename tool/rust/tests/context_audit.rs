@@ -25,13 +25,6 @@ fn successful(output: Output) {
 fn fresh_assembly_still_fails_when_beads_is_omitted_or_its_instruction_is_lost() {
     let fixture = tempfile::tempdir().unwrap();
     let root = fixture.path();
-    let repo = Path::new(env!("CARGO_MANIFEST_DIR"))
-        .parent()
-        .unwrap()
-        .parent()
-        .unwrap();
-    let assembler = repo.join("tool/agents.ts");
-    let assembler = assembler.to_str().unwrap();
     let binary = env!("CARGO_BIN_EXE_rekon");
     let baseline = "# beads\n\nAlways supply explicit --id.\n";
     let hash: String = Sha256::digest(baseline)
@@ -49,7 +42,7 @@ fn fresh_assembly_still_fails_when_beads_is_omitted_or_its_instruction_is_lost()
     let full_manifest = r#"{"fragments":["common.md","beads.md"],"output":"AGENTS.md"}"#;
     fs::write(root.join("agents.manifest.json"), full_manifest).unwrap();
     let audit = ["audit-context", "--coverage", "coverage.json"];
-    successful(run("node", &[assembler], root));
+    successful(run(binary, &["combine"], root));
     successful(run(binary, &audit, root));
 
     // The unselected file still exists, exactly as it did after the original cutover.
@@ -58,8 +51,8 @@ fn fresh_assembly_still_fails_when_beads_is_omitted_or_its_instruction_is_lost()
         r#"{"fragments":["common.md"],"output":"AGENTS.md"}"#,
     )
     .unwrap();
-    successful(run("node", &[assembler], root));
-    successful(run("node", &[assembler, "--check"], root));
+    successful(run(binary, &["combine"], root));
+    successful(run(binary, &["combine", "--check"], root));
     let before = fs::read(root.join("AGENTS.md")).unwrap();
     let missing = run(binary, &audit, root);
     assert_eq!(missing.status.code(), Some(1));
@@ -73,8 +66,8 @@ fn fresh_assembly_still_fails_when_beads_is_omitted_or_its_instruction_is_lost()
         beads.replace("Always supply explicit `--id`.", "Use tickets."),
     )
     .unwrap();
-    successful(run("node", &[assembler], root));
-    successful(run("node", &[assembler, "--check"], root));
+    successful(run(binary, &["combine"], root));
+    successful(run(binary, &["combine", "--check"], root));
     let missing = run(binary, &audit, root);
     assert_eq!(missing.status.code(), Some(1));
     assert!(String::from_utf8_lossy(&missing.stderr).contains("missing required instruction"));

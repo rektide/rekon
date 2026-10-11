@@ -1,37 +1,18 @@
-//! `rekon` — the rust super-tool crate.
+//! Rust engines behind the `rekon` super-tool.
 //!
-//! Rekon's accepted toolchain end-state ([design/toolchain/draft0] addendum,
-//! 2026-10-08) is rust-first for new code: one crate under `tool/rust/`, binary
-//! `rekon`, whose subcommands are the super-tool surface. There is no TS
-//! composition layer.
+//! [`assembly`] combines complete, explicitly selected fragments into enriched
+//! Markdown/MDX. Frontmatter survives as scoped `Okf` data; document headings
+//! become a nested section hierarchy. [`coverage`] independently checks declared
+//! operating requirements against the preserved legacy baseline.
 //!
-//! `audit-context` is runnable now and checks declared operating coverage.
-//! `combine`, the planned AGENTS.md combiner, remains unfinished. Its behavior
-//! contract is binding and pre-dates this crate:
+//! The workspace's `rekon-markup` library owns reusable document/metadata
+//! semantics, and `rekon-toc` owns navigation generation. CLI orchestration
+//! applies the ToC pass before publishing or checking the assembled bytes.
 //!
-//! - [`constitution/agents-assembly.md`][assembly-contract] — fragment
-//!   metadata, manifest format, output shape, provenance, generated-file
-//!   policy.
-//! - [`tool/assembly/README.md`][assembly-readme] — the production Effect
-//!   tool's invocation, exit codes, reports, and the `..notes/` correction.
-//! - The TypeScript implementation in `tool/assembly/` and `tool/md/` (with
-//!   its colocated tests) is the executable form of that contract; this crate
-//!   ports observable behavior, not redesigns it.
-//!
-//! The crate deliberately does **not** regenerate `/AGENTS.md`'s header with
-//! the TypeScript tool's identity: `rekon combine` writes its own
-//! generated-file header. A producer flip away from `node tool/agents.ts` is a
-//! separate deliberate change.
-//!
-//! Module boundaries mirror the TypeScript layout: [`manifest`] ~
-//! `tool/assembly/manifest.ts`, and later `fragment`/`markdown` ~
-//! `tool/md/fragment.ts`, `document` ~ `tool/md/document.ts`, `combine` ~
-//! `tool/assembly/assemble.ts` plus the command wiring in `tool/cmd/agents.ts`.
-//!
-//! [design/toolchain/draft0]: /design/toolchain/draft0.glm53m.md
-//! [assembly-contract]: /constitution/agents-assembly.md
-//! [assembly-readme]: /tool/assembly/README.md
+//! Current design: `/design/toolchain/enriched-assembly0.gpt6a.md`.
+//! Maintained assembly guide: `/tool/assembly/README.md`.
 
+pub mod assembly;
 pub mod coverage;
 pub mod manifest;
 pub mod nodepath;
