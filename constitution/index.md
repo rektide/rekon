@@ -27,6 +27,12 @@ the local documents and live Beads records on **2026-09-04**.
 
 ## Broader Constitutional Reassessment
 
+- [Present-day process placement](/constitution/process-placement0.glm53m.md#pp-map)
+  — October 11 mapping of the recovered threads to specific current homes,
+  existing coverage, and proposed residual additions. Includes a
+  [section-by-section comparison](/constitution/process-placement0.glm53m.md#pp-candidate)
+  of the retrospective README candidate. The named `#fishing` follow-up was not
+  located in its search; its account of that continuation remains incomplete.
 - [Deferred README candidate](/constitution/README-draft0.gpt6a.md) — written
   October 11 to capture the broader compact sought in September. Explicitly
   retrospective and partly outmoded by subsequent progress; not a replacement

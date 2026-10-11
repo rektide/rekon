@@ -10,6 +10,8 @@ extensions:
   original_inquiry: September 2026 broader constitutional reassessment
   written_after: substantial subsequent implementation and domain development
 sources:
+  - { resource: "urn:opencode:session:ses_f910e26f3ffeAerti8u4nZci16", title: Retrospective README commission, synthesis, and integration of present-day placement research }
+  - { resource: /constitution/process-placement0.glm53m.md, title: Process ideas mapped to present-day owners and residual gaps }
   - { resource: /constitution/reassessment0.gpt6a.md, title: Coming up for air }
   - { resource: /constitution/work-map0.gpt6a.md, title: Existing commitments and hypothetical connections }
   - { resource: /constitution/threads0.glm53m.md, title: Constitutional threads research }
@@ -280,6 +282,13 @@ questions retain their own evidence and authority.
 <a id="reading"></a>
 ## Sources And Continuations
 
+- [Present-day process placement](/constitution/process-placement0.glm53m.md#pp-map)
+  maps the recovered ideas to specific owners and distinguishes landed practice
+  from proposed additions. Its [candidate comparison](/constitution/process-placement0.glm53m.md#pp-candidate)
+  finds substantial existing coverage, with narrower residual questions about
+  explicit principle statements, claim classes, and rationale. These findings
+  guide comparison, not automatic amendments. Its search did not locate the
+  operator's `#fishing` follow-up; that connection remains unverified.
 - [Constitutional index](/constitution/index.md) — current entry points,
   recorded rulings, and important unresolved alternatives.
 - [September reassessment](/constitution/reassessment0.gpt6a.md) — the change
