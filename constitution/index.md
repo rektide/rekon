@@ -27,6 +27,14 @@ the local documents and live Beads records on **2026-09-04**.
 
 ## Broader Constitutional Reassessment
 
+- [Deferred README candidate](/constitution/README-draft0.gpt6a.md) — written
+  October 11 to capture the broader compact sought in September. Explicitly
+  retrospective and partly outmoded by subsequent progress; not a replacement
+  for current guidance or a new implementation plan.
+- [Constitutional threads](/constitution/threads0.glm53m.md) — September's
+  source-grounded recovery of thinking/talking in Markdown and other less-visible
+  concerns. A research starting point for newer thread-finding work, not a current
+  coverage audit.
 - [Coming up for air](/constitution/reassessment0.gpt6a.md) — the new cross-topic
   reassessment: what naming contributes, what it does not encompass, and which
   distinctions a broader README should preserve. Discussion, not adopted policy.
