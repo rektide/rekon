@@ -50,6 +50,8 @@ live global file is assembled from [`code/GLOBAL.md`](/code/GLOBAL.md).
 | [`planning.md`](/code/planning.md) | Writing a plan or design document. |
 | [`coding-advice.md`](/code/coding-advice.md) | Deciding error handling or cleanup behavior. |
 | [`task-reconstruction/`](/code/task-reconstruction/README.md) | Restarting a task line while preserving its docs: the jj replay procedure, its philosophy, and measured evidence. |
+| [`workspace/GLOBAL.md`](/code/workspace/GLOBAL.md) | Workspace locations, archive-first lookup, scratch ownership, and shell lifetime; selected ambient guidance. |
+| [`rust/GLOBAL.md`](/code/rust/GLOBAL.md) | Rust tools, configuration precedence, and publishing; selected ambient guidance. |
 
 Neighbors, not members: [`vcs/jj/`](/vcs/jj/README.md) owns jj/git history
 spelunking and rewrite mechanics; [`js/`](/js/README.md) owns the

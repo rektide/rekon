@@ -64,3 +64,23 @@ visible beside the declaration.
 The user asked for iteration and advancement, so the deliverable is restored
 runtime context plus a working audit, not just another proposal. Use existing
 `rekon-agents-maintenance` work history rather than a ticket per fragment.
+
+## Landed result
+
+The [production manifest](/agents.manifest.json) now selects twelve fragments.
+The regenerated output is 31,244 UTF-8 bytes. Core advice is inline, with beads
+depth in [its new home](/praxis/beads/README.md). The legacy file is unchanged.
+The [coverage declaration](/tool/assembly/coverage.json) accounts for thirteen
+actual top-level legacy sections and requires 108 instructional excerpts.
+
+The runnable Rust auditor and its [contract](/tool/assembly/coverage.md) join
+`pnpm check`. Regression tests invoke the real production assembler in temporary
+bundles: both dropping beads from selection and removing its ID advice still
+allow fresh output, but fail coverage. Tests also exercise missing inputs,
+hidden metadata/comments, changed evidence, and unaccounted sections. This
+demonstrates the distinction the earlier cutover lacked.
+
+The next editorial pass should judge the combined reading experience and the
+glossary/operating-advice balance. This repair retains the glossary and makes
+no claim that literal assertions prove complete semantic parity. The unfinished
+Rust combiner and pre-existing uncommitted Markdown parser remain separate work.

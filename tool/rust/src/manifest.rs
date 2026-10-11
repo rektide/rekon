@@ -16,7 +16,7 @@ use thiserror::Error;
 
 use crate::nodepath;
 
-/// Deliberately absent in production until every monolith section has a fragment source.
+/// Production selection since October 7; coverage is checked separately.
 pub const DEFAULT_MANIFEST: &str = "agents.manifest.json";
 
 /// Provenance-comment safety shared by fragment paths and sources.
@@ -44,7 +44,7 @@ fn validate_relative_path(path: &str) -> Result<(), String> {
 }
 
 /// Validate one declared fragment path (relative, normalized, contained, provenance-safe).
-fn validate_fragment_path(path: &str) -> Result<(), String> {
+pub(crate) fn validate_fragment_path(path: &str) -> Result<(), String> {
     validate_relative_path(path)?;
     if !is_provenance_text(path) {
         return Err(

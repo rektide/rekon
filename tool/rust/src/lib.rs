@@ -5,7 +5,8 @@
 //! `rekon`, whose subcommands are the super-tool surface. There is no TS
 //! composition layer.
 //!
-//! The first subcommand is `combine`, the AGENTS.md combiner. Its behavior
+//! `audit-context` is runnable now and checks declared operating coverage.
+//! `combine`, the planned AGENTS.md combiner, remains unfinished. Its behavior
 //! contract is binding and pre-dates this crate:
 //!
 //! - [`constitution/agents-assembly.md`][assembly-contract] — fragment
@@ -31,6 +32,7 @@
 //! [assembly-contract]: /constitution/agents-assembly.md
 //! [assembly-readme]: /tool/assembly/README.md
 
+pub mod coverage;
 pub mod manifest;
 pub mod nodepath;
 

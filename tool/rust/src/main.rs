@@ -3,6 +3,9 @@
 use std::process::ExitCode;
 
 use clap::{CommandFactory, FromArgMatches, Parser};
+use rekon::DEFAULT_MANIFEST;
+use rekon::coverage::{DEFAULT_COVERAGE, audit};
+use std::path::PathBuf;
 
 /// The design note the `toc` stub points at.
 const TOOLCHAIN_DESIGN: &str = "design/toolchain/draft0.glm53m.md";
@@ -22,6 +25,13 @@ struct Cli {
 
 #[derive(clap::Subcommand)]
 enum Command {
+    /// Check declared operating coverage independently of generated-file freshness
+    AuditContext {
+        #[arg(short, long, default_value = DEFAULT_MANIFEST)]
+        manifest: PathBuf,
+        #[arg(long, default_value = DEFAULT_COVERAGE)]
+        coverage: PathBuf,
+    },
     /// Assemble AGENTS.md from manifest-selected GLOBAL.md fragments (landing next)
     Combine,
     /// Placeholder: rust ToC subcommand (follows combine in the accepted roadmap)
@@ -44,6 +54,33 @@ fn main() -> ExitCode {
     };
     let cli = Cli::from_arg_matches(&args).expect("clap reported these matches as valid");
     match cli.command {
+        Command::AuditContext { manifest, coverage } => {
+            let result = std::env::current_dir()
+                .map_err(|error| format!("current directory: {error}"))
+                .and_then(|cwd| {
+                    audit(&manifest, &coverage, &cwd).map_err(|error| error.to_string())
+                });
+            match result {
+                Ok(report) if report.findings.is_empty() => {
+                    println!(
+                        "coverage: {} baseline sections, {} required excerpts checked (declared coverage, not semantic equivalence)",
+                        report.sections, report.assertions
+                    );
+                    ExitCode::SUCCESS
+                }
+                Ok(report) => {
+                    eprintln!("coverage: {} problem(s)", report.findings.len());
+                    for finding in report.findings {
+                        eprintln!("  {finding}");
+                    }
+                    ExitCode::from(1)
+                }
+                Err(message) => {
+                    eprintln!("{message}");
+                    ExitCode::from(1)
+                }
+            }
+        }
         Command::Toc => {
             eprintln!("not yet implemented — see {TOOLCHAIN_DESIGN} (rust toc follows combine)");
             ExitCode::from(2)

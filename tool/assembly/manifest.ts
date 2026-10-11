@@ -4,7 +4,7 @@ import * as Schema from "effect/Schema";
 import { dirname, isAbsolute, normalize, resolve } from "node:path";
 import { ProvenanceText } from "../md/fragment.ts";
 
-/** Deliberately absent in production until the handwritten AGENTS.md has been fully decomposed. */
+/** Production selection since October 7; coverage is checked separately. */
 export const DEFAULT_MANIFEST = "agents.manifest.json";
 
 const relativePathChecks = [

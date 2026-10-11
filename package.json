@@ -27,7 +27,8 @@
     "test": "vitest",
     "build": "tsdown",
     "check:agents": "node tool/agents.ts --check",
-    "check": "pnpm run /^check:/"
+    "check": "pnpm run /^check:/",
+    "check:context": "cargo run --quiet --manifest-path tool/rust/Cargo.toml -- audit-context"
   },
   "dependencies": {
     "@effect/platform-node": "^4.0.1",

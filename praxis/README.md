@@ -144,6 +144,11 @@ the existing naming and evidence-gate policies; it creates no second tracker.
 
 ## Related practice: ticket pointers
 
+[Beads work tracking](/praxis/beads/README.md) owns the concrete operating
+practice: explicit readable IDs, epic-child namespaces, dependency direction,
+and the search/update/close loop. Its selected GLOBAL makes these rules available
+before an agent creates tickets. It complements the pointer practice below.
+
 [Ticket pointers](/praxis/ticket-pointers/ticket-pointers0.glm53fx.md) keep each
 work ticket a curated pointer at the two to four documents that currently best
 explain its work, moved to the tip as design waves, roadmaps, and check-ins

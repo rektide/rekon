@@ -81,8 +81,12 @@ selects [`/CONTEXT.md`](/CONTEXT.md) directly as the glossary fragment
 (`id: glossary`, order 50), settling the previously open question of whether
 the shared glossary compiles into ambient context.
 
-Fragment bodies were assembled verbatim at cutover; their honing-candidate
-disclaimers predate promotion and are due revision in a later honing pass.
+On October 11 the [coverage repair](/design/context-compilation/repair0.gpt6a.md)
+restored the missing operating domains through selected fragments, including
+[beads](/praxis/beads/README.md), and corrected the stale candidate disclaimers.
+The preserved monolith remains baseline evidence. The Rust
+[coverage audit](/tool/assembly/coverage.md) checks its section mapping and
+required instructions independently of byte freshness; `pnpm check` runs both.
 
 <a id="agents-assembly-metadata"></a>
 

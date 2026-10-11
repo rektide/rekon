@@ -50,6 +50,16 @@ surface, not a substitute for reading the combined document. Never weaken a
 required excerpt just to make the check green; explain a genuine policy change
 in its section's `note` and update the owned prose together.
 
+Implementation: [`coverage.rs`](/tool/rust/src/coverage.rs) parses real Markdown
+headings and visible bodies with pulldown-cmark; the existing Rust manifest
+planner supplies selection and path validation. Its CLI lives in
+[`main.rs`](/tool/rust/src/main.rs). Run `cargo nextest run --manifest-path
+tool/rust/Cargo.toml` and `cargo clippy --manifest-path tool/rust/Cargo.toml
+--all-targets -- -D warnings`. The CLI regression test invokes the production
+Node assembler in temporary bundles, so it requires this repo's installed Node
+dependencies. It proves fresh output can still fail coverage and that the audit
+does not write the output.
+
 ## Reviewed composition, October 11
 
 | Legacy area | Current exposure | Treatment |

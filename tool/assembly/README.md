@@ -31,10 +31,14 @@ physical directory name.
 [`tool/agents.ts`](/tool/agents.ts). Fragment/manifest validation, ordered
 assembly, atomic write/check, and CLI behavior have colocated tests. Since
 2026-10-07 it is the production assembler: the root manifest
-[`agents.manifest.json`](/agents.manifest.json) selects five fragments
-(glossary, constitution, code, praxis-ticket-pointers, refs) into
+[`agents.manifest.json`](/agents.manifest.json) selects domain fragments into
 [`AGENTS.md`](/AGENTS.md), and the hand-maintained predecessor is preserved
 at [`AGENTS.old.md`](/AGENTS.old.md).
+
+The October 11 [coverage repair](/design/context-compilation/repair0.gpt6a.md)
+restored operational domains omitted at cutover. Run `pnpm check` for both
+generated-byte freshness and [declared operating coverage](/tool/assembly/coverage.md).
+`--check` alone does not detect a coherent but incomplete fragment selection.
 
 Tool work must not regenerate or retarget that output as a side effect: edit
 fragments or the manifest deliberately, then re-run the command. No automatic

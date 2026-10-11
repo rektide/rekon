@@ -1,0 +1,273 @@
+{
+  "baseline": "AGENTS.old.md",
+  "sha256": "c474204ac00f45345bd27fb754e53bd767f51361633e4420f59eb4cb82f7c383",
+  "sections": [
+    {
+      "heading": "subagents",
+      "note": "Restore dispatch and stewardship together. Use the actual harness continuation identifier instead of the legacy task_id wording.",
+      "checks": [
+        {
+          "fragment": "agents/GLOBAL.md",
+          "contains": [
+            "Run delegated agents in the background.",
+            "Prime agents with existing research",
+            "write and commit their own model-suffixed documents",
+            "Delegate implementation and routine verification, not architectural responsibility.",
+            "Trust reported checks; do not rerun them just to confirm.",
+            "Cooperatively anneal broader solutions."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Experimenting",
+      "note": "Restore scratch ownership, variants, and discovery tools under the workspace owner.",
+      "checks": [
+        {
+          "fragment": "code/workspace/GLOBAL.md",
+          "contains": [
+            "Use rg and fd",
+            "a variant is usually ~/src/<repo>-<variant>/ with a jj workspace",
+            ".test-agent/<topic>/",
+            "with a README explaining the scratch work"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Documentation / reference materials",
+      "note": "Keep newer placement/ruling vocabulary; restore wave independence, model identity, rounds, doc-pass, and truthful provenance. Summarizer stays explicitly unfinished. Compact OKF guidance replaces the full sample; the owner supplies depth.",
+      "checks": [
+        {
+          "fragment": "constitution/GLOBAL.md",
+          "contains": [
+            "new Rekon topics do not enter the retiring doc/ bucket",
+            "Promotion synthesizes understanding rather than deleting the evidence it used."
+          ]
+        },
+        {
+          "fragment": "constitution/practice/GLOBAL.md",
+          "contains": [
+            "canonical files and sections",
+            "sources actually read",
+            "Every wave filename ends in the current model's concise suffix",
+            "Use a numerical round starting at 0",
+            "Do not read other authors' same-wave files unless directed",
+            "then compare sources' strengths, weaknesses, and distinctive ideas",
+            "useful reciprocal links, and index updates",
+            "Verify the links",
+            "index.md is a grouped progressive-disclosure listing",
+            "log.md is dated update history, newest first"
+          ]
+        },
+        {
+          "fragment": "agents/GLOBAL.md",
+          "contains": [
+            "Prefer multiple-choice questions allowing multiple selections",
+            "Explain the situation before the questions."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "well known directories and files",
+      "note": "Restore lookup locations inline; current toolkit map replaces the old unfinished summarizer as the capability pointer.",
+      "checks": [
+        {
+          "fragment": "code/workspace/GLOBAL.md",
+          "contains": [
+            "Check ~/archive/<repo-org>/<repo-name> first",
+            "~/wiki/<repo-org>/<repo-name>",
+            "~/archive/doc",
+            "dl <url> fetches a repository and its wiki",
+            "~/ff",
+            "Prefer a shebang and executable scripts."
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Project Planning",
+      "note": "Keep planning's common weight inline; pre-1.0 permission does not erase real persisted-data obligations.",
+      "checks": [
+        {
+          "fragment": "code/GLOBAL.md",
+          "contains": [
+            "plans carry no time estimates",
+            "domain-grouped project layouts",
+            "offer multiple plausible domain groupings",
+            "Mermaid diagrams should use meaningful node identifiers",
+            "Breaking changes are fine below 1.0"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Coding advice",
+      "note": "Preserve the newer checkpoint obligations alongside error handling and deliberate cleanup.",
+      "checks": [
+        {
+          "fragment": "code/GLOBAL.md",
+          "contains": [
+            "commit each coherent stage when available, including prompts, research, drafts, and guidance",
+            "before a review-driven revamp, save the present owned state",
+            "Let It Fail",
+            "Do not add automatic prune/reconciliation behavior unless explicitly requested",
+            "discuss direction as well as committing the predecessor before editing"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Rust instructions",
+      "note": "Restore preferred tools and publishing order. Refine the incomplete Figment example to distinguish explicit CLI values from defaults; no new configuration implementation is implied.",
+      "checks": [
+        {
+          "fragment": "code/rust/GLOBAL.md",
+          "contains": [
+            "figment2",
+            "clap v4",
+            "clap_complete",
+            "bon",
+            "jiff",
+            "tracing",
+            "nextest",
+            "clippy",
+            "criterion",
+            "CLI > environment > defaults",
+            "cargo bump",
+            "then make a jj commit, then cargo publish"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Rules and guidelines for JavaScript projects",
+      "note": "Restore everyday conventions; keep full script/toolchain recipes in js/README.md. Native project tooling and the later Rekon Rust-first decision remain explicit.",
+      "checks": [
+        {
+          "fragment": "js/GLOBAL.md",
+          "contains": [
+            "explicit .ts extensions",
+            "node: prefix",
+            "Keep class members public",
+            "Prefer pnpm",
+            "pnpm install <package>@latest",
+            "build output is for npm distribution only",
+            "node:fs/promises",
+            "await when its value is needed",
+            "oxfmt",
+            "oxlint",
+            "tsdown",
+            "vitest",
+            "tsgo",
+            "allowImportingTsExtensions",
+            "isolatedDeclarations",
+            "@gunshi/plugin-completion",
+            "xdg-basedir",
+            "concurrently 'pnpm:check:*'",
+            "dev/watch target",
+            "realpath process.argv[1]"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "jj / git",
+      "note": "Guardrails, ID/date cues, and message practice stay ambient. Expanded DSL/log examples remain in the jj guide.",
+      "checks": [
+        {
+          "fragment": "vcs/jj/GLOBAL.md",
+          "contains": [
+            "Never use jj edit",
+            "Never squash unless explicitly instructed",
+            "Do not push unless explicitly directed by the operator",
+            "jj commit -m \"<description>\" <files...>",
+            "ticket IDs in the commit message body",
+            "jj diff --git",
+            "jj help -k revsets",
+            "jj help -k templates",
+            "<feature>-<YYYYMMDD>",
+            "Working-copy author dates come from creation"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "jj-hunk",
+      "note": "Keep the existing extracted hunk guide; full IDs, dry-run, and the wholesale-rewrite problem remain ambient.",
+      "checks": [
+        {
+          "fragment": "code/GLOBAL.md",
+          "contains": [
+            "full hunk-<sha256> IDs only",
+            "always dry-run the spec first",
+            "load /code/jj-hunk.md before hunk-level work"
+          ]
+        },
+        {
+          "fragment": "vcs/jj/GLOBAL.md",
+          "contains": [
+            "Wholesale rewrites do not hunk-split into clean intermediates",
+            "preserve the rewritten version"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "beads",
+      "note": "Restore naming, graph semantics, and common commands inline. Supersession/rename detail lives in the beads README. Retire the SQLite-delete/import recipe for Dolt recovery, preserving its provenance and pointing to version-aware backup help.",
+      "checks": [
+        {
+          "fragment": "praxis/beads/GLOBAL.md",
+          "contains": [
+            "work from the project directory, not bd -C",
+            "bd config get issue_prefix",
+            "Always pass a stable, human-readable --id; never use autogenerated IDs",
+            "Namespace child IDs under their epic",
+            "<prefix>-<effort>-<capability>",
+            "bd dep add A B --type blocks means A depends on B",
+            "Dependent first; prerequisite second",
+            "bd update --append-notes",
+            "bd create --id <prefix>-<short-name>",
+            "bd show <issue-id>",
+            "bd close <issue-id> --reason",
+            "Dolt is the source of truth",
+            "export.auto=true",
+            "Never run bd prime"
+          ]
+        },
+        {
+          "fragment": "praxis/ticket-pointers/GLOBAL.md",
+          "contains": [
+            "Ticketing is user-shaped, not mandatory",
+            "implementation report with the session ID"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "webcomponents",
+      "note": "Keep manifest-generation requirements with JavaScript tooling rather than create a one-rule module.",
+      "checks": [
+        {
+          "fragment": "js/GLOBAL.md",
+          "contains": ["wc-toolkit", "descriptive JSDoc", "generate Custom Element Manifests"]
+        }
+      ]
+    },
+    {
+      "heading": "shell usage",
+      "note": "Restore the environment lifetime rule in the workspace fragment.",
+      "checks": [
+        {
+          "fragment": "code/workspace/GLOBAL.md",
+          "contains": [
+            "Environment variables do not persist across shell tool executions",
+            "Set needed variables each time"
+          ]
+        }
+      ]
+    }
+  ]
+}

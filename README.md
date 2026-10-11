@@ -47,10 +47,14 @@ action vocabulary extend that work; they do not replace its recorded rulings.
 | **Honing → promotion** | We refine candidates before deciding their standing. Repetition may be useful while honing; actual activation is a separate fact. |
 
 The [working glossary](/CONTEXT.md) gives these words short, linked definitions.
-The [constitution's candidate GLOBAL](/constitution/GLOBAL.md) deliberately
+The [constitution's GLOBAL](/constitution/GLOBAL.md) deliberately
 repeats their operating significance for a reader who has not loaded a skill.
-We are [hand-weaving the context](/design/rekon/context-weave/north-star0.gpt6a.md),
-not yet replacing the live AGENTS manuscript or promoting the candidate GLOBALs.
+The [manual weave](/design/rekon/context-weave/north-star0.gpt6a.md) informed the
+current [manifest-selected assembly](/tool/assembly/README.md). `AGENTS.md` is now
+generated; its predecessor lives at `AGENTS.old.md`. Run `pnpm check` to check
+both output freshness and [operating coverage](/tool/assembly/coverage.md).
+The October 11 repair restored advice lost at cutover, including
+[beads IDs and commands](/praxis/beads/README.md).
 
 The emerging Phoenix inquiry asks what should survive when we replace a prompt,
 workflow, tool, or implementation: intent, promises, evaluations, reasons,
