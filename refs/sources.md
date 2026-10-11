@@ -6,10 +6,10 @@ tags: [sources, provenance, references, okf, sessions]
 status: draft
 generated: { by: "rekon/gpt-6-astra", at: 2026-10-11T18:11:00-04:00 }
 sources:
-  - resource: "opencode://session/ses_ed2db3069ffeQV7v6JC7p69Vte"
-    title: Adopt canonical OpenCode URI citations, source qualification, and legacy compatibility in Rekon guidance
-  - resource: "opencode://session/ses_ed2eda746ffefem0MPL9M5MYX7"
-    title: Human direction in opencoattails to adopt OpenCode URI references and align Rekon provenance guidance
+  - resource: "opencode://ses_ed2db3069ffeQV7v6JC7p69Vte"
+    title: Adopt OpenCode URI citations and correct the canonical grammar to keyed positional coordinates with session authority
+  - resource: "opencode://ses_ed2eda746ffefem0MPL9M5MYX7"
+    title: Human direction in opencoattails to adopt OpenCode URI references and make keyed positional IDs canonical
   - resource: "urn:opencode:session:ses_ed2fb6875ffe2HmO6fhnDZensz"
     title: Human direction in lucky-eagle to emphasize current-session provenance as vital to OKF writing
   - id: writing-guidance
@@ -47,7 +47,7 @@ writing practice: the session preserves the human direction, reasoning, and
 choices that a finished document often compresses away. Without that reference,
 the next reader can lose the way back to why the work took its shape.
 
-- Use `resource: "opencode://session/<actual-session-id>"`, replacing the
+- Use `resource: "opencode://<actual-session-id>"`, replacing the
   placeholder with the current ID supplied by the harness. Never copy an
   example's ID as your own. If the ID is unavailable, recover it from session
   tooling or ask; do not invent one.
@@ -70,7 +70,7 @@ the next reader can lose the way back to why the work took its shape.
 ```yaml
 sources:
   - id: skill-direction
-    resource: opencode://session/ses_eec6a0bd5ffe45v03zJ7px5vgb
+    resource: opencode://ses_eec6a0bd5ffe45v03zJ7px5vgb
     title: Human direction for archive-backed skills and a compact global index
 ```
 
@@ -90,22 +90,21 @@ Our skill index points directly into archive checkouts.[^skill-direction]
 
 ## Our OpenCode session convention
 
-Use the canonical long form for new citations:
+Use the canonical keyed positional form for new citations:
 
 ```text
-opencode://session/<session-id>[/message/<message-id>[/part/<part-id>]]
+opencode://ses_<id>[/msg_<id>[/call_<id>]]
 ```
 
-Brackets describe optional coordinates, not literal URI characters. A session
+Brackets describe optional coordinates, not literal URI characters. The actual
+native session ID is the URI authority, and the keyed IDs identify each target
+without literal `session`, `message`, or `part` route segments. A session
 reference names the native container; a message reference narrows it to an
-utterance. A part reference identifies the actual native tool call ID belonging
-to that message. Do not construct a part target under a session alone: resolving
-it requires the message coordinate as well.
-
-Cotail accepts the shorthand
-`opencode://<session-id>[/<message-id>[/<part-id>]]`, but maintained examples and
-new `sources:` entries use the long form. Session petnames such as
-`brave-mountain` are useful labels; the native ID remains the lookup key.
+utterance. A part reference uses the actual native tool call ID belonging to that
+message. Do not construct a part target under a session alone: resolving it
+requires the message coordinate as well. “Long form” means the full coordinates,
+not named route components. Session petnames such as `brave-mountain` are useful
+labels; the native ID remains the lookup key.
 
 Any of these targets can include `?source=<durable-registered-source-id>`.
 The source ID identifies an entry in Cotail's source registry, **not** a channel,
@@ -125,9 +124,12 @@ as its origin. A session is an evolving container, not a frozen revision or
 evidence that every message agrees; use message coordinates, timestamps, or a
 bounded quote when the exact utterance matters.
 
-The earlier `urn:opencode:session:<session-id>` spelling remains accepted as a
-legacy session reference. Preserve historical source entries; adopting URIs is
-not authorization to mass-rewrite prior documents.
+Cotail accepts the previously drafted named-route form
+`opencode://session/<session-id>[/message/<message-id>[/part/<part-id>]]` as a
+legacy alias, and `urn:opencode:session:<session-id>` remains accepted as a legacy
+session reference. Neither is canonical for new citations. Preserve historical
+source entries; adopting the keyed positional form is not authorization to
+mass-rewrite prior documents.
 
 For the related distinction between a durable mark and the session it targets,
 see [bookmarking](/praxis/bookmarking/README.md). A citation records provenance;
