@@ -1,0 +1,13 @@
+[package]
+name = "rekon-markup"
+version = "0.1.0"
+edition = "2024"
+description = "Static Markdown/MDX structure and scoped OKF metadata"
+license = "MIT"
+
+[dependencies]
+markdown = "1.0.0"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+serde_yaml_ng = "0.10"
+thiserror = "2"
