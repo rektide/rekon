@@ -3,14 +3,14 @@ type: Reference
 title: Static scoped OKF extraction
 description: Rust library contract for preserving frontmatter and reading explicitly scoped metadata from Markdown and static MDX JSX.
 status: draft
-generated: { by: "rekon/gpt-6.1-sol", at: "2026-10-11T18:11:59-04:00" }
+generated: { by: "rekon/gpt-6.1-sol", at: "2026-10-11T18:21:23-04:00" }
 sources:
   - { resource: /design/toolchain/enriched-assembly0.gpt6a.md, title: Enriched assembly interface and static metadata commission }
   - { resource: /okf/README.md, title: Rekon OKF conventions and unknown-field preservation }
   - { resource: /refs/sources.md, title: Native provenance and honest verification }
   - { resource: "https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/86df01601733f93c0f243a727927d03ebf6d7e1d/okf/SPEC.md", title: OKF v0.2, consulted in the local archive }
   - { resource: "https://docs.rs/markdown/1.0.0/markdown/", title: Maintained CommonMark/GFM and MDX AST parser }
-  - { resource: "urn:opencode:session:ses_ed2ffcc34ffeinaoX0ouV2gDCy", title: Sol Medium static extractor implementation, API reasoning, and focused verification }
+  - { resource: "urn:opencode:session:ses_ed2ffcc34ffeinaoX0ouV2gDCy", title: Sol Medium extractor implementation, API reasoning, JSX-comment correction, and focused verification }
   - { resource: "urn:opencode:session:ses_ed31715c4ffex2ROd2G2C617AF", title: Parent commission for enriched Rust assembly, scoped extraction, and shared markup interfaces }
 ---
 
@@ -91,6 +91,15 @@ Markdown scanner. HTML comments recognized as standalone Markdown HTML nodes
 are blanked with byte-preserving spaces before JSX parsing, so generated
 ownership comments do not become records or corrupt offsets.
 
+JSX comment-only expressions (`{/* comment */}`, with optional whitespace
+before the closing brace) also produce no records, headings, or scope changes.
+Discovery uses the Markdown AST to exclude code, then the maintained MDX
+expression parser validates each comment and determines its range. Opening-tag
+candidates are validated with the MDX JSX/JSON parser before masking, protecting
+literal comment-looking strings inside metadata and other static attributes.
+All masking preserves UTF-8 byte counts and original line endings. This works
+both in ordinary prose and directly inside inline section/article containers.
+
 YAML roots must be mappings; recursively supported values are string-keyed
 objects, arrays, strings, booleans, null, and JSON-representable numbers. Tags,
 non-string mapping keys, non-finite numbers, duplicate YAML keys, malformed YAML,
@@ -106,6 +115,11 @@ inside JSON strings round-trip correctly. Structural `id` and `data-source`
 accept quoted JSX strings or JSON-string expressions; dynamic ownership fails.
 Other JSX expression attributes also must be literal JSON. Body braces are
 ordinary prose, not executable MDX expressions; imports/exports are not run.
+The reserved unescaped `{/*` opener outside code or static props requires one
+complete block comment and a closing brace. Unterminated comments, executable
+tokens after the comment, and several comments in one expression fail explicitly;
+use separate comment expressions instead. Escape the opening brace or use code
+formatting when describing that syntax literally.
 
 This deliberately supports a static Markdown/JSX subset, not every legacy HTML
 or runnable MDX document. JSX elements must be balanced (HTML void elements
@@ -124,7 +138,9 @@ Run `cargo nextest run -p rekon-markup --manifest-path tool/rust/Cargo.toml`
 [Focused tests](/tool/rust/crates/rekon-markup/tests/metadata.rs) exercise nested
 unknown-field round-trips, nearest ownership without inheritance, source byte
 ranges, code/comment exclusion, headings, Unicode/CRLF, malformed/dynamic
-attributes, and unsupported YAML.
+attributes, and unsupported YAML. JSX-comment regressions include fake metadata,
+fake scopes/headings, dynamic props inside comments, literal comment syntax in
+static JSON values, ordinary prose braces, and Unicode/CRLF source offsets.
 
 - [OKF home](/okf/README.md): canonical file-level knowledge conventions; this
   tool extends their transport without declaring a new upstream standard.

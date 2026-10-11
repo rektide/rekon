@@ -180,3 +180,83 @@ fn multiline_definition_containers_require_flow_jsx_syntax() {
         "<dl>\n<dt><dfn id=\"term\">Term</dfn></dt>\n<dd>\nFirst line.\nSecond line.\n</dd>\n</dl>";
     assert!(parse_document(valid).is_ok());
 }
+
+#[test]
+fn jsx_comment_static_okf_is_not_a_record() {
+    let source = "{/* <Okf data={{\"type\":\"Fake\"}} /> */}";
+    assert!(extract(source).unwrap().is_empty());
+}
+
+#[test]
+fn jsx_comments_never_produce_metadata_or_structure() {
+    let source = "---\ntype: File\n---\n# Visible\n\n<section id=\"real\">\n\n{/* <Okf data={{\"type\":\"Fake\"}} /> */}\n\n{/*\n# Hidden heading\n<section id=\"fake\">\n<Okf data={run()} />\n</section>\n} unmatched comment braces {\n*/}\n\nInline {/* <Okf data={{\"type\":\"Inline fake\"}} /> */} prose.\n\n<Okf data={{\"type\":\"Real\"}} />\n\n## Last\n\n</section>\n";
+    let parsed = parse_document(source).unwrap();
+    assert_eq!(parsed.metadata.len(), 2);
+    assert_eq!(parsed.metadata[1].metadata["type"], "Real");
+    assert_eq!(parsed.metadata[1].owner.id.as_deref(), Some("real"));
+    assert_eq!(parsed.headings.len(), 2);
+    assert_eq!(parsed.headings[1].text, "Last");
+    assert_eq!(
+        &source[parsed.headings[1].span.start..parsed.headings[1].span.end],
+        "## Last"
+    );
+}
+
+#[test]
+fn comment_syntax_in_literal_metadata_is_preserved() {
+    for text in [
+        "{/* comment */}",
+        "<fake> {/* comment */}",
+        "{/* unterminated",
+        "a > {/* <Okf data={dynamic} /> */}",
+    ] {
+        let value = json!({"type": "Test", "text": text});
+        let source = render_okf(&value).unwrap();
+        assert_eq!(extract(&source).unwrap()[0].metadata, value);
+    }
+}
+
+#[test]
+fn comments_inside_inline_scope_containers_are_ignored() {
+    let source = "<section id=\"real\">{/* <Okf data={{\"type\":\"Fake\"}} /> */}<Okf data={{\"type\":\"Real\"}} /></section>";
+    let records = extract(source).unwrap();
+    assert_eq!(records.len(), 1);
+    assert_eq!(records[0].metadata["type"], "Real");
+    assert_eq!(records[0].owner.id.as_deref(), Some("real"));
+}
+
+#[test]
+fn jsx_comment_unicode_crlf_and_following_ranges_are_preserved() {
+    let source = "---\r\ntype: File\r\n---\r\n{/* λ 🦀\r\n<Okf data={dynamic} />\r\n*/ }\r\n\r\n# Visible\r\n\r\n<Okf data={{\"type\":\"Real\"}} />\r\n";
+    let parsed = parse_document(source).unwrap();
+    assert_eq!(parsed.metadata.len(), 2);
+    let record = &parsed.metadata[1];
+    assert_eq!(
+        &source[record.span.start..record.span.end],
+        "<Okf data={{\"type\":\"Real\"}} />"
+    );
+    assert_eq!(
+        &source[parsed.headings[0].span.start..parsed.headings[0].span.end],
+        "# Visible"
+    );
+}
+
+#[test]
+fn malformed_or_dynamic_comment_expressions_fail_explicitly() {
+    for source in [
+        "{/* not closed",
+        "{/* comment */ call()}",
+        "{/* first */ /* second */}",
+    ] {
+        assert!(parse_document(source).is_err(), "accepted: {source}");
+    }
+}
+
+#[test]
+fn prose_braces_and_code_comment_examples_remain_static() {
+    let source = "# Literal { prose\n\nUnmatched { and } } stay prose.\n\n`{/* example */}`\n\n\\{/* escaped */}\n\n```mdx\n{/* <Okf data={dynamic} /> */}\n```\n\n<Okf data={{\"type\":\"Real\"}} />\n";
+    let parsed = parse_document(source).unwrap();
+    assert_eq!(parsed.headings[0].text, "Literal { prose");
+    assert_eq!(parsed.metadata.len(), 1);
+    assert_eq!(parsed.metadata[0].metadata["type"], "Real");
+}

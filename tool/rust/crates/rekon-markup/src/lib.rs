@@ -181,8 +181,8 @@ pub struct ParsedDocument {
     pub metadata: Vec<ScopedMetadata>,
 }
 
-/// Parse CommonMark/GFM with static MDX JSX. Body expressions are plain text;
-/// JSX attributes are parsed but never executed. Unsupported JSX is an error.
+/// Parse CommonMark/GFM with static MDX JSX. Comment-only JSX expressions are
+/// ignored; other prose braces stay text. Attributes never execute JavaScript.
 pub fn parse_document(source: &str) -> Result<ParsedDocument> {
     let frontmatter = parse_frontmatter(source)?;
     let mut body = frontmatter.body.to_owned();
@@ -191,31 +191,15 @@ pub fn parse_document(source: &str) -> Result<ParsedDocument> {
     let commonmark = markdown::to_mdast(&body, &markdown::ParseOptions::gfm())
         .map_err(|error| Error::Markup(error.to_string()))?;
     mask_comments(&commonmark, &mut body);
-    let mut options = markdown::ParseOptions::gfm();
-    options.constructs.html_flow = false;
-    options.constructs.html_text = false;
-    options.constructs.mdx_jsx_flow = true;
-    options.constructs.mdx_jsx_text = true;
-    // A real JSON parser, rather than the MDX parser's brace-counting fallback,
-    // is essential: a JSON string may itself contain unmatched `{` or `}`.
-    options.mdx_expression_parse = Some(Box::new(|value, _kind| {
-        match serde_json::from_str::<Value>(value) {
-            Ok(_) => markdown::MdxSignal::Ok,
-            Err(error) if error.is_eof() => markdown::MdxSignal::Eof(
-                format!("incomplete static JSON attribute: {error}"),
-                Box::new("rekon-markup".into()),
-                Box::new("static-json".into()),
-            ),
-            Err(error) => markdown::MdxSignal::Error(
-                format!("attribute must be literal JSON, not a dynamic expression: {error}"),
-                0,
-                Box::new("rekon-markup".into()),
-                Box::new("static-json".into()),
-            ),
-        }
-    }));
-    let tree =
-        markdown::to_mdast(&body, &options).map_err(|error| Error::Markup(error.to_string()))?;
+    // Disabling HTML flow only for discovery keeps text inside HTML-style
+    // containers visible, even without blank lines around their children.
+    let mut discovery_options = markdown::ParseOptions::gfm();
+    discovery_options.constructs.html_flow = false;
+    let discovery = markdown::to_mdast(&body, &discovery_options)
+        .map_err(|error| Error::Markup(error.to_string()))?;
+    mask_jsx_comments(&discovery, &mut body, frontmatter.body_offset)?;
+    let tree = markdown::to_mdast(&body, &static_jsx_options())
+        .map_err(|error| Error::Markup(error.to_string()))?;
     let document = Scope {
         kind: ScopeKind::Document,
         id: None,
@@ -241,6 +225,33 @@ pub fn parse_document(source: &str) -> Result<ParsedDocument> {
     Ok(parsed)
 }
 
+fn static_jsx_options() -> markdown::ParseOptions {
+    let mut options = markdown::ParseOptions::gfm();
+    options.constructs.html_flow = false;
+    options.constructs.html_text = false;
+    options.constructs.mdx_jsx_flow = true;
+    options.constructs.mdx_jsx_text = true;
+    // A real JSON parser, rather than the MDX parser's brace-counting fallback,
+    // is essential: a JSON string may itself contain unmatched `{` or `}`.
+    options.mdx_expression_parse = Some(Box::new(|value, _kind| {
+        match serde_json::from_str::<Value>(value) {
+            Ok(_) => markdown::MdxSignal::Ok,
+            Err(error) if error.is_eof() => markdown::MdxSignal::Eof(
+                format!("incomplete static JSON attribute: {error}"),
+                Box::new("rekon-markup".into()),
+                Box::new("static-json".into()),
+            ),
+            Err(error) => markdown::MdxSignal::Error(
+                format!("attribute must be literal JSON, not a dynamic expression: {error}"),
+                0,
+                Box::new("rekon-markup".into()),
+                Box::new("static-json".into()),
+            ),
+        }
+    }));
+    options
+}
+
 pub fn extract(source: &str) -> Result<Vec<ScopedMetadata>> {
     Ok(parse_document(source)?.metadata)
 }
@@ -252,23 +263,153 @@ fn mask_comments(node: &Node, source: &mut String) {
         && let Some(position) = node.position()
     {
         let range = position.start.offset..position.end.offset;
-        let blank: String = source[range.clone()]
-            .bytes()
-            .map(|byte| {
-                if byte == b'\n' || byte == b'\r' {
-                    char::from(byte)
-                } else {
-                    ' '
-                }
-            })
-            .collect();
-        source.replace_range(range, &blank);
+        mask_range(source, range);
     }
     if let Some(children) = node.children() {
         for child in children {
             mask_comments(child, source);
         }
     }
+}
+
+fn mask_range(source: &mut String, range: std::ops::Range<usize>) {
+    let blank: String = source[range.clone()]
+        .bytes()
+        .map(|byte| match byte {
+            b'\n' | b'\r' => char::from(byte),
+            _ => ' ',
+        })
+        .collect();
+    source.replace_range(range, &blank);
+}
+
+/// Find comment openers only in Markdown text, never code, HTML attributes, or
+/// link destinations. The maintained MDX expression parser determines the
+/// expression range and validates the reserved, comment-only syntax. Ordinary
+/// prose braces stay ordinary prose, including unmatched braces.
+fn mask_jsx_comments(tree: &Node, source: &mut String, offset: usize) -> Result<()> {
+    fn candidates(node: &Node, source: &str, starts: &mut Vec<usize>) {
+        if let Node::Text(_) = node {
+            let span = range(node, 0);
+            for (relative, _) in source[span.start..span.end].match_indices("{/*") {
+                let start = span.start + relative;
+                let escaped = source[..start]
+                    .bytes()
+                    .rev()
+                    .take_while(|byte| *byte == b'\\')
+                    .count()
+                    % 2
+                    == 1;
+                if !escaped {
+                    starts.push(start);
+                }
+            }
+        }
+        if let Some(children) = node.children() {
+            for child in children {
+                candidates(child, source, starts);
+            }
+        }
+    }
+    let mut starts = Vec::new();
+    candidates(tree, source, &mut starts);
+    let mut masked_until = 0;
+    for start in starts {
+        if start < masked_until {
+            continue;
+        }
+        if inside_static_jsx_tag(source, start) {
+            continue;
+        }
+        let invalid = || {
+            Error::Markup(format!(
+                "JSX comment at byte {} requires a single closed block comment inside braces",
+                offset + start,
+            ))
+        };
+        let close = source[start + 3..].find("*/").ok_or_else(invalid)? + start + 3 + 2;
+        let after = source[close..].trim_start();
+        if !after.starts_with('}') {
+            return Err(invalid());
+        }
+        let end = source.len() - after.len() + 1;
+        let mut options = markdown::ParseOptions::gfm();
+        options.constructs.mdx_expression_flow = true;
+        options.constructs.mdx_expression_text = true;
+        options.mdx_expression_parse = Some(Box::new(|value, _kind| {
+            let Some(comment) = value.trim().strip_prefix("/*") else {
+                return markdown::MdxSignal::Error(
+                    "only a static block comment is supported here".into(),
+                    0,
+                    Box::new("rekon-markup".into()),
+                    Box::new("static-comment".into()),
+                );
+            };
+            if let Some(close) = comment.find("*/")
+                && comment[close + 2..].trim().is_empty()
+            {
+                markdown::MdxSignal::Ok
+            } else {
+                markdown::MdxSignal::Eof(
+                    "incomplete static block comment".into(),
+                    Box::new("rekon-markup".into()),
+                    Box::new("static-comment".into()),
+                )
+            }
+        }));
+        let parsed = markdown::to_mdast(&source[start..end], &options).map_err(|error| {
+            Error::Markup(format!("JSX comment at byte {}: {error}", offset + start))
+        })?;
+        let children = parsed.children().expect("parsed root has children");
+        if children.len() != 1 || !matches!(&children[0], Node::MdxFlowExpression(_)) {
+            return Err(invalid());
+        }
+        let span = range(&children[0], start);
+        if span.end != end {
+            return Err(invalid());
+        }
+        mask_range(source, span.start..span.end);
+        masked_until = span.end;
+    }
+    Ok(())
+}
+
+/// CommonMark can classify a JSX tag as text because JSON braces are not HTML
+/// attribute syntax. Validate candidate opening tags with the native MDX parser
+/// before masking, so comment-like strings inside static props stay untouched.
+/// The `>` search proposes boundaries only: the parser, including its JSON
+/// attribute callback, decides whether each candidate is a complete tag.
+fn inside_static_jsx_tag(source: &str, candidate: usize) -> bool {
+    for (start, _) in source[..candidate].rmatch_indices('<') {
+        if source
+            .as_bytes()
+            .get(start + 1)
+            .is_none_or(|byte| !byte.is_ascii_alphabetic())
+        {
+            continue;
+        }
+        for (relative_end, _) in source[start..].match_indices('>') {
+            let end = start + relative_end + 1;
+            let tag = &source[start..end];
+            let tag = if tag[..tag.len() - 1].trim_end().ends_with('/') {
+                tag.to_owned()
+            } else {
+                format!("{} />", &tag[..tag.len() - 1])
+            };
+            if let Ok(parsed) = markdown::to_mdast(&tag, &static_jsx_options())
+                && let Some(children) = parsed.children()
+                && children.len() == 1
+                && jsx(&children[0]).is_some()
+                && children[0].children().is_some_and(Vec::is_empty)
+            {
+                if end > candidate {
+                    return true;
+                }
+                break;
+            }
+        }
+    }
+    false
 }
 
 fn range(node: &Node, offset: usize) -> SourceRange {
