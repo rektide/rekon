@@ -5,13 +5,13 @@ source: /code/README.md
 status: draft
 type: ContextFragment
 title: Code — stage and change discipline
-description: A glossary-first candidate exposure of existing commit, review, and planning discipline while the shared context is honed.
+description: Active shared commit, review, planning, and coding discipline.
 resource: /code/GLOBAL.md
 generated: { by: "model:gpt-6-astra", at: 2026-09-06 }
 extensions:
   ticket: rekon-phoenix
   related_work: [rekon-agents-maintenance, rekon-session-mementos]
-  posture: honing; not promoted; not selected for production assembly by this change
+  posture: active production fragment; guidance remains open to refinement
 sources:
   - { resource: /code/README.md, title: Coding practice }
   - { resource: /code/commits.md, title: Capture revise compare }
@@ -20,8 +20,8 @@ sources:
 
 # Code — stage and change discipline
 
-**Honing candidate, not a promoted GLOBAL.** Repetition with the README/SKILL
-body and the live manuscript is intentional while we examine the combined view.
+Selected for production assembly. The README/SKILL body owns the fuller practice;
+these rules must be usable before an agent chooses deeper reading.
 
 ## Terms in use
 
@@ -40,4 +40,12 @@ use the shared vocabulary; this fragment adds only the terms its instructions ne
 - changes intermingled **within** a file → `jj-hunk`: full `hunk-<sha256>` IDs only, always dry-run the spec first. load /code/jj-hunk.md before hunk-level work.
 - review comments: discuss direction as well as committing the predecessor before editing; land each correction as its own well-argued commit. /code/review-handling.md
 - plans carry no time estimates, ever. /code/planning.md
+- use domain-grouped project layouts, never a flat dump; when offering layout
+  options, offer multiple plausible domain groupings. Mermaid diagrams should
+  use meaningful node identifiers. Breaking changes are fine below 1.0; assess
+  actual persisted-data or consumer obligations rather than inventing them.
+- Let It Fail when appropriate: do not catch an error merely to print it; retain
+  its stack and cause. Handle errors where recovery or a real boundary needs it.
+- Do not add automatic prune/reconciliation behavior unless explicitly requested.
+  Create/update declared state and leave cleanup deliberate.
 - module entry point: /code/README.md

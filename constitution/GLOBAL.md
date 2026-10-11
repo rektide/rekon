@@ -5,13 +5,13 @@ source: /constitution/README.md
 status: draft
 type: ContextFragment
 title: Constitution — the shared sense-map
-description: A glossary-first candidate contribution joining naming, knowledge, work, and action before specialized context is loaded.
+description: Active shared context joining naming, knowledge, work, and action before specialized reading.
 resource: /constitution/GLOBAL.md
 generated: { by: "model:gpt-6-astra", at: 2026-09-06 }
 extensions:
   ticket: rekon-phoenix
   related_work: [rekon-con-naming, rekon-agents-maintenance-skillify]
-  posture: honing; not promoted; not selected for production assembly by this change
+  posture: active production fragment; guidance remains open to refinement
 sources:
   - { resource: /constitution/README.md, title: Constitution and the current honing exception }
   - { resource: /CONTEXT.md, title: Shared working vocabulary }
@@ -21,8 +21,8 @@ sources:
 
 # Constitution — orient before acting
 
-**Honing candidate, not a promoted GLOBAL.** This text proposes shared context;
-its filename and `draft` label do not determine whether a host loads it.
+Selected for production assembly. `draft` marks guidance still being refined;
+it does not mean the fragment is absent from runtime context.
 
 ## Terms in use
 
@@ -81,5 +81,7 @@ feed improvement; artifact completion alone does not establish usefulness.
 
 Load the [constitution body](/constitution/README.md) for knowledge ownership,
 waves, evidence, and promotion; load its [reading map](/constitution/index.md)
-for prior rulings and unresolved alternatives. The manual workshop does not
-replace the live AGENTS manuscript or promote these candidate fragments.
+for prior rulings and unresolved alternatives. `AGENTS.md` is generated from
+the root manifest; edit its domain fragments, then regenerate. The preserved
+`AGENTS.old.md` is migration evidence, not the current producer. Check both
+[assembly freshness and operating coverage](/tool/assembly/coverage.md).

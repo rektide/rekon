@@ -2,7 +2,14 @@
   "fragments": [
     "CONTEXT.md",
     "constitution/GLOBAL.md",
+    "constitution/practice/GLOBAL.md",
+    "agents/GLOBAL.md",
+    "code/workspace/GLOBAL.md",
     "code/GLOBAL.md",
+    "vcs/jj/GLOBAL.md",
+    "js/GLOBAL.md",
+    "code/rust/GLOBAL.md",
+    "praxis/beads/GLOBAL.md",
     "praxis/ticket-pointers/GLOBAL.md",
     "refs/GLOBAL.md"
   ],

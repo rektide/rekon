@@ -1,0 +1,54 @@
+---
+id: documentation-practice
+order: 120
+source: /constitution/README.md
+status: draft
+---
+
+# Writing, independent waves, and document connections
+
+## Durable writing
+
+- Use structured Markdown with descriptive links to canonical files and sections.
+  Prefer bundle-root-relative links inside Rekon and canonical repository URLs
+  for external sources; identify the repository when context does not already.
+- Give knowledge documents honest OKF-style frontmatter: type, title,
+  description, resource, status, author/model and date, sources actually read,
+  and verification/review information only when justified. See
+  [source practice](/refs/sources.md) and [the constitution](/constitution/README.md).
+- `index.md` is a grouped progressive-disclosure listing, not another concept
+  document. `log.md` is dated update history, newest first. An addendum can retain
+  an earlier argument while recording new understanding; mutable READMEs may
+  integrate accepted conclusions directly.
+
+## Waves
+
+- Start with the situation, present ask, directions of inquiry, and what changed
+  since the previous work. Waves are independent research/design outputs, commonly
+  under `design/<topic>/`; they are not compulsory for every task.
+- Every wave filename ends in the current model's concise suffix:
+  `draft0.gpt6a.md`, `draft0.glm53m.md`. Use a numerical round starting at 0.
+  Never use the harness name as the model or copy another model's suffix.
+- For one main document, use `<topic>.<model>.md`; revisions can use
+  `<topic>2.<model>.md`. Prefer new files for materially new arguments; preserve
+  independent drafts. Maintain a README/index as the corpus becomes useful.
+- Do not read other authors' same-wave files unless directed. Previous waves are
+  available context. Synthesis follows the evidence: integrate common themes
+  and tensions, then compare sources' strengths, weaknesses, and distinctive ideas.
+  Names such as `draft0-syn0.<model>.md` record the wave and synthesis round.
+- When a tip is accepted, a suffix-less symlink can identify it while exact
+  model-suffixed evidence stays available. Acceptance is not deletion or a bulk
+  move; promotion synthesizes into the maintained domain home.
+
+## Doc-pass
+
+After substantial writing, search indexes and the surrounding corpus by concept,
+not just exact keywords. Read candidate sources enough to distinguish meaningful
+relationships. Add explained Cross-references (evidence, tension, precedent,
+extension), useful reciprocal links, and index updates. Verify the links and
+surrounding text. A separate search agent is optional when authorized; integrate
+only findings checked against sources.
+
+These restore [legacy writing practice](/AGENTS.old.md#documentation--reference-materials).
+The old `summarizer` mention described unfinished work, not an available tool;
+consult [the toolkit map](/tool/README.md) for current capabilities.
