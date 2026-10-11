@@ -1,0 +1,10 @@
+[package]
+name = "rekon-toc"
+version = "0.1.0"
+edition = "2024"
+description = "Table-of-contents rendering and managed <nav> region updating for Rekon Markdown/MDX documents"
+license = "MIT"
+
+[dependencies]
+markdown = "1.0.0"
+thiserror = "2"
