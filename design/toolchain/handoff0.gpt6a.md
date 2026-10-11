@@ -6,6 +6,7 @@ resource: /design/toolchain/handoff0.gpt6a.md
 status: draft
 generated: { by: "model:openai/gpt-6-astra", at: 2026-10-11 }
 sources:
+  - { resource: "urn:opencode:session:ses_ed31715c4ffex2ROd2G2C617AF", title: Reopened output design and linked the later enriched assembly commission }
   - { resource: "urn:opencode:session:ses_f908bad7fffeW0pr4FLFa4VFyn", title: Recovery work, correction toward combine, and the new element/anchor preference }
   - { resource: /design/toolchain/draft0.glm53m.md, title: Accepted Rust-first toolchain direction, especially the October 8 addendum }
   - { resource: /design/context-compilation/repair0.gpt6a.md, title: Landed recovery and coverage audit }

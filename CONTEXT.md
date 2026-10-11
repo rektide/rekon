@@ -13,6 +13,7 @@ extensions:
   ticket: rekon-phoenix
   related_work: [rekon-con-naming, rekon-agents-maintenance]
 sources:
+  - { resource: "urn:opencode:session:ses_ed31715c4ffex2ROd2G2C617AF", title: Semantic definition-list conversion commissioned for enriched assembly }
   - { resource: /constitution/naming/exploration/proposal4.glm53m.md, title: Recorded human naming override }
   - { resource: /constitution/naming/exploration/draft2-discussion0.sol56x.md, title: Shared glossary and remaining naming disagreements }
   - { resource: /design/skillify/README1.sol56x.md, title: Capability and context vocabulary }

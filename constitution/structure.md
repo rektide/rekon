@@ -7,6 +7,7 @@ tags: [rekon, structure, naming, tools, documentation]
 status: draft
 generated: { by: "model:gpt-6-astra", at: 2026-10-06 }
 sources:
+  - { resource: "urn:opencode:session:ses_ed31715c4ffex2ROd2G2C617AF", title: Shared Rust markup and ToC library boundaries for enriched assembly }
   - { resource: "urn:opencode:session:ses_eec5afbf4ffeIhL6wxmv8NF3gn", title: Human direction for shortcodes g/p/t and one domain-grouped tool toolkit }
   - { resource: /README.md, title: Rekon purpose and practice map }
   - { resource: /constitution/naming/exploration/proposal4.glm53m.md, title: Recorded location-identity and abbreviation ruling }

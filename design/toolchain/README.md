@@ -5,6 +5,7 @@ description: Current enriched assembly work and earlier toolchain direction.
 status: draft
 generated: { by: "model:openai/gpt-6-astra", at: 2026-10-11 }
 sources:
+  - { resource: "urn:opencode:session:ses_ed31715c4ffex2ROd2G2C617AF", title: Enriched assembly commission and toolchain reading-map revision }
   - { resource: /design/toolchain/enriched-assembly0.gpt6a.md, title: Current assembly commission }
   - { resource: /design/toolchain/draft0.glm53m.md, title: Earlier accepted direction and amendment }
   - { resource: /design/toolchain/handoff0.gpt6a.md, title: Earlier implementation handoff }
