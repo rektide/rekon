@@ -86,7 +86,9 @@ tool/
   assembly/               fragment assembly, manifest planning, write/check
   md/                     Markdown-specific logic
   hyalo/                  Hyalo integration when adopted
-  rust/                   rust super-tool crate (bin `rekon`)
+  rust/                   Rust workspace and super-tool package (bin `rekon`)
+    crates/rekon-markup/   shared document structure and scoped OKF metadata
+    crates/rekon-toc/      reusable ToC transformation
 ```
 
 `cmd/`, `md/`, or a library-specific `hyalo/` seam are responsibilities justified
@@ -95,11 +97,16 @@ directories rather than a generic `src/` or `lib/` wrapper. Keep tests beside
 the behavior they exercise. Development invokes the TypeScript entrypoint
 directly; distribution builds are a separate concern.
 
-Since 2026-10-08 new capabilities are implemented **rust-first** in the
-single crate at [`tool/rust/`](/tool/rust/) (binary `rekon`), whose
+Since 2026-10-08 new capabilities are implemented **rust-first** at
+[`tool/rust/`](/tool/rust/) (binary `rekon`), whose
 subcommands are the super-tool surface; the human direction and accepted
 design live in [toolchain draft0](/design/toolchain/draft0.glm53m.md). Its
-first subcommand is `rekon combine`, the rust assembler for `/AGENTS.md`.
+first assembly subcommand is `rekon combine`, the Rust assembler for `/AGENTS.md`.
+The October 11 [enriched assembly commission](/design/toolchain/enriched-assembly0.gpt6a.md)
+extends the original single-crate layout into a Cargo workspace: the root package
+owns CLI/assembly orchestration, `rekon-markup` owns reusable metadata/document
+semantics, and `rekon-toc` owns the ToC transformation. Web and TUI adapters can
+later share the metadata interface without coupling the engine to presentation.
 The first new implementation is the runnable Effect CLI version of the
 GLOBAL-fragment assembler at [`tool/agents.ts`](/tool/agents.ts), explained by
 its [assembly domain](/tool/assembly/README.md); it remains the production

@@ -13,6 +13,12 @@ sources:
 
 # Handoff prompt
 
+**Later direction:** [enriched whole-document assembly](/design/toolchain/enriched-assembly0.gpt6a.md)
+records the October 11 tidy-lagoon commission: whole-file composition, frontmatter
+emitted as scoped MDX metadata, semantic definitions, and a final ToC pass. Read
+that contract before treating the implementation/output instructions below as
+settled. This handoff remains recovery and migration background.
+
 You are continuing work in `/home/rektide/src/rekon`. **Finish the Rust
 `rekon combine` command: the actual working combiner is the priority.** The
 previous session restored missing operating guidance and built a coverage audit,
