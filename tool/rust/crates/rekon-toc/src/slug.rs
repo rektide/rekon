@@ -20,12 +20,16 @@ pub(crate) fn slugify(text: &str) -> String {
     out
 }
 
-/// Escape a ToC link label for Markdown square-bracket syntax.
+/// Escape a ToC link label for Markdown square-bracket syntax. Literal
+/// braces are backslash-escaped so a flattened heading like
+/// `` ## Configure `{name}` `` can never become an MDX expression when the
+/// document is rendered; `\{` renders as a literal `{` in plain Markdown
+/// too.
 pub(crate) fn escape_label(label: &str) -> String {
     let mut out = String::with_capacity(label.len());
     for c in label.chars() {
         match c {
-            '\\' | '[' | ']' => {
+            '\\' | '[' | ']' | '{' | '}' => {
                 out.push('\\');
                 out.push(c);
             }
@@ -35,7 +39,9 @@ pub(crate) fn escape_label(label: &str) -> String {
     out
 }
 
-/// Escape text placed inside an HTML element (anchor bodies).
+/// Escape text placed inside an HTML element (anchor bodies). Braces use
+/// numeric entities (`&#123;`/`&#125;`), which MDX does not treat as
+/// expression delimiters, for the same literal-preservation reason.
 pub(crate) fn escape_html_text(text: &str) -> String {
     let mut out = String::with_capacity(text.len());
     for c in text.chars() {
@@ -43,6 +49,8 @@ pub(crate) fn escape_html_text(text: &str) -> String {
             '&' => out.push_str("&amp;"),
             '<' => out.push_str("&lt;"),
             '>' => out.push_str("&gt;"),
+            '{' => out.push_str("&#123;"),
+            '}' => out.push_str("&#125;"),
             _ => out.push(c),
         }
     }
@@ -89,7 +97,12 @@ mod tests {
             escape_label("[Brackets] and \\ backslash"),
             "\\[Brackets\\] and \\\\ backslash"
         );
+        assert_eq!(escape_label("Configure {name}"), "Configure \\{name\\}");
         assert_eq!(escape_html_text("a & <b>"), "a &amp; &lt;b&gt;");
+        assert_eq!(
+            escape_html_text("Configure {name}"),
+            "Configure &#123;name&#125;"
+        );
         assert_eq!(escape_html_attr(r#"say "hi""#), "say &quot;hi&quot;");
     }
 }

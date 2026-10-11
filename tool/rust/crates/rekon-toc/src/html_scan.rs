@@ -13,22 +13,32 @@ pub(crate) struct Tag {
     pub closing: bool,
     pub self_closing: bool,
     pub id: Option<String>,
+    /// Absolute 1-based line of the `<` in the document.
+    pub line: usize,
 }
 
-/// Scan `value` for HTML tags in document order, skipping comments.
-pub(crate) fn scan_tags(value: &str) -> Vec<Tag> {
+/// Scan `value` for HTML tags in document order, skipping comments. `base_line`
+/// is the 1-based line `value` starts on; each tag carries its absolute line.
+pub(crate) fn scan_tags_at(value: &str, base_line: usize) -> Vec<Tag> {
     let chars: Vec<char> = value.chars().collect();
     let mut tags = Vec::new();
     let mut i = 0;
+    let mut line = base_line;
     while i < chars.len() {
         if chars[i] != '<' {
+            if chars[i] == '\n' {
+                line += 1;
+            }
             i += 1;
             continue;
         }
         // Comment: skip to `-->`.
         if starts_with(&chars, i, "<!--") {
             match find(&chars, i + 4, "-->") {
-                Some(end) => i = end + 3,
+                Some(end) => {
+                    line += count_newlines(&chars, i, end + 3);
+                    i = end + 3;
+                }
                 None => break,
             }
             continue;
@@ -40,17 +50,26 @@ pub(crate) fn scan_tags(value: &str) -> Vec<Tag> {
             None => false,
         };
         if !is_tag {
+            if chars[i] == '\n' {
+                line += 1;
+            }
             i += 1;
             continue;
         }
-        if let Some((tag, end)) = parse_tag(&chars, i) {
+        if let Some((mut tag, end)) = parse_tag(&chars, i) {
+            tag.line = line;
             tags.push(tag);
+            line += count_newlines(&chars, i, end);
             i = end;
         } else {
             i += 1;
         }
     }
     tags
+}
+
+fn count_newlines(chars: &[char], from: usize, to: usize) -> usize {
+    chars[from..to].iter().filter(|c| **c == '\n').count()
 }
 
 /// True when `value` holds only tags and whitespace between them — the shape
@@ -232,6 +251,7 @@ fn parse_tag(chars: &[char], start: usize) -> Option<(Tag, usize)> {
             closing,
             self_closing,
             id,
+            line: 0,
         },
         i,
     ))
@@ -259,41 +279,46 @@ mod tests {
 
     #[test]
     fn scans_open_close_and_ids() {
-        let tags = scan_tags(r#"<section id="a" data-source="/x.md">"#);
+        let tags = scan_tags_at(r#"<section id="a" data-source="/x.md">"#, 7);
         assert_eq!(tags.len(), 1);
         assert_eq!(tags[0].name, "section");
         assert_eq!(tags[0].id.as_deref(), Some("a"));
         assert!(!tags[0].closing);
         assert!(!tags[0].self_closing);
+        assert_eq!(tags[0].line, 7);
 
-        let tags = scan_tags("</section>\n</section>");
+        let tags = scan_tags_at("</section>\n</section>", 10);
         assert_eq!(tags.len(), 2);
         assert!(tags.iter().all(|t| t.closing && t.name == "section"));
+        assert_eq!(tags[0].line, 10);
+        assert_eq!(tags[1].line, 11);
 
-        let tags = scan_tags(r#"<nav id='rekon-toc' aria-label="x > y">"#);
+        let tags = scan_tags_at(r#"<nav id='rekon-toc' aria-label="x > y">"#, 1);
         assert_eq!(tags.len(), 1);
         assert_eq!(tags[0].id.as_deref(), Some("rekon-toc"));
 
-        let tags = scan_tags(r#"<a id="z" />"#);
+        let tags = scan_tags_at(r#"<a id="z" />"#, 3);
         assert_eq!(tags.len(), 1);
         assert!(tags[0].self_closing);
         assert_eq!(tags[0].id.as_deref(), Some("z"));
+        assert_eq!(tags[0].line, 3);
     }
 
     #[test]
     fn skips_comments_and_fake_angles() {
-        let tags = scan_tags("<!-- <section id=\"no\"> -->\n<p>1 < 2</p>");
+        let tags = scan_tags_at("<!-- <section id=\"no\"> -->\n<p>1 < 2</p>", 1);
         assert_eq!(tags.len(), 2);
         assert_eq!(tags[0].name, "p");
         assert!(!tags[0].closing);
         assert_eq!(tags[1].name, "p");
         assert!(tags[1].closing);
         assert!(tags.iter().all(|t| t.id.is_none()));
+        assert_eq!(tags[1].line, 2);
     }
 
     #[test]
     fn bare_id_attribute() {
-        let tags = scan_tags("<section id=bare>");
+        let tags = scan_tags_at("<section id=bare>", 1);
         assert_eq!(tags[0].id.as_deref(), Some("bare"));
     }
 

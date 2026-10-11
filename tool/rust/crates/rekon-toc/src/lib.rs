@@ -1,10 +1,14 @@
 //! rekon-toc — table-of-contents generation and managed-region updating for
 //! Rekon Markdown/MDX documents.
 //!
-//! The library parses a whole document with markdown-rs (the tolerant GFM +
-//! frontmatter reader profile — see [`parse_options`]; the same upstream
-//! parser rekon-markup uses), builds the heading hierarchy, and renders a
-//! semantic managed region:
+//! The library parses a whole document with markdown-rs using the strict JSX
+//! reader profile (see [`parse_options`]) — the same grammar rekon-markup's
+//! writer validates, with HTML comments masked first the same way — so both
+//! crates agree on one document grammar. Static MDX is opaque structure, not
+//! text to be re-scanned: `<Okf data={…} />` and strings inside its JSON
+//! never contribute tags, ids, or headings; `{/* … */}` comments are opaque
+//! expressions. From that tree the library builds the heading hierarchy and
+//! renders a semantic managed region:
 //!
 //! ```md
 //! # Document
@@ -22,17 +26,27 @@
 //! operation is pure (text in, text out), deterministic, and idempotent:
 //! updating an already-updated document returns identical bytes, including
 //! when line ranges are enabled — entry coordinates are computed on the final
-//! layout, because inline numbers never change the region's line count.
+//! layout, because inline numbers never change the region's line count. The
+//! managed region is the parser-confirmed `<nav id="rekon-toc">` element
+//! span: a `</nav>` inside fenced code cannot close it, a second managed nav
+//! is an error rather than a silent choice, and prose outside the element is
+//! never touched.
 //!
 //! Link targets prefer real document structure over generated slugs: an
 //! explicit empty-anchor id (`<a id="…"></a>`) bound to the heading, then the
-//! closest enclosing `<section id="…">`, then a GitHub-style heading slug
-//! with deterministic `-1`/`-2` disambiguation. Generated slugs avoid every
-//! literal `id=` in the document (sections, anchors, `<dfn>` terms, …).
+//! closest enclosing `<section id="…">`, then the heading's renderer slug —
+//! the id a Markdown renderer assigns it. Renderer slugs are allocated across
+//! *every* real heading in document order (the renderer anchors unlisted
+//! H1s and explicitly-targeted headings too), and a slug that would collide
+//! with an unrelated explicit id — or with the managed nav id — is rejected
+//! as a source-repair problem rather than silently shifted to a nonexistent
+//! target. Two coincidences are valid: the slug may equal the heading's own
+//! bound anchor id or its enclosing section id, where the explicit target is
+//! preferred.
 //!
-//! Headings inside code fences, YAML/TOML frontmatter, and the managed nav
-//! region itself are never listed. Line coordinates are whole-file, physical,
-//! 1-based — frontmatter lines count.
+//! Headings inside code fences, YAML/TOML frontmatter, JSX expression
+//! comments, and the managed nav region itself are never listed. Line
+//! coordinates are whole-file, physical, 1-based — frontmatter lines count.
 //!
 //! # Example
 //!
@@ -130,6 +144,9 @@ pub struct TocAnalysis {
     /// Entries within the depth window, in document order, with resolved
     /// targets and original-document line coordinates.
     pub entries: Vec<TocEntry>,
+    /// Every literal id in the document, first-seen order, deduplicated
+    /// (sections, anchors, `<dfn>` terms, metadata elements).
+    pub explicit_ids: Vec<String>,
     /// Literal ids defined more than once in the document (document problem;
     /// reported, not rewritten).
     pub duplicate_ids: Vec<String>,
@@ -153,32 +170,139 @@ pub struct TocCheck {
 /// Errors from ToC generation.
 #[derive(Debug, thiserror::Error)]
 pub enum TocError {
-    /// The document failed to parse as GFM+frontmatter Markdown.
+    /// The document failed to parse as GFM+frontmatter Markdown with MDX
+    /// expressions. Unbalanced `{`/`}` in prose fails here — wrap such text
+    /// in code spans or fences.
     #[error("markdown parse failed: {0}")]
     Parse(String),
     /// `min_depth`/`max_depth` are outside 1..=6 or inverted.
     #[error("invalid heading depth window: min {min}, max {max}")]
     InvalidDepth { min: u8, max: u8 },
-    /// A `<nav id="rekon-toc">` region was opened but never closed.
+    /// A `<nav id="rekon-toc">` region was opened but never closed. Under
+    /// the JSX reader profile an unclosed element usually surfaces as
+    /// [`TocError::Parse`] first; this variant covers raw-HTML forms a
+    /// future profile might admit. A `</nav>` inside fenced code never
+    /// counts — the parser does not see it as a real tag.
     #[error("managed nav opened at line {line} has no closing </nav>")]
     UnclosedNav { line: usize },
+    /// A managed nav marker shares its line with content outside the region;
+    /// replacing the region wholesale would drop that content. Under the
+    /// JSX reader profile the parser isolates element spans, so this is
+    /// mostly a guard for raw-HTML forms.
+    #[error("managed nav marker at line {line} shares its line with other content")]
+    UnisolatedNav { line: usize },
+    /// More than one managed nav region exists; ToC would silently operate
+    /// on one of them.
+    #[error("multiple managed nav regions: first at line {first}, others at {extra_lines:?}")]
+    MultipleManagedNavs {
+        first: usize,
+        extra_lines: Vec<usize>,
+    },
+    /// A heading's renderer slug collides with an explicit id elsewhere in
+    /// the document (or with the managed nav id). The rendered document
+    /// would carry duplicate ids, and shifting the slug would emit a
+    /// nonexistent target. Repair the source: rename the heading, change
+    /// the explicit id, or bind an explicit anchor to the heading.
+    #[error(
+        "heading at line {heading_line} would render with id {slug:?}, which already exists as an explicit id; repair the source rather than retargeting silently"
+    )]
+    ConflictingIds { slug: String, heading_line: usize },
 }
 
-/// The Rekon Markdown/MDX *reader* profile: GFM plus the frontmatter
-/// construct. Shared upstream parser with rekon-markup (the strict JSX
-/// writer/validator profile); ToC deliberately reads tolerantly — MDX
-/// components such as `<Okf data={…} />` and prose braces are ordinary
-/// paragraph text here, so no document fails ToC generation for MDX
-/// strictness. Everything structural ToC needs (`<section id>`, `<nav>`,
-/// empty anchors, `<dfn>` ids) reaches the walker as real nodes or raw HTML
-/// blocks the parser already isolated.
+/// The Rekon Markdown/MDX reader profile, converged with rekon-markup's
+/// strict JSX grammar on the same upstream markdown-rs parser: GFM plus
+/// frontmatter, MDX expressions, and JSX, with raw-HTML constructs off. Tags
+/// are JSX elements — `<Okf data={…} />` and its JSON strings stay opaque
+/// attribute expressions (an HTML-looking string inside metadata is string
+/// content, never structural inline HTML), `{/* … */}` comments are opaque
+/// expressions, and `<section>`/`<nav>` nest as real containers. Documents
+/// with unbalanced braces in prose or unbalanced raw HTML fail the parse —
+/// an honest MDX error, not silent misreading. A custom expression validator
+/// extends the default brace counter to respect JSON strings and block
+/// comments, so `{"a":"}"}`-shaped metadata parses.
 pub fn parse_options() -> ParseOptions {
     let mut constructs = Constructs::gfm();
     constructs.frontmatter = true;
+    constructs.mdx_expression_flow = true;
+    constructs.mdx_expression_text = true;
+    constructs.mdx_jsx_flow = true;
+    constructs.mdx_jsx_text = true;
+    constructs.html_flow = false;
+    constructs.html_text = false;
     ParseOptions {
         constructs,
+        mdx_expression_parse: Some(Box::new(|value, _kind| validate_expression(value))),
         ..ParseOptions::default()
     }
+}
+
+/// Accept an expression iff its braces balance when JSON strings (with
+/// escapes) and `/* … */` block comments are respected. Strictly more
+/// accepting than markdown-rs's default brace counter, which mis-ends
+/// expressions like `{"a":"}"}`.
+fn validate_expression(value: &str) -> markdown::MdxSignal {
+    use markdown::MdxSignal;
+    let source: Box<String> = Box::new("rekon-toc".to_string());
+    let rule: Box<String> = Box::new("balanced-expression".to_string());
+    let chars: Vec<char> = value.chars().collect();
+    let mut depth: i64 = 0;
+    let mut in_string = false;
+    let mut escaped = false;
+    let mut in_comment = false;
+    let mut i = 0;
+    while i < chars.len() {
+        let c = chars[i];
+        if in_comment {
+            if c == '*' && chars.get(i + 1) == Some(&'/') {
+                in_comment = false;
+                i += 2;
+                continue;
+            }
+            i += 1;
+            continue;
+        }
+        if in_string {
+            if escaped {
+                escaped = false;
+            } else if c == '\\' {
+                escaped = true;
+            } else if c == '"' {
+                in_string = false;
+            }
+            i += 1;
+            continue;
+        }
+        match c {
+            '/' if chars.get(i + 1) == Some(&'*') => {
+                in_comment = true;
+                i += 2;
+                continue;
+            }
+            '"' => in_string = true,
+            '{' => depth += 1,
+            '}' => {
+                depth -= 1;
+                if depth < 0 {
+                    return MdxSignal::Error(
+                        "closing brace without an opening brace in expression".to_string(),
+                        i,
+                        source,
+                        rule,
+                    );
+                }
+            }
+            _ => {}
+        }
+        i += 1;
+    }
+    if in_string || in_comment || depth > 0 {
+        return MdxSignal::Eof(
+            "unterminated string, comment, or open brace in expression".to_string(),
+            source,
+            rule,
+        );
+    }
+    MdxSignal::Ok
 }
 
 /// Analyze a document's heading structure without modifying it.
@@ -186,7 +310,7 @@ pub fn analyze(text: &str, options: &TocOptions) -> Result<TocAnalysis, TocError
     validate(options)?;
     let parts: Vec<&str> = text.split('\n').collect();
     let structure = structure::extract(text, &parts)?;
-    let entries = resolve_targets(&structure, options)
+    let entries = resolve_targets(&structure, options)?
         .into_iter()
         .map(|e| TocEntry {
             level: e.level,
@@ -198,6 +322,7 @@ pub fn analyze(text: &str, options: &TocOptions) -> Result<TocAnalysis, TocError
         .collect();
     Ok(TocAnalysis {
         entries,
+        explicit_ids: structure.explicit_ids,
         duplicate_ids: structure.duplicate_ids,
         nav_region: structure.nav_region,
         insertion_after_line: structure.insertion_after,
@@ -212,7 +337,7 @@ pub fn update_toc(text: &str, options: &TocOptions) -> Result<String, TocError> 
     validate(options)?;
     let parts: Vec<&str> = text.split('\n').collect();
     let structure = structure::extract(text, &parts)?;
-    let resolved = resolve_targets(&structure, options);
+    let resolved = resolve_targets(&structure, options)?;
     if structure.nav_region.is_none() && resolved.is_empty() {
         return Ok(text.to_owned());
     }
@@ -346,22 +471,73 @@ struct ResolvedEntry {
 
 /// Choose link targets for every listed heading.
 ///
-/// Preference: bound anchor id, closest enclosing section id, then slug.
-/// `reserved` holds every literal id in the document (sections, anchors,
-/// `<dfn>` terms, …): generated slugs must avoid them, but a heading may
-/// still claim *its own* anchor or enclosing-section id. `claimed` tracks
-/// targets already handed out; a preference already claimed by an earlier
-/// heading falls through to the next. Slugs disambiguate with `-1`, `-2`, …
-/// (first occurrence stays bare).
-fn resolve_targets(structure: &structure::Structure, options: &TocOptions) -> Vec<ResolvedEntry> {
-    let reserved: HashSet<String> = structure.explicit_ids.iter().cloned().collect();
+/// Two-phase, modeling what a Markdown renderer actually emits:
+///
+/// 1. **Renderer slugs** are allocated across *every* real heading in
+///    document order — including unlisted H1s, headings outside the depth
+///    window, and headings that will get an explicit target. The renderer
+///    anchors those headings regardless of the ToC, so `# Same` followed by
+///    `## Same` must link the H2 to `#same-1`.
+/// 2. **Conflicts are rejected, not worked around.** If a heading's
+///    renderer slug equals an explicit id elsewhere in the document (or the
+///    managed nav id), the rendered document would carry duplicate ids, and
+///    a silently shifted slug would point at a nonexistent anchor. Two
+///    coincidences are valid and exempt: the slug may equal the heading's
+///    own bound anchor id or its enclosing section id — both anchor the same
+///    spot, and the ToC prefers the explicit target.
+/// 3. Listed headings then pick, once each: bound anchor id, enclosing
+///    section id, renderer slug. A preference already claimed by an earlier
+///    heading falls through to the next.
+fn resolve_targets(
+    structure: &structure::Structure,
+    options: &TocOptions,
+) -> Result<Vec<ResolvedEntry>, TocError> {
+    // Phase 1: renderer slug per heading (headings only compete with
+    // headings; empty-title headings render without an anchor).
+    let explicit: HashSet<&str> = structure.explicit_ids.iter().map(String::as_str).collect();
+    let mut slug_counts: std::collections::HashMap<String, usize> = Default::default();
+    let renderer_slugs: Vec<Option<String>> = structure
+        .headings
+        .iter()
+        .map(|heading| {
+            let title = heading.title.trim();
+            if title.is_empty() {
+                return None;
+            }
+            let base = slug::slugify(title);
+            let seen = slug_counts.entry(base.clone()).or_default();
+            *seen += 1;
+            Some(if *seen == 1 {
+                base
+            } else {
+                format!("{base}-{}", *seen - 1)
+            })
+        })
+        .collect();
+
+    // Phase 2: reject implicit/explicit id conflicts needing source repair.
+    for (heading, slug) in structure.headings.iter().zip(&renderer_slugs) {
+        let Some(slug) = slug else { continue };
+        let conflicts = slug == NAV_ID
+            || (explicit.contains(slug.as_str())
+                && heading.anchor.as_deref() != Some(slug.as_str())
+                && heading.section.as_deref() != Some(slug.as_str()));
+        if conflicts {
+            return Err(TocError::ConflictingIds {
+                slug: slug.clone(),
+                heading_line: heading.line,
+            });
+        }
+    }
+
+    // Phase 3: allocate ToC targets for listed headings.
     let mut claimed: HashSet<String> = HashSet::new();
     let mut out = Vec::new();
-    for heading in &structure.headings {
-        if heading.title.trim().is_empty() {
-            continue;
-        }
-        if heading.level < options.min_depth || heading.level > options.max_depth {
+    for (heading, slug) in structure.headings.iter().zip(&renderer_slugs) {
+        if heading.title.trim().is_empty()
+            || heading.level < options.min_depth
+            || heading.level > options.max_depth
+        {
             continue;
         }
         let mut chosen: Option<(String, TargetKind)> = None;
@@ -378,16 +554,11 @@ fn resolve_targets(structure: &structure::Structure, options: &TocOptions) -> Ve
         }
         let (target, kind) = match chosen {
             Some((target, kind)) => (target, kind),
-            None => {
-                let base = slug::slugify(&heading.title);
-                let mut target = base.clone();
-                let mut n = 0;
-                while reserved.contains(&target) || claimed.contains(&target) {
-                    n += 1;
-                    target = format!("{base}-{n}");
-                }
-                (target, TargetKind::GeneratedSlug)
-            }
+            None => (
+                slug.clone()
+                    .expect("non-empty headings have renderer slugs"),
+                TargetKind::GeneratedSlug,
+            ),
         };
         claimed.insert(target.clone());
         out.push(ResolvedEntry {
@@ -398,7 +569,7 @@ fn resolve_targets(structure: &structure::Structure, options: &TocOptions) -> Ve
             line: heading.line,
         });
     }
-    out
+    Ok(out)
 }
 
 #[cfg(test)]

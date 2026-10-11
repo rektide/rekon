@@ -74,49 +74,57 @@ alpha text
 
 #[test]
 fn enriched_sections_okf_and_dfn() {
-    let input = "\
----
-
-<section id=\"fragment-terms\">
-
-<Okf data={{\"type\":\"Practice\",\"title\":\"Terms\"}} />
-
-## Code
-
-<dl>
-<dt><dfn id=\"checkpoint\">Checkpoint</dfn></dt>
-<dd>A preserved state.</dd>
-</dl>
-
-<section id=\"fragment-terms--extra\">
-
-### Extra terms
-
-</section>
-</section>
-
-<a id=\"explicit-heading\"></a>
-
-## Explicitly anchored
-
-## Deploy {env}
-
-## Checkpoint
-
-## Checkpoint
-
-```md
-## Fenced fake
-
-<nav id=\"rekon-toc\">
-- not managed content
-```
-";
+    let input = concat!(
+        "---\n",
+        "type: Practice\n",
+        "---\n",
+        "\n",
+        "# Enriched\n",
+        "\n",
+        r#"<section id="fragment-terms">"#,
+        "\n",
+        "\n",
+        r#"<Okf data={{"type":"Practice","title":"Terms"}} />"#,
+        "\n",
+        "\n",
+        "## Code\n",
+        "\n",
+        "<dl>\n",
+        r#"<dt><dfn id="checkpoint">Checkpoint</dfn></dt>"#,
+        "\n",
+        "<dd>A preserved state.</dd>\n",
+        "</dl>\n",
+        "\n",
+        r#"<section id="fragment-terms--extra">"#,
+        "\n",
+        "\n",
+        "### Extra terms\n",
+        "\n",
+        "</section>\n",
+        "</section>\n",
+        "\n",
+        r#"<a id="explicit-heading"></a>"#,
+        "\n",
+        "\n",
+        "## Explicitly anchored\n",
+        "\n",
+        "## Deploy {env}\n",
+        "\n",
+        "## Checkpoint term\n",
+        "\n",
+        "```md\n",
+        "## Fenced fake\n",
+        "\n",
+        r#"<nav id="rekon-toc">"#,
+        "\n",
+        "- not managed content\n",
+        "```\n",
+    );
     let updated = assert_idempotent(input, &ranges_opts());
 
     // Target preference: enclosing section ids, bound anchor id, then slugs.
-    // `checkpoint` is reserved by the <dfn> id, so the duplicate headings
-    // disambiguate to checkpoint-1 and checkpoint-2.
+    // `{env}` is an MDX expression: the heading title is "Deploy". The dfn id
+    // "checkpoint" does not collide with the "Checkpoint term" slug.
     let analysis = analyze(&updated, &ranges_opts()).expect("analyze");
     let targets: Vec<(&str, TargetKind)> = analysis
         .entries
@@ -129,9 +137,8 @@ fn enriched_sections_okf_and_dfn() {
             ("fragment-terms", TargetKind::EnclosingSection),
             ("fragment-terms--extra", TargetKind::EnclosingSection),
             ("explicit-heading", TargetKind::ExplicitAnchor),
-            ("deploy-env", TargetKind::GeneratedSlug),
-            ("checkpoint-1", TargetKind::GeneratedSlug),
-            ("checkpoint-2", TargetKind::GeneratedSlug),
+            ("deploy", TargetKind::GeneratedSlug),
+            ("checkpoint-term", TargetKind::GeneratedSlug),
         ]
     );
 
@@ -386,6 +393,203 @@ fn region_at_end_of_document() {
 }
 
 #[test]
+fn slug_allocation_covers_all_real_headings() {
+    // The renderer anchors every heading, listed or not: the excluded H1
+    // consumes `#same`, so the listed H2 is `#same-1`.
+    let input = "# Same\n\n## Same\n";
+    let updated = assert_idempotent(input, &default_opts());
+    assert!(updated.contains("- [Same](#same-1)"));
+    assert!(!updated.contains("](#same)"));
+
+    // Headings that get explicit or section targets still consume their
+    // renderer slug: a later same-titled heading anchors one later.
+    let input = concat!(
+        r#"<a id="exp"></a>"#,
+        "\n\n## Twin\n\n",
+        r#"<section id="sec">"#,
+        "\n\n## Twin\n\n</section>\n\n## Twin\n",
+    );
+    let analysis = analyze(input, &default_opts()).expect("analyze");
+    let targets: Vec<(&str, TargetKind)> = analysis
+        .entries
+        .iter()
+        .map(|e| (e.target.as_str(), e.target_kind))
+        .collect();
+    assert_eq!(
+        targets,
+        vec![
+            ("exp", TargetKind::ExplicitAnchor),
+            ("sec", TargetKind::EnclosingSection),
+            ("twin-2", TargetKind::GeneratedSlug),
+        ]
+    );
+}
+
+#[test]
+fn explicit_id_conflicts_are_rejected_not_shifted() {
+    // The renderer assigns `## Alpha` the anchor `alpha`; the dfn already
+    // owns that id. Silently linking `#alpha-1` would point at a nonexistent
+    // anchor (and leave a duplicate id in the rendered document), so the
+    // source must be repaired instead.
+    let input = "# Doc\n\n<dfn id=\"alpha\">Alpha</dfn>\n\n## Alpha\n";
+    let result = update_toc(input, &default_opts());
+    assert!(
+        matches!(result, Err(TocError::ConflictingIds { ref slug, .. }) if slug == "alpha"),
+        "dfn/heading id collision must be rejected, got {result:?}"
+    );
+
+    // A heading whose slug would collide with the managed nav id is equally
+    // a conflict: the ToC itself owns that id.
+    let input = "# Doc\n\n## Rekon ToC\n";
+    let result = update_toc(input, &default_opts());
+    assert!(
+        matches!(result, Err(TocError::ConflictingIds { ref slug, .. }) if slug == "rekon-toc"),
+        "nav-id collision must be rejected, got {result:?}"
+    );
+}
+
+#[test]
+fn coinciding_explicit_targets_still_preferred() {
+    // Two blessed coincidences: the slug equals the heading's own bound
+    // anchor id, or its enclosing section id. Both anchor the same spot; the
+    // explicit target is preferred and no error is raised.
+    let input = concat!(
+        r#"<a id="beta"></a>"#,
+        "\n\n## Beta\n\n",
+        r#"<section id="gamma">"#,
+        "\n\n## Gamma\n\n</section>\n",
+    );
+    let analysis = analyze(input, &default_opts()).expect("analyze");
+    let targets: Vec<(&str, TargetKind)> = analysis
+        .entries
+        .iter()
+        .map(|e| (e.target.as_str(), e.target_kind))
+        .collect();
+    assert_eq!(
+        targets,
+        vec![
+            ("beta", TargetKind::ExplicitAnchor),
+            ("gamma", TargetKind::EnclosingSection),
+        ]
+    );
+}
+
+#[test]
+fn okf_metadata_is_opaque() {
+    // HTML-looking strings inside static Okf metadata are JSON string
+    // content, never structural inline HTML: no fake nav region, no fake
+    // section scope, no reserved fake ids, and the metadata bytes survive
+    // update unchanged.
+    let okf_nav = r#"<Okf data={"description": "<nav id='rekon-toc'>"} />"#;
+    let okf_pair = r#"<Okf data={"markup": "<section id=\"fake-section\">paired</section>"} />"#;
+    let okf_brace = r#"<Okf data={"json": "brace } inside \"quoted\" string"} />"#;
+    let input =
+        format!("# Doc\n\n{okf_nav}\n\n## Real one\n\n{okf_pair}\n\n## Real two\n\n{okf_brace}\n");
+    let updated = assert_idempotent(&input, &default_opts());
+    for line in [okf_nav, okf_pair, okf_brace] {
+        assert!(
+            updated.contains(line),
+            "metadata bytes must survive update unchanged: {line}"
+        );
+    }
+    let analysis = analyze(&updated, &default_opts()).expect("analyze");
+    let titles: Vec<&str> = analysis.entries.iter().map(|e| e.title.as_str()).collect();
+    assert_eq!(titles, vec!["Real one", "Real two"]);
+    assert!(
+        analysis.nav_region.is_none()
+            || analysis.entries.iter().all(|e| e.target != "fake-section"),
+        "no fake section target"
+    );
+    assert!(
+        !analysis.explicit_ids.iter().any(|id| id == "fake-section"),
+        "no fake id reserved from metadata strings"
+    );
+    assert!(updated.contains("- [Real one](#real-one)"));
+    assert!(updated.contains("- [Real two](#real-two)"));
+}
+
+#[test]
+fn jsx_comment_content_is_opaque() {
+    // `{/* … */}` block comments produced by combine tooling must stay
+    // opaque: fake headings and fake managed navs inside them are comment
+    // text.
+    let input = concat!(
+        "# Doc\n",
+        "\n",
+        "{/*\n",
+        "## Fake heading\n",
+        "\n",
+        r#"<nav id="rekon-toc" aria-label="Table of contents">"#,
+        "\n",
+        "\n",
+        "- [Fake](#fake)\n",
+        "\n",
+        "</nav>\n",
+        "*/}\n",
+        "\n",
+        "## Real\n",
+    );
+    let updated = assert_idempotent(input, &default_opts());
+    let analysis = analyze(&updated, &default_opts()).expect("analyze");
+    let titles: Vec<&str> = analysis.entries.iter().map(|e| e.title.as_str()).collect();
+    assert_eq!(titles, vec!["Real"]);
+    assert!(updated.contains("- [Real](#real)"));
+}
+
+#[test]
+fn multiple_managed_navs_error() {
+    let input = concat!(
+        "# Doc\n",
+        "\n",
+        r#"<nav id="rekon-toc" aria-label="Table of contents">"#,
+        "\n\n- [One](#one)\n\n</nav>\n",
+        "\n",
+        "## One\n",
+        "\n",
+        r#"<nav id="rekon-toc" aria-label="Table of contents">"#,
+        "\n\n- [Two](#two)\n\n</nav>\n",
+        "\n",
+        "## Two\n",
+    );
+    let result = update_toc(input, &default_opts());
+    assert!(
+        matches!(result, Err(TocError::MultipleManagedNavs { .. })),
+        "two managed regions are ambiguous, got {result:?}"
+    );
+}
+
+#[test]
+fn one_line_managed_nav_is_handled() {
+    let input = "# Doc\n\n<nav id=\"rekon-toc\"></nav>\n\n## Alpha\n";
+    let updated = assert_idempotent(input, &default_opts());
+    assert!(updated.contains("- [Alpha](#alpha)"));
+    assert_eq!(updated.matches("<nav id=\"rekon-toc\"").count(), 1);
+}
+
+#[test]
+fn label_braces_cannot_become_expressions() {
+    // `` ## Configure `{name}` `` flattens to a label with literal braces
+    // (inline code preserves them). Both render modes must keep them literal
+    // — a Markdown label via backslash escapes, an HTML anchor body via
+    // numeric entities — so the emitted nav can never introduce an MDX
+    // expression at render time.
+    let input = "# Doc\n\n## Configure `{name}`\n\n## Deploy `{env:py}`\n";
+    let updated = assert_idempotent(input, &default_opts());
+    assert!(updated.contains("- [Configure \\{name\\}](#configure-name)"));
+    assert!(updated.contains("- [Deploy \\{env:py\\}](#deploy-envpy)"));
+
+    let updated = assert_idempotent(input, &ranges_opts());
+    assert!(updated.contains("Configure &#123;name&#125;</a>"));
+    assert!(updated.contains("Deploy &#123;env:py&#125;</a>"));
+
+    // A strict re-parse of the emitted document keeps the braces as label
+    // text (escaped), not expressions: the entry title round-trips.
+    let analysis = analyze(&updated, &ranges_opts()).expect("analyze");
+    let titles: Vec<&str> = analysis.entries.iter().map(|e| e.title.as_str()).collect();
+    assert_eq!(titles, vec!["Configure {name}", "Deploy {env:py}"]);
+}
+
+#[test]
 fn invalid_depth_window_is_rejected() {
     let options = TocOptions {
         min_depth: 5,
@@ -399,23 +603,47 @@ fn invalid_depth_window_is_rejected() {
 }
 
 #[test]
-fn unclosed_nav_region_is_an_error() {
-    let input = "# Doc\n\n<nav id=\"rekon-toc\">\n\n## Heading\n";
-    assert!(matches!(
-        update_toc(input, &default_opts()),
-        Err(TocError::UnclosedNav { line: 3 })
-    ));
+fn unclosed_nav_with_fenced_fake_close_errors() {
+    // The nav element is never closed in real markup; the `</nav>` inside the
+    // fence is fenced code and cannot close it. Strict JSX parsing fails the
+    // document rather than letting a fake close define a region.
+    let input = concat!(
+        "# Doc\n",
+        "\n",
+        r#"<nav id="rekon-toc" aria-label="Table of contents">"#,
+        "\n",
+        "\n",
+        "- [Old](#old)\n",
+        "\n",
+        "```md\n",
+        "</nav>\n",
+        "```\n",
+    );
+    let result = update_toc(input, &default_opts());
+    assert!(
+        matches!(result, Err(TocError::Parse(_))),
+        "unclosed managed nav must error, got {result:?}"
+    );
 }
 
 #[test]
-fn prose_braces_stay_text() {
-    // MDX expressions are not enabled in the tolerant reader profile: an
-    // unbalanced brace in prose must not fail ToC generation, and brace text
-    // stays part of the heading title.
-    let input = "# Doc\n\nOops { unclosed brace in prose\n\n## Deploy {env}\n";
-    let updated = update_toc(input, &default_opts()).expect("tolerant of prose braces");
-    assert!(updated.contains("- [Deploy {env}](#deploy-env)"));
-    assert_idempotent(input, &default_opts());
+fn unbalanced_brace_fails_as_mdx() {
+    // MDX expressions are enabled so JSX comments stay opaque; an unbalanced
+    // brace in prose is an honest parse failure, not silent misreading.
+    let input = "# Doc\n\nOops { unclosed brace in prose\n\n## Heading\n";
+    let result = update_toc(input, &default_opts());
+    assert!(
+        matches!(result, Err(TocError::Parse(_))),
+        "unbalanced braces must fail loudly, got {result:?}"
+    );
+}
+
+#[test]
+fn balanced_expression_in_heading_title() {
+    // `{env}` is an MDX expression node: it contributes nothing to the title.
+    let input = "# Doc\n\n## Deploy {env}\n";
+    let updated = assert_idempotent(input, &default_opts());
+    assert!(updated.contains("- [Deploy](#deploy)"));
 }
 
 #[test]

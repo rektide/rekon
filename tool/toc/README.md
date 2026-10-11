@@ -7,8 +7,8 @@ tags: [tool, toc, rust, markdown, mdx]
 status: draft
 generated: { by: "model:zai-coding-plan/glm-5.3#max", at: 2026-10-11 }
 sources:
-  - { resource: "urn:opencode:session:ses_ed2ff8ca0fferqEbe9uxlNoiOv", title: rekon-toc crate commission and implementation (library, tests, this contract) }
-  - { resource: "urn:opencode:session:ses_ed31715c4ffex2ROd2G2C617AF", title: Parent commission for enriched assembly and Rust tool boundaries }
+  - { resource: "urn:opencode:session:ses_ed2ff8ca0fferqEbe9uxlNoiOv", title: rekon-toc crate commission, implementation, and review correction (slug allocation, id-conflict rejection, nav-region safety, MDX opacity) }
+  - { resource: "urn:opencode:session:ses_ed31715c4ffex2ROd2G2C617AF", title: Parent commission and review findings for enriched assembly and Rust tool boundaries }
   - { resource: /design/toolchain/enriched-assembly0.gpt6a.md, title: Rust boundary placing rekon-toc beside rekon-markup }
   - { resource: /design/rekon/hyalo-toc0.glm53m.md, title: hyalo ToC lineage: line ranges, fixed-point regeneration, drift gates }
   - { resource: "file:///home/rektide/ado/bin/hyalo-toc.ts", title: Prior TypeScript implementation with comment markers }
@@ -72,37 +72,68 @@ input is returned unchanged.
 
 ## Semantics
 
-- **Parser.** markdown-rs (the maintained `markdown` crate, same dependency as
-  [`rekon-markup`](/tool/rust/crates/rekon-markup/)), GFM + frontmatter. ToC
-  reads tolerantly: MDX components such as `<Okf data={…} />` and prose braces
-  are ordinary paragraph text here, so no document fails ToC for MDX
-  strictness. Structural ids (`<section>`, `<nav>`, empty anchors, `<dfn>`)
-  come from real AST nodes and raw HTML blocks the parser isolated. A shared
-  `rekon_toc::parse_options()` exposes this profile.
+- **Parser.** markdown-rs (the maintained `markdown` crate, same dependency
+  as [`rekon-markup`](/tool/rust/crates/rekon-markup/)) with the **strict
+  JSX reader profile** — GFM + frontmatter + MDX expressions + JSX, raw-HTML
+  constructs off, HTML comments masked first (byte-preserving, exactly the
+  way rekon-markup's writer does it). Both crates therefore accept the same
+  document grammar. A custom expression validator extends the default brace
+  counter to respect JSON strings and block comments, so metadata like
+  `data={"note": "brace } inside"}` parses.
+- **Static MDX is opaque.** `<Okf data={…} />` is one element; HTML-looking
+  strings inside its JSON (`"<nav id='rekon-toc'>"`,
+  `"<section id=\"x\">paired</section>"`) are string content — they never
+  define a region, a section scope, or a reserved id, and the metadata bytes
+  survive update unchanged. `{/* … */}` comments are equally opaque: fake
+  headings or navs inside them are comment text.
+- **Managed region.** The parser-confirmed `<nav id="rekon-toc">` element
+  span, nothing else. A `</nav>` inside fenced code cannot close it; an
+  unclosed nav fails the parse; a second managed nav is an error rather than
+  a silent choice; a one-line `<nav id="rekon-toc"></nav>` is handled.
+  Content outside the element is never touched.
 - **Ignored headings.** Anything inside code fences or indented code, YAML
-  frontmatter, and the managed nav region itself. ATX and setext headings both
-  count; frontmatter lines count in line coordinates (whole-file, physical,
-  1-based).
-- **Link targets.** Preference order: an explicit empty anchor bound to the
-  heading (`<a id="…"></a>` separated from it only by blank lines), then the
-  closest enclosing `<section id="…">`, then a GitHub-style slug. A target is
-  claimed once; later headings fall through to the next preference. Generated
-  slugs avoid every literal id in the document (including `<dfn>` terms) and
-  disambiguate deterministically: `same`, `same-1`, `same-2`.
+  frontmatter, JSX expression comments, and the managed region itself. ATX
+  and setext headings both count; frontmatter lines count in line
+  coordinates (whole-file, physical, 1-based).
+- **Link targets.** Renderer slugs are allocated across *every* real heading
+  in document order — unlisted H1s and explicitly-targeted headings consume
+  theirs too, so `# Same` + `## Same` links the H2 to `#same-1`. Listed
+  headings then pick, once each: a bound empty-anchor id
+  (`<a id="…"></a>` separated from the heading only by blank lines), the
+  closest enclosing `<section id="…">`, then the renderer slug.
+- **Id conflicts are rejected, not worked around.** If a heading's renderer
+  slug equals an unrelated explicit id (a `<dfn>` term, another section) or
+  the managed nav id, the rendered document would carry duplicate ids and a
+  silently shifted slug would point at a nonexistent anchor — so `update_toc`
+  fails with `ConflictingIds` asking for source repair. Two coincidences are
+  valid: the slug may equal the heading's *own* bound anchor id or its
+  *enclosing section* id; both anchor the same spot and the explicit target
+  is preferred.
 - **Line ranges.** Computed on the final post-splice layout: an entry runs
   from its heading line to one before the next listed heading, or end of
   file. Inline numbers never change the region's line count, so one pass
   reaches the fixed point — updating an updated document returns identical
   bytes (verified by test on every fixture, and `check_toc` doubles as the
   drift gate, the `--check` discipline the hyalo lineage established).
+- **Labels stay literal.** Flattened heading text is escaped, never
+  re-interpreted: literal braces from inline code (`## Configure \`{name}\``)
+  render as `\{`/`\}` in Markdown labels and `&#123;`/`&#125;` numeric
+  entities in HTML anchors, so navigation output cannot turn source text into
+  a runtime MDX expression.
 
 ## Limits
 
-- HTML blocks follow CommonMark: a `<section>`/`<nav>` open tag ends at the
-  next blank line, so emitted sections keep blank lines between the tag and
-  nested Markdown (the assembly wire contract does).
-- The managed region must be closed; an open `<nav id="rekon-toc">` without
-  `</nav>` is an error, not a silent rewrite.
-- Line endings are `\n`; ids inside raw HTML must be static literals.
+- **One grammar with markup.** Documents that fail rekon-markup's strict JSX
+  parse fail here too: unbalanced braces in prose, unbalanced raw HTML, and
+  JSX block elements with text on the open-tag line (`<dd>text…`) are
+  errors. Element content belongs on following lines —
+  [CONTEXT.md](/CONTEXT.md) shows the compatible `<dd>` shape. HTML comments
+  must be blank-line-separated blocks (masking recognizes them as blocks).
+- The managed region must be a real element: an open `<nav
+  id="rekon-toc">` without a closing `</nav>` fails the parse; a fenced fake
+  closing tag does not rescue it and cannot define a region.
+- Line endings are `\n`; ids must be static literals (`id={expr}` is not a
+  usable target).
 - Duplicate explicit ids are reported through `analyze`'s `duplicate_ids`
-  (a document problem), not rewritten.
+  (a document problem), not rewritten. Empty-title headings render without
+  anchors and are skipped.
