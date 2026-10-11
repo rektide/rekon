@@ -3,6 +3,11 @@ id: documentation-practice
 order: 120
 source: /constitution/README.md
 status: draft
+sources:
+  - resource: "opencode://session/ses_ed2db3069ffeQV7v6JC7p69Vte"
+    title: Align durable-writing instruction with canonical OpenCode URI provenance
+  - resource: "opencode://session/ses_ed2eda746ffefem0MPL9M5MYX7"
+    title: Human direction to adopt OpenCode URI references in Rekon
 ---
 
 # Writing, independent waves, and document connections
@@ -18,7 +23,7 @@ status: draft
   [source practice](/refs/sources.md) and [the constitution](/constitution/README.md).
 - **Include your current native session ID in OKF `sources:` whenever you create
   or substantively revise a knowledge document.** Use
-  `resource: "urn:opencode:session:<actual-session-id>"` and a title explaining
+  `resource: "opencode://session/<actual-session-id>"` and a title explaining
   the session's contribution (direction, reasoning, research, or revision).
   This is vital provenance: it lets the next reader recover why the document
   exists and how it took shape. Use the ID supplied by the harness, not a
@@ -26,6 +31,10 @@ status: draft
   Preserve earlier session sources; add the revising session's source.
   Maintain your session's own source entry as the work develops, gradually
   updating its title to match its actual contribution; keep the session ID stable.
+  Session-only citations may omit `?source=<registered-source-id>`; portable
+  cross-store exports include it. Preserve legacy URN sources. For message/part
+  targets and selected-source resolution, follow the
+  [OpenCode URI convention](/refs/sources.md#our-opencode-session-convention).
 - `index.md` is a grouped progressive-disclosure listing, not another concept
   document. `log.md` is dated update history, newest first. An addendum can retain
   an earlier argument while recording new understanding; mutable READMEs may

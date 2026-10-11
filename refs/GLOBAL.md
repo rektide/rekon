@@ -3,6 +3,11 @@ id: refs
 order: 500
 source: /refs/README.md
 status: draft
+sources:
+  - resource: "opencode://session/ses_ed2db3069ffeQV7v6JC7p69Vte"
+    title: Align ambient session provenance guidance with canonical OpenCode URI citations
+  - resource: "opencode://session/ses_ed2eda746ffefem0MPL9M5MYX7"
+    title: Human direction to adopt OpenCode URI references in Rekon
 ---
 
 # References
@@ -29,8 +34,12 @@ derivations of it, not tracked state.
 - Selecting or composing skills: [our process](/refs/skills.md).
 - **Session provenance is required for knowledge writing:** include your actual
   current session ID in OKF `sources:` when creating or substantively revising
-  a document. Use `resource: "urn:opencode:session:<actual-session-id>"` with a
+  a document. Use `resource: "opencode://session/<actual-session-id>"` with a
   title saying what this session contributed; retain prior session sources.
   Maintain your session's own entry and gradually update its title as that
   contribution develops, keeping its native ID stable.
+  Ordinary session-only citations may omit `?source=<registered-source-id>`;
+  portable cross-store exports include it. Unqualified resolution requires a
+  selected source; the source ID is registry identity, not a channel or path.
+  Keep historical URN entries; use canonical long-form URIs for new citations.
   [OKF sources](/refs/sources.md#session-provenance) owns the practice.
