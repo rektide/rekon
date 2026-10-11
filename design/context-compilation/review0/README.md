@@ -37,6 +37,7 @@ From the repository root, with the existing Node dependencies installed:
 
 ```sh
 node design/context-compilation/review0/measure.ts
+node design/context-compilation/review0/verify.ts
 ```
 
 The [script](/design/context-compilation/review0/measure.ts) reads only full commit
@@ -57,6 +58,11 @@ later **committed** observation. The later observation is not a claim about
 ongoing uncommitted tool work. Its stored `AGENTS.md` and selected `CONTEXT.md`
 disagree; the metrics identify this rather than silently substituting intended
 source contents for what was actually assembled.
+
+`verify.ts` checks the report's local links/anchors and canonical commit/file/line
+references against local Git objects, validates the 32-cohort contiguous line
+map, and reruns extraction to check byte-for-byte reproducibility. It does not
+test GitHub publication or claim to verify the semantic judgments.
 
 This is a report-specific research aid, not a new production compilation tool.
 Keep this revision set fixed. A later comparison should create a new report

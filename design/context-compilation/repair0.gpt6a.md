@@ -6,7 +6,7 @@ resource: /design/context-compilation/repair0.gpt6a.md
 status: draft
 generated: { by: "model:openai/gpt-6-astra", at: 2026-10-11 }
 sources:
-  - { resource: "urn:opencode:session:ses_f908bad7fffeW0pr4FLFa4VFyn", title: Human request to assess and repair incomplete AGENTS and advance the tools }
+  - { resource: "urn:opencode:session:ses_f908bad7fffeW0pr4FLFa4VFyn", title: Human-directed recovery, coverage tooling, and subsequent fidelity review of the decomposed guidance }
   - { resource: /AGENTS.old.md, title: Preserved operating manual }
   - { resource: /agents.manifest.json, title: Production selection at diagnosis }
   - { resource: /constitution/agents-assembly.md#agents-assembly-status, title: Explicit October 7 cutover with extraction incomplete }
@@ -84,3 +84,9 @@ The next editorial pass should judge the combined reading experience and the
 glossary/operating-advice balance. This repair retains the glossary and makes
 no claim that literal assertions prove complete semantic parity. The unfinished
 Rust combiner and pre-existing uncommitted Markdown parser remain separate work.
+
+The subsequent [revision-bound review](/design/context-compilation/review0.gpt6a.md)
+now supplies that editorial assessment: exact commit links and diffs, word/byte
+allocation, all 32 functional cohorts, and concrete weakened or conflicting
+instructions. It qualifies this recovery's claims rather than treating section
+coverage as proof that the workshopped wording survived intact.
