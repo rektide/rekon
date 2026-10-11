@@ -5,13 +5,14 @@ description: Rust library contract for preserving frontmatter and reading explic
 status: draft
 generated: { by: "rekon/gpt-6.1-sol", at: "2026-10-11T18:21:23-04:00" }
 sources:
+  - { resource: "opencode://ses_ed31715c4ffex2ROd2G2C617AF", title: Scoped extraction CLI and cross-engine regression coverage }
   - { resource: /design/toolchain/enriched-assembly0.gpt6a.md, title: Enriched assembly interface and static metadata commission }
   - { resource: /okf/README.md, title: Rekon OKF conventions and unknown-field preservation }
   - { resource: /refs/sources.md, title: Native provenance and honest verification }
   - { resource: "https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/86df01601733f93c0f243a727927d03ebf6d7e1d/okf/SPEC.md", title: OKF v0.2, consulted in the local archive }
   - { resource: "https://docs.rs/markdown/1.0.0/markdown/", title: Maintained CommonMark/GFM and MDX AST parser }
   - { resource: "urn:opencode:session:ses_ed2ffcc34ffeinaoX0ouV2gDCy", title: Sol Medium extractor implementation, API reasoning, JSX-comment correction, and focused verification }
-  - { resource: "urn:opencode:session:ses_ed31715c4ffex2ROd2G2C617AF", title: Parent commission for enriched Rust assembly, scoped extraction, and shared markup interfaces }
+  - { resource: "urn:opencode:session:ses_ed31715c4ffex2ROd2G2C617AF", title: Enriched assembly commission, shared markup interfaces, CLI integration, and extraction regression review }
 ---
 
 # Static scoped OKF extraction
@@ -21,6 +22,21 @@ and static `<Okf>` records without executing JavaScript. It preserves unknown
 fields and nested JSON-compatible values. This is metadata transport and
 structural extraction, **not** full OKF bundle validation, verification, or a
 trust-tier policy.
+
+## Command
+
+```sh
+cargo run --quiet --manifest-path tool/rust/Cargo.toml -- okf extract AGENTS.md
+cargo run --quiet --manifest-path tool/rust/Cargo.toml -- okf extract AGENTS.md --scope fragment-code --format yaml
+cargo run --quiet --manifest-path tool/rust/Cargo.toml -- okf extract code/GLOBAL.md
+```
+
+The command prints a list of scoped records (`metadata`, `owner`, `origin`, and
+byte `span`) as JSON by default or YAML with `--format yaml`. `--scope` selects
+an exact owner ID, optionally prefixed with `#`; an absent match is an error.
+Without a filter, file-level frontmatter and every explicit section record are
+returned in source order. This is read-only metadata inspection, not an export
+of the whole section body as a new concept document.
 
 ## Wire representation and ownership
 

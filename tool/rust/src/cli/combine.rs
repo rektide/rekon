@@ -40,6 +40,12 @@ pub fn run(manifest: &Path, output: Option<&Path>, check: bool) -> Result {
             assembly.output.display(),
             assembly.document.len()
         );
+        for fragment in assembly.fragment_reports() {
+            println!(
+                "  {} {} {}: {} source-body UTF-8 bytes",
+                fragment.order, fragment.id, fragment.path, fragment.prose_bytes
+            );
+        }
         Ok(true)
     }
 }

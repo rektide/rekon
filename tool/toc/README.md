@@ -7,6 +7,7 @@ tags: [tool, toc, rust, markdown, mdx]
 status: draft
 generated: { by: "model:zai-coding-plan/glm-5.3#max", at: 2026-10-11 }
 sources:
+  - { resource: "opencode://ses_ed31715c4ffex2ROd2G2C617AF", title: CLI integration, source-preservation review, and parser-profile clarification }
   - { resource: "urn:opencode:session:ses_ed2ff8ca0fferqEbe9uxlNoiOv", title: rekon-toc crate commission, implementation, and review correction (slug allocation, id-conflict rejection, nav-region safety, MDX opacity) }
   - { resource: "urn:opencode:session:ses_ed31715c4ffex2ROd2G2C617AF", title: Parent commission and review findings for enriched assembly and Rust tool boundaries }
   - { resource: /design/toolchain/enriched-assembly0.gpt6a.md, title: Rust boundary placing rekon-toc beside rekon-markup }
@@ -31,6 +32,20 @@ out — with `update_toc(text, options)` as the one-call combine hook.
   are deliberately replaced by the semantic nav region per the
   [assembly contract](/design/toolchain/enriched-assembly0.gpt6a.md).
 
+## Command
+
+```sh
+cargo run --quiet --manifest-path tool/rust/Cargo.toml -- toc guide.md --line-ranges
+cargo run --quiet --manifest-path tool/rust/Cargo.toml -- toc AGENTS.md --line-ranges --check
+```
+
+`rekon toc FILE… [--check] [--min-depth N] [--max-depth N] [--line-ranges]`
+prepares every input before updating any file. Writes atomically replace each
+target while preserving its permissions; symlinks remain links and their targets
+are updated. `--check` writes nothing and exits 1 on drift. `combine` always
+enables line ranges, so include `--line-ranges` when checking its navigation with
+the standalone command.
+
 ## API
 
 ```rust
@@ -45,11 +60,8 @@ let structure = analyze(&text, &TocOptions::default())?;         // entries, ids
 | --- | --- | --- |
 | `min_depth` | 2 | Smallest heading level listed (document H1 stays out). |
 | `max_depth` | 6 | Largest heading level listed. |
-| `line_ranges` | false | Emit `data-line-start`/`data-line-end` on entry anchors, 1-based whole-file line ranges of the final document. `TocOptions::with_line_ranges()` is the planned CLI default set. |
+| `line_ranges` | false | Emit `data-line-start`/`data-line-end` on entry anchors, 1-based whole-file line ranges of the final document. `TocOptions::with_line_ranges()` matches the combine pass. |
 | `aria_label` | "Table of contents" | Accessible label on the nav element. |
-
-Planned CLI (owned by the root package): `rekon toc FILE… [--check]
-[--min-depth N] [--max-depth N] [--line-ranges]`.
 
 ## Region shape
 
@@ -76,10 +88,10 @@ input is returned unchanged.
   as [`rekon-markup`](/tool/rust/crates/rekon-markup/)) with the **strict
   JSX reader profile** — GFM + frontmatter + MDX expressions + JSX, raw-HTML
   constructs off, HTML comments masked first (byte-preserving, exactly the
-  way rekon-markup's writer does it). Both crates therefore accept the same
-  document grammar. A custom expression validator extends the default brace
+  way rekon-markup's reader does it). Both require balanced JSX structure;
+  their expression policies differ. A custom expression validator extends the default brace
   counter to respect JSON strings and block comments, so metadata like
-  `data={"note": "brace } inside"}` parses.
+  `<Okf data={{"note":"brace } inside"}} />` parses.
 - **Static MDX is opaque.** `<Okf data={…} />` is one element; HTML-looking
   strings inside its JSON (`"<nav id='rekon-toc'>"`,
   `"<section id=\"x\">paired</section>"`) are string content — they never
@@ -127,16 +139,20 @@ input is returned unchanged.
 
 ## Limits
 
-- **One grammar with markup.** Documents that fail rekon-markup's strict JSX
-  parse fail here too: unbalanced braces in prose, unbalanced raw HTML, and
-  JSX block elements with text on the open-tag line (`<dd>text…`) are
-  errors. Element content belongs on following lines —
+- **Balanced JSX.** Unbalanced HTML elements and multiline containers that put
+  initial prose on the opening-tag line (`<dd>text…`) but close in a later block
+  are errors. Put multiline element content on following lines —
   [CONTEXT.md](/CONTEXT.md) shows the compatible `<dd>` shape. HTML comments
   must be blank-line-separated blocks (masking recognizes them as blocks).
+- **Expression profile.** ToC reads balanced MDX expressions without evaluating
+  them; literal prose braces should be escaped or put in code. The metadata
+  extractor instead treats body braces as prose and requires literal JSON in
+  expression attributes. Neither is a JavaScript runtime or a complete MDX compiler.
 - The managed region must be a real element: an open `<nav
   id="rekon-toc">` without a closing `</nav>` fails the parse; a fenced fake
   closing tag does not rescue it and cannot define a region.
-- Line endings are `\n`; ids must be static literals (`id={expr}` is not a
+- Generated navigation uses `\n`; existing prose outside the region is retained.
+  IDs must be static literals (`id={expr}` is not a
   usable target).
 - Duplicate explicit ids are reported through `analyze`'s `duplicate_ids`
   (a document problem), not rewritten. Empty-title headings render without

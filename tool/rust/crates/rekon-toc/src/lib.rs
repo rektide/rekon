@@ -116,8 +116,8 @@ impl Default for TocOptions {
 }
 
 impl TocOptions {
-    /// Options matching the planned `rekon toc` CLI defaults with line ranges
-    /// enabled: headings 2..=6 plus final-document line ranges.
+    /// Options used by combine's final pass: headings 2..=6 plus
+    /// final-document line ranges.
     pub fn with_line_ranges() -> Self {
         Self {
             line_ranges: true,
