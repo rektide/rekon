@@ -18,8 +18,8 @@ pub fn run(
     // Prepare every input before writing any file: a malformed later input
     // must not leave an earlier document partially updated.
     for file in files {
-        let source = fs::read_to_string(file)
-            .map_err(|error| format!("{}: {error}", file.display()))?;
+        let source =
+            fs::read_to_string(file).map_err(|error| format!("{}: {error}", file.display()))?;
         let document = update(&source, min_depth, max_depth, line_ranges)
             .map_err(|error| format!("{}: {error}", file.display()))?;
         updates.push((file, source, document));
@@ -37,7 +37,9 @@ pub fn run(
             let target = fs::canonicalize(file)?;
             let parent = target.parent().ok_or("document has no parent directory")?;
             let mut temporary = tempfile::NamedTempFile::new_in(parent)?;
-            temporary.as_file().set_permissions(fs::metadata(&target)?.permissions())?;
+            temporary
+                .as_file()
+                .set_permissions(fs::metadata(&target)?.permissions())?;
             temporary.write_all(document.as_bytes())?;
             temporary.persist(&target)?;
             println!("updated: {}", file.display());

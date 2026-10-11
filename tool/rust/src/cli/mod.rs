@@ -88,13 +88,26 @@ enum Format {
 
 pub fn run(cli: Cli) -> Result {
     match cli.command {
-        Command::Combine { manifest, output, check } => combine::run(&manifest, output.as_deref(), check),
-        Command::Toc { files, check, min_depth, max_depth, line_ranges } => {
-            toc::run(&files, check, min_depth, max_depth, line_ranges)
-        }
-        Command::Okf { command: OkfCommand::Extract { file, scope, format } } => {
-            okf::run(&file, scope.as_deref(), format)
-        }
+        Command::Combine {
+            manifest,
+            output,
+            check,
+        } => combine::run(&manifest, output.as_deref(), check),
+        Command::Toc {
+            files,
+            check,
+            min_depth,
+            max_depth,
+            line_ranges,
+        } => toc::run(&files, check, min_depth, max_depth, line_ranges),
+        Command::Okf {
+            command:
+                OkfCommand::Extract {
+                    file,
+                    scope,
+                    format,
+                },
+        } => okf::run(&file, scope.as_deref(), format),
         Command::AuditContext { manifest, coverage } => {
             let report = audit(&manifest, &coverage, &std::env::current_dir()?)?;
             if report.findings.is_empty() {
@@ -125,10 +138,21 @@ mod tests {
         for args in [
             vec!["rekon", "combine", "--check"],
             vec!["rekon", "toc", "AGENTS.md", "--line-ranges"],
-            vec!["rekon", "okf", "extract", "AGENTS.md", "--scope", "fragment-code"],
+            vec![
+                "rekon",
+                "okf",
+                "extract",
+                "AGENTS.md",
+                "--scope",
+                "fragment-code",
+            ],
         ] {
             Cli::command().try_get_matches_from(args).unwrap();
         }
-        assert!(Cli::command().try_get_matches_from(["rekon", "toc"]).is_err());
+        assert!(
+            Cli::command()
+                .try_get_matches_from(["rekon", "toc"])
+                .is_err()
+        );
     }
 }

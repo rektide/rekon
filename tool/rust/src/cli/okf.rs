@@ -4,10 +4,10 @@ use std::path::Path;
 use super::{Format, Result};
 
 pub fn run(file: &Path, scope: Option<&str>, format: Format) -> Result {
-    let source = fs::read_to_string(file)
-        .map_err(|error| format!("{}: {error}", file.display()))?;
-    let mut records = rekon_markup::extract(&source)
-        .map_err(|error| format!("{}: {error}", file.display()))?;
+    let source =
+        fs::read_to_string(file).map_err(|error| format!("{}: {error}", file.display()))?;
+    let mut records =
+        rekon_markup::extract(&source).map_err(|error| format!("{}: {error}", file.display()))?;
     if let Some(scope) = scope {
         let id = scope.strip_prefix('#').unwrap_or(scope);
         records.retain(|record| record.owner.id.as_deref() == Some(id));
