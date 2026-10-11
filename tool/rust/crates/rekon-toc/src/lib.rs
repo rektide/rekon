@@ -64,7 +64,6 @@
 //! outside the configured depth window keeps (or gets, when a region already
 //! exists) an empty region rather than having one removed.
 
-mod html_scan;
 mod render;
 mod slug;
 mod structure;
@@ -171,25 +170,20 @@ pub struct TocCheck {
 #[derive(Debug, thiserror::Error)]
 pub enum TocError {
     /// The document failed to parse as GFM+frontmatter Markdown with MDX
-    /// expressions. Unbalanced `{`/`}` in prose fails here — wrap such text
-    /// in code spans or fences.
+    /// expressions. Unbalanced `{`/`}` in prose and unclosed JSX elements
+    /// (including an unclosed `<nav id="rekon-toc">`) fail here — wrap such
+    /// text in code spans or fences, or close the element.
     #[error("markdown parse failed: {0}")]
     Parse(String),
     /// `min_depth`/`max_depth` are outside 1..=6 or inverted.
     #[error("invalid heading depth window: min {min}, max {max}")]
     InvalidDepth { min: u8, max: u8 },
-    /// A `<nav id="rekon-toc">` region was opened but never closed. Under
-    /// the JSX reader profile an unclosed element usually surfaces as
-    /// [`TocError::Parse`] first; this variant covers raw-HTML forms a
-    /// future profile might admit. A `</nav>` inside fenced code never
-    /// counts — the parser does not see it as a real tag.
-    #[error("managed nav opened at line {line} has no closing </nav>")]
-    UnclosedNav { line: usize },
-    /// A managed nav marker shares its line with content outside the region;
-    /// replacing the region wholesale would drop that content. Under the
-    /// JSX reader profile the parser isolates element spans, so this is
-    /// mostly a guard for raw-HTML forms.
-    #[error("managed nav marker at line {line} shares its line with other content")]
+    /// A managed nav does not own its lines: prose before or after it on
+    /// the same line, or a container prefix (blockquote `> `, list `- `),
+    /// would be dropped by wholesale region replacement. Embedding the nav
+    /// in prose also cannot define a region. Keep the element on its own
+    /// lines.
+    #[error("managed nav at line {line} shares its line with other content")]
     UnisolatedNav { line: usize },
     /// More than one managed nav region exists; ToC would silently operate
     /// on one of them.

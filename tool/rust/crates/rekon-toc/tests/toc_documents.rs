@@ -559,6 +559,54 @@ fn multiple_managed_navs_error() {
 }
 
 #[test]
+fn inline_managed_nav_in_prose_errors() {
+    // A managed nav embedded in prose cannot define a region: replacing the
+    // line wholesale would drop "Before"/"after". Explicit error, no update.
+    let input = "# Doc\n\nBefore <nav id=\"rekon-toc\"></nav> after\n\n## Alpha\n";
+    let result = update_toc(input, &default_opts());
+    assert!(
+        matches!(result, Err(TocError::UnisolatedNav { line: 3 })),
+        "inline nav in prose must be rejected, got {result:?}"
+    );
+
+    // Same intent with a multi-line region: markdown-rs's JSX grammar itself
+    // rejects a flow nav sharing its open line with prose (end-tag
+    // mismatch), so such documents fail loudly at the parse, before any
+    // splice could drop the prose.
+    let input = concat!(
+        "# Doc\n",
+        "\n",
+        r#"Before <nav id="rekon-toc" aria-label="Table of contents">"#,
+        "\n\n- [Old](#old)\n\n</nav> after\n",
+        "\n",
+        "## Alpha\n",
+    );
+    let result = update_toc(input, &default_opts());
+    assert!(
+        result.is_err(),
+        "flow nav sharing its line with prose must never splice, got {result:?}"
+    );
+}
+
+#[test]
+fn managed_nav_in_container_errors() {
+    // Blockquote/list prefixes would be destroyed by line replacement.
+    let blockquote = "> <nav id=\"rekon-toc\"></nav>\n\n## Alpha\n";
+    let result = update_toc(blockquote, &default_opts());
+    assert!(
+        matches!(result, Err(TocError::UnisolatedNav { line: 1 })),
+        "blockquote-prefixed nav must be rejected, got {result:?}"
+    );
+
+    let list = "- <nav id=\"rekon-toc\"></nav>\n\n## Alpha\n";
+    let result = update_toc(list, &default_opts());
+    assert!(
+        matches!(result, Err(TocError::UnisolatedNav { line: 1 })),
+        "list-prefixed nav must be rejected, got {result:?}"
+    );
+}
+
+#[test]
 fn one_line_managed_nav_is_handled() {
     let input = "# Doc\n\n<nav id=\"rekon-toc\"></nav>\n\n## Alpha\n";
     let updated = assert_idempotent(input, &default_opts());

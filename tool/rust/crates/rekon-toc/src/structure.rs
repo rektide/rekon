@@ -6,7 +6,6 @@ use std::ops::RangeInclusive;
 use markdown::mdast::{AttributeContent, AttributeValue, Node};
 
 use crate::TocError;
-use crate::html_scan::{Tag, only_tags_and_whitespace, scan_tags_at};
 
 pub(crate) const NAV_ID: &str = "rekon-toc";
 
@@ -37,12 +36,22 @@ pub(crate) struct Structure {
     /// End line of the first H1 outside the managed region — the insertion
     /// point for a fresh nav. `None` inserts at the top.
     pub insertion_after: Option<usize>,
-    /// Every literal `id=` attribute seen in HTML blocks and JSX elements,
-    /// first-seen order, deduplicated. Used for conflict detection and
-    /// duplicate reporting.
+    /// Every literal `id` attribute seen on JSX elements, first-seen order,
+    /// deduplicated. Used for conflict detection and duplicate reporting.
     pub explicit_ids: Vec<String>,
     /// Explicit ids defined more than once in the document.
     pub duplicate_ids: Vec<String>,
+}
+
+/// A `<nav id="rekon-toc">` occurrence, flow or inline (text) JSX.
+#[derive(Debug, Clone)]
+struct ManagedNav {
+    start_line: usize,
+    end_line: usize,
+    /// The element owns its start and end lines: only whitespace surrounds
+    /// its byte span on both. Wholesale line replacement would otherwise
+    /// drop prose, container prefixes (`> `, `- `), or adjacent content.
+    isolated: bool,
 }
 
 pub(crate) fn extract(text: &str, parts: &[&str]) -> Result<Structure, TocError> {
@@ -55,70 +64,40 @@ pub(crate) fn extract(text: &str, parts: &[&str]) -> Result<Structure, TocError>
     let masked = mask_html_comments(text)?;
     let tree = markdown::to_mdast(&masked, &crate::parse_options())
         .map_err(|m| TocError::Parse(m.to_string()))?;
-    let mut walker = Walker::default();
+    let line_starts = line_start_offsets(text);
+    let mut walker = Walker {
+        text,
+        line_starts: &line_starts,
+        ..Walker::default()
+    };
     walker.visit(&tree, parts);
 
-    let region = if let Some((start, end)) = walker.managed_nav_spans.first() {
-        Some(*start..=*end)
-    } else if let Some(&open) = walker.managed_open_lines.first() {
-        match match_nav_close(&walker.html_stream, open) {
-            Some(close) => Some(open..=close),
-            None => return Err(TocError::UnclosedNav { line: open }),
+    // The first managed nav defines the region and must own its lines.
+    // Further occurrences outside the region are errors — ambiguous if
+    // isolated, destructive if not.
+    let region = match walker.managed_navs.first() {
+        None => None,
+        Some(first) if !first.isolated => {
+            return Err(TocError::UnisolatedNav {
+                line: first.start_line,
+            });
         }
-    } else {
-        None
+        Some(first) => Some(first.start_line..=first.end_line),
     };
-
     if let Some(region) = &region {
-        let (r0, r1) = (*region.start(), *region.end());
-        if !walker.managed_nav_spans.is_empty() {
-            // JSX-container form: the parser gave the element's exact span;
-            // replacing it wholesale can only drop managed content.
-        } else {
-            // Raw-HTML form: the managed markers must own their lines, or a
-            // wholesale region replacement would drop prose sharing them.
-            let open_tags = tags_on_line(&walker.html_stream, r0);
-            if r0 == r1 {
-                let ok = open_tags.len() == 2
-                    && open_tags[0].name == "nav"
-                    && !open_tags[0].closing
-                    && open_tags[0].id.as_deref() == Some(NAV_ID)
-                    && open_tags[1].name == "nav"
-                    && open_tags[1].closing
-                    && only_tags_and_whitespace(parts[r0 - 1]);
-                if !ok {
-                    return Err(TocError::UnisolatedNav { line: r0 });
+        for nav in &walker.managed_navs[1..] {
+            if region.contains(&nav.start_line) {
+                continue; // managed content, regenerated wholesale
+            }
+            return Err(if nav.isolated {
+                TocError::MultipleManagedNavs {
+                    first: *region.start(),
+                    extra_lines: vec![nav.start_line],
                 }
             } else {
-                let close_tags = tags_on_line(&walker.html_stream, r1);
-                let open_ok = open_tags.len() == 1
-                    && open_tags[0].name == "nav"
-                    && !open_tags[0].closing
-                    && open_tags[0].id.as_deref() == Some(NAV_ID)
-                    && only_tags_and_whitespace(parts[r0 - 1]);
-                let close_ok = close_tags.len() == 1
-                    && close_tags[0].name == "nav"
-                    && close_tags[0].closing
-                    && only_tags_and_whitespace(parts[r1 - 1]);
-                if !open_ok || !close_ok {
-                    return Err(TocError::UnisolatedNav {
-                        line: if !open_ok { r0 } else { r1 },
-                    });
+                TocError::UnisolatedNav {
+                    line: nav.start_line,
                 }
-            }
-        }
-        // A second managed nav outside this region is ambiguous.
-        let extras: Vec<usize> = walker
-            .managed_open_lines
-            .iter()
-            .chain(walker.managed_nav_spans.iter().map(|(start, _)| start))
-            .filter(|&&line| !region.contains(&line))
-            .copied()
-            .collect();
-        if !extras.is_empty() {
-            return Err(TocError::MultipleManagedNavs {
-                first: *region.start(),
-                extra_lines: extras,
             });
         }
     }
@@ -156,36 +135,16 @@ pub(crate) fn extract(text: &str, parts: &[&str]) -> Result<Structure, TocError>
     Ok(structure)
 }
 
-/// First line of a `</nav>` that matches the managed open at `open_line`,
-/// counting nested `nav` opens/closes through the tag stream.
-fn match_nav_close(stream: &[Tag], open_line: usize) -> Option<usize> {
-    let mut depth = 0usize;
-    let mut started = false;
-    for tag in stream {
-        if tag.name != "nav" {
-            continue;
-        }
-        if !tag.closing {
-            if tag.line == open_line && !started {
-                started = true;
-                depth = 1;
-                continue;
-            }
-            if started {
-                depth += 1;
-            }
-        } else if started {
-            depth -= 1;
-            if depth == 0 {
-                return Some(tag.line);
-            }
+/// Byte offset where each 1-based line starts; `line_starts[n - 1]` is the
+/// start of line `n`, and `line_starts.get(n)` (or `text.len()`) ends it.
+fn line_start_offsets(text: &str) -> Vec<usize> {
+    let mut offsets = vec![0];
+    for (idx, byte) in text.bytes().enumerate() {
+        if byte == b'\n' {
+            offsets.push(idx + 1);
         }
     }
-    None
-}
-
-fn tags_on_line(stream: &[Tag], line: usize) -> Vec<&Tag> {
-    stream.iter().filter(|t| t.line == line).collect()
+    offsets
 }
 
 /// Blank out HTML comment blocks in `text`, preserving length, newlines, and
@@ -233,7 +192,9 @@ fn collect_comment_spans(node: &Node, spans: &mut Vec<std::ops::Range<usize>>) {
 }
 
 #[derive(Default)]
-struct Walker {
+struct Walker<'a> {
+    text: &'a str,
+    line_starts: &'a [usize],
     headings: Vec<RawHeading>,
     /// Innermost-last stack of enclosing sections; `None` = `<section>` with
     /// no id.
@@ -244,16 +205,10 @@ struct Walker {
     seen_ids: std::collections::HashSet<String>,
     duplicate_ids: Vec<String>,
     first_h1: Option<(usize, usize)>,
-    /// Every raw-HTML tag in document order, from parser-isolated blocks,
-    /// with absolute lines.
-    html_stream: Vec<Tag>,
-    /// Lines of raw-HTML managed `<nav id="rekon-toc">` open tags.
-    managed_open_lines: Vec<usize>,
-    /// Spans of JSX-container managed navs (element start..=end).
-    managed_nav_spans: Vec<(usize, usize)>,
+    managed_navs: Vec<ManagedNav>,
 }
 
-impl Walker {
+impl Walker<'_> {
     fn visit(&mut self, node: &Node, parts: &[&str]) {
         let pos = node.position();
         let start_line = pos.map(|p| p.start.line);
@@ -280,55 +235,6 @@ impl Walker {
                     section,
                 });
             }
-            Node::Html(html) => {
-                if let Some(start) = start_line {
-                    let tags = scan_tags_at(html.value.as_str(), start);
-                    if let Some(first) = tags.first()
-                        && !first.closing
-                        && first.name == "nav"
-                        && first.id.as_deref() == Some(NAV_ID)
-                        && !first.self_closing
-                    {
-                        self.managed_open_lines.push(first.line);
-                    }
-                    for tag in &tags {
-                        if let Some(id) = &tag.id {
-                            self.record_id(id);
-                        }
-                    }
-                    // Section stack updates apply after this block (HTML
-                    // blocks cannot contain headings).
-                    for tag in &tags {
-                        if tag.name == "section" {
-                            if tag.closing {
-                                self.sections.pop();
-                            } else if !tag.self_closing {
-                                self.sections.push(tag.id.clone());
-                            }
-                        }
-                    }
-                    // Anchor block: a single `<a id=…>` (with optional closing
-                    // tag) and nothing but whitespace around it.
-                    let anchor_shape = match tags.as_slice() {
-                        [open] => open.name == "a" && !open.closing && open.id.is_some(),
-                        [open, close] => {
-                            open.name == "a"
-                                && !open.closing
-                                && open.id.is_some()
-                                && close.closing
-                                && close.name == "a"
-                        }
-                        _ => false,
-                    };
-                    if anchor_shape
-                        && only_tags_and_whitespace(html.value.as_str())
-                        && let (Some(id), Some(end)) = (tags[0].id.clone(), end_line)
-                    {
-                        self.pending_anchor = Some((id, end));
-                    }
-                    self.html_stream.extend(tags);
-                }
-            }
             Node::MdxJsxFlowElement(el) => {
                 let id = literal_id(&el.attributes);
                 if let Some(id) = &id {
@@ -336,9 +242,7 @@ impl Walker {
                 }
                 match el.name.as_deref() {
                     Some("nav") if id.as_deref() == Some(NAV_ID) => {
-                        if let Some((start, end)) = start_line.zip(end_line) {
-                            self.managed_nav_spans.push((start, end));
-                        }
+                        self.record_managed_nav(start_line, end_line, pos);
                         // Managed content: do not walk inside.
                     }
                     Some("a") if id.is_some() && el.children.is_empty() => {
@@ -360,18 +264,27 @@ impl Walker {
                     }
                 }
             }
-            // Frontmatter and ESM blocks are opaque literals.
-            Node::Yaml(_) | Node::Toml(_) | Node::MdxjsEsm(_) => {}
-            // Inline JSX (e.g. a nested <dfn> on a <dt> line): record its
-            // literal ids, then walk phrasing children.
+            // Inline JSX: a managed nav inside prose must still be caught —
+            // recording it as a region candidate makes its (missing)
+            // line isolation an explicit error instead of a silent second
+            // region or a dropped-prose replacement.
             Node::MdxJsxTextElement(el) => {
-                if let Some(id) = literal_id(&el.attributes) {
-                    self.record_id(&id);
+                let id = literal_id(&el.attributes);
+                if let Some(id) = &id {
+                    self.record_id(id);
+                }
+                if el.name.as_deref() == Some("nav") && id.as_deref() == Some(NAV_ID) {
+                    self.record_managed_nav(start_line, end_line, pos);
                 }
                 for child in &el.children {
                     self.visit(child, parts);
                 }
             }
+            // Raw-HTML constructs are off in the reader profile; Node::Html
+            // appears only in the comment probe above.
+            Node::Html(_) => {}
+            // Frontmatter and ESM blocks are opaque literals.
+            Node::Yaml(_) | Node::Toml(_) | Node::MdxjsEsm(_) => {}
             _ => {
                 if let Some(children) = node.children() {
                     for child in children {
@@ -380,6 +293,32 @@ impl Walker {
                 }
             }
         }
+    }
+
+    fn record_managed_nav(
+        &mut self,
+        start_line: Option<usize>,
+        end_line: Option<usize>,
+        pos: Option<&markdown::unist::Position>,
+    ) {
+        let Some(((start, end), position)) = start_line.zip(end_line).zip(pos) else {
+            return;
+        };
+        let line_start = self.line_starts[start - 1];
+        let line_end = self
+            .line_starts
+            .get(end)
+            .copied()
+            .unwrap_or(self.text.len());
+        let isolated = self.text[line_start..position.start.offset]
+            .trim()
+            .is_empty()
+            && self.text[position.end.offset..line_end].trim().is_empty();
+        self.managed_navs.push(ManagedNav {
+            start_line: start,
+            end_line: end,
+            isolated,
+        });
     }
 
     /// An anchor binds only to a heading that follows it with nothing but

@@ -90,7 +90,11 @@ input is returned unchanged.
   span, nothing else. A `</nav>` inside fenced code cannot close it; an
   unclosed nav fails the parse; a second managed nav is an error rather than
   a silent choice; a one-line `<nav id="rekon-toc"></nav>` is handled.
-  Content outside the element is never touched.
+  Content outside the element is never touched. The nav must **own its
+  lines**: one embedded in prose (`Before <nav…></nav> after`) or under a
+  container prefix (blockquote `> `, list `- `) is rejected with
+  `UnisolatedNav`, because wholesale region replacement would drop that
+  content — and an embedded nav must not silently become a second region.
 - **Ignored headings.** Anything inside code fences or indented code, YAML
   frontmatter, JSX expression comments, and the managed region itself. ATX
   and setext headings both count; frontmatter lines count in line
