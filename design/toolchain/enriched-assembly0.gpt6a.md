@@ -120,6 +120,25 @@ then `</dd>`. Keeping the opening tag and initial prose on one line while closin
 in another block fails the JSX inline/flow boundary. CONTEXT's conversion was
 corrected against the shared parser before integration.
 
+### Landed implementation checkpoint — October 11
+
+Rust `combine` now produces the live `AGENTS.md`: 12 complete fragments,
+43,325 UTF-8 bytes, scoped frontmatter, nested sections, semantic definitions,
+and 27 navigation entries with final physical line ranges. `pnpm check` now
+selects the Rust producer and passes freshness plus 108 declared coverage
+excerpts across 13 legacy sections. Standalone ToC freshness also passes.
+
+Workspace nextest passed all 101 tests; strict workspace clippy, Rust formatting,
+and the changed package manifest's formatting passed. Cross-engine tests recover
+both whole-document and authored subsection metadata, retain HTML-looking JSON
+strings, exclude commented-out records, and exercise read-only checking and
+symlink-target ToC publication. Review replaced unsafe ToC boundary searches with
+parser-confirmed isolated elements and removed the superseded HTML scanner.
+
+The component interface remains static data transport. Web/TUI presentation and
+broader source-document relocation remain the subsequent directions discussed
+in the commission; this checkpoint demonstrates working assembly and readers.
+
 - [Assembly home](/tool/assembly/README.md): production behavior to replace and
   operational guarantees to retain.
 - [OKF home](/okf/README.md): file-level upstream semantics; scoped elements are a

@@ -26,7 +26,7 @@
     "typecheck": "tsgo --noEmit",
     "test": "vitest",
     "build": "tsdown",
-    "check:agents": "node tool/agents.ts --check",
+    "check:agents": "cargo run --quiet --manifest-path tool/rust/Cargo.toml -- combine --check",
     "check": "pnpm run /^check:/",
     "check:context": "cargo run --quiet --manifest-path tool/rust/Cargo.toml -- audit-context"
   },

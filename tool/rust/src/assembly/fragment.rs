@@ -32,7 +32,8 @@ pub const RESERVED_WRAPPER_PREFIX: &str = "fragment-";
 pub struct FragmentMeta {
     pub id: String,
     pub order: i64,
-    /// Bundle-root-relative source (`/code/GLOBAL.md`), kept in `data-source`.
+    /// Canonical bundle-root-relative home, retained in the Okf metadata.
+    /// The actual fragment path separately supplies the wrapper's `data-source`.
     pub source: String,
     pub status: FragmentStatus,
 }
