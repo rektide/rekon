@@ -1,0 +1,1483 @@
+{
+  "method": "Whitespace words in raw Markdown, code included; UTF-8 byte counts; per-section raw bytes versus trimmed fragment bodies. Not model-token counts. Sources read only via full commit IDs.",
+  "revisions": {
+    "legacy": "ab672848a82170a5575dc32c227a5056008e3f37",
+    "cutover": "ed2b366b71e67e9e6eec6ec1fd3170645aca9f2a",
+    "recovery": "00cc45a247f26b7598864cd76a2b621f0927b107",
+    "audit": "3e99a5ad102531dbfaa98b572eb09f80fd592242",
+    "later": "fe78712b42beec706e5f08eb05657cdc577d025f"
+  },
+  "legacyEqualsPreserved": true,
+  "stages": {
+    "legacy": {
+      "revision": "ab672848a82170a5575dc32c227a5056008e3f37",
+      "words": 4752,
+      "bytes": 31877,
+      "lines": 371,
+      "sha256": "c474204ac00f45345bd27fb754e53bd767f51361633e4420f59eb4cb82f7c383",
+      "sections": [
+        {
+          "heading": "subagents",
+          "first": 1,
+          "last": 20,
+          "words": 558,
+          "bytes": 3780,
+          "lines": 20,
+          "sha256": "5865f80552a5251be1fa472f64a977cb6e5275250626f3f831a5d44eb1789db7"
+        },
+        {
+          "heading": "Experimenting",
+          "first": 22,
+          "last": 26,
+          "words": 58,
+          "bytes": 374,
+          "lines": 5,
+          "sha256": "2d088020c02e36834daff84d9ee7c85c1764dee1a7b4ff2a97bd3f37bdc36a47"
+        },
+        {
+          "heading": "Documentation / reference materials",
+          "first": 28,
+          "last": 105,
+          "words": 1554,
+          "bytes": 10369,
+          "lines": 78,
+          "sha256": "9f29893a1cc56a1681bf22bd76c6b9c25c5a21dc8d993a98e67d2909002894c0"
+        },
+        {
+          "heading": "well known directories and files",
+          "first": 107,
+          "last": 118,
+          "words": 200,
+          "bytes": 1328,
+          "lines": 12,
+          "sha256": "ad8eea3c1473c111a0733a8b866e006a592e1eb099f4ec10097a00b02bc93fa9"
+        },
+        {
+          "heading": "Project Planning",
+          "first": 120,
+          "last": 125,
+          "words": 98,
+          "bytes": 605,
+          "lines": 6,
+          "sha256": "1b39ac640041dfbd635b51b1e028b3d0a2a0ab262d98d21fe047950eef7d68b4"
+        },
+        {
+          "heading": "Coding advice",
+          "first": 127,
+          "last": 133,
+          "words": 171,
+          "bytes": 1187,
+          "lines": 7,
+          "sha256": "b2fbdb51d82a5be118c6d46a21d3056ec4b3ad0edc3b534c234503a74bde247a"
+        },
+        {
+          "heading": "Rust instructions",
+          "first": 135,
+          "last": 152,
+          "words": 125,
+          "bytes": 918,
+          "lines": 18,
+          "sha256": "0673f8a47c37ed51f7202f477d462f2043b2192d61cb718bfe60d0e8523aa0f7"
+        },
+        {
+          "heading": "Rules and guidelines for JavaScript projects",
+          "first": 154,
+          "last": 222,
+          "words": 672,
+          "bytes": 4389,
+          "lines": 69,
+          "sha256": "7804feba01b20ebc1cba3897c144c47bcfdd91b8606504dd60e91efa139bd6be"
+        },
+        {
+          "heading": "jj / git",
+          "first": 224,
+          "last": 246,
+          "words": 545,
+          "bytes": 3445,
+          "lines": 23,
+          "sha256": "3b846466861e7a5e5803c8053bdb72e0653457c88bebb930ccc9d9547b3ca305"
+        },
+        {
+          "heading": "jj-hunk",
+          "first": 248,
+          "last": 254,
+          "words": 144,
+          "bytes": 1004,
+          "lines": 7,
+          "sha256": "1b73c0dd6975ede3caf2710e557a46fde71fafb8f71f17c5e6f60bfbb23fda0c"
+        },
+        {
+          "heading": "beads",
+          "first": 256,
+          "last": 363,
+          "words": 574,
+          "bytes": 4124,
+          "lines": 108,
+          "sha256": "4657ce69373979fd388bb2ce73c07a49f23e352f727ec182e487bec0a89654b3"
+        },
+        {
+          "heading": "webcomponents",
+          "first": 365,
+          "last": 367,
+          "words": 32,
+          "bytes": 240,
+          "lines": 3,
+          "sha256": "3d3f525fbbebe0ceb1ba473f33135d381059f5bde8edcd3da9903421a1ac693e"
+        },
+        {
+          "heading": "shell usage",
+          "first": 369,
+          "last": 371,
+          "words": 21,
+          "bytes": 114,
+          "lines": 3,
+          "sha256": "e8023973bd65eaaeaf5d0fbbfc3c1a4f8b9e76c197b82967ac8178531ef5dbc1"
+        }
+      ]
+    },
+    "cutover": {
+      "revision": "ed2b366b71e67e9e6eec6ec1fd3170645aca9f2a",
+      "words": 2194,
+      "bytes": 16701,
+      "lines": 321,
+      "sha256": "9fb45e267fe3a75fb6b614dbbe0e3a46a9773ccc09369b5a202d1eaae3b1fd99",
+      "fragmentWords": 2126,
+      "fragmentBytes": 15930,
+      "fragments": [
+        {
+          "id": "glossary",
+          "order": 50,
+          "path": "CONTEXT.md",
+          "source": "/CONTEXT.md",
+          "first": 9,
+          "words": 1028,
+          "bytes": 7714,
+          "lines": 181,
+          "sha256": "e79cba487ae8c99ebf5d050bb814f0f909e942f50903faed7fcadc98ebc9ae93"
+        },
+        {
+          "id": "doc-constitution",
+          "order": 100,
+          "path": "constitution/GLOBAL.md",
+          "source": "/constitution/README.md",
+          "first": 193,
+          "words": 591,
+          "bytes": 4227,
+          "lines": 64,
+          "sha256": "68ebf51bb5dbc7e3248db1e35716ade2abdad772bdabc4b8e7dc5af3d348db51"
+        },
+        {
+          "id": "code",
+          "order": 200,
+          "path": "code/GLOBAL.md",
+          "source": "/code/README.md",
+          "first": 260,
+          "words": 241,
+          "bytes": 1675,
+          "lines": 23,
+          "sha256": "9a272ef6235678a8e080f0415b7b0240ad0bf1dd14a1870711319b2eb79bdee8"
+        },
+        {
+          "id": "praxis-ticket-pointers",
+          "order": 400,
+          "path": "praxis/ticket-pointers/GLOBAL.md",
+          "source": "/praxis/ticket-pointers/ticket-pointers0.glm53fx.md",
+          "first": 286,
+          "words": 90,
+          "bytes": 614,
+          "lines": 10,
+          "sha256": "2cbf5430efe62579dcea6983f565067c77bcb811bb79084afa35508d885ec1e3"
+        },
+        {
+          "id": "refs",
+          "order": 500,
+          "path": "refs/GLOBAL.md",
+          "source": "/refs/README.md",
+          "first": 299,
+          "words": 176,
+          "bytes": 1700,
+          "lines": 23,
+          "sha256": "8c414e41e012c3fbe52080f2487ed07b8153e25220b6b810cf45acd61c29f785"
+        }
+      ],
+      "sourceChecks": [
+        {
+          "path": "CONTEXT.md",
+          "selected": true,
+          "matchesSource": true,
+          "assembled": {
+            "words": 1028,
+            "bytes": 7714,
+            "lines": 181,
+            "sha256": "e79cba487ae8c99ebf5d050bb814f0f909e942f50903faed7fcadc98ebc9ae93"
+          },
+          "source": {
+            "words": 1028,
+            "bytes": 7714,
+            "lines": 181,
+            "sha256": "e79cba487ae8c99ebf5d050bb814f0f909e942f50903faed7fcadc98ebc9ae93"
+          }
+        },
+        {
+          "path": "constitution/GLOBAL.md",
+          "selected": true,
+          "matchesSource": true,
+          "assembled": {
+            "words": 591,
+            "bytes": 4227,
+            "lines": 64,
+            "sha256": "68ebf51bb5dbc7e3248db1e35716ade2abdad772bdabc4b8e7dc5af3d348db51"
+          },
+          "source": {
+            "words": 591,
+            "bytes": 4227,
+            "lines": 64,
+            "sha256": "68ebf51bb5dbc7e3248db1e35716ade2abdad772bdabc4b8e7dc5af3d348db51"
+          }
+        },
+        {
+          "path": "code/GLOBAL.md",
+          "selected": true,
+          "matchesSource": true,
+          "assembled": {
+            "words": 241,
+            "bytes": 1675,
+            "lines": 23,
+            "sha256": "9a272ef6235678a8e080f0415b7b0240ad0bf1dd14a1870711319b2eb79bdee8"
+          },
+          "source": {
+            "words": 241,
+            "bytes": 1675,
+            "lines": 23,
+            "sha256": "9a272ef6235678a8e080f0415b7b0240ad0bf1dd14a1870711319b2eb79bdee8"
+          }
+        },
+        {
+          "path": "praxis/ticket-pointers/GLOBAL.md",
+          "selected": true,
+          "matchesSource": true,
+          "assembled": {
+            "words": 90,
+            "bytes": 614,
+            "lines": 10,
+            "sha256": "2cbf5430efe62579dcea6983f565067c77bcb811bb79084afa35508d885ec1e3"
+          },
+          "source": {
+            "words": 90,
+            "bytes": 614,
+            "lines": 10,
+            "sha256": "2cbf5430efe62579dcea6983f565067c77bcb811bb79084afa35508d885ec1e3"
+          }
+        },
+        {
+          "path": "refs/GLOBAL.md",
+          "selected": true,
+          "matchesSource": true,
+          "assembled": {
+            "words": 176,
+            "bytes": 1700,
+            "lines": 23,
+            "sha256": "8c414e41e012c3fbe52080f2487ed07b8153e25220b6b810cf45acd61c29f785"
+          },
+          "source": {
+            "words": 176,
+            "bytes": 1700,
+            "lines": 23,
+            "sha256": "8c414e41e012c3fbe52080f2487ed07b8153e25220b6b810cf45acd61c29f785"
+          }
+        }
+      ]
+    },
+    "recovery": {
+      "revision": "00cc45a247f26b7598864cd76a2b621f0927b107",
+      "words": 4048,
+      "bytes": 31244,
+      "lines": 564,
+      "sha256": "c3f0226d626ec8e484e76e3cc638d80e1d5b56d0d27f7c87c8a864ba393bb6cb",
+      "fragmentWords": 3931,
+      "fragmentBytes": 29738,
+      "fragments": [
+        {
+          "id": "glossary",
+          "order": 50,
+          "path": "CONTEXT.md",
+          "source": "/CONTEXT.md",
+          "first": 9,
+          "words": 1028,
+          "bytes": 7714,
+          "lines": 181,
+          "sha256": "e79cba487ae8c99ebf5d050bb814f0f909e942f50903faed7fcadc98ebc9ae93"
+        },
+        {
+          "id": "doc-constitution",
+          "order": 100,
+          "path": "constitution/GLOBAL.md",
+          "source": "/constitution/README.md",
+          "first": 193,
+          "words": 603,
+          "bytes": 4368,
+          "lines": 66,
+          "sha256": "0b4569e06736a476af2e914b02716925b93443d804d1665643e36959a44c538a"
+        },
+        {
+          "id": "documentation-practice",
+          "order": 120,
+          "path": "constitution/practice/GLOBAL.md",
+          "source": "/constitution/README.md",
+          "first": 262,
+          "words": 360,
+          "bytes": 2811,
+          "lines": 47,
+          "sha256": "9e6411981fb0d92049a8081c7ef32e4f51b5159898afd98ced2f48df7e84a2c8"
+        },
+        {
+          "id": "collaboration",
+          "order": 150,
+          "path": "agents/GLOBAL.md",
+          "source": "/agents/GLOBAL.md",
+          "first": 312,
+          "words": 281,
+          "bytes": 2187,
+          "lines": 40,
+          "sha256": "a12b1c2817e47eaa5830da5eac60b8a091334cc6700b76a0330572f012442d75"
+        },
+        {
+          "id": "workspace",
+          "order": 170,
+          "path": "code/workspace/GLOBAL.md",
+          "source": "/code/workspace/GLOBAL.md",
+          "first": 355,
+          "words": 170,
+          "bytes": 1354,
+          "lines": 21,
+          "sha256": "c274e403c99bf4897fbcba868fc928f4a79259a8ada28373d137dcb2a96d62fc"
+        },
+        {
+          "id": "code",
+          "order": 200,
+          "path": "code/GLOBAL.md",
+          "source": "/code/README.md",
+          "first": 379,
+          "words": 328,
+          "bytes": 2282,
+          "lines": 31,
+          "sha256": "21be2de28289942e282e93052eaf5340b87f6b09dae437d1af25e5136de4b73c"
+        },
+        {
+          "id": "jj",
+          "order": 220,
+          "path": "vcs/jj/GLOBAL.md",
+          "source": "/vcs/jj/README.md",
+          "first": 413,
+          "words": 246,
+          "bytes": 1754,
+          "lines": 25,
+          "sha256": "fcb4e81b85cd598c17363daa086de19634177efe4313845442955c88c83ccc17"
+        },
+        {
+          "id": "javascript",
+          "order": 250,
+          "path": "js/GLOBAL.md",
+          "source": "/js/README.md",
+          "first": 441,
+          "words": 246,
+          "bytes": 1882,
+          "lines": 28,
+          "sha256": "c30888ac3866d212621b450ff368de481e34d4bed600683c8a460d73efdfc416"
+        },
+        {
+          "id": "rust",
+          "order": 260,
+          "path": "code/rust/GLOBAL.md",
+          "source": "/code/rust/GLOBAL.md",
+          "first": 472,
+          "words": 137,
+          "bytes": 1141,
+          "lines": 19,
+          "sha256": "d94e1f003317787cb34743102d348f42e28d9d3c525e846b4dc0a2f348694e94"
+        },
+        {
+          "id": "beads",
+          "order": 390,
+          "path": "praxis/beads/GLOBAL.md",
+          "source": "/praxis/beads/README.md",
+          "first": 494,
+          "words": 266,
+          "bytes": 1931,
+          "lines": 32,
+          "sha256": "63c32a19963a28e3e00818c1b445f670c9f7d5a401ced93d94fe28a0e7024f08"
+        },
+        {
+          "id": "praxis-ticket-pointers",
+          "order": 400,
+          "path": "praxis/ticket-pointers/GLOBAL.md",
+          "source": "/praxis/ticket-pointers/ticket-pointers0.glm53fx.md",
+          "first": 529,
+          "words": 90,
+          "bytes": 614,
+          "lines": 10,
+          "sha256": "2cbf5430efe62579dcea6983f565067c77bcb811bb79084afa35508d885ec1e3"
+        },
+        {
+          "id": "refs",
+          "order": 500,
+          "path": "refs/GLOBAL.md",
+          "source": "/refs/README.md",
+          "first": 542,
+          "words": 176,
+          "bytes": 1700,
+          "lines": 23,
+          "sha256": "8c414e41e012c3fbe52080f2487ed07b8153e25220b6b810cf45acd61c29f785"
+        }
+      ],
+      "sourceChecks": [
+        {
+          "path": "CONTEXT.md",
+          "selected": true,
+          "matchesSource": true,
+          "assembled": {
+            "words": 1028,
+            "bytes": 7714,
+            "lines": 181,
+            "sha256": "e79cba487ae8c99ebf5d050bb814f0f909e942f50903faed7fcadc98ebc9ae93"
+          },
+          "source": {
+            "words": 1028,
+            "bytes": 7714,
+            "lines": 181,
+            "sha256": "e79cba487ae8c99ebf5d050bb814f0f909e942f50903faed7fcadc98ebc9ae93"
+          }
+        },
+        {
+          "path": "constitution/GLOBAL.md",
+          "selected": true,
+          "matchesSource": true,
+          "assembled": {
+            "words": 603,
+            "bytes": 4368,
+            "lines": 66,
+            "sha256": "0b4569e06736a476af2e914b02716925b93443d804d1665643e36959a44c538a"
+          },
+          "source": {
+            "words": 603,
+            "bytes": 4368,
+            "lines": 66,
+            "sha256": "0b4569e06736a476af2e914b02716925b93443d804d1665643e36959a44c538a"
+          }
+        },
+        {
+          "path": "constitution/practice/GLOBAL.md",
+          "selected": true,
+          "matchesSource": true,
+          "assembled": {
+            "words": 360,
+            "bytes": 2811,
+            "lines": 47,
+            "sha256": "9e6411981fb0d92049a8081c7ef32e4f51b5159898afd98ced2f48df7e84a2c8"
+          },
+          "source": {
+            "words": 360,
+            "bytes": 2811,
+            "lines": 47,
+            "sha256": "9e6411981fb0d92049a8081c7ef32e4f51b5159898afd98ced2f48df7e84a2c8"
+          }
+        },
+        {
+          "path": "agents/GLOBAL.md",
+          "selected": true,
+          "matchesSource": true,
+          "assembled": {
+            "words": 281,
+            "bytes": 2187,
+            "lines": 40,
+            "sha256": "a12b1c2817e47eaa5830da5eac60b8a091334cc6700b76a0330572f012442d75"
+          },
+          "source": {
+            "words": 281,
+            "bytes": 2187,
+            "lines": 40,
+            "sha256": "a12b1c2817e47eaa5830da5eac60b8a091334cc6700b76a0330572f012442d75"
+          }
+        },
+        {
+          "path": "code/workspace/GLOBAL.md",
+          "selected": true,
+          "matchesSource": true,
+          "assembled": {
+            "words": 170,
+            "bytes": 1354,
+            "lines": 21,
+            "sha256": "c274e403c99bf4897fbcba868fc928f4a79259a8ada28373d137dcb2a96d62fc"
+          },
+          "source": {
+            "words": 170,
+            "bytes": 1354,
+            "lines": 21,
+            "sha256": "c274e403c99bf4897fbcba868fc928f4a79259a8ada28373d137dcb2a96d62fc"
+          }
+        },
+        {
+          "path": "code/GLOBAL.md",
+          "selected": true,
+          "matchesSource": true,
+          "assembled": {
+            "words": 328,
+            "bytes": 2282,
+            "lines": 31,
+            "sha256": "21be2de28289942e282e93052eaf5340b87f6b09dae437d1af25e5136de4b73c"
+          },
+          "source": {
+            "words": 328,
+            "bytes": 2282,
+            "lines": 31,
+            "sha256": "21be2de28289942e282e93052eaf5340b87f6b09dae437d1af25e5136de4b73c"
+          }
+        },
+        {
+          "path": "vcs/jj/GLOBAL.md",
+          "selected": true,
+          "matchesSource": true,
+          "assembled": {
+            "words": 246,
+            "bytes": 1754,
+            "lines": 25,
+            "sha256": "fcb4e81b85cd598c17363daa086de19634177efe4313845442955c88c83ccc17"
+          },
+          "source": {
+            "words": 246,
+            "bytes": 1754,
+            "lines": 25,
+            "sha256": "fcb4e81b85cd598c17363daa086de19634177efe4313845442955c88c83ccc17"
+          }
+        },
+        {
+          "path": "js/GLOBAL.md",
+          "selected": true,
+          "matchesSource": true,
+          "assembled": {
+            "words": 246,
+            "bytes": 1882,
+            "lines": 28,
+            "sha256": "c30888ac3866d212621b450ff368de481e34d4bed600683c8a460d73efdfc416"
+          },
+          "source": {
+            "words": 246,
+            "bytes": 1882,
+            "lines": 28,
+            "sha256": "c30888ac3866d212621b450ff368de481e34d4bed600683c8a460d73efdfc416"
+          }
+        },
+        {
+          "path": "code/rust/GLOBAL.md",
+          "selected": true,
+          "matchesSource": true,
+          "assembled": {
+            "words": 137,
+            "bytes": 1141,
+            "lines": 19,
+            "sha256": "d94e1f003317787cb34743102d348f42e28d9d3c525e846b4dc0a2f348694e94"
+          },
+          "source": {
+            "words": 137,
+            "bytes": 1141,
+            "lines": 19,
+            "sha256": "d94e1f003317787cb34743102d348f42e28d9d3c525e846b4dc0a2f348694e94"
+          }
+        },
+        {
+          "path": "praxis/beads/GLOBAL.md",
+          "selected": true,
+          "matchesSource": true,
+          "assembled": {
+            "words": 266,
+            "bytes": 1931,
+            "lines": 32,
+            "sha256": "63c32a19963a28e3e00818c1b445f670c9f7d5a401ced93d94fe28a0e7024f08"
+          },
+          "source": {
+            "words": 266,
+            "bytes": 1931,
+            "lines": 32,
+            "sha256": "63c32a19963a28e3e00818c1b445f670c9f7d5a401ced93d94fe28a0e7024f08"
+          }
+        },
+        {
+          "path": "praxis/ticket-pointers/GLOBAL.md",
+          "selected": true,
+          "matchesSource": true,
+          "assembled": {
+            "words": 90,
+            "bytes": 614,
+            "lines": 10,
+            "sha256": "2cbf5430efe62579dcea6983f565067c77bcb811bb79084afa35508d885ec1e3"
+          },
+          "source": {
+            "words": 90,
+            "bytes": 614,
+            "lines": 10,
+            "sha256": "2cbf5430efe62579dcea6983f565067c77bcb811bb79084afa35508d885ec1e3"
+          }
+        },
+        {
+          "path": "refs/GLOBAL.md",
+          "selected": true,
+          "matchesSource": true,
+          "assembled": {
+            "words": 176,
+            "bytes": 1700,
+            "lines": 23,
+            "sha256": "8c414e41e012c3fbe52080f2487ed07b8153e25220b6b810cf45acd61c29f785"
+          },
+          "source": {
+            "words": 176,
+            "bytes": 1700,
+            "lines": 23,
+            "sha256": "8c414e41e012c3fbe52080f2487ed07b8153e25220b6b810cf45acd61c29f785"
+          }
+        }
+      ]
+    },
+    "audit": {
+      "revision": "3e99a5ad102531dbfaa98b572eb09f80fd592242",
+      "words": 4048,
+      "bytes": 31244,
+      "lines": 564,
+      "sha256": "c3f0226d626ec8e484e76e3cc638d80e1d5b56d0d27f7c87c8a864ba393bb6cb",
+      "fragmentWords": 3931,
+      "fragmentBytes": 29738,
+      "fragments": [
+        {
+          "id": "glossary",
+          "order": 50,
+          "path": "CONTEXT.md",
+          "source": "/CONTEXT.md",
+          "first": 9,
+          "words": 1028,
+          "bytes": 7714,
+          "lines": 181,
+          "sha256": "e79cba487ae8c99ebf5d050bb814f0f909e942f50903faed7fcadc98ebc9ae93"
+        },
+        {
+          "id": "doc-constitution",
+          "order": 100,
+          "path": "constitution/GLOBAL.md",
+          "source": "/constitution/README.md",
+          "first": 193,
+          "words": 603,
+          "bytes": 4368,
+          "lines": 66,
+          "sha256": "0b4569e06736a476af2e914b02716925b93443d804d1665643e36959a44c538a"
+        },
+        {
+          "id": "documentation-practice",
+          "order": 120,
+          "path": "constitution/practice/GLOBAL.md",
+          "source": "/constitution/README.md",
+          "first": 262,
+          "words": 360,
+          "bytes": 2811,
+          "lines": 47,
+          "sha256": "9e6411981fb0d92049a8081c7ef32e4f51b5159898afd98ced2f48df7e84a2c8"
+        },
+        {
+          "id": "collaboration",
+          "order": 150,
+          "path": "agents/GLOBAL.md",
+          "source": "/agents/GLOBAL.md",
+          "first": 312,
+          "words": 281,
+          "bytes": 2187,
+          "lines": 40,
+          "sha256": "a12b1c2817e47eaa5830da5eac60b8a091334cc6700b76a0330572f012442d75"
+        },
+        {
+          "id": "workspace",
+          "order": 170,
+          "path": "code/workspace/GLOBAL.md",
+          "source": "/code/workspace/GLOBAL.md",
+          "first": 355,
+          "words": 170,
+          "bytes": 1354,
+          "lines": 21,
+          "sha256": "c274e403c99bf4897fbcba868fc928f4a79259a8ada28373d137dcb2a96d62fc"
+        },
+        {
+          "id": "code",
+          "order": 200,
+          "path": "code/GLOBAL.md",
+          "source": "/code/README.md",
+          "first": 379,
+          "words": 328,
+          "bytes": 2282,
+          "lines": 31,
+          "sha256": "21be2de28289942e282e93052eaf5340b87f6b09dae437d1af25e5136de4b73c"
+        },
+        {
+          "id": "jj",
+          "order": 220,
+          "path": "vcs/jj/GLOBAL.md",
+          "source": "/vcs/jj/README.md",
+          "first": 413,
+          "words": 246,
+          "bytes": 1754,
+          "lines": 25,
+          "sha256": "fcb4e81b85cd598c17363daa086de19634177efe4313845442955c88c83ccc17"
+        },
+        {
+          "id": "javascript",
+          "order": 250,
+          "path": "js/GLOBAL.md",
+          "source": "/js/README.md",
+          "first": 441,
+          "words": 246,
+          "bytes": 1882,
+          "lines": 28,
+          "sha256": "c30888ac3866d212621b450ff368de481e34d4bed600683c8a460d73efdfc416"
+        },
+        {
+          "id": "rust",
+          "order": 260,
+          "path": "code/rust/GLOBAL.md",
+          "source": "/code/rust/GLOBAL.md",
+          "first": 472,
+          "words": 137,
+          "bytes": 1141,
+          "lines": 19,
+          "sha256": "d94e1f003317787cb34743102d348f42e28d9d3c525e846b4dc0a2f348694e94"
+        },
+        {
+          "id": "beads",
+          "order": 390,
+          "path": "praxis/beads/GLOBAL.md",
+          "source": "/praxis/beads/README.md",
+          "first": 494,
+          "words": 266,
+          "bytes": 1931,
+          "lines": 32,
+          "sha256": "63c32a19963a28e3e00818c1b445f670c9f7d5a401ced93d94fe28a0e7024f08"
+        },
+        {
+          "id": "praxis-ticket-pointers",
+          "order": 400,
+          "path": "praxis/ticket-pointers/GLOBAL.md",
+          "source": "/praxis/ticket-pointers/ticket-pointers0.glm53fx.md",
+          "first": 529,
+          "words": 90,
+          "bytes": 614,
+          "lines": 10,
+          "sha256": "2cbf5430efe62579dcea6983f565067c77bcb811bb79084afa35508d885ec1e3"
+        },
+        {
+          "id": "refs",
+          "order": 500,
+          "path": "refs/GLOBAL.md",
+          "source": "/refs/README.md",
+          "first": 542,
+          "words": 176,
+          "bytes": 1700,
+          "lines": 23,
+          "sha256": "8c414e41e012c3fbe52080f2487ed07b8153e25220b6b810cf45acd61c29f785"
+        }
+      ],
+      "sourceChecks": [
+        {
+          "path": "CONTEXT.md",
+          "selected": true,
+          "matchesSource": true,
+          "assembled": {
+            "words": 1028,
+            "bytes": 7714,
+            "lines": 181,
+            "sha256": "e79cba487ae8c99ebf5d050bb814f0f909e942f50903faed7fcadc98ebc9ae93"
+          },
+          "source": {
+            "words": 1028,
+            "bytes": 7714,
+            "lines": 181,
+            "sha256": "e79cba487ae8c99ebf5d050bb814f0f909e942f50903faed7fcadc98ebc9ae93"
+          }
+        },
+        {
+          "path": "constitution/GLOBAL.md",
+          "selected": true,
+          "matchesSource": true,
+          "assembled": {
+            "words": 603,
+            "bytes": 4368,
+            "lines": 66,
+            "sha256": "0b4569e06736a476af2e914b02716925b93443d804d1665643e36959a44c538a"
+          },
+          "source": {
+            "words": 603,
+            "bytes": 4368,
+            "lines": 66,
+            "sha256": "0b4569e06736a476af2e914b02716925b93443d804d1665643e36959a44c538a"
+          }
+        },
+        {
+          "path": "constitution/practice/GLOBAL.md",
+          "selected": true,
+          "matchesSource": true,
+          "assembled": {
+            "words": 360,
+            "bytes": 2811,
+            "lines": 47,
+            "sha256": "9e6411981fb0d92049a8081c7ef32e4f51b5159898afd98ced2f48df7e84a2c8"
+          },
+          "source": {
+            "words": 360,
+            "bytes": 2811,
+            "lines": 47,
+            "sha256": "9e6411981fb0d92049a8081c7ef32e4f51b5159898afd98ced2f48df7e84a2c8"
+          }
+        },
+        {
+          "path": "agents/GLOBAL.md",
+          "selected": true,
+          "matchesSource": true,
+          "assembled": {
+            "words": 281,
+            "bytes": 2187,
+            "lines": 40,
+            "sha256": "a12b1c2817e47eaa5830da5eac60b8a091334cc6700b76a0330572f012442d75"
+          },
+          "source": {
+            "words": 281,
+            "bytes": 2187,
+            "lines": 40,
+            "sha256": "a12b1c2817e47eaa5830da5eac60b8a091334cc6700b76a0330572f012442d75"
+          }
+        },
+        {
+          "path": "code/workspace/GLOBAL.md",
+          "selected": true,
+          "matchesSource": true,
+          "assembled": {
+            "words": 170,
+            "bytes": 1354,
+            "lines": 21,
+            "sha256": "c274e403c99bf4897fbcba868fc928f4a79259a8ada28373d137dcb2a96d62fc"
+          },
+          "source": {
+            "words": 170,
+            "bytes": 1354,
+            "lines": 21,
+            "sha256": "c274e403c99bf4897fbcba868fc928f4a79259a8ada28373d137dcb2a96d62fc"
+          }
+        },
+        {
+          "path": "code/GLOBAL.md",
+          "selected": true,
+          "matchesSource": true,
+          "assembled": {
+            "words": 328,
+            "bytes": 2282,
+            "lines": 31,
+            "sha256": "21be2de28289942e282e93052eaf5340b87f6b09dae437d1af25e5136de4b73c"
+          },
+          "source": {
+            "words": 328,
+            "bytes": 2282,
+            "lines": 31,
+            "sha256": "21be2de28289942e282e93052eaf5340b87f6b09dae437d1af25e5136de4b73c"
+          }
+        },
+        {
+          "path": "vcs/jj/GLOBAL.md",
+          "selected": true,
+          "matchesSource": true,
+          "assembled": {
+            "words": 246,
+            "bytes": 1754,
+            "lines": 25,
+            "sha256": "fcb4e81b85cd598c17363daa086de19634177efe4313845442955c88c83ccc17"
+          },
+          "source": {
+            "words": 246,
+            "bytes": 1754,
+            "lines": 25,
+            "sha256": "fcb4e81b85cd598c17363daa086de19634177efe4313845442955c88c83ccc17"
+          }
+        },
+        {
+          "path": "js/GLOBAL.md",
+          "selected": true,
+          "matchesSource": true,
+          "assembled": {
+            "words": 246,
+            "bytes": 1882,
+            "lines": 28,
+            "sha256": "c30888ac3866d212621b450ff368de481e34d4bed600683c8a460d73efdfc416"
+          },
+          "source": {
+            "words": 246,
+            "bytes": 1882,
+            "lines": 28,
+            "sha256": "c30888ac3866d212621b450ff368de481e34d4bed600683c8a460d73efdfc416"
+          }
+        },
+        {
+          "path": "code/rust/GLOBAL.md",
+          "selected": true,
+          "matchesSource": true,
+          "assembled": {
+            "words": 137,
+            "bytes": 1141,
+            "lines": 19,
+            "sha256": "d94e1f003317787cb34743102d348f42e28d9d3c525e846b4dc0a2f348694e94"
+          },
+          "source": {
+            "words": 137,
+            "bytes": 1141,
+            "lines": 19,
+            "sha256": "d94e1f003317787cb34743102d348f42e28d9d3c525e846b4dc0a2f348694e94"
+          }
+        },
+        {
+          "path": "praxis/beads/GLOBAL.md",
+          "selected": true,
+          "matchesSource": true,
+          "assembled": {
+            "words": 266,
+            "bytes": 1931,
+            "lines": 32,
+            "sha256": "63c32a19963a28e3e00818c1b445f670c9f7d5a401ced93d94fe28a0e7024f08"
+          },
+          "source": {
+            "words": 266,
+            "bytes": 1931,
+            "lines": 32,
+            "sha256": "63c32a19963a28e3e00818c1b445f670c9f7d5a401ced93d94fe28a0e7024f08"
+          }
+        },
+        {
+          "path": "praxis/ticket-pointers/GLOBAL.md",
+          "selected": true,
+          "matchesSource": true,
+          "assembled": {
+            "words": 90,
+            "bytes": 614,
+            "lines": 10,
+            "sha256": "2cbf5430efe62579dcea6983f565067c77bcb811bb79084afa35508d885ec1e3"
+          },
+          "source": {
+            "words": 90,
+            "bytes": 614,
+            "lines": 10,
+            "sha256": "2cbf5430efe62579dcea6983f565067c77bcb811bb79084afa35508d885ec1e3"
+          }
+        },
+        {
+          "path": "refs/GLOBAL.md",
+          "selected": true,
+          "matchesSource": true,
+          "assembled": {
+            "words": 176,
+            "bytes": 1700,
+            "lines": 23,
+            "sha256": "8c414e41e012c3fbe52080f2487ed07b8153e25220b6b810cf45acd61c29f785"
+          },
+          "source": {
+            "words": 176,
+            "bytes": 1700,
+            "lines": 23,
+            "sha256": "8c414e41e012c3fbe52080f2487ed07b8153e25220b6b810cf45acd61c29f785"
+          }
+        }
+      ]
+    },
+    "later": {
+      "revision": "fe78712b42beec706e5f08eb05657cdc577d025f",
+      "words": 4203,
+      "bytes": 32357,
+      "lines": 580,
+      "sha256": "12c079f31247d2b8c4e557b83e2ea62eabc466108a26934390acf05f9dbc4e18",
+      "fragmentWords": 4086,
+      "fragmentBytes": 30851,
+      "fragments": [
+        {
+          "id": "glossary",
+          "order": 50,
+          "path": "CONTEXT.md",
+          "source": "/CONTEXT.md",
+          "first": 9,
+          "words": 1028,
+          "bytes": 7714,
+          "lines": 181,
+          "sha256": "e79cba487ae8c99ebf5d050bb814f0f909e942f50903faed7fcadc98ebc9ae93"
+        },
+        {
+          "id": "doc-constitution",
+          "order": 100,
+          "path": "constitution/GLOBAL.md",
+          "source": "/constitution/README.md",
+          "first": 193,
+          "words": 603,
+          "bytes": 4368,
+          "lines": 66,
+          "sha256": "0b4569e06736a476af2e914b02716925b93443d804d1665643e36959a44c538a"
+        },
+        {
+          "id": "documentation-practice",
+          "order": 120,
+          "path": "constitution/practice/GLOBAL.md",
+          "source": "/constitution/README.md",
+          "first": 262,
+          "words": 465,
+          "bytes": 3554,
+          "lines": 57,
+          "sha256": "6fc143527d26f84864d492e90d6941fdfc1d82f88d4785b05e50389948c5e0d0"
+        },
+        {
+          "id": "collaboration",
+          "order": 150,
+          "path": "agents/GLOBAL.md",
+          "source": "/agents/GLOBAL.md",
+          "first": 322,
+          "words": 281,
+          "bytes": 2187,
+          "lines": 40,
+          "sha256": "a12b1c2817e47eaa5830da5eac60b8a091334cc6700b76a0330572f012442d75"
+        },
+        {
+          "id": "workspace",
+          "order": 170,
+          "path": "code/workspace/GLOBAL.md",
+          "source": "/code/workspace/GLOBAL.md",
+          "first": 365,
+          "words": 170,
+          "bytes": 1354,
+          "lines": 21,
+          "sha256": "c274e403c99bf4897fbcba868fc928f4a79259a8ada28373d137dcb2a96d62fc"
+        },
+        {
+          "id": "code",
+          "order": 200,
+          "path": "code/GLOBAL.md",
+          "source": "/code/README.md",
+          "first": 389,
+          "words": 328,
+          "bytes": 2282,
+          "lines": 31,
+          "sha256": "21be2de28289942e282e93052eaf5340b87f6b09dae437d1af25e5136de4b73c"
+        },
+        {
+          "id": "jj",
+          "order": 220,
+          "path": "vcs/jj/GLOBAL.md",
+          "source": "/vcs/jj/README.md",
+          "first": 423,
+          "words": 246,
+          "bytes": 1754,
+          "lines": 25,
+          "sha256": "fcb4e81b85cd598c17363daa086de19634177efe4313845442955c88c83ccc17"
+        },
+        {
+          "id": "javascript",
+          "order": 250,
+          "path": "js/GLOBAL.md",
+          "source": "/js/README.md",
+          "first": 451,
+          "words": 246,
+          "bytes": 1882,
+          "lines": 28,
+          "sha256": "c30888ac3866d212621b450ff368de481e34d4bed600683c8a460d73efdfc416"
+        },
+        {
+          "id": "rust",
+          "order": 260,
+          "path": "code/rust/GLOBAL.md",
+          "source": "/code/rust/GLOBAL.md",
+          "first": 482,
+          "words": 137,
+          "bytes": 1141,
+          "lines": 19,
+          "sha256": "d94e1f003317787cb34743102d348f42e28d9d3c525e846b4dc0a2f348694e94"
+        },
+        {
+          "id": "beads",
+          "order": 390,
+          "path": "praxis/beads/GLOBAL.md",
+          "source": "/praxis/beads/README.md",
+          "first": 504,
+          "words": 266,
+          "bytes": 1931,
+          "lines": 32,
+          "sha256": "63c32a19963a28e3e00818c1b445f670c9f7d5a401ced93d94fe28a0e7024f08"
+        },
+        {
+          "id": "praxis-ticket-pointers",
+          "order": 400,
+          "path": "praxis/ticket-pointers/GLOBAL.md",
+          "source": "/praxis/ticket-pointers/ticket-pointers0.glm53fx.md",
+          "first": 539,
+          "words": 90,
+          "bytes": 614,
+          "lines": 10,
+          "sha256": "2cbf5430efe62579dcea6983f565067c77bcb811bb79084afa35508d885ec1e3"
+        },
+        {
+          "id": "refs",
+          "order": 500,
+          "path": "refs/GLOBAL.md",
+          "source": "/refs/README.md",
+          "first": 552,
+          "words": 226,
+          "bytes": 2070,
+          "lines": 29,
+          "sha256": "0364d6abdf19af9429d1e3e8e4364b04af025c312b51a27808fdf759e546d2f2"
+        }
+      ],
+      "sourceChecks": [
+        {
+          "path": "CONTEXT.md",
+          "selected": true,
+          "matchesSource": false,
+          "assembled": {
+            "words": 1028,
+            "bytes": 7714,
+            "lines": 181,
+            "sha256": "e79cba487ae8c99ebf5d050bb814f0f909e942f50903faed7fcadc98ebc9ae93"
+          },
+          "source": {
+            "words": 1081,
+            "bytes": 8569,
+            "lines": 263,
+            "sha256": "8860dfd083907131fe34647f2f5654e4023e9ee4bb8d9bdab042f7795336fecd"
+          }
+        },
+        {
+          "path": "constitution/GLOBAL.md",
+          "selected": true,
+          "matchesSource": true,
+          "assembled": {
+            "words": 603,
+            "bytes": 4368,
+            "lines": 66,
+            "sha256": "0b4569e06736a476af2e914b02716925b93443d804d1665643e36959a44c538a"
+          },
+          "source": {
+            "words": 603,
+            "bytes": 4368,
+            "lines": 66,
+            "sha256": "0b4569e06736a476af2e914b02716925b93443d804d1665643e36959a44c538a"
+          }
+        },
+        {
+          "path": "constitution/practice/GLOBAL.md",
+          "selected": true,
+          "matchesSource": true,
+          "assembled": {
+            "words": 465,
+            "bytes": 3554,
+            "lines": 57,
+            "sha256": "6fc143527d26f84864d492e90d6941fdfc1d82f88d4785b05e50389948c5e0d0"
+          },
+          "source": {
+            "words": 465,
+            "bytes": 3554,
+            "lines": 57,
+            "sha256": "6fc143527d26f84864d492e90d6941fdfc1d82f88d4785b05e50389948c5e0d0"
+          }
+        },
+        {
+          "path": "agents/GLOBAL.md",
+          "selected": true,
+          "matchesSource": true,
+          "assembled": {
+            "words": 281,
+            "bytes": 2187,
+            "lines": 40,
+            "sha256": "a12b1c2817e47eaa5830da5eac60b8a091334cc6700b76a0330572f012442d75"
+          },
+          "source": {
+            "words": 281,
+            "bytes": 2187,
+            "lines": 40,
+            "sha256": "a12b1c2817e47eaa5830da5eac60b8a091334cc6700b76a0330572f012442d75"
+          }
+        },
+        {
+          "path": "code/workspace/GLOBAL.md",
+          "selected": true,
+          "matchesSource": true,
+          "assembled": {
+            "words": 170,
+            "bytes": 1354,
+            "lines": 21,
+            "sha256": "c274e403c99bf4897fbcba868fc928f4a79259a8ada28373d137dcb2a96d62fc"
+          },
+          "source": {
+            "words": 170,
+            "bytes": 1354,
+            "lines": 21,
+            "sha256": "c274e403c99bf4897fbcba868fc928f4a79259a8ada28373d137dcb2a96d62fc"
+          }
+        },
+        {
+          "path": "code/GLOBAL.md",
+          "selected": true,
+          "matchesSource": true,
+          "assembled": {
+            "words": 328,
+            "bytes": 2282,
+            "lines": 31,
+            "sha256": "21be2de28289942e282e93052eaf5340b87f6b09dae437d1af25e5136de4b73c"
+          },
+          "source": {
+            "words": 328,
+            "bytes": 2282,
+            "lines": 31,
+            "sha256": "21be2de28289942e282e93052eaf5340b87f6b09dae437d1af25e5136de4b73c"
+          }
+        },
+        {
+          "path": "vcs/jj/GLOBAL.md",
+          "selected": true,
+          "matchesSource": true,
+          "assembled": {
+            "words": 246,
+            "bytes": 1754,
+            "lines": 25,
+            "sha256": "fcb4e81b85cd598c17363daa086de19634177efe4313845442955c88c83ccc17"
+          },
+          "source": {
+            "words": 246,
+            "bytes": 1754,
+            "lines": 25,
+            "sha256": "fcb4e81b85cd598c17363daa086de19634177efe4313845442955c88c83ccc17"
+          }
+        },
+        {
+          "path": "js/GLOBAL.md",
+          "selected": true,
+          "matchesSource": true,
+          "assembled": {
+            "words": 246,
+            "bytes": 1882,
+            "lines": 28,
+            "sha256": "c30888ac3866d212621b450ff368de481e34d4bed600683c8a460d73efdfc416"
+          },
+          "source": {
+            "words": 246,
+            "bytes": 1882,
+            "lines": 28,
+            "sha256": "c30888ac3866d212621b450ff368de481e34d4bed600683c8a460d73efdfc416"
+          }
+        },
+        {
+          "path": "code/rust/GLOBAL.md",
+          "selected": true,
+          "matchesSource": true,
+          "assembled": {
+            "words": 137,
+            "bytes": 1141,
+            "lines": 19,
+            "sha256": "d94e1f003317787cb34743102d348f42e28d9d3c525e846b4dc0a2f348694e94"
+          },
+          "source": {
+            "words": 137,
+            "bytes": 1141,
+            "lines": 19,
+            "sha256": "d94e1f003317787cb34743102d348f42e28d9d3c525e846b4dc0a2f348694e94"
+          }
+        },
+        {
+          "path": "praxis/beads/GLOBAL.md",
+          "selected": true,
+          "matchesSource": true,
+          "assembled": {
+            "words": 266,
+            "bytes": 1931,
+            "lines": 32,
+            "sha256": "63c32a19963a28e3e00818c1b445f670c9f7d5a401ced93d94fe28a0e7024f08"
+          },
+          "source": {
+            "words": 266,
+            "bytes": 1931,
+            "lines": 32,
+            "sha256": "63c32a19963a28e3e00818c1b445f670c9f7d5a401ced93d94fe28a0e7024f08"
+          }
+        },
+        {
+          "path": "praxis/ticket-pointers/GLOBAL.md",
+          "selected": true,
+          "matchesSource": true,
+          "assembled": {
+            "words": 90,
+            "bytes": 614,
+            "lines": 10,
+            "sha256": "2cbf5430efe62579dcea6983f565067c77bcb811bb79084afa35508d885ec1e3"
+          },
+          "source": {
+            "words": 90,
+            "bytes": 614,
+            "lines": 10,
+            "sha256": "2cbf5430efe62579dcea6983f565067c77bcb811bb79084afa35508d885ec1e3"
+          }
+        },
+        {
+          "path": "refs/GLOBAL.md",
+          "selected": true,
+          "matchesSource": true,
+          "assembled": {
+            "words": 226,
+            "bytes": 2070,
+            "lines": 29,
+            "sha256": "0364d6abdf19af9429d1e3e8e4364b04af025c312b51a27808fdf759e546d2f2"
+          },
+          "source": {
+            "words": 226,
+            "bytes": 2070,
+            "lines": 29,
+            "sha256": "0364d6abdf19af9429d1e3e8e4364b04af025c312b51a27808fdf759e546d2f2"
+          }
+        }
+      ]
+    }
+  },
+  "groups": [
+    {
+      "id": "collaboration",
+      "old": [
+        "subagents"
+      ],
+      "now": [
+        "agents/GLOBAL.md"
+      ],
+      "caveat": "New fragment also receives discussion preference from the old documentation section.",
+      "oldWords": 558,
+      "newWords": 281,
+      "deltaWords": -277,
+      "changePercent": -49.6
+    },
+    {
+      "id": "documentation",
+      "old": [
+        "Documentation / reference materials"
+      ],
+      "now": [
+        "constitution/practice/GLOBAL.md",
+        "constitution/GLOBAL.md"
+      ],
+      "caveat": "Operational practice and broader constitution are different layers; discussion moved to collaboration.",
+      "oldWords": 1554,
+      "newWords": 963,
+      "deltaWords": -591,
+      "changePercent": -38
+    },
+    {
+      "id": "workspace",
+      "old": [
+        "Experimenting",
+        "well known directories and files",
+        "shell usage"
+      ],
+      "now": [
+        "code/workspace/GLOBAL.md"
+      ],
+      "caveat": "Three legacy headings now share one owner.",
+      "oldWords": 279,
+      "newWords": 170,
+      "deltaWords": -109,
+      "changePercent": -39.1
+    },
+    {
+      "id": "code-jj",
+      "old": [
+        "Project Planning",
+        "Coding advice",
+        "jj / git",
+        "jj-hunk"
+      ],
+      "now": [
+        "code/GLOBAL.md",
+        "vcs/jj/GLOBAL.md"
+      ],
+      "caveat": "Grouped to avoid counting transfers of commit/hunk rules as new content.",
+      "oldWords": 958,
+      "newWords": 574,
+      "deltaWords": -384,
+      "changePercent": -40.1
+    },
+    {
+      "id": "javascript",
+      "old": [
+        "Rules and guidelines for JavaScript projects",
+        "webcomponents"
+      ],
+      "now": [
+        "js/GLOBAL.md"
+      ],
+      "caveat": "Examples and some conditions need comparison with the linked JS README.",
+      "oldWords": 704,
+      "newWords": 246,
+      "deltaWords": -458,
+      "changePercent": -65.1
+    },
+    {
+      "id": "rust",
+      "old": [
+        "Rust instructions"
+      ],
+      "now": [
+        "code/rust/GLOBAL.md"
+      ],
+      "caveat": "Configuration instructions were revised, not just compressed.",
+      "oldWords": 125,
+      "newWords": 137,
+      "deltaWords": 12,
+      "changePercent": 9.6
+    },
+    {
+      "id": "beads",
+      "old": [
+        "beads"
+      ],
+      "now": [
+        "praxis/beads/GLOBAL.md"
+      ],
+      "caveat": "Ticket pointers are reported separately; uncommon commands moved to the new beads README.",
+      "oldWords": 574,
+      "newWords": 266,
+      "deltaWords": -308,
+      "changePercent": -53.7
+    },
+    {
+      "id": "glossary",
+      "old": [],
+      "now": [
+        "CONTEXT.md"
+      ],
+      "caveat": "Additional standalone exposure with no equivalent legacy section; concepts may overlap other prose.",
+      "oldWords": 0,
+      "newWords": 1028,
+      "deltaWords": 1028,
+      "changePercent": null
+    },
+    {
+      "id": "ticket-pointers",
+      "old": [],
+      "now": [
+        "praxis/ticket-pointers/GLOBAL.md"
+      ],
+      "caveat": "Additional exposure, not all-new ideas; the old beads section already required append-notes.",
+      "oldWords": 0,
+      "newWords": 90,
+      "deltaWords": 90,
+      "changePercent": null
+    },
+    {
+      "id": "references",
+      "old": [],
+      "now": [
+        "refs/GLOBAL.md"
+      ],
+      "caveat": "Additional curated skills/source-discovery exposure.",
+      "oldWords": 0,
+      "newWords": 176,
+      "deltaWords": 176,
+      "changePercent": null
+    }
+  ]
+}

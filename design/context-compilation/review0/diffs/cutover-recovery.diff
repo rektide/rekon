@@ -1,0 +1,802 @@
+diff --git a/AGENTS.md b/AGENTS.md
+index 4e74820..b284713 100644
+--- a/AGENTS.md
++++ b/AGENTS.md
+@@ -192,8 +192,8 @@ conditions, not a synonym for acceptance or universal correctness.
+ 
+ # Constitution — orient before acting
+ 
+-**Honing candidate, not a promoted GLOBAL.** This text proposes shared context;
+-its filename and `draft` label do not determine whether a host loads it.
++Selected for production assembly. `draft` marks guidance still being refined;
++it does not mean the fragment is absent from runtime context.
+ 
+ ## Terms in use
+ 
+@@ -252,15 +252,134 @@ feed improvement; artifact completion alone does not establish usefulness.
+ 
+ Load the [constitution body](/constitution/README.md) for knowledge ownership,
+ waves, evidence, and promotion; load its [reading map](/constitution/index.md)
+-for prior rulings and unresolved alternatives. The manual workshop does not
+-replace the live AGENTS manuscript or promote these candidate fragments.
++for prior rulings and unresolved alternatives. `AGENTS.md` is generated from
++the root manifest; edit its domain fragments, then regenerate. The preserved
++`AGENTS.old.md` is migration evidence, not the current producer. Check both
++[assembly freshness and operating coverage](/tool/assembly/coverage.md).
++
++<!-- rekon-fragment: id=documentation-practice order=120 path=constitution/practice/GLOBAL.md source=/constitution/README.md -->
++
++# Writing, independent waves, and document connections
++
++## Durable writing
++
++- Use structured Markdown with descriptive links to canonical files and sections.
++  Prefer bundle-root-relative links inside Rekon and canonical repository URLs
++  for external sources; identify the repository when context does not already.
++- Give knowledge documents honest OKF-style frontmatter: type, title,
++  description, resource, status, author/model and date, sources actually read,
++  and verification/review information only when justified. See
++  [source practice](/refs/sources.md) and [the constitution](/constitution/README.md).
++- `index.md` is a grouped progressive-disclosure listing, not another concept
++  document. `log.md` is dated update history, newest first. An addendum can retain
++  an earlier argument while recording new understanding; mutable READMEs may
++  integrate accepted conclusions directly.
++
++## Waves
++
++- Start with the situation, present ask, directions of inquiry, and what changed
++  since the previous work. Waves are independent research/design outputs, commonly
++  under `design/<topic>/`; they are not compulsory for every task.
++- Every wave filename ends in the current model's concise suffix:
++  `draft0.gpt6a.md`, `draft0.glm53m.md`. Use a numerical round starting at 0.
++  Never use the harness name as the model or copy another model's suffix.
++- For one main document, use `<topic>.<model>.md`; revisions can use
++  `<topic>2.<model>.md`. Prefer new files for materially new arguments; preserve
++  independent drafts. Maintain a README/index as the corpus becomes useful.
++- Do not read other authors' same-wave files unless directed. Previous waves are
++  available context. Synthesis follows the evidence: integrate common themes
++  and tensions, then compare sources' strengths, weaknesses, and distinctive ideas.
++  Names such as `draft0-syn0.<model>.md` record the wave and synthesis round.
++- When a tip is accepted, a suffix-less symlink can identify it while exact
++  model-suffixed evidence stays available. Acceptance is not deletion or a bulk
++  move; promotion synthesizes into the maintained domain home.
++
++## Doc-pass
++
++After substantial writing, search indexes and the surrounding corpus by concept,
++not just exact keywords. Read candidate sources enough to distinguish meaningful
++relationships. Add explained Cross-references (evidence, tension, precedent,
++extension), useful reciprocal links, and index updates. Verify the links and
++surrounding text. A separate search agent is optional when authorized; integrate
++only findings checked against sources.
++
++These restore [legacy writing practice](/AGENTS.old.md#documentation--reference-materials).
++The old `summarizer` mention described unfinished work, not an available tool;
++consult [the toolkit map](/tool/README.md) for current capabilities.
++
++<!-- rekon-fragment: id=collaboration order=150 path=agents/GLOBAL.md source=/agents/GLOBAL.md -->
++
++# Collaboration and architectural stewardship
++
++## Dispatch and return
++
++- Run delegated agents in the background. Favor deliberate integration once
++  prerequisite results are available; do not rush dependent documents.
++- Unless the user directs model selection, do not obey skills' demands for
++  unavailable models. `general` is a capable default; for high-value work and
++  deep research, ask which agents the user wants for which tasks. See
++  [the general-agent guidance](/agents/general.md).
++- Prime agents with existing research and relevant Markdown. Ask them to return
++  file/section references and to write and commit their own model-suffixed
++  documents under the effort's domain, often `design/<topic>/`.
++- Preserve other authors' files; favor new files over overwriting independent
++  drafts. Use the continuation identifier actually returned by the harness
++  (`sessionID` here) to resume the same agent.
++
++## Stewardship
++
++- Delegate implementation and routine verification, not architectural
++  responsibility. The parent assesses interfaces, domain concepts, reuse,
++  tradeoffs, user intent, and verified upstream capabilities.
++- Review at consequential architectural checkpoints rather than arbitrary
++  file-by-file phases. Ask what became possible or impossible, choices and
++  evidence, unresolved tensions, and the proposed next coherent slice.
++- Trust reported checks; do not rerun them just to confirm. Read relevant code
++  and evidence, and add verification when it answers a specific concern.
++- Cooperatively anneal broader solutions. Explore plausible futures and surface
++  their assumptions, costs, and opportunities. Distinguish possibilities worth
++  preserving from capabilities authorized for implementation; let agents choose
++  coherent slices within the agreed direction. Discuss forks that materially
++  alter the shape rather than silently building or dismissing them.
++
++## Discussion
++
++Prefer multiple-choice questions allowing multiple selections when several
++directions may matter. Explain the situation before the questions.
++
++Recovered from [the legacy operating manual](/AGENTS.old.md#subagents);
++[assessment](/assess/README.md) supplies deeper review practices.
++
++<!-- rekon-fragment: id=workspace order=170 path=code/workspace/GLOBAL.md source=/code/workspace/GLOBAL.md -->
++
++# Workspace, research locations, and shell
++
++- Check `~/archive/<repo-org>/<repo-name>` first for third-party source before
++  fetching from the web. `~/wiki/<repo-org>/<repo-name>` may hold generated
++  architectural notes. Check an archived project's `llms.txt` if present.
++- First-party checkouts are usually `~/src/<repo-name>`; a variant is usually
++  `~/src/<repo>-<variant>/` with a jj workspace. `~/archive/doc` (also reachable
++  via `~/src/doc`) holds broad-topic notes. Project `doc/` holds project material,
++  subject to native conventions and Rekon's own domain-first structure.
++- `dl <url>` fetches a repository and its wiki to those archive/wiki locations.
++  `~/ff` holds future-fuze Kubernetes resources; `/opt` and `/srv` hold installs
++  and service instances.
++- Use `rg` and `fd`; prefer `fd` over `find` for discovery.
++- Put exploratory scripts and files under `.test-agent/<topic>/` at the project
++  root, with a README explaining the scratch work. It is gitignored; promote
++  load-bearing findings deliberately. Prefer a shebang and executable scripts.
++- Environment variables do not persist across shell tool executions. Set needed
++  variables each time. Use the harness's approved temporary directory when a
++  file must live outside project scratch.
++
++Source: [legacy workspace guidance](/AGENTS.old.md#well-known-directories-and-files).
+ 
+ <!-- rekon-fragment: id=code order=200 path=code/GLOBAL.md source=/code/README.md -->
+ 
+ # Code — stage and change discipline
+ 
+-**Honing candidate, not a promoted GLOBAL.** Repetition with the README/SKILL
+-body and the live manuscript is intentional while we examine the combined view.
++Selected for production assembly. The README/SKILL body owns the fuller practice;
++these rules must be usable before an agent chooses deeper reading.
+ 
+ ## Terms in use
+ 
+@@ -279,8 +398,132 @@ use the shared vocabulary; this fragment adds only the terms its instructions ne
+ - changes intermingled **within** a file → `jj-hunk`: full `hunk-<sha256>` IDs only, always dry-run the spec first. load /code/jj-hunk.md before hunk-level work.
+ - review comments: discuss direction as well as committing the predecessor before editing; land each correction as its own well-argued commit. /code/review-handling.md
+ - plans carry no time estimates, ever. /code/planning.md
++- use domain-grouped project layouts, never a flat dump; when offering layout
++  options, offer multiple plausible domain groupings. Mermaid diagrams should
++  use meaningful node identifiers. Breaking changes are fine below 1.0; assess
++  actual persisted-data or consumer obligations rather than inventing them.
++- Let It Fail when appropriate: do not catch an error merely to print it; retain
++  its stack and cause. Handle errors where recovery or a real boundary needs it.
++- Do not add automatic prune/reconciliation behavior unless explicitly requested.
++  Create/update declared state and leave cleanup deliberate.
+ - module entry point: /code/README.md
+ 
++<!-- rekon-fragment: id=jj order=220 path=vcs/jj/GLOBAL.md source=/vcs/jj/README.md -->
++
++# jj and git operating rules
++
++- Never use `jj edit`. Never squash unless explicitly instructed; humans review
++  changes before squash. Do not push unless explicitly directed by the operator.
++- Commit explicit owned paths with `jj commit -m "<description>" <files...>`;
++  unrelated changes remain in the working copy. Inspect unfamiliar starting
++  changes; after that assume sole ownership unless told otherwise. No routine
++  `jj status` before every commit. The new empty working-copy commit is expected.
++- Titles describe the work, not ticket IDs or temporary "phases". Put relevant
++  ticket IDs in the commit message body. Use `jj diff --git` or `jj diff --stat`;
++  plain diff is misleading without color.
++- jj has its own DSL: consult `jj help -k revsets` and `jj help -k templates`
++  before composing `-r` / `-T`. Ancestors `::@`, descendants `@::`, range `x..y`;
++  no `::~`. Fields are bare (`change_id.short()`), not `commit.change_id`;
++  concatenate strings with `++`.
++- Name dated bookmarks `<feature>-<YYYYMMDD>` using the local date the work was
++  last active (recover with `jj op log`), not automatically today's date.
++- Working-copy author dates come from creation and can become stale. Read
++  [date surgery](/vcs/jj/rewrites.md#backdating-a-fresh-commit-stale-working-copy-dates)
++  before deliberate correction through colocated git; jj itself cannot set them.
++- For hunks, use full IDs and a dry-run as described in the code fragment.
++  Wholesale rewrites do not hunk-split into clean intermediates: preserve the
++  rewritten version, restore the parent version, apply/commit the minimal change,
++  then restore/commit the full rewrite. Load [jj-hunk](/code/jj-hunk.md).
++- [The jj guide](/vcs/jj/README.md) owns command recipes and forensics.
++
++<!-- rekon-fragment: id=javascript order=250 path=js/GLOBAL.md source=/js/README.md -->
++
++# JavaScript and TypeScript
++
++- Prefer TypeScript. Use explicit `.ts` extensions for local imports and the
++  `node:` prefix for Node builtins. Keep class members public; visibility does
++  not guarantee API stability.
++- Prefer pnpm. Add dependencies through `pnpm install <package>@latest` (or `-D`),
++  rather than hand-editing dependency entries. Run source directly with
++  `node path/to/cli.ts` in development and examples; build output is for npm
++  distribution only.
++- Prefer promise-based async APIs and `node:fs/promises`, not sync methods or
++  callbacks where promises exist. Start independent work together; await when
++  its value is needed.
++- Default tools: oxfmt formatting, oxlint linting, tsdown distribution, vitest
++  tests when no test stack exists, and `@typescript/native-preview` / `tsgo`
++  for typechecking. Bundling does not typecheck. With TypeScript configuration,
++  use noEmit, allowImportingTsExtensions, and isolatedDeclarations where suitable.
++- For complex CLI use gunshi with `@gunshi/plugin-completion`; for config use
++  c12 or at least xdg-basedir. Respect a project's established tooling; the
++  accepted Rekon toolchain is Rust-first for new capabilities.
++- Compose `build:*`, `check:*`, and `fix:*` tasks using concurrently glob targets,
++  such as `concurrently 'pnpm:check:*'`. Include a dev/watch target. Read
++  [the JS guide](/js/README.md) for vite-plus version/peer setup and full recipes.
++- Executable modules should detect direct invocation, asynchronously realpath
++  `process.argv[1]` before comparing it, then dynamically load their main module.
++  Use `.then` so importing the module does not block on invocation detection;
++  include a shebang and executable bit where appropriate.
++- Web components use wc-toolkit (Web Components Toolkit) with descriptive JSDoc
++  to generate Custom Element Manifests; wire manifest generation into the toolkit.
++
++<!-- rekon-fragment: id=rust order=260 path=code/rust/GLOBAL.md source=/code/rust/GLOBAL.md -->
++
++# Rust conventions
++
++- Preferred libraries: figment2 for config; clap v4 derive and clap_complete for
++  CLI/completions; bon for builders; jiff for time rather than chrono; tracing
++  with useful spans for diagnostics.
++- Use nextest for tests and clippy for checking. Benchmark with criterion and
++  cargo-criterion; use criterion-perf-events or criterion-cycles-per-byte when
++  the relevant hardware/per-byte measurements matter.
++- For Clap/Figment2 integration, derive Parser, Serialize/Deserialize, and Builder
++  where useful. Preserve CLI > environment > defaults precedence. Do not let
++  clap's default values accidentally override environment configuration; distinguish
++  explicit CLI values when layering. `Serialized::defaults(CliArgs::parse())`
++  alone does not establish that precedence.
++- Publishing: run `cargo bump` with major/minor/patch (patch by default), then
++  make a jj commit, then `cargo publish`.
++
++Recovered from [legacy Rust preferences](/AGENTS.old.md#rust-instructions).
++The precedence clarification preserves its intended ordering without treating
++the old single-provider example as a complete layering implementation.
++
++<!-- rekon-fragment: id=beads order=390 path=praxis/beads/GLOBAL.md source=/praxis/beads/README.md -->
++
++# Beads — readable work IDs and deliberate tracking
++
++- Ticketing is user-shaped; use existing work items and ask when tracking scope
++  is unclear. When using beads, work from the project directory, not `bd -C`.
++- Check `bd config get issue_prefix`. Always pass a stable, human-readable
++  `--id`; never use autogenerated IDs. Namespace child IDs under their epic:
++  `<prefix>-<effort>-<capability>`. Add the parent-child edge explicitly too.
++- Epics explain why and how the system fits together; children state concrete
++  implementation scope and acceptance criteria. Search before creating duplicates.
++- `bd dep add A B --type blocks` means A depends on B. Dependent first;
++  prerequisite second. For `--type parent-child`, child first, parent second.
++- Preserve history with `bd update --append-notes`; close completed work with a
++  reason stating what was completed and verified. Prefer `bd rename` to duplicate
++  replacement tickets when the undertaking is the same.
++
++```sh
++bd list --status open --desc-contains "<topic>" --sort priority --limit 20
++bd show <issue-id>
++bd create --id <prefix>-<short-name> --title "<outcome>" --type task --priority P2
++bd update <issue-id> --claim --append-notes "<findings and next step>"
++bd dep add <child-id> <epic-id> --type parent-child
++bd dep add <dependent-id> <prerequisite-id> --type blocks
++bd close <issue-id> --reason "<completion and verification>"
++```
++
++- Dolt is the source of truth. Keep `export.auto=true` where supported; use
++  `bd export -o .beads/issues.jsonl` when a tracked snapshot is needed and automatic
++  export is unavailable. JSONL export is not the current backup/restore format.
++- Never run `bd prime`; report which tool/instruction requested it. It generates
++  unwanted `AGENTS.md` and `CLAUDE.md` guidance.
++- Read [beads practice](/praxis/beads/README.md) for linked work, supersession,
++  rename, and version-aware storage/recovery. Ticket pointer upkeep is below.
++
+ <!-- rekon-fragment: id=praxis-ticket-pointers order=400 path=praxis/ticket-pointers/GLOBAL.md source=/praxis/ticket-pointers/ticket-pointers0.glm53fx.md -->
+ 
+ # Ticket pointers — ambient cues
+diff --git a/agents.manifest.json b/agents.manifest.json
+index 83e832f..e22f33b 100644
+--- a/agents.manifest.json
++++ b/agents.manifest.json
+@@ -2,7 +2,14 @@
+   "fragments": [
+     "CONTEXT.md",
+     "constitution/GLOBAL.md",
++    "constitution/practice/GLOBAL.md",
++    "agents/GLOBAL.md",
++    "code/workspace/GLOBAL.md",
+     "code/GLOBAL.md",
++    "vcs/jj/GLOBAL.md",
++    "js/GLOBAL.md",
++    "code/rust/GLOBAL.md",
++    "praxis/beads/GLOBAL.md",
+     "praxis/ticket-pointers/GLOBAL.md",
+     "refs/GLOBAL.md"
+   ],
+diff --git a/agents/GLOBAL.md b/agents/GLOBAL.md
+new file mode 100644
+index 0000000..731a9d7
+--- /dev/null
++++ b/agents/GLOBAL.md
+@@ -0,0 +1,47 @@
++---
++id: collaboration
++order: 150
++source: /agents/GLOBAL.md
++status: draft
++---
++
++# Collaboration and architectural stewardship
++
++## Dispatch and return
++
++- Run delegated agents in the background. Favor deliberate integration once
++  prerequisite results are available; do not rush dependent documents.
++- Unless the user directs model selection, do not obey skills' demands for
++  unavailable models. `general` is a capable default; for high-value work and
++  deep research, ask which agents the user wants for which tasks. See
++  [the general-agent guidance](/agents/general.md).
++- Prime agents with existing research and relevant Markdown. Ask them to return
++  file/section references and to write and commit their own model-suffixed
++  documents under the effort's domain, often `design/<topic>/`.
++- Preserve other authors' files; favor new files over overwriting independent
++  drafts. Use the continuation identifier actually returned by the harness
++  (`sessionID` here) to resume the same agent.
++
++## Stewardship
++
++- Delegate implementation and routine verification, not architectural
++  responsibility. The parent assesses interfaces, domain concepts, reuse,
++  tradeoffs, user intent, and verified upstream capabilities.
++- Review at consequential architectural checkpoints rather than arbitrary
++  file-by-file phases. Ask what became possible or impossible, choices and
++  evidence, unresolved tensions, and the proposed next coherent slice.
++- Trust reported checks; do not rerun them just to confirm. Read relevant code
++  and evidence, and add verification when it answers a specific concern.
++- Cooperatively anneal broader solutions. Explore plausible futures and surface
++  their assumptions, costs, and opportunities. Distinguish possibilities worth
++  preserving from capabilities authorized for implementation; let agents choose
++  coherent slices within the agreed direction. Discuss forks that materially
++  alter the shape rather than silently building or dismissing them.
++
++## Discussion
++
++Prefer multiple-choice questions allowing multiple selections when several
++directions may matter. Explain the situation before the questions.
++
++Recovered from [the legacy operating manual](/AGENTS.old.md#subagents);
++[assessment](/assess/README.md) supplies deeper review practices.
+diff --git a/code/GLOBAL.md b/code/GLOBAL.md
+index 30b5091..695e11d 100644
+--- a/code/GLOBAL.md
++++ b/code/GLOBAL.md
+@@ -5,13 +5,13 @@ source: /code/README.md
+ status: draft
+ type: ContextFragment
+ title: Code — stage and change discipline
+-description: A glossary-first candidate exposure of existing commit, review, and planning discipline while the shared context is honed.
++description: Active shared commit, review, planning, and coding discipline.
+ resource: /code/GLOBAL.md
+ generated: { by: "model:gpt-6-astra", at: 2026-09-06 }
+ extensions:
+   ticket: rekon-phoenix
+   related_work: [rekon-agents-maintenance, rekon-session-mementos]
+-  posture: honing; not promoted; not selected for production assembly by this change
++  posture: active production fragment; guidance remains open to refinement
+ sources:
+   - { resource: /code/README.md, title: Coding practice }
+   - { resource: /code/commits.md, title: Capture revise compare }
+@@ -20,8 +20,8 @@ sources:
+ 
+ # Code — stage and change discipline
+ 
+-**Honing candidate, not a promoted GLOBAL.** Repetition with the README/SKILL
+-body and the live manuscript is intentional while we examine the combined view.
++Selected for production assembly. The README/SKILL body owns the fuller practice;
++these rules must be usable before an agent chooses deeper reading.
+ 
+ ## Terms in use
+ 
+@@ -40,4 +40,12 @@ use the shared vocabulary; this fragment adds only the terms its instructions ne
+ - changes intermingled **within** a file → `jj-hunk`: full `hunk-<sha256>` IDs only, always dry-run the spec first. load /code/jj-hunk.md before hunk-level work.
+ - review comments: discuss direction as well as committing the predecessor before editing; land each correction as its own well-argued commit. /code/review-handling.md
+ - plans carry no time estimates, ever. /code/planning.md
++- use domain-grouped project layouts, never a flat dump; when offering layout
++  options, offer multiple plausible domain groupings. Mermaid diagrams should
++  use meaningful node identifiers. Breaking changes are fine below 1.0; assess
++  actual persisted-data or consumer obligations rather than inventing them.
++- Let It Fail when appropriate: do not catch an error merely to print it; retain
++  its stack and cause. Handle errors where recovery or a real boundary needs it.
++- Do not add automatic prune/reconciliation behavior unless explicitly requested.
++  Create/update declared state and leave cleanup deliberate.
+ - module entry point: /code/README.md
+diff --git a/code/rust/GLOBAL.md b/code/rust/GLOBAL.md
+new file mode 100644
+index 0000000..6ca44d9
+--- /dev/null
++++ b/code/rust/GLOBAL.md
+@@ -0,0 +1,26 @@
++---
++id: rust
++order: 260
++source: /code/rust/GLOBAL.md
++status: draft
++---
++
++# Rust conventions
++
++- Preferred libraries: figment2 for config; clap v4 derive and clap_complete for
++  CLI/completions; bon for builders; jiff for time rather than chrono; tracing
++  with useful spans for diagnostics.
++- Use nextest for tests and clippy for checking. Benchmark with criterion and
++  cargo-criterion; use criterion-perf-events or criterion-cycles-per-byte when
++  the relevant hardware/per-byte measurements matter.
++- For Clap/Figment2 integration, derive Parser, Serialize/Deserialize, and Builder
++  where useful. Preserve CLI > environment > defaults precedence. Do not let
++  clap's default values accidentally override environment configuration; distinguish
++  explicit CLI values when layering. `Serialized::defaults(CliArgs::parse())`
++  alone does not establish that precedence.
++- Publishing: run `cargo bump` with major/minor/patch (patch by default), then
++  make a jj commit, then `cargo publish`.
++
++Recovered from [legacy Rust preferences](/AGENTS.old.md#rust-instructions).
++The precedence clarification preserves its intended ordering without treating
++the old single-provider example as a complete layering implementation.
+diff --git a/code/workspace/GLOBAL.md b/code/workspace/GLOBAL.md
+new file mode 100644
+index 0000000..cda1e38
+--- /dev/null
++++ b/code/workspace/GLOBAL.md
+@@ -0,0 +1,28 @@
++---
++id: workspace
++order: 170
++source: /code/workspace/GLOBAL.md
++status: draft
++---
++
++# Workspace, research locations, and shell
++
++- Check `~/archive/<repo-org>/<repo-name>` first for third-party source before
++  fetching from the web. `~/wiki/<repo-org>/<repo-name>` may hold generated
++  architectural notes. Check an archived project's `llms.txt` if present.
++- First-party checkouts are usually `~/src/<repo-name>`; a variant is usually
++  `~/src/<repo>-<variant>/` with a jj workspace. `~/archive/doc` (also reachable
++  via `~/src/doc`) holds broad-topic notes. Project `doc/` holds project material,
++  subject to native conventions and Rekon's own domain-first structure.
++- `dl <url>` fetches a repository and its wiki to those archive/wiki locations.
++  `~/ff` holds future-fuze Kubernetes resources; `/opt` and `/srv` hold installs
++  and service instances.
++- Use `rg` and `fd`; prefer `fd` over `find` for discovery.
++- Put exploratory scripts and files under `.test-agent/<topic>/` at the project
++  root, with a README explaining the scratch work. It is gitignored; promote
++  load-bearing findings deliberately. Prefer a shebang and executable scripts.
++- Environment variables do not persist across shell tool executions. Set needed
++  variables each time. Use the harness's approved temporary directory when a
++  file must live outside project scratch.
++
++Source: [legacy workspace guidance](/AGENTS.old.md#well-known-directories-and-files).
+diff --git a/constitution/GLOBAL.md b/constitution/GLOBAL.md
+index 592e480..9dd1ca5 100644
+--- a/constitution/GLOBAL.md
++++ b/constitution/GLOBAL.md
+@@ -5,13 +5,13 @@ source: /constitution/README.md
+ status: draft
+ type: ContextFragment
+ title: Constitution — the shared sense-map
+-description: A glossary-first candidate contribution joining naming, knowledge, work, and action before specialized context is loaded.
++description: Active shared context joining naming, knowledge, work, and action before specialized reading.
+ resource: /constitution/GLOBAL.md
+ generated: { by: "model:gpt-6-astra", at: 2026-09-06 }
+ extensions:
+   ticket: rekon-phoenix
+   related_work: [rekon-con-naming, rekon-agents-maintenance-skillify]
+-  posture: honing; not promoted; not selected for production assembly by this change
++  posture: active production fragment; guidance remains open to refinement
+ sources:
+   - { resource: /constitution/README.md, title: Constitution and the current honing exception }
+   - { resource: /CONTEXT.md, title: Shared working vocabulary }
+@@ -21,8 +21,8 @@ sources:
+ 
+ # Constitution — orient before acting
+ 
+-**Honing candidate, not a promoted GLOBAL.** This text proposes shared context;
+-its filename and `draft` label do not determine whether a host loads it.
++Selected for production assembly. `draft` marks guidance still being refined;
++it does not mean the fragment is absent from runtime context.
+ 
+ ## Terms in use
+ 
+@@ -81,5 +81,7 @@ feed improvement; artifact completion alone does not establish usefulness.
+ 
+ Load the [constitution body](/constitution/README.md) for knowledge ownership,
+ waves, evidence, and promotion; load its [reading map](/constitution/index.md)
+-for prior rulings and unresolved alternatives. The manual workshop does not
+-replace the live AGENTS manuscript or promote these candidate fragments.
++for prior rulings and unresolved alternatives. `AGENTS.md` is generated from
++the root manifest; edit its domain fragments, then regenerate. The preserved
++`AGENTS.old.md` is migration evidence, not the current producer. Check both
++[assembly freshness and operating coverage](/tool/assembly/coverage.md).
+diff --git a/constitution/practice/GLOBAL.md b/constitution/practice/GLOBAL.md
+new file mode 100644
+index 0000000..0ef2e41
+--- /dev/null
++++ b/constitution/practice/GLOBAL.md
+@@ -0,0 +1,54 @@
++---
++id: documentation-practice
++order: 120
++source: /constitution/README.md
++status: draft
++---
++
++# Writing, independent waves, and document connections
++
++## Durable writing
++
++- Use structured Markdown with descriptive links to canonical files and sections.
++  Prefer bundle-root-relative links inside Rekon and canonical repository URLs
++  for external sources; identify the repository when context does not already.
++- Give knowledge documents honest OKF-style frontmatter: type, title,
++  description, resource, status, author/model and date, sources actually read,
++  and verification/review information only when justified. See
++  [source practice](/refs/sources.md) and [the constitution](/constitution/README.md).
++- `index.md` is a grouped progressive-disclosure listing, not another concept
++  document. `log.md` is dated update history, newest first. An addendum can retain
++  an earlier argument while recording new understanding; mutable READMEs may
++  integrate accepted conclusions directly.
++
++## Waves
++
++- Start with the situation, present ask, directions of inquiry, and what changed
++  since the previous work. Waves are independent research/design outputs, commonly
++  under `design/<topic>/`; they are not compulsory for every task.
++- Every wave filename ends in the current model's concise suffix:
++  `draft0.gpt6a.md`, `draft0.glm53m.md`. Use a numerical round starting at 0.
++  Never use the harness name as the model or copy another model's suffix.
++- For one main document, use `<topic>.<model>.md`; revisions can use
++  `<topic>2.<model>.md`. Prefer new files for materially new arguments; preserve
++  independent drafts. Maintain a README/index as the corpus becomes useful.
++- Do not read other authors' same-wave files unless directed. Previous waves are
++  available context. Synthesis follows the evidence: integrate common themes
++  and tensions, then compare sources' strengths, weaknesses, and distinctive ideas.
++  Names such as `draft0-syn0.<model>.md` record the wave and synthesis round.
++- When a tip is accepted, a suffix-less symlink can identify it while exact
++  model-suffixed evidence stays available. Acceptance is not deletion or a bulk
++  move; promotion synthesizes into the maintained domain home.
++
++## Doc-pass
++
++After substantial writing, search indexes and the surrounding corpus by concept,
++not just exact keywords. Read candidate sources enough to distinguish meaningful
++relationships. Add explained Cross-references (evidence, tension, precedent,
++extension), useful reciprocal links, and index updates. Verify the links and
++surrounding text. A separate search agent is optional when authorized; integrate
++only findings checked against sources.
++
++These restore [legacy writing practice](/AGENTS.old.md#documentation--reference-materials).
++The old `summarizer` mention described unfinished work, not an available tool;
++consult [the toolkit map](/tool/README.md) for current capabilities.
+diff --git a/js/GLOBAL.md b/js/GLOBAL.md
+new file mode 100644
+index 0000000..3861c0b
+--- /dev/null
++++ b/js/GLOBAL.md
+@@ -0,0 +1,35 @@
++---
++id: javascript
++order: 250
++source: /js/README.md
++status: draft
++---
++
++# JavaScript and TypeScript
++
++- Prefer TypeScript. Use explicit `.ts` extensions for local imports and the
++  `node:` prefix for Node builtins. Keep class members public; visibility does
++  not guarantee API stability.
++- Prefer pnpm. Add dependencies through `pnpm install <package>@latest` (or `-D`),
++  rather than hand-editing dependency entries. Run source directly with
++  `node path/to/cli.ts` in development and examples; build output is for npm
++  distribution only.
++- Prefer promise-based async APIs and `node:fs/promises`, not sync methods or
++  callbacks where promises exist. Start independent work together; await when
++  its value is needed.
++- Default tools: oxfmt formatting, oxlint linting, tsdown distribution, vitest
++  tests when no test stack exists, and `@typescript/native-preview` / `tsgo`
++  for typechecking. Bundling does not typecheck. With TypeScript configuration,
++  use noEmit, allowImportingTsExtensions, and isolatedDeclarations where suitable.
++- For complex CLI use gunshi with `@gunshi/plugin-completion`; for config use
++  c12 or at least xdg-basedir. Respect a project's established tooling; the
++  accepted Rekon toolchain is Rust-first for new capabilities.
++- Compose `build:*`, `check:*`, and `fix:*` tasks using concurrently glob targets,
++  such as `concurrently 'pnpm:check:*'`. Include a dev/watch target. Read
++  [the JS guide](/js/README.md) for vite-plus version/peer setup and full recipes.
++- Executable modules should detect direct invocation, asynchronously realpath
++  `process.argv[1]` before comparing it, then dynamically load their main module.
++  Use `.then` so importing the module does not block on invocation detection;
++  include a shebang and executable bit where appropriate.
++- Web components use wc-toolkit (Web Components Toolkit) with descriptive JSDoc
++  to generate Custom Element Manifests; wire manifest generation into the toolkit.
+diff --git a/praxis/beads/GLOBAL.md b/praxis/beads/GLOBAL.md
+new file mode 100644
+index 0000000..cae5817
+--- /dev/null
++++ b/praxis/beads/GLOBAL.md
+@@ -0,0 +1,39 @@
++---
++id: beads
++order: 390
++source: /praxis/beads/README.md
++status: draft
++---
++
++# Beads — readable work IDs and deliberate tracking
++
++- Ticketing is user-shaped; use existing work items and ask when tracking scope
++  is unclear. When using beads, work from the project directory, not `bd -C`.
++- Check `bd config get issue_prefix`. Always pass a stable, human-readable
++  `--id`; never use autogenerated IDs. Namespace child IDs under their epic:
++  `<prefix>-<effort>-<capability>`. Add the parent-child edge explicitly too.
++- Epics explain why and how the system fits together; children state concrete
++  implementation scope and acceptance criteria. Search before creating duplicates.
++- `bd dep add A B --type blocks` means A depends on B. Dependent first;
++  prerequisite second. For `--type parent-child`, child first, parent second.
++- Preserve history with `bd update --append-notes`; close completed work with a
++  reason stating what was completed and verified. Prefer `bd rename` to duplicate
++  replacement tickets when the undertaking is the same.
++
++```sh
++bd list --status open --desc-contains "<topic>" --sort priority --limit 20
++bd show <issue-id>
++bd create --id <prefix>-<short-name> --title "<outcome>" --type task --priority P2
++bd update <issue-id> --claim --append-notes "<findings and next step>"
++bd dep add <child-id> <epic-id> --type parent-child
++bd dep add <dependent-id> <prerequisite-id> --type blocks
++bd close <issue-id> --reason "<completion and verification>"
++```
++
++- Dolt is the source of truth. Keep `export.auto=true` where supported; use
++  `bd export -o .beads/issues.jsonl` when a tracked snapshot is needed and automatic
++  export is unavailable. JSONL export is not the current backup/restore format.
++- Never run `bd prime`; report which tool/instruction requested it. It generates
++  unwanted `AGENTS.md` and `CLAUDE.md` guidance.
++- Read [beads practice](/praxis/beads/README.md) for linked work, supersession,
++  rename, and version-aware storage/recovery. Ticket pointer upkeep is below.
+diff --git a/praxis/beads/README.md b/praxis/beads/README.md
+new file mode 100644
+index 0000000..0711bf8
+--- /dev/null
++++ b/praxis/beads/README.md
+@@ -0,0 +1,94 @@
++---
++name: beads
++type: Practice
++title: Beads work tracking
++description: Use when creating, updating, linking, renaming, or closing beads tickets. Covers explicit readable IDs, epic namespaces, dependency direction, work history, and storage boundaries.
++resource: /praxis/beads/README.md
++status: draft
++generated: { by: "model:openai/gpt-6-astra", at: 2026-10-11 }
++sources:
++  - { resource: /AGENTS.old.md#beads, title: Legacy beads operating rules }
++  - { resource: /praxis/ticket-pointers/GLOBAL.md, title: User-shaped ticketing and maintained pointers }
++  - { resource: "urn:opencode:session:ses_f908bad7fffeW0pr4FLFa4VFyn", title: Restoration request and bd 1.0.3 CLI help inspection }
++---
++
++# Beads work tracking
++
++Use the project's existing tracker and work items. Ticketing is user-shaped:
++ask when the desired level is unclear; do not create tickets to satisfy a
++workflow. **Once using beads, readable IDs and explicit dependency semantics
++are required.** Run `bd` from the project directory, rather than using `bd -C`.
++
++## Ticket identity
++
++Check `bd config get issue_prefix`. Always supply a stable, human-readable
++`--id`; never accept autogenerated IDs. Name children under the epic:
++
++```sh
++bd create --id <prefix>-<effort> --title "<architectural outcome>" --type epic --priority P1 --description "<why and how the system fits>" --acceptance "<observable completion>"
++bd create --id <prefix>-<effort>-<capability> --title "<concrete outcome>" --type feature --priority P2 --description "<implementation scope>" --acceptance "<verification>"
++bd dep add <prefix>-<effort>-<capability> <prefix>-<effort> --type parent-child
++```
++
++An epic explains the purpose and architecture; children describe concrete work
++and acceptance criteria. ID namespacing and a parent-child edge are both useful;
++one does not create the other. Prefer updating or renaming existing work to
++creating a replacement duplicate. `bd rename <old-id> <new-id>` rewrites native
++references; review document links outside the tracker separately.
++
++## Search, inspect, advance, close
++
++```sh
++bd list --status open --desc-contains "<topic>" --sort priority --limit 20
++bd show <issue-id>
++bd update <issue-id> --claim --append-notes "<findings, decision, next step>"
++bd list --status open --ready --label <label> --limit 20
++bd close <issue-id> --reason "<completed outcome and verification>"
++```
++
++Preserve evolution with `--append-notes` rather than replacing the historical
++account. Keep pointers aimed at the few documents that explain the current
++work. For a material implementation report, include the session ID so another
++agent can trace the work; proportion matters. See
++[ticket pointers](/praxis/ticket-pointers/ticket-pointers0.glm53fx.md).
++
++## Dependency direction
++
++`bd dep add A B --type blocks` means **A depends on B**. The dependent goes
++first, prerequisite second. For a parent-child edge, child goes first.
++
++```sh
++bd dep add <dependent-id> <prerequisite-id> --type blocks
++bd show <dependent-id>
++bd dep cycles
++```
++
++For genuinely superseded work, create the replacement with an explicit ID, then
++`bd dep add <replacement> <old> --type supersedes`; close the old item with a
++reason pointing at its successor. Rename when the work is the same undertaking.
++
++## Storage and recovery
++
++Dolt is the source of truth; JSONL is an export, not the live database. The
++legacy workspace preference is `export.auto=true` where supported. Verify the
++installed version's behavior; when an immediate tracked export is needed, use
++`bd export -o .beads/issues.jsonl`. Current `bd export --help` (1.0.3, inspected
++2026-10-11) distinguishes that interoperability export from the backup format
++consumed by `bd backup restore`. Consult `bd backup --help` for actual recovery.
++
++The old `rm .beads/*.db` / import recipe predates this distinction and is **not
++the recovery procedure for a Dolt-backed repository**. Keep it as historical
++evidence in [the preserved manual](/AGENTS.old.md#rename-and-recovery), not a
++command to execute. Plan a broad ID rewrite deliberately; prefer `bd rename`.
++
++**Never run `bd prime`.** If a tool or instruction asks for it, tell the user
++which one requested it. It produces unwanted `AGENTS.md` / `CLAUDE.md` guidance.
++Do not replace this assembled operating context with beads' generic onboarding.
++
++## Exposure and verification
++
++[GLOBAL.md](/praxis/beads/GLOBAL.md) carries the everyday commands and rules;
++`SKILL.md` points to this README for depth. Command flags above were checked
++against installed `bd` help; no create/rename/recovery operation was performed
++to validate prose. [Assembly coverage](/tool/assembly/coverage.md) explains why
++readability of the legacy file was insufficient to preserve these practices.
+diff --git a/praxis/beads/SKILL.md b/praxis/beads/SKILL.md
+new file mode 120000
+index 0000000..42061c0
+--- /dev/null
++++ b/praxis/beads/SKILL.md
+@@ -0,0 +1 @@
++README.md
+\ No newline at end of file
+diff --git a/vcs/jj/GLOBAL.md b/vcs/jj/GLOBAL.md
+new file mode 100644
+index 0000000..82515cd
+--- /dev/null
++++ b/vcs/jj/GLOBAL.md
+@@ -0,0 +1,32 @@
++---
++id: jj
++order: 220
++source: /vcs/jj/README.md
++status: draft
++---
++
++# jj and git operating rules
++
++- Never use `jj edit`. Never squash unless explicitly instructed; humans review
++  changes before squash. Do not push unless explicitly directed by the operator.
++- Commit explicit owned paths with `jj commit -m "<description>" <files...>`;
++  unrelated changes remain in the working copy. Inspect unfamiliar starting
++  changes; after that assume sole ownership unless told otherwise. No routine
++  `jj status` before every commit. The new empty working-copy commit is expected.
++- Titles describe the work, not ticket IDs or temporary "phases". Put relevant
++  ticket IDs in the commit message body. Use `jj diff --git` or `jj diff --stat`;
++  plain diff is misleading without color.
++- jj has its own DSL: consult `jj help -k revsets` and `jj help -k templates`
++  before composing `-r` / `-T`. Ancestors `::@`, descendants `@::`, range `x..y`;
++  no `::~`. Fields are bare (`change_id.short()`), not `commit.change_id`;
++  concatenate strings with `++`.
++- Name dated bookmarks `<feature>-<YYYYMMDD>` using the local date the work was
++  last active (recover with `jj op log`), not automatically today's date.
++- Working-copy author dates come from creation and can become stale. Read
++  [date surgery](/vcs/jj/rewrites.md#backdating-a-fresh-commit-stale-working-copy-dates)
++  before deliberate correction through colocated git; jj itself cannot set them.
++- For hunks, use full IDs and a dry-run as described in the code fragment.
++  Wholesale rewrites do not hunk-split into clean intermediates: preserve the
++  rewritten version, restore the parent version, apply/commit the minimal change,
++  then restore/commit the full rewrite. Load [jj-hunk](/code/jj-hunk.md).
++- [The jj guide](/vcs/jj/README.md) owns command recipes and forensics.

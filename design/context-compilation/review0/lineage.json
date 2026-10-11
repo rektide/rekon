@@ -1,0 +1,2603 @@
+{
+  "revision": "ab672848a82170a5575dc32c227a5056008e3f37",
+  "path": "AGENTS.md",
+  "lines": [
+    {
+      "commit": "2188c124340f0f4d9d294041144d300dfe6859ca",
+      "originalLine": 1,
+      "line": 1,
+      "subject": "agents.md: dont use model in skills",
+      "text": "# subagents"
+    },
+    {
+      "commit": "2188c124340f0f4d9d294041144d300dfe6859ca",
+      "originalLine": 2,
+      "line": 2,
+      "subject": "agents.md: dont use model in skills",
+      "text": ""
+    },
+    {
+      "commit": "266dc11ca30e49220d7b5d22a028dabb7a06df90",
+      "originalLine": 3,
+      "line": 3,
+      "subject": "docs: keep Compfuzor cleanup deliberate",
+      "text": "- run in background"
+    },
+    {
+      "commit": "266dc11ca30e49220d7b5d22a028dabb7a06df90",
+      "originalLine": 4,
+      "line": 4,
+      "subject": "docs: keep Compfuzor cleanup deliberate",
+      "text": "- when you get a reply from a subagent, consider whether to respond now or to wait for other subagents to resolve first. i tend to prefer documents get built deliberatively, given the benefit of previous context that could become available that could help latter documents to be better structured."
+    },
+    {
+      "commit": "465b5dd2cab2eac318450987f9f5db3632591650",
+      "originalLine": 3,
+      "line": 5,
+      "subject": "AGENTS.md: require model-suffix on wave files, forbid harness names like opencode",
+      "text": "- UNLESS DIRECTED BY USER ignore skills/etc that say to use a given model. we do not have access to most of these. general agent is usually a solid go to agent for most uses!"
+    },
+    {
+      "commit": "f417a7dad32157c2dc37f2dd364e2b73fb270935",
+      "originalLine": 6,
+      "line": 6,
+      "subject": "subagent guidance: treat general agent as astra-equivalent with constraints",
+      "text": "- agent quality guide: treat `general` as astra-equivalent with constraints — very capable/smart, can do many builds, but lacks a certain \"flash of insight\"/clean-ness. sol is brilliant, just less so than astra: often appropriate/ok, and using astra implies we care about the topic. for high value tasks & deep research, ask the user what agents they want for what subagent tasks. the general agent override lives at [agents/general.md](/agents/general.md)."
+    },
+    {
+      "commit": "465b5dd2cab2eac318450987f9f5db3632591650",
+      "originalLine": 4,
+      "line": 7,
+      "subject": "AGENTS.md: require model-suffix on wave files, forbid harness names like opencode",
+      "text": "- cite existing research/md at your subagents to get them primed"
+    },
+    {
+      "commit": "266dc11ca30e49220d7b5d22a028dabb7a06df90",
+      "originalLine": 7,
+      "line": 8,
+      "subject": "docs: keep Compfuzor cleanup deliberate",
+      "text": "- have agents write/maintain their own md files often in design/<topic>/ so their work can be cited. have them jj commit."
+    },
+    {
+      "commit": "465b5dd2cab2eac318450987f9f5db3632591650",
+      "originalLine": 6,
+      "line": 9,
+      "subject": "AGENTS.md: require model-suffix on wave files, forbid harness names like opencode",
+      "text": "- tell subagents to favor not overwriting files generally, other than README / index / shared file maintenance, unless instructed otherwise"
+    },
+    {
+      "commit": "c09e776940ff680f4aefb95af8147e45bb38b031",
+      "originalLine": 4,
+      "line": 10,
+      "subject": "agents.md: scripting improvements",
+      "text": "- ask subagents to return references, to facilitate follow-up investigation/exploration."
+    },
+    {
+      "commit": "b3bfbaf0e4675564be19c9309a8efa9221ada220",
+      "originalLine": 5,
+      "line": 11,
+      "subject": "agents: remind self to reuse task_id for subagent follow-up",
+      "text": "- remember to use the task_id to talk to an agent again; self maintain this prompt to make sure this directive is proper tool use for you"
+    },
+    {
+      "commit": "2188c124340f0f4d9d294041144d300dfe6859ca",
+      "originalLine": 4,
+      "line": 12,
+      "subject": "agents.md: dont use model in skills",
+      "text": ""
+    },
+    {
+      "commit": "80bcfdc62805165f5dbe76cf60da827b1b818898",
+      "originalLine": 12,
+      "line": 13,
+      "subject": "docs: guide architectural stewardship of subagents",
+      "text": "## Architectural stewardship"
+    },
+    {
+      "commit": "80bcfdc62805165f5dbe76cf60da827b1b818898",
+      "originalLine": 13,
+      "line": 14,
+      "subject": "docs: guide architectural stewardship of subagents",
+      "text": ""
+    },
+    {
+      "commit": "80bcfdc62805165f5dbe76cf60da827b1b818898",
+      "originalLine": 14,
+      "line": 15,
+      "subject": "docs: guide architectural stewardship of subagents",
+      "text": "- Delegate implementation and routine verification, not architectural responsibility. The parent agent's value is big-picture thinking: assess the shape of the code, alignment with user intent, and whether the solution fits verified upstream capabilities and constraints."
+    },
+    {
+      "commit": "80bcfdc62805165f5dbe76cf60da827b1b818898",
+      "originalLine": 15,
+      "line": 16,
+      "subject": "docs: guide architectural stewardship of subagents",
+      "text": "- Use meaningful architectural checkpoints rather than handing off the whole destination unattended. Review the emerging interfaces, domain concepts, reuse, tradeoffs, and evidence; then steer or authorize the next coherent slice. Checkpoints should follow consequential decisions, not arbitrary file-by-file phases."
+    },
+    {
+      "commit": "852ee56a3932120c62e1753f86659c4a1b1d4d25",
+      "originalLine": 16,
+      "line": 17,
+      "subject": "docs: distinguish trusting checks from reviewing implementation",
+      "text": "- Trust subagents' reports that they ran their tests and checks; do not routinely rerun the same checks merely to confirm their work. Stay engaged with implementation details: read the code, examine important behaviors and edge cases, and give concrete feedback. Reported passing checks do not replace code review or judgment about whether the checks cover the intended behavior; run additional verification when it answers a specific concern."
+    },
+    {
+      "commit": "80bcfdc62805165f5dbe76cf60da827b1b818898",
+      "originalLine": 17,
+      "line": 18,
+      "subject": "docs: guide architectural stewardship of subagents",
+      "text": "- Ask checkpoint reports to explain what became possible or impossible, which architectural choices were made and why, unresolved tensions, and the proposed next slice, with references. Read the relevant code and evidence rather than approving from summaries alone."
+    },
+    {
+      "commit": "cf036c5a995d09317b98f5450f12101b0d45ccd5",
+      "originalLine": 18,
+      "line": 19,
+      "subject": "docs: encourage cooperative exploration of broader solutions",
+      "text": "- Cooperatively anneal broader solutions: balance concrete needs with plausible futures, and use dialogue, implementation evidence, and successive refinement to negotiate the right abstractions. Exploring hypothetical futures is encouraged, not forbidden; make assumptions, costs, and opportunities explicit so the parent, subagents, and user can assess them together. Distinguish paths worth preserving or exploring from capabilities agreed for implementation, and preserve meaningful differences within shared machinery. Let subagents choose coherent implementation slices within the agreed direction."
+    },
+    {
+      "commit": "cf036c5a995d09317b98f5450f12101b0d45ccd5",
+      "originalLine": 19,
+      "line": 20,
+      "subject": "docs: encourage cooperative exploration of broader solutions",
+      "text": "  - When a possible future would materially change the shape of the solution, consider a focused follow-up question or small exploration to clarify which paths we are building toward, keeping open, or making harder. Bring promising broader directions back for discussion rather than silently implementing or dismissing them."
+    },
+    {
+      "commit": "80bcfdc62805165f5dbe76cf60da827b1b818898",
+      "originalLine": 19,
+      "line": 21,
+      "subject": "docs: guide architectural stewardship of subagents",
+      "text": ""
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 1,
+      "line": 22,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "# Experimenting"
+    },
+    {
+      "commit": "4b7f1012af71f3a49107416640ffb620b28d26c1",
+      "originalLine": 2,
+      "line": 23,
+      "subject": "bd init: initialize beads issue tracking",
+      "text": ""
+    },
+    {
+      "commit": "266dc11ca30e49220d7b5d22a028dabb7a06df90",
+      "originalLine": 14,
+      "line": 24,
+      "subject": "docs: keep Compfuzor cleanup deliberate",
+      "text": "- use `rg` and `fd` for composing shell commands, both are kept fresh. prefer `fd` over `find` for path discovery."
+    },
+    {
+      "commit": "c3969591b3c6d6d681ce145f0373244336884905",
+      "originalLine": 9,
+      "line": 25,
+      "subject": "docs: add jj-hunk mini-guide to AGENTS.md",
+      "text": "- a `variant` is usually a ~/src/<repo>-<variant>/ directory with a jj workspace in it"
+    },
+    {
+      "commit": "1500facae53c55353879e2ed8525221f6da8fd79",
+      "originalLine": 11,
+      "line": 26,
+      "subject": "agents: document scratch dirs, design doc workflow, review waves, and addendum technique",
+      "text": "- `.test-agent` is our git-ignored scratch directory. prefer doing a domain of work inside a subdirectory, please, and include/maintain a README.md there"
+    },
+    {
+      "commit": "c3969591b3c6d6d681ce145f0373244336884905",
+      "originalLine": 10,
+      "line": 27,
+      "subject": "docs: add jj-hunk mini-guide to AGENTS.md",
+      "text": ""
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 3,
+      "line": 28,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "# Documentation / reference materials"
+    },
+    {
+      "commit": "4b7f1012af71f3a49107416640ffb620b28d26c1",
+      "originalLine": 4,
+      "line": 29,
+      "subject": "bd init: initialize beads issue tracking",
+      "text": ""
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 5,
+      "line": 30,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "- make markdown links to the canonical url for entries, for example [`/README.md`](/README.md) for local files or [`rektide/compfuzor` `README.md`](https://github.com/rektide/compfuzor/blob/main/README.mdL10-20) for a remote canonical reference to lines 10-20 of `README.md` in `rektide/compfuzor` project, file `README.md` (for the main branch). the org/repository isn't required each time but should be explicitly included in the link text if we haven't been talking about that org/repository recently."
+    },
+    {
+      "commit": "16d1daf74b7cf13ab01177808c91871d3ed681ba",
+      "originalLine": 31,
+      "line": 31,
+      "subject": "Distinguish shortcodes from the shared tool toolkit",
+      "text": "- In Rekon itself, write maintained explanations with their domain owner. `g` global, `p` praxis, and `t` tool are **shortcodes, not directories**. The shared toolkit lives in `tool/`, with executable entrypoints at its top and source/docs grouped beneath by domain (`cmd/`, `md/`, `assembly/`, `hyalo/` as needed), not `src/` or `lib/`. Follow [Rekon's structure](/constitution/structure.md) and [short codes](/constitution/naming/README.md#short-codes); do not add new topics to Rekon's retiring `doc/` bucket."
+    },
+    {
+      "commit": "0fac3135151fb1b646d9c848119984421ea4494e",
+      "originalLine": 32,
+      "line": 32,
+      "subject": "Preserve provisional structure map before correcting shortcode conflation",
+      "text": "- In other projects, `doc/<topic>/` is the default for maintained topic docs unless their native structure says otherwise; `design/<topic>/` holds inquiry (waves, drafts, proposals); `.test-agent/<topic>/` stays gitignored scratch for work not ready to promote. Promotion synthesizes accepted inquiry into the maintained home deliberately — no bulk moves of existing design/ trees. Postures and promotion: [design and documentation](/constitution/README.md#doc-constitution-lifecycle)."
+    },
+    {
+      "commit": "1500facae53c55353879e2ed8525221f6da8fd79",
+      "originalLine": 18,
+      "line": 33,
+      "subject": "agents: document scratch dirs, design doc workflow, review waves, and addendum technique",
+      "text": "- a technique that can be helpfu: an addendum. this ia new top level h1 section at the end of a markdown that packages new information / in the document, but not inline. use pandoc to write OKF tags for the title. you are free to mix inline edits and addendum in to commits!"
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 6,
+      "line": 34,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "- the `summarizer` tool is WIP and not done yet. but will latter be a tool to write and read INDEX files in documentation directories to be aware of what's included in the directory."
+    },
+    {
+      "commit": "4b7f1012af71f3a49107416640ffb620b28d26c1",
+      "originalLine": 6,
+      "line": 35,
+      "subject": "bd init: initialize beads issue tracking",
+      "text": ""
+    },
+    {
+      "commit": "26aa166151394e9945718d1dcdbfe41c23e6a45f",
+      "originalLine": 20,
+      "line": 36,
+      "subject": "wave clarification",
+      "text": "## wave"
+    },
+    {
+      "commit": "26aa166151394e9945718d1dcdbfe41c23e6a45f",
+      "originalLine": 21,
+      "line": 37,
+      "subject": "wave clarification",
+      "text": ""
+    },
+    {
+      "commit": "d7b1eee48722adfcb8d9fc75f0beed560ed4274b",
+      "originalLine": 37,
+      "line": 38,
+      "subject": "docs(agents): make doc/ the go-to for maintained topic docs",
+      "text": "often we want to do a \"wave\" of review, where multiple llms produce their own independent output for the wave. this is typically in design/<short-feature-name>/ , usually two maybe three words. sometimes .test-agent/. we'll end up with a bunch of design/<feature>/<wave>.<model-name>.md files. waves are inquiry — they live in design/ — and accepted explanation promotes to doc/<topic>/ as a synthesis, not a move."
+    },
+    {
+      "commit": "26aa166151394e9945718d1dcdbfe41c23e6a45f",
+      "originalLine": 23,
+      "line": 39,
+      "subject": "wave clarification",
+      "text": ""
+    },
+    {
+      "commit": "26aa166151394e9945718d1dcdbfe41c23e6a45f",
+      "originalLine": 24,
+      "line": 40,
+      "subject": "wave clarification",
+      "text": "- common waves:"
+    },
+    {
+      "commit": "26aa166151394e9945718d1dcdbfe41c23e6a45f",
+      "originalLine": 25,
+      "line": 41,
+      "subject": "wave clarification",
+      "text": "  - `init` for initial exploration / problem write ups"
+    },
+    {
+      "commit": "26aa166151394e9945718d1dcdbfe41c23e6a45f",
+      "originalLine": 26,
+      "line": 42,
+      "subject": "wave clarification",
+      "text": "  - `draft` for an initial design draft"
+    },
+    {
+      "commit": "26aa166151394e9945718d1dcdbfe41c23e6a45f",
+      "originalLine": 27,
+      "line": 43,
+      "subject": "wave clarification",
+      "text": "- we add numerical suffixes and increment as we go, as we do \"rounds\". feature3-syn2 usually means the third revision of the `feature` wave and the second synthesis around that feature3. as we iterate on topics we can add new suffixes to the wave, or start a new more focused wave."
+    },
+    {
+      "commit": "26aa166151394e9945718d1dcdbfe41c23e6a45f",
+      "originalLine": 28,
+      "line": 44,
+      "subject": "wave clarification",
+      "text": "- `syn` is a frequently used suffix (ex: draft-syn.glm52.md): as follow up to a wave often one or more llm's will be asked to synthesize from their point of view, to review the existing wave, and create a synthesis doc that combines the best elements of the different documents into their vision of the best document. discuss common themes and tensions amid the source material. at the end it should also cross compare, noting particular strengths, interesting/notable features, and relative weaknesses, and a general characterization of the different source documents. this is cross-review and re-integration/synthesis."
+    },
+    {
+      "commit": "465b5dd2cab2eac318450987f9f5db3632591650",
+      "originalLine": 32,
+      "line": 45,
+      "subject": "AGENTS.md: require model-suffix on wave files, forbid harness names like opencode",
+      "text": "- please include a 0 suffix to be clear on your wave file (ex: draft0.ds4f.md)."
+    },
+    {
+      "commit": "266dc11ca30e49220d7b5d22a028dabb7a06df90",
+      "originalLine": 35,
+      "line": 46,
+      "subject": "docs: keep Compfuzor cleanup deliberate",
+      "text": "- the \"std name\" is `design/<name>/<name>.<model>.md`: when a directory holds one main document rather than a wave, name the file after the directory/topic itself (ex: `design/roadmap/roadmap.ds4f.md`). revisions still get numerical suffixes (`roadmap2.ds4f.md`)."
+    },
+    {
+      "commit": "26aa166151394e9945718d1dcdbfe41c23e6a45f",
+      "originalLine": 30,
+      "line": 47,
+      "subject": "wave clarification",
+      "text": "- if \"accepted\" please make a prefix-less symlink for the accepted wave. this is a signal that this is the accepted \"tip\" of material."
+    },
+    {
+      "commit": "26aa166151394e9945718d1dcdbfe41c23e6a45f",
+      "originalLine": 31,
+      "line": 48,
+      "subject": "wave clarification",
+      "text": "- start waves by capturing what is up. what are we doing, what the genereal situation is. what is the general problem, and then what more specifically is happening? if there are specific vectors/directions/instructions your user provided, please capture them. consider giving a couple sentance prompt that could be used to research the topic at hand, on the current lines/directions of inquiry. you do not need to restate as we go, but talking about what's new or whats changed or what's emerged from the previous is helpful stage setting!"
+    },
+    {
+      "commit": "465b5dd2cab2eac318450987f9f5db3632591650",
+      "originalLine": 35,
+      "line": 49,
+      "subject": "AGENTS.md: require model-suffix on wave files, forbid harness names like opencode",
+      "text": "- **every wave file you write must end in `.<model-name>.md` — this is the default, not an option.** `draft0.md`, `draft.md`, or any filename missing the model suffix is a bug: fix the name before you finish writing. good examples: `draft0.gpt56t.md`, `feature3-syn2.glm52.md`."
+    },
+    {
+      "commit": "26aa166151394e9945718d1dcdbfe41c23e6a45f",
+      "originalLine": 32,
+      "line": 50,
+      "subject": "wave clarification",
+      "text": "- be concise in your model name please, for example gpt56t (for gpt 5.6 terra) or ds4f (for deepseek 4 flash) or glm52 (for glm 5.2)."
+    },
+    {
+      "commit": "465b5dd2cab2eac318450987f9f5db3632591650",
+      "originalLine": 37,
+      "line": 51,
+      "subject": "AGENTS.md: require model-suffix on wave files, forbid harness names like opencode",
+      "text": "- use your present model name in the suffix every time you write a file! models get changed between rounds, so never copy a suffix from an earlier wave file — identify the model you are running as right now."
+    },
+    {
+      "commit": "465b5dd2cab2eac318450987f9f5db3632591650",
+      "originalLine": 38,
+      "line": 52,
+      "subject": "AGENTS.md: require model-suffix on wave files, forbid harness names like opencode",
+      "text": "- the model name is the llm you are running on, never the harness or tooling around it. opencode is the agent harness that runs us, not a model: `*.opencode.md` is always wrong, and the same goes for any other harness/tool/agent-runner name. if you genuinely cannot determine the underlying model, use the most specific name you can and note the uncertainty at the top of the doc."
+    },
+    {
+      "commit": "465b5dd2cab2eac318450987f9f5db3632591650",
+      "originalLine": 39,
+      "line": 53,
+      "subject": "AGENTS.md: require model-suffix on wave files, forbid harness names like opencode",
+      "text": "- if you are overwriting a file without being asked to, something is probably wrong, and you probably need to find a way to differentiate your work & write a new file."
+    },
+    {
+      "commit": "26aa166151394e9945718d1dcdbfe41c23e6a45f",
+      "originalLine": 33,
+      "line": 54,
+      "subject": "wave clarification",
+      "text": "- often we ping pong between design (generally, even if not explicitly named so) and synthesis review. design -> syn -> design2 -> design2-syn -> design2->syn2."
+    },
+    {
+      "commit": "26aa166151394e9945718d1dcdbfe41c23e6a45f",
+      "originalLine": 34,
+      "line": 55,
+      "subject": "wave clarification",
+      "text": "- we tend to write new files rather than update previous files. if we are close, sometimes we'll just integrate changes; usually this will be explicitly asked for."
+    },
+    {
+      "commit": "26aa166151394e9945718d1dcdbfe41c23e6a45f",
+      "originalLine": 35,
+      "line": 56,
+      "subject": "wave clarification",
+      "text": "- maintaining an index.md during this is hard but is encouraged once we start accepting the work as good."
+    },
+    {
+      "commit": "26aa166151394e9945718d1dcdbfe41c23e6a45f",
+      "originalLine": 36,
+      "line": 57,
+      "subject": "wave clarification",
+      "text": "- unless told do DO NOT read other files from your wave, from the other models: you are expected to do your own work and not pollute your thinking with their results; we want independent results, that's why we are asking multiple models. but you are free to read relevant files from previous waves."
+    },
+    {
+      "commit": "26aa166151394e9945718d1dcdbfe41c23e6a45f",
+      "originalLine": 37,
+      "line": 58,
+      "subject": "wave clarification",
+      "text": ""
+    },
+    {
+      "commit": "465b5dd2cab2eac318450987f9f5db3632591650",
+      "originalLine": 45,
+      "line": 59,
+      "subject": "AGENTS.md: require model-suffix on wave files, forbid harness names like opencode",
+      "text": "## doc-pass"
+    },
+    {
+      "commit": "465b5dd2cab2eac318450987f9f5db3632591650",
+      "originalLine": 46,
+      "line": 60,
+      "subject": "AGENTS.md: require model-suffix on wave files, forbid harness names like opencode",
+      "text": ""
+    },
+    {
+      "commit": "465b5dd2cab2eac318450987f9f5db3632591650",
+      "originalLine": 47,
+      "line": 61,
+      "subject": "AGENTS.md: require model-suffix on wave files, forbid harness names like opencode",
+      "text": "A `doc-pass` is an informal post-writing skill for connecting new work to the existing documentation corpus. It is recommended after most waves of significant weight, once the wave's core argument is written and can guide the search."
+    },
+    {
+      "commit": "465b5dd2cab2eac318450987f9f5db3632591650",
+      "originalLine": 48,
+      "line": 62,
+      "subject": "AGENTS.md: require model-suffix on wave files, forbid harness names like opencode",
+      "text": ""
+    },
+    {
+      "commit": "465b5dd2cab2eac318450987f9f5db3632591650",
+      "originalLine": 49,
+      "line": 63,
+      "subject": "AGENTS.md: require model-suffix on wave files, forbid harness names like opencode",
+      "text": "1. Identify the new or substantially changed documents and summarize their concepts, claims, vocabulary, and unresolved questions as search terms."
+    },
+    {
+      "commit": "465b5dd2cab2eac318450987f9f5db3632591650",
+      "originalLine": 50,
+      "line": 64,
+      "subject": "AGENTS.md: require model-suffix on wave files, forbid harness names like opencode",
+      "text": "2. Search the containing documentation tree broadly by concept, not only by exact terminology. Check `README.md`, `index.md`, and other indexes first, then use filenames and full-text search to find less obvious relationships."
+    },
+    {
+      "commit": "465b5dd2cab2eac318450987f9f5db3632591650",
+      "originalLine": 51,
+      "line": 65,
+      "subject": "AGENTS.md: require model-suffix on wave files, forbid harness names like opencode",
+      "text": "3. Read enough of each candidate to distinguish a substantive relationship from a keyword collision. Prefer a few explained references over a long undifferentiated link list."
+    },
+    {
+      "commit": "465b5dd2cab2eac318450987f9f5db3632591650",
+      "originalLine": 52,
+      "line": 66,
+      "subject": "AGENTS.md: require model-suffix on wave files, forbid harness names like opencode",
+      "text": "4. Add or update a `Cross-references` section in the new work. Each entry should say why the linked document matters: prior art, supporting evidence, shared vocabulary, tension, contradiction, extension point, or downstream application."
+    },
+    {
+      "commit": "465b5dd2cab2eac318450987f9f5db3632591650",
+      "originalLine": 53,
+      "line": 67,
+      "subject": "AGENTS.md: require model-suffix on wave files, forbid harness names like opencode",
+      "text": "5. Add reciprocal links to older documents when the new work materially changes how they should be navigated or understood. Preserve their original argument rather than opportunistically rewriting them."
+    },
+    {
+      "commit": "465b5dd2cab2eac318450987f9f5db3632591650",
+      "originalLine": 54,
+      "line": 68,
+      "subject": "AGENTS.md: require model-suffix on wave files, forbid harness names like opencode",
+      "text": "6. Maintain the documentation area's `README.md` or index when the new work creates a durable concept, changes the recommended entry point, or fills a missing category. Group entries by domain and give each a short description; do not turn the index into another concept document."
+    },
+    {
+      "commit": "465b5dd2cab2eac318450987f9f5db3632591650",
+      "originalLine": 55,
+      "line": 69,
+      "subject": "AGENTS.md: require model-suffix on wave files, forbid harness names like opencode",
+      "text": "7. Verify local links and reread the surrounding sections. The pass is complete when the significant relationships found are navigable in the appropriate direction and each added link explains its relevance."
+    },
+    {
+      "commit": "465b5dd2cab2eac318450987f9f5db3632591650",
+      "originalLine": 56,
+      "line": 70,
+      "subject": "AGENTS.md: require model-suffix on wave files, forbid harness names like opencode",
+      "text": ""
+    },
+    {
+      "commit": "465b5dd2cab2eac318450987f9f5db3632591650",
+      "originalLine": 57,
+      "line": 71,
+      "subject": "AGENTS.md: require model-suffix on wave files, forbid harness names like opencode",
+      "text": "A doc-pass may use a subagent to independently search the corpus. Ask it to return file and line references, candidate relationship types, and notable absences; integrate only findings verified against the source documents."
+    },
+    {
+      "commit": "465b5dd2cab2eac318450987f9f5db3632591650",
+      "originalLine": 58,
+      "line": 72,
+      "subject": "AGENTS.md: require model-suffix on wave files, forbid harness names like opencode",
+      "text": ""
+    },
+    {
+      "commit": "465b5dd2cab2eac318450987f9f5db3632591650",
+      "originalLine": 59,
+      "line": 73,
+      "subject": "AGENTS.md: require model-suffix on wave files, forbid harness names like opencode",
+      "text": "## Prompts / discussing"
+    },
+    {
+      "commit": "465b5dd2cab2eac318450987f9f5db3632591650",
+      "originalLine": 60,
+      "line": 74,
+      "subject": "AGENTS.md: require model-suffix on wave files, forbid harness names like opencode",
+      "text": ""
+    },
+    {
+      "commit": "465b5dd2cab2eac318450987f9f5db3632591650",
+      "originalLine": 61,
+      "line": 75,
+      "subject": "AGENTS.md: require model-suffix on wave files, forbid harness names like opencode",
+      "text": "- prefer multiple choice to single choice questions. multiple items might be of interest, even when there is an apparent conflict & need to direct. give the user a chance to weigh the options with multiple choice options."
+    },
+    {
+      "commit": "465b5dd2cab2eac318450987f9f5db3632591650",
+      "originalLine": 62,
+      "line": 76,
+      "subject": "AGENTS.md: require model-suffix on wave files, forbid harness names like opencode",
+      "text": "- some discussion before Q&A sections is appreciated."
+    },
+    {
+      "commit": "465b5dd2cab2eac318450987f9f5db3632591650",
+      "originalLine": 63,
+      "line": 77,
+      "subject": "AGENTS.md: require model-suffix on wave files, forbid harness names like opencode",
+      "text": ""
+    },
+    {
+      "commit": "c29b2359cd9314040626a91e2bdf008d2bed67a8",
+      "originalLine": 17,
+      "line": 78,
+      "subject": "agents: document Markdown writing style and OKF frontmatter conventions",
+      "text": "## Writing"
+    },
+    {
+      "commit": "c29b2359cd9314040626a91e2bdf008d2bed67a8",
+      "originalLine": 18,
+      "line": 79,
+      "subject": "agents: document Markdown writing style and OKF frontmatter conventions",
+      "text": ""
+    },
+    {
+      "commit": "c29b2359cd9314040626a91e2bdf008d2bed67a8",
+      "originalLine": 19,
+      "line": 80,
+      "subject": "agents: document Markdown writing style and OKF frontmatter conventions",
+      "text": "- Markdown: write structured, readable content with headings, lists, tables, fenced code blocks, examples, and descriptive links; use prose to explain relationships between concepts."
+    },
+    {
+      "commit": "7724d149554d6ead32175b7b7e934e256a99b02b",
+      "originalLine": 20,
+      "line": 81,
+      "subject": "agents: improve jj-hunk docs with dry-run verification, full-ID warning, and text format",
+      "text": "- For [Open Knowledge Format (OKF)](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md) concepts, write frontmatter as a trustworthy label: what it is, what it's called, what it describes, where its claims came from, who wrote it, who checked it, and when it needs review. Use the body for explanation and links."
+    },
+    {
+      "commit": "c29b2359cd9314040626a91e2bdf008d2bed67a8",
+      "originalLine": 21,
+      "line": 82,
+      "subject": "agents: document Markdown writing style and OKF frontmatter conventions",
+      "text": ""
+    },
+    {
+      "commit": "c29b2359cd9314040626a91e2bdf008d2bed67a8",
+      "originalLine": 22,
+      "line": 83,
+      "subject": "agents: document Markdown writing style and OKF frontmatter conventions",
+      "text": "  ```markdown"
+    },
+    {
+      "commit": "c29b2359cd9314040626a91e2bdf008d2bed67a8",
+      "originalLine": 23,
+      "line": 84,
+      "subject": "agents: document Markdown writing style and OKF frontmatter conventions",
+      "text": "  ---"
+    },
+    {
+      "commit": "632b78df3f83707b2194dfa38b13718f485bac83",
+      "originalLine": 28,
+      "line": 85,
+      "subject": "agents: collapse OKF frontmatter YAML comment padding to single spaces",
+      "text": "  type: Metric # REQUIRED: kind of knowledge (open-ended)"
+    },
+    {
+      "commit": "632b78df3f83707b2194dfa38b13718f485bac83",
+      "originalLine": 29,
+      "line": 86,
+      "subject": "agents: collapse OKF frontmatter YAML comment padding to single spaces",
+      "text": "  title: Active customers # display name"
+    },
+    {
+      "commit": "632b78df3f83707b2194dfa38b13718f485bac83",
+      "originalLine": 30,
+      "line": 87,
+      "subject": "agents: collapse OKF frontmatter YAML comment padding to single spaces",
+      "text": "  description: Distinct customers with a completed order. # one-line summary"
+    },
+    {
+      "commit": "632b78df3f83707b2194dfa38b13718f485bac83",
+      "originalLine": 31,
+      "line": 88,
+      "subject": "agents: collapse OKF frontmatter YAML comment padding to single spaces",
+      "text": "  resource: https://example.com/metrics/active-customers # canonical URI for the asset"
+    },
+    {
+      "commit": "7724d149554d6ead32175b7b7e934e256a99b02b",
+      "originalLine": 28,
+      "line": 89,
+      "subject": "agents: improve jj-hunk docs with dry-run verification, full-ID warning, and text format",
+      "text": "  tags: [sales, customers]"
+    },
+    {
+      "commit": "632b78df3f83707b2194dfa38b13718f485bac83",
+      "originalLine": 33,
+      "line": 90,
+      "subject": "agents: collapse OKF frontmatter YAML comment padding to single spaces",
+      "text": "  status: stable # draft | stable | deprecated"
+    },
+    {
+      "commit": "7724d149554d6ead32175b7b7e934e256a99b02b",
+      "originalLine": 30,
+      "line": 91,
+      "subject": "agents: improve jj-hunk docs with dry-run verification, full-ID warning, and text format",
+      "text": "  generated: { by: human:alice, at: 2026-07-27T12:00:00Z } # who wrote it"
+    },
+    {
+      "commit": "632b78df3f83707b2194dfa38b13718f485bac83",
+      "originalLine": 35,
+      "line": 92,
+      "subject": "agents: collapse OKF frontmatter YAML comment padding to single spaces",
+      "text": "  verified: { by: human:bob, at: 2026-07-27T13:00:00Z } # who checked it"
+    },
+    {
+      "commit": "632b78df3f83707b2194dfa38b13718f485bac83",
+      "originalLine": 36,
+      "line": 93,
+      "subject": "agents: collapse OKF frontmatter YAML comment padding to single spaces",
+      "text": "  stale_after: 2026-10-01 # review deadline (YYYY-MM-DD)"
+    },
+    {
+      "commit": "632b78df3f83707b2194dfa38b13718f485bac83",
+      "originalLine": 37,
+      "line": 94,
+      "subject": "agents: collapse OKF frontmatter YAML comment padding to single spaces",
+      "text": "  sources: # where its claims came from"
+    },
+    {
+      "commit": "c29b2359cd9314040626a91e2bdf008d2bed67a8",
+      "originalLine": 49,
+      "line": 95,
+      "subject": "agents: document Markdown writing style and OKF frontmatter conventions",
+      "text": "    - id: metric-policy"
+    },
+    {
+      "commit": "c29b2359cd9314040626a91e2bdf008d2bed67a8",
+      "originalLine": 50,
+      "line": 96,
+      "subject": "agents: document Markdown writing style and OKF frontmatter conventions",
+      "text": "      resource: https://example.com/policies/active-customers"
+    },
+    {
+      "commit": "c29b2359cd9314040626a91e2bdf008d2bed67a8",
+      "originalLine": 51,
+      "line": 97,
+      "subject": "agents: document Markdown writing style and OKF frontmatter conventions",
+      "text": "      title: Active customer metric policy"
+    },
+    {
+      "commit": "c29b2359cd9314040626a91e2bdf008d2bed67a8",
+      "originalLine": 52,
+      "line": 98,
+      "subject": "agents: document Markdown writing style and OKF frontmatter conventions",
+      "text": "      author: team:revenue-operations"
+    },
+    {
+      "commit": "c29b2359cd9314040626a91e2bdf008d2bed67a8",
+      "originalLine": 53,
+      "line": 99,
+      "subject": "agents: document Markdown writing style and OKF frontmatter conventions",
+      "text": "      last_modified: 2026-07-01"
+    },
+    {
+      "commit": "c29b2359cd9314040626a91e2bdf008d2bed67a8",
+      "originalLine": 54,
+      "line": 100,
+      "subject": "agents: document Markdown writing style and OKF frontmatter conventions",
+      "text": "  ---"
+    },
+    {
+      "commit": "c29b2359cd9314040626a91e2bdf008d2bed67a8",
+      "originalLine": 66,
+      "line": 101,
+      "subject": "agents: document Markdown writing style and OKF frontmatter conventions",
+      "text": "  ```"
+    },
+    {
+      "commit": "c29b2359cd9314040626a91e2bdf008d2bed67a8",
+      "originalLine": 67,
+      "line": 102,
+      "subject": "agents: document Markdown writing style and OKF frontmatter conventions",
+      "text": ""
+    },
+    {
+      "commit": "7724d149554d6ead32175b7b7e934e256a99b02b",
+      "originalLine": 42,
+      "line": 103,
+      "subject": "agents: improve jj-hunk docs with dry-run verification, full-ID warning, and text format",
+      "text": "  - Use bundle-root-relative links such as `/tables/orders.md` for internal concepts; they stay stable when nearby files move."
+    },
+    {
+      "commit": "7724d149554d6ead32175b7b7e934e256a99b02b",
+      "originalLine": 43,
+      "line": 104,
+      "subject": "agents: improve jj-hunk docs with dry-run verification, full-ID warning, and text format",
+      "text": "  - `index.md`: reserved directory listing for progressive disclosure; group entries under headings with short descriptions, not a concept itself."
+    },
+    {
+      "commit": "7724d149554d6ead32175b7b7e934e256a99b02b",
+      "originalLine": 44,
+      "line": 105,
+      "subject": "agents: improve jj-hunk docs with dry-run verification, full-ID warning, and text format",
+      "text": "  - `log.md`: reserved update history; `YYYY-MM-DD` headings newest first, concise creation/update/deprecation entries."
+    },
+    {
+      "commit": "c29b2359cd9314040626a91e2bdf008d2bed67a8",
+      "originalLine": 71,
+      "line": 106,
+      "subject": "agents: document Markdown writing style and OKF frontmatter conventions",
+      "text": ""
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 8,
+      "line": 107,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "# well known directories and files"
+    },
+    {
+      "commit": "4b7f1012af71f3a49107416640ffb620b28d26c1",
+      "originalLine": 14,
+      "line": 108,
+      "subject": "bd init: initialize beads issue tracking",
+      "text": ""
+    },
+    {
+      "commit": "d62776b6d57388014baaf8877a3e3a2e74ef592a",
+      "originalLine": 10,
+      "line": 109,
+      "subject": "Add ticket for tangled.org domain support in dl command",
+      "text": "- **ALWAYS check `~/archive/<repo-org>/<repo-name>` FIRST for source code** before fetching from the web. This is the primary location for third-party project checkouts."
+    },
+    {
+      "commit": "e1ea2e026a565b9ceab7dd665e67a37cd00ba990",
+      "originalLine": 15,
+      "line": 110,
+      "subject": "~/archive/doc for agents.md",
+      "text": "- `~/archive/doc` (and it's `~/src/doc` symlink) is a jj repo where markdown notes are often kept for broad topics. `doc/` inside of projects is for project material."
+    },
+    {
+      "commit": "e1ea2e026a565b9ceab7dd665e67a37cd00ba990",
+      "originalLine": 16,
+      "line": 111,
+      "subject": "~/archive/doc for agents.md",
+      "text": "- `~/wiki/<repo-org>/<repo-name>` has machine generated but pretty good wiki that elaborates the architecture & use of projects, if available"
+    },
+    {
+      "commit": "d62776b6d57388014baaf8877a3e3a2e74ef592a",
+      "originalLine": 12,
+      "line": 112,
+      "subject": "Add ticket for tangled.org domain support in dl command",
+      "text": "- `~/src/<repo-name>` or `~/src/<repo-name>-<workspace-name>` has 1st party checkouts for projects by the author."
+    },
+    {
+      "commit": "e1ea2e026a565b9ceab7dd665e67a37cd00ba990",
+      "originalLine": 18,
+      "line": 113,
+      "subject": "~/archive/doc for agents.md",
+      "text": "- read a `/llms.txt` from each project in the archive. it might not exist, that's fine. never mind this rarely exists, sad."
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 13,
+      "line": 114,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "- `~/ff` is future-fuze, our collection of kubernetes related resources"
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 14,
+      "line": 115,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "- `/opt` and `/srv` for general software installs, and for instances of software / services"
+    },
+    {
+      "commit": "aa6d177d09489519c6ed9754561f494638c17d9c",
+      "originalLine": 76,
+      "line": 116,
+      "subject": "AGENTS.md: terse dl instruction, drop stale rekon source path",
+      "text": "- `dl <url>` fetches a repo and its wiki into `~/archive/<org>/<repo>` and `~/wiki/<org>/<repo>`."
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 16,
+      "line": 117,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "- when writing files to explore behavior, please use a `.test-agent` folder at the top of the project for temporary files (creating it if needed), so they can be managed & cleaned up effectively."
+    },
+    {
+      "commit": "c09e776940ff680f4aefb95af8147e45bb38b031",
+      "originalLine": 24,
+      "line": 118,
+      "subject": "agents.md: scripting improvements",
+      "text": "- for scripts, prefer adding a shebang and making the script executable, to having to launch via `node <script>.js`"
+    },
+    {
+      "commit": "4b7f1012af71f3a49107416640ffb620b28d26c1",
+      "originalLine": 16,
+      "line": 119,
+      "subject": "bd init: initialize beads issue tracking",
+      "text": ""
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 18,
+      "line": 120,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "# Project Planning"
+    },
+    {
+      "commit": "4b7f1012af71f3a49107416640ffb620b28d26c1",
+      "originalLine": 18,
+      "line": 121,
+      "subject": "bd init: initialize beads issue tracking",
+      "text": ""
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 20,
+      "line": 122,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "- do not write time-frames like \"days\" or \"weeks\" into plans. your estimates are crude and will not match the actual delivery timelines: leave your time estimates out."
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 21,
+      "line": 123,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "- mermaid diagrams are excellent visual references. use meaningful node identifiers when creating them."
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 22,
+      "line": 124,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "- breaking changes are fine if a project is <1.0!"
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 23,
+      "line": 125,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "- we NEVER want a flat structure for our project layouts. we always want some kind of domain-grouped setup. if asked to provide options, we want multiple suggestions of domain-groupings that might make sense! we want to explore what domain groupings make sense."
+    },
+    {
+      "commit": "4b7f1012af71f3a49107416640ffb620b28d26c1",
+      "originalLine": 20,
+      "line": 126,
+      "subject": "bd init: initialize beads issue tracking",
+      "text": ""
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 25,
+      "line": 127,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "# Coding advice"
+    },
+    {
+      "commit": "4b7f1012af71f3a49107416640ffb620b28d26c1",
+      "originalLine": 27,
+      "line": 128,
+      "subject": "bd init: initialize beads issue tracking",
+      "text": ""
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 27,
+      "line": 129,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "- \"Let It Fail\" principle, when it makes sense. Do not create a try-catch just to print an error: the stack trace will show what is wrong."
+    },
+    {
+      "commit": "266dc11ca30e49220d7b5d22a028dabb7a06df90",
+      "originalLine": 119,
+      "line": 130,
+      "subject": "docs: keep Compfuzor cleanup deliberate",
+      "text": "- pruning stale or undeclared artifacts is usually outside Compfuzor's scope. do not add automatic prune/reconciliation behavior unless the user explicitly requests it; create and update declared state, and leave cleanup deliberate."
+    },
+    {
+      "commit": "18ab95b34452b12778f5b31afe8d613397f3073b",
+      "originalLine": 129,
+      "line": 131,
+      "subject": "Require coherent-stage commits before review-driven revisions",
+      "text": "- Commit **each coherent stage as it becomes available**, including prompts, research, drafts, and guidance—not just code. Do not bank several stages until the task, conversation, or wave ends."
+    },
+    {
+      "commit": "18ab95b34452b12778f5b31afe8d613397f3073b",
+      "originalLine": 130,
+      "line": 132,
+      "subject": "Require coherent-stage commits before review-driven revisions",
+      "text": "  - Before applying review feedback, revamping, replacing, or removing your current work, **commit its present state first**. Then make the revision as a separate, well-argued commit: preserve the predecessor, explain the delta, and say what destination the revision heads toward. Saving a stage is not declaring it accepted or finished."
+    },
+    {
+      "commit": "18ab95b34452b12778f5b31afe8d613397f3073b",
+      "originalLine": 131,
+      "line": 133,
+      "subject": "Require coherent-stage commits before review-driven revisions",
+      "text": "  - Check in with the human about review direction as well; conversation and a version-control checkpoint are different obligations. Wave gates delay dependent analysis, **not authors' commits**. See [checkpoint discipline](/code/commits.md#commits-checkpoints)."
+    },
+    {
+      "commit": "4b7f1012af71f3a49107416640ffb620b28d26c1",
+      "originalLine": 32,
+      "line": 134,
+      "subject": "bd init: initialize beads issue tracking",
+      "text": ""
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 29,
+      "line": 135,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "# Rust instructions"
+    },
+    {
+      "commit": "4b7f1012af71f3a49107416640ffb620b28d26c1",
+      "originalLine": 38,
+      "line": 136,
+      "subject": "bd init: initialize beads issue tracking",
+      "text": ""
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 31,
+      "line": 137,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "- to publish a crate, run `cargo bump` with major/minor/patch, defaulting to patch unless told otherwise. then make a jj commit. then run cargo publish."
+    },
+    {
+      "commit": "4b7f1012af71f3a49107416640ffb620b28d26c1",
+      "originalLine": 41,
+      "line": 138,
+      "subject": "bd init: initialize beads issue tracking",
+      "text": ""
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 33,
+      "line": 139,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "## Preferred Rust modules"
+    },
+    {
+      "commit": "4b7f1012af71f3a49107416640ffb620b28d26c1",
+      "originalLine": 43,
+      "line": 140,
+      "subject": "bd init: initialize beads issue tracking",
+      "text": ""
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 35,
+      "line": 141,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "- `figment2` for config"
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 36,
+      "line": 142,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "- `clap` v4 with derive macros and `clap_complete` for completion"
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 37,
+      "line": 143,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "- `bon` for builder pattern"
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 38,
+      "line": 144,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "- `nextest` for testing"
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 39,
+      "line": 145,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "- `criterion` for benchmarking with cargo-criterion. `criterion-perf-events` for linux performance events and `criterion-cycles-per-byte` when measuring throughput of data-oriented systems."
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 40,
+      "line": 146,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "- `jiff` for time (not chrono!)"
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 41,
+      "line": 147,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "- `use `clippy` for rust checking."
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 42,
+      "line": 148,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "- `tracing`, with good use of spans!"
+    },
+    {
+      "commit": "4b7f1012af71f3a49107416640ffb620b28d26c1",
+      "originalLine": 45,
+      "line": 149,
+      "subject": "bd init: initialize beads issue tracking",
+      "text": ""
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 44,
+      "line": 150,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "## Clap + Figment2 integration"
+    },
+    {
+      "commit": "4b7f1012af71f3a49107416640ffb620b28d26c1",
+      "originalLine": 50,
+      "line": 151,
+      "subject": "bd init: initialize beads issue tracking",
+      "text": ""
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 46,
+      "line": 152,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "Derive `Parser` (clap), `Serialize`/`Deserialize` (serde), and `Builder` (bon) on the config struct. Use `figment2::providers::Serialized::defaults(CliArgs::parse())` to feed clap-parsed args into figment2. Precedence: CLI > env vars > defaults."
+    },
+    {
+      "commit": "4b7f1012af71f3a49107416640ffb620b28d26c1",
+      "originalLine": 52,
+      "line": 153,
+      "subject": "bd init: initialize beads issue tracking",
+      "text": ""
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 48,
+      "line": 154,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "# Rules and guidelines for JavaScript projects"
+    },
+    {
+      "commit": "4b7f1012af71f3a49107416640ffb620b28d26c1",
+      "originalLine": 54,
+      "line": 155,
+      "subject": "bd init: initialize beads issue tracking",
+      "text": ""
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 50,
+      "line": 156,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "- When importing other typescript code in the same project, use an explicit ts file extension such as `import foo from \"<whatever>.ts\"` for the import ."
+    },
+    {
+      "commit": "4b7f1012af71f3a49107416640ffb620b28d26c1",
+      "originalLine": 58,
+      "line": 157,
+      "subject": "bd init: initialize beads issue tracking",
+      "text": ""
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 52,
+      "line": 158,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "## Preferred npm modules"
+    },
+    {
+      "commit": "4b7f1012af71f3a49107416640ffb620b28d26c1",
+      "originalLine": 60,
+      "line": 159,
+      "subject": "bd init: initialize beads issue tracking",
+      "text": ""
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 54,
+      "line": 160,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "- refer to node modules with the `node:` prefix, such as `node:fs`."
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 55,
+      "line": 161,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "- if there's no existing test tools, use `vitest` library for testing,"
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 56,
+      "line": 162,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "- use `gunshi` npm package for more complex CLI, if this app has a non-trivial CLI. use it's @gunshi/plugin-completion plugin for tab completion too."
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 57,
+      "line": 163,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "- use `oxfmt` for formatting"
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 58,
+      "line": 164,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "- use `oxlint` for linting"
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 59,
+      "line": 165,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "- use `tsdown` to emit typescript. when"
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 60,
+      "line": 166,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "- the `@typescript/native-preview` package for typescript type-checking, with it's `tsgo` replacement for `typescript` binary. when testing to see if the build is ok, use this; tsdown will not type check which is what we actually care about."
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 61,
+      "line": 167,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "- for config files, use either `c12` for complex needs or `xdg-basedir` at least for selecting config from XDG compliant config directory."
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 62,
+      "line": 168,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "- use `pnpm install` to install dependencies. for the version use `@latest`. do not edit `package.json` directly! for example, `pnpm install -D gunshi oxfmt oxlint`, for these dev dependencies."
+    },
+    {
+      "commit": "4b7f1012af71f3a49107416640ffb620b28d26c1",
+      "originalLine": 65,
+      "line": 169,
+      "subject": "bd init: initialize beads issue tracking",
+      "text": ""
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 64,
+      "line": 170,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "## promises / asynchronous / synchronous behaviors"
+    },
+    {
+      "commit": "4b7f1012af71f3a49107416640ffb620b28d26c1",
+      "originalLine": 67,
+      "line": 171,
+      "subject": "bd init: initialize beads issue tracking",
+      "text": ""
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 66,
+      "line": 172,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "- do not use sync methods like Node's `execSync` if there are async options available. prefer promise based methods over callback based methods, if available. avoid blocking calls when possible."
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 67,
+      "line": 173,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "- AGAIN: use `node:fs/promises` instead of `node:fs`."
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 68,
+      "line": 174,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "- `await` should occur when the value of a promise is actually needed. if we don't need the value soon-after, save the promise to a variable instead of awaiting it's value."
+    },
+    {
+      "commit": "4b7f1012af71f3a49107416640ffb620b28d26c1",
+      "originalLine": 72,
+      "line": 175,
+      "subject": "bd init: initialize beads issue tracking",
+      "text": ""
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 70,
+      "line": 176,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "## build concerns"
+    },
+    {
+      "commit": "4b7f1012af71f3a49107416640ffb620b28d26c1",
+      "originalLine": 74,
+      "line": 177,
+      "subject": "bd init: initialize beads issue tracking",
+      "text": ""
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 72,
+      "line": 178,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "- Build output is ONLY for npm package distribution, not for development workflows or documentation."
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 73,
+      "line": 179,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "- prefer pnpm to npm for managing packages."
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 74,
+      "line": 180,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "- prefer writing .ts files to .js files! use typescript whenever possible."
+    },
+    {
+      "commit": "c09e776940ff680f4aefb95af8147e45bb38b031",
+      "originalLine": 83,
+      "line": 181,
+      "subject": "agents.md: scripting improvements",
+      "text": "- node.js has good typescript type stripping support. ALWAYS run .ts files directly during development and documentation: `node src/cli.ts`. Build artifacts (`build/`) are ONLY for npm package distribution. prefer typescript over javascript."
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 76,
+      "line": 182,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "- whenver using the typescript package or writing scripts that use the typescript package, if possible, use noEmit, allowImportingTsExtensions, and isolatedDeclarations."
+    },
+    {
+      "commit": "4b7f1012af71f3a49107416640ffb620b28d26c1",
+      "originalLine": 78,
+      "line": 183,
+      "subject": "bd init: initialize beads issue tracking",
+      "text": ""
+    },
+    {
+      "commit": "1af039e3322cbe413ebf7dee667909253ebd7db9",
+      "originalLine": 86,
+      "line": 184,
+      "subject": "AGENTS.md: typescript prefer public, blind commits, say NO to bd prime",
+      "text": "## typescript/classes"
+    },
+    {
+      "commit": "1af039e3322cbe413ebf7dee667909253ebd7db9",
+      "originalLine": 87,
+      "line": 185,
+      "subject": "AGENTS.md: typescript prefer public, blind commits, say NO to bd prime",
+      "text": ""
+    },
+    {
+      "commit": "1af039e3322cbe413ebf7dee667909253ebd7db9",
+      "originalLine": 88,
+      "line": 186,
+      "subject": "AGENTS.md: typescript prefer public, blind commits, say NO to bd prime",
+      "text": "- make typescript members public. we allow others to see our internals, although we do not guarantee the stability of our implementations."
+    },
+    {
+      "commit": "1af039e3322cbe413ebf7dee667909253ebd7db9",
+      "originalLine": 89,
+      "line": 187,
+      "subject": "AGENTS.md: typescript prefer public, blind commits, say NO to bd prime",
+      "text": ""
+    },
+    {
+      "commit": "08322dc2e5e2dca5ceaaa3769fc9807997d37544",
+      "originalLine": 79,
+      "line": 188,
+      "subject": "ts project structure",
+      "text": "## npm script structure with concurrently"
+    },
+    {
+      "commit": "08322dc2e5e2dca5ceaaa3769fc9807997d37544",
+      "originalLine": 80,
+      "line": 189,
+      "subject": "ts project structure",
+      "text": ""
+    },
+    {
+      "commit": "08322dc2e5e2dca5ceaaa3769fc9807997d37544",
+      "originalLine": 81,
+      "line": 190,
+      "subject": "ts project structure",
+      "text": "Use `concurrently` to compose build/check/fix tasks from namespaced sub-tasks. The pattern:"
+    },
+    {
+      "commit": "08322dc2e5e2dca5ceaaa3769fc9807997d37544",
+      "originalLine": 82,
+      "line": 191,
+      "subject": "ts project structure",
+      "text": ""
+    },
+    {
+      "commit": "08322dc2e5e2dca5ceaaa3769fc9807997d37544",
+      "originalLine": 83,
+      "line": 192,
+      "subject": "ts project structure",
+      "text": "```"
+    },
+    {
+      "commit": "08322dc2e5e2dca5ceaaa3769fc9807997d37544",
+      "originalLine": 84,
+      "line": 193,
+      "subject": "ts project structure",
+      "text": "build:<tool>   — individual build steps (typecheck, bundle, etc.)"
+    },
+    {
+      "commit": "08322dc2e5e2dca5ceaaa3769fc9807997d37544",
+      "originalLine": 85,
+      "line": 194,
+      "subject": "ts project structure",
+      "text": "check:<tool>   — individual check/lint steps"
+    },
+    {
+      "commit": "08322dc2e5e2dca5ceaaa3769fc9807997d37544",
+      "originalLine": 86,
+      "line": 195,
+      "subject": "ts project structure",
+      "text": "fix:<tool>     — individual auto-fix steps"
+    },
+    {
+      "commit": "08322dc2e5e2dca5ceaaa3769fc9807997d37544",
+      "originalLine": 87,
+      "line": 196,
+      "subject": "ts project structure",
+      "text": "```"
+    },
+    {
+      "commit": "08322dc2e5e2dca5ceaaa3769fc9807997d37544",
+      "originalLine": 88,
+      "line": 197,
+      "subject": "ts project structure",
+      "text": ""
+    },
+    {
+      "commit": "08322dc2e5e2dca5ceaaa3769fc9807997d37544",
+      "originalLine": 89,
+      "line": 198,
+      "subject": "ts project structure",
+      "text": "Aggregate targets run all sub-tasks in parallel via concurrently glob patterns:"
+    },
+    {
+      "commit": "08322dc2e5e2dca5ceaaa3769fc9807997d37544",
+      "originalLine": 90,
+      "line": 199,
+      "subject": "ts project structure",
+      "text": ""
+    },
+    {
+      "commit": "08322dc2e5e2dca5ceaaa3769fc9807997d37544",
+      "originalLine": 91,
+      "line": 200,
+      "subject": "ts project structure",
+      "text": "- `build` → `concurrently 'pnpm:build:*'`"
+    },
+    {
+      "commit": "08322dc2e5e2dca5ceaaa3769fc9807997d37544",
+      "originalLine": 92,
+      "line": 201,
+      "subject": "ts project structure",
+      "text": "- `check` → `concurrently 'pnpm:check:*'`"
+    },
+    {
+      "commit": "08322dc2e5e2dca5ceaaa3769fc9807997d37544",
+      "originalLine": 93,
+      "line": 202,
+      "subject": "ts project structure",
+      "text": "- `fix` → `concurrently 'pnpm:fix:*'`"
+    },
+    {
+      "commit": "08322dc2e5e2dca5ceaaa3769fc9807997d37544",
+      "originalLine": 94,
+      "line": 203,
+      "subject": "ts project structure",
+      "text": ""
+    },
+    {
+      "commit": "66a424c42f6b4c348eb8164b5c72327edbf1b317",
+      "originalLine": 95,
+      "line": 204,
+      "subject": "huge change",
+      "text": "Typical sub-tasks:"
+    },
+    {
+      "commit": "66a424c42f6b4c348eb8164b5c72327edbf1b317",
+      "originalLine": 96,
+      "line": 205,
+      "subject": "huge change",
+      "text": ""
+    },
+    {
+      "commit": "66a424c42f6b4c348eb8164b5c72327edbf1b317",
+      "originalLine": 97,
+      "line": 206,
+      "subject": "huge change",
+      "text": "- `build:wxt` / `build:type` — wxt webextension build / tsgo"
+    },
+    {
+      "commit": "66a424c42f6b4c348eb8164b5c72327edbf1b317",
+      "originalLine": 98,
+      "line": 207,
+      "subject": "huge change",
+      "text": "- `check:lint-pkg` — vici lint (validate manifest)"
+    },
+    {
+      "commit": "66a424c42f6b4c348eb8164b5c72327edbf1b317",
+      "originalLine": 99,
+      "line": 208,
+      "subject": "huge change",
+      "text": "- `check:lint` — vp lint (oxlint via vite-plus)"
+    },
+    {
+      "commit": "66a424c42f6b4c348eb8164b5c72327edbf1b317",
+      "originalLine": 100,
+      "line": 209,
+      "subject": "huge change",
+      "text": "- `check:type` — tsgo (from @typescript/native-preview)"
+    },
+    {
+      "commit": "66a424c42f6b4c348eb8164b5c72327edbf1b317",
+      "originalLine": 101,
+      "line": 210,
+      "subject": "huge change",
+      "text": "- `fix:format` — vp fmt --write src (oxfmt via vite-plus)"
+    },
+    {
+      "commit": "66a424c42f6b4c348eb8164b5c72327edbf1b317",
+      "originalLine": 102,
+      "line": 211,
+      "subject": "huge change",
+      "text": "- `fix:lint` — vp lint --fix (oxlint via vite-plus)"
+    },
+    {
+      "commit": "66a424c42f6b4c348eb8164b5c72327edbf1b317",
+      "originalLine": 103,
+      "line": 212,
+      "subject": "huge change",
+      "text": ""
+    },
+    {
+      "commit": "66a424c42f6b4c348eb8164b5c72327edbf1b317",
+      "originalLine": 104,
+      "line": 213,
+      "subject": "huge change",
+      "text": "Without `--names`, concurrently derives labels from the glob suffix (e.g. `lint-pkg`, `lint`, `typecheck` from `check:*`)."
+    },
+    {
+      "commit": "08322dc2e5e2dca5ceaaa3769fc9807997d37544",
+      "originalLine": 96,
+      "line": 214,
+      "subject": "ts project structure",
+      "text": ""
+    },
+    {
+      "commit": "08322dc2e5e2dca5ceaaa3769fc9807997d37544",
+      "originalLine": 97,
+      "line": 215,
+      "subject": "ts project structure",
+      "text": "Include a `dev` target for watch/development mode (e.g. `wxt watch`)."
+    },
+    {
+      "commit": "08322dc2e5e2dca5ceaaa3769fc9807997d37544",
+      "originalLine": 98,
+      "line": 216,
+      "subject": "ts project structure",
+      "text": ""
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 78,
+      "line": 217,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "## cli"
+    },
+    {
+      "commit": "4b7f1012af71f3a49107416640ffb620b28d26c1",
+      "originalLine": 80,
+      "line": 218,
+      "subject": "bd init: initialize beads issue tracking",
+      "text": ""
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 80,
+      "line": 219,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "- if there is a simple CLI interface that a file can expose for itself to exercise some or all of the file, check if the file is the main module then run the file if so."
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 81,
+      "line": 220,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "- anytime there is a foo.main.js, in the corresponding foo.js file, check to see if we are the main module; if we are, do a dynamic import of foo.main.js and run that main. make these files executable, add the shebang at the top if needed."
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 82,
+      "line": 221,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "- when checking if a file is the \"main\" import, always resolve the `process.argv[1]` link with realpath. use `then` to allow execution to continue. otherwise if this module is loaded NOT as the main module, loading will block on this check to finish."
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 83,
+      "line": 222,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "- When providing usage examples or running CLI tools during development, use the .ts file path directly: `node src/cli.ts`. Never reference build output in documentation."
+    },
+    {
+      "commit": "4b7f1012af71f3a49107416640ffb620b28d26c1",
+      "originalLine": 86,
+      "line": 223,
+      "subject": "bd init: initialize beads issue tracking",
+      "text": ""
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 85,
+      "line": 224,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "# jj / git"
+    },
+    {
+      "commit": "4b7f1012af71f3a49107416640ffb620b28d26c1",
+      "originalLine": 88,
+      "line": 225,
+      "subject": "bd init: initialize beads issue tracking",
+      "text": ""
+    },
+    {
+      "commit": "fb7e0fdbe76e1c2dd5767328418f8e6db6d06cd4",
+      "originalLine": 214,
+      "line": 226,
+      "subject": "docs/agents: document dated feature bookmark convention",
+      "text": "- name dated feature bookmarks `<feature>-<YYYYMMDD>`. use the local calendar date when that line of work was last active (recover it from `jj op log` when resuming old work), rather than blindly using today's date."
+    },
+    {
+      "commit": "51869e44c45e1ef9a79ce781cc55109b5facd152",
+      "originalLine": 226,
+      "line": 227,
+      "subject": "Document fresh-commit author-date backdating via git colocation",
+      "text": "- commit author dates go stale the same way: the working-copy commit is author-stamped at *creation*, edits never restamp it. when the author date should say when the work was actually edited (the files' mtime), make the commit through git in the colocated repo (`GIT_AUTHOR_DATE=… git commit`, then any jj command auto-imports it) and `jj abandon` the stale change. jj itself cannot set timestamps: [`vcs/jj/rewrites.md`](/vcs/jj/rewrites.md#backdating-a-fresh-commit-stale-working-copy-dates)"
+    },
+    {
+      "commit": "79600954a1313acbda285b202b167ac1cb98817c",
+      "originalLine": 124,
+      "line": 228,
+      "subject": "agents.md: adapt rains jj instructions",
+      "text": "- use `jj commit -m \"<description>\" <files...>` to make commits as you go."
+    },
+    {
+      "commit": "79600954a1313acbda285b202b167ac1cb98817c",
+      "originalLine": 125,
+      "line": 229,
+      "subject": "agents.md: adapt rains jj instructions",
+      "text": "  - explicitly provide the files/directories that belong to this commit"
+    },
+    {
+      "commit": "79600954a1313acbda285b202b167ac1cb98817c",
+      "originalLine": 126,
+      "line": 230,
+      "subject": "agents.md: adapt rains jj instructions",
+      "text": "  - you do not need to add files ahead of time; it will commit all changes."
+    },
+    {
+      "commit": "79600954a1313acbda285b202b167ac1cb98817c",
+      "originalLine": 127,
+      "line": 231,
+      "subject": "agents.md: adapt rains jj instructions",
+      "text": "  - do not be afraid of empty commits! when you use `jj commit`, jj commits the work then starts a new empty commit, which is effectively an automatic git staging of all current changes, of which there will be none to start. that empty commit is expected."
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 89,
+      "line": 232,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "- you do not need to verify your commit has happened. if you use `jj commit` your work is saved. move on."
+    },
+    {
+      "commit": "79600954a1313acbda285b202b167ac1cb98817c",
+      "originalLine": 129,
+      "line": 233,
+      "subject": "agents.md: adapt rains jj instructions",
+      "text": "- never use jj edit! never use squash unless explicitly instructed! humans must review all changes before squash."
+    },
+    {
+      "commit": "79600954a1313acbda285b202b167ac1cb98817c",
+      "originalLine": 130,
+      "line": 234,
+      "subject": "agents.md: adapt rains jj instructions",
+      "text": "- use `jj diff --git` for diff style commits or `jj diff --stat` for summary diffs. plain jj diff is misleading without color."
+    },
+    {
+      "commit": "1b3d23299a75cdb5ba204a8ddffbcf29f3e160cd",
+      "originalLine": 135,
+      "line": 235,
+      "subject": "agents.md: jj template mini-guide",
+      "text": "- **jj has its own DSL for revsets and templates — do not guess syntax.** Consult `jj help -k revsets` and `jj help -k templates` before writing `-r` or `-T` arguments."
+    },
+    {
+      "commit": "1b3d23299a75cdb5ba204a8ddffbcf29f3e160cd",
+      "originalLine": 136,
+      "line": 236,
+      "subject": "agents.md: jj template mini-guide",
+      "text": "  - Revset DAG operators: `::@` (ancestors of @), `@::` (descendants of @), `::` (all visible), `x..y` (range). No `::~`."
+    },
+    {
+      "commit": "1b3d23299a75cdb5ba204a8ddffbcf29f3e160cd",
+      "originalLine": 137,
+      "line": 237,
+      "subject": "agents.md: jj template mini-guide",
+      "text": "  - Template fields are bare keywords, not object properties: `change_id.short()` not `commit.change_id.short()`. `description.first_line()` not `commit.description.first_line()`."
+    },
+    {
+      "commit": "1b3d23299a75cdb5ba204a8ddffbcf29f3e160cd",
+      "originalLine": 138,
+      "line": 238,
+      "subject": "agents.md: jj template mini-guide",
+      "text": "  - String concatenation in templates uses `++`."
+    },
+    {
+      "commit": "1b3d23299a75cdb5ba204a8ddffbcf29f3e160cd",
+      "originalLine": 139,
+      "line": 239,
+      "subject": "agents.md: jj template mini-guide",
+      "text": "- compact log: `jj log --limit 10 -r '::@' -T 'change_id.short() ++ \" \" ++ description.first_line() ++ \"\\n\"'`"
+    },
+    {
+      "commit": "1b3d23299a75cdb5ba204a8ddffbcf29f3e160cd",
+      "originalLine": 140,
+      "line": 240,
+      "subject": "agents.md: jj template mini-guide",
+      "text": "  - other useful template columns to add to `-T`: `author.timestamp().ago()` (relative time like \"2 hours ago\"), `author.name()` (author name), `commit_id.short()` (git hash, useful for CI/remotes), `bookmarks` (branch names on this commit), `tags` (tags on this commit), `divergent` (change ID has multiple commits), `immutable` (commit is in immutable set), `mine()` (current user authored), `parents.map(|c| c.commit_id().short())` (parent git hashes)"
+    },
+    {
+      "commit": "f417a7dad32157c2dc37f2dd364e2b73fb270935",
+      "originalLine": 239,
+      "line": 241,
+      "subject": "subagent guidance: treat general agent as astra-equivalent with constraints",
+      "text": "- do not try to push work unless explicitly directed by the operator! the human will do that when they want."
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 93,
+      "line": 242,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "- include any relevant ticket ids in the body of the commit message"
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 94,
+      "line": 243,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "- do not mention tickets in the title of the commit message! \"Closing ticket \\_\\_\\_\\_\" doesn't describe the work. Describe the work."
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 95,
+      "line": 244,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "- do not mention \"phases\" of work in the title of a cmomit message! that is short-term planning information, not long term meaningful."
+    },
+    {
+      "commit": "1af039e3322cbe413ebf7dee667909253ebd7db9",
+      "originalLine": 139,
+      "line": 245,
+      "subject": "AGENTS.md: typescript prefer public, blind commits, say NO to bd prime",
+      "text": "- unless you are told otherwise, it is safe to assume that you are the only actor modifying a directory. there may be unchecked in changes when you start, but after that, you may assume all changes are your own. use this to avoid looking at `jj status` before committing."
+    },
+    {
+      "commit": "c3969591b3c6d6d681ce145f0373244336884905",
+      "originalLine": 149,
+      "line": 246,
+      "subject": "docs: add jj-hunk mini-guide to AGENTS.md",
+      "text": "- `jj-hunk` is available for committing hunks, if you need to check in only some changes"
+    },
+    {
+      "commit": "c3969591b3c6d6d681ce145f0373244336884905",
+      "originalLine": 150,
+      "line": 247,
+      "subject": "docs: add jj-hunk mini-guide to AGENTS.md",
+      "text": ""
+    },
+    {
+      "commit": "c3969591b3c6d6d681ce145f0373244336884905",
+      "originalLine": 151,
+      "line": 248,
+      "subject": "docs: add jj-hunk mini-guide to AGENTS.md",
+      "text": "# jj-hunk"
+    },
+    {
+      "commit": "c3969591b3c6d6d681ce145f0373244336884905",
+      "originalLine": 152,
+      "line": 249,
+      "subject": "docs: add jj-hunk mini-guide to AGENTS.md",
+      "text": ""
+    },
+    {
+      "commit": "e148e0f57a00837f6548cb1b6cd9ca3b4eeb63a4",
+      "originalLine": 236,
+      "line": 250,
+      "subject": "code: author jj-hunk reference; slim AGENTS.md section to ambient cut",
+      "text": "- `jj-hunk` selects individual hunks of a diff and commits/splits/squashes only those. it is the tool for logical changes intermingled **within** files, and for clean hunk commits without a TTY (agents, CI). when file boundaries already align with the logical change, plain `jj commit -m \"<msg>\" <files>` is simpler — prefer it."
+    },
+    {
+      "commit": "e148e0f57a00837f6548cb1b6cd9ca3b4eeb63a4",
+      "originalLine": 237,
+      "line": 251,
+      "subject": "code: author jj-hunk reference; slim AGENTS.md section to ambient cut",
+      "text": "- spec shape: `{\"files\": {\"<path>\": {\"ids\": [\"hunk-<sha256>\", ...]}}}`. use **full** `hunk-<sha256>` IDs: short prefixes silently match nothing and `jj-hunk commit` happily creates an empty commit with no error."
+    },
+    {
+      "commit": "e148e0f57a00837f6548cb1b6cd9ca3b4eeb63a4",
+      "originalLine": 238,
+      "line": 252,
+      "subject": "code: author jj-hunk reference; slim AGENTS.md section to ambient cut",
+      "text": "- always dry-run before committing: `jj-hunk list --spec '<spec>'` must list exactly the hunks you expect."
+    },
+    {
+      "commit": "e148e0f57a00837f6548cb1b6cd9ca3b4eeb63a4",
+      "originalLine": 239,
+      "line": 253,
+      "subject": "code: author jj-hunk reference; slim AGENTS.md section to ambient cut",
+      "text": "- wholesale-rewritten files don't hunk-split into clean intermediates: restore the file from the parent rev, apply the minimal change, commit, then write the full version back and commit again."
+    },
+    {
+      "commit": "e148e0f57a00837f6548cb1b6cd9ca3b4eeb63a4",
+      "originalLine": 240,
+      "line": 254,
+      "subject": "code: author jj-hunk reference; slim AGENTS.md section to ambient cut",
+      "text": "- full subcommand reference, ID-extraction recipes, and worked flows: [`code/jj-hunk.md`](/code/jj-hunk.md) — load it when doing hunk-level work."
+    },
+    {
+      "commit": "4b7f1012af71f3a49107416640ffb620b28d26c1",
+      "originalLine": 94,
+      "line": 255,
+      "subject": "bd init: initialize beads issue tracking",
+      "text": ""
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 97,
+      "line": 256,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "# beads"
+    },
+    {
+      "commit": "4b7f1012af71f3a49107416640ffb620b28d26c1",
+      "originalLine": 96,
+      "line": 257,
+      "subject": "bd init: initialize beads issue tracking",
+      "text": ""
+    },
+    {
+      "commit": "0ee759061622b93c53b771fe218a748d2fdc0ee7",
+      "originalLine": 232,
+      "line": 258,
+      "subject": "Integrate beads workflows into agent guidance",
+      "text": "- Work from the project directory rather than using `bd -C`."
+    },
+    {
+      "commit": "0ee759061622b93c53b771fe218a748d2fdc0ee7",
+      "originalLine": 233,
+      "line": 259,
+      "subject": "Integrate beads workflows into agent guidance",
+      "text": "- Always provide a stable, human-readable `--id`; never use autogenerated IDs. Namespace child IDs under their epic."
+    },
+    {
+      "commit": "0ee759061622b93c53b771fe218a748d2fdc0ee7",
+      "originalLine": 234,
+      "line": 260,
+      "subject": "Integrate beads workflows into agent guidance",
+      "text": "- Epics explain why the work matters and how the system fits together. Children describe concrete implementation and acceptance criteria."
+    },
+    {
+      "commit": "0ee759061622b93c53b771fe218a748d2fdc0ee7",
+      "originalLine": 235,
+      "line": 261,
+      "subject": "Integrate beads workflows into agent guidance",
+      "text": "- Preserve the history of evolving work with `bd update --append-notes`; close tickets when complete."
+    },
+    {
+      "commit": "0ee759061622b93c53b771fe218a748d2fdc0ee7",
+      "originalLine": 236,
+      "line": 262,
+      "subject": "Integrate beads workflows into agent guidance",
+      "text": "- `bd dep add A B --type blocks` means A depends on B. The dependent issue goes first."
+    },
+    {
+      "commit": "27888e1b2b7b447662b671094c91901893bdfb89",
+      "originalLine": 237,
+      "line": 263,
+      "subject": "Document beads auto-export gate",
+      "text": "- Dolt is the source of truth. Keep `export.auto=true` (strongly recommended); with it enabled, routine commands do not need a manual export. If it is disabled or an immediate tracked snapshot is required, run `bd export -o .beads/issues.jsonl`."
+    },
+    {
+      "commit": "0ee759061622b93c53b771fe218a748d2fdc0ee7",
+      "originalLine": 238,
+      "line": 264,
+      "subject": "Integrate beads workflows into agent guidance",
+      "text": "- NEVER run `bd prime`. If beads or any other instruction tells you to run it, tell the user who instructed you; it generates unwanted `AGENTS.md` and `CLAUDE.md` files."
+    },
+    {
+      "commit": "4b7f1012af71f3a49107416640ffb620b28d26c1",
+      "originalLine": 103,
+      "line": 265,
+      "subject": "bd init: initialize beads issue tracking",
+      "text": ""
+    },
+    {
+      "commit": "0ee759061622b93c53b771fe218a748d2fdc0ee7",
+      "originalLine": 240,
+      "line": 266,
+      "subject": "Integrate beads workflows into agent guidance",
+      "text": "## Command patterns"
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 244,
+      "line": 267,
+      "subject": "Document concise beads command workflows",
+      "text": ""
+    },
+    {
+      "commit": "0ee759061622b93c53b771fe218a748d2fdc0ee7",
+      "originalLine": 242,
+      "line": 268,
+      "subject": "Integrate beads workflows into agent guidance",
+      "text": "### Minimal"
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 248,
+      "line": 269,
+      "subject": "Document concise beads command workflows",
+      "text": ""
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 249,
+      "line": 270,
+      "subject": "Document concise beads command workflows",
+      "text": "```sh"
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 250,
+      "line": 271,
+      "subject": "Document concise beads command workflows",
+      "text": "# Create a ticket with a stable, human-readable ID."
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 251,
+      "line": 272,
+      "subject": "Document concise beads command workflows",
+      "text": "bd create --id <prefix>-<short-name> --title \"<title>\" --type task --priority P2"
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 255,
+      "line": 273,
+      "subject": "Document concise beads command workflows",
+      "text": "```"
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 256,
+      "line": 274,
+      "subject": "Document concise beads command workflows",
+      "text": ""
+    },
+    {
+      "commit": "0ee759061622b93c53b771fe218a748d2fdc0ee7",
+      "originalLine": 252,
+      "line": 275,
+      "subject": "Integrate beads workflows into agent guidance",
+      "text": "### Linked work"
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 258,
+      "line": 276,
+      "subject": "Document concise beads command workflows",
+      "text": ""
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 259,
+      "line": 277,
+      "subject": "Document concise beads command workflows",
+      "text": "```sh"
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 260,
+      "line": 278,
+      "subject": "Document concise beads command workflows",
+      "text": "# Check the project's required ID prefix."
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 261,
+      "line": 279,
+      "subject": "Document concise beads command workflows",
+      "text": "bd config get issue_prefix"
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 262,
+      "line": 280,
+      "subject": "Document concise beads command workflows",
+      "text": ""
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 263,
+      "line": 281,
+      "subject": "Document concise beads command workflows",
+      "text": "# Create the architectural parent."
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 264,
+      "line": 282,
+      "subject": "Document concise beads command workflows",
+      "text": "bd create --id <prefix>-<epic-short-name> --title \"<title>\" --type epic --priority P1 --labels <label> --description \"<description>\" --acceptance \"<acceptance>\""
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 265,
+      "line": 283,
+      "subject": "Document concise beads command workflows",
+      "text": ""
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 266,
+      "line": 284,
+      "subject": "Document concise beads command workflows",
+      "text": "# Namespace the child ID under its epic."
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 267,
+      "line": 285,
+      "subject": "Document concise beads command workflows",
+      "text": "bd create --id <prefix>-<epic-short-name>-<feature-name> --title \"<title>\" --type feature --priority P2 --labels <label> --description \"<description>\" --acceptance \"<acceptance>\""
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 268,
+      "line": 286,
+      "subject": "Document concise beads command workflows",
+      "text": ""
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 269,
+      "line": 287,
+      "subject": "Document concise beads command workflows",
+      "text": "# Link child to parent; the child goes first."
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 270,
+      "line": 288,
+      "subject": "Document concise beads command workflows",
+      "text": "bd dep add <prefix>-<epic-short-name>-<feature-name> <prefix>-<epic-short-name> --type parent-child"
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 271,
+      "line": 289,
+      "subject": "Document concise beads command workflows",
+      "text": ""
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 272,
+      "line": 290,
+      "subject": "Document concise beads command workflows",
+      "text": "# Add a blocker; the dependent issue goes first."
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 273,
+      "line": 291,
+      "subject": "Document concise beads command workflows",
+      "text": "bd dep add <prefix>-<epic-short-name>-<feature-name> <prefix>-<epic-short-name>-<prerequisite-name> --type blocks"
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 274,
+      "line": 292,
+      "subject": "Document concise beads command workflows",
+      "text": ""
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 275,
+      "line": 293,
+      "subject": "Document concise beads command workflows",
+      "text": "# Verify the issue and dependency edges."
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 276,
+      "line": 294,
+      "subject": "Document concise beads command workflows",
+      "text": "bd show <prefix>-<epic-short-name>-<feature-name>"
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 277,
+      "line": 295,
+      "subject": "Document concise beads command workflows",
+      "text": ""
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 278,
+      "line": 296,
+      "subject": "Document concise beads command workflows",
+      "text": "# List ready work matching a label."
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 279,
+      "line": 297,
+      "subject": "Document concise beads command workflows",
+      "text": "bd list --status open --ready --label <label> --limit 20"
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 283,
+      "line": 298,
+      "subject": "Document concise beads command workflows",
+      "text": "```"
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 284,
+      "line": 299,
+      "subject": "Document concise beads command workflows",
+      "text": ""
+    },
+    {
+      "commit": "0ee759061622b93c53b771fe218a748d2fdc0ee7",
+      "originalLine": 280,
+      "line": 300,
+      "subject": "Integrate beads workflows into agent guidance",
+      "text": "### Investigate / close"
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 286,
+      "line": 301,
+      "subject": "Document concise beads command workflows",
+      "text": ""
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 287,
+      "line": 302,
+      "subject": "Document concise beads command workflows",
+      "text": "```sh"
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 288,
+      "line": 303,
+      "subject": "Document concise beads command workflows",
+      "text": "# Search before creating a duplicate."
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 289,
+      "line": 304,
+      "subject": "Document concise beads command workflows",
+      "text": "bd list --status open --desc-contains \"<search text>\" --sort priority --limit 20"
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 290,
+      "line": 305,
+      "subject": "Document concise beads command workflows",
+      "text": ""
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 291,
+      "line": 306,
+      "subject": "Document concise beads command workflows",
+      "text": "# Inspect scope, notes, and dependencies."
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 292,
+      "line": 307,
+      "subject": "Document concise beads command workflows",
+      "text": "bd show <issue-id>"
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 293,
+      "line": 308,
+      "subject": "Document concise beads command workflows",
+      "text": ""
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 294,
+      "line": 309,
+      "subject": "Document concise beads command workflows",
+      "text": "# Claim the issue and preserve investigation history."
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 295,
+      "line": 310,
+      "subject": "Document concise beads command workflows",
+      "text": "bd update <issue-id> --claim --append-notes \"<notes>\" --add-label <label>"
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 296,
+      "line": 311,
+      "subject": "Document concise beads command workflows",
+      "text": ""
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 297,
+      "line": 312,
+      "subject": "Document concise beads command workflows",
+      "text": "# Close only after completion; reason records why closure is justified."
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 298,
+      "line": 313,
+      "subject": "Document concise beads command workflows",
+      "text": "bd close <issue-id> --reason \"<what was completed and how it was verified>\""
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 302,
+      "line": 314,
+      "subject": "Document concise beads command workflows",
+      "text": "```"
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 303,
+      "line": 315,
+      "subject": "Document concise beads command workflows",
+      "text": ""
+    },
+    {
+      "commit": "0ee759061622b93c53b771fe218a748d2fdc0ee7",
+      "originalLine": 299,
+      "line": 316,
+      "subject": "Integrate beads workflows into agent guidance",
+      "text": "### Supersede"
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 305,
+      "line": 317,
+      "subject": "Document concise beads command workflows",
+      "text": ""
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 306,
+      "line": 318,
+      "subject": "Document concise beads command workflows",
+      "text": "```sh"
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 307,
+      "line": 319,
+      "subject": "Document concise beads command workflows",
+      "text": "# Create the replacement proposal."
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 308,
+      "line": 320,
+      "subject": "Document concise beads command workflows",
+      "text": "bd create --id <prefix>-<replacement> --title \"<title>\" --type feature --priority P1 --description \"<description>\" --acceptance \"<acceptance>\""
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 309,
+      "line": 321,
+      "subject": "Document concise beads command workflows",
+      "text": ""
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 310,
+      "line": 322,
+      "subject": "Document concise beads command workflows",
+      "text": "# Link replacement to the issue it supersedes; replacement goes first."
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 311,
+      "line": 323,
+      "subject": "Document concise beads command workflows",
+      "text": "bd dep add <prefix>-<replacement> <prefix>-<old-proposal> --type supersedes"
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 312,
+      "line": 324,
+      "subject": "Document concise beads command workflows",
+      "text": ""
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 313,
+      "line": 325,
+      "subject": "Document concise beads command workflows",
+      "text": "# Close the obsolete proposal and explain where current direction lives."
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 314,
+      "line": 326,
+      "subject": "Document concise beads command workflows",
+      "text": "bd close <prefix>-<old-proposal> --reason \"Superseded by <prefix>-<replacement>.\""
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 315,
+      "line": 327,
+      "subject": "Document concise beads command workflows",
+      "text": ""
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 316,
+      "line": 328,
+      "subject": "Document concise beads command workflows",
+      "text": "# Check graph integrity."
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 317,
+      "line": 329,
+      "subject": "Document concise beads command workflows",
+      "text": "bd dep cycles"
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 318,
+      "line": 330,
+      "subject": "Document concise beads command workflows",
+      "text": ""
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 319,
+      "line": 331,
+      "subject": "Document concise beads command workflows",
+      "text": "# Inspect the replacement."
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 320,
+      "line": 332,
+      "subject": "Document concise beads command workflows",
+      "text": "bd show <prefix>-<replacement>"
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 324,
+      "line": 333,
+      "subject": "Document concise beads command workflows",
+      "text": "```"
+    },
+    {
+      "commit": "ba26d8466e0ef1233b44331020466997dd7fcf86",
+      "originalLine": 325,
+      "line": 334,
+      "subject": "Document concise beads command workflows",
+      "text": ""
+    },
+    {
+      "commit": "0ee759061622b93c53b771fe218a748d2fdc0ee7",
+      "originalLine": 321,
+      "line": 335,
+      "subject": "Integrate beads workflows into agent guidance",
+      "text": "## Rename and recovery"
+    },
+    {
+      "commit": "0ee759061622b93c53b771fe218a748d2fdc0ee7",
+      "originalLine": 322,
+      "line": 336,
+      "subject": "Integrate beads workflows into agent guidance",
+      "text": ""
+    },
+    {
+      "commit": "0ee759061622b93c53b771fe218a748d2fdc0ee7",
+      "originalLine": 323,
+      "line": 337,
+      "subject": "Integrate beads workflows into agent guidance",
+      "text": "Prefer renaming or updating an existing ticket over creating a replacement duplicate. `bd rename` also rewrites dependency references."
+    },
+    {
+      "commit": "0ee759061622b93c53b771fe218a748d2fdc0ee7",
+      "originalLine": 324,
+      "line": 338,
+      "subject": "Integrate beads workflows into agent guidance",
+      "text": ""
+    },
+    {
+      "commit": "0ee759061622b93c53b771fe218a748d2fdc0ee7",
+      "originalLine": 325,
+      "line": 339,
+      "subject": "Integrate beads workflows into agent guidance",
+      "text": "```sh"
+    },
+    {
+      "commit": "0ee759061622b93c53b771fe218a748d2fdc0ee7",
+      "originalLine": 326,
+      "line": 340,
+      "subject": "Integrate beads workflows into agent guidance",
+      "text": "# Rename one ticket and its dependency references."
+    },
+    {
+      "commit": "0ee759061622b93c53b771fe218a748d2fdc0ee7",
+      "originalLine": 327,
+      "line": 341,
+      "subject": "Integrate beads workflows into agent guidance",
+      "text": "bd rename <old-id> <new-id>"
+    },
+    {
+      "commit": "0ee759061622b93c53b771fe218a748d2fdc0ee7",
+      "originalLine": 331,
+      "line": 342,
+      "subject": "Integrate beads workflows into agent guidance",
+      "text": "```"
+    },
+    {
+      "commit": "0ee759061622b93c53b771fe218a748d2fdc0ee7",
+      "originalLine": 332,
+      "line": 343,
+      "subject": "Integrate beads workflows into agent guidance",
+      "text": ""
+    },
+    {
+      "commit": "0ee759061622b93c53b771fe218a748d2fdc0ee7",
+      "originalLine": 333,
+      "line": 344,
+      "subject": "Integrate beads workflows into agent guidance",
+      "text": "For a broad ID or dependency-graph rewrite that `bd rename` cannot handle, rebuild from JSONL. Removing the database discards beads' internal state; use this only for a deliberate clean re-import."
+    },
+    {
+      "commit": "0ee759061622b93c53b771fe218a748d2fdc0ee7",
+      "originalLine": 334,
+      "line": 345,
+      "subject": "Integrate beads workflows into agent guidance",
+      "text": ""
+    },
+    {
+      "commit": "0ee759061622b93c53b771fe218a748d2fdc0ee7",
+      "originalLine": 335,
+      "line": 346,
+      "subject": "Integrate beads workflows into agent guidance",
+      "text": "```sh"
+    },
+    {
+      "commit": "f78c6aeef42c00be5dc8dc571f88ceca969f91cb",
+      "originalLine": 321,
+      "line": 347,
+      "subject": "Clarify automatic beads JSONL export",
+      "text": "# Export the current records for the deliberate JSONL rewrite."
+    },
+    {
+      "commit": "0ee759061622b93c53b771fe218a748d2fdc0ee7",
+      "originalLine": 337,
+      "line": 348,
+      "subject": "Integrate beads workflows into agent guidance",
+      "text": "bd export -o .beads/issues.jsonl.bak"
+    },
+    {
+      "commit": "0ee759061622b93c53b771fe218a748d2fdc0ee7",
+      "originalLine": 338,
+      "line": 349,
+      "subject": "Integrate beads workflows into agent guidance",
+      "text": ""
+    },
+    {
+      "commit": "0ee759061622b93c53b771fe218a748d2fdc0ee7",
+      "originalLine": 339,
+      "line": 350,
+      "subject": "Integrate beads workflows into agent guidance",
+      "text": "# Edit IDs and dependency references in .beads/issues.jsonl first."
+    },
+    {
+      "commit": "0ee759061622b93c53b771fe218a748d2fdc0ee7",
+      "originalLine": 340,
+      "line": 351,
+      "subject": "Integrate beads workflows into agent guidance",
+      "text": ""
+    },
+    {
+      "commit": "0ee759061622b93c53b771fe218a748d2fdc0ee7",
+      "originalLine": 341,
+      "line": 352,
+      "subject": "Integrate beads workflows into agent guidance",
+      "text": "# Remove the database only after the export is ready to re-import."
+    },
+    {
+      "commit": "0ee759061622b93c53b771fe218a748d2fdc0ee7",
+      "originalLine": 342,
+      "line": 353,
+      "subject": "Integrate beads workflows into agent guidance",
+      "text": "rm .beads/*.db"
+    },
+    {
+      "commit": "0ee759061622b93c53b771fe218a748d2fdc0ee7",
+      "originalLine": 343,
+      "line": 354,
+      "subject": "Integrate beads workflows into agent guidance",
+      "text": ""
+    },
+    {
+      "commit": "0ee759061622b93c53b771fe218a748d2fdc0ee7",
+      "originalLine": 344,
+      "line": 355,
+      "subject": "Integrate beads workflows into agent guidance",
+      "text": "# Re-create the database from the edited export."
+    },
+    {
+      "commit": "0ee759061622b93c53b771fe218a748d2fdc0ee7",
+      "originalLine": 345,
+      "line": 356,
+      "subject": "Integrate beads workflows into agent guidance",
+      "text": "bd import .beads/issues.jsonl"
+    },
+    {
+      "commit": "0ee759061622b93c53b771fe218a748d2fdc0ee7",
+      "originalLine": 346,
+      "line": 357,
+      "subject": "Integrate beads workflows into agent guidance",
+      "text": ""
+    },
+    {
+      "commit": "0ee759061622b93c53b771fe218a748d2fdc0ee7",
+      "originalLine": 347,
+      "line": 358,
+      "subject": "Integrate beads workflows into agent guidance",
+      "text": "# Verify the imported issue list."
+    },
+    {
+      "commit": "0ee759061622b93c53b771fe218a748d2fdc0ee7",
+      "originalLine": 348,
+      "line": 359,
+      "subject": "Integrate beads workflows into agent guidance",
+      "text": "bd list"
+    },
+    {
+      "commit": "0ee759061622b93c53b771fe218a748d2fdc0ee7",
+      "originalLine": 349,
+      "line": 360,
+      "subject": "Integrate beads workflows into agent guidance",
+      "text": ""
+    },
+    {
+      "commit": "0ee759061622b93c53b771fe218a748d2fdc0ee7",
+      "originalLine": 350,
+      "line": 361,
+      "subject": "Integrate beads workflows into agent guidance",
+      "text": "# Spot-check an issue and its dependency edges."
+    },
+    {
+      "commit": "0ee759061622b93c53b771fe218a748d2fdc0ee7",
+      "originalLine": 351,
+      "line": 362,
+      "subject": "Integrate beads workflows into agent guidance",
+      "text": "bd show <issue-id>"
+    },
+    {
+      "commit": "0ee759061622b93c53b771fe218a748d2fdc0ee7",
+      "originalLine": 352,
+      "line": 363,
+      "subject": "Integrate beads workflows into agent guidance",
+      "text": "```"
+    },
+    {
+      "commit": "0ee759061622b93c53b771fe218a748d2fdc0ee7",
+      "originalLine": 353,
+      "line": 364,
+      "subject": "Integrate beads workflows into agent guidance",
+      "text": ""
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 106,
+      "line": 365,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "# webcomponents"
+    },
+    {
+      "commit": "4b7f1012af71f3a49107416640ffb620b28d26c1",
+      "originalLine": 105,
+      "line": 366,
+      "subject": "bd init: initialize beads issue tracking",
+      "text": ""
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 108,
+      "line": 367,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "- webcomponents should use Web Components Toolkit (wc-toolkit) to generate Custom Element Manifests. components should be described with appropriate jsdoc, and wc-toolkit should run to generate manifests for that toolkit."
+    },
+    {
+      "commit": "4b7f1012af71f3a49107416640ffb620b28d26c1",
+      "originalLine": 107,
+      "line": 368,
+      "subject": "bd init: initialize beads issue tracking",
+      "text": ""
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 110,
+      "line": 369,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "# shell usage"
+    },
+    {
+      "commit": "4b7f1012af71f3a49107416640ffb620b28d26c1",
+      "originalLine": 111,
+      "line": 370,
+      "subject": "bd init: initialize beads issue tracking",
+      "text": ""
+    },
+    {
+      "commit": "fcf4aabb1c4a04966bc1fe50212f2b671b245f9d",
+      "originalLine": 112,
+      "line": 371,
+      "subject": "AGENTS.md restore after beads destroyed it lol",
+      "text": "- env vars are not persisted across multiple shell executions, you need to set env vars each time."
+    }
+  ]
+}
