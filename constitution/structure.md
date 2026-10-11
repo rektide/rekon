@@ -7,6 +7,7 @@ tags: [rekon, structure, naming, tools, documentation]
 status: draft
 generated: { by: "model:gpt-6-astra", at: 2026-10-06 }
 sources:
+  - { resource: "opencode://ses_ed31715c4ffex2ROd2G2C617AF", title: Rust workspace integration and reusable document engine boundaries }
   - { resource: "urn:opencode:session:ses_ed31715c4ffex2ROd2G2C617AF", title: Shared Rust markup and ToC library boundaries for enriched assembly }
   - { resource: "urn:opencode:session:ses_eec5afbf4ffeIhL6wxmv8NF3gn", title: Human direction for shortcodes g/p/t and one domain-grouped tool toolkit }
   - { resource: /README.md, title: Rekon purpose and practice map }
@@ -108,11 +109,11 @@ extends the original single-crate layout into a Cargo workspace: the root packag
 owns CLI/assembly orchestration, `rekon-markup` owns reusable metadata/document
 semantics, and `rekon-toc` owns the ToC transformation. Web and TUI adapters can
 later share the metadata interface without coupling the engine to presentation.
-The first new implementation is the runnable Effect CLI version of the
-GLOBAL-fragment assembler at [`tool/agents.ts`](/tool/agents.ts), explained by
-its [assembly domain](/tool/assembly/README.md); it remains the production
-producer until the rust `combine` reaches parity and the producer flips
-deliberately. The Gunshi CLI in [`rekon.ts`](/rekon.ts)
+The earlier Effect GLOBAL-fragment assembler at [`tool/agents.ts`](/tool/agents.ts)
+remains available as migration evidence. The [assembly domain](/tool/assembly/README.md)
+now documents the Rust producer and its deliberately enriched output; the
+operating guarantees continue while exact comment-based bytes do not.
+The Gunshi CLI in [`rekon.ts`](/rekon.ts)
 and [`src/`](/src/) remains the legacy implementation while capabilities gain
 their new homes. Each command's guide must say which implementation it
 actually executes. Existing legacy tool guides can move first and identify

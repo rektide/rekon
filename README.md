@@ -10,6 +10,8 @@ stale_after: 2026-12-06
 extensions:
   ticket: rekon-phoenix
 sources:
+  - { resource: "opencode://ses_ed31715c4ffex2ROd2G2C617AF", title: Rust producer integration and current tool navigation }
+  - { resource: "urn:opencode:session:ses_ed31715c4ffex2ROd2G2C617AF", title: Enriched Rust combiner, semantic ToC, and scoped OKF tooling integration }
   - { resource: /constitution/reassessment0.gpt6a.md, title: Coming up for air }
   - { resource: /design/rekon/phoenix0.gpt6a.md, title: Phoenix inquiry and primary-source reading }
   - { resource: /evidence/case-stories/nan-lastact/genesis0.gpt6a.md, title: NAN and Lastact action-practice lineage }
@@ -156,30 +158,34 @@ by these documents.
 - [Ordered capability pipelines](/design/ordered-pipelines/README.md) — a memento
   of reusable rule assembly and termination authority, preserving the differences
   between policy, stream filtering and accumulating output.
-- [AGENTS assembly](/tool/assembly/README.md) — the new Effect CLI tool,
-  with its [legacy Gunshi reference](/constitution/agents-assembly.md) and
-  separately governed production cutover.
+- [AGENTS assembly](/tool/assembly/README.md) — Rust whole-file composition with
+  scoped OKF metadata, semantic sections, and a final ToC; the
+  [legacy Gunshi reference](/constitution/agents-assembly.md) preserves prior behavior.
 - [jj and Git](/vcs/jj/README.md), [JavaScript](/js/README.md), and
   [ATProto](/atproto/README.md) — domain references and operating practices.
 
 <a id="rekon-tooling"></a>
 ## Existing tooling
 
-The shared [toolkit](/tool/README.md) has its first new Effect CLI entrypoint:
+The shared [toolkit](/tool/README.md) provides the Rust super-tool:
 
 ```sh
-node tool/agents.ts --help
+cargo run --manifest-path tool/rust/Cargo.toml -- --help
+cargo run --quiet --manifest-path tool/rust/Cargo.toml -- combine --check
+cargo run --quiet --manifest-path tool/rust/Cargo.toml -- okf extract AGENTS.md --scope fragment-code
 ```
 
-It assembles declared `GLOBAL.md` fragments and checks generated output; the
-[assembly home](/tool/assembly/README.md) co-locates its contract with its
-implementation. The original TypeScript CLI remains in [`rekon.ts`](/rekon.ts).
+It assembles complete declared fragments into enriched guidance, generates
+navigation, extracts scoped metadata, and checks generated output; the
+[assembly home](/tool/assembly/README.md) maintains its contract. The previous
+Effect assembler remains at `tool/agents.ts`; the original TypeScript CLI remains
+in [`rekon.ts`](/rekon.ts).
 Its registered commands
-are `agents`, `combine`, `install-commands`, `interpolate`, `project-files`, and
-`ln`; their implementations live in [`src/command/`](/src/command/). The
+are `agents`, `combine`, `install-commands`, `interpolate`, `project-files`, `ln`,
+and the reference `toc`; their implementations live in [`src/command/`](/src/command/). The
 completion plugin also supplies `complete`.
 
-During development, run the source directly:
+For those legacy commands, run the TypeScript source directly:
 
 ```sh
 node rekon.ts --help

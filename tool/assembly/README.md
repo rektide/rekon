@@ -1,196 +1,164 @@
 ---
 type: ToolContract
-title: GLOBAL-fragment assembly
-description: The independently owned Effect implementation of Rekon's manifest-selected GLOBAL.md assembler.
+title: Enriched whole-document assembly
+description: Rust combine assembles complete GLOBAL contributions with scoped frontmatter, semantic sections, a final ToC, and atomic write/check behavior.
 resource: /tool/assembly/README.md
-tags: [tool, agents, assembly, effect]
+tags: [tool, agents, assembly, rust, mdx, okf]
 status: draft
-generated: { by: "model:gpt-6.1-sol-xhigh", at: 2026-10-06 }
-verified: { by: "model:gpt-6.1-sol-xhigh", at: 2026-10-06 }
+generated: { by: "model:openai/gpt-6-astra", at: 2026-10-11 }
 sources:
-  - {
-      resource: /constitution/agents-assembly.md,
-      title: Legacy assembler contract,
-      author: "project:rekon",
-    }
-  - {
-      resource: /design/rekon/agents-effect0.sol61xh.md,
-      title: Verified Effect generation and corrected toolkit placement,
-      author: "model:gpt-6.1-sol-xhigh",
-    }
+  - { resource: "opencode://ses_ed31715c4ffex2ROd2G2C617AF", title: Rust producer integration, cross-engine review, and enriched output contract }
+  - { resource: "urn:opencode:session:ses_ed31715c4ffex2ROd2G2C617AF", title: Enriched whole-file assembly commission, Rust integration, and producer cutover }
+  - { resource: /design/toolchain/enriched-assembly0.gpt6a.md, title: Current integration contract }
+  - { resource: /design/toolchain/draft0.glm53m.md, title: Earlier Rust-first and combine-first direction }
+  - { resource: /constitution/agents-assembly.md, title: Legacy assembler contract and operational guarantees }
+  - { resource: /design/rekon/agents-effect0.sol61xh.md, title: Prior Effect producer and validation evidence }
+  - { resource: /design/context-compilation/repair0.gpt6a.md, title: Guidance recovery and independent coverage audit }
 ---
 
-# GLOBAL-fragment assembly
+# Enriched whole-document assembly
 
-This is the new Effect assembler's domain home inside the shared `tool/`
-toolkit. **It is independent of the legacy Gunshi implementation**, which remains
-available through `node rekon.ts agents`. `t` is the toolkit's shortcode, not a
-physical directory name.
+**`rekon combine` assembles complete selected files into `AGENTS.md`.** The
+Rust producer preserves frontmatter as scoped `<Okf data={…} />` metadata,
+builds a section hierarchy, and runs a final ToC pass before writing or checking.
+Edit source contributions, then regenerate; the output is owned by the tool.
 
-**Current standing:** the independently owned Effect command is runnable at
-[`tool/agents.ts`](/tool/agents.ts). Fragment/manifest validation, ordered
-assembly, atomic write/check, and CLI behavior have colocated tests. Since
-2026-10-07 it is the production assembler: the root manifest
-[`agents.manifest.json`](/agents.manifest.json) selects domain fragments into
-[`AGENTS.md`](/AGENTS.md), and the hand-maintained predecessor is preserved
-at [`AGENTS.old.md`](/AGENTS.old.md).
+## Run
 
-The October 11 [coverage repair](/design/context-compilation/repair0.gpt6a.md)
-restored operational domains omitted at cutover. Run `pnpm check` for both
-generated-byte freshness and [declared operating coverage](/tool/assembly/coverage.md).
-`--check` alone does not detect a coherent but incomplete fragment selection.
-
-Tool work must not regenerate or retarget that output as a side effect: edit
-fragments or the manifest deliberately, then re-run the command. No automatic
-discovery, pruning, or content migration is authorized here.
-
-## Run the new command
-
-Execute TypeScript directly; no distribution build is needed:
+From the repository root:
 
 ```sh
-node tool/agents.ts --help
-node tool/agents.ts --manifest path/to/manifest.json
-node tool/agents.ts -m path/to/manifest.json --check
-node tool/agents.ts -m path/to/manifest.json --output .test-agent/agents-effect/preview.md
+cargo run --quiet --manifest-path tool/rust/Cargo.toml -- combine
+cargo run --quiet --manifest-path tool/rust/Cargo.toml -- combine --check
+cargo run --quiet --manifest-path tool/rust/Cargo.toml -- combine --output .test-agent/enriched-assembly/AGENTS.md
+pnpm check
 ```
 
-The live document is regenerated with a bare `node tool/agents.ts` (the root
-`agents.manifest.json` is the default manifest); `--check` verifies it against
-the declared fragments.
+An installed Rust binary uses the shorter `rekon combine` spelling. The existing
+npm/Gunshi executable also has the name `rekon`; the Cargo invocation above
+unambiguously selects this producer.
 
-| Option           | Default                             | Meaning                                                                                         |
-| ---------------- | ----------------------------------- | ----------------------------------------------------------------------------------------------- |
-| `-m, --manifest` | `agents.manifest.json` | Manifest path, resolved from the invocation cwd. The default is the production root manifest. |
-| `-o, --output`   | Manifest's `output`                 | Optional destination override, resolved from the invocation cwd.                                |
-| `-c, --check`    | Off                                 | Compare bytes without creating directories, staging artifacts, or output.                       |
+| Option | Default | Meaning |
+|---|---|---|
+| `-m, --manifest` | `agents.manifest.json` | Selection declaration, resolved from invocation cwd. |
+| `-o, --output` | Manifest `output` | Override resolved from invocation cwd. |
+| `-c, --check` | Off | Compare complete final bytes without writing. |
 
-Write mode exits `0` and reports the output, total UTF-8 bytes and each ordered
-fragment's order, ID, path and prose-byte cost. Fresh check exits `0` with a
-`fresh:` report. Missing or differing output exits `1` with `stale:` detail;
-differences include the first differing UTF-8 byte and both byte lengths.
-Validation, input-read and nonmissing output I/O failures also exit `1`, retaining
-their path/error context rather than being mislabeled stale. Help exits `0`;
-unknown flags exit `1`. Imports do not execute the command, including imports
-without `argv[1]`; direct launch through a symlink is supported.
+Exit 0 means success/freshness; stale or missing output exits 1 with details.
+Validation and I/O errors also exit 1, retaining their context. Checks create no
+output or staging directories. Help exits 0; invalid CLI arguments exit 1.
 
-These commands execute the **new Effect** implementation. The separate
-`node rekon.ts agents ...` command still executes the unchanged legacy Gunshi
-implementation; neither command forwards to the other.
+## Selection and ordering
 
-## Declaration and fragment contract
-
-The [legacy contract](/constitution/agents-assembly.md) supplies the compatibility
-baseline. A JSON manifest explicitly declares nonempty `fragments` and `output`:
+The [root manifest](/agents.manifest.json) explicitly lists whole inputs:
 
 ```json
 {
-  "fragments": ["constitution/GLOBAL.md", "code/GLOBAL.md"],
+  "fragments": ["CONTEXT.md", "constitution/GLOBAL.md", "code/GLOBAL.md"],
   "output": "AGENTS.md"
 }
 ```
 
-Paths in this example assume the manifest lives at the bundle root. Fragment
-paths are normalized, relative, and have no `.`/`..` segments; they resolve from
-the manifest's directory, not the invocation cwd. Output is also normalized and
-manifest-relative, but deliberate parent destinations such as `../AGENTS.md`
-are allowed. A CLI output override will instead resolve from the invocation cwd.
-Neither destination may overwrite the manifest or a selected fragment.
-These are lexical Node path guarantees, not symlink confinement.
+Every selected body's content is included. There is no subsection selection or
+automatic discovery. Fragment paths resolve from the manifest directory and
+must be normalized, relative, and free of `.`/`..` segments. Manifest output may
+deliberately use parent segments. The destination must not overwrite an input.
 
-Directory names such as `..notes/` are accepted: `..notes` is not the `..`
-traversal segment. This corrects the legacy guard's overbroad rejection of any
-name beginning `..`; actual `.`/`..` segments remain rejected.
+Each source declares `id` (lowercase kebab-case), integer `order`, root-relative
+`source`, and `status` (`draft` or `stable`) in YAML frontmatter. IDs and orders
+must be unique; numeric metadata order determines composition. Additional
+frontmatter fields are preserved rather than discarded.
 
-Each fragment has frontmatter `id` (lowercase kebab-case), integer `order`,
-bundle-root-relative `source`, and `status` (`draft` or `stable`). Assembly
-rejects duplicate identity/order and sorts by metadata order, not declaration
-order. Provenance fields reject `--` and control characters to keep HTML
-comments intact.
+The initial path validators retain the previous producer's rejection of control
+characters and `--` in fragment paths and `source` values. Source fragments must
+start with their single Markdown H1 and include content beyond it.
 
-The body must lead with its sole top-level heading and contain additional
-Markdown. Links/images/reference definitions, including nested or unused
-definitions, must use portable destinations: anchors, empty self-links, a
-single-root-relative `/...` path, or protocol URIs. Code is not treated as links.
-Prose is never rendered back into Markdown: only CRLF-to-LF normalization and
-boundary whitespace trimming change source text.
+## Enriched output
 
-## Output and the intentional header difference
+The output has one document H1 and a semantic navigation region. Each source
+becomes a `<section>` carrying an assembly ID and `data-source` path. Its
+frontmatter is emitted as one static JSON-compatible object:
 
-Output begins with a generated-file marker naming `node tool/agents.ts` and
-retains the legacy `rekon-fragment` provenance format. This deliberate header
-change means a document generated by the old command is stale under the new
-tool until an explicit rewrite. The tools do not promise cross-tool byte identity.
-Sections have one blank-line boundary and the file ends in a single newline.
-Context costs and comparison offsets count UTF-8 bytes, not JS character units.
+```mdx
+<section id="fragment-code" data-source="/code/GLOBAL.md">
 
-## Implementation map
+<Okf data={{"id":"code","order":200,"source":"/code/README.md","status":"draft"}} />
 
-- [`../agents.ts`](/tool/agents.ts) owns executable/main detection. It
-  asynchronously realpaths the invocation before dynamically loading the command.
-- [`../cmd/agents.ts`](/tool/cmd/agents.ts) owns Effect CLI flags, human reports
-  and stale-check failure. Its embeddable `runAgents(args)` is an Effect; `main`
-  supplies `NodeServices.layer` and runs it with the Node runtime.
-- [`manifest.ts`](/tool/assembly/manifest.ts) owns manifest schemas, selected
-  input paths, output planning, duplicate-path and overwrite guards. Planning
-  takes the invocation cwd explicitly and performs no I/O.
-- [`assemble.ts`](/tool/assembly/assemble.ts) owns filesystem orchestration,
-  unique identity/order, sorted rendering, publication, and checking. It reads
-  at most eight fragments concurrently while preserving declared results before
-  sorting. All validation finishes before any output directory or file is created.
-- [`../md/fragment.ts`](/tool/md/fragment.ts) owns assembler-specific fragment
-  metadata/frontmatter, prose structure, and relocation safety. It returns
-  named Effects with schema-tagged failures; it needs no runtime services.
-- [`../md/document.ts`](/tool/md/document.ts) owns pure generated rendering and
-  byte comparison. Callers supply validated, ordered fragments.
-- Tests are colocated beside each boundary; Vitest discovers `tool/` as well as
-  the unchanged legacy `src/` tests.
+## Code
 
-The filesystem functions accept an `AssemblyRequest` containing `manifestPath`,
-explicit `cwd`, and `outputOverride: Option<string>`, and require upstream
-`FileSystem`. `assemble` returns the ordered fragments, document, UTF-8 byte
-cost and absolute output without writing. `writeAssembly` stages a complete
-document in a uniquely owned directory under the output parent, then renames
-it into place on the same filesystem. Scope cleanup removes that staging
-directory on success, failure and cooperative interruption; it never reconciles
-undeclared artifacts or removes the output parent. `checkAssembly` catches only
-`PlatformError` with `reason._tag === "NotFound"` when reading the output.
-Permission and directory/read errors remain platform failures.
+<section id="fragment-code--terms">
 
-Atomic rename is not a promise of crash-durable/fsynced publication. Cleanup
-cannot run after forcible process termination (`SIGKILL`) or a host crash; an
-owned staging artifact may then remain for deliberate cleanup. Lexical path
-guards do not defend against symlink aliases or concurrent hostile filesystem
-changes. Those stronger policies are not part of this compatibility contract.
+### Terms
 
-## Effect tooling
+Content remains here, including semantic definition elements.
 
-The tested runtime generation is `effect@4.0.1` and
-`@effect/platform-node@4.0.1`. CLI composition uses integrated `effect/cli`, not
-the v3-only standalone `@effect/cli`. The new assembler has no artificial
-business-service class: named Effects compose upstream platform services at
-the application boundary.
-
-The root tsconfig enables `@effect/language-service`. Editor/plugin support uses
-workspace TypeScript 5.9.3 because TypeScript 7's native compiler cannot load this
-plugin, and the existing distribution tool requires TS 5. `pnpm typecheck` still
-uses the existing `tsgo`; adding editor support does not replace it. The actual
-language-service resolution is 0.87.3 after `pnpm install ...@latest`.
-
-Verification commands:
-
-```sh
-pnpm exec vitest run tool
-pnpm exec tsgo --noEmit
-pnpm exec oxlint tool
-pnpm exec oxfmt --check tool/agents.ts tool/assembly tool/cmd tool/md
-pnpm exec effect-language-service diagnostics --project tsconfig.json --format text --severity error,warning --strict
+</section>
+</section>
 ```
 
-Runtime tests cover bounded reads, unique order/identity, validation-before-write,
-exact snapshots around checks, parent/override paths, retained platform errors,
-publication failure and interrupted staging. Subprocess tests exercise real
-exit codes/reports, aliases, the default manifest, help/parser errors, import
-safety and symlink launch. Review the
-[design checkpoint](/design/rekon/agents-effect0.sol61xh.md) for upstream evidence
-and the physical-layout correction.
+The source's leading H1 becomes H2; descendants shift consistently and form
+nested sections. Hashes inside code remain code. Definitions using `dl`, `dt`,
+`dd`, and `dfn` remain semantic content, including their linkable identities.
+
+`Okf` is Rekon's proposed component interface, not an upstream OKF element. Its
+`data` prop contains the source metadata, including nested and unknown fields.
+The enclosing section owns that record; descendant sections do not implicitly
+inherit verification. `data-source` records the source file, independently of
+the metadata's `resource` field. Web and TUI renderers can use this same data
+interface later. [OKF extraction](/tool/okf/README.md) reads it without evaluating
+JavaScript; the [OKF home](/okf/README.md) explains the upstream YAML format.
+
+The final [ToC pass](/tool/toc/README.md) uses the assembled heading hierarchy
+and final physical line ranges. Running the same combination again produces the
+same bytes. This deliberately differs from the former comment-based output;
+byte identity with the TypeScript assembler is not promised.
+
+## Guarantees and boundaries
+
+- Validate all inputs before publication. Missing files, malformed metadata,
+  duplicate identities/orders, invalid structure, and unsafe destinations fail.
+- Keep root-relative/protocol links portable. Assembly must not silently
+  retarget fragment-relative links or duplicate anchor identities.
+- Preserve body content while applying structural and MDX-syntax transforms;
+  frontmatter survives semantically, not necessarily with original YAML formatting.
+- Publish atomically through same-directory staging. This is not a claim of
+  crash-durable/fsynced output. Cleanup after forcible termination is deliberate.
+- Freshness compares UTF-8 bytes. Missing output is stale; other read failures
+  remain errors. No automatic pruning or undeclared-file reconciliation.
+
+Generated sections put blank lines around their element boundaries. The ToC
+reader and metadata extractor use the maintained `markdown` parser with GFM and
+balanced JSX, keeping metadata strings and comment bodies opaque to document
+structure. Metadata extraction additionally requires literal JSON attributes.
+Full interactive MDX execution is not part of either tool.
+
+Freshness does not establish completeness or editorial quality. `pnpm check`
+also runs the independent [operating coverage audit](/tool/assembly/coverage.md).
+That audit checks selected source guidance against its reviewed legacy ledger.
+
+## Implementation and verification
+
+- [`tool/rust/src/assembly/`](/tool/rust/src/assembly/) owns fragment validation,
+  composition, and publication/checking.
+- [`manifest.rs`](/tool/rust/src/manifest.rs) and
+  [`nodepath.rs`](/tool/rust/src/nodepath.rs) own explicit selection/path planning.
+- [`rekon-markup`](/tool/rust/crates/rekon-markup/) owns reusable metadata parsing
+  and the scoped data interface; [`rekon-toc`](/tool/rust/crates/rekon-toc/) owns
+  navigation transforms.
+- [`cli/`](/tool/rust/src/cli/) composes engines and reports command results.
+
+```sh
+cargo nextest run --manifest-path tool/rust/Cargo.toml --workspace
+cargo clippy --manifest-path tool/rust/Cargo.toml --workspace --all-targets -- -D warnings
+cargo fmt --manifest-path tool/rust/Cargo.toml --all --check
+pnpm check
+```
+
+## Earlier producers
+
+`node tool/agents.ts` is the previous Effect assembler. `node rekon.ts agents`
+is the older Gunshi implementation. Their code and fixture tests remain as
+migration evidence; both emit legacy comment-based output. Use the Rust command
+for the live `AGENTS.md`. The [legacy reference](/constitution/agents-assembly.md)
+and [earlier Effect account](/design/rekon/agents-effect0.sol61xh.md) explain their
+interfaces and historical differences.

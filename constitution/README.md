@@ -14,6 +14,8 @@ extensions:
   skill: /constitution/SKILL.md
   global_fragment: /constitution/GLOBAL.md
 sources:
+  - { resource: "opencode://ses_ed31715c4ffex2ROd2G2C617AF", title: Current enriched assembly standing and implementation navigation }
+  - { resource: "urn:opencode:session:ses_ed31715c4ffex2ROd2G2C617AF", title: Update assembly standing for scoped metadata and the Rust producer }
   - id: synthesis
     resource: /design/doc-constitution/syn0.gpt56t.md
     title: Self-explaining documentation constitution synthesis
@@ -786,7 +788,7 @@ unrelated sessions.
 
 ## Assembled `AGENTS.md`
 
-`AGENTS.md` is becoming deterministic build output from declared `GLOBAL.md`
+`AGENTS.md` is deterministic build output from declared `GLOBAL.md`
 fragments. Modules own and history their source fragments locally; the assembled
 surface preserves the existing global symlink chain.
 
@@ -800,12 +802,13 @@ The assembler specified by `rekon-agents-maintenance-assembler` MUST:
 - handle source-relative links without changing their targets;
 - update declared output without silently pruning unrelated artifacts.
 
-The exact manifest and metadata syntax belong to that implementation ticket;
-the new Effect assembler is documented in the
-[toolkit's assembly domain](/tool/assembly/README.md), with the earlier Gunshi
-implementation retained in the [legacy reference](/constitution/agents-assembly.md). Until a production
-manifest exists, `AGENTS.md` remains hand-maintained and `GLOBAL.md` fragments
-can land beside it as declared future inputs.
+The exact manifest and metadata syntax belong to the implementation home. The
+[toolkit's assembly domain](/tool/assembly/README.md) documents Rust `combine`:
+whole-file bodies become sections, complete frontmatter becomes scoped `Okf`
+data, and a final ToC describes the assembled hierarchy. The root production
+manifest selects contributions explicitly. The earlier Effect and Gunshi
+producers remain migration evidence; the [legacy reference](/constitution/agents-assembly.md)
+records their contract. `AGENTS.old.md` preserves the hand-maintained predecessor.
 
 The OpenCode notes expose both sides of this boundary. A proposed
 [`!readme` hierarchy](file:///home/rektide/archive/doc/opencode/patches.md)

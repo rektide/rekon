@@ -13,6 +13,8 @@ extensions:
   ticket: rekon-agents-maintenance-assembler
   fragment_ticket: rekon-doc-constitution-global
 sources:
+  - { resource: "opencode://ses_ed31715c4ffex2ROd2G2C617AF", title: Distinguish the legacy contract from the enriched Rust producer }
+  - { resource: "urn:opencode:session:ses_ed31715c4ffex2ROd2G2C617AF", title: Point the legacy contract at enriched Rust assembly and its producer cutover }
   - id: constitution
     resource: /constitution/README.md
     title: Self-Explaining Documentation Constitution
@@ -38,12 +40,13 @@ sources:
 
 # Assembling `AGENTS.md` from `GLOBAL.md` Fragments
 
-**Legacy Gunshi implementation reference.** The new Effect command lives at
-[`tool/agents.ts`](/tool/agents.ts); its [domain guide](/tool/assembly/README.md)
-documents current invocation, implementation, and the deliberate generated-header
-difference. `node rekon.ts agents` continues to run the implementation described
-here. Both consume explicit manifests; since 2026-10-07 production assembly is
-live through the Effect command and the root manifest
+**Legacy Gunshi implementation reference.** Current enriched Rust assembly is
+documented in the [assembly domain guide](/tool/assembly/README.md). The October 11
+[commission](/design/toolchain/enriched-assembly0.gpt6a.md) replaces comment-based
+provenance with scoped metadata and automatic section/ToC structure. The body
+below records the earlier contract and migration history. `node rekon.ts agents`
+continues to run Gunshi; `node tool/agents.ts` runs the previous Effect producer.
+Use Rust `combine` to regenerate the live output from
 [`agents.manifest.json`](/agents.manifest.json).
 
 `AGENTS.md` is deterministic build output. Knowledge modules own small
@@ -216,15 +219,13 @@ unassembled hand edits to the generated file. Normal mode writes atomically
 (temporary file, then rename) and creates the output directory if needed.
 
 **Do not regenerate the live file with this legacy command.** [`/AGENTS.md`](/AGENTS.md)
-is owned by the Effect assembler; the two commands write different
-generated-file headers, so a legacy rewrite would flip the file's provenance
-header and appear stale under the production tool. This command remains the
-compatibility reference.
+is owned by Rust `combine`; a legacy rewrite would replace its enriched metadata,
+sections, and ToC with comment-based output and appear stale under the production
+tool. This command remains a historical compatibility reference.
 
-The production implementation is the Effect CLI under [`tool/`](/tool/README.md)
-([`tool/assembly/README.md`](/tool/assembly/README.md) documents current
-invocation and behavior; a rust `rekon combine` is the accepted going-forward
-producer per the [toolchain design](/design/toolchain/draft0.glm53m.md)).
+The production implementation is Rust `combine` under [`tool/`](/tool/README.md);
+[`tool/assembly/README.md`](/tool/assembly/README.md) documents current invocation
+and behavior, including deliberate changes from this legacy output format.
 The implementation described here is deliberately small and deep:
 [`src/agents/assemble.ts`](/src/agents/assemble.ts) owns loading, validation,
 ordering, and rendering; [`src/command/agents.ts`](/src/command/agents.ts) is

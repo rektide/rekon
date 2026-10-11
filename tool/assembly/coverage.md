@@ -6,6 +6,8 @@ resource: /tool/assembly/coverage.md
 status: draft
 generated: { by: "model:openai/gpt-6-astra", at: 2026-10-11 }
 sources:
+  - { resource: "opencode://ses_ed31715c4ffex2ROd2G2C617AF", title: Integrate independent operating coverage with the Rust producer }
+  - { resource: "urn:opencode:session:ses_ed31715c4ffex2ROd2G2C617AF", title: Rust producer integration and preservation of the independent coverage regression }
   - { resource: /design/context-compilation/repair0.gpt6a.md, title: Missing ambient guidance diagnosis }
   - { resource: /AGENTS.old.md, title: Reviewed legacy baseline }
   - { resource: /tool/assembly/README.md, title: Production byte-assembly contract }
@@ -20,13 +22,13 @@ Use both after changing selection or guidance:
 
 ```sh
 cargo run --quiet --manifest-path tool/rust/Cargo.toml -- audit-context
-node tool/agents.ts --check
+cargo run --quiet --manifest-path tool/rust/Cargo.toml -- combine --check
 ```
 
 `pnpm check` runs both. The audit reads files and reports problems; it never
 rewrites guidance, creates output, migrates documents, or updates its own ledger.
-The existing Effect assembler still produces `AGENTS.md`. Rust `combine` remains
-unfinished; the audit is useful independently of that migration.
+Rust `combine` produces the enriched `AGENTS.md`; the audit remains independent
+of its metadata, heading, and navigation transformations.
 
 ## What is checked
 
@@ -55,10 +57,9 @@ headings and visible bodies with pulldown-cmark; the existing Rust manifest
 planner supplies selection and path validation. Its CLI lives in
 [`main.rs`](/tool/rust/src/main.rs). Run `cargo nextest run --manifest-path
 tool/rust/Cargo.toml` and `cargo clippy --manifest-path tool/rust/Cargo.toml
---all-targets -- -D warnings`. The CLI regression test invokes the production
-Node assembler in temporary bundles, so it requires this repo's installed Node
-dependencies. It proves fresh output can still fail coverage and that the audit
-does not write the output.
+--workspace --all-targets -- -D warnings`. The CLI regression test invokes the
+Rust assembler in temporary bundles. It proves fresh output can still fail
+coverage and that the audit does not write the output.
 
 ## Reviewed composition, October 11
 

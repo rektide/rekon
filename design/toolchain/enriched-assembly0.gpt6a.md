@@ -5,6 +5,7 @@ description: Implementation boundary for Rust combine, scoped OKF emission, sema
 status: draft
 generated: { by: "model:openai/gpt-6-astra", at: 2026-10-11 }
 sources:
+  - { resource: "opencode://ses_ed31715c4ffex2ROd2G2C617AF", title: Implementation integration, scoped metadata preservation, and ToC boundary review }
   - { resource: "urn:opencode:session:ses_ed31715c4ffex2ROd2G2C617AF", title: Whole-file assembly, enriched output first, semantic definitions, and parallel Rust tooling commission }
   - { resource: /design/toolchain/handoff0.gpt6a.md, title: Earlier combiner handoff, superseded on output and scope }
   - { resource: /okf/README.md, title: Existing OKF conventions and file-level scope }
@@ -80,7 +81,10 @@ Keep `tool/rust/Cargo.toml` as the workspace root and existing `rekon` package.
 - `crates/rekon-markup`: reusable Markdown/MDX structure, frontmatter and static
   OKF metadata reading/emission. Used by assembly, extraction, and ToC as useful.
 - `crates/rekon-toc`: ToC generation and managed-region replacement, with a pure
-  render/update API. Depends on markup rather than the CLI.
+  render/update API independent of the CLI. Initially it uses the same maintained
+  `markdown` parser directly: its document reader also needs navigation
+  boundaries, explicit anchor bindings, and IDs that the metadata library's
+  public result does not expose. Static metadata reading remains in markup.
 - Existing `src/`: manifest/path planning, coverage audit, assembly orchestration,
   publication/checking, and thin CLI commands.
 
@@ -109,6 +113,12 @@ to assemble it. Honest syntax limitations must be documented and tested.
 The first proof is actual enriched assembly of the live manifest, followed by
 freshness and operating-coverage checks. Extraction and ToC have focused tests;
 an integration case must extract a source's metadata from combined output.
+
+The semantic vocabulary conversion exposed a real MDX authoring constraint:
+multiline description bodies put `<dd>` on its own line, then their prose,
+then `</dd>`. Keeping the opening tag and initial prose on one line while closing
+in another block fails the JSX inline/flow boundary. CONTEXT's conversion was
+corrected against the shared parser before integration.
 
 - [Assembly home](/tool/assembly/README.md): production behavior to replace and
   operational guarantees to retain.

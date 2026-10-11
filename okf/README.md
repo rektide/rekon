@@ -6,6 +6,8 @@ tags: [okf, knowledge, frontmatter, provenance, verification]
 status: draft
 generated: { by: "rekon/gpt-6-astra", at: 2026-10-11T18:11:00-04:00 }
 sources:
+  - { resource: "opencode://ses_ed31715c4ffex2ROd2G2C617AF", title: Connect file-level OKF to scoped assembly metadata and its extractor }
+  - { resource: "urn:opencode:session:ses_ed31715c4ffex2ROd2G2C617AF", title: Scoped metadata transport in enriched Rust assembly and extractor integration }
   - resource: "urn:opencode:session:ses_ed2fb6875ffe2HmO6fhnDZensz"
     title: Human direction in lucky-eagle to emphasize current-session provenance as vital to OKF writing
   - id: writing-guidance
@@ -108,9 +110,13 @@ v0.2-conformant metadata. Date-only headings remain correct in `log.md`.
 
 Rekon uses OKF-informed knowledge labels. Full bundle conformance is a separate
 claim: our `GLOBAL.md` fragments, for example, obey the
-[assembler's metadata contract](/constitution/agents-assembly.md#agents-assembly-metadata)
-and are not automatically OKF concept documents. That metadata is stripped
-during assembly; it serves a different interface.
+[assembler's metadata contract](/tool/assembly/README.md#selection-and-ordering)
+and are not automatically OKF concept documents. Enriched Rust assembly retains
+their complete metadata as `<Okf data={…} />` within each document's assembled
+section. This is a Rekon representation of scoped data, not upstream OKF syntax.
+The [static extractor](/tool/okf/README.md) reads document frontmatter and these
+section-owned records without evaluating JavaScript. Source files can continue
+using YAML while web and TUI consumers of the data interface are developed later.
 
 <a id="practice"></a>
 ## Where the practice lives
