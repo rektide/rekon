@@ -9,6 +9,8 @@ generated: { by: model:zai-coding-plan/glm-5.3-max, at: 2026-09-03 }
 verified: { by: inherited — jj/git pairs paste-tested 1:1 against git (jj 0.40.0) 2026-08-29/30 and rewrite/op-log behavior measured 2026-09-03, see sources; core claims re-spot-checked in a scratch repo at promotion (jj 0.40.0), see Provenance, at: 2026-09-03 }
 stale_after: 2027-03-03
 sources:
+  - resource: "opencode://ses_ec375b1d6ffergulkiIGGtQXA8"
+    title: Added navigation to the jj-waltz workspace creation and reseeding guide
   - id: jj-cheatsheet
     resource: file:///home/rektide/archive/doc/jj.md
     title: "jj/git branch spelunking cheat sheet — the document this set promotes"
@@ -56,6 +58,7 @@ The right column is owned by [`git-only.md`](/vcs/jj/git-only.md); the surgery r
 | file | open when… |
 | --- | --- |
 | this README | you are interrogating an existing repo: bookmarks, merged-ness, contents, PRs |
+| [`waltz.md`](/vcs/jj/waltz.md) | you need `jw` navigation, CoW creation, or in-place reseeding of existing workspaces, with explicit names or optional groups |
 | [`rewrites.md`](/vcs/jj/rewrites.md) | you are changing history: timestamps, split mechanics, bookmark forwarding, date pinning, unmixing docs from code |
 | [`oplog-forensics.md`](/vcs/jj/oplog-forensics.md) | something moved and you need to know what and when; recovering a dragged bookmark |
 | [`git-only.md`](/vcs/jj/git-only.md) | the job has no jj equivalent: live remotes, conflict dry-runs, patch-ids, exact counts |
@@ -282,6 +285,7 @@ jj file show -r <rev> <path> >/dev/null 2>&1; echo $?   # 1 = "No such path", 0 
 
 ## Cross-references
 
+- [jj-waltz usage](/vcs/jj/waltz.md) — extends this graph-oriented reference with workspace lifecycle, prepared-source refills, private ignored dependencies, and interrupted-reseed recovery; inspected against the active October 2026 implementation, separately from this guide's jj 0.40 verification.
 - [`vcs/jj/rewrites.md`](/vcs/jj/rewrites.md) — history surgery: timestamp semantics, split mechanics, bookmark forwarding/divergence, date pinning via git colocation.
 - [`vcs/jj/oplog-forensics.md`](/vcs/jj/oplog-forensics.md) — op-log walks with `--at-op`, diagnosing "what moved my bookmark", and recovery.
 - [`vcs/jj/git-only.md`](/vcs/jj/git-only.md) — the jobs git keeps canonically, with the no-jj-equivalent table.

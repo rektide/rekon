@@ -2,33 +2,34 @@
 
 <nav id="rekon-toc" aria-label="Table of contents">
 
-- <a href="#glossary" data-line-start="43" data-line-end="50">Rekon working vocabulary</a>
-  - <a href="#glossary-names-homes-and-relations" data-line-start="51" data-line-end="128">Names, homes, and relations</a>
-  - <a href="#glossary-knowledge-work-and-learning" data-line-start="129" data-line-end="195">Knowledge, work, and learning</a>
-  - <a href="#glossary-action-and-delivery" data-line-start="196" data-line-end="280">Action and delivery</a>
-  - <a href="#glossary-honing-and-commitment" data-line-start="281" data-line-end="327">Honing and commitment</a>
-- <a href="#doc-constitution" data-line-start="328" data-line-end="334">Constitution — orient before acting</a>
-  - <a href="#doc-constitution-terms-in-use" data-line-start="335" data-line-end="355">Terms in use</a>
-  - <a href="#doc-constitution-use-the-sense-map" data-line-start="356" data-line-end="407">Use the sense-map</a>
-- <a href="#documentation-practice" data-line-start="408" data-line-end="411">Writing, independent waves, and document connections</a>
-  - <a href="#documentation-practice-durable-writing" data-line-start="412" data-line-end="444">Durable writing</a>
-  - <a href="#documentation-practice-waves" data-line-start="445" data-line-end="467">Waves</a>
-  - <a href="#documentation-practice-doc-pass" data-line-start="468" data-line-end="487">Doc-pass</a>
-- <a href="#collaboration" data-line-start="488" data-line-end="491">Collaboration and architectural stewardship</a>
-  - <a href="#collaboration-dispatch-and-return" data-line-start="492" data-line-end="510">Dispatch and return</a>
-  - <a href="#collaboration-stewardship" data-line-start="511" data-line-end="530">Stewardship</a>
-  - <a href="#collaboration-discussion" data-line-start="531" data-line-end="545">Discussion</a>
-- <a href="#workspace" data-line-start="546" data-line-end="572">Workspace, research locations, and shell</a>
-- <a href="#code" data-line-start="573" data-line-end="579">Code — stage and change discipline</a>
-  - <a href="#code-terms-in-use" data-line-start="580" data-line-end="594">Terms in use</a>
-  - <a href="#code-operating-weight" data-line-start="595" data-line-end="617">Operating weight</a>
-- <a href="#jj" data-line-start="618" data-line-end="648">jj and git operating rules</a>
-- <a href="#javascript" data-line-start="649" data-line-end="682">JavaScript and TypeScript</a>
-- <a href="#rust" data-line-start="683" data-line-end="707">Rust conventions</a>
-- <a href="#beads" data-line-start="708" data-line-end="745">Beads — readable work IDs and deliberate tracking</a>
-- <a href="#praxis-ticket-pointers" data-line-start="746" data-line-end="761">Ticket pointers — ambient cues</a>
-- <a href="#refs" data-line-start="762" data-line-end="767">References</a>
-  - <a href="#refs-skills" data-line-start="768" data-line-end="800">Skills</a>
+- <a href="#glossary" data-line-start="44" data-line-end="51">Rekon working vocabulary</a>
+  - <a href="#glossary-names-homes-and-relations" data-line-start="52" data-line-end="129">Names, homes, and relations</a>
+  - <a href="#glossary-knowledge-work-and-learning" data-line-start="130" data-line-end="196">Knowledge, work, and learning</a>
+  - <a href="#glossary-action-and-delivery" data-line-start="197" data-line-end="281">Action and delivery</a>
+  - <a href="#glossary-honing-and-commitment" data-line-start="282" data-line-end="328">Honing and commitment</a>
+- <a href="#doc-constitution" data-line-start="329" data-line-end="335">Constitution — orient before acting</a>
+  - <a href="#doc-constitution-terms-in-use" data-line-start="336" data-line-end="356">Terms in use</a>
+  - <a href="#doc-constitution-use-the-sense-map" data-line-start="357" data-line-end="408">Use the sense-map</a>
+- <a href="#documentation-practice" data-line-start="409" data-line-end="412">Writing, independent waves, and document connections</a>
+  - <a href="#documentation-practice-durable-writing" data-line-start="413" data-line-end="445">Durable writing</a>
+  - <a href="#documentation-practice-waves" data-line-start="446" data-line-end="468">Waves</a>
+  - <a href="#documentation-practice-doc-pass" data-line-start="469" data-line-end="488">Doc-pass</a>
+- <a href="#collaboration" data-line-start="489" data-line-end="492">Collaboration and architectural stewardship</a>
+  - <a href="#collaboration-dispatch-and-return" data-line-start="493" data-line-end="511">Dispatch and return</a>
+  - <a href="#collaboration-stewardship" data-line-start="512" data-line-end="531">Stewardship</a>
+  - <a href="#collaboration-discussion" data-line-start="532" data-line-end="546">Discussion</a>
+- <a href="#workspace" data-line-start="547" data-line-end="573">Workspace, research locations, and shell</a>
+- <a href="#code" data-line-start="574" data-line-end="580">Code — stage and change discipline</a>
+  - <a href="#code-terms-in-use" data-line-start="581" data-line-end="595">Terms in use</a>
+  - <a href="#code-operating-weight" data-line-start="596" data-line-end="618">Operating weight</a>
+- <a href="#jj" data-line-start="619" data-line-end="646">jj and git operating rules</a>
+  - <a href="#jj-jj-waltz-workspaces" data-line-start="647" data-line-end="674">jj-waltz workspaces</a>
+- <a href="#javascript" data-line-start="675" data-line-end="708">JavaScript and TypeScript</a>
+- <a href="#rust" data-line-start="709" data-line-end="733">Rust conventions</a>
+- <a href="#beads" data-line-start="734" data-line-end="771">Beads — readable work IDs and deliberate tracking</a>
+- <a href="#praxis-ticket-pointers" data-line-start="772" data-line-end="787">Ticket pointers — ambient cues</a>
+- <a href="#refs" data-line-start="788" data-line-end="793">References</a>
+  - <a href="#refs-skills" data-line-start="794" data-line-end="826">Skills</a>
 
 </nav>
 
@@ -613,7 +614,7 @@ use the shared vocabulary; this fragment adds only the terms its instructions ne
 
 <section id="jj" data-source="/vcs/jj/GLOBAL.md">
 
-<Okf data={{"id":"jj","order":220,"source":"/vcs/jj/README.md","status":"draft"}} />
+<Okf data={{"id":"jj","order":220,"source":"/vcs/jj/README.md","sources":[{"resource":"opencode://ses_ec375b1d6ffergulkiIGGtQXA8","title":"Added compact jj-waltz creation and reseed examples with and without groups"},{"resource":"/vcs/jj/waltz.md","title":"Active jj-waltz usage and reseeding guide"}],"status":"draft"}} />
 
 ## jj and git operating rules
 
@@ -640,6 +641,31 @@ use the shared vocabulary; this fragment adds only the terms its instructions ne
   rewritten version, restore the parent version, apply/commit the minimal change,
   then restore/commit the full rewrite. Load [jj-hunk](/code/jj-hunk.md).
 - [The jj guide](/vcs/jj/README.md) owns command recipes and forensics.
+
+<section id="jj-jj-waltz-workspaces">
+
+### jj-waltz workspaces
+
+`jw` owns workspace lifecycle; `jj` owns graph/fetch/bookmarks. [Usage guide](/vcs/jj/waltz.md):
+
+```sh
+eval "$(jw shell init zsh)"  # enables cd; add creates, switch creates/switches
+jw add worker-a worker-b --at 'dev@origin' --cow --no-colocate
+jw s worker-a               # ^ default, - previous; list/status/doctor inspect
+jw reseed worker-a worker-b --from /path/to/prepared-source --source-at 'dev@origin' \
+  --copy-ignored node_modules --at 'dev@origin' --dry-run
+jw reseed --group workers --at 'dev@origin' --dry-run # optional local config
+```
+
+Reseed keeps roots; omit `--at` to keep feature revisions. Remove `--dry-run` to
+refill; pause writers. Prepare source with JJ/install first. [Groups](/vcs/jj/waltz.md#jj-waltz-groups)
+are optional literal-name lists in default-workspace `.jwreseed.local.toml`;
+named use needs none. `--copy-ignored` replaces selected roots with private CoW
+copies; links share symlinks. `--replace-content` deletes other unrecorded contents
+(including `.env`) except `.jj`. Pending refill: `jw reseed NAME --resume` before
+snapshotting. [Preparation, restrictions, recovery](/vcs/jj/waltz.md#jj-waltz-source).
+
+</section>
 </section>
 
 <section id="javascript" data-source="/js/GLOBAL.md">
