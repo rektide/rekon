@@ -158,8 +158,8 @@ fn enriches_a_complete_runtime_fixture() {
         "\n\n## Alpha guide\n\nIntro with \\{braces\\} and an autolink \
          [https://example.com/x](https://example.com/x) plus a comment.\n\n\
          {/* a provenance note */}\n\n\
-         <section id=\"alpha--details\">\n\n### Details\n\n\
-         <section id=\"alpha--details--deep\">\n\n#### Deep\n\n<dl>"
+         <section id=\"alpha-details\">\n\n### Details\n\n\
+         <section id=\"alpha-details-deep\">\n\n#### Deep\n\n<dl>"
     ));
     assert!(document.contains("<dd>{kept} definition.</dd>"));
 
@@ -179,7 +179,7 @@ fn enriches_a_complete_runtime_fixture() {
     assert!(document.contains("\"keep\""));
     assert!(document.contains("\"leaf\":true"));
     assert!(document.contains(
-        "<section id=\"beta--beta-section\">\n\n### Beta section\n\nMore.\n\n</section>\n</section>\n"
+        "<section id=\"beta-beta-section\">\n\n### Beta section\n\nMore.\n\n</section>\n</section>\n"
     ));
     // Source anchor IDs are preserved, never retargeted or renamed.
     assert!(document.contains("<dfn id=\"term\">Term</dfn>"));

@@ -135,7 +135,7 @@ mod tests {
     fn checks_real_section_ids_against_all_source_anchors() {
         // Roots and generated descendants share the source anchor namespace,
         // including anchors contributed by later documents.
-        for anchor in ["a", "b", "a--details"] {
+        for anchor in ["a", "b", "a-details"] {
             let a = fragment("a", 1, "# A\n\n## Details\n\nContent.");
             let b = fragment(
                 "b",
@@ -147,6 +147,12 @@ mod tests {
         }
         let reserved = fragment(RESERVED_TOC_ID, 1, "# Navigation\n\nContent.");
         assert!(render_document(&[reserved]).is_err());
+
+        // A declared document ID can also coincide with another document's
+        // generated child now that both use the same ordinary kebab-case form.
+        let a = fragment("a", 1, "# A\n\n## Details\n\nContent.");
+        let details = fragment("a-details", 2, "# Details\n\nContent.");
+        assert!(render_document(&[a, details]).is_err());
 
         let old_prefix = fragment("a", 1, "# A\n\n<a id=\"fragment-example\"></a>\n\nContent.");
         let document = render_document(&[old_prefix]).unwrap();

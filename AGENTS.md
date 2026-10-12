@@ -3,32 +3,32 @@
 <nav id="rekon-toc" aria-label="Table of contents">
 
 - <a href="#glossary" data-line-start="43" data-line-end="50">Rekon working vocabulary</a>
-  - <a href="#glossary--names-homes-and-relations" data-line-start="51" data-line-end="128">Names, homes, and relations</a>
-  - <a href="#glossary--knowledge-work-and-learning" data-line-start="129" data-line-end="195">Knowledge, work, and learning</a>
-  - <a href="#glossary--action-and-delivery" data-line-start="196" data-line-end="280">Action and delivery</a>
-  - <a href="#glossary--honing-and-commitment" data-line-start="281" data-line-end="327">Honing and commitment</a>
+  - <a href="#glossary-names-homes-and-relations" data-line-start="51" data-line-end="128">Names, homes, and relations</a>
+  - <a href="#glossary-knowledge-work-and-learning" data-line-start="129" data-line-end="195">Knowledge, work, and learning</a>
+  - <a href="#glossary-action-and-delivery" data-line-start="196" data-line-end="280">Action and delivery</a>
+  - <a href="#glossary-honing-and-commitment" data-line-start="281" data-line-end="327">Honing and commitment</a>
 - <a href="#doc-constitution" data-line-start="328" data-line-end="334">Constitution — orient before acting</a>
-  - <a href="#doc-constitution--terms-in-use" data-line-start="335" data-line-end="355">Terms in use</a>
-  - <a href="#doc-constitution--use-the-sense-map" data-line-start="356" data-line-end="407">Use the sense-map</a>
+  - <a href="#doc-constitution-terms-in-use" data-line-start="335" data-line-end="355">Terms in use</a>
+  - <a href="#doc-constitution-use-the-sense-map" data-line-start="356" data-line-end="407">Use the sense-map</a>
 - <a href="#documentation-practice" data-line-start="408" data-line-end="411">Writing, independent waves, and document connections</a>
-  - <a href="#documentation-practice--durable-writing" data-line-start="412" data-line-end="444">Durable writing</a>
-  - <a href="#documentation-practice--waves" data-line-start="445" data-line-end="467">Waves</a>
-  - <a href="#documentation-practice--doc-pass" data-line-start="468" data-line-end="487">Doc-pass</a>
+  - <a href="#documentation-practice-durable-writing" data-line-start="412" data-line-end="444">Durable writing</a>
+  - <a href="#documentation-practice-waves" data-line-start="445" data-line-end="467">Waves</a>
+  - <a href="#documentation-practice-doc-pass" data-line-start="468" data-line-end="487">Doc-pass</a>
 - <a href="#collaboration" data-line-start="488" data-line-end="491">Collaboration and architectural stewardship</a>
-  - <a href="#collaboration--dispatch-and-return" data-line-start="492" data-line-end="510">Dispatch and return</a>
-  - <a href="#collaboration--stewardship" data-line-start="511" data-line-end="530">Stewardship</a>
-  - <a href="#collaboration--discussion" data-line-start="531" data-line-end="545">Discussion</a>
+  - <a href="#collaboration-dispatch-and-return" data-line-start="492" data-line-end="510">Dispatch and return</a>
+  - <a href="#collaboration-stewardship" data-line-start="511" data-line-end="530">Stewardship</a>
+  - <a href="#collaboration-discussion" data-line-start="531" data-line-end="545">Discussion</a>
 - <a href="#workspace" data-line-start="546" data-line-end="572">Workspace, research locations, and shell</a>
 - <a href="#code" data-line-start="573" data-line-end="579">Code — stage and change discipline</a>
-  - <a href="#code--terms-in-use" data-line-start="580" data-line-end="594">Terms in use</a>
-  - <a href="#code--operating-weight" data-line-start="595" data-line-end="617">Operating weight</a>
+  - <a href="#code-terms-in-use" data-line-start="580" data-line-end="594">Terms in use</a>
+  - <a href="#code-operating-weight" data-line-start="595" data-line-end="617">Operating weight</a>
 - <a href="#jj" data-line-start="618" data-line-end="648">jj and git operating rules</a>
 - <a href="#javascript" data-line-start="649" data-line-end="682">JavaScript and TypeScript</a>
 - <a href="#rust" data-line-start="683" data-line-end="707">Rust conventions</a>
 - <a href="#beads" data-line-start="708" data-line-end="745">Beads — readable work IDs and deliberate tracking</a>
 - <a href="#praxis-ticket-pointers" data-line-start="746" data-line-end="761">Ticket pointers — ambient cues</a>
 - <a href="#refs" data-line-start="762" data-line-end="767">References</a>
-  - <a href="#refs--skills" data-line-start="768" data-line-end="800">Skills</a>
+  - <a href="#refs-skills" data-line-start="768" data-line-end="800">Skills</a>
 
 </nav>
 
@@ -46,7 +46,7 @@ Terms for the shared sense-map, drawing on the earlier naming and constitutional
 work. Definitions are working usage; disputed naming grammar remains with its
 existing discussion, not settled by this glossary.
 
-<section id="glossary--names-homes-and-relations">
+<section id="glossary-names-homes-and-relations">
 
 ### Names, homes, and relations
 
@@ -124,7 +124,7 @@ helps someone understand where they are and what a next action means.
 
 </section>
 
-<section id="glossary--knowledge-work-and-learning">
+<section id="glossary-knowledge-work-and-learning">
 
 ### Knowledge, work, and learning
 
@@ -191,7 +191,7 @@ actual conduct and results, and what can be learned from their alignment or gap.
 
 </section>
 
-<section id="glossary--action-and-delivery">
+<section id="glossary-action-and-delivery">
 
 ### Action and delivery
 
@@ -276,7 +276,7 @@ options and tactical moves, compared across different payoff horizons.
 
 </section>
 
-<section id="glossary--honing-and-commitment">
+<section id="glossary-honing-and-commitment">
 
 ### Honing and commitment
 
@@ -330,7 +330,7 @@ conditions, not a synonym for acceptance or universal correctness.
 Selected for production assembly. `draft` marks guidance still being refined;
 it does not mean the fragment is absent from runtime context.
 
-<section id="doc-constitution--terms-in-use">
+<section id="doc-constitution-terms-in-use">
 
 ### Terms in use
 
@@ -351,7 +351,7 @@ Later grammar proposals remain proposals; a new summary does not revoke the ruli
 
 </section>
 
-<section id="doc-constitution--use-the-sense-map">
+<section id="doc-constitution-use-the-sense-map">
 
 ### Use the sense-map
 
@@ -407,7 +407,7 @@ the root manifest; edit its domain fragments, then regenerate. The preserved
 
 ## Writing, independent waves, and document connections
 
-<section id="documentation-practice--durable-writing">
+<section id="documentation-practice-durable-writing">
 
 ### Durable writing
 
@@ -440,7 +440,7 @@ the root manifest; edit its domain fragments, then regenerate. The preserved
 
 </section>
 
-<section id="documentation-practice--waves">
+<section id="documentation-practice-waves">
 
 ### Waves
 
@@ -463,7 +463,7 @@ the root manifest; edit its domain fragments, then regenerate. The preserved
 
 </section>
 
-<section id="documentation-practice--doc-pass">
+<section id="documentation-practice-doc-pass">
 
 ### Doc-pass
 
@@ -487,7 +487,7 @@ consult [the toolkit map](/tool/README.md) for current capabilities.
 
 ## Collaboration and architectural stewardship
 
-<section id="collaboration--dispatch-and-return">
+<section id="collaboration-dispatch-and-return">
 
 ### Dispatch and return
 
@@ -506,7 +506,7 @@ consult [the toolkit map](/tool/README.md) for current capabilities.
 
 </section>
 
-<section id="collaboration--stewardship">
+<section id="collaboration-stewardship">
 
 ### Stewardship
 
@@ -526,7 +526,7 @@ consult [the toolkit map](/tool/README.md) for current capabilities.
 
 </section>
 
-<section id="collaboration--discussion">
+<section id="collaboration-discussion">
 
 ### Discussion
 
@@ -575,7 +575,7 @@ Source: [legacy workspace guidance](/AGENTS.old.md#well-known-directories-and-fi
 Selected for production assembly. The README/SKILL body owns the fuller practice;
 these rules must be usable before an agent chooses deeper reading.
 
-<section id="code--terms-in-use">
+<section id="code-terms-in-use">
 
 ### Terms in use
 
@@ -590,7 +590,7 @@ use the shared vocabulary; this fragment adds only the terms its instructions ne
 
 </section>
 
-<section id="code--operating-weight">
+<section id="code-operating-weight">
 
 ### Operating weight
 
@@ -763,7 +763,7 @@ bd close <issue-id> --reason "<completion and verification>"
 
 Read the relevant skill; resolve its support paths from its own directory.
 
-<section id="refs--skills">
+<section id="refs-skills">
 
 ### Skills
 

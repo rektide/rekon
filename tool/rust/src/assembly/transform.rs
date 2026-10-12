@@ -226,7 +226,7 @@ pub(crate) fn build_body(
 }
 
 /// Insert semantic section wrappers around top-level headings deeper than the
-/// fragment's own H1, with stable `root--slug` chain IDs and no silent reuse.
+/// fragment's own H1, with stable single-hyphen IDs and no silent reuse.
 fn wrap_sections(
     prose: &str,
     headings: &[SourceHeading],
@@ -265,10 +265,10 @@ fn wrap_sections(
         }
         let mut id = String::from(root_id);
         for (_, ancestor) in &stack {
-            id.push_str("--");
+            id.push('-');
             id.push_str(ancestor);
         }
-        id.push_str("--");
+        id.push('-');
         id.push_str(&own);
         if !used.insert(id.clone()) {
             return Err(fail(format!(
@@ -403,7 +403,10 @@ pub(crate) fn slug(text: &str) -> String {
             _ => {}
         }
     }
-    slug
+    slug.split('-')
+        .filter(|part| !part.is_empty())
+        .collect::<Vec<_>>()
+        .join("-")
 }
 
 /// MDX reads `{`/`}` as expression delimiters and `<` before a word-ish
@@ -584,7 +587,7 @@ mod tests {
         );
         assert_eq!(
             body("# Doc\n\nSub\n---\n\nafter", "r"),
-            "## Doc\n\n<section id=\"r--sub\">\n\n### Sub\n\nafter\n\n</section>"
+            "## Doc\n\n<section id=\"r-sub\">\n\n### Sub\n\nafter\n\n</section>"
         );
         assert_eq!(body("# Closed ##\n\nafter", "r"), "## Closed ##\n\nafter");
     }
@@ -592,8 +595,8 @@ mod tests {
     #[test]
     fn wraps_nested_sections_with_stable_ids_and_closers() {
         let out = body("# Doc\n\nintro\n\n## A\n\na\n\n### B\n\nb\n\ntail", "x");
-        let expected = "## Doc\n\nintro\n\n<section id=\"x--a\">\n\n### A\n\na\n\n\
-                        <section id=\"x--a--b\">\n\n#### B\n\nb\n\ntail\n\n</section>\n\n</section>";
+        let expected = "## Doc\n\nintro\n\n<section id=\"x-a\">\n\n### A\n\na\n\n\
+                        <section id=\"x-a-b\">\n\n#### B\n\nb\n\ntail\n\n</section>\n\n</section>";
         assert_eq!(out, expected);
     }
 
@@ -602,8 +605,8 @@ mod tests {
         let out = body("# Doc\n\n## A\n\na\n\n## B\n\nb", "x");
         assert_eq!(
             out,
-            "## Doc\n\n<section id=\"x--a\">\n\n### A\n\na\n\n</section>\n\n\
-             <section id=\"x--b\">\n\n### B\n\nb\n\n</section>"
+            "## Doc\n\n<section id=\"x-a\">\n\n### A\n\na\n\n</section>\n\n\
+             <section id=\"x-b\">\n\n### B\n\nb\n\n</section>"
         );
     }
 
@@ -643,7 +646,7 @@ mod tests {
     #[test]
     fn preserves_static_okf_elements_and_rejects_fake_ones() {
         let element = r#"<Okf data={{"type":"Reference","title":"Local terms"}} />"#;
-        let out = body(&format!("# T\n\n{element} then {{x}}\n"), "code--t");
+        let out = body(&format!("# T\n\n{element} then {{x}}\n"), "code-t");
         // The authored element is preserved verbatim; only the prose braces
         // around it are escaped.
         assert_eq!(out, format!("## T\n\n{element} then ") + "\\{x\\}\n");
@@ -692,6 +695,10 @@ mod tests {
         assert_eq!(slug("  Mixed CASE-dash  "), "mixed-case-dash");
         assert_eq!(slug("Über cool"), "über-cool");
         assert_eq!(slug("###"), "");
+        assert_eq!(
+            slug("-- Multiple  spaces — and---dashes --"),
+            "multiple-spaces-and-dashes"
+        );
     }
 
     #[test]

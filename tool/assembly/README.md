@@ -86,7 +86,7 @@ frontmatter is emitted as one static JSON-compatible object:
 
 ## Code
 
-<section id="code--terms">
+<section id="code-terms">
 
 ### Terms
 
@@ -97,7 +97,9 @@ Content remains here, including semantic definition elements.
 ```
 
 The document section uses its source's frontmatter `id` directly (`code`);
-nested sections extend it with heading slugs (`code--terms`). There is no
+nested sections extend it with heading slugs (`code-terms`). Separators are
+single hyphens, including within heading slugs; doubled hyphens are collapsed.
+There is no
 generic `fragment-` prefix. Generated IDs are checked against all selected
 source anchors and section IDs; `rekon-toc` remains reserved for navigation.
 

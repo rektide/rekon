@@ -95,7 +95,7 @@ fn enriched_sections_okf_and_dfn() {
         "<dd>A preserved state.</dd>\n",
         "</dl>\n",
         "\n",
-        r#"<section id="terms--extra">"#,
+        r#"<section id="terms-extra">"#,
         "\n",
         "\n",
         "### Extra terms\n",
@@ -135,7 +135,7 @@ fn enriched_sections_okf_and_dfn() {
         targets,
         vec![
             ("terms", TargetKind::EnclosingSection),
-            ("terms--extra", TargetKind::EnclosingSection),
+            ("terms-extra", TargetKind::EnclosingSection),
             ("explicit-heading", TargetKind::ExplicitAnchor),
             ("deploy", TargetKind::GeneratedSlug),
             ("checkpoint-term", TargetKind::GeneratedSlug),

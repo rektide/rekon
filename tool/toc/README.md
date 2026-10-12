@@ -69,7 +69,7 @@ let structure = analyze(&text, &TocOptions::default())?;         // entries, ids
 <nav id="rekon-toc" aria-label="Table of contents">
 
 - [Code](#code)
-  - [Terms](#code--terms)
+  - [Terms](#code-terms)
 
 </nav>
 ```

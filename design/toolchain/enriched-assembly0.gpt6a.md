@@ -42,7 +42,7 @@ All selected body content is included; there is no subsection selection.
 
 ## Code
 
-<section id="code--terms">
+<section id="code-terms">
 
 ### Terms
 
@@ -76,7 +76,8 @@ considered. No separate GLOSSARY file format is introduced.
 
 **October 12 naming correction:** the human found that `fragment-` carried no
 useful meaning in IDs. Document sections now use the declared identity directly
-(`code`), with children such as `code--terms`. The renderer checks actual IDs
+(`code`), with children such as `code-terms`. The human also rejected doubled
+hyphens: hierarchy and heading slugs use single hyphens throughout. The renderer checks actual IDs
 against source anchors across the whole selection, replacing the old blanket
 prefix reservation. The examples above reflect this correction.
 

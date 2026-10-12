@@ -90,7 +90,7 @@ fn combined_semantic_content_is_mdx_and_its_metadata_is_recoverable() {
     assert!(!contains_value(&vocabulary, &metadata));
     let local = success(run(
         root,
-        &["okf", "extract", "AGENTS.md", "--scope", "code--terms"],
+        &["okf", "extract", "AGENTS.md", "--scope", "code-terms"],
     ));
     let local: Value = serde_json::from_slice(&local.stdout).unwrap();
     assert!(contains_value(
