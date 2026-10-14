@@ -6,9 +6,12 @@ resource: /vcs/jj/waltz.md
 tags: [jj, workspaces, jj-waltz, copy-on-write, reflinks]
 status: draft
 generated: { by: "model:openai/gpt-6-astra", at: 2026-10-14 }
+updated: { by: "model:openai/gpt-6.1-sol", at: 2026-10-15 }
 sources:
   - resource: "opencode://ses_ec375b1d6ffergulkiIGGtQXA8"
     title: Integrated active jj-waltz usage and reseeding into Rekon's JJ home and ambient guidance
+  - resource: "opencode://ses_ec37b01d2ffe9ytO0jRsdmoyXA"
+    title: Clarified fork identity, primary-source inference, explicit baselines, and safe snapshot defaults
   - resource: "file:///home/rektide/src/jj-waltz/README.md"
     title: Active workspace lifecycle, navigation, CoW creation, and configuration guide
   - resource: "file:///home/rektide/src/jj-waltz/docs/reseed.md"
@@ -34,6 +37,11 @@ This guide describes the active implementation at
 older proposal wording and a released binary may lag it. Check your binary's
 `jw reseed --help` before using these recipes. Verification here is documentation
 and source inspection, not execution against production workspaces.
+
+The active checkout is a working fork of EzraCerpac/jj-waltz carrying in-place
+CoW reseeding. It uses stock JJ: "no JJ fork" does not mean this jj-waltz checkout
+is upstream, and upstream packages may not contain the additions. Install the
+carried binary from the checkout with `cargo install --path . --locked`.
 
 Jump to [navigation](#jj-waltz-navigation), [new CoW workspaces](#jj-waltz-creation),
 [source preparation](#jj-waltz-source), [reseeding without groups](#jj-waltz-reseed),
@@ -75,7 +83,8 @@ jw root
 
 Switching preserves the current subdirectory when possible. `@`, `-`, and `^`
 route to current, previous, and default workspaces in commands supporting those
-selectors; they are **not literal reseed target names**. `context` discovers
+selectors; reseed does **not** expand them as aliases. A literally registered
+workspace with such a name is still a literal target. `context` discovers
 identity without refreshing a checkout. JSON list/status supports explicit
 refresh policy; `--refresh=none` avoids requesting working-copy refreshes.
 Bare `jw` normally opens the interactive manager in a terminal; `jw ui` selects
@@ -161,8 +170,8 @@ For a later baseline, fetch, prepare the source, and install deliberately again.
 existing workspaces by their literal registered names:
 
 ```sh
-# One feature: keep its snapshotted revision and differences.
-jw reseed my-feature --from /home/rektide/a/a/opencode --source-at 'dev@origin'
+# One feature: use the verified primary checkout and keep feature differences.
+jw reseed my-feature --source-at 'dev@origin'
 
 # Batch of existing workers; preview first, then repeat without --dry-run.
 jw reseed ocw1 ocw2 ocw3 --from /home/rektide/a/a/opencode \
@@ -187,6 +196,12 @@ differences. Repeating the operation renews sharing even when content is identic
 The root directory's inode, `.jj`, registration, workspace name, bookmarks, and
 lifecycle metadata are retained. This is useful for agents and launchers that
 keep stable workspace paths.
+
+Snapshotting real work is intentional and remains the default. The recovery
+protection only avoids recording a temporary half-filled checkout as user work;
+it restores and verifies the recorded tree before ordinary JJ snapshots proceed.
+There is no general `--skip-snapshot` option. Source and target revisions may
+differ: unchanged paths are still reflink candidates, while JJ fills differences.
 
 <a id="jj-waltz-content"></a>
 
@@ -267,8 +282,11 @@ jw reseed ocw1 --group workers --group reviewers
 Repeat `--group` or combine it with positional names; duplicates are removed.
 Unknown groups and empty selections fail rather than widening the operation.
 
-CLI `--from` and `--source-at` override local configuration. Relative source
-paths resolve from the default workspace; absolute paths make this unambiguous.
+CLI `--from` and `--source-at` override local configuration. With no explicit or
+configured source path, reseed uses the verified primary checkout of the current
+JJ repository; it does not guess a location under `~/archive`. A relative CLI
+`--from` resolves from the calling directory; a relative configured `source`
+resolves from the default workspace. Absolute paths make either unambiguous.
 Repeated CLI `--copy-ignored` flags **replace**, rather than append to, configured
 selections. `--no-copy-ignored` disables configured copying for the run:
 
@@ -277,9 +295,10 @@ jw reseed ocw1 --copy-ignored node_modules # only this selection
 jw reseed --group workers --no-copy-ignored
 ```
 
-`--at` cannot be configured: every reset must request it explicitly. Keep
-`--source-at` or `source_at` explicit for a reproducible prepared baseline;
-the implementation otherwise uses the source's snapshotted `@`.
+`--at` cannot be configured: every reset must request it explicitly.
+`--source-at` or configured `source_at` is required: there is no implicit source
+revision or guessed upstream bookmark. A mismatch with that asserted baseline
+fails before clearing a target rather than silently skipping the assertion.
 
 <a id="jj-waltz-recovery"></a>
 
