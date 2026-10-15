@@ -11,7 +11,7 @@ sources:
   - resource: "opencode://ses_ec375b1d6ffergulkiIGGtQXA8"
     title: Integrated active jj-waltz usage and reseeding into Rekon's JJ home and ambient guidance
   - resource: "opencode://ses_ec37b01d2ffe9ytO0jRsdmoyXA"
-    title: Clarified fork identity, primary-source inference, explicit baselines, and safe snapshot defaults
+    title: Clarified fork identity, primary-source defaults, snapshots, and explicit recoverable donor freshening
   - resource: "file:///home/rektide/src/jj-waltz/README.md"
     title: Active workspace lifecycle, navigation, CoW creation, and configuration guide
   - resource: "file:///home/rektide/src/jj-waltz/docs/reseed.md"
@@ -158,9 +158,33 @@ bun install --frozen-lockfile
 
 The frozen install is project-specific; use the project's dependency procedure.
 It prepares ignored dependency trees, while tracked files must still match the
-baseline. `jw` neither fetches nor installs. Keep the prepared source unchanged
+baseline. Ordinary reseeding neither fetches nor installs. Keep the prepared source unchanged
 while a refill or recovery uses it; pause writers in both source and targets.
 For a later baseline, fetch, prepare the source, and install deliberately again.
+
+Alternatively, explicit `--freshen` coordinates these source steps. Configure the
+trusted argv in the primary checkout's ignored `.jwreseed.local.toml`:
+
+```toml
+[prepare]
+remote = "origin"
+command = ["bun", "install", "--frozen-lockfile"]
+```
+
+```sh
+jw reseed ocw2 --from ~/a/a/opencode --freshen --source-at 'dev@origin' \
+  --copy-ignored node_modules --dry-run
+```
+
+Remove `--dry-run` only when the plan is right. Freshening snapshots real work,
+fetches the declared remote, selects a source child at the post-fetch goal, and
+runs the argv in that donor before freezing target plans. It still keeps target
+feature revisions unless `--at` is explicit. The configuration alone does not
+activate it; default-on freshening remains a separate, unimplemented follow-up.
+A freshening preview performs no fetch/new/install/refill and labels its goal
+prospective. See the [current freshening contract](file:///home/rektide/src/jj-waltz/docs/reseed.md#freshen-the-source)
+for command trust, failures, and batch recovery. No live operator checkout was
+freshened during implementation checks.
 
 <a id="jj-waltz-reseed"></a>
 
@@ -187,6 +211,7 @@ selection never means all. Reseed does not create missing targets.
 | No `--at` | Keep each target's snapshotted working-copy revision, including feature changes. |
 | `--at 'dev@origin'` | Start a fresh empty child of that base; an already-empty child at the same base may be reused. |
 | `--source-at 'dev@origin'` | Assert the prepared source's tracked baseline; this does **not** reset the target. |
+| `--freshen` | Fetch and prepare the donor toward `source_at` first; it does **not** imply target reset. |
 | `--dry-run` | Validate and report a plan without clearing/refilling contents; planning can snapshot working copies. |
 
 Tracked target work is snapshotted before mutation. With `--at`, it remains in
@@ -331,6 +356,13 @@ the record; restore the frozen source before retrying. Batch output distinguishe
 completed, failed, and pending targets and exits nonzero for partial failure.
 Tracked refill alone is not completion if ignored copying or link application
 failed. Recovery does not use repository-wide `jj undo`.
+
+For unfinished source preparation, resume all original literal target names in
+their recorded order, without `--freshen` or other overrides. Its active batch
+prevents borrowing partial dependencies. Once target plans are frozen, receipts
+allow individual target recovery without another fetch or installer run. Changed
+source ownership/configuration or verified dependency bytes stop recovery; restore
+the recorded source goal/payload rather than silently adopting new contents.
 
 <a id="jj-waltz-lifecycle"></a>
 
