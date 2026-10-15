@@ -13,6 +13,7 @@ sources:
     title: "The project-planning rules of the workspace operating manual (human-codified)"
     author: human:rektide
     last_modified: 2026-09-04
+  - { resource: "opencode://ses_eb9709a91ffeKsq7fEUI1ptzt2", title: Handed tree-shape rules to the new layout practice }
 ---
 
 <a id="planning"></a>
@@ -44,6 +45,11 @@ always. When asked to propose layouts, offer **multiple** suggestions of
 domain groupings that might make sense — the grouping is a design
 decision the human should get to weigh, not a detail to bury.
 
+The tree-shape rules themselves — no package prefixes in directories,
+when a `crates/`/`packages/` bucket is allowed, where registry prefixes
+live, worked examples — are owned by
+[`layout.md`](/code/layout.md).
+
 <a id="planning-mermaid"></a>
 
 ## Mermaid diagrams
@@ -65,6 +71,8 @@ flowchart LR
 
 - [`/code/README.md#code-planning`](/code/README.md#code-planning) — the
   common-weight summary.
+- [`/code/layout.md`](/code/layout.md) — owns the tree-shape rules plans
+  propose layouts under.
 - [`/code/review-handling.md`](/code/review-handling.md) — what happens
   when a plan's output gets reviewed.
 - [`/code/task-reconstruction/README.md`](/code/task-reconstruction/README.md)

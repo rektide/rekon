@@ -20,6 +20,7 @@ sources:
   - id: js-precedent
     resource: /js/README.md
     title: "The promoted-module precedent this collection follows"
+  - { resource: "opencode://ses_eb9709a91ffeKsq7fEUI1ptzt2", title: Split project layout out of planning into its own practice with layout.md }
 ---
 
 <a id="code"></a>
@@ -49,6 +50,7 @@ live global file is assembled from [`code/GLOBAL.md`](/code/GLOBAL.md).
 | [`review-handling.md`](/code/review-handling.md) | Review comments have arrived and corrections are due. |
 | [`planning.md`](/code/planning.md) | Writing a plan or design document. |
 | [`coding-advice.md`](/code/coding-advice.md) | Deciding error handling or cleanup behavior. |
+| [`layout.md`](/code/layout.md) | Scaffolding or restructuring a repository: domain grouping, workspace member naming, where registry prefixes live. |
 | [`task-reconstruction/`](/code/task-reconstruction/README.md) | Restarting a task line while preserving its docs: the jj replay procedure, its philosophy, and measured evidence. |
 | [`workspace/GLOBAL.md`](/code/workspace/GLOBAL.md) | Workspace locations, archive-first lookup, scratch ownership, and shell lifetime; selected ambient guidance. |
 | [`rust/GLOBAL.md`](/code/rust/GLOBAL.md) | Rust tools, configuration precedence, and publishing; selected ambient guidance. |
@@ -107,11 +109,26 @@ Depth: [`review-handling.md`](/code/review-handling.md).
   are crude and will not match delivery; leave them out.
 - Breaking changes are fine while a project is `<1.0`.
 - Never a flat project layout: domain-grouped structure, always. When
-  asked for options, offer several plausible domain groupings.
+  asked for options, offer several plausible domain groupings; the
+  tree-shape rules live in [`layout.md`](/code/layout.md).
 - Mermaid diagrams are excellent visual references — use meaningful node
   identifiers when creating them.
 
 Depth: [`planning.md`](/code/planning.md).
+
+<a id="code-layout"></a>
+
+## Project layout
+
+- Top-level directories are domains or roles — never a flat dump, and a
+  single `crates/`/`packages/` bucket only while the repository is
+  single-product and small.
+- Workspace members never repeat the project prefix in directory names
+  (`crates/parser`, not `crates/<pkg>-parser`). Registry uniqueness is the
+  package **name's** job (`<pkg>-parser`, `@<pkg>/parser`), not the tree's.
+- When a domain gains a second member, it becomes a directory holding both.
+
+Depth: [`layout.md`](/code/layout.md).
 
 <a id="code-coding-advice"></a>
 

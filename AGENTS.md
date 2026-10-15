@@ -21,15 +21,15 @@
 - <a href="#workspace" data-line-start="547" data-line-end="573">Workspace, research locations, and shell</a>
 - <a href="#code" data-line-start="574" data-line-end="580">Code — stage and change discipline</a>
   - <a href="#code-terms-in-use" data-line-start="581" data-line-end="595">Terms in use</a>
-  - <a href="#code-operating-weight" data-line-start="596" data-line-end="618">Operating weight</a>
-- <a href="#jj" data-line-start="619" data-line-end="646">jj and git operating rules</a>
-  - <a href="#jj-jj-waltz-workspaces" data-line-start="647" data-line-end="674">jj-waltz workspaces</a>
-- <a href="#javascript" data-line-start="675" data-line-end="708">JavaScript and TypeScript</a>
-- <a href="#rust" data-line-start="709" data-line-end="733">Rust conventions</a>
-- <a href="#beads" data-line-start="734" data-line-end="771">Beads — readable work IDs and deliberate tracking</a>
-- <a href="#praxis-ticket-pointers" data-line-start="772" data-line-end="787">Ticket pointers — ambient cues</a>
-- <a href="#refs" data-line-start="788" data-line-end="793">References</a>
-  - <a href="#refs-skills" data-line-start="794" data-line-end="826">Skills</a>
+  - <a href="#code-operating-weight" data-line-start="596" data-line-end="622">Operating weight</a>
+- <a href="#jj" data-line-start="623" data-line-end="650">jj and git operating rules</a>
+  - <a href="#jj-jj-waltz-workspaces" data-line-start="651" data-line-end="678">jj-waltz workspaces</a>
+- <a href="#javascript" data-line-start="679" data-line-end="712">JavaScript and TypeScript</a>
+- <a href="#rust" data-line-start="713" data-line-end="737">Rust conventions</a>
+- <a href="#beads" data-line-start="738" data-line-end="775">Beads — readable work IDs and deliberate tracking</a>
+- <a href="#praxis-ticket-pointers" data-line-start="776" data-line-end="791">Ticket pointers — ambient cues</a>
+- <a href="#refs" data-line-start="792" data-line-end="797">References</a>
+  - <a href="#refs-skills" data-line-start="798" data-line-end="830">Skills</a>
 
 </nav>
 
@@ -569,7 +569,7 @@ Source: [legacy workspace guidance](/AGENTS.old.md#well-known-directories-and-fi
 
 <section id="code" data-source="/code/GLOBAL.md">
 
-<Okf data={{"description":"Active shared commit, review, planning, and coding discipline.","extensions":{"posture":"active production fragment; guidance remains open to refinement","related_work":["rekon-agents-maintenance","rekon-session-mementos"],"ticket":"rekon-phoenix"},"generated":{"at":"2026-09-06","by":"model:gpt-6-astra"},"id":"code","order":200,"resource":"/code/GLOBAL.md","source":"/code/README.md","sources":[{"resource":"/code/README.md","title":"Coding practice"},{"resource":"/code/commits.md","title":"Capture revise compare"},{"resource":"/CONTEXT.md","title":"Shared working vocabulary"}],"status":"draft","title":"Code — stage and change discipline","type":"ContextFragment"}} />
+<Okf data={{"description":"Active shared commit, review, planning, and coding discipline.","extensions":{"posture":"active production fragment; guidance remains open to refinement","related_work":["rekon-agents-maintenance","rekon-session-mementos"],"ticket":"rekon-phoenix"},"generated":{"at":"2026-09-06","by":"model:gpt-6-astra"},"id":"code","order":200,"resource":"/code/GLOBAL.md","source":"/code/README.md","sources":[{"resource":"/code/README.md","title":"Coding practice"},{"resource":"/code/commits.md","title":"Capture revise compare"},{"resource":"/CONTEXT.md","title":"Shared working vocabulary"},{"resource":"opencode://ses_eb9709a91ffeKsq7fEUI1ptzt2","title":"Ambient scaffold rule naming the pkg-prefix anti-pattern with layout depth"}],"status":"draft","title":"Code — stage and change discipline","type":"ContextFragment"}} />
 
 ## Code — stage and change discipline
 
@@ -599,10 +599,14 @@ use the shared vocabulary; this fragment adds only the terms its instructions ne
 - changes intermingled **within** a file → `jj-hunk`: full `hunk-<sha256>` IDs only, always dry-run the spec first. load /code/jj-hunk.md before hunk-level work.
 - review comments: discuss direction as well as committing the predecessor before editing; land each correction as its own well-argued commit. /code/review-handling.md
 - plans carry no time estimates, ever. /code/planning.md
-- use domain-grouped project layouts, never a flat dump; when offering layout
-  options, offer multiple plausible domain groupings. Mermaid diagrams should
-  use meaningful node identifiers. Breaking changes are fine below 1.0; assess
-  actual persisted-data or consumer obligations rather than inventing them.
+- scaffold repos with domain-grouped top-level dirs — never a flat dump, never
+  `<pkg>-` prefixes repeated in the tree (`crates/parser`, not
+  `crates/<pkg>-parser`); a registry-name prefix belongs to the package name,
+  not the directory. when offering layout options, offer multiple plausible
+  domain groupings. depth: /code/layout.md
+- Mermaid diagrams should use meaningful node identifiers. Breaking changes
+  are fine below 1.0; assess actual persisted-data or consumer obligations
+  rather than inventing them.
 - Let It Fail when appropriate: do not catch an error merely to print it; retain
   its stack and cause. Handle errors where recovery or a real boundary needs it.
 - Do not add automatic prune/reconciliation behavior unless explicitly requested.
