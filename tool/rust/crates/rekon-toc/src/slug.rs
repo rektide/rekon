@@ -3,7 +3,10 @@
 /// Slugify heading text the way GitHub anchor slugs roughly do:
 /// lowercase, keep alphanumerics/`_`/`-`, turn each whitespace character into
 /// `-`, drop other punctuation. An empty result falls back to `section`.
-pub(crate) fn slugify(text: &str) -> String {
+///
+/// Public so document checkers outside this crate can resolve anchors with
+/// the same semantics the managed ToC links to.
+pub fn slugify(text: &str) -> String {
     let lowered: String = text.to_lowercase();
     let mut out = String::new();
     for c in lowered.chars() {

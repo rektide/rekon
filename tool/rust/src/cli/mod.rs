@@ -1,5 +1,6 @@
 //! Thin command adapters over the independently usable document engines.
 
+mod check;
 mod combine;
 mod okf;
 mod toc;
@@ -58,6 +59,17 @@ enum Command {
         #[command(subcommand)]
         command: OkfCommand,
     },
+    /// Check Markdown documents: fences, trailing whitespace, local targets, anchors
+    Check {
+        #[arg(required = true)]
+        files: Vec<PathBuf>,
+        /// Bundle root for /-rooted destinations (default: nearest .jj/.git ancestor per file)
+        #[arg(long)]
+        root: Option<PathBuf>,
+        /// Also require OKF knowledge frontmatter and native session provenance
+        #[arg(long)]
+        okf: bool,
+    },
     /// Check declared operating coverage independently of generated-file freshness
     AuditContext {
         #[arg(short, long, default_value = DEFAULT_MANIFEST)]
@@ -108,6 +120,7 @@ pub fn run(cli: Cli) -> Result {
                     format,
                 },
         } => okf::run(&file, scope.as_deref(), format),
+        Command::Check { files, root, okf } => check::run(&files, root.as_deref(), okf),
         Command::AuditContext { manifest, coverage } => {
             let report = audit(&manifest, &coverage, &std::env::current_dir()?)?;
             if report.findings.is_empty() {
@@ -139,6 +152,7 @@ mod tests {
             vec!["rekon", "combine", "--check"],
             vec!["rekon", "toc", "AGENTS.md", "--line-ranges"],
             vec!["rekon", "okf", "extract", "AGENTS.md", "--scope", "code"],
+            vec!["rekon", "check", "AGENTS.md", "--okf"],
         ] {
             Cli::command().try_get_matches_from(args).unwrap();
         }

@@ -25,6 +25,7 @@ pub use document::{
 pub use fragment::{
     Fragment, FragmentError, FragmentMeta, FragmentStatus, RESERVED_TOC_ID, parse_fragment,
 };
+pub(crate) use transform::parse_options;
 
 use std::collections::HashMap;
 use std::fs;

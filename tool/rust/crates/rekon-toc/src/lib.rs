@@ -74,6 +74,7 @@ use markdown::{Constructs, ParseOptions};
 use render::RenderEntry;
 
 pub(crate) use slug::{escape_html_attr, escape_html_text, escape_label};
+pub use slug::slugify;
 
 /// `id` of the managed ToC region.
 pub const NAV_ID: &str = structure::NAV_ID;
