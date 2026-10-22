@@ -33,24 +33,16 @@ Practice, rulings, and history live with
 
 | Code | Target (`file#tag`) | Note |
 |---|---|---|
-| `astra-medium-gpt` | [`/agents/astra-medium-gpt.md`](/agents/astra-medium-gpt.md) | GPT-6 Astra medium — independent research and design waves (alias AM) |
-| `astra-xhigh-gpt` | [`/agents/astra-xhigh-gpt.md`](/agents/astra-xhigh-gpt.md) | GPT-6 Astra xhigh — advanced use only when specified |
+| `ast` | [`/agents/ast.md`](/agents/ast.md) | GPT-6 Astra high — independent research and design waves; medium/xhigh via model override |
 | `cf` | [`file:///home/rektide/src/compfuzor/README.md`](file:///home/rektide/src/compfuzor/README.md) | usually the compfuzor project (~/src/compfuzor); occasionally Cloudflare or scholarly “cf.” — read the context; canonical: github.com/rektide/compfuzor |
 | `con` | [`/constitution/README.md`](/constitution/README.md) | the constitution — rekon's broadest governing document; shared principles for naming, knowledge, work, and assembly; as a prefix it scopes references: con-naming (naming work), con-structure (structure contract) |
 | `exp` | [`/constitution/naming/README.md#short-codes`](/constitution/naming/README.md#short-codes) | a topic's early inquiry documents — drafts and proposals that precede any ruling; usually under the topic's exploration/ or design/ folder; example: con-naming-exp-… points into naming's exploration waves |
-| `flash` | [`/agents/flash.md`](/agents/flash.md) | GLM 5.3 Flash high — fast, well-described, well-known work (aliases F, FH) |
-| `flash-max` | [`/agents/flash-max.md`](/agents/flash-max.md) | GLM 5.3 Flash Max — a bit more deciding than flash (alias FX) |
+| `f` | [`/agents/f.md`](/agents/f.md) | GLM 5.3 Flash max — fast well-described well-known work; flash/flash-max folded in, #high via model override |
 | `followup` | [`/agents/followup.md`](/agents/followup.md) | follow-behind verifier — scouts context, reviews changes, runs checks after implementation |
-| `g` | [`/agents/g.md`](/agents/g.md) | GLM 5.3 max — the default heavy lifter for most tasks (aliases glm-max-z, GX) |
+| `g` | [`/agents/g.md`](/agents/g.md) | GLM 5.3 max — the default heavy lifter for most tasks; gh/gl folded in, other levels via model override |
 | `general` | [`/agents/general.md`](/agents/general.md) | capable general-purpose default for delegated work |
-| `gh` | [`/agents/gh.md`](/agents/gh.md) | GLM 5.3 high — capable independent doer for partially formed work (alias glm-high-z) |
-| `gl` | [`/agents/gl.md`](/agents/gl.md) | GLM 5.3 low — deliberately cheap and light; usually prefer g or gh |
-| `luna-medium-gpt` | [`/agents/luna-medium-gpt.md`](/agents/luna-medium-gpt.md) | GPT-6 Luna medium — only when explicitly requested |
-| `luna-xhigh-gpt` | [`/agents/luna-xhigh-gpt.md`](/agents/luna-xhigh-gpt.md) | GPT-6 Luna xhigh — only when explicitly requested |
+| `l` | [`/agents/l.md`](/agents/l.md) | GPT-6 Luna xhigh — only when explicitly requested; medium via model override |
 | `prax` | [`/praxis/README.md`](/praxis/README.md) | praxis — the practice domains: repeatable ways of working; bookmarking, beads, fronts, ticket pointers; a practice joins purpose, procedure, evidence, and reflection |
 | `res` | [`/constitution/naming/README.md#short-codes`](/constitution/naming/README.md#short-codes) | a topic's gathered research material; scope comes from the named topic, not a fixed directory |
 | `rkt` | [`/tool/README.md`](/tool/README.md) | rk's tool — the rekon CLI; Markdown maintenance and verification for any repo, not just rekon's; commands: combine, codes, toc, okf extract, check, audit-context; runs from any checkout via --manifest-path |
-| `sol-high-gpt` | [`/agents/sol-high-gpt.md`](/agents/sol-high-gpt.md) | GPT-6.1 Sol high — more reasoning than medium without xhigh depth |
-| `sol-max-gpt` | [`/agents/sol-max-gpt.md`](/agents/sol-max-gpt.md) | GPT-6.1 Sol max — complex analysis reconciling many documents |
-| `sol-medium-gpt` | [`/agents/sol-medium-gpt.md`](/agents/sol-medium-gpt.md) | GPT-6.1 Sol medium — independent pursuit of partially formed tasks |
-| `sol-xhigh-gpt` | [`/agents/sol-xhigh-gpt.md`](/agents/sol-xhigh-gpt.md) | GPT-6.1 Sol xhigh — tasks needing real thinking; use sparingly |
+| `sol` | [`/agents/sol.md`](/agents/sol.md) | GPT-6.1 Sol high — capable independent doer for partially formed work; medium/xhigh/max via model override |
