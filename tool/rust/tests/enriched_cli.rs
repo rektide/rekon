@@ -188,3 +188,38 @@ fn toc_updates_symlink_target_and_preserves_permissions() {
     success(run(root, &["toc", "linked.md", "--line-ranges", "--check"]));
     assert_eq!(fs::read_dir(root).unwrap().count(), 2);
 }
+
+#[test]
+fn glob_directives_walk_files_into_the_assembly_and_stay_checkable() {
+    let fixture = tempfile::tempdir().unwrap();
+    let root = fixture.path();
+    fs::write(
+        root.join("agents.manifest.json"),
+        r#"{"fragments":["CONTEXT.md","praxis/*/GLOBAL.md"],"output":"AGENTS.md"}"#,
+    )
+    .unwrap();
+    fs::write(root.join("CONTEXT.md"), "---\nid: glossary\norder: 1\nsource: /CONTEXT.md\nstatus: stable\n---\n# Vocabulary\n\nTerms.\n").unwrap();
+    fs::create_dir_all(root.join("praxis/zeta")).unwrap();
+    fs::create_dir_all(root.join("praxis/alpha")).unwrap();
+    fs::write(root.join("praxis/alpha/GLOBAL.md"), "---\nid: praxis-alpha\norder: 2\nsource: /praxis/alpha/README.md\nstatus: draft\n---\n# Alpha\n\nAlpha practice.\n").unwrap();
+    fs::write(root.join("praxis/zeta/GLOBAL.md"), "---\nid: praxis-zeta\norder: 3\nsource: /praxis/zeta/README.md\nstatus: draft\n---\n# Zeta\n\nZeta practice.\n").unwrap();
+    fs::write(root.join("praxis/alpha/.hidden.md"), "---\nid: hidden\norder: 4\nsource: /praxis/alpha/.hidden.md\nstatus: draft\n---\n# Hidden\n\nMust not assemble.\n").unwrap();
+
+    success(run(root, &["combine"]));
+    let combined = fs::read_to_string(root.join("AGENTS.md")).unwrap();
+    assert!(combined.contains("Alpha practice."));
+    assert!(combined.contains("Zeta practice."));
+    assert!(!combined.contains("Must not assemble."));
+    assert!(combined.find("## Vocabulary").unwrap() < combined.find("## Alpha").unwrap());
+    success(run(root, &["combine", "--check"]));
+
+    fs::remove_file(root.join("praxis/zeta/GLOBAL.md")).unwrap();
+    let output = run(root, &["combine", "--check"]);
+    assert!(!output.status.success());
+    assert!(String::from_utf8_lossy(&output.stderr).contains("stale"));
+
+    fs::remove_file(root.join("praxis/alpha/GLOBAL.md")).unwrap();
+    let output = run(root, &["combine", "--check"]);
+    assert!(!output.status.success());
+    assert!(String::from_utf8_lossy(&output.stderr).contains("matched no files"));
+}

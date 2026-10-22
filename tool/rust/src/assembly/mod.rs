@@ -34,7 +34,8 @@ use std::path::{Path, PathBuf};
 
 use thiserror::Error;
 
-use crate::manifest::{ManifestError, parse_manifest, plan_assembly};
+use crate::manifest::{ManifestError, expand_globs, parse_manifest, plan_assembly};
+use crate::nodepath;
 
 /// One ordered fragment's context cost, for human assembly reports.
 #[derive(Clone, Debug, PartialEq, Eq)]
@@ -156,7 +157,9 @@ pub fn assemble(
     };
     let manifest_file = cwd.join(manifest_path);
     let manifest = parse_manifest(&read_file(&manifest_file)?, manifest_name)?;
-    let plan = plan_assembly(&manifest, manifest_name, working_directory, override_path)?;
+    let expanded =
+        expand_globs(&manifest, &nodepath::dirname(&nodepath::resolve(working_directory, manifest_name)))?;
+    let plan = plan_assembly(&expanded, manifest_name, working_directory, override_path)?;
 
     let mut fragments = Vec::with_capacity(plan.fragments.len());
     let mut inputs = vec![PathBuf::from(&plan.manifest_path)];

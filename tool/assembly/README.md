@@ -11,6 +11,7 @@ sources:
   - { resource: "urn:opencode:session:ses_ed31715c4ffex2ROd2G2C617AF", title: Enriched whole-file assembly commission, Rust integration, and producer cutover }
   - { resource: /design/toolchain/enriched-assembly0.gpt6a.md, title: Current integration contract }
   - { resource: /design/toolchain/draft0.glm53m.md, title: Earlier Rust-first and combine-first direction }
+  - { resource: "opencode://ses_e9bc39334ffetsgyIAj4L0kp0A", title: Human names globbing; contract updated with pattern directives and the section-selection follow-on }
   - { resource: /constitution/agents-assembly.md, title: Legacy assembler contract and operational guarantees }
   - { resource: /design/rekon/agents-effect0.sol61xh.md, title: Prior Effect producer and validation evidence }
   - { resource: /design/context-compilation/repair0.gpt6a.md, title: Guidance recovery and independent coverage audit }
@@ -63,6 +64,28 @@ Every selected body's content is included. There is no subsection selection or
 automatic discovery. Fragment paths resolve from the manifest directory and
 must be normalized, relative, and free of `.`/`..` segments. Manifest output may
 deliberately use parent segments. The destination must not overwrite an input.
+
+### Globbing
+
+An entry containing a pattern metacharacter (`*`, `?`, `[`) is a **glob
+directive**: the walk finds matching files under the manifest directory and
+selects them in deterministic sorted order. The pattern is itself the
+declaration — expansion is deliberate selection, not unconstrained discovery:
+
+- every match is revalidated against the fragment path rules and never escapes
+  the manifest directory;
+- dotfiles and dot-directories are skipped, directories are never selected;
+- a pattern matching no files is a hard error, so stale directives fail loudly;
+- duplicate detection and output-overwrite protection run against the expanded
+  set (an explicit entry plus a glob matching the same file is rejected);
+- ordering is unchanged: numeric frontmatter `order` still composes the
+  document, and each matched file must carry its own full fragment frontmatter
+  — identity and provenance stay with owners.
+
+Section selection (`file#tag` entries addressing one section of a larger
+document, resolved through the heading/anchor indexing the ToC pass already
+builds) is a designed follow-on; it needs an entry grammar that supplies
+fragment identity for content whose file does not declare it.
 
 Each source declares `id` (lowercase kebab-case), integer `order`, root-relative
 `source`, and `status` (`draft` or `stable`) in YAML frontmatter. IDs and orders

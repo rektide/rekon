@@ -2,10 +2,18 @@
 //!
 //! Port of `tool/assembly/manifest.ts` (the Effect implementation), which is
 //! the production spelling of the [manifest contract]. Planning performs no
-//! I/O: the manifest declares fragment paths resolved from its own directory
+//! writes: the manifest declares fragment paths resolved from its own directory
 //! and an output that may deliberately target a parent, while a CLI override
 //! resolves from the invocation cwd. Directory names *starting* with `..`
 //! (for example `..notes/`) are fine; actual `.`/`..` segments are not.
+//!
+//! **Globbing:** a declared entry containing a pattern metacharacter (`*`,
+//! `?`, `[`) is a directive the walk expands: matching files under the
+//! manifest's directory are found and selected in deterministic sorted order.
+//! The pattern is itself the declaration — expansion is not unconstrained
+//! discovery — and every match must independently satisfy the fragment path
+//! rules. [`expand_globs`] performs this read-only walk and returns plain
+//! paths, so [`plan_assembly`] stays a pure planner over explicit entries.
 //!
 //! [manifest contract]: /constitution/agents-assembly.md
 
@@ -63,8 +71,95 @@ pub(crate) fn validate_fragment_path(path: &str) -> Result<(), String> {
     Ok(())
 }
 
+/// A declared entry containing a pattern metacharacter is a glob directive.
+pub fn is_pattern(entry: &str) -> bool {
+    entry.contains('*') || entry.contains('?') || entry.contains('[')
+}
+
+/// Expand glob directives into plain fragment paths, deterministically sorted.
+///
+/// The walk starts at `directory` (the manifest's own directory) and never
+/// leaves it: patterns already forbid `.`/`..` segments, and every match is
+/// revalidated against the fragment path rules after relativization. Dotfiles
+/// and dot-directories are skipped so `*` stays literal about hidden state.
+/// A pattern matching nothing is an error: a stale directive must fail loudly
+/// rather than silently assemble less context.
+pub fn expand_globs(manifest: &Manifest, directory: &str) -> Result<Manifest, ManifestError> {
+    if !manifest.fragments.iter().any(|f| is_pattern(f)) {
+        return Ok(manifest.clone());
+    }
+    let options = glob::MatchOptions {
+        case_sensitive: true,
+        require_literal_separator: true,
+        require_literal_leading_dot: true,
+    };
+    let mut fragments = Vec::with_capacity(manifest.fragments.len());
+    for entry in &manifest.fragments {
+        if !is_pattern(entry) {
+            fragments.push(entry.clone());
+            continue;
+        }
+        let pattern_root = nodepath::resolve(directory, entry);
+        let paths = glob::glob_with(&pattern_root, options).map_err(|error| {
+            ManifestError::GlobExpansion {
+                pattern: entry.clone(),
+                message: format!("invalid glob: {error}"),
+            }
+        })?;
+        let mut matches: Vec<String> = Vec::new();
+        for candidate in paths {
+            let candidate = candidate.map_err(|error| ManifestError::GlobExpansion {
+                pattern: entry.clone(),
+                message: format!("walk failed: {error}"),
+            })?;
+            let Ok(metadata) = std::fs::metadata(&candidate) else {
+                continue;
+            };
+            if !metadata.is_file() {
+                continue;
+            }
+            let Ok(relative) = candidate.strip_prefix(std::path::Path::new(directory)) else {
+                return Err(ManifestError::GlobExpansion {
+                    pattern: entry.clone(),
+                    message: format!(
+                        "match {} escapes the manifest directory {}",
+                        candidate.display(),
+                        directory
+                    ),
+                });
+            };
+            let relative = relative
+                .to_str()
+                .ok_or_else(|| ManifestError::GlobExpansion {
+                    pattern: entry.clone(),
+                    message: format!("match {} is not valid UTF-8", candidate.display()),
+                })?
+                .replace(std::path::MAIN_SEPARATOR, "/");
+            if let Err(reason) = validate_fragment_path(&relative) {
+                return Err(ManifestError::GlobExpansion {
+                    pattern: entry.clone(),
+                    message: format!("match {relative:?} is not a selectable fragment path: {reason}"),
+                });
+            }
+            matches.push(relative);
+        }
+        if matches.is_empty() {
+            return Err(ManifestError::GlobExpansion {
+                pattern: entry.clone(),
+                message: "glob directive matched no files".to_string(),
+            });
+        }
+        matches.sort();
+        fragments.extend(matches);
+    }
+    Ok(Manifest {
+        fragments,
+        output: manifest.output.clone(),
+    })
+}
+
 /// The explicit declaration; unknown auxiliary keys do not change selection.
-#[derive(Deserialize, Debug, PartialEq)]
+#[derive(Clone, Deserialize, Debug, PartialEq)]
 pub struct Manifest {
     pub fragments: Vec<String>,
     pub output: String,
@@ -84,6 +179,11 @@ pub enum ManifestError {
     OutputOverwritesInput {
         output: String,
         input: String,
+        message: String,
+    },
+    #[error("glob directive {pattern:?}: {message}")]
+    GlobExpansion {
+        pattern: String,
         message: String,
     },
 }
@@ -323,5 +423,85 @@ mod tests {
                 ManifestError::OutputOverwritesInput { .. }
             ));
         }
+    }
+
+    fn write_bundle(root: &std::path::Path, files: &[(&str, &str)]) {
+        for (path, body) in files {
+            let full = root.join(path);
+            std::fs::create_dir_all(full.parent().unwrap()).unwrap();
+            std::fs::write(full, body).unwrap();
+        }
+    }
+
+    #[test]
+    fn glob_directives_expand_deterministically_and_skip_directories_and_dotfiles() {
+        let root = tempfile::tempdir().unwrap();
+        write_bundle(
+            root.path(),
+            &[
+                ("praxis/zeta/GLOBAL.md", "z"),
+                ("praxis/alpha/GLOBAL.md", "a"),
+                ("praxis/alpha/notes.md", "not a fragment name, still matched by walk only if pattern says so"),
+                ("praxis/alpha/.hidden.md", "h"),
+                ("praxis/beta", ""), // a directory named like a file
+            ],
+        );
+        let raw = r#"{"fragments": ["praxis/*/GLOBAL.md"], "output": "AGENTS.md"}"#;
+        let manifest = parse_manifest(raw, "bundle/manifest.json").unwrap();
+        let expanded = expand_globs(&manifest, root.path().to_str().unwrap()).unwrap();
+        assert_eq!(
+            expanded.fragments,
+            vec!["praxis/alpha/GLOBAL.md".to_string(), "praxis/zeta/GLOBAL.md".to_string()]
+        );
+        assert_eq!(expanded.output, "AGENTS.md");
+    }
+
+    #[test]
+    fn plain_entries_pass_through_and_patterns_expand_in_place() {
+        let root = tempfile::tempdir().unwrap();
+        write_bundle(
+            root.path(),
+            &[
+                ("CONTEXT.md", "c"),
+                ("code/GLOBAL.md", "g"),
+                ("code/rust/GLOBAL.md", "r"),
+            ],
+        );
+        let raw = r#"{"fragments": ["CONTEXT.md", "code/**/GLOBAL.md"], "output": "AGENTS.md"}"#;
+        let manifest = parse_manifest(raw, "manifest.json").unwrap();
+        let expanded = expand_globs(&manifest, root.path().to_str().unwrap()).unwrap();
+        assert_eq!(
+            expanded.fragments,
+            vec![
+                "CONTEXT.md".to_string(),
+                "code/GLOBAL.md".to_string(),
+                "code/rust/GLOBAL.md".to_string()
+            ]
+        );
+    }
+
+    #[test]
+    fn glob_matching_nothing_fails_loudly() {
+        let root = tempfile::tempdir().unwrap();
+        let raw = r#"{"fragments": ["nope/*.md"], "output": "AGENTS.md"}"#;
+        let manifest = parse_manifest(raw, "manifest.json").unwrap();
+        let error = expand_globs(&manifest, root.path().to_str().unwrap()).unwrap_err();
+        assert!(
+            matches!(&error, ManifestError::GlobExpansion { pattern, message } if pattern == "nope/*.md" && message.contains("no files")),
+            "{error:?}"
+        );
+    }
+
+    #[test]
+    fn expanded_duplicates_are_rejected_by_planning() {
+        let root = tempfile::tempdir().unwrap();
+        write_bundle(root.path(), &[("code/GLOBAL.md", "g")]);
+        let raw = r#"{"fragments": ["code/GLOBAL.md", "code/G*.md"], "output": "AGENTS.md"}"#;
+        let manifest = parse_manifest(raw, "manifest.json").unwrap();
+        let expanded = expand_globs(&manifest, root.path().to_str().unwrap()).unwrap();
+        assert!(matches!(
+            plan_assembly(&expanded, "manifest.json", root.path().to_str().unwrap(), None).unwrap_err(),
+            ManifestError::DuplicateFragmentPath { .. }
+        ));
     }
 }
