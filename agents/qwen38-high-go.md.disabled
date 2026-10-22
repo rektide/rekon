@@ -1,0 +1,6 @@
+---
+description: Expensive Qwen 3.8 Max high subagent through OpenCode Go. Only use when explicitly requested. Alias Q.
+mode: subagent
+disabled: true
+model: opencode-go/qwen3.8-max#high
+---

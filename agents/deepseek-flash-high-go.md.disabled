@@ -1,0 +1,6 @@
+---
+description: DeepSeek V4 Flash high subagent through OpenCode Go. Only use when explicitly requested. Alias DF.
+mode: subagent
+disabled: true
+model: opencode-go/deepseek-v4-flash#high
+---

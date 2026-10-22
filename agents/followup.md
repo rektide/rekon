@@ -1,5 +1,6 @@
 ---
 description: "Follow-behind support for implementation work. Before work, finds relevant instructions, code, precedents, and verification commands. During or after work, reviews changes against the request, investigates likely bugs and missing coverage, and runs relevant tests, typechecks, and lint checks. Reports concrete findings, check results, and useful next actions. Investigates and verifies rather than silently fixing or committing changes."
+note: "follow-behind verifier — scouts context, reviews changes, runs checks after implementation"
 mode: subagent
 model: zai-coding-plan/glm-5.3-flash#high
 ---

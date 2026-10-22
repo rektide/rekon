@@ -1,0 +1,6 @@
+---
+description: DeepSeek V4 Pro high subagent through OpenCode Go. Only use when explicitly requested. Alias D.
+mode: subagent
+disabled: true
+model: opencode-go/deepseek-v4-pro#high
+---

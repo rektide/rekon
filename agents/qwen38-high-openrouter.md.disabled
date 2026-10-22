@@ -1,0 +1,6 @@
+---
+description: Expensive Qwen 3.8 Max high subagent through OpenRouter. Only use when explicitly requested. Alias QO.
+mode: subagent
+disabled: true
+model: openrouter/qwen/qwen3.8-max#high
+---
