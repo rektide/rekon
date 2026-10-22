@@ -94,7 +94,7 @@
           "fragment": "code/GLOBAL.md",
           "contains": [
             "plans carry no time estimates",
-            "domain-grouped project layouts",
+            "domain-grouped top-level dirs",
             "offer multiple plausible domain groupings",
             "Mermaid diagrams should use meaningful node identifiers",
             "Breaking changes are fine below 1.0"
