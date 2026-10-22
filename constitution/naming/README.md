@@ -9,7 +9,7 @@ generated: { by: "model:glm-5.3-max", at: 2026-09-02T16:04:25-04:00 }
 extensions:
   local_knowledge_id: agent-naming
 sources:
-  - { resource: "opencode://ses_e9bc39334ffetsgyIAj4L0kp0A", title: Move the short-codes table into the codes registry and point practice at it }
+  - { resource: "opencode://ses_e9bc39334ffetsgyIAj4L0kp0A", title: "Codes registry: table moved to /codes.md, then generated from self-describing codes/ files" }
 ---
 
 # Naming
@@ -18,8 +18,9 @@ sources:
 ## Short codes in use
 
 Use short names in conversation, headings, and tickets, and introduce them with
-an ordinary link to their home. The maintained registry is the
-[codes registry](/codes.md): each code maps to its target as a `file#tag`
+an ordinary link to their home. Each code is a self-describing file under
+[`codes/`](/codes); the maintained registry is generated from them into the
+[codes registry](/codes.md), mapping each code to its target as a `file#tag`
 string. This section keeps the recorded practice without loading the entire
 exploration wave.
 

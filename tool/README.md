@@ -11,6 +11,7 @@ sources:
   - { resource: "opencode://ses_ed31715c4ffex2ROd2G2C617AF", title: Integrate the enriched assembly and metadata toolchain }
   - { resource: "urn:opencode:session:ses_ed31715c4ffex2ROd2G2C617AF", title: Enriched Rust assembly, semantic ToC, scoped OKF extraction, and workspace integration }
   - { resource: "urn:opencode:session:ses_eec5afbf4ffeIhL6wxmv8NF3gn", title: Human distinction between shortcodes and directories and selection of one tool toolkit }
+  - { resource: "opencode://ses_e9bc39334ffetsgyIAj4L0kp0A", title: "Register the codes registry generator in the toolkit map" }
   - { resource: /constitution/structure.md#tools, title: Co-integrated tool layout }
   - { resource: /rekon.ts, title: Existing Gunshi command registry }
   - { resource: /constitution/agents-assembly.md, title: Existing GLOBAL-fragment assembler contract }
@@ -36,6 +37,7 @@ not abbreviated directory names.
 | [`toc`](/tool/toc/README.md) (Rust) | Generate/check a semantic navigation region over Markdown/MDX headings | Reusable `rekon-toc` library and `rekon toc FILE...`; final physical line ranges are optional. |
 | [`okf extract`](/tool/okf/README.md) (Rust) | Read file frontmatter and section-owned static OKF data | Reusable `rekon-markup` library; JSON/YAML output, optional owner-ID selection, no JavaScript evaluation. |
 | [`check`](/tool/check/README.md) (Rust) | Check selected Markdown structure, local links/anchors and optional knowledge provenance | Parser-based, read-only `rekon check FILE...`; `--okf` selects knowledge frontmatter and `--root` overrides bundle-root discovery. |
+| [`codes`](/tool/codes/README.md) (Rust) | Generate and byte-check the short-codes registry from self-describing `codes/` files | Runnable `rekon codes` under `tool/rust/`; deterministic sorted table, loud validation, atomic publish. Code files carry fragment fields so a code can contribute itself to assembly. |
 | [`t-interpolate`](/tool/cmd/interpolate.md) | Expand prompt-template arguments | Existing [Gunshi command](/src/command/interpolate.ts), with its guide now under `tool/cmd/`. Adaptation deferred pending a value call. |
 | [`t-install-commands`](/tool/cmd/install-commands.md) | Legacy prompt-command installer and its concurrency proposal | [Gunshi source](/src/command/install-commands.ts) remains; the prompt collection is [retired](/prompt/.archive/README.md). |
 
@@ -52,6 +54,7 @@ cargo run --quiet --manifest-path tool/rust/Cargo.toml -- combine --check
 cargo run --quiet --manifest-path tool/rust/Cargo.toml -- toc AGENTS.md --line-ranges --check
 cargo run --quiet --manifest-path tool/rust/Cargo.toml -- okf extract AGENTS.md --scope code
 cargo run --quiet --manifest-path tool/rust/Cargo.toml -- check --okf tool/GLOBAL.md tool/check/README.md
+cargo run --quiet --manifest-path tool/rust/Cargo.toml -- codes --check
 ```
 
 The [assembly guide](/tool/assembly/README.md) owns the format, output behavior,
