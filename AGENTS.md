@@ -2,34 +2,35 @@
 
 <nav id="rekon-toc" aria-label="Table of contents">
 
-- <a href="#glossary" data-line-start="44" data-line-end="51">Rekon working vocabulary</a>
-  - <a href="#glossary-names-homes-and-relations" data-line-start="52" data-line-end="129">Names, homes, and relations</a>
-  - <a href="#glossary-knowledge-work-and-learning" data-line-start="130" data-line-end="196">Knowledge, work, and learning</a>
-  - <a href="#glossary-action-and-delivery" data-line-start="197" data-line-end="281">Action and delivery</a>
-  - <a href="#glossary-honing-and-commitment" data-line-start="282" data-line-end="328">Honing and commitment</a>
-- <a href="#doc-constitution" data-line-start="329" data-line-end="335">Constitution — orient before acting</a>
-  - <a href="#doc-constitution-terms-in-use" data-line-start="336" data-line-end="356">Terms in use</a>
-  - <a href="#doc-constitution-use-the-sense-map" data-line-start="357" data-line-end="408">Use the sense-map</a>
-- <a href="#documentation-practice" data-line-start="409" data-line-end="412">Writing, independent waves, and document connections</a>
-  - <a href="#documentation-practice-durable-writing" data-line-start="413" data-line-end="445">Durable writing</a>
-  - <a href="#documentation-practice-waves" data-line-start="446" data-line-end="468">Waves</a>
-  - <a href="#documentation-practice-doc-pass" data-line-start="469" data-line-end="488">Doc-pass</a>
-- <a href="#collaboration" data-line-start="489" data-line-end="492">Collaboration and architectural stewardship</a>
-  - <a href="#collaboration-dispatch-and-return" data-line-start="493" data-line-end="511">Dispatch and return</a>
-  - <a href="#collaboration-stewardship" data-line-start="512" data-line-end="531">Stewardship</a>
-  - <a href="#collaboration-discussion" data-line-start="532" data-line-end="546">Discussion</a>
-- <a href="#workspace" data-line-start="547" data-line-end="573">Workspace, research locations, and shell</a>
-- <a href="#code" data-line-start="574" data-line-end="580">Code — stage and change discipline</a>
-  - <a href="#code-terms-in-use" data-line-start="581" data-line-end="595">Terms in use</a>
-  - <a href="#code-operating-weight" data-line-start="596" data-line-end="622">Operating weight</a>
-- <a href="#jj" data-line-start="623" data-line-end="650">jj and git operating rules</a>
-  - <a href="#jj-jj-waltz-workspaces" data-line-start="651" data-line-end="678">jj-waltz workspaces</a>
-- <a href="#javascript" data-line-start="679" data-line-end="712">JavaScript and TypeScript</a>
-- <a href="#rust" data-line-start="713" data-line-end="737">Rust conventions</a>
-- <a href="#beads" data-line-start="738" data-line-end="775">Beads — readable work IDs and deliberate tracking</a>
-- <a href="#praxis-ticket-pointers" data-line-start="776" data-line-end="791">Ticket pointers — ambient cues</a>
-- <a href="#refs" data-line-start="792" data-line-end="797">References</a>
-  - <a href="#refs-skills" data-line-start="798" data-line-end="830">Skills</a>
+- <a href="#glossary" data-line-start="45" data-line-end="52">Rekon working vocabulary</a>
+  - <a href="#glossary-names-homes-and-relations" data-line-start="53" data-line-end="130">Names, homes, and relations</a>
+  - <a href="#glossary-knowledge-work-and-learning" data-line-start="131" data-line-end="197">Knowledge, work, and learning</a>
+  - <a href="#glossary-action-and-delivery" data-line-start="198" data-line-end="282">Action and delivery</a>
+  - <a href="#glossary-honing-and-commitment" data-line-start="283" data-line-end="329">Honing and commitment</a>
+- <a href="#doc-constitution" data-line-start="330" data-line-end="336">Constitution — orient before acting</a>
+  - <a href="#doc-constitution-terms-in-use" data-line-start="337" data-line-end="357">Terms in use</a>
+  - <a href="#doc-constitution-use-the-sense-map" data-line-start="358" data-line-end="409">Use the sense-map</a>
+- <a href="#documentation-practice" data-line-start="410" data-line-end="413">Writing, independent waves, and document connections</a>
+  - <a href="#documentation-practice-durable-writing" data-line-start="414" data-line-end="446">Durable writing</a>
+  - <a href="#documentation-practice-waves" data-line-start="447" data-line-end="469">Waves</a>
+  - <a href="#documentation-practice-doc-pass" data-line-start="470" data-line-end="489">Doc-pass</a>
+- <a href="#collaboration" data-line-start="490" data-line-end="493">Collaboration and architectural stewardship</a>
+  - <a href="#collaboration-dispatch-and-return" data-line-start="494" data-line-end="512">Dispatch and return</a>
+  - <a href="#collaboration-stewardship" data-line-start="513" data-line-end="532">Stewardship</a>
+  - <a href="#collaboration-discussion" data-line-start="533" data-line-end="547">Discussion</a>
+- <a href="#workspace" data-line-start="548" data-line-end="574">Workspace, research locations, and shell</a>
+- <a href="#code" data-line-start="575" data-line-end="581">Code — stage and change discipline</a>
+  - <a href="#code-terms-in-use" data-line-start="582" data-line-end="596">Terms in use</a>
+  - <a href="#code-operating-weight" data-line-start="597" data-line-end="623">Operating weight</a>
+- <a href="#jj" data-line-start="624" data-line-end="651">jj and git operating rules</a>
+  - <a href="#jj-jj-waltz-workspaces" data-line-start="652" data-line-end="679">jj-waltz workspaces</a>
+- <a href="#javascript" data-line-start="680" data-line-end="713">JavaScript and TypeScript</a>
+- <a href="#rust" data-line-start="714" data-line-end="738">Rust conventions</a>
+- <a href="#beads" data-line-start="739" data-line-end="776">Beads — readable work IDs and deliberate tracking</a>
+- <a href="#praxis-ticket-pointers" data-line-start="777" data-line-end="792">Ticket pointers — ambient cues</a>
+- <a href="#tool" data-line-start="793" data-line-end="816">Tools — check knowledge documents</a>
+- <a href="#refs" data-line-start="817" data-line-end="822">References</a>
+  - <a href="#refs-skills" data-line-start="823" data-line-end="855">Skills</a>
 
 </nav>
 
@@ -783,6 +784,30 @@ bd close <issue-id> --reason "<completion and verification>"
   implementation report with the session ID for traceability. Keep it
   proportional; not every edit needs a ticket note.
 - Deeper practice: [Ticket pointers](/praxis/ticket-pointers/ticket-pointers0.glm53fx.md).
+</section>
+
+<section id="tool" data-source="/tool/GLOBAL.md">
+
+<Okf data={{"description":"Use Rekon's Rust document checker for local links, anchors, structure and optional knowledge provenance, alongside assembly freshness checks.","generated":{"at":"2026-10-22","by":"model:openai/gpt-6-astra#high"},"id":"tool","order":450,"resource":"/tool/GLOBAL.md","source":"/tool/README.md","sources":[{"resource":"opencode://ses_e9d711bbeffenO3yHUyxP2Bv1G","title":"Human requests Rust integration of the consumer-document checker; parent completes parser corrections, documentation and generated guidance after G reaches its usage limit"},{"resource":"opencode://ses_e9d67cd87ffe5fumUOB6NXo3Zn","title":"G develops the initial Rust check engine and CLI integration"},{"resource":"/tool/check/README.md","title":"Document checker commands, profiles and limits"}],"status":"draft","title":"Tools — check knowledge documents","type":"ContextFragment"}} />
+
+## Tools — check knowledge documents
+
+- After writing or revising Markdown, check the explicit owned files with Rekon's
+  Rust command. From any checkout:
+  `cargo run --quiet --manifest-path ~/src/rekon/tool/rust/Cargo.toml -- check FILE...`.
+  It checks local link/image targets, heading/explicit-ID anchors, fenced-code
+  closure and trailing whitespace outside code. It reads without editing files.
+- Add `--okf` for knowledge documents: require the selected frontmatter fields,
+  a native OpenCode session source and resolvable local `sources[].resource` paths.
+  Ordinary Markdown does not need this profile. The command recognizes session
+  authorities; the author must still supply the actual contributing session.
+- `/...` links resolve at the nearest `.jj`/`.git` ancestor of each checked file;
+  use `--root DIR` to select another bundle root. `file:///...` links retain their
+  absolute checkout meaning. Remote URLs and semantic claims are not verified.
+- For generated `AGENTS.md`, edit its source fragments and run `combine`, then
+  `combine --check`; document checking does not establish assembly freshness.
+  Use [the checker guide](/tool/check/README.md) for parser/profile limits and
+  [the toolkit map](/tool/README.md) for ToC, scoped OKF extraction and coverage tools.
 </section>
 
 <section id="refs" data-source="/refs/GLOBAL.md">

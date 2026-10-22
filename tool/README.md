@@ -7,6 +7,7 @@ tags: [rekon, tools, cli, structure]
 status: draft
 generated: { by: "model:gpt-6-astra", at: 2026-10-06 }
 sources:
+  - { resource: "opencode://ses_e9d711bbeffenO3yHUyxP2Bv1G", title: "Integrate the Rust Markdown checker and selected tool guidance after G's initial implementation" }
   - { resource: "opencode://ses_ed31715c4ffex2ROd2G2C617AF", title: Integrate the enriched assembly and metadata toolchain }
   - { resource: "urn:opencode:session:ses_ed31715c4ffex2ROd2G2C617AF", title: Enriched Rust assembly, semantic ToC, scoped OKF extraction, and workspace integration }
   - { resource: "urn:opencode:session:ses_eec5afbf4ffeIhL6wxmv8NF3gn", title: Human distinction between shortcodes and directories and selection of one tool toolkit }
@@ -34,6 +35,7 @@ not abbreviated directory names.
 | [`combine`](/tool/assembly/README.md) (Rust) | Regenerate `/AGENTS.md` from whole fragments, preserving scoped OKF metadata and semantic hierarchy | Rust workspace at [`tool/rust/`](/tool/rust/), binary `rekon`; final ToC pass and read-only byte check. **Production producer after the October 11 enriched-output cutover.** |
 | [`toc`](/tool/toc/README.md) (Rust) | Generate/check a semantic navigation region over Markdown/MDX headings | Reusable `rekon-toc` library and `rekon toc FILE...`; final physical line ranges are optional. |
 | [`okf extract`](/tool/okf/README.md) (Rust) | Read file frontmatter and section-owned static OKF data | Reusable `rekon-markup` library; JSON/YAML output, optional owner-ID selection, no JavaScript evaluation. |
+| [`check`](/tool/check/README.md) (Rust) | Check selected Markdown structure, local links/anchors and optional knowledge provenance | Parser-based, read-only `rekon check FILE...`; `--okf` selects knowledge frontmatter and `--root` overrides bundle-root discovery. |
 | [`t-interpolate`](/tool/cmd/interpolate.md) | Expand prompt-template arguments | Existing [Gunshi command](/src/command/interpolate.ts), with its guide now under `tool/cmd/`. Adaptation deferred pending a value call. |
 | [`t-install-commands`](/tool/cmd/install-commands.md) | Legacy prompt-command installer and its concurrency proposal | [Gunshi source](/src/command/install-commands.ts) remains; the prompt collection is [retired](/prompt/.archive/README.md). |
 
@@ -49,6 +51,7 @@ cargo run --quiet --manifest-path tool/rust/Cargo.toml -- combine
 cargo run --quiet --manifest-path tool/rust/Cargo.toml -- combine --check
 cargo run --quiet --manifest-path tool/rust/Cargo.toml -- toc AGENTS.md --line-ranges --check
 cargo run --quiet --manifest-path tool/rust/Cargo.toml -- okf extract AGENTS.md --scope code
+cargo run --quiet --manifest-path tool/rust/Cargo.toml -- check --okf tool/GLOBAL.md tool/check/README.md
 ```
 
 The [assembly guide](/tool/assembly/README.md) owns the format, output behavior,

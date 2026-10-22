@@ -11,6 +11,7 @@
     "code/rust/GLOBAL.md",
     "praxis/beads/GLOBAL.md",
     "praxis/ticket-pointers/GLOBAL.md",
+    "tool/GLOBAL.md",
     "refs/GLOBAL.md"
   ],
   "output": "AGENTS.md"
