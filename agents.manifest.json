@@ -1,6 +1,7 @@
 {
   "fragments": [
     "CONTEXT.md",
+    "codes/GLOSSARY.md",
     "constitution/GLOBAL.md",
     "constitution/practice/GLOBAL.md",
     "agents/GLOBAL.md",

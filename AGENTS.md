@@ -2,35 +2,36 @@
 
 <nav id="rekon-toc" aria-label="Table of contents">
 
-- <a href="#glossary" data-line-start="45" data-line-end="52">Rekon working vocabulary</a>
-  - <a href="#glossary-names-homes-and-relations" data-line-start="53" data-line-end="130">Names, homes, and relations</a>
-  - <a href="#glossary-knowledge-work-and-learning" data-line-start="131" data-line-end="197">Knowledge, work, and learning</a>
-  - <a href="#glossary-action-and-delivery" data-line-start="198" data-line-end="294">Action and delivery</a>
-  - <a href="#glossary-honing-and-commitment" data-line-start="295" data-line-end="341">Honing and commitment</a>
-- <a href="#doc-constitution" data-line-start="342" data-line-end="348">Constitution — orient before acting</a>
-  - <a href="#doc-constitution-terms-in-use" data-line-start="349" data-line-end="369">Terms in use</a>
-  - <a href="#doc-constitution-use-the-sense-map" data-line-start="370" data-line-end="421">Use the sense-map</a>
-- <a href="#documentation-practice" data-line-start="422" data-line-end="425">Writing, independent waves, and document connections</a>
-  - <a href="#documentation-practice-durable-writing" data-line-start="426" data-line-end="458">Durable writing</a>
-  - <a href="#documentation-practice-waves" data-line-start="459" data-line-end="481">Waves</a>
-  - <a href="#documentation-practice-doc-pass" data-line-start="482" data-line-end="501">Doc-pass</a>
-- <a href="#collaboration" data-line-start="502" data-line-end="505">Collaboration and architectural stewardship</a>
-  - <a href="#collaboration-dispatch-and-return" data-line-start="506" data-line-end="524">Dispatch and return</a>
-  - <a href="#collaboration-stewardship" data-line-start="525" data-line-end="544">Stewardship</a>
-  - <a href="#collaboration-discussion" data-line-start="545" data-line-end="559">Discussion</a>
-- <a href="#workspace" data-line-start="560" data-line-end="586">Workspace, research locations, and shell</a>
-- <a href="#code" data-line-start="587" data-line-end="593">Code — stage and change discipline</a>
-  - <a href="#code-terms-in-use" data-line-start="594" data-line-end="608">Terms in use</a>
-  - <a href="#code-operating-weight" data-line-start="609" data-line-end="635">Operating weight</a>
-- <a href="#jj" data-line-start="636" data-line-end="663">jj and git operating rules</a>
-  - <a href="#jj-jj-waltz-workspaces" data-line-start="664" data-line-end="691">jj-waltz workspaces</a>
-- <a href="#javascript" data-line-start="692" data-line-end="725">JavaScript and TypeScript</a>
-- <a href="#rust" data-line-start="726" data-line-end="750">Rust conventions</a>
-- <a href="#beads" data-line-start="751" data-line-end="788">Beads — readable work IDs and deliberate tracking</a>
-- <a href="#praxis-ticket-pointers" data-line-start="789" data-line-end="804">Ticket pointers — ambient cues</a>
-- <a href="#tool" data-line-start="805" data-line-end="828">Tools — check knowledge documents</a>
-- <a href="#refs" data-line-start="829" data-line-end="834">References</a>
-  - <a href="#refs-skills" data-line-start="835" data-line-end="867">Skills</a>
+- <a href="#glossary" data-line-start="46" data-line-end="53">Rekon working vocabulary</a>
+  - <a href="#glossary-names-homes-and-relations" data-line-start="54" data-line-end="131">Names, homes, and relations</a>
+  - <a href="#glossary-knowledge-work-and-learning" data-line-start="132" data-line-end="198">Knowledge, work, and learning</a>
+  - <a href="#glossary-action-and-delivery" data-line-start="199" data-line-end="295">Action and delivery</a>
+  - <a href="#glossary-honing-and-commitment" data-line-start="296" data-line-end="342">Honing and commitment</a>
+- <a href="#codes" data-line-start="343" data-line-end="373">Codes glossary</a>
+- <a href="#doc-constitution" data-line-start="374" data-line-end="380">Constitution — orient before acting</a>
+  - <a href="#doc-constitution-terms-in-use" data-line-start="381" data-line-end="401">Terms in use</a>
+  - <a href="#doc-constitution-use-the-sense-map" data-line-start="402" data-line-end="453">Use the sense-map</a>
+- <a href="#documentation-practice" data-line-start="454" data-line-end="457">Writing, independent waves, and document connections</a>
+  - <a href="#documentation-practice-durable-writing" data-line-start="458" data-line-end="490">Durable writing</a>
+  - <a href="#documentation-practice-waves" data-line-start="491" data-line-end="513">Waves</a>
+  - <a href="#documentation-practice-doc-pass" data-line-start="514" data-line-end="533">Doc-pass</a>
+- <a href="#collaboration" data-line-start="534" data-line-end="537">Collaboration and architectural stewardship</a>
+  - <a href="#collaboration-dispatch-and-return" data-line-start="538" data-line-end="556">Dispatch and return</a>
+  - <a href="#collaboration-stewardship" data-line-start="557" data-line-end="576">Stewardship</a>
+  - <a href="#collaboration-discussion" data-line-start="577" data-line-end="591">Discussion</a>
+- <a href="#workspace" data-line-start="592" data-line-end="618">Workspace, research locations, and shell</a>
+- <a href="#code" data-line-start="619" data-line-end="625">Code — stage and change discipline</a>
+  - <a href="#code-terms-in-use" data-line-start="626" data-line-end="640">Terms in use</a>
+  - <a href="#code-operating-weight" data-line-start="641" data-line-end="667">Operating weight</a>
+- <a href="#jj" data-line-start="668" data-line-end="695">jj and git operating rules</a>
+  - <a href="#jj-jj-waltz-workspaces" data-line-start="696" data-line-end="723">jj-waltz workspaces</a>
+- <a href="#javascript" data-line-start="724" data-line-end="757">JavaScript and TypeScript</a>
+- <a href="#rust" data-line-start="758" data-line-end="782">Rust conventions</a>
+- <a href="#beads" data-line-start="783" data-line-end="820">Beads — readable work IDs and deliberate tracking</a>
+- <a href="#praxis-ticket-pointers" data-line-start="821" data-line-end="836">Ticket pointers — ambient cues</a>
+- <a href="#tool" data-line-start="837" data-line-end="860">Tools — check knowledge documents</a>
+- <a href="#refs" data-line-start="861" data-line-end="866">References</a>
+  - <a href="#refs-skills" data-line-start="867" data-line-end="899">Skills</a>
 
 </nav>
 
@@ -333,6 +334,37 @@ conditions, not a synonym for acceptance or universal correctness.
 </dl>
 
 </section>
+</section>
+
+<section id="codes" data-source="/codes/GLOSSARY.md">
+
+<Okf data={{"description":"Short codes mapped to document-and-fragment targets (file#tag strings), generated from the self-describing files under codes/.","id":"codes","order":55,"resource":"/codes/GLOSSARY.md","source":"/codes/GLOSSARY.md","sources":[{"resource":"opencode://ses_e9bc39334ffetsgyIAj4L0kp0A","title":"Commission the codes glossary generator and direct it into ambient context"},{"resource":"/constitution/naming/README.md","title":"Short codes practice that owns code vocabulary"}],"status":"draft","tags":["codes","naming","aliases","glossary"],"title":"Codes glossary","type":"Glossary"}} />
+
+## Codes glossary
+
+This glossary is generated by Rust `rekon codes` from the `codes/` directory; do not edit it by hand.
+From Rekon's checkout, edit a code's file and run `cargo run --quiet --manifest-path tool/rust/Cargo.toml -- codes`.
+Add `--check` to that command to detect stale output or hand edits.
+
+Short codes are reference vocabulary, not directory names. Each code is a
+self-describing file under [`codes/`](/codes) carrying its own identity,
+target, and provenance; this table is the generated compact view, bundled
+into ambient context by the root manifest. Each entry maps a code to its
+target as a `file#tag` string: the document that owns the code's meaning,
+with the fragment when a section carries it. Scoped codes (`exp`, `res`)
+resolve to the [practice](/constitution/naming/README.md#short-codes)
+that defines their scoped use. Practice, rulings, and history live with
+[naming](/constitution/naming/README.md#short-codes); the files are the data.
+
+| Code | Target (`file#tag`) | Note |
+|---|---|---|
+| `cf` | [`file:///home/rektide/src/compfuzor/README.md`](file:///home/rektide/src/compfuzor/README.md) | The compfuzor project (`rektide/compfuzor`). Not scholarly “cf.” (compare) and not Cloudflare. |
+| `con` | [`/constitution/README.md`](/constitution/README.md) | Earlier cross-modal precedent: `rekon-con-naming` names the native Beads work; `con-structure` refers to the structure contract. |
+| `exp` | [`/constitution/naming/README.md#short-codes`](/constitution/naming/README.md#short-codes) | Scoped: `exploration` relative to the named topic, as in `con-naming-exp-…`; no fixed target document and no root `exp/` directory. |
+| `g` | [`/constitution/structure.md#global`](/constitution/structure.md#global) | Human-provided shortcode for global guidance; delivery and ownership recorded at the target. |
+| `p` | [`/praxis/README.md`](/praxis/README.md) | Human-provided shortcode. `p0` is the suggested opening “what we are / how we work” account, still being shaped. |
+| `res` | [`/constitution/naming/README.md#short-codes`](/constitution/naming/README.md#short-codes) | Scoped: `research` relative to the named topic; the containing topic supplies the concrete path. |
+| `t` | [`/tool/README.md`](/tool/README.md) | Human-provided shortcode; the physical toolkit directory is `tool/`, with entrypoints such as `tool/agents.ts`. |
 </section>
 
 <section id="doc-constitution" data-source="/constitution/GLOBAL.md">
