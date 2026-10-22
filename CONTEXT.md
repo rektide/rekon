@@ -22,6 +22,7 @@ sources:
   - { resource: /evidence/README.md, title: Evidence relationships and case stories }
   - { resource: /digest/README.md, title: Action and intent fronts }
   - { resource: "urn:opencode:session:ses_f2ebf7b1effewnCNYbBQ8Ewey2", title: Human adoption of the ⇄ maintained-link convention for the fronts thread }
+  - { resource: "opencode://ses_e9bc39334ffetsgyIAj4L0kp0A", title: Human names pattern-driven assembly expansion globbing; glossary entry added with the Rust producer capability }
 ---
 
 # Rekon working vocabulary
@@ -211,6 +212,18 @@ a reader to select deeper material.
 A domain-owned proposal for what should be present in
 shared ambient context, including the terms needed to interpret it.
 <em>Do not conflate with:</em> global authority or proof that the contribution is loaded.
+</dd>
+
+<dt><dfn id="globbing">Globbing</dfn></dt>
+<dd>
+Pattern-driven expansion of an assembly walk: a manifest entry containing glob
+metacharacters directs the walk to find and select matching files,
+deterministically sorted, each match still owning its own fragment metadata.
+The pattern is the declaration — selection stays deliberate, loud on stale
+directives, and checkable against published output.
+<em>Do not conflate with:</em> shell pathname expansion, or discovery that
+changes ambient content without a declaration.
+Practice: <a href="/tool/assembly/README.md#globbing">enriched assembly</a>.
 </dd>
 
 <dt><dfn id="context-pointer">Context pointer</dfn></dt>

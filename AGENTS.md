@@ -5,32 +5,32 @@
 - <a href="#glossary" data-line-start="45" data-line-end="52">Rekon working vocabulary</a>
   - <a href="#glossary-names-homes-and-relations" data-line-start="53" data-line-end="130">Names, homes, and relations</a>
   - <a href="#glossary-knowledge-work-and-learning" data-line-start="131" data-line-end="197">Knowledge, work, and learning</a>
-  - <a href="#glossary-action-and-delivery" data-line-start="198" data-line-end="282">Action and delivery</a>
-  - <a href="#glossary-honing-and-commitment" data-line-start="283" data-line-end="329">Honing and commitment</a>
-- <a href="#doc-constitution" data-line-start="330" data-line-end="336">Constitution — orient before acting</a>
-  - <a href="#doc-constitution-terms-in-use" data-line-start="337" data-line-end="357">Terms in use</a>
-  - <a href="#doc-constitution-use-the-sense-map" data-line-start="358" data-line-end="409">Use the sense-map</a>
-- <a href="#documentation-practice" data-line-start="410" data-line-end="413">Writing, independent waves, and document connections</a>
-  - <a href="#documentation-practice-durable-writing" data-line-start="414" data-line-end="446">Durable writing</a>
-  - <a href="#documentation-practice-waves" data-line-start="447" data-line-end="469">Waves</a>
-  - <a href="#documentation-practice-doc-pass" data-line-start="470" data-line-end="489">Doc-pass</a>
-- <a href="#collaboration" data-line-start="490" data-line-end="493">Collaboration and architectural stewardship</a>
-  - <a href="#collaboration-dispatch-and-return" data-line-start="494" data-line-end="512">Dispatch and return</a>
-  - <a href="#collaboration-stewardship" data-line-start="513" data-line-end="532">Stewardship</a>
-  - <a href="#collaboration-discussion" data-line-start="533" data-line-end="547">Discussion</a>
-- <a href="#workspace" data-line-start="548" data-line-end="574">Workspace, research locations, and shell</a>
-- <a href="#code" data-line-start="575" data-line-end="581">Code — stage and change discipline</a>
-  - <a href="#code-terms-in-use" data-line-start="582" data-line-end="596">Terms in use</a>
-  - <a href="#code-operating-weight" data-line-start="597" data-line-end="623">Operating weight</a>
-- <a href="#jj" data-line-start="624" data-line-end="651">jj and git operating rules</a>
-  - <a href="#jj-jj-waltz-workspaces" data-line-start="652" data-line-end="679">jj-waltz workspaces</a>
-- <a href="#javascript" data-line-start="680" data-line-end="713">JavaScript and TypeScript</a>
-- <a href="#rust" data-line-start="714" data-line-end="738">Rust conventions</a>
-- <a href="#beads" data-line-start="739" data-line-end="776">Beads — readable work IDs and deliberate tracking</a>
-- <a href="#praxis-ticket-pointers" data-line-start="777" data-line-end="792">Ticket pointers — ambient cues</a>
-- <a href="#tool" data-line-start="793" data-line-end="816">Tools — check knowledge documents</a>
-- <a href="#refs" data-line-start="817" data-line-end="822">References</a>
-  - <a href="#refs-skills" data-line-start="823" data-line-end="855">Skills</a>
+  - <a href="#glossary-action-and-delivery" data-line-start="198" data-line-end="294">Action and delivery</a>
+  - <a href="#glossary-honing-and-commitment" data-line-start="295" data-line-end="341">Honing and commitment</a>
+- <a href="#doc-constitution" data-line-start="342" data-line-end="348">Constitution — orient before acting</a>
+  - <a href="#doc-constitution-terms-in-use" data-line-start="349" data-line-end="369">Terms in use</a>
+  - <a href="#doc-constitution-use-the-sense-map" data-line-start="370" data-line-end="421">Use the sense-map</a>
+- <a href="#documentation-practice" data-line-start="422" data-line-end="425">Writing, independent waves, and document connections</a>
+  - <a href="#documentation-practice-durable-writing" data-line-start="426" data-line-end="458">Durable writing</a>
+  - <a href="#documentation-practice-waves" data-line-start="459" data-line-end="481">Waves</a>
+  - <a href="#documentation-practice-doc-pass" data-line-start="482" data-line-end="501">Doc-pass</a>
+- <a href="#collaboration" data-line-start="502" data-line-end="505">Collaboration and architectural stewardship</a>
+  - <a href="#collaboration-dispatch-and-return" data-line-start="506" data-line-end="524">Dispatch and return</a>
+  - <a href="#collaboration-stewardship" data-line-start="525" data-line-end="544">Stewardship</a>
+  - <a href="#collaboration-discussion" data-line-start="545" data-line-end="559">Discussion</a>
+- <a href="#workspace" data-line-start="560" data-line-end="586">Workspace, research locations, and shell</a>
+- <a href="#code" data-line-start="587" data-line-end="593">Code — stage and change discipline</a>
+  - <a href="#code-terms-in-use" data-line-start="594" data-line-end="608">Terms in use</a>
+  - <a href="#code-operating-weight" data-line-start="609" data-line-end="635">Operating weight</a>
+- <a href="#jj" data-line-start="636" data-line-end="663">jj and git operating rules</a>
+  - <a href="#jj-jj-waltz-workspaces" data-line-start="664" data-line-end="691">jj-waltz workspaces</a>
+- <a href="#javascript" data-line-start="692" data-line-end="725">JavaScript and TypeScript</a>
+- <a href="#rust" data-line-start="726" data-line-end="750">Rust conventions</a>
+- <a href="#beads" data-line-start="751" data-line-end="788">Beads — readable work IDs and deliberate tracking</a>
+- <a href="#praxis-ticket-pointers" data-line-start="789" data-line-end="804">Ticket pointers — ambient cues</a>
+- <a href="#tool" data-line-start="805" data-line-end="828">Tools — check knowledge documents</a>
+- <a href="#refs" data-line-start="829" data-line-end="834">References</a>
+  - <a href="#refs-skills" data-line-start="835" data-line-end="867">Skills</a>
 
 </nav>
 
@@ -40,7 +40,7 @@ Add `--check` to that command to detect stale output or hand edits.
 
 <section id="glossary" data-source="/CONTEXT.md">
 
-<Okf data={{"description":"Cross-topic terms linking the established naming and constitutional vocabulary to current action and context work; a working glossary, not a new naming law.","extensions":{"related_work":["rekon-con-naming","rekon-agents-maintenance"],"ticket":"rekon-phoenix"},"generated":{"at":"2026-09-06","by":"model:gpt-6-astra"},"id":"glossary","order":50,"resource":"/CONTEXT.md","source":"/CONTEXT.md","sources":[{"resource":"urn:opencode:session:ses_ed3000de2ffewvt4aDNZVE4O9R","title":"Semantic vocabulary conversion and MDX flow-boundary correction"},{"resource":"urn:opencode:session:ses_ed31715c4ffex2ROd2G2C617AF","title":"Semantic definition-list conversion commissioned for enriched assembly"},{"resource":"/constitution/naming/exploration/proposal4.glm53m.md","title":"Recorded human naming override"},{"resource":"/constitution/naming/exploration/draft2-discussion0.sol56x.md","title":"Shared glossary and remaining naming disagreements"},{"resource":"/design/skillify/README1.sol56x.md","title":"Capability and context vocabulary"},{"resource":"/constitution/README.md","title":"Knowledge modules and exposures"},{"resource":"/evidence/README.md","title":"Evidence relationships and case stories"},{"resource":"/digest/README.md","title":"Action and intent fronts"},{"resource":"urn:opencode:session:ses_f2ebf7b1effewnCNYbBQ8Ewey2","title":"Human adoption of the ⇄ maintained-link convention for the fronts thread"}],"status":"draft","tags":["glossary","naming","constitution","actions","context"],"title":"Rekon working vocabulary","type":"Glossary"}} />
+<Okf data={{"description":"Cross-topic terms linking the established naming and constitutional vocabulary to current action and context work; a working glossary, not a new naming law.","extensions":{"related_work":["rekon-con-naming","rekon-agents-maintenance"],"ticket":"rekon-phoenix"},"generated":{"at":"2026-09-06","by":"model:gpt-6-astra"},"id":"glossary","order":50,"resource":"/CONTEXT.md","source":"/CONTEXT.md","sources":[{"resource":"urn:opencode:session:ses_ed3000de2ffewvt4aDNZVE4O9R","title":"Semantic vocabulary conversion and MDX flow-boundary correction"},{"resource":"urn:opencode:session:ses_ed31715c4ffex2ROd2G2C617AF","title":"Semantic definition-list conversion commissioned for enriched assembly"},{"resource":"/constitution/naming/exploration/proposal4.glm53m.md","title":"Recorded human naming override"},{"resource":"/constitution/naming/exploration/draft2-discussion0.sol56x.md","title":"Shared glossary and remaining naming disagreements"},{"resource":"/design/skillify/README1.sol56x.md","title":"Capability and context vocabulary"},{"resource":"/constitution/README.md","title":"Knowledge modules and exposures"},{"resource":"/evidence/README.md","title":"Evidence relationships and case stories"},{"resource":"/digest/README.md","title":"Action and intent fronts"},{"resource":"urn:opencode:session:ses_f2ebf7b1effewnCNYbBQ8Ewey2","title":"Human adoption of the ⇄ maintained-link convention for the fronts thread"},{"resource":"opencode://ses_e9bc39334ffetsgyIAj4L0kp0A","title":"Human names pattern-driven assembly expansion globbing; glossary entry added with the Rust producer capability"}],"status":"draft","tags":["glossary","naming","constitution","actions","context"],"title":"Rekon working vocabulary","type":"Glossary"}} />
 
 ## Rekon working vocabulary
 
@@ -239,6 +239,18 @@ a reader to select deeper material.
 A domain-owned proposal for what should be present in
 shared ambient context, including the terms needed to interpret it.
 <em>Do not conflate with:</em> global authority or proof that the contribution is loaded.
+</dd>
+
+<dt><dfn id="globbing">Globbing</dfn></dt>
+<dd>
+Pattern-driven expansion of an assembly walk: a manifest entry containing glob
+metacharacters directs the walk to find and select matching files,
+deterministically sorted, each match still owning its own fragment metadata.
+The pattern is the declaration — selection stays deliberate, loud on stale
+directives, and checkable against published output.
+<em>Do not conflate with:</em> shell pathname expansion, or discovery that
+changes ambient content without a declaration.
+Practice: <a href="/tool/assembly/README.md#globbing">enriched assembly</a>.
 </dd>
 
 <dt><dfn id="context-pointer">Context pointer</dfn></dt>
