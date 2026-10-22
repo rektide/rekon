@@ -1,7 +1,7 @@
 ---
 id: javascript
 order: 250
-source: /js/README.md
+source: /code/js/README.md
 status: draft
 ---
 
@@ -26,7 +26,7 @@ status: draft
   accepted Rekon toolchain is Rust-first for new capabilities.
 - Compose `build:*`, `check:*`, and `fix:*` tasks using concurrently glob targets,
   such as `concurrently 'pnpm:check:*'`. Include a dev/watch target. Read
-  [the JS guide](/js/README.md) for vite-plus version/peer setup and full recipes.
+  [the JS guide](/code/js/README.md) for vite-plus version/peer setup and full recipes.
 - Executable modules should detect direct invocation, asynchronously realpath
   `process.argv[1]` before comparing it, then dynamically load their main module.
   Use `.then` so importing the module does not block on invocation detection;

@@ -146,7 +146,7 @@
       "note": "Restore everyday conventions; keep full script/toolchain recipes in js/README.md. Native project tooling and the later Rekon Rust-first decision remain explicit.",
       "checks": [
         {
-          "fragment": "js/GLOBAL.md",
+          "fragment": "code/js/GLOBAL.md",
           "contains": [
             "explicit .ts extensions",
             "node: prefix",
@@ -251,7 +251,7 @@
       "note": "Keep manifest-generation requirements with JavaScript tooling rather than create a one-rule module.",
       "checks": [
         {
-          "fragment": "js/GLOBAL.md",
+          "fragment": "code/js/GLOBAL.md",
           "contains": ["wc-toolkit", "descriptive JSDoc", "generate Custom Element Manifests"]
         }
       ]

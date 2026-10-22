@@ -2,7 +2,7 @@
 name: code
 type: Guide
 title: "Coding practice — commits, review, planning, posture"
-description: Use when writing code, making commits, responding to review comments, or writing plans and designs: commit discipline with jj, hunk-level selection, review protocol, planning rules, and coding posture. The common cases live here; nitty-gritty lives in the support docs.
+description: "Use when writing code, making commits, responding to review comments, or writing plans and designs: commit discipline with jj, hunk-level selection, review protocol, planning rules, and coding posture. The common cases live here; nitty-gritty lives in the support docs."
 resource: /code/README.md
 tags: [code, commits, review, planning, jj, jj-hunk, practice]
 status: draft
@@ -18,7 +18,7 @@ sources:
     resource: /vcs/jj/README.md
     title: "The jj+git knowledge home — owns history spelunking and rewrite mechanics"
   - id: js-precedent
-    resource: /js/README.md
+    resource: /code/js/README.md
     title: "The promoted-module precedent this collection follows"
   - { resource: "opencode://ses_eb9709a91ffeKsq7fEUI1ptzt2", title: Split project layout out of planning into its own practice with layout.md }
 ---
@@ -56,7 +56,7 @@ live global file is assembled from [`code/GLOBAL.md`](/code/GLOBAL.md).
 | [`rust/GLOBAL.md`](/code/rust/GLOBAL.md) | Rust tools, configuration precedence, and publishing; selected ambient guidance. |
 
 Neighbors, not members: [`vcs/jj/`](/vcs/jj/README.md) owns jj/git history
-spelunking and rewrite mechanics; [`js/`](/js/README.md) owns the
+spelunking and rewrite mechanics; [`code/js/`](/code/js/README.md) owns the
 JavaScript/TypeScript toolchain; [`constitution/`](/constitution/README.md)
 owns the documentation module system itself.
 
@@ -151,7 +151,7 @@ Depth: [`coding-advice.md`](/code/coding-advice.md).
   code section is [`/code/GLOBAL.md`](/code/GLOBAL.md).
 - [`/vcs/jj/README.md`](/vcs/jj/README.md) — jj+git reading and rewrite
   reference: revsets, templates, traps, forensics.
-- [`/js/README.md`](/js/README.md) — same promotion pattern, JavaScript
+- [`/code/js/README.md`](/code/js/README.md) — same promotion pattern, JavaScript
   domain.
 - [`/constitution/README.md`](/constitution/README.md) — the module
   contract (README canonical, `SKILL.md` symlink, `GLOBAL.md` fragment)
