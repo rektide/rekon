@@ -8,6 +8,8 @@ status: draft
 generated: { by: "model:glm-5.3-max", at: 2026-09-02T16:04:25-04:00 }
 extensions:
   local_knowledge_id: agent-naming
+sources:
+  - { resource: "opencode://ses_e9bc39334ffetsgyIAj4L0kp0A", title: Move the short-codes table into the codes registry and point practice at it }
 ---
 
 # Naming
@@ -16,17 +18,10 @@ extensions:
 ## Short codes in use
 
 Use short names in conversation, headings, and tickets, and introduce them with
-an ordinary link to their home. This table makes the recorded abbreviation
-practice usable without loading the entire exploration wave.
-
-| Code | Expansion / scope | Current use |
-|---|---|---|
-| `g` | Global | Human-provided shortcode for global guidance; see its [current delivery and ownership](/constitution/structure.md#global). |
-| `p` | [Praxis](/praxis/README.md) | Human-provided shortcode. `p0` is the suggested opening “what we are / how we work” account, still being shaped. |
-| `t` | [Tool](/tool/README.md) | Human-provided shortcode; the physical toolkit directory is `tool/`, with entrypoints such as `tool/agents.ts`. |
-| `con` | [Constitution](/constitution/README.md) | Earlier cross-modal precedent: `rekon-con-naming` names the native Beads work. `con-structure` refers to the [structure contract](/constitution/structure.md). |
-| `exp` | `exploration`, relative to the named topic | An abbreviation inside a scoped reference, as in the recorded `con-naming-exp-…` example. It does not imply a root `exp/` directory. |
-| `res` | `research`, relative to the named topic | Same scoped use; the containing topic supplies the concrete path. |
+an ordinary link to their home. The maintained registry is the
+[codes registry](/codes.md): each code maps to its target as a `file#tag`
+string. This section keeps the recorded practice without loading the entire
+exploration wave.
 
 **Shortcodes are reference vocabulary, not directory names.** The human
 explicitly corrected that conflation on October 6: `g` global, `p` praxis,
