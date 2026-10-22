@@ -10,7 +10,7 @@ use std::path::PathBuf;
 
 use clap::{Parser, Subcommand, ValueEnum};
 use rekon::DEFAULT_MANIFEST;
-use rekon::codes::{DEFAULT_CODES_DIR, DEFAULT_OUTPUT};
+use rekon::codes::{DEFAULT_AGENTS_DIR, DEFAULT_CODES_DIR, DEFAULT_OUTPUT};
 use rekon::coverage::{DEFAULT_COVERAGE, audit};
 
 type Error = Box<dyn std::error::Error>;
@@ -79,10 +79,13 @@ enum Command {
         #[arg(long, default_value = DEFAULT_COVERAGE)]
         coverage: PathBuf,
     },
-    /// Generate the codes registry table from self-describing code files
+    /// Generate the codes glossary table from self-describing code files
     Codes {
         #[arg(short, long, default_value = DEFAULT_CODES_DIR)]
         dir: PathBuf,
+        /// Agent-definition source directory; codes come from its *.md files
+        #[arg(short, long, default_value = DEFAULT_AGENTS_DIR)]
+        agents: PathBuf,
         #[arg(short, long, default_value = DEFAULT_OUTPUT)]
         output: PathBuf,
         /// Compare final bytes without writing
@@ -151,9 +154,10 @@ pub fn run(cli: Cli) -> Result {
         }
         Command::Codes {
             dir,
+            agents,
             output,
             check,
-        } => codes::run(&dir, &output, check),
+        } => codes::run(&dir, Some(&agents), &output, check),
     }
 }
 

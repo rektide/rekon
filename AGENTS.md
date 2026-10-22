@@ -7,31 +7,31 @@
   - <a href="#glossary-knowledge-work-and-learning" data-line-start="132" data-line-end="198">Knowledge, work, and learning</a>
   - <a href="#glossary-action-and-delivery" data-line-start="199" data-line-end="295">Action and delivery</a>
   - <a href="#glossary-honing-and-commitment" data-line-start="296" data-line-end="342">Honing and commitment</a>
-- <a href="#codes" data-line-start="343" data-line-end="373">Codes glossary</a>
-- <a href="#doc-constitution" data-line-start="374" data-line-end="380">Constitution — orient before acting</a>
-  - <a href="#doc-constitution-terms-in-use" data-line-start="381" data-line-end="401">Terms in use</a>
-  - <a href="#doc-constitution-use-the-sense-map" data-line-start="402" data-line-end="453">Use the sense-map</a>
-- <a href="#documentation-practice" data-line-start="454" data-line-end="457">Writing, independent waves, and document connections</a>
-  - <a href="#documentation-practice-durable-writing" data-line-start="458" data-line-end="490">Durable writing</a>
-  - <a href="#documentation-practice-waves" data-line-start="491" data-line-end="513">Waves</a>
-  - <a href="#documentation-practice-doc-pass" data-line-start="514" data-line-end="533">Doc-pass</a>
-- <a href="#collaboration" data-line-start="534" data-line-end="537">Collaboration and architectural stewardship</a>
-  - <a href="#collaboration-dispatch-and-return" data-line-start="538" data-line-end="556">Dispatch and return</a>
-  - <a href="#collaboration-stewardship" data-line-start="557" data-line-end="576">Stewardship</a>
-  - <a href="#collaboration-discussion" data-line-start="577" data-line-end="591">Discussion</a>
-- <a href="#workspace" data-line-start="592" data-line-end="618">Workspace, research locations, and shell</a>
-- <a href="#code" data-line-start="619" data-line-end="625">Code — stage and change discipline</a>
-  - <a href="#code-terms-in-use" data-line-start="626" data-line-end="640">Terms in use</a>
-  - <a href="#code-operating-weight" data-line-start="641" data-line-end="667">Operating weight</a>
-- <a href="#jj" data-line-start="668" data-line-end="695">jj and git operating rules</a>
-  - <a href="#jj-jj-waltz-workspaces" data-line-start="696" data-line-end="723">jj-waltz workspaces</a>
-- <a href="#javascript" data-line-start="724" data-line-end="757">JavaScript and TypeScript</a>
-- <a href="#rust" data-line-start="758" data-line-end="782">Rust conventions</a>
-- <a href="#beads" data-line-start="783" data-line-end="820">Beads — readable work IDs and deliberate tracking</a>
-- <a href="#praxis-ticket-pointers" data-line-start="821" data-line-end="836">Ticket pointers — ambient cues</a>
-- <a href="#tool" data-line-start="837" data-line-end="860">Tools — check knowledge documents</a>
-- <a href="#refs" data-line-start="861" data-line-end="866">References</a>
-  - <a href="#refs-skills" data-line-start="867" data-line-end="899">Skills</a>
+- <a href="#codes" data-line-start="343" data-line-end="389">Codes glossary</a>
+- <a href="#doc-constitution" data-line-start="390" data-line-end="396">Constitution — orient before acting</a>
+  - <a href="#doc-constitution-terms-in-use" data-line-start="397" data-line-end="417">Terms in use</a>
+  - <a href="#doc-constitution-use-the-sense-map" data-line-start="418" data-line-end="469">Use the sense-map</a>
+- <a href="#documentation-practice" data-line-start="470" data-line-end="473">Writing, independent waves, and document connections</a>
+  - <a href="#documentation-practice-durable-writing" data-line-start="474" data-line-end="506">Durable writing</a>
+  - <a href="#documentation-practice-waves" data-line-start="507" data-line-end="529">Waves</a>
+  - <a href="#documentation-practice-doc-pass" data-line-start="530" data-line-end="549">Doc-pass</a>
+- <a href="#collaboration" data-line-start="550" data-line-end="553">Collaboration and architectural stewardship</a>
+  - <a href="#collaboration-dispatch-and-return" data-line-start="554" data-line-end="572">Dispatch and return</a>
+  - <a href="#collaboration-stewardship" data-line-start="573" data-line-end="592">Stewardship</a>
+  - <a href="#collaboration-discussion" data-line-start="593" data-line-end="607">Discussion</a>
+- <a href="#workspace" data-line-start="608" data-line-end="634">Workspace, research locations, and shell</a>
+- <a href="#code" data-line-start="635" data-line-end="641">Code — stage and change discipline</a>
+  - <a href="#code-terms-in-use" data-line-start="642" data-line-end="656">Terms in use</a>
+  - <a href="#code-operating-weight" data-line-start="657" data-line-end="683">Operating weight</a>
+- <a href="#jj" data-line-start="684" data-line-end="711">jj and git operating rules</a>
+  - <a href="#jj-jj-waltz-workspaces" data-line-start="712" data-line-end="739">jj-waltz workspaces</a>
+- <a href="#javascript" data-line-start="740" data-line-end="773">JavaScript and TypeScript</a>
+- <a href="#rust" data-line-start="774" data-line-end="798">Rust conventions</a>
+- <a href="#beads" data-line-start="799" data-line-end="836">Beads — readable work IDs and deliberate tracking</a>
+- <a href="#praxis-ticket-pointers" data-line-start="837" data-line-end="852">Ticket pointers — ambient cues</a>
+- <a href="#tool" data-line-start="853" data-line-end="892">Tools — check knowledge documents</a>
+- <a href="#refs" data-line-start="893" data-line-end="898">References</a>
+  - <a href="#refs-skills" data-line-start="899" data-line-end="931">Skills</a>
 
 </nav>
 
@@ -338,7 +338,7 @@ conditions, not a synonym for acceptance or universal correctness.
 
 <section id="codes" data-source="/codes/GLOSSARY.md">
 
-<Okf data={{"description":"Short codes mapped to document-and-fragment targets (file#tag strings), generated from the self-describing files under codes/.","id":"codes","order":55,"resource":"/codes/GLOSSARY.md","source":"/codes/GLOSSARY.md","sources":[{"resource":"opencode://ses_e9bc39334ffetsgyIAj4L0kp0A","title":"Commission the codes glossary generator and direct it into ambient context"},{"resource":"/constitution/naming/README.md","title":"Short codes practice that owns code vocabulary"}],"status":"draft","tags":["codes","naming","aliases","glossary"],"title":"Codes glossary","type":"Glossary"}} />
+<Okf data={{"description":"Short terms (workspace codes and agent codes) mapped to file#tag targets, assembled from codes/ files and agents/ definitions.","id":"codes","order":55,"resource":"/codes/GLOSSARY.md","source":"/codes/GLOSSARY.md","sources":[{"resource":"opencode://ses_e9bc39334ffetsgyIAj4L0kp0A","title":"Commission the codes glossary generator and direct it into ambient context"},{"resource":"/constitution/naming/README.md","title":"Short codes practice that owns code vocabulary"}],"status":"draft","tags":["codes","naming","aliases","glossary"],"title":"Codes glossary","type":"Glossary"}} />
 
 ## Codes glossary
 
@@ -346,25 +346,41 @@ This glossary is generated by Rust `rekon codes` from the `codes/` directory; do
 From Rekon's checkout, edit a code's file and run `cargo run --quiet --manifest-path tool/rust/Cargo.toml -- codes`.
 Add `--check` to that command to detect stale output or hand edits.
 
-Short codes are reference vocabulary, not directory names. Each code is a
-self-describing file under [`codes/`](/codes) carrying its own identity,
-target, and provenance; this table is the generated compact view, bundled
-into ambient context by the root manifest. Each entry maps a code to its
-target as a `file#tag` string: the document that owns the code's meaning,
-with the fragment when a section carries it. Scoped codes (`exp`, `res`)
-resolve to the [practice](/constitution/naming/README.md#short-codes)
-that defines their scoped use. Practice, rulings, and history live with
-[naming](/constitution/naming/README.md#short-codes); the files are the data.
+Short terms (codes) are workspace reference vocabulary: short names
+usable in conversation, headings, and tickets, each mapped to a
+`file#tag` target that owns its meaning. They name concerns, not
+directories. Entries are documented either directly in this glossary or
+assembled from constituent parts: [`codes/`](/codes) files for workspace
+codes and [`agents/`](/agents) definitions for agent codes, whose
+frontmatter carries the row beside the functional prompt fields. Dormant
+definitions take a `.md.disabled` suffix and stay inert — defined but
+neither loaded nor listed. Single-letter codes are scarce and guarded.
+Practice, rulings, and history live with
+[naming](/constitution/naming/README.md#short-codes).
 
 | Code | Target (`file#tag`) | Note |
 |---|---|---|
-| `cf` | [`file:///home/rektide/src/compfuzor/README.md`](file:///home/rektide/src/compfuzor/README.md) | The compfuzor project (`rektide/compfuzor`). Not scholarly “cf.” (compare) and not Cloudflare. |
-| `con` | [`/constitution/README.md`](/constitution/README.md) | Earlier cross-modal precedent: `rekon-con-naming` names the native Beads work; `con-structure` refers to the structure contract. |
-| `exp` | [`/constitution/naming/README.md#short-codes`](/constitution/naming/README.md#short-codes) | Scoped: `exploration` relative to the named topic, as in `con-naming-exp-…`; no fixed target document and no root `exp/` directory. |
-| `g` | [`/constitution/structure.md#global`](/constitution/structure.md#global) | Human-provided shortcode for global guidance; delivery and ownership recorded at the target. |
-| `p` | [`/praxis/README.md`](/praxis/README.md) | Human-provided shortcode. `p0` is the suggested opening “what we are / how we work” account, still being shaped. |
-| `res` | [`/constitution/naming/README.md#short-codes`](/constitution/naming/README.md#short-codes) | Scoped: `research` relative to the named topic; the containing topic supplies the concrete path. |
-| `t` | [`/tool/README.md`](/tool/README.md) | Human-provided shortcode; the physical toolkit directory is `tool/`, with entrypoints such as `tool/agents.ts`. |
+| `astra-medium-gpt` | [`/agents/astra-medium-gpt.md`](/agents/astra-medium-gpt.md) | GPT-6 Astra medium — independent research and design waves (alias AM) |
+| `astra-xhigh-gpt` | [`/agents/astra-xhigh-gpt.md`](/agents/astra-xhigh-gpt.md) | GPT-6 Astra xhigh — advanced use only when specified |
+| `cf` | [`file:///home/rektide/src/compfuzor/README.md`](file:///home/rektide/src/compfuzor/README.md) | usually the compfuzor project (~/src/compfuzor); occasionally Cloudflare or scholarly “cf.” — read the context; canonical: github.com/rektide/compfuzor |
+| `con` | [`/constitution/README.md`](/constitution/README.md) | the constitution — rekon's broadest governing document; shared principles for naming, knowledge, work, and assembly; as a prefix it scopes references: con-naming (naming work), con-structure (structure contract) |
+| `exp` | [`/constitution/naming/README.md#short-codes`](/constitution/naming/README.md#short-codes) | a topic's early inquiry documents — drafts and proposals that precede any ruling; usually under the topic's exploration/ or design/ folder; example: con-naming-exp-… points into naming's exploration waves |
+| `flash` | [`/agents/flash.md`](/agents/flash.md) | GLM 5.3 Flash high — fast, well-described, well-known work (aliases F, FH) |
+| `flash-max` | [`/agents/flash-max.md`](/agents/flash-max.md) | GLM 5.3 Flash Max — a bit more deciding than flash (alias FX) |
+| `followup` | [`/agents/followup.md`](/agents/followup.md) | follow-behind verifier — scouts context, reviews changes, runs checks after implementation |
+| `g` | [`/agents/g.md`](/agents/g.md) | GLM 5.3 max — the default heavy lifter for most tasks (aliases glm-max-z, GX) |
+| `general` | [`/agents/general.md`](/agents/general.md) | capable general-purpose default for delegated work |
+| `gh` | [`/agents/gh.md`](/agents/gh.md) | GLM 5.3 high — capable independent doer for partially formed work (alias glm-high-z) |
+| `gl` | [`/agents/gl.md`](/agents/gl.md) | GLM 5.3 low — deliberately cheap and light; usually prefer g or gh |
+| `luna-medium-gpt` | [`/agents/luna-medium-gpt.md`](/agents/luna-medium-gpt.md) | GPT-6 Luna medium — only when explicitly requested |
+| `luna-xhigh-gpt` | [`/agents/luna-xhigh-gpt.md`](/agents/luna-xhigh-gpt.md) | GPT-6 Luna xhigh — only when explicitly requested |
+| `prax` | [`/praxis/README.md`](/praxis/README.md) | praxis — the practice domains: repeatable ways of working; bookmarking, beads, fronts, ticket pointers; a practice joins purpose, procedure, evidence, and reflection |
+| `res` | [`/constitution/naming/README.md#short-codes`](/constitution/naming/README.md#short-codes) | a topic's gathered research material; scope comes from the named topic, not a fixed directory |
+| `rkt` | [`/tool/README.md`](/tool/README.md) | rk's tool — the rekon CLI; Markdown maintenance and verification for any repo, not just rekon's; commands: combine, codes, toc, okf extract, check, audit-context; runs from any checkout via --manifest-path |
+| `sol-high-gpt` | [`/agents/sol-high-gpt.md`](/agents/sol-high-gpt.md) | GPT-6.1 Sol high — more reasoning than medium without xhigh depth |
+| `sol-max-gpt` | [`/agents/sol-max-gpt.md`](/agents/sol-max-gpt.md) | GPT-6.1 Sol max — complex analysis reconciling many documents |
+| `sol-medium-gpt` | [`/agents/sol-medium-gpt.md`](/agents/sol-medium-gpt.md) | GPT-6.1 Sol medium — independent pursuit of partially formed tasks |
+| `sol-xhigh-gpt` | [`/agents/sol-xhigh-gpt.md`](/agents/sol-xhigh-gpt.md) | GPT-6.1 Sol xhigh — tasks needing real thinking; use sparingly |
 </section>
 
 <section id="doc-constitution" data-source="/constitution/GLOBAL.md">
@@ -832,15 +848,30 @@ bd close <issue-id> --reason "<completion and verification>"
 
 <section id="tool" data-source="/tool/GLOBAL.md">
 
-<Okf data={{"description":"Use Rekon's Rust document checker for local links, anchors, structure and optional knowledge provenance, alongside assembly freshness checks.","generated":{"at":"2026-10-22","by":"model:openai/gpt-6-astra#high"},"id":"tool","order":450,"resource":"/tool/GLOBAL.md","source":"/tool/README.md","sources":[{"resource":"opencode://ses_e9d711bbeffenO3yHUyxP2Bv1G","title":"Human requests Rust integration of the consumer-document checker; parent completes parser corrections, documentation and generated guidance after G reaches its usage limit"},{"resource":"opencode://ses_e9d67cd87ffe5fumUOB6NXo3Zn","title":"G develops the initial Rust check engine and CLI integration"},{"resource":"/tool/check/README.md","title":"Document checker commands, profiles and limits"}],"status":"draft","title":"Tools — check knowledge documents","type":"ContextFragment"}} />
+<Okf data={{"description":"Quick rkt recipes for Markdown checking and generated-output freshness, plus the checker's profiles, link resolution, and freshness-vs-coverage distinctions.","generated":{"at":"2026-10-22","by":"model:openai/gpt-6-astra#high"},"id":"tool","order":450,"resource":"/tool/GLOBAL.md","source":"/tool/README.md","sources":[{"resource":"opencode://ses_e9d711bbeffenO3yHUyxP2Bv1G","title":"Human requests Rust integration of the consumer-document checker; parent completes parser corrections, documentation and generated guidance after G reaches its usage limit"},{"resource":"opencode://ses_e9d67cd87ffe5fumUOB6NXo3Zn","title":"G develops the initial Rust check engine and CLI integration"},{"resource":"/tool/check/README.md","title":"Document checker commands, profiles and limits"},{"resource":"opencode://ses_e9bc39334ffetsgyIAj4L0kp0A","title":"Human direction to document the toolkit's offerings with quick usage examples under the rkt code"}],"status":"draft","title":"Tools — check knowledge documents","type":"ContextFragment"}} />
 
 ## Tools — check knowledge documents
 
-- After writing or revising Markdown, check the explicit owned files with Rekon's
-  Rust command. From any checkout:
-  `cargo run --quiet --manifest-path ~/src/rekon/tool/rust/Cargo.toml -- check FILE...`.
-  It checks local link/image targets, heading/explicit-ID anchors, fenced-code
-  closure and trailing whitespace outside code. It reads without editing files.
+**`rkt` — quick recipes from any checkout.** Verify Markdown you just wrote,
+or check generated output, in seconds:
+
+```sh
+R="cargo run --quiet --manifest-path ~/src/rekon/tool/rust/Cargo.toml"
+$R check FILE...                      # links, anchors, fences, whitespace
+$R check --okf DOC.md                 # + frontmatter and session provenance
+$R combine --check                    # AGENTS.md fresh?
+$R codes --check                      # codes glossary fresh?
+$R toc FILE --check                   # nav region fresh?
+$R audit-context                      # declared coverage of the bundle
+```
+
+Checks are read-only; `--check` never writes. Use `rkt` for Markdown
+maintenance in any repo, not just rekon's.
+
+- After writing or revising Markdown, check the explicit owned files with
+  `check FILE...` (from any checkout via the `$R` alias above). It verifies
+  local link/image targets, heading/explicit-ID anchors, fenced-code closure
+  and trailing whitespace outside code, without editing files.
 - Add `--okf` for knowledge documents: require the selected frontmatter fields,
   a native OpenCode session source and resolvable local `sources[].resource` paths.
   Ordinary Markdown does not need this profile. The command recognizes session
@@ -851,7 +882,8 @@ bd close <issue-id> --reason "<completion and verification>"
 - For generated `AGENTS.md`, edit its source fragments and run `combine`, then
   `combine --check`; document checking does not establish assembly freshness.
   Use [the checker guide](/tool/check/README.md) for parser/profile limits and
-  [the toolkit map](/tool/README.md) for ToC, scoped OKF extraction and coverage tools.
+  [the toolkit map](/tool/README.md) for ToC, scoped OKF extraction, the codes
+  glossary, and coverage tools.
 </section>
 
 <section id="refs" data-source="/refs/GLOBAL.md">

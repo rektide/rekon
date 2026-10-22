@@ -18,11 +18,22 @@ sources:
 ## Short codes in use
 
 Use short names in conversation, headings, and tickets, and introduce them with
-an ordinary link to their home. Each code is a self-describing file under
-[`codes/`](/codes); the generated [codes glossary](/codes/GLOSSARY.md) maps
-each code to its target as a `file#tag` string and is bundled into ambient
-context by the root manifest. This section keeps the recorded practice without
-loading the entire exploration wave.
+an ordinary link to their home. Each code is a self-describing file — workspace
+codes under [`codes/`](/codes), agent codes as the definitions under
+[`agents/`](/agents) — and the generated [codes glossary](/codes/GLOSSARY.md)
+maps each code to its target as a `file#tag` string. Notes compose from
+priority-ordered `points:` (or an agent's `note:`), so a row leads with its
+core fact. Dormant agent definitions take a `.md.disabled` suffix: defined but
+inert, neither loaded nor listed. This section keeps the recorded practice
+without loading the entire exploration wave.
+
+**October 22 ruling — single letters are guarded treasures.** `g` is reclaimed
+for the GLM-max agent (global guidance loses the letter pending a better name
+for that umbrella); `t` becomes `rkt` (rk's tool); `p` becomes `prax`. `con`
+keeps its own code as the broadest governing document; `cf` stays, softened to
+"usually". An `rk` prefix applies selectively to rekon-owned codes by breadth.
+The earlier October 6 correction (`g` global, `p` praxis, `t` tool) stands as
+history above.
 
 **Shortcodes are reference vocabulary, not directory names.** The human
 explicitly corrected that conflation on October 6: `g` global, `p` praxis,

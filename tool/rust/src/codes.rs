@@ -20,6 +20,11 @@ use thiserror::Error;
 /// Default source directory, relative to the invocation cwd.
 pub const DEFAULT_CODES_DIR: &str = "codes";
 
+/// Default agent-definition source directory; each `<code>.md` is its own
+/// code, with the glossary row supplied by a `note:` frontmatter field beside
+/// opencode's functional fields.
+pub const DEFAULT_AGENTS_DIR: &str = "agents";
+
 /// Default generated glossary, relative to the invocation cwd. It lives inside
 /// the source directory and is a valid assembly fragment, bundled into
 /// `AGENTS.md` by the root manifest.
@@ -27,6 +32,10 @@ pub const DEFAULT_OUTPUT: &str = "codes/GLOSSARY.md";
 
 /// Reserved generated-output name: never parsed as a code file.
 pub const RESERVED_GLOSSARY_NAME: &str = "GLOSSARY.md";
+
+/// Reserved names in the agents directory: fragments and generated files,
+/// never agent codes.
+pub const RESERVED_AGENT_NAMES: [&str; 1] = ["GLOBAL.md"];
 
 /// Visible generated-file ownership prose.
 pub const GENERATED_NOTICE: &str = concat!(
@@ -43,14 +52,16 @@ pub const GENERATED_NOTICE: &str = concat!(
 pub const GLOSSARY_ID: &str = "codes";
 pub const GLOSSARY_ORDER: i64 = 55;
 
-/// One code's registry row, parsed and validated from its file.
+/// One code's glossary row, parsed and validated from its file.
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct CodeEntry {
-    /// Registry-relative file path as read (for error context).
+    /// Source-directory-relative file path (for error context).
     pub file: String,
     pub code: String,
     pub target: String,
-    pub description: String,
+    /// Rendered row note: `points:` joined by "; " when declared, else the
+    /// `description` (codes/) or `note:` (agents/) field.
+    pub note: String,
 }
 
 /// A completed, write-free registry generation.
@@ -74,6 +85,12 @@ pub enum CodesError {
     Frontmatter { file: String, message: String },
     #[error("{file}: {message}")]
     Validation { file: String, message: String },
+    #[error("code {code:?} declared in both {file} and {prior}")]
+    DuplicateCode {
+        code: String,
+        file: String,
+        prior: String,
+    },
     #[error("failed to publish {output}: {source}")]
     Publication {
         output: PathBuf,
@@ -82,8 +99,8 @@ pub enum CodesError {
     },
 }
 
-/// Read and validate every code file directly under `dir`, sorted by filename.
-pub fn parse_entries(dir: &Path) -> Result<Vec<CodeEntry>, CodesError> {
+/// List the Markdown code/agent sources directly under `dir`, sorted.
+fn markdown_sources(dir: &Path) -> Result<Vec<PathBuf>, CodesError> {
     let mut names: Vec<PathBuf> = fs::read_dir(dir)
         .map_err(|source| CodesError::Io {
             path: dir.display().to_string(),
@@ -101,42 +118,42 @@ pub fn parse_entries(dir: &Path) -> Result<Vec<CodeEntry>, CodesError> {
         })
         .collect();
     names.sort();
+    Ok(names)
+}
 
+fn read_frontmatter(path: &Path, file: &str) -> Result<Value, CodesError> {
+    let raw = fs::read_to_string(path).map_err(|source| CodesError::Io {
+        path: file.to_string(),
+        source,
+    })?;
+    let frontmatter = rekon_markup::parse_frontmatter(&raw)
+        .map_err(|error| CodesError::Frontmatter { file: file.into(), message: error.to_string() })?;
+    frontmatter.metadata.ok_or_else(|| CodesError::Validation {
+        file: file.into(),
+        message: "code file must declare frontmatter (code, target, description)".into(),
+    })
+}
+
+/// Read and validate every code file directly under `dir`, sorted by filename.
+pub fn parse_entries(dir: &Path) -> Result<Vec<CodeEntry>, CodesError> {
     let mut entries = Vec::new();
-    for path in names {
+    for path in markdown_sources(dir)? {
         let file = path
             .file_name()
             .and_then(|name| name.to_str())
             .unwrap_or_default()
             .to_string();
         let stem = file.trim_end_matches(".md").to_string();
-        let raw = fs::read_to_string(&path).map_err(|source| CodesError::Io {
-            path: file.clone(),
-            source,
-        })?;
-        let frontmatter = rekon_markup::parse_frontmatter(&raw).map_err(|error| {
-            CodesError::Frontmatter {
-                file: file.clone(),
-                message: error.to_string(),
-            }
-        })?;
-        let Some(metadata) = frontmatter.metadata else {
-            return Err(CodesError::Validation {
-                file,
-                message: "code file must declare frontmatter (code, target, description)".into(),
-            });
-        };
+        let metadata = read_frontmatter(&path, &file)?;
         let field = |key: &str| -> Result<String, CodesError> {
             metadata
                 .get(key)
                 .and_then(Value::as_str)
                 .map(str::to_string)
                 .filter(|value| !value.trim().is_empty())
-                .ok_or_else(|| {
-                    CodesError::Validation {
-                        file: file.clone(),
-                        message: format!("code file must declare a non-empty string {key:?}"),
-                    }
+                .ok_or_else(|| CodesError::Validation {
+                    file: file.clone(),
+                    message: format!("code file must declare a non-empty string {key:?}"),
                 })
         };
         let code = field("code")?;
@@ -154,7 +171,26 @@ pub fn parse_entries(dir: &Path) -> Result<Vec<CodeEntry>, CodesError> {
             file: file.clone(),
             message,
         })?;
-        for (label, value) in [("code", &code), ("target", &target), ("description", &description)] {
+        // Priority-ordered points override the description as the row note;
+        // the description stays as the OKF identity field.
+        let note = match metadata.get("points").and_then(Value::as_array) {
+            Some(points) => {
+                let joined: Vec<&str> = points
+                    .iter()
+                    .map(|point| {
+                        point.as_str().filter(|p| !p.trim().is_empty()).ok_or_else(|| {
+                            CodesError::Validation {
+                                file: file.clone(),
+                                message: "points must be an array of non-empty strings".into(),
+                            }
+                        })
+                    })
+                    .collect::<Result<_, _>>()?;
+                joined.join("; ")
+            }
+            None => description,
+        };
+        for (label, value) in [("code", &code), ("target", &target), ("note", &note)] {
             if value.contains('|') {
                 return Err(CodesError::Validation {
                     file,
@@ -166,13 +202,55 @@ pub fn parse_entries(dir: &Path) -> Result<Vec<CodeEntry>, CodesError> {
             file,
             code,
             target,
-            description,
+            note,
         });
     }
     if entries.is_empty() {
         return Err(CodesError::Validation {
             file: dir.display().to_string(),
             message: "codes directory contains no code files".into(),
+        });
+    }
+    Ok(entries)
+}
+
+/// Read every agent definition directly under `dir`: the file stem is the
+/// code, the target is the definition itself, and the glossary row comes from
+/// a `note:` field beside opencode's functional frontmatter. Dormant
+/// definitions carry a `.md.disabled` suffix and never match the `*.md` walk.
+pub fn parse_agents(dir: &Path) -> Result<Vec<CodeEntry>, CodesError> {
+    let mut entries = Vec::new();
+    for path in markdown_sources(dir)? {
+        let file = path
+            .file_name()
+            .and_then(|name| name.to_str())
+            .unwrap_or_default()
+            .to_string();
+        if RESERVED_AGENT_NAMES.contains(&file.as_str()) {
+            continue;
+        }
+        let stem = file.trim_end_matches(".md").to_string();
+        let metadata = read_frontmatter(&path, &file)?;
+        let note = metadata
+            .get("note")
+            .and_then(Value::as_str)
+            .map(str::to_string)
+            .filter(|value| !value.trim().is_empty())
+            .ok_or_else(|| CodesError::Validation {
+                file: file.clone(),
+                message: "agent definition must declare a non-empty string \"note\" for its glossary row".into(),
+            })?;
+        if note.contains('|') {
+            return Err(CodesError::Validation {
+                file,
+                message: "note must not contain a table pipe character".into(),
+            });
+        }
+        entries.push(CodeEntry {
+            file,
+            code: stem.clone(),
+            target: format!("/agents/{stem}.md"),
+            note,
         });
     }
     Ok(entries)
@@ -203,7 +281,7 @@ pub fn render_registry(entries: &[CodeEntry]) -> String {
         .map(|entry| {
             format!(
                 "| `{}` | [`{}`]({}) | {} |",
-                entry.code, entry.target, entry.target, entry.description
+                entry.code, entry.target, entry.target, entry.note
             )
         })
         .collect();
@@ -212,7 +290,7 @@ pub fn render_registry(entries: &[CodeEntry]) -> String {
             "---\n",
             "type: Glossary\n",
             "title: Codes glossary\n",
-            "description: Short codes mapped to document-and-fragment targets (file#tag strings), generated from the self-describing files under codes/.\n",
+            "description: Short terms (workspace codes and agent codes) mapped to file#tag targets, assembled from codes/ files and agents/ definitions.\n",
             "id: {}\n",
             "order: {}\n",
             "source: /codes/GLOSSARY.md\n",
@@ -225,15 +303,17 @@ pub fn render_registry(entries: &[CodeEntry]) -> String {
             "---\n\n",
             "# Codes glossary\n\n",
             "{}\n\n",
-            "Short codes are reference vocabulary, not directory names. Each code is a\n",
-            "self-describing file under [`codes/`](/codes) carrying its own identity,\n",
-            "target, and provenance; this table is the generated compact view, bundled\n",
-            "into ambient context by the root manifest. Each entry maps a code to its\n",
-            "target as a `file#tag` string: the document that owns the code's meaning,\n",
-            "with the fragment when a section carries it. Scoped codes (`exp`, `res`)\n",
-            "resolve to the [practice](/constitution/naming/README.md#short-codes)\n",
-            "that defines their scoped use. Practice, rulings, and history live with\n",
-            "[naming](/constitution/naming/README.md#short-codes); the files are the data.\n\n",
+            "Short terms (codes) are workspace reference vocabulary: short names\n",
+            "usable in conversation, headings, and tickets, each mapped to a\n",
+            "`file#tag` target that owns its meaning. They name concerns, not\n",
+            "directories. Entries are documented either directly in this glossary or\n",
+            "assembled from constituent parts: [`codes/`](/codes) files for workspace\n",
+            "codes and [`agents/`](/agents) definitions for agent codes, whose\n",
+            "frontmatter carries the row beside the functional prompt fields. Dormant\n",
+            "definitions take a `.md.disabled` suffix and stay inert — defined but\n",
+            "neither loaded nor listed. Single-letter codes are scarce and guarded.\n",
+            "Practice, rulings, and history live with\n",
+            "[naming](/constitution/naming/README.md#short-codes).\n\n",
             "| Code | Target (`file#tag`) | Note |\n",
             "|---|---|---|\n",
             "{}\n"
@@ -246,11 +326,31 @@ pub fn render_registry(entries: &[CodeEntry]) -> String {
 }
 
 /// Parse, validate, and render — no writes. The output must not alias an input.
-pub fn generate(dir: &Path, output: &Path) -> Result<CodesGeneration, CodesError> {
-    let entries = parse_entries(dir)?;
-    let mut inputs = Vec::with_capacity(entries.len());
+pub fn generate(codes_dir: &Path, agents_dir: Option<&Path>, output: &Path) -> Result<CodesGeneration, CodesError> {
+    let mut entries = parse_entries(codes_dir)?;
+    let mut inputs = Vec::with_capacity(entries.len() + 8);
     for entry in &entries {
-        inputs.push(dir.join(&entry.file));
+        inputs.push(codes_dir.join(&entry.file));
+    }
+    if let Some(agents_dir) = agents_dir
+        && agents_dir.is_dir()
+    {
+        let agents = parse_agents(agents_dir)?;
+        for entry in &agents {
+            inputs.push(agents_dir.join(&entry.file));
+        }
+        entries.extend(agents);
+    }
+    let mut seen: std::collections::HashMap<&str, &str> = std::collections::HashMap::new();
+    for entry in &entries {
+        if let Some(prior) = seen.get(entry.code.as_str()) {
+            return Err(CodesError::DuplicateCode {
+                code: entry.code.clone(),
+                file: entry.file.clone(),
+                prior: prior.to_string(),
+            });
+        }
+        seen.insert(&entry.code, &entry.file);
     }
     let output = fs::canonicalize(output).unwrap_or_else(|_| output.to_path_buf());
     for input in &inputs {
@@ -258,7 +358,7 @@ pub fn generate(dir: &Path, output: &Path) -> Result<CodesGeneration, CodesError
             return Err(CodesError::Validation {
                 file: input.display().to_string(),
                 message: format!(
-                    "registry output {} must not overwrite a code file",
+                    "glossary output {} must not overwrite a source file",
                     output.display()
                 ),
             });
@@ -403,7 +503,7 @@ mod tests {
     fn output_must_not_alias_a_code_file() {
         let root = bundle(&[("g.md", &code_file("g", "/tool/README.md", "d"))]);
         let dir = root.path().join("codes");
-        let error = generate(&dir, &dir.join("g.md")).unwrap_err();
+        let error = generate(&dir, None, &dir.join("g.md")).unwrap_err();
         assert!(error.to_string().contains("must not overwrite"));
     }
 
@@ -422,5 +522,60 @@ mod tests {
         assert_eq!(fragment.meta.id, GLOSSARY_ID);
         assert_eq!(fragment.meta.order, GLOSSARY_ORDER);
         assert!(fragment.anchor_ids.is_empty(), "no explicit ids: the assembly section wrapper owns the identity");
+    }
+
+    fn agent_file(note: &str) -> String {
+        format!("---\ndescription: functional\nmode: subagent\nnote: {note}\n---\n\nprompt body\n")
+    }
+
+    #[test]
+    fn agents_are_codes_with_derived_targets_and_reserved_names_skipped() {
+        let root = bundle(&[]);
+        let agents = root.path().join("agents");
+        fs::create_dir_all(&agents).unwrap();
+        fs::write(agents.join("g.md"), agent_file("GLM 5.3 max; the default heavy lifter.")).unwrap();
+        fs::write(agents.join("flash.md"), agent_file("Fast, well-described work.")).unwrap();
+        fs::write(agents.join("GLOBAL.md"), "fragment, never an agent code").unwrap();
+        fs::write(agents.join("gl.md.disabled"), agent_file("dormant; inert")).unwrap();
+        let entries = parse_agents(&agents).unwrap();
+        let codes: Vec<&str> = entries.iter().map(|e| e.code.as_str()).collect();
+        assert_eq!(codes, vec!["flash", "g"]);
+        assert_eq!(entries[1].target, "/agents/g.md");
+        assert!(entries.iter().all(|e| e.file != "GLOBAL.md"));
+        let document = render_registry(&entries);
+        assert!(document.contains("| `g` | [`/agents/g.md`](/agents/g.md) | GLM 5.3 max; the default heavy lifter. |"));
+        assert!(!document.contains("dormant; inert"));
+    }
+
+    #[test]
+    fn agent_without_note_fails_loudly() {
+        let root = bundle(&[]);
+        let agents = root.path().join("agents");
+        fs::create_dir_all(&agents).unwrap();
+        fs::write(agents.join("x.md"), "---\ndescription: functional\nmode: subagent\n---\n\nbody\n").unwrap();
+        let error = parse_agents(&agents).unwrap_err();
+        assert!(error.to_string().contains("\"note\""));
+    }
+
+    #[test]
+    fn points_join_in_priority_order_and_override_description() {
+        let body = "---\ncode: rkt\ntarget: /tool/README.md\ndescription: OKF identity text\npoints:\n  - rk's tool — the rekon CLI\n  - Markdown maintenance for any repo\n  - \"commands: combine, codes, toc, okf, check, audit-context\"\n---\n\n# rkt\n\nnotes\n";
+        let root = bundle(&[("rkt.md", body)]);
+        let entries = parse_entries(&root.path().join("codes")).unwrap();
+        assert_eq!(
+            entries[0].note,
+            "rk's tool — the rekon CLI; Markdown maintenance for any repo; commands: combine, codes, toc, okf, check, audit-context"
+        );
+    }
+
+    #[test]
+    fn cross_directory_duplicate_codes_are_rejected() {
+        let root = bundle(&[("g.md", &code_file("g", "/tool/README.md", "workspace g"))]);
+        let agents = root.path().join("agents");
+        fs::create_dir_all(&agents).unwrap();
+        fs::write(agents.join("g.md"), agent_file("agent g")).unwrap();
+        let error = generate(&root.path().join("codes"), Some(&agents), Path::new("GLOSSARY-out.md"))
+            .unwrap_err();
+        assert!(matches!(error, CodesError::DuplicateCode { code, .. } if code == "g"));
     }
 }

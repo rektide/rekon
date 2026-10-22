@@ -4,8 +4,8 @@ use rekon::codes::{CodesCheck, check_registry, generate, write_registry};
 
 use super::Result;
 
-pub fn run(dir: &Path, output: &Path, check: bool) -> Result {
-    let generation = generate(dir, output)?;
+pub fn run(codes_dir: &Path, agents_dir: Option<&Path>, output: &Path, check: bool) -> Result {
+    let generation = generate(codes_dir, agents_dir, output)?;
     if check {
         match check_registry(&generation)? {
             CodesCheck::Fresh => {
@@ -35,9 +35,12 @@ pub fn run(dir: &Path, output: &Path, check: bool) -> Result {
     } else {
         write_registry(&generation)?;
         println!(
-            "generated: {} from {} ({} UTF-8 bytes)",
+            "generated: {} from {} and {} ({} UTF-8 bytes)",
             generation.output.display(),
-            dir.display(),
+            codes_dir.display(),
+            agents_dir
+                .map(|dir| dir.display().to_string())
+                .unwrap_or_else(|| "(none)".into()),
             generation.document.len()
         );
         Ok(true)
