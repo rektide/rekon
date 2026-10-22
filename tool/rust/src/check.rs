@@ -4,10 +4,10 @@
 //! The checker accepts explicit document paths — it never claims that every
 //! Markdown file needs knowledge frontmatter. The default profile checks what
 //! is objective for any document: balanced fenced code blocks, trailing
-//! whitespace outside fenced code, local link targets (relative,
+//! whitespace outside code blocks, local link targets (relative,
 //! bundle-root-relative `/...`, and `file://` absolute paths), and heading
-//! anchors resolved the way GitHub-style renderers allocate them (renderer
-//! slugs across every heading in order, plus explicit `id` attributes).
+//! anchors using Rekon's approximate GitHub-style slugs (allocated across
+//! every heading in order, plus explicit `id` attributes).
 //! `--okf` adds the knowledge-document contract: required frontmatter fields,
 //! at least one native `opencode://ses_…` source, and resolvable source
 //! resource paths.
@@ -27,7 +27,7 @@
 use std::collections::{HashMap, HashSet};
 use std::path::{Path, PathBuf};
 
-use pulldown_cmark::{Event, Parser, Tag, TagEnd};
+use pulldown_cmark::{CodeBlockKind, Event, Parser, Tag, TagEnd};
 use serde_json::Value;
 
 use crate::assembly::fragment::html_attribute_values;
@@ -35,14 +35,7 @@ use crate::assembly::parse_options;
 use rekon_toc::slugify;
 
 /// Frontmatter fields required of a knowledge document in `--okf` mode.
-pub const OKF_REQUIRED_FIELDS: [&str; 6] = [
-    "type",
-    "title",
-    "description",
-    "resource",
-    "status",
-    "sources",
-];
+pub const OKF_REQUIRED_FIELDS: [&str; 6] = ["type", "title", "description", "resource", "status", "sources"];
 
 /// Filesystem surface the checker needs, so the engine is testable in memory.
 pub trait DocumentFiles {
@@ -98,13 +91,7 @@ impl DocumentChecks {
 
 /// Check one document. `document` is the checked path used to resolve
 /// relative destinations; `display` is how failures report it.
-pub fn check_document(
-    raw: &str,
-    document: &Path,
-    display: &str,
-    options: &CheckOptions,
-    files: &dyn DocumentFiles,
-) -> DocumentChecks {
+pub fn check_document(raw: &str, document: &Path, display: &str, options: &CheckOptions, files: &dyn DocumentFiles) -> DocumentChecks {
     let mut checks = DocumentChecks::default();
     let frontmatter = match rekon_markup::parse_frontmatter(raw) {
         Ok(frontmatter) => frontmatter,
@@ -124,87 +111,76 @@ pub fn check_document(
     }
 
     if options.okf {
-        check_okf(
-            frontmatter.metadata.as_ref(),
-            document,
-            display,
-            options.root,
-            files,
-            &anchors,
-            &mut checks,
-        );
+        check_okf(frontmatter.metadata.as_ref(), document, display, options.root, files, &anchors, &mut checks);
     }
 
     let relative = document
         .parent()
         .filter(|parent| !parent.as_os_str().is_empty())
         .unwrap_or_else(|| Path::new(""));
-    for destination in scanned
-        .destinations
-        .iter()
-        .cloned()
-        .chain(reference_definition_destinations(body))
-    {
+    for destination in scanned.destinations.iter().cloned().chain(reference_definition_destinations(body)) {
         checks.destinations += 1;
-        if let Some(problem) =
-            destination_problem(&destination, relative, options.root, files, &anchors)
-        {
+        if let Some(problem) = destination_problem(&destination, relative, options.root, files, &anchors) {
             checks.fail(display, None, problem);
         }
     }
     checks
 }
 
-/// Fenced-code balance and trailing whitespace (outside fenced code, where a
+/// Fenced-code balance and trailing whitespace (outside code blocks, where a
 /// Markdown hard break of exactly two trailing spaces is allowed).
 fn scan_style(body: &str, display: &str, first_line: usize, checks: &mut DocumentChecks) {
-    let mut fence: Option<(char, usize, usize)> = None;
+    let mut code_ranges = Vec::new();
+    let mut fence = None;
+    for (event, range) in Parser::new_ext(body, parse_options()).into_offset_iter() {
+        match event {
+            Event::Start(Tag::CodeBlock(kind)) => {
+                code_ranges.push(range.clone());
+                if matches!(kind, CodeBlockKind::Fenced(_)) {
+                    let opening = &body[range.start..range.end];
+                    let marker = opening.chars().next().unwrap_or('`');
+                    let length = opening.chars().take_while(|c| *c == marker).count();
+                    let content_start = range.start + opening.find('\n').map_or(opening.len(), |n| n + 1);
+                    fence = Some((range, marker, length, content_start));
+                }
+            }
+            Event::Text(_) => {
+                if let Some((_, _, _, content_end)) = &mut fence {
+                    *content_end = range.end;
+                }
+            }
+            Event::End(TagEnd::CodeBlock) => {
+                if let Some((block, marker, length, content_end)) = fence.take() {
+                    let closing = body[content_end..block.end].trim_start_matches([' ', '\t', '>']);
+                    if !closes_fence(closing.trim_end_matches(['\r', '\n']), marker, length) {
+                        checks.fail(
+                            display,
+                            Some(first_line + body[..block.start].matches('\n').count()),
+                            "unclosed fenced code block",
+                        );
+                    }
+                }
+            }
+            _ => {}
+        }
+    }
+    let mut offset = 0;
     for (index, raw_line) in body.split('\n').enumerate() {
         let line = raw_line.strip_suffix('\r').unwrap_or(raw_line);
         let number = first_line + index;
-        if let Some((fence_char, fence_len, _)) = fence {
-            if closes_fence(line, fence_char, fence_len) {
-                fence = None;
-            }
-        } else if let Some((fence_char, fence_len)) = fence_open(line) {
-            fence = Some((fence_char, fence_len, number));
-        } else {
+        if !code_ranges.iter().any(|range| range.start < offset + raw_line.len() && range.end > offset) {
             let trimmed = line.trim_end_matches([' ', '\t']);
             let trailing = line.len() - trimmed.len();
             if trailing > 0 && !(trailing == 2 && line.ends_with("  ")) {
                 checks.fail(display, Some(number), "trailing whitespace");
             }
         }
-    }
-    if let Some((_, _, opening)) = fence {
-        checks
-            .failures
-            .push(Failure::at(display, Some(opening), "unclosed fenced code block"));
+        offset += raw_line.len() + 1;
     }
 }
 
 fn leading_spaces(line: &str) -> usize {
     line.len() - line.trim_start_matches(' ').len()
-}
-
-/// CommonMark fence opening: indent ≤ 3, three or more matching characters;
-/// a backtick fence's info string may not contain a backtick.
-fn fence_open(line: &str) -> Option<(char, usize)> {
-    let indent = leading_spaces(line);
-    if indent > 3 {
-        return None;
-    }
-    let body = &line[indent..];
-    for fence_char in ['`', '~'] {
-        let run = body.chars().take_while(|&c| c == fence_char).count();
-        if run >= 3 {
-            if fence_char == '`' && body[run..].contains('`') {
-                return None;
-            }
-            return Some((fence_char, run));
-        }
-    }
-    None
 }
 
 fn closes_fence(line: &str, fence_char: char, fence_len: usize) -> bool {
@@ -247,6 +223,11 @@ fn scan_markdown(body: &str) -> Scanned {
                     buffer.push_str(&text);
                 }
             }
+            Event::SoftBreak | Event::HardBreak => {
+                if let Some(buffer) = heading_text.as_mut() {
+                    buffer.push(' ');
+                }
+            }
             Event::Start(Tag::Link { dest_url, .. }) | Event::Start(Tag::Image { dest_url, .. }) => {
                 scanned.destinations.push(dest_url.into_string());
             }
@@ -269,46 +250,21 @@ fn scan_markdown(body: &str) -> Scanned {
     scanned
 }
 
-/// Reference definitions are consumed into parser maps (used or not), so
-/// collect their destinations lexically the way the fragment validator does.
+/// Read the parser's definitions, including unused ones. Code samples are
+/// excluded and multiline/nested definitions use the real Markdown grammar.
 fn reference_definition_destinations(body: &str) -> Vec<String> {
-    let mut destinations = Vec::new();
-    for line in body.split('\n') {
-        let indent = line.len() - line.trim_start_matches(' ').len();
-        if indent > 3 {
-            continue;
-        }
-        let Some(rest) = line[indent..].strip_prefix('[') else {
-            continue;
-        };
-        let Some(close) = rest.find(']') else {
-            continue;
-        };
-        let Some(after) = rest[close + 1..].strip_prefix(':') else {
-            continue;
-        };
-        let after = after.trim_start();
-        let destination = if let Some(inner) = after.strip_prefix('<') {
-            match inner.find('>') {
-                Some(end) => &inner[..end],
-                None => continue,
-            }
-        } else {
-            match after.split(|character: char| character.is_whitespace()).next() {
-                Some(token) if !token.is_empty() => token,
-                _ => continue,
-            }
-        };
-        destinations.push(destination.to_string());
-    }
-    destinations
+    let parser = Parser::new_ext(body, parse_options());
+    let mut definitions: Vec<_> = parser.reference_definitions().iter().map(|(_, definition)| definition).collect();
+    definitions.sort_by_key(|definition| definition.span.start);
+    definitions.into_iter().map(|definition| definition.dest.to_string()).collect()
 }
 
-/// GitHub-style renderer slugs across every heading in order: the first
-/// occurrence is bare, later duplicates gain `-1`, `-2`, … Empty titles
-/// render without an anchor and allocate nothing.
+/// Rekon ToC-style slugs across every heading in order: collisions gain
+/// `-1`, `-2`, … Empty titles allocate nothing; punctuation-only titles
+/// use the shared `section` fallback.
 fn renderer_slugs(headings: &[String]) -> Vec<String> {
     let mut counts: HashMap<String, usize> = HashMap::new();
+    let mut used = HashSet::new();
     headings
         .iter()
         .filter(|text| !text.trim().is_empty())
@@ -318,12 +274,12 @@ fn renderer_slugs(headings: &[String]) -> Vec<String> {
                 return None;
             }
             let seen = counts.entry(base.clone()).or_default();
-            *seen += 1;
-            Some(if *seen == 1 {
-                base
-            } else {
-                format!("{base}-{}", *seen - 1)
-            })
+            let mut candidate = base.clone();
+            while !used.insert(candidate.clone()) {
+                *seen += 1;
+                candidate = format!("{base}-{seen}");
+            }
+            Some(candidate)
         })
         .collect()
 }
@@ -366,9 +322,7 @@ fn scheme_of(text: &str) -> Option<&str> {
         Some(first) if first.is_ascii_alphabetic() => {}
         _ => return None,
     }
-    characters
-        .all(|c| c.is_ascii_alphanumeric() || matches!(c, '+' | '.' | '-'))
-        .then_some(scheme)
+    characters.all(|c| c.is_ascii_alphanumeric() || matches!(c, '+' | '.' | '-')).then_some(scheme)
 }
 
 /// Percent-decode `%XX` escapes; `None` when an escape is malformed.
@@ -397,25 +351,34 @@ fn percent_decode(text: &str) -> Option<String> {
 /// Resolve one destination against the filesystem; `Some(message)` is a
 /// failure. Remote schemes make no existence claim and pass. Fragment-only
 /// destinations check against the linking document's own anchors.
-fn destination_problem(
-    destination: &str,
-    relative: &Path,
-    root: &Path,
-    files: &dyn DocumentFiles,
-    self_anchors: &HashSet<String>,
-) -> Option<String> {
+fn destination_problem(destination: &str, relative: &Path, root: &Path, files: &dyn DocumentFiles, self_anchors: &HashSet<String>) -> Option<String> {
+    if destination.starts_with("//") {
+        return None; // Network-path reference, not a bundle-root path.
+    }
     let (before, fragment) = match destination.split_once('#') {
         Some((before, fragment)) => (before, fragment),
         None => (destination, ""),
     };
     let path_part = before.split('?').next().unwrap_or("");
     let target: Option<PathBuf> = if let Some(scheme) = scheme_of(path_part) {
-        if scheme != "file" {
+        if !scheme.eq_ignore_ascii_case("file") {
             return None;
         }
-        path_part
-            .strip_prefix("file://")
-            .map(|rest| PathBuf::from(percent_decode(rest).unwrap_or(rest.to_string())))
+        let rest = path_part.get(scheme.len() + 1..)?.strip_prefix("//");
+        let Some(rest) = rest else {
+            return Some(format!("expected an absolute file:// URI: {destination}"));
+        };
+        let path = rest
+            .strip_prefix("localhost/")
+            .map(|path| format!("/{path}"))
+            .or_else(|| rest.starts_with('/').then(|| rest.to_string()));
+        let Some(path) = path else {
+            return Some(format!("unsupported file URI authority: {destination}"));
+        };
+        let Some(decoded) = percent_decode(&path) else {
+            return Some(format!("invalid percent encoding: {destination}"));
+        };
+        Some(PathBuf::from(decoded))
     } else if path_part.is_empty() {
         if fragment.is_empty() {
             return None; // bare self-link `[a]()`
@@ -426,7 +389,9 @@ fn destination_problem(
         }
         return Some(format!("missing anchor {destination}"));
     } else {
-        let decoded = percent_decode(path_part).unwrap_or(path_part.to_string());
+        let Some(decoded) = percent_decode(path_part) else {
+            return Some(format!("invalid percent encoding: {destination}"));
+        };
         if decoded.starts_with('/') {
             Some(root.join(decoded.trim_start_matches('/')))
         } else {
@@ -436,23 +401,10 @@ fn destination_problem(
     let Some(target) = target else {
         return Some(format!("missing target {destination}"));
     };
-    let candidates = [
-        Some(target.clone()),
-        percent_decode(path_part).map(|decoded| {
-            if decoded.starts_with('/') {
-                root.join(decoded.trim_start_matches('/'))
-            } else {
-                relative.join(decoded)
-            }
-        }),
-    ];
-    let found = candidates
-        .iter()
-        .flatten()
-        .find(|candidate| files.exists(candidate));
-    let Some(found) = found else {
+    if !files.exists(&target) {
         return Some(format!("missing target {destination}"));
-    };
+    }
+    let found = &target;
     if !fragment.is_empty() && found.extension().is_some_and(|e| e == "md") {
         let Some(anchors) = file_anchors(found, files) else {
             return Some(format!("unreadable anchor target {destination}"));
@@ -466,10 +418,13 @@ fn destination_problem(
     None
 }
 
-/// A native session source: `opencode://ses_…` with a bare session id.
+/// Recognize a native session authority, including qualified/message sources.
 fn is_native_session(resource: &str) -> bool {
     match resource.strip_prefix("opencode://ses_") {
-        Some(rest) => !rest.is_empty() && rest.chars().all(|c| c.is_ascii_alphanumeric()),
+        Some(rest) => {
+            let authority = rest.split(['/', '?', '#']).next().unwrap_or("");
+            !authority.is_empty() && authority.chars().all(|c| c.is_ascii_alphanumeric())
+        }
         None => false,
     }
 }
@@ -491,9 +446,7 @@ fn check_okf(
             None,
             format!(
                 "missing OKF frontmatter with {}",
-                OKF_REQUIRED_FIELDS
-                    .map(|field| format!("\"{field}\""))
-                    .join(", ")
+                OKF_REQUIRED_FIELDS.map(|field| format!("\"{field}\"")).join(", ")
             ),
         );
         return;
@@ -516,22 +469,17 @@ fn check_okf(
     let mut native = false;
     for entry in entries {
         let Some(Value::String(resource)) = entry.get("resource") else {
+            checks.fail(display, None, "source entry needs a string resource");
             continue;
         };
         checks.sources += 1;
         native |= is_native_session(resource);
-        if let Some(problem) =
-            destination_problem(resource, relative, root, files, self_anchors)
-        {
+        if let Some(problem) = destination_problem(resource, relative, root, files, self_anchors) {
             checks.fail(display, None, problem);
         }
     }
     if !native {
-        checks.fail(
-            display,
-            None,
-            "no native session source (add an \"opencode://ses_…\" sources entry)",
-        );
+        checks.fail(display, None, "no native session source (add an \"opencode://ses_…\" sources entry)");
     }
 }
 
@@ -547,10 +495,7 @@ mod tests {
     impl MapFiles {
         fn new(entries: &[(&str, &str)]) -> Self {
             Self {
-                entries: entries
-                    .iter()
-                    .map(|(path, text)| (PathBuf::from(path), text.to_string()))
-                    .collect(),
+                entries: entries.iter().map(|(path, text)| (PathBuf::from(path), text.to_string())).collect(),
             }
         }
     }
@@ -569,16 +514,7 @@ mod tests {
     }
 
     fn run(files: &MapFiles, document: &str, raw: &str, okf: bool) -> DocumentChecks {
-        check_document(
-            raw,
-            Path::new(document),
-            document,
-            &CheckOptions {
-                root: Path::new("/"),
-                okf,
-            },
-            files,
-        )
+        check_document(raw, Path::new(document), document, &CheckOptions { root: Path::new("/"), okf }, files)
     }
 
     fn messages(checks: &DocumentChecks) -> Vec<String> {
@@ -590,17 +526,11 @@ mod tests {
         let files = MapFiles::new(&[]);
         let raw = "# Title\n\ntext \t\nhard break  \n\n```\ncode with trailing   \n```\n";
         let checks = run(&files, "doc.md", raw, false);
-        assert_eq!(
-            messages(&checks),
-            vec!["doc.md:3: trailing whitespace".to_string()]
-        );
+        assert_eq!(messages(&checks), vec!["doc.md:3: trailing whitespace".to_string()]);
 
         let unclosed = "# Title\n\n~~~\nstill open\n";
         let checks = run(&files, "doc.md", unclosed, false);
-        assert_eq!(
-            messages(&checks),
-            vec!["doc.md:3: unclosed fenced code block".to_string()]
-        );
+        assert_eq!(messages(&checks), vec!["doc.md:3: unclosed fenced code block".to_string()]);
     }
 
     #[test]
@@ -610,10 +540,7 @@ mod tests {
         // the true closing fence is style-checked.
         let mismatched = "# Title\n\n````\ncode\n```\nstill fenced\n````\ntrailing \n";
         let checks = run(&files, "doc.md", mismatched, false);
-        assert_eq!(
-            messages(&checks),
-            vec!["doc.md:8: trailing whitespace".to_string()]
-        );
+        assert_eq!(messages(&checks), vec!["doc.md:8: trailing whitespace".to_string()]);
     }
 
     #[test]
@@ -644,16 +571,11 @@ mod tests {
 
     #[test]
     fn checks_anchors_against_slugs_explicit_ids_and_deduplication() {
-        let files = MapFiles::new(&[
-            ("target.md", "# Same\n\n<a id=\"custom\"></a>\n\n## Same\n\n### Other & Thing\n"),
-        ]);
+        let files = MapFiles::new(&[("target.md", "# Same\n\n<a id=\"custom\"></a>\n\n## Same\n\n### Other & Thing\n")]);
         let raw = "# Title\n\n[slug](target.md#other--thing) [explicit](target.md#custom) \
 [repeat](target.md#same-1) [self](#title) [gone](target.md#nope)\n";
         let checks = run(&files, "doc.md", raw, false);
-        assert_eq!(
-            messages(&checks),
-            vec!["doc.md: missing anchor target.md#nope".to_string()]
-        );
+        assert_eq!(messages(&checks), vec!["doc.md: missing anchor target.md#nope".to_string()]);
     }
 
     #[test]
@@ -661,10 +583,7 @@ mod tests {
         let files = MapFiles::new(&[]);
         let raw = "# Title\n\n<!-- id=\"ghost\" -->\n\n<a id=\"one\"></a>\n\n<dfn id=\"one\">again</dfn>\n";
         let checks = run(&files, "doc.md", raw, false);
-        assert_eq!(
-            messages(&checks),
-            vec!["doc.md: duplicate explicit id \"one\"".to_string()]
-        );
+        assert_eq!(messages(&checks), vec!["doc.md: duplicate explicit id \"one\"".to_string()]);
     }
 
     #[test]
@@ -703,13 +622,8 @@ mod tests {
     #[test]
     fn okf_requires_fields_native_provenance_and_resolvable_sources() {
         let files = MapFiles::new(&[("/CONTEXT.md", "# Glossary\n")]);
-        let document = |sources: &str| {
-            format!(
-                "---\ntype: Reference\ntitle: T\ndescription: D\nresource: /doc.md\nstatus: draft\n{sources}---\n\n# Body\n"
-            )
-        };
-        let provenance =
-            "sources:\n  - { resource: \"opencode://ses_abc123\", title: Session }\n";
+        let document = |sources: &str| format!("---\ntype: Reference\ntitle: T\ndescription: D\nresource: /doc.md\nstatus: draft\n{sources}---\n\n# Body\n");
+        let provenance = "sources:\n  - { resource: \"opencode://ses_abc123\", title: Session }\n";
 
         let missing_frontmatter = run(&files, "doc.md", "# No frontmatter\n", true);
         assert_eq!(messages(&missing_frontmatter).len(), 1);
@@ -719,36 +633,24 @@ mod tests {
         assert!(checks.failures.is_empty(), "{:?}", messages(&checks));
         assert_eq!(checks.sources, 1);
 
-        let no_native = document(
-            "sources:\n  - { resource: \"urn:opencode:session:ses_abc\", title: Legacy }\n  - { resource: /CONTEXT.md, title: Home }\n",
-        );
+        let no_native = document("sources:\n  - { resource: \"urn:opencode:session:ses_abc\", title: Legacy }\n  - { resource: /CONTEXT.md, title: Home }\n");
         let checks = run(&files, "doc.md", &no_native, true);
         assert_eq!(
             messages(&checks),
-            vec![
-                "doc.md: no native session source (add an \"opencode://ses_…\" sources entry)"
-                    .to_string(),
-            ]
+            vec!["doc.md: no native session source (add an \"opencode://ses_…\" sources entry)".to_string(),]
         );
         assert_eq!(checks.sources, 2);
 
-        let dangling = document(&format!(
-            "{provenance}  - {{ resource: /gone.md, title: Gone }}\n"
-        ));
+        let dangling = document(&format!("{provenance}  - {{ resource: /gone.md, title: Gone }}\n"));
         let checks = run(&files, "doc.md", &dangling, true);
-        assert_eq!(
-            messages(&checks),
-            vec!["doc.md: missing target /gone.md".to_string()]
-        );
+        assert_eq!(messages(&checks), vec!["doc.md: missing target /gone.md".to_string()]);
 
         let incomplete = "---\ntype: Reference\ntitle: T\nstatus: draft\n---\n\n# Body\n";
         let checks = run(&files, "doc.md", incomplete, true);
         let reported = messages(&checks);
         for field in ["description", "resource", "sources"] {
             assert!(
-                reported
-                    .iter()
-                    .any(|message| message.contains(&format!("missing required field \"{field}\""))),
+                reported.iter().any(|message| message.contains(&format!("missing required field \"{field}\""))),
                 "{reported:?}"
             );
         }
@@ -758,7 +660,8 @@ mod tests {
     fn native_session_grammar() {
         assert!(is_native_session("opencode://ses_abc123"));
         assert!(!is_native_session("opencode://ses_"));
-        assert!(!is_native_session("opencode://ses_abc/x"));
+        assert!(is_native_session("opencode://ses_abc/m/msg_1?source=local"));
+        assert!(is_native_session("opencode://ses_abc?source=local"));
         assert!(!is_native_session("urn:opencode:session:ses_abc"));
     }
 
@@ -769,5 +672,51 @@ mod tests {
         let checks = run(&files, "doc.md", raw, false);
         assert_eq!(checks.failures.len(), 1);
         assert!(messages(&checks)[0].starts_with("doc.md: invalid frontmatter"));
+    }
+
+    #[test]
+    fn definitions_use_parser_boundaries_not_code_or_html_examples() {
+        let files = MapFiles::new(&[("valid.md", "# V\n")]);
+        let raw =
+            "# T\n\n```md\n[fake]: missing-code.md\n```\n\n<div>\n[fake]: missing-html.md\n</div>\n\n[real]:\n  valid.md\n\n> [unused]: missing-real.md\n";
+        let checked = run(&files, "doc.md", raw, false);
+        assert_eq!(messages(&checked), ["doc.md: missing target missing-real.md"]);
+        assert_eq!(checked.destinations, 2);
+    }
+
+    #[test]
+    fn nested_fences_and_literal_fences_follow_parser_blocks() {
+        let files = MapFiles::new(&[]);
+        for raw in [
+            "> ```md\n> code  \n> ```\n",
+            "- item\n\n  ~~~\n  code\n  ~~~\n",
+            "    ``` literal indented code\n",
+            "<pre>\n``` literal HTML\n</pre>\n",
+            "```\n```\n",
+        ] {
+            let checked = run(&files, "doc.md", raw, false);
+            assert!(checked.failures.is_empty(), "{raw:?}: {:?}", messages(&checked));
+        }
+        for raw in ["> ```\n> missing close\n", "- ```\n  missing close\n", "```"] {
+            let checked = run(&files, "doc.md", raw, false);
+            assert!(messages(&checked).iter().any(|m| m.contains("unclosed fenced")), "{raw:?}");
+        }
+    }
+
+    #[test]
+    fn duplicate_heading_suffixes_do_not_collide_with_real_headings() {
+        let files = MapFiles::new(&[]);
+        let raw = "# Same\n\n## Same-1\n\n## Same\n\n[third](#same-2)\n";
+        assert!(run(&files, "doc.md", raw, false).failures.is_empty());
+    }
+
+    #[test]
+    fn file_authorities_and_network_paths_are_not_relative_files() {
+        let files = MapFiles::new(&[("/external/a.md", "# A\n")]);
+        let raw = "[local](file://localhost/external/a.md#a) [network](//example.org/absent.md)";
+        assert!(run(&files, "doc.md", raw, false).failures.is_empty());
+        let checked = run(&files, "doc.md", "[remote](file://server/path) [bad](a%ZZ.md)", false);
+        assert!(messages(&checked)[0].contains("unsupported file URI authority"));
+        assert!(messages(&checked)[1].contains("invalid percent encoding"));
     }
 }

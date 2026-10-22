@@ -35,19 +35,8 @@ pub fn run(files: &[PathBuf], root: Option<&Path>, okf: bool) -> Result {
             }
         };
         let document = fs::canonicalize(file).unwrap_or_else(|_| cwd.join(file));
-        let document_root = root
-            .clone()
-            .unwrap_or_else(|| discover_root(&document, &cwd));
-        let checks: DocumentChecks = check_document(
-            &raw,
-            &document,
-            &display,
-            &CheckOptions {
-                root: &document_root,
-                okf,
-            },
-            &DiskFiles,
-        );
+        let document_root = root.clone().unwrap_or_else(|| discover_root(&document, &cwd));
+        let checks: DocumentChecks = check_document(&raw, &document, &display, &CheckOptions { root: &document_root, okf }, &DiskFiles);
         destinations += checks.destinations;
         sources += checks.sources;
         failures.extend(checks.failures);
@@ -55,12 +44,7 @@ pub fn run(files: &[PathBuf], root: Option<&Path>, okf: bool) -> Result {
     for failure in &failures {
         eprintln!("{}", failure.render());
     }
-    println!(
-        "{} documents, {} links, {} sources checked",
-        files.len(),
-        destinations,
-        sources
-    );
+    println!("{} documents, {} links, {} sources checked", files.len(), destinations, sources);
     if failures.is_empty() {
         println!(
             "document checks passed (structure, destinations, anchors{}).",
@@ -76,10 +60,7 @@ pub fn run(files: &[PathBuf], root: Option<&Path>, okf: bool) -> Result {
 /// Bundle root for `/…` destinations: the nearest ancestor holding a jj or git
 /// marker, falling back to the invocation directory.
 fn discover_root(document: &Path, cwd: &Path) -> PathBuf {
-    let mut directory = document
-        .parent()
-        .map(Path::to_path_buf)
-        .unwrap_or_else(|| cwd.to_path_buf());
+    let mut directory = document.parent().map(Path::to_path_buf).unwrap_or_else(|| cwd.to_path_buf());
     loop {
         if directory.join(".jj").exists() || directory.join(".git").exists() {
             return directory;
