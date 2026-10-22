@@ -1,6 +1,7 @@
 //! Thin command adapters over the independently usable document engines.
 
 mod check;
+mod codes;
 mod combine;
 mod okf;
 mod toc;
@@ -9,6 +10,7 @@ use std::path::PathBuf;
 
 use clap::{Parser, Subcommand, ValueEnum};
 use rekon::DEFAULT_MANIFEST;
+use rekon::codes::{DEFAULT_CODES_DIR, DEFAULT_OUTPUT};
 use rekon::coverage::{DEFAULT_COVERAGE, audit};
 
 type Error = Box<dyn std::error::Error>;
@@ -77,6 +79,16 @@ enum Command {
         #[arg(long, default_value = DEFAULT_COVERAGE)]
         coverage: PathBuf,
     },
+    /// Generate the codes registry table from self-describing code files
+    Codes {
+        #[arg(short, long, default_value = DEFAULT_CODES_DIR)]
+        dir: PathBuf,
+        #[arg(short, long, default_value = DEFAULT_OUTPUT)]
+        output: PathBuf,
+        /// Compare final bytes without writing
+        #[arg(short, long)]
+        check: bool,
+    },
 }
 
 #[derive(Subcommand)]
@@ -137,6 +149,11 @@ pub fn run(cli: Cli) -> Result {
                 Ok(false)
             }
         }
+        Command::Codes {
+            dir,
+            output,
+            check,
+        } => codes::run(&dir, &output, check),
     }
 }
 

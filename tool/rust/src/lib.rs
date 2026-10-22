@@ -17,6 +17,7 @@
 
 pub mod assembly;
 pub mod check;
+pub mod codes;
 pub mod coverage;
 pub mod manifest;
 pub mod nodepath;
