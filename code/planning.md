@@ -1,7 +1,7 @@
 ---
 type: Guide
 title: "Planning rules"
-description: How plans and design documents are written here: no time estimates, breaking changes allowed under 1.0, domain-grouped layouts never flat, and mermaid diagrams with meaningful node identifiers.
+description: "How plans and design documents are written here: no time estimates, breaking changes allowed under 1.0, domain-grouped layouts never flat, and mermaid diagrams with meaningful node identifiers."
 resource: /code/planning.md
 tags: [code, planning, design, layout, mermaid]
 status: draft
