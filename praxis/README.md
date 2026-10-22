@@ -11,6 +11,7 @@ stale_after: 2026-12-06
 extensions:
   work_anchor: "wifi-ptp-now:wiptpn-modern-praxis"
 sources:
+  - { resource: "opencode://ses_e9a40d003ffeEeLMvkRjLaMwVK", title: Connect the consumer accounts practice for libraries we use }
   - {
       resource: "urn:opencode:session:ses_f86b2c89bffeXMeyFPJ6MJg2Cx",
       title: Delegated human direction to make Chase the future a general Rekon praxis,
@@ -157,6 +158,14 @@ named failure mode, and an explorer for ticket link history is a filed desire
 (`rekon-ticket-link-explorer`), not an installed tool. This uses the existing
 beads append-notes mechanics and the balanced ticket coordination division of
 labor; it creates no second tracker.
+
+## Related practice: consumer accounts
+
+[Consumer accounts](/praxis/consumer-accounts/README.md) give consuming projects
+a voice in the libraries they use: current adoption, case studies, friction and
+improvement hopes, linked to native consumer records. Recommend this library-side
+documentation pattern for libraries we use under `~/src`; Kubeless's
+`doc/consumer/` supplies the concrete precedent.
 
 ## Related practice: bookmarking
 

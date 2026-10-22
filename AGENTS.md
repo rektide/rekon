@@ -2,36 +2,37 @@
 
 <nav id="rekon-toc" aria-label="Table of contents">
 
-- <a href="#glossary" data-line-start="46" data-line-end="53">Rekon working vocabulary</a>
-  - <a href="#glossary-names-homes-and-relations" data-line-start="54" data-line-end="131">Names, homes, and relations</a>
-  - <a href="#glossary-knowledge-work-and-learning" data-line-start="132" data-line-end="198">Knowledge, work, and learning</a>
-  - <a href="#glossary-action-and-delivery" data-line-start="199" data-line-end="295">Action and delivery</a>
-  - <a href="#glossary-honing-and-commitment" data-line-start="296" data-line-end="342">Honing and commitment</a>
-- <a href="#codes" data-line-start="343" data-line-end="389">Codes glossary</a>
-- <a href="#doc-constitution" data-line-start="390" data-line-end="396">Constitution — orient before acting</a>
-  - <a href="#doc-constitution-terms-in-use" data-line-start="397" data-line-end="417">Terms in use</a>
-  - <a href="#doc-constitution-use-the-sense-map" data-line-start="418" data-line-end="471">Use the sense-map</a>
-- <a href="#documentation-practice" data-line-start="472" data-line-end="475">Writing, independent waves, and document connections</a>
-  - <a href="#documentation-practice-durable-writing" data-line-start="476" data-line-end="508">Durable writing</a>
-  - <a href="#documentation-practice-waves" data-line-start="509" data-line-end="531">Waves</a>
-  - <a href="#documentation-practice-doc-pass" data-line-start="532" data-line-end="551">Doc-pass</a>
-- <a href="#collaboration" data-line-start="552" data-line-end="555">Collaboration and architectural stewardship</a>
-  - <a href="#collaboration-dispatch-and-return" data-line-start="556" data-line-end="574">Dispatch and return</a>
-  - <a href="#collaboration-stewardship" data-line-start="575" data-line-end="594">Stewardship</a>
-  - <a href="#collaboration-discussion" data-line-start="595" data-line-end="609">Discussion</a>
-- <a href="#workspace" data-line-start="610" data-line-end="636">Workspace, research locations, and shell</a>
-- <a href="#code" data-line-start="637" data-line-end="643">Code — stage and change discipline</a>
-  - <a href="#code-terms-in-use" data-line-start="644" data-line-end="658">Terms in use</a>
-  - <a href="#code-operating-weight" data-line-start="659" data-line-end="685">Operating weight</a>
-- <a href="#jj" data-line-start="686" data-line-end="713">jj and git operating rules</a>
-  - <a href="#jj-jj-waltz-workspaces" data-line-start="714" data-line-end="741">jj-waltz workspaces</a>
-- <a href="#javascript" data-line-start="742" data-line-end="775">JavaScript and TypeScript</a>
-- <a href="#rust" data-line-start="776" data-line-end="800">Rust conventions</a>
-- <a href="#beads" data-line-start="801" data-line-end="838">Beads — readable work IDs and deliberate tracking</a>
-- <a href="#praxis-ticket-pointers" data-line-start="839" data-line-end="854">Ticket pointers — ambient cues</a>
-- <a href="#tool" data-line-start="855" data-line-end="894">Tools — check knowledge documents</a>
-- <a href="#refs" data-line-start="895" data-line-end="900">References</a>
-  - <a href="#refs-skills" data-line-start="901" data-line-end="933">Skills</a>
+- <a href="#glossary" data-line-start="47" data-line-end="54">Rekon working vocabulary</a>
+  - <a href="#glossary-names-homes-and-relations" data-line-start="55" data-line-end="132">Names, homes, and relations</a>
+  - <a href="#glossary-knowledge-work-and-learning" data-line-start="133" data-line-end="199">Knowledge, work, and learning</a>
+  - <a href="#glossary-action-and-delivery" data-line-start="200" data-line-end="296">Action and delivery</a>
+  - <a href="#glossary-honing-and-commitment" data-line-start="297" data-line-end="343">Honing and commitment</a>
+- <a href="#codes" data-line-start="344" data-line-end="390">Codes glossary</a>
+- <a href="#doc-constitution" data-line-start="391" data-line-end="397">Constitution — orient before acting</a>
+  - <a href="#doc-constitution-terms-in-use" data-line-start="398" data-line-end="418">Terms in use</a>
+  - <a href="#doc-constitution-use-the-sense-map" data-line-start="419" data-line-end="472">Use the sense-map</a>
+- <a href="#documentation-practice" data-line-start="473" data-line-end="476">Writing, independent waves, and document connections</a>
+  - <a href="#documentation-practice-durable-writing" data-line-start="477" data-line-end="509">Durable writing</a>
+  - <a href="#documentation-practice-waves" data-line-start="510" data-line-end="532">Waves</a>
+  - <a href="#documentation-practice-doc-pass" data-line-start="533" data-line-end="552">Doc-pass</a>
+- <a href="#collaboration" data-line-start="553" data-line-end="556">Collaboration and architectural stewardship</a>
+  - <a href="#collaboration-dispatch-and-return" data-line-start="557" data-line-end="575">Dispatch and return</a>
+  - <a href="#collaboration-stewardship" data-line-start="576" data-line-end="595">Stewardship</a>
+  - <a href="#collaboration-discussion" data-line-start="596" data-line-end="610">Discussion</a>
+- <a href="#workspace" data-line-start="611" data-line-end="637">Workspace, research locations, and shell</a>
+- <a href="#code" data-line-start="638" data-line-end="644">Code — stage and change discipline</a>
+  - <a href="#code-terms-in-use" data-line-start="645" data-line-end="659">Terms in use</a>
+  - <a href="#code-operating-weight" data-line-start="660" data-line-end="686">Operating weight</a>
+- <a href="#jj" data-line-start="687" data-line-end="714">jj and git operating rules</a>
+  - <a href="#jj-jj-waltz-workspaces" data-line-start="715" data-line-end="742">jj-waltz workspaces</a>
+- <a href="#javascript" data-line-start="743" data-line-end="776">JavaScript and TypeScript</a>
+- <a href="#rust" data-line-start="777" data-line-end="801">Rust conventions</a>
+- <a href="#beads" data-line-start="802" data-line-end="839">Beads — readable work IDs and deliberate tracking</a>
+- <a href="#praxis-ticket-pointers" data-line-start="840" data-line-end="855">Ticket pointers — ambient cues</a>
+- <a href="#praxis-consumer-accounts" data-line-start="856" data-line-end="874">Consumer accounts — library-side feedback</a>
+- <a href="#tool" data-line-start="875" data-line-end="914">Tools — check knowledge documents</a>
+- <a href="#refs" data-line-start="915" data-line-end="920">References</a>
+  - <a href="#refs-skills" data-line-start="921" data-line-end="953">Skills</a>
 
 </nav>
 
@@ -846,6 +847,25 @@ bd close <issue-id> --reason "<completion and verification>"
   implementation report with the session ID for traceability. Keep it
   proportional; not every edit needs a ticket note.
 - Deeper practice: [Ticket pointers](/praxis/ticket-pointers/ticket-pointers0.glm53fx.md).
+</section>
+
+<section id="praxis-consumer-accounts" data-source="/praxis/consumer-accounts/GLOBAL.md">
+
+<Okf data={{"description":"Recommend library-side accounts of consuming projects' use, case studies and improvement hopes.","generated":{"at":"2026-10-22","by":"model:openai/gpt-6-astra#medium"},"id":"praxis-consumer-accounts","order":410,"resource":"/praxis/consumer-accounts/GLOBAL.md","source":"/praxis/consumer-accounts/README.md","sources":[{"resource":"opencode://ses_e9a40d003ffeEeLMvkRjLaMwVK","title":"Human requests ambient guidance recommending consumer accounts for libraries we use under ~/src"},{"resource":"/praxis/consumer-accounts/README.md","title":"Consumer accounts practice and Kubeless precedent"}],"status":"draft","title":"Consumer accounts — library-side feedback","type":"ContextFragment"}} />
+
+## Consumer accounts — library-side feedback
+
+- For libraries we use under `~/src`, recommend `doc/consumer/<project>.md`
+  in the library repository (or its native documentation equivalent): let each
+  consuming project explain its current use, case studies, friction, and hopes
+  for improvements. Precedent: `~/src/kubeless/doc/consumer/`.
+- Link both ways with the consumer's native integration/design records; attribute
+  needs and evidence. Distinguish implemented adoption, prospective use and wishes.
+  Refresh accounts as integrations and library capabilities change.
+- Read relevant accounts when shaping shared capabilities; compare needs across
+  consumers and return outcomes to their accounts. Consumer hopes inform library
+  decisions; they do not by themselves establish commitments.
+- Practice: [Consumer accounts](/praxis/consumer-accounts/README.md).
 </section>
 
 <section id="tool" data-source="/tool/GLOBAL.md">

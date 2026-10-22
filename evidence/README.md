@@ -10,6 +10,7 @@ stale_after: 2026-12-06
 extensions:
   ticket: rekon-phoenix
 sources:
+  - { resource: "opencode://ses_e9a40d003ffeEeLMvkRjLaMwVK", title: Connect library-side consumer accounts as a home for integration case stories }
   - { resource: "urn:opencode:session:ses_f86f757c0ffe5G5aHU26e2evOL", title: Human direction on evidence as referentiality and on learning from action case stories }
   - { resource: /constitution/README.md, title: Documentation and evidence contracts }
   - { resource: /constitution/reassessment0.gpt6a.md, title: Signals must not inherit larger promises }
@@ -113,6 +114,9 @@ private material into a public case story.
 
 ## Cross-references
 
+- [Consumer accounts](/praxis/consumer-accounts/README.md) **applies case stories
+  to library use**: consuming projects record adoption, actual results and
+  improvement hopes in the library's documentation, linked to native evidence.
 - [Constitution](/constitution/README.md#doc-constitution-references-evidence)
   **constrains provenance and claim honesty**; this home does not replace it.
 - [Digest](/digest/README.md) **finds and interprets current evidence** for
