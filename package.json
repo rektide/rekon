@@ -28,6 +28,7 @@
     "build": "tsdown",
     "check:agents": "cargo run --quiet --manifest-path tool/rust/Cargo.toml -- combine --check",
     "check": "pnpm run /^check:/",
+    "check:codes": "cargo run --quiet --manifest-path tool/rust/Cargo.toml -- codes --check",
     "check:context": "cargo run --quiet --manifest-path tool/rust/Cargo.toml -- audit-context"
   },
   "dependencies": {

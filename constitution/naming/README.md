@@ -19,10 +19,10 @@ sources:
 
 Use short names in conversation, headings, and tickets, and introduce them with
 an ordinary link to their home. Each code is a self-describing file under
-[`codes/`](/codes); the maintained registry is generated from them into the
-[codes registry](/codes.md), mapping each code to its target as a `file#tag`
-string. This section keeps the recorded practice without loading the entire
-exploration wave.
+[`codes/`](/codes); the generated [codes glossary](/codes/GLOSSARY.md) maps
+each code to its target as a `file#tag` string and is bundled into ambient
+context by the root manifest. This section keeps the recorded practice without
+loading the entire exploration wave.
 
 **Shortcodes are reference vocabulary, not directory names.** The human
 explicitly corrected that conflation on October 6: `g` global, `p` praxis,
