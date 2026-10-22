@@ -14,6 +14,7 @@ sources:
     author: human:rektide
     last_modified: 2026-09-04
   - { resource: "opencode://ses_eb9709a91ffeKsq7fEUI1ptzt2", title: Handed tree-shape rules to the new layout practice }
+  - { resource: "opencode://ses_e9a41f6dfffexEmfMeIjFhXDko", title: Connect pre-1.0 design latitude to preferred versioning practice and actual consumer obligations }
 ---
 
 <a id="planning"></a>
@@ -35,6 +36,10 @@ entirely. Sequence and dependency order carry the plan; calendars do not.
 Breaking changes are fine while a project is `<1.0`. Do not spend plan
 space on compatibility machinery that a pre-1.0 project does not owe
 anyone; spend it on the right destination shape.
+
+Assess actual consumer and persisted-data obligations. The optional preferred
+[versioning strategy](/code/versioning.md) makes API changes visible and
+consumer revision uptake deliberate while retaining that design latitude.
 
 <a id="planning-layout"></a>
 

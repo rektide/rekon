@@ -3,6 +3,14 @@ id: rust
 order: 260
 source: /code/rust/GLOBAL.md
 status: draft
+type: ContextFragment
+title: Rust conventions
+description: Rust tool preferences, configuration precedence, and publication mechanics.
+resource: /code/rust/GLOBAL.md
+generated: { by: "model:openai/gpt-6-astra#high", at: 2026-10-22 }
+sources:
+  - { resource: /AGENTS.old.md, title: Legacy Rust preferences }
+  - { resource: "opencode://ses_e9a41f6dfffexEmfMeIjFhXDko", title: Clarify publication version selection alongside the preferred pre-alpha API-marker policy }
 ---
 
 # Rust conventions
@@ -18,8 +26,10 @@ status: draft
   clap's default values accidentally override environment configuration; distinguish
   explicit CLI values when layering. `Serialized::defaults(CliArgs::parse())`
   alone does not establish that precedence.
-- Publishing: run `cargo bump` with major/minor/patch (patch by default), then
-  make a jj commit, then `cargo publish`.
+- Publishing: choose the version under the project's policy, using `cargo bump`
+  or its coordinated workspace bump tool; then make a jj commit and run
+  `cargo publish`. Patch is the fallback for ordinary release bumps; the
+  [preferred pre-alpha strategy](/code/versioning.md) uses minor API-change markers.
 
 Recovered from [legacy Rust preferences](/AGENTS.old.md#rust-instructions).
 The precedence clarification preserves its intended ordering without treating

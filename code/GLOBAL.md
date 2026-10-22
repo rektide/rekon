@@ -17,6 +17,8 @@ sources:
   - { resource: /code/commits.md, title: Capture revise compare }
   - { resource: /CONTEXT.md, title: Shared working vocabulary }
   - { resource: "opencode://ses_eb9709a91ffeKsq7fEUI1ptzt2", title: Ambient scaffold rule naming the pkg-prefix anti-pattern with layout depth }
+  - { resource: "opencode://ses_e9a41f6dfffexEmfMeIjFhXDko", title: Record Kubeless-derived pre-alpha versioning as a preferred default rather than a mandate }
+  - { resource: /code/versioning.md, title: API-change markers and reviewed source revisions }
 ---
 
 # Code — stage and change discipline
@@ -49,6 +51,11 @@ use the shared vocabulary; this fragment adds only the terms its instructions ne
 - Mermaid diagrams should use meaningful node identifiers. Breaking changes
   are fine below 1.0; assess actual persisted-data or consumer obligations
   rather than inventing them.
+- Preferred pre-alpha versioning default (optional; respect native policy): bump
+  the minor for every public-interface addition/change/removal; internal-only
+  fixes need no bump. Coordinated packages share a version and exact internal
+  pins; update affected receiving locks too. Consumers adopt reviewed revisions;
+  version equality is no compatibility promise. [Practice](/code/versioning.md).
 - Let It Fail when appropriate: do not catch an error merely to print it; retain
   its stack and cause. Handle errors where recovery or a real boundary needs it.
 - Do not add automatic prune/reconciliation behavior unless explicitly requested.

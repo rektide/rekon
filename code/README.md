@@ -21,6 +21,7 @@ sources:
     resource: /code/js/README.md
     title: "The promoted-module precedent this collection follows"
   - { resource: "opencode://ses_eb9709a91ffeKsq7fEUI1ptzt2", title: Split project layout out of planning into its own practice with layout.md }
+  - { resource: "opencode://ses_e9a41f6dfffexEmfMeIjFhXDko", title: Index the preferred pre-alpha versioning practice drawn from Kubeless }
 ---
 
 <a id="code"></a>
@@ -51,6 +52,7 @@ live global file is assembled from [`code/GLOBAL.md`](/code/GLOBAL.md).
 | [`planning.md`](/code/planning.md) | Writing a plan or design document. |
 | [`coding-advice.md`](/code/coding-advice.md) | Deciding error handling or cleanup behavior. |
 | [`layout.md`](/code/layout.md) | Scaffolding or restructuring a repository: domain grouping, workspace member naming, where registry prefixes live. |
+| [`versioning.md`](/code/versioning.md) | Choosing a pre-alpha version strategy: optional preferred default, API-change markers, lockstep workspaces, and reviewed consumer revisions. |
 | [`task-reconstruction/`](/code/task-reconstruction/README.md) | Restarting a task line while preserving its docs: the jj replay procedure, its philosophy, and measured evidence. |
 | [`workspace/GLOBAL.md`](/code/workspace/GLOBAL.md) | Workspace locations, archive-first lookup, scratch ownership, and shell lifetime; selected ambient guidance. |
 | [`rust/GLOBAL.md`](/code/rust/GLOBAL.md) | Rust tools, configuration precedence, and publishing; selected ambient guidance. |

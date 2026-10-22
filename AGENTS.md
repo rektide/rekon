@@ -22,17 +22,17 @@
 - <a href="#workspace" data-line-start="611" data-line-end="637">Workspace, research locations, and shell</a>
 - <a href="#code" data-line-start="638" data-line-end="644">Code — stage and change discipline</a>
   - <a href="#code-terms-in-use" data-line-start="645" data-line-end="659">Terms in use</a>
-  - <a href="#code-operating-weight" data-line-start="660" data-line-end="686">Operating weight</a>
-- <a href="#jj" data-line-start="687" data-line-end="714">jj and git operating rules</a>
-  - <a href="#jj-jj-waltz-workspaces" data-line-start="715" data-line-end="742">jj-waltz workspaces</a>
-- <a href="#javascript" data-line-start="743" data-line-end="776">JavaScript and TypeScript</a>
-- <a href="#rust" data-line-start="777" data-line-end="801">Rust conventions</a>
-- <a href="#beads" data-line-start="802" data-line-end="839">Beads — readable work IDs and deliberate tracking</a>
-- <a href="#praxis-ticket-pointers" data-line-start="840" data-line-end="855">Ticket pointers — ambient cues</a>
-- <a href="#praxis-consumer-accounts" data-line-start="856" data-line-end="874">Consumer accounts — library-side feedback</a>
-- <a href="#tool" data-line-start="875" data-line-end="914">Tools — check knowledge documents</a>
-- <a href="#refs" data-line-start="915" data-line-end="920">References</a>
-  - <a href="#refs-skills" data-line-start="921" data-line-end="953">Skills</a>
+  - <a href="#code-operating-weight" data-line-start="660" data-line-end="691">Operating weight</a>
+- <a href="#jj" data-line-start="692" data-line-end="719">jj and git operating rules</a>
+  - <a href="#jj-jj-waltz-workspaces" data-line-start="720" data-line-end="747">jj-waltz workspaces</a>
+- <a href="#javascript" data-line-start="748" data-line-end="781">JavaScript and TypeScript</a>
+- <a href="#rust" data-line-start="782" data-line-end="808">Rust conventions</a>
+- <a href="#beads" data-line-start="809" data-line-end="846">Beads — readable work IDs and deliberate tracking</a>
+- <a href="#praxis-ticket-pointers" data-line-start="847" data-line-end="862">Ticket pointers — ambient cues</a>
+- <a href="#praxis-consumer-accounts" data-line-start="863" data-line-end="881">Consumer accounts — library-side feedback</a>
+- <a href="#tool" data-line-start="882" data-line-end="921">Tools — check knowledge documents</a>
+- <a href="#refs" data-line-start="922" data-line-end="927">References</a>
+  - <a href="#refs-skills" data-line-start="928" data-line-end="960">Skills</a>
 
 </nav>
 
@@ -633,7 +633,7 @@ Source: [legacy workspace guidance](/AGENTS.old.md#well-known-directories-and-fi
 
 <section id="code" data-source="/code/GLOBAL.md">
 
-<Okf data={{"description":"Active shared commit, review, planning, and coding discipline.","extensions":{"posture":"active production fragment; guidance remains open to refinement","related_work":["rekon-agents-maintenance","rekon-session-mementos"],"ticket":"rekon-phoenix"},"generated":{"at":"2026-09-06","by":"model:gpt-6-astra"},"id":"code","order":200,"resource":"/code/GLOBAL.md","source":"/code/README.md","sources":[{"resource":"/code/README.md","title":"Coding practice"},{"resource":"/code/commits.md","title":"Capture revise compare"},{"resource":"/CONTEXT.md","title":"Shared working vocabulary"},{"resource":"opencode://ses_eb9709a91ffeKsq7fEUI1ptzt2","title":"Ambient scaffold rule naming the pkg-prefix anti-pattern with layout depth"}],"status":"draft","title":"Code — stage and change discipline","type":"ContextFragment"}} />
+<Okf data={{"description":"Active shared commit, review, planning, and coding discipline.","extensions":{"posture":"active production fragment; guidance remains open to refinement","related_work":["rekon-agents-maintenance","rekon-session-mementos"],"ticket":"rekon-phoenix"},"generated":{"at":"2026-09-06","by":"model:gpt-6-astra"},"id":"code","order":200,"resource":"/code/GLOBAL.md","source":"/code/README.md","sources":[{"resource":"/code/README.md","title":"Coding practice"},{"resource":"/code/commits.md","title":"Capture revise compare"},{"resource":"/CONTEXT.md","title":"Shared working vocabulary"},{"resource":"opencode://ses_eb9709a91ffeKsq7fEUI1ptzt2","title":"Ambient scaffold rule naming the pkg-prefix anti-pattern with layout depth"},{"resource":"opencode://ses_e9a41f6dfffexEmfMeIjFhXDko","title":"Record Kubeless-derived pre-alpha versioning as a preferred default rather than a mandate"},{"resource":"/code/versioning.md","title":"API-change markers and reviewed source revisions"}],"status":"draft","title":"Code — stage and change discipline","type":"ContextFragment"}} />
 
 ## Code — stage and change discipline
 
@@ -671,6 +671,11 @@ use the shared vocabulary; this fragment adds only the terms its instructions ne
 - Mermaid diagrams should use meaningful node identifiers. Breaking changes
   are fine below 1.0; assess actual persisted-data or consumer obligations
   rather than inventing them.
+- Preferred pre-alpha versioning default (optional; respect native policy): bump
+  the minor for every public-interface addition/change/removal; internal-only
+  fixes need no bump. Coordinated packages share a version and exact internal
+  pins; update affected receiving locks too. Consumers adopt reviewed revisions;
+  version equality is no compatibility promise. [Practice](/code/versioning.md).
 - Let It Fail when appropriate: do not catch an error merely to print it; retain
   its stack and cause. Handle errors where recovery or a real boundary needs it.
 - Do not add automatic prune/reconciliation behavior unless explicitly requested.
@@ -772,7 +777,7 @@ snapshotting. [Preparation, restrictions, recovery](/vcs/jj/waltz.md#jj-waltz-so
 
 <section id="rust" data-source="/code/rust/GLOBAL.md">
 
-<Okf data={{"id":"rust","order":260,"source":"/code/rust/GLOBAL.md","status":"draft"}} />
+<Okf data={{"description":"Rust tool preferences, configuration precedence, and publication mechanics.","generated":{"at":"2026-10-22","by":"model:openai/gpt-6-astra#high"},"id":"rust","order":260,"resource":"/code/rust/GLOBAL.md","source":"/code/rust/GLOBAL.md","sources":[{"resource":"/AGENTS.old.md","title":"Legacy Rust preferences"},{"resource":"opencode://ses_e9a41f6dfffexEmfMeIjFhXDko","title":"Clarify publication version selection alongside the preferred pre-alpha API-marker policy"}],"status":"draft","title":"Rust conventions","type":"ContextFragment"}} />
 
 ## Rust conventions
 
@@ -787,8 +792,10 @@ snapshotting. [Preparation, restrictions, recovery](/vcs/jj/waltz.md#jj-waltz-so
   clap's default values accidentally override environment configuration; distinguish
   explicit CLI values when layering. `Serialized::defaults(CliArgs::parse())`
   alone does not establish that precedence.
-- Publishing: run `cargo bump` with major/minor/patch (patch by default), then
-  make a jj commit, then `cargo publish`.
+- Publishing: choose the version under the project's policy, using `cargo bump`
+  or its coordinated workspace bump tool; then make a jj commit and run
+  `cargo publish`. Patch is the fallback for ordinary release bumps; the
+  [preferred pre-alpha strategy](/code/versioning.md) uses minor API-change markers.
 
 Recovered from [legacy Rust preferences](/AGENTS.old.md#rust-instructions).
 The precedence clarification preserves its intended ordering without treating
