@@ -10,28 +10,28 @@
 - <a href="#codes" data-line-start="343" data-line-end="389">Codes glossary</a>
 - <a href="#doc-constitution" data-line-start="390" data-line-end="396">Constitution — orient before acting</a>
   - <a href="#doc-constitution-terms-in-use" data-line-start="397" data-line-end="417">Terms in use</a>
-  - <a href="#doc-constitution-use-the-sense-map" data-line-start="418" data-line-end="469">Use the sense-map</a>
-- <a href="#documentation-practice" data-line-start="470" data-line-end="473">Writing, independent waves, and document connections</a>
-  - <a href="#documentation-practice-durable-writing" data-line-start="474" data-line-end="506">Durable writing</a>
-  - <a href="#documentation-practice-waves" data-line-start="507" data-line-end="529">Waves</a>
-  - <a href="#documentation-practice-doc-pass" data-line-start="530" data-line-end="549">Doc-pass</a>
-- <a href="#collaboration" data-line-start="550" data-line-end="553">Collaboration and architectural stewardship</a>
-  - <a href="#collaboration-dispatch-and-return" data-line-start="554" data-line-end="572">Dispatch and return</a>
-  - <a href="#collaboration-stewardship" data-line-start="573" data-line-end="592">Stewardship</a>
-  - <a href="#collaboration-discussion" data-line-start="593" data-line-end="607">Discussion</a>
-- <a href="#workspace" data-line-start="608" data-line-end="634">Workspace, research locations, and shell</a>
-- <a href="#code" data-line-start="635" data-line-end="641">Code — stage and change discipline</a>
-  - <a href="#code-terms-in-use" data-line-start="642" data-line-end="656">Terms in use</a>
-  - <a href="#code-operating-weight" data-line-start="657" data-line-end="683">Operating weight</a>
-- <a href="#jj" data-line-start="684" data-line-end="711">jj and git operating rules</a>
-  - <a href="#jj-jj-waltz-workspaces" data-line-start="712" data-line-end="739">jj-waltz workspaces</a>
-- <a href="#javascript" data-line-start="740" data-line-end="773">JavaScript and TypeScript</a>
-- <a href="#rust" data-line-start="774" data-line-end="798">Rust conventions</a>
-- <a href="#beads" data-line-start="799" data-line-end="836">Beads — readable work IDs and deliberate tracking</a>
-- <a href="#praxis-ticket-pointers" data-line-start="837" data-line-end="852">Ticket pointers — ambient cues</a>
-- <a href="#tool" data-line-start="853" data-line-end="892">Tools — check knowledge documents</a>
-- <a href="#refs" data-line-start="893" data-line-end="898">References</a>
-  - <a href="#refs-skills" data-line-start="899" data-line-end="931">Skills</a>
+  - <a href="#doc-constitution-use-the-sense-map" data-line-start="418" data-line-end="471">Use the sense-map</a>
+- <a href="#documentation-practice" data-line-start="472" data-line-end="475">Writing, independent waves, and document connections</a>
+  - <a href="#documentation-practice-durable-writing" data-line-start="476" data-line-end="508">Durable writing</a>
+  - <a href="#documentation-practice-waves" data-line-start="509" data-line-end="531">Waves</a>
+  - <a href="#documentation-practice-doc-pass" data-line-start="532" data-line-end="551">Doc-pass</a>
+- <a href="#collaboration" data-line-start="552" data-line-end="555">Collaboration and architectural stewardship</a>
+  - <a href="#collaboration-dispatch-and-return" data-line-start="556" data-line-end="574">Dispatch and return</a>
+  - <a href="#collaboration-stewardship" data-line-start="575" data-line-end="594">Stewardship</a>
+  - <a href="#collaboration-discussion" data-line-start="595" data-line-end="609">Discussion</a>
+- <a href="#workspace" data-line-start="610" data-line-end="636">Workspace, research locations, and shell</a>
+- <a href="#code" data-line-start="637" data-line-end="643">Code — stage and change discipline</a>
+  - <a href="#code-terms-in-use" data-line-start="644" data-line-end="658">Terms in use</a>
+  - <a href="#code-operating-weight" data-line-start="659" data-line-end="685">Operating weight</a>
+- <a href="#jj" data-line-start="686" data-line-end="713">jj and git operating rules</a>
+  - <a href="#jj-jj-waltz-workspaces" data-line-start="714" data-line-end="741">jj-waltz workspaces</a>
+- <a href="#javascript" data-line-start="742" data-line-end="775">JavaScript and TypeScript</a>
+- <a href="#rust" data-line-start="776" data-line-end="800">Rust conventions</a>
+- <a href="#beads" data-line-start="801" data-line-end="838">Beads — readable work IDs and deliberate tracking</a>
+- <a href="#praxis-ticket-pointers" data-line-start="839" data-line-end="854">Ticket pointers — ambient cues</a>
+- <a href="#tool" data-line-start="855" data-line-end="894">Tools — check knowledge documents</a>
+- <a href="#refs" data-line-start="895" data-line-end="900">References</a>
+  - <a href="#refs-skills" data-line-start="901" data-line-end="933">Skills</a>
 
 </nav>
 
@@ -385,7 +385,7 @@ Practice, rulings, and history live with
 
 <section id="doc-constitution" data-source="/constitution/GLOBAL.md">
 
-<Okf data={{"description":"Active shared context joining naming, knowledge, work, and action before specialized reading.","extensions":{"posture":"active production fragment; guidance remains open to refinement","related_work":["rekon-con-naming","rekon-agents-maintenance-skillify"],"ticket":"rekon-phoenix"},"generated":{"at":"2026-09-06","by":"model:gpt-6-astra"},"id":"doc-constitution","order":100,"resource":"/constitution/GLOBAL.md","source":"/constitution/README.md","sources":[{"resource":"/constitution/README.md","title":"Constitution and the current honing exception"},{"resource":"/CONTEXT.md","title":"Shared working vocabulary"},{"resource":"/constitution/naming/exploration/proposal4.glm53m.md","title":"Recorded naming ruling"},{"resource":"/design/rekon/context-weave/north-star0.gpt6a.md","title":"Historical basis and scope of the manual weave"}],"status":"draft","title":"Constitution — the shared sense-map","type":"ContextFragment"}} />
+<Okf data={{"description":"Active shared context joining naming, knowledge, work, and action before specialized reading.","extensions":{"posture":"active production fragment; guidance remains open to refinement","related_work":["rekon-con-naming","rekon-agents-maintenance-skillify"],"ticket":"rekon-phoenix"},"generated":{"at":"2026-09-06","by":"model:gpt-6-astra"},"id":"doc-constitution","order":100,"resource":"/constitution/GLOBAL.md","source":"/constitution/README.md","sources":[{"resource":"/constitution/README.md","title":"Constitution and the current honing exception"},{"resource":"/CONTEXT.md","title":"Shared working vocabulary"},{"resource":"/constitution/naming/exploration/proposal4.glm53m.md","title":"Recorded naming ruling"},{"resource":"/design/rekon/context-weave/north-star0.gpt6a.md","title":"Historical basis and scope of the manual weave"},{"resource":"opencode://ses_e9bc39334ffetsgyIAj4L0kp0A","title":"Point shortcode references at the codes glossary after the October 22 rekey"}],"status":"draft","title":"Constitution — the shared sense-map","type":"ContextFragment"}} />
 
 ## Constitution — orient before acting
 
@@ -437,8 +437,10 @@ Keep the owner and any disagreement visible; do not strip useful definitions
 merely to make a context count smaller. A tiny local glossary belongs before
 instructions that rely on its terms; it need not repeat the entire shared glossary.
 
-In Rekon, maintained explanations live with their domain owners. `g` global,
-`p` praxis, and `t` tool are shortcodes, not directories. The shared `tool/`
+In Rekon, maintained explanations live with their domain owners. Shortcodes
+(`con`, `prax`, `rkt`, the agent codes, and friends from the
+[codes glossary](/codes/GLOSSARY.md)) are reference vocabulary, not directories.
+The shared `tool/`
 toolkit has top-level executable entrypoints and domain-grouped source/docs.
 Use the [structure map](/constitution/structure.md) and
 [short codes](/constitution/naming/README.md#short-codes); new Rekon topics do

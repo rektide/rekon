@@ -28,12 +28,12 @@ inert, neither loaded nor listed. This section keeps the recorded practice
 without loading the entire exploration wave.
 
 **October 22 ruling — single letters are guarded treasures.** `g` is reclaimed
-for the GLM-max agent (global guidance loses the letter pending a better name
-for that umbrella); `t` becomes `rkt` (rk's tool); `p` becomes `prax`. `con`
-keeps its own code as the broadest governing document; `cf` stays, softened to
-"usually". An `rk` prefix applies selectively to rekon-owned codes by breadth.
-The earlier October 6 correction (`g` global, `p` praxis, `t` tool) stands as
-history above.
+for the GLM-max agent; the global-guidance umbrella is retired, not renamed —
+its sub-things carry their own codes and take prefixes (selectively, per the
+`rk` rule) when they need grouping. `t` becomes `rkt` (rk's tool); `p` becomes
+`prax`. `con` keeps its own code as the broadest governing document; `cf`
+stays, softened to "usually". The earlier October 6 correction (`g` global,
+`p` praxis, `t` tool) stands as history above.
 
 **Shortcodes are reference vocabulary, not directory names.** The human
 explicitly corrected that conflation on October 6: `g` global, `p` praxis,

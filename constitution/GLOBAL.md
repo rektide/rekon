@@ -17,6 +17,7 @@ sources:
   - { resource: /CONTEXT.md, title: Shared working vocabulary }
   - { resource: /constitution/naming/exploration/proposal4.glm53m.md, title: Recorded naming ruling }
   - { resource: /design/rekon/context-weave/north-star0.gpt6a.md, title: Historical basis and scope of the manual weave }
+  - { resource: "opencode://ses_e9bc39334ffetsgyIAj4L0kp0A", title: Point shortcode references at the codes glossary after the October 22 rekey }
 ---
 
 # Constitution — orient before acting
@@ -63,8 +64,10 @@ Keep the owner and any disagreement visible; do not strip useful definitions
 merely to make a context count smaller. A tiny local glossary belongs before
 instructions that rely on its terms; it need not repeat the entire shared glossary.
 
-In Rekon, maintained explanations live with their domain owners. `g` global,
-`p` praxis, and `t` tool are shortcodes, not directories. The shared `tool/`
+In Rekon, maintained explanations live with their domain owners. Shortcodes
+(`con`, `prax`, `rkt`, the agent codes, and friends from the
+[codes glossary](/codes/GLOSSARY.md)) are reference vocabulary, not directories.
+The shared `tool/`
 toolkit has top-level executable entrypoints and domain-grouped source/docs.
 Use the [structure map](/constitution/structure.md) and
 [short codes](/constitution/naming/README.md#short-codes); new Rekon topics do

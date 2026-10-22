@@ -25,8 +25,10 @@ make those responsibilities visible. A topic's explanation lives with the
 concern it explains; executable tools bring their explanation and code together.
 
 This is the Rekon-specific placement contract. The October 6 direction selects
-**`tool/` as one shared toolkit** and **`t` as its shortcode**. `p` names praxis
-and `g` names global guidance; shortcodes do not dictate directory spelling.
+**`tool/` as one shared toolkit**; the October 22 ruling rekeys its shortcode
+to `rkt` and retires the umbrella shortcode for global guidance (see the
+[naming home](/constitution/naming/README.md#short-codes)). Shortcodes do not
+dictate directory spelling.
 The broader constitutional compact remains under development. Other repositories retain
 their own documentation conventions and the constitution's general adoption
 guidance.
@@ -122,25 +124,30 @@ their current source explicitly; their code migration is a separate step.
 <a id="names"></a>
 ## Names we can use
 
-The [naming home](/constitution/naming/README.md#short-codes) keeps the concise
-reference table: `g` = global, `p` = praxis, `t` = tool; `con` abbreviates
-`constitution`. A scoped phrase such as **`t-agents`** should be paired with
+The [naming home](/constitution/naming/README.md#short-codes) keeps the
+generated [codes glossary](/codes/GLOSSARY.md) as the reference table:
+`con` abbreviates `constitution`, `rkt` is rk's tool, `prax` names praxis,
+and agent codes come from the definitions under `agents/`. A scoped phrase
+such as **`t-agents`** should be paired with
 its ordinary Markdown link on introduction. The path and section make its
 referent recoverable; an abbreviation does not require an automated resolver.
-The initial draft mistakenly turned `t` into a directory; the human correction
-explicitly separates shorthand from physical layout.
+The initial draft mistakenly turned the tool shortcode into a directory; the
+human correction explicitly separates shorthand from physical layout.
 
 Moves change names. Repair current citations and use revision-bound references
 when a reader needs the earlier artifact, preserving the distinctions in the
 [human naming ruling](/constitution/naming/exploration/proposal4.glm53m.md#the-override-stated-as-ruling).
 
 <a id="global"></a>
-### Global guidance — `g`
+### Global guidance — the operating context
 
 Global guidance is the shared context carried today by [AGENTS.md](/AGENTS.md)
-and developed in domain-owned `GLOBAL.md` contributions. Its shortcode is `g`.
-The owning domain maintains each contribution; an assembled exposure connects
-them. This records the human-provided abbreviation, not a new `g/` directory
+and developed in domain-owned `GLOBAL.md` contributions; the assembled document
+is titled the operating context. It has no shortcode: the October 22 ruling
+retired the umbrella letter (`g` now names the GLM-max agent), because the
+umbrella's sub-things carry their own codes and take prefixes when they need
+grouping. The owning domain maintains each contribution; an assembled exposure
+connects them. This records the mechanism, not a `g/` directory
 or an automatic assignment of numbered global clauses.
 
 <a id="evolution"></a>

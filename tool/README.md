@@ -24,7 +24,7 @@ sources:
 home: entrypoints live at the top of `tool/`, with shared implementation and
 explanation grouped underneath by concern. The [structure contract](/constitution/structure.md#tools) describes
 the layout and the [naming home](/constitution/naming/README.md#short-codes)
-records `t` (tool), `p` (praxis), and `g` (global). These are shortcodes,
+records the codes, `rkt` among them. These are shortcodes,
 not abbreviated directory names.
 
 ## First homes
