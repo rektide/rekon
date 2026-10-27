@@ -38,7 +38,6 @@ Practice, rulings, and history live with
 | `con` | [`/constitution/README.md`](/constitution/README.md) | the constitution — rekon's broadest governing document; shared principles for naming, knowledge, work, and assembly; as a prefix it scopes references: con-naming (naming work), con-structure (structure contract) |
 | `exp` | [`/constitution/naming/README.md#short-codes`](/constitution/naming/README.md#short-codes) | a topic's early inquiry documents — drafts and proposals that precede any ruling; usually under the topic's exploration/ or design/ folder; example: con-naming-exp-… points into naming's exploration waves |
 | `f` | [`/agents/f.md`](/agents/f.md) | GLM 5.3 Flash max — fast well-described well-known work; flash/flash-max folded in, #high via model override |
-| `followup` | [`/agents/followup.md`](/agents/followup.md) | follow-behind verifier — scouts context, reviews changes, runs checks after implementation |
 | `g` | [`/agents/g.md`](/agents/g.md) | GLM 5.3 max — the default heavy lifter for most tasks; gh/gl folded in, other levels via model override |
 | `general` | [`/agents/general.md`](/agents/general.md) | capable general-purpose default for delegated work |
 | `l` | [`/agents/l.md`](/agents/l.md) | GPT-6 Luna xhigh — only when explicitly requested; medium via model override |

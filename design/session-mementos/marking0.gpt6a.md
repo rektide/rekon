@@ -625,7 +625,7 @@ older tooling notes. Substantive relationships:
 - [Evidence](/evidence/README.md#evidence-reference) **constrains the claim**:
   naming and provenance make a response inspectable; an explained evidentiary
   relationship is still needed before its contents support a decision.
-- [Follow-behind agent](/agents/followup.md#report-what-helps) **is a child
+- [Follow-behind agent](/agents/followup.md.disabled#report-what-helps) **is a child
   authoring precedent**: concise actionable findings, checks and uncertainty.
   Do not force a fixed summary template or mark every progress acknowledgment.
 - [Tooling assessment](/assess/rekon/tooling0.glm53.md#tooling0-summarizer)
