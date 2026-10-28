@@ -3,6 +3,14 @@ id: collaboration
 order: 150
 source: /agents/GLOBAL.md
 status: draft
+type: ContextFragment
+title: Collaboration and architectural stewardship
+description: Delegation, context budgeting, architectural review and collaborative decision practices.
+resource: /agents/GLOBAL.md
+generated: { by: "model:openai/gpt-6-astra#xhigh", at: "2026-10-29" }
+sources:
+  - resource: "opencode://ses_e7bc138ffffeHcfSJmcsHKoO9Z"
+    title: Human requests a soft 300k delegated-session context target, tolerates modest overshoot and directs the nearly finished Sol slice to wrap
 ---
 
 # Collaboration and architectural stewardship
@@ -11,6 +19,10 @@ status: draft
 
 - Run delegated agents in the background. Favor deliberate integration once
   prerequisite results are available; do not rush dependent documents.
+- Aim to keep delegated sessions under **~300k context tokens**. Modest overshoot
+  to 330–350k is acceptable near a coherent finish; let an almost-finished slice
+  wrap rather than interrupting solely for this target. Start later stages in
+  fresh sessions with concise handoffs and links to receipts and relevant code.
 - Unless the user directs model selection, do not obey skills' demands for
   unavailable models. `general` is a capable default; for high-value work and
   deep research, ask which agents the user wants for which tasks. See

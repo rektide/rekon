@@ -16,23 +16,23 @@
   - <a href="#documentation-practice-waves" data-line-start="501" data-line-end="523">Waves</a>
   - <a href="#documentation-practice-doc-pass" data-line-start="524" data-line-end="543">Doc-pass</a>
 - <a href="#collaboration" data-line-start="544" data-line-end="547">Collaboration and architectural stewardship</a>
-  - <a href="#collaboration-dispatch-and-return" data-line-start="548" data-line-end="566">Dispatch and return</a>
-  - <a href="#collaboration-stewardship" data-line-start="567" data-line-end="586">Stewardship</a>
-  - <a href="#collaboration-discussion" data-line-start="587" data-line-end="601">Discussion</a>
-- <a href="#workspace" data-line-start="602" data-line-end="628">Workspace, research locations, and shell</a>
-- <a href="#code" data-line-start="629" data-line-end="635">Code — stage and change discipline</a>
-  - <a href="#code-terms-in-use" data-line-start="636" data-line-end="650">Terms in use</a>
-  - <a href="#code-operating-weight" data-line-start="651" data-line-end="682">Operating weight</a>
-- <a href="#jj" data-line-start="683" data-line-end="710">jj and git operating rules</a>
-  - <a href="#jj-jj-waltz-workspaces" data-line-start="711" data-line-end="738">jj-waltz workspaces</a>
-- <a href="#javascript" data-line-start="739" data-line-end="772">JavaScript and TypeScript</a>
-- <a href="#rust" data-line-start="773" data-line-end="799">Rust conventions</a>
-- <a href="#beads" data-line-start="800" data-line-end="837">Beads — readable work IDs and deliberate tracking</a>
-- <a href="#praxis-ticket-pointers" data-line-start="838" data-line-end="853">Ticket pointers — ambient cues</a>
-- <a href="#praxis-consumer-accounts" data-line-start="854" data-line-end="872">Consumer accounts — library-side feedback</a>
-- <a href="#tool" data-line-start="873" data-line-end="912">Tools — check knowledge documents</a>
-- <a href="#refs" data-line-start="913" data-line-end="918">References</a>
-  - <a href="#refs-skills" data-line-start="919" data-line-end="951">Skills</a>
+  - <a href="#collaboration-dispatch-and-return" data-line-start="548" data-line-end="570">Dispatch and return</a>
+  - <a href="#collaboration-stewardship" data-line-start="571" data-line-end="590">Stewardship</a>
+  - <a href="#collaboration-discussion" data-line-start="591" data-line-end="605">Discussion</a>
+- <a href="#workspace" data-line-start="606" data-line-end="632">Workspace, research locations, and shell</a>
+- <a href="#code" data-line-start="633" data-line-end="639">Code — stage and change discipline</a>
+  - <a href="#code-terms-in-use" data-line-start="640" data-line-end="654">Terms in use</a>
+  - <a href="#code-operating-weight" data-line-start="655" data-line-end="686">Operating weight</a>
+- <a href="#jj" data-line-start="687" data-line-end="714">jj and git operating rules</a>
+  - <a href="#jj-jj-waltz-workspaces" data-line-start="715" data-line-end="742">jj-waltz workspaces</a>
+- <a href="#javascript" data-line-start="743" data-line-end="776">JavaScript and TypeScript</a>
+- <a href="#rust" data-line-start="777" data-line-end="803">Rust conventions</a>
+- <a href="#beads" data-line-start="804" data-line-end="841">Beads — readable work IDs and deliberate tracking</a>
+- <a href="#praxis-ticket-pointers" data-line-start="842" data-line-end="857">Ticket pointers — ambient cues</a>
+- <a href="#praxis-consumer-accounts" data-line-start="858" data-line-end="876">Consumer accounts — library-side feedback</a>
+- <a href="#tool" data-line-start="877" data-line-end="916">Tools — check knowledge documents</a>
+- <a href="#refs" data-line-start="917" data-line-end="922">References</a>
+  - <a href="#refs-skills" data-line-start="923" data-line-end="955">Skills</a>
 
 </nav>
 
@@ -539,7 +539,7 @@ consult [the toolkit map](/tool/README.md) for current capabilities.
 
 <section id="collaboration" data-source="/agents/GLOBAL.md">
 
-<Okf data={{"id":"collaboration","order":150,"source":"/agents/GLOBAL.md","status":"draft"}} />
+<Okf data={{"description":"Delegation, context budgeting, architectural review and collaborative decision practices.","generated":{"at":"2026-10-29","by":"model:openai/gpt-6-astra#xhigh"},"id":"collaboration","order":150,"resource":"/agents/GLOBAL.md","source":"/agents/GLOBAL.md","sources":[{"resource":"opencode://ses_e7bc138ffffeHcfSJmcsHKoO9Z","title":"Human requests a soft 300k delegated-session context target, tolerates modest overshoot and directs the nearly finished Sol slice to wrap"}],"status":"draft","title":"Collaboration and architectural stewardship","type":"ContextFragment"}} />
 
 ## Collaboration and architectural stewardship
 
@@ -549,6 +549,10 @@ consult [the toolkit map](/tool/README.md) for current capabilities.
 
 - Run delegated agents in the background. Favor deliberate integration once
   prerequisite results are available; do not rush dependent documents.
+- Aim to keep delegated sessions under **~300k context tokens**. Modest overshoot
+  to 330–350k is acceptable near a coherent finish; let an almost-finished slice
+  wrap rather than interrupting solely for this target. Start later stages in
+  fresh sessions with concise handoffs and links to receipts and relevant code.
 - Unless the user directs model selection, do not obey skills' demands for
   unavailable models. `general` is a capable default; for high-value work and
   deep research, ask which agents the user wants for which tasks. See
