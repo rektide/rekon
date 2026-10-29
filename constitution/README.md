@@ -14,6 +14,7 @@ extensions:
   skill: /constitution/SKILL.md
   global_fragment: /constitution/GLOBAL.md
 sources:
+  - { resource: "opencode://ses_e7172da2affeJ5Mx7eqRYTsOu8", title: Link the proposed eventual document integration cadence and optional doc helper from opt-in patterns }
   - { resource: "opencode://ses_ed31715c4ffex2ROd2G2C617AF", title: Current enriched assembly standing and implementation navigation }
   - { resource: "urn:opencode:session:ses_ed31715c4ffex2ROd2G2C617AF", title: Update assembly standing for scoped metadata and the Rust producer }
   - id: synthesis
@@ -869,6 +870,12 @@ the problem earns them:
 
 Patterns are composable. None becomes universal ceremony merely because it was
 effective in a large research program.
+
+[Eventual document integration](/constitution/practice/eventual-integration0.gpt6a.md)
+proposes batching parent/index updates and corpus connections at coherent
+checkpoints, with an optional collaborative `doc` helper. Consult it when repeated
+hierarchy maintenance interrupts substantive writing; it remains an idea for
+trial, not adopted ambient policy.
 
 <a id="doc-constitution-evolution"></a>
 
