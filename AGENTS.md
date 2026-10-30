@@ -7,32 +7,32 @@
   - <a href="#glossary-knowledge-work-and-learning" data-line-start="133" data-line-end="199">Knowledge, work, and learning</a>
   - <a href="#glossary-action-and-delivery" data-line-start="200" data-line-end="296">Action and delivery</a>
   - <a href="#glossary-honing-and-commitment" data-line-start="297" data-line-end="343">Honing and commitment</a>
-- <a href="#codes" data-line-start="344" data-line-end="381">Codes glossary</a>
-- <a href="#doc-constitution" data-line-start="382" data-line-end="388">Constitution — orient before acting</a>
-  - <a href="#doc-constitution-terms-in-use" data-line-start="389" data-line-end="409">Terms in use</a>
-  - <a href="#doc-constitution-use-the-sense-map" data-line-start="410" data-line-end="463">Use the sense-map</a>
-- <a href="#documentation-practice" data-line-start="464" data-line-end="467">Writing, independent waves, and document connections</a>
-  - <a href="#documentation-practice-durable-writing" data-line-start="468" data-line-end="500">Durable writing</a>
-  - <a href="#documentation-practice-waves" data-line-start="501" data-line-end="523">Waves</a>
-  - <a href="#documentation-practice-doc-pass" data-line-start="524" data-line-end="543">Doc-pass</a>
-- <a href="#collaboration" data-line-start="544" data-line-end="547">Collaboration and architectural stewardship</a>
-  - <a href="#collaboration-dispatch-and-return" data-line-start="548" data-line-end="570">Dispatch and return</a>
-  - <a href="#collaboration-stewardship" data-line-start="571" data-line-end="590">Stewardship</a>
-  - <a href="#collaboration-discussion" data-line-start="591" data-line-end="605">Discussion</a>
-- <a href="#workspace" data-line-start="606" data-line-end="632">Workspace, research locations, and shell</a>
-- <a href="#code" data-line-start="633" data-line-end="639">Code — stage and change discipline</a>
-  - <a href="#code-terms-in-use" data-line-start="640" data-line-end="654">Terms in use</a>
-  - <a href="#code-operating-weight" data-line-start="655" data-line-end="686">Operating weight</a>
-- <a href="#jj" data-line-start="687" data-line-end="714">jj and git operating rules</a>
-  - <a href="#jj-jj-waltz-workspaces" data-line-start="715" data-line-end="742">jj-waltz workspaces</a>
-- <a href="#javascript" data-line-start="743" data-line-end="776">JavaScript and TypeScript</a>
-- <a href="#rust" data-line-start="777" data-line-end="803">Rust conventions</a>
-- <a href="#beads" data-line-start="804" data-line-end="841">Beads — readable work IDs and deliberate tracking</a>
-- <a href="#praxis-ticket-pointers" data-line-start="842" data-line-end="857">Ticket pointers — ambient cues</a>
-- <a href="#praxis-consumer-accounts" data-line-start="858" data-line-end="876">Consumer accounts — library-side feedback</a>
-- <a href="#tool" data-line-start="877" data-line-end="916">Tools — check knowledge documents</a>
-- <a href="#refs" data-line-start="917" data-line-end="922">References</a>
-  - <a href="#refs-skills" data-line-start="923" data-line-end="955">Skills</a>
+- <a href="#codes" data-line-start="344" data-line-end="382">Codes glossary</a>
+- <a href="#doc-constitution" data-line-start="383" data-line-end="389">Constitution — orient before acting</a>
+  - <a href="#doc-constitution-terms-in-use" data-line-start="390" data-line-end="410">Terms in use</a>
+  - <a href="#doc-constitution-use-the-sense-map" data-line-start="411" data-line-end="464">Use the sense-map</a>
+- <a href="#documentation-practice" data-line-start="465" data-line-end="468">Writing, independent waves, and document connections</a>
+  - <a href="#documentation-practice-durable-writing" data-line-start="469" data-line-end="501">Durable writing</a>
+  - <a href="#documentation-practice-waves" data-line-start="502" data-line-end="524">Waves</a>
+  - <a href="#documentation-practice-doc-pass" data-line-start="525" data-line-end="544">Doc-pass</a>
+- <a href="#collaboration" data-line-start="545" data-line-end="548">Collaboration and architectural stewardship</a>
+  - <a href="#collaboration-dispatch-and-return" data-line-start="549" data-line-end="571">Dispatch and return</a>
+  - <a href="#collaboration-stewardship" data-line-start="572" data-line-end="591">Stewardship</a>
+  - <a href="#collaboration-discussion" data-line-start="592" data-line-end="606">Discussion</a>
+- <a href="#workspace" data-line-start="607" data-line-end="633">Workspace, research locations, and shell</a>
+- <a href="#code" data-line-start="634" data-line-end="640">Code — stage and change discipline</a>
+  - <a href="#code-terms-in-use" data-line-start="641" data-line-end="655">Terms in use</a>
+  - <a href="#code-operating-weight" data-line-start="656" data-line-end="687">Operating weight</a>
+- <a href="#jj" data-line-start="688" data-line-end="715">jj and git operating rules</a>
+  - <a href="#jj-jj-waltz-workspaces" data-line-start="716" data-line-end="743">jj-waltz workspaces</a>
+- <a href="#javascript" data-line-start="744" data-line-end="777">JavaScript and TypeScript</a>
+- <a href="#rust" data-line-start="778" data-line-end="804">Rust conventions</a>
+- <a href="#beads" data-line-start="805" data-line-end="842">Beads — readable work IDs and deliberate tracking</a>
+- <a href="#praxis-ticket-pointers" data-line-start="843" data-line-end="858">Ticket pointers — ambient cues</a>
+- <a href="#praxis-consumer-accounts" data-line-start="859" data-line-end="877">Consumer accounts — library-side feedback</a>
+- <a href="#tool" data-line-start="878" data-line-end="917">Tools — check knowledge documents</a>
+- <a href="#refs" data-line-start="918" data-line-end="923">References</a>
+  - <a href="#refs-skills" data-line-start="924" data-line-end="956">Skills</a>
 
 </nav>
 
@@ -373,6 +373,7 @@ Practice, rulings, and history live with
 | `res` | [`/constitution/naming/README.md#short-codes`](/constitution/naming/README.md#short-codes) | a topic's gathered research material; scope comes from the named topic, not a fixed directory |
 | `rkt` | [`/tool/README.md`](/tool/README.md) | rk's tool — the rekon CLI; Markdown maintenance and verification for any repo, not just rekon's; commands: combine, codes, toc, okf extract, check, audit-context; runs from any checkout via --manifest-path |
 | `sol` | [`/agents/sol.md`](/agents/sol.md) | GPT-6.1 Sol high — capable independent doer for partially formed work; medium/xhigh/max via model override |
+| `t` | [`/agents/t.md`](/agents/t.md) | GPT-6.1 Terra medium — general coding, analysis, and implementation |
 </section>
 
 <section id="doc-constitution" data-source="/constitution/GLOBAL.md">
