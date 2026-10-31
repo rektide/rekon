@@ -1,0 +1,5 @@
+# Labels are arbitrary; the one w= token can appear anywhere in each entry.
+careful exploration w=1
+w=0.5 unusual perspective
+small experiment w=0.1
+disabled example w=0

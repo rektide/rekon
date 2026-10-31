@@ -7,6 +7,7 @@ status: draft
 generated: { by: "model:openai/gpt-6.1-terra#xhigh", at: 2026-10-31 }
 tags: [praxis, flights, agents, coordination, evidence, synthesis]
 sources:
+  - { resource: "opencode://ses_e6172cb39ffe5Q3YzyRjA9H32n", title: Register the reusable random-combo flight and its Node draw tool }
   - { resource: "opencode://ses_e6c900557ffex5YjEpZrQCueNC", title: Connect and update the Kinefolk firmware case through observed flight completion }
   - { resource: "opencode://ses_e6ccb4e5effe6EWqmToxh2oLHO", title: Human commission for flight vocabulary, full-cycle practice and model reference }
   - { resource: "opencode://ses_e6cc6c15bffe34JypBfFJ1p6L1", title: Rekon entrypoint investigation informing the proposed practice home }
@@ -85,6 +86,14 @@ variants are in the [model lookup](/agents/models/README.md). Names in this exam
 authorize a model override or establish that those agents are always available.
 Later evidence or a changed brief may call for another join, a focused experiment,
 or an addendum rather than silently changing a prior comparison.
+
+## Reusable flight models
+
+- [Random-combo](/praxis/flights/random-combo.md): frame an arbitrary weighted
+  option pool, draw three options per game with replacement and persistent 0.8
+  winning-weight decay, then join independent game responses before comparison.
+  Its [Node generator](/tool/random-combo/README.md) provides auditable seeded
+  draws, not scheduling or delegation authority.
 
 ## Motivating case: firmware research
 

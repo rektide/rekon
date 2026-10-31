@@ -7,6 +7,7 @@ tags: [rekon, tools, cli, structure]
 status: draft
 generated: { by: "model:gpt-6-astra", at: 2026-10-06 }
 sources:
+  - { resource: "opencode://ses_e6172cb39ffe5Q3YzyRjA9H32n", title: Register the commissioned Node random-combo generator and its flight relationship }
   - { resource: "opencode://ses_e9d711bbeffenO3yHUyxP2Bv1G", title: "Integrate the Rust Markdown checker and selected tool guidance after G's initial implementation" }
   - { resource: "opencode://ses_ed31715c4ffex2ROd2G2C617AF", title: Integrate the enriched assembly and metadata toolchain }
   - { resource: "urn:opencode:session:ses_ed31715c4ffex2ROd2G2C617AF", title: Enriched Rust assembly, semantic ToC, scoped OKF extraction, and workspace integration }
@@ -38,6 +39,7 @@ not abbreviated directory names.
 | [`okf extract`](/tool/okf/README.md) (Rust) | Read file frontmatter and section-owned static OKF data | Reusable `rekon-markup` library; JSON/YAML output, optional owner-ID selection, no JavaScript evaluation. |
 | [`check`](/tool/check/README.md) (Rust) | Check selected Markdown structure, local links/anchors and optional knowledge provenance | Parser-based, read-only `rekon check FILE...`; `--okf` selects knowledge frontmatter and `--root` overrides bundle-root discovery. |
 | [`codes`](/tool/codes/README.md) (Rust) | Generate and byte-check the codes glossary from self-describing `codes/` files; the emitted `codes/GLOSSARY.md` fragment bundles into ambient context | Runnable `rekon codes` under `tool/rust/`; deterministic sorted table, loud validation, atomic publish. Code files carry fragment fields so a code can contribute itself to assembly. |
+| [`random-combo`](/tool/random-combo/README.md) (Node) | Draw three weighted arbitrary options per game, with replacement and immediate persistent 0.8 decay after each win | Explicitly commissioned Node tool: `node tool/random-combo.ts`; inline `w=NUMBER` input, file/stdin, replayable seeds, text/JSONL audit, no dependencies or agent spawning. Serves the [random-combo flight](/praxis/flights/random-combo.md). |
 | [`t-interpolate`](/tool/cmd/interpolate.md) | Expand prompt-template arguments | Existing [Gunshi command](/src/command/interpolate.ts), with its guide now under `tool/cmd/`. Adaptation deferred pending a value call. |
 | [`t-install-commands`](/tool/cmd/install-commands.md) | Legacy prompt-command installer and its concurrency proposal | [Gunshi source](/src/command/install-commands.ts) remains; the prompt collection is [retired](/prompt/.archive/README.md). |
 
