@@ -41,9 +41,9 @@ Standard abbreviations, usable in conversation, tickets, and tables:
 | `max` | max |
 
 `default #xx` names an agent's configured default variant, as the codes-glossary
-rows do. The abbreviations are **reading and speaking notation only**: an actual
-dispatch `model` override always uses the full variant name —
-`openai/gpt-6-astra#xhigh`, never `#xh`.
+rows do; in the variant table the default is marked `xx*`. The abbreviations are
+**reading and speaking notation only**: an actual dispatch `model` override always
+uses the full variant name — `openai/gpt-6-astra#xhigh`, never `#xh`.
 
 Use this quick reference for common **explicitly requested** models and variants;
 it is not permission to override a model or to delegate. The individual agent
@@ -54,21 +54,23 @@ advertised variants can change: rerun `tools.opencode.models` for unlisted,
 changed, or uncertain cases. For regular GLM 5.3 use `all: true` if necessary;
 the default newest-family query may omit it.
 
-<a id="variant-matrix"></a>
-## Variant matrix
+<a id="variant-table"></a>
+## Variant table
 
-Each variant is a column; reading down a column shows which agents support that
-variant. A cell reads `default` for the agent's configured variant, `✓` for an
-offered option, and blank when the dated catalog did not list it.
+One variants column lists whatever the dated catalog offered for each agent;
+`*` marks the configured default. The provider identifies the family; the model
+appears only where it is special — `f` runs the flash model rather than plain
+GLM 5.3. Exact model IDs for overrides live in the dispatch examples and the
+agent definitions.
 
-| Agent code and definition | Model ID | `∅` | `lo` | `med` | `hi` | `xh` | `max` |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| [`t`](/agents/t.md) | `openai/gpt-6.1-terra` | ✓ | ✓ | `default` | ✓ | ✓ | ✓ |
-| [`ast`](/agents/ast.md) | `openai/gpt-6-astra` | | ✓ | ✓ | `default` | ✓ | ✓ |
-| [`sol`](/agents/sol.md) | `openai/gpt-6.1-sol` | | ✓ | ✓ | `default` | ✓ | ✓ |
-| [`l`](/agents/l.md) | `openai/gpt-6-luna` | ✓ | ✓ | ✓ | ✓ | `default` | ✓ |
-| [`g`](/agents/g.md) | `zai-coding-plan/glm-5.3` | | ✓ | | ✓ | | `default` |
-| [`f`](/agents/f.md) | `zai-coding-plan/glm-5.3-flash` | | ✓ | | ✓ | | `default` |
+| Agent code and definition | Provider / model | Variants |
+| --- | --- | --- |
+| [`t`](/agents/t.md) | `openai` | `∅ lo med* hi xh max` |
+| [`ast`](/agents/ast.md) | `openai` | `lo med hi* xh max` |
+| [`sol`](/agents/sol.md) | `openai` | `lo med hi* xh max` |
+| [`l`](/agents/l.md) | `openai` | `∅ lo med hi xh* max` |
+| [`g`](/agents/g.md) | `zai-coding-plan` | `lo hi max*` |
+| [`f`](/agents/f.md) | `zai-coding-plan` · `glm-5.3-flash` | `lo hi max*` |
 
 `∅` is the model's no-suffix form, not a literal `#none`. A marked variant is an
 observed catalog option, not a promise that the account can always run it. `ast`
