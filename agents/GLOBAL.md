@@ -9,6 +9,8 @@ description: Delegation, context budgeting, architectural review and collaborati
 resource: /agents/GLOBAL.md
 generated: { by: "model:openai/gpt-6-astra#xhigh", at: "2026-10-29" }
 sources:
+  - resource: "opencode://ses_e6cc34212ffelIc5sLrW1xqvi7"
+    title: Add a concise pointer to the dated model and variant lookup
   - resource: "opencode://ses_e7bc138ffffeHcfSJmcsHKoO9Z"
     title: Human requests a soft 300k delegated-session context target, tolerates modest overshoot and directs the nearly finished Sol slice to wrap
 ---
@@ -27,6 +29,8 @@ sources:
   unavailable models. `general` is a capable default; for high-value work and
   deep research, ask which agents the user wants for which tasks. See
   [the general-agent guidance](/agents/general.md).
+- For explicitly requested common models and variants, use the dated
+  [model lookup](/agents/models/README.md); recheck uncertain or changed availability.
 - Prime agents with existing research and relevant Markdown. Ask them to return
   file/section references and to write and commit their own model-suffixed
   documents under the effort's domain, often `design/<topic>/`.

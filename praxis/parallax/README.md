@@ -7,11 +7,12 @@ status: draft
 generated: { by: "model:openai/gpt-6-astra-xhigh", at: "2026-09-23" }
 tags: [praxis, parallax, architecture, agents, synthesis, independence]
 sources:
+  - { resource: "opencode://ses_e6cc34212ffelIc5sLrW1xqvi7", title: Connect independent viewpoints to the flight coordination model }
   - { resource: "urn:opencode:session:ses_f3b109ef4ffei5pUDwL0rAjYe1", title: Human direction for multi-axis Cyclrs design, paired research, and parallax praxis }
   - { resource: /praxis/candidates/README.md, title: Meaningfully different possibilities and comparison without flattening }
   - { resource: /assess/gates/README.md, title: Independent acquisition and deliberate comparative reading }
   - { resource: /praxis/readme-driven/README.md, title: Future-forward contracts grounded in current upstream }
-  - { resource: /AGENTS.md#architectural-stewardship, title: Parent architectural responsibility and consequential checkpoints }
+  - { resource: /AGENTS.md#collaboration-stewardship, title: Parent architectural responsibility and consequential checkpoints }
 ---
 
 # Parallax
@@ -220,6 +221,8 @@ the result. Record useful surprises and failures through
 
 # Cross-references
 
+- [Flights](/praxis/flights/README.md): reusable spawn/join coordination across
+  independent waves, syntheses, and subsequent decisions.
 - [Candidates](/praxis/candidates/README.md): meaningful alternatives and selection
   without pretending one choice universally defeats the others.
 - [Evidence gates](/assess/gates/README.md): independent acquisition and permission
@@ -228,5 +231,5 @@ the result. Record useful surprises and failures through
   experiences as a concrete medium for different design axes.
 - [Chase the future](/praxis/README.md#chase-the-future): current upstream possibility,
   preserved alternatives, and useful movement rather than either caution or sprawl.
-- [Architectural stewardship](/AGENTS.md#architectural-stewardship): parent-owned
+- [Architectural stewardship](/AGENTS.md#collaboration-stewardship): parent-owned
   judgment, meaningful checkpoints, and cooperative refinement after independence.

@@ -5,34 +5,34 @@
 - <a href="#glossary" data-line-start="47" data-line-end="54">Rekon working vocabulary</a>
   - <a href="#glossary-names-homes-and-relations" data-line-start="55" data-line-end="132">Names, homes, and relations</a>
   - <a href="#glossary-knowledge-work-and-learning" data-line-start="133" data-line-end="199">Knowledge, work, and learning</a>
-  - <a href="#glossary-action-and-delivery" data-line-start="200" data-line-end="296">Action and delivery</a>
-  - <a href="#glossary-honing-and-commitment" data-line-start="297" data-line-end="343">Honing and commitment</a>
-- <a href="#codes" data-line-start="344" data-line-end="382">Codes glossary</a>
-- <a href="#doc-constitution" data-line-start="383" data-line-end="389">Constitution — orient before acting</a>
-  - <a href="#doc-constitution-terms-in-use" data-line-start="390" data-line-end="410">Terms in use</a>
-  - <a href="#doc-constitution-use-the-sense-map" data-line-start="411" data-line-end="464">Use the sense-map</a>
-- <a href="#documentation-practice" data-line-start="465" data-line-end="468">Writing, independent waves, and document connections</a>
-  - <a href="#documentation-practice-durable-writing" data-line-start="469" data-line-end="501">Durable writing</a>
-  - <a href="#documentation-practice-waves" data-line-start="502" data-line-end="524">Waves</a>
-  - <a href="#documentation-practice-doc-pass" data-line-start="525" data-line-end="544">Doc-pass</a>
-- <a href="#collaboration" data-line-start="545" data-line-end="548">Collaboration and architectural stewardship</a>
-  - <a href="#collaboration-dispatch-and-return" data-line-start="549" data-line-end="571">Dispatch and return</a>
-  - <a href="#collaboration-stewardship" data-line-start="572" data-line-end="591">Stewardship</a>
-  - <a href="#collaboration-discussion" data-line-start="592" data-line-end="606">Discussion</a>
-- <a href="#workspace" data-line-start="607" data-line-end="633">Workspace, research locations, and shell</a>
-- <a href="#code" data-line-start="634" data-line-end="640">Code — stage and change discipline</a>
-  - <a href="#code-terms-in-use" data-line-start="641" data-line-end="655">Terms in use</a>
-  - <a href="#code-operating-weight" data-line-start="656" data-line-end="687">Operating weight</a>
-- <a href="#jj" data-line-start="688" data-line-end="715">jj and git operating rules</a>
-  - <a href="#jj-jj-waltz-workspaces" data-line-start="716" data-line-end="743">jj-waltz workspaces</a>
-- <a href="#javascript" data-line-start="744" data-line-end="777">JavaScript and TypeScript</a>
-- <a href="#rust" data-line-start="778" data-line-end="804">Rust conventions</a>
-- <a href="#beads" data-line-start="805" data-line-end="842">Beads — readable work IDs and deliberate tracking</a>
-- <a href="#praxis-ticket-pointers" data-line-start="843" data-line-end="858">Ticket pointers — ambient cues</a>
-- <a href="#praxis-consumer-accounts" data-line-start="859" data-line-end="877">Consumer accounts — library-side feedback</a>
-- <a href="#tool" data-line-start="878" data-line-end="917">Tools — check knowledge documents</a>
-- <a href="#refs" data-line-start="918" data-line-end="923">References</a>
-  - <a href="#refs-skills" data-line-start="924" data-line-end="956">Skills</a>
+  - <a href="#glossary-action-and-delivery" data-line-start="200" data-line-end="305">Action and delivery</a>
+  - <a href="#glossary-honing-and-commitment" data-line-start="306" data-line-end="352">Honing and commitment</a>
+- <a href="#codes" data-line-start="353" data-line-end="391">Codes glossary</a>
+- <a href="#doc-constitution" data-line-start="392" data-line-end="398">Constitution — orient before acting</a>
+  - <a href="#doc-constitution-terms-in-use" data-line-start="399" data-line-end="419">Terms in use</a>
+  - <a href="#doc-constitution-use-the-sense-map" data-line-start="420" data-line-end="473">Use the sense-map</a>
+- <a href="#documentation-practice" data-line-start="474" data-line-end="477">Writing, independent waves, and document connections</a>
+  - <a href="#documentation-practice-durable-writing" data-line-start="478" data-line-end="510">Durable writing</a>
+  - <a href="#documentation-practice-waves" data-line-start="511" data-line-end="533">Waves</a>
+  - <a href="#documentation-practice-doc-pass" data-line-start="534" data-line-end="553">Doc-pass</a>
+- <a href="#collaboration" data-line-start="554" data-line-end="557">Collaboration and architectural stewardship</a>
+  - <a href="#collaboration-dispatch-and-return" data-line-start="558" data-line-end="582">Dispatch and return</a>
+  - <a href="#collaboration-stewardship" data-line-start="583" data-line-end="602">Stewardship</a>
+  - <a href="#collaboration-discussion" data-line-start="603" data-line-end="617">Discussion</a>
+- <a href="#workspace" data-line-start="618" data-line-end="644">Workspace, research locations, and shell</a>
+- <a href="#code" data-line-start="645" data-line-end="651">Code — stage and change discipline</a>
+  - <a href="#code-terms-in-use" data-line-start="652" data-line-end="666">Terms in use</a>
+  - <a href="#code-operating-weight" data-line-start="667" data-line-end="698">Operating weight</a>
+- <a href="#jj" data-line-start="699" data-line-end="726">jj and git operating rules</a>
+  - <a href="#jj-jj-waltz-workspaces" data-line-start="727" data-line-end="754">jj-waltz workspaces</a>
+- <a href="#javascript" data-line-start="755" data-line-end="788">JavaScript and TypeScript</a>
+- <a href="#rust" data-line-start="789" data-line-end="815">Rust conventions</a>
+- <a href="#beads" data-line-start="816" data-line-end="853">Beads — readable work IDs and deliberate tracking</a>
+- <a href="#praxis-ticket-pointers" data-line-start="854" data-line-end="869">Ticket pointers — ambient cues</a>
+- <a href="#praxis-consumer-accounts" data-line-start="870" data-line-end="888">Consumer accounts — library-side feedback</a>
+- <a href="#tool" data-line-start="889" data-line-end="928">Tools — check knowledge documents</a>
+- <a href="#refs" data-line-start="929" data-line-end="934">References</a>
+  - <a href="#refs-skills" data-line-start="935" data-line-end="967">Skills</a>
 
 </nav>
 
@@ -42,7 +42,7 @@ Add `--check` to that command to detect stale output or hand edits.
 
 <section id="glossary" data-source="/CONTEXT.md">
 
-<Okf data={{"description":"Cross-topic terms linking the established naming and constitutional vocabulary to current action and context work; a working glossary, not a new naming law.","extensions":{"related_work":["rekon-con-naming","rekon-agents-maintenance"],"ticket":"rekon-phoenix"},"generated":{"at":"2026-09-06","by":"model:gpt-6-astra"},"id":"glossary","order":50,"resource":"/CONTEXT.md","source":"/CONTEXT.md","sources":[{"resource":"urn:opencode:session:ses_ed3000de2ffewvt4aDNZVE4O9R","title":"Semantic vocabulary conversion and MDX flow-boundary correction"},{"resource":"urn:opencode:session:ses_ed31715c4ffex2ROd2G2C617AF","title":"Semantic definition-list conversion commissioned for enriched assembly"},{"resource":"/constitution/naming/exploration/proposal4.glm53m.md","title":"Recorded human naming override"},{"resource":"/constitution/naming/exploration/draft2-discussion0.sol56x.md","title":"Shared glossary and remaining naming disagreements"},{"resource":"/design/skillify/README1.sol56x.md","title":"Capability and context vocabulary"},{"resource":"/constitution/README.md","title":"Knowledge modules and exposures"},{"resource":"/evidence/README.md","title":"Evidence relationships and case stories"},{"resource":"/digest/README.md","title":"Action and intent fronts"},{"resource":"urn:opencode:session:ses_f2ebf7b1effewnCNYbBQ8Ewey2","title":"Human adoption of the ⇄ maintained-link convention for the fronts thread"},{"resource":"opencode://ses_e9bc39334ffetsgyIAj4L0kp0A","title":"Human names pattern-driven assembly expansion globbing; glossary entry added with the Rust producer capability"}],"status":"draft","tags":["glossary","naming","constitution","actions","context"],"title":"Rekon working vocabulary","type":"Glossary"}} />
+<Okf data={{"description":"Cross-topic terms linking the established naming and constitutional vocabulary to current action and context work; a working glossary, not a new naming law.","extensions":{"related_work":["rekon-con-naming","rekon-agents-maintenance"],"ticket":"rekon-phoenix"},"generated":{"at":"2026-09-06","by":"model:gpt-6-astra"},"id":"glossary","order":50,"resource":"/CONTEXT.md","source":"/CONTEXT.md","sources":[{"resource":"opencode://ses_e6cc34212ffelIc5sLrW1xqvi7","title":"Record the human-commissioned flight term and its practice home"},{"resource":"opencode://ses_e6ccb4e5effe6EWqmToxh2oLHO","title":"Human commissions the flight coordination vocabulary"},{"resource":"urn:opencode:session:ses_ed3000de2ffewvt4aDNZVE4O9R","title":"Semantic vocabulary conversion and MDX flow-boundary correction"},{"resource":"urn:opencode:session:ses_ed31715c4ffex2ROd2G2C617AF","title":"Semantic definition-list conversion commissioned for enriched assembly"},{"resource":"/constitution/naming/exploration/proposal4.glm53m.md","title":"Recorded human naming override"},{"resource":"/constitution/naming/exploration/draft2-discussion0.sol56x.md","title":"Shared glossary and remaining naming disagreements"},{"resource":"/design/skillify/README1.sol56x.md","title":"Capability and context vocabulary"},{"resource":"/constitution/README.md","title":"Knowledge modules and exposures"},{"resource":"/evidence/README.md","title":"Evidence relationships and case stories"},{"resource":"/digest/README.md","title":"Action and intent fronts"},{"resource":"urn:opencode:session:ses_f2ebf7b1effewnCNYbBQ8Ewey2","title":"Human adoption of the ⇄ maintained-link convention for the fronts thread"},{"resource":"opencode://ses_e9bc39334ffetsgyIAj4L0kp0A","title":"Human names pattern-driven assembly expansion globbing; glossary entry added with the Rust producer capability"}],"status":"draft","tags":["glossary","naming","constitution","actions","context"],"title":"Rekon working vocabulary","type":"Glossary"}} />
 
 ## Rekon working vocabulary
 
@@ -210,6 +210,15 @@ decision; an actual attempt is distinct from its reusable method.
 <dd>
 A repeatable way of joining purpose, procedure, evidence, and
 reflection around a kind of action.
+</dd>
+
+<dt><dfn id="flight">Flight</dfn></dt>
+<dd>
+A reusable coordination model for a series of agent promises, with explicit
+spawn and join points expressing dependencies between work and decisions.
+An actual flight instantiates the model with its own participants and outcomes.
+<em>Do not conflate with:</em> a scheduler, a guarantee of success, or an
+authorization to delegate. Practice: <a href="/praxis/flights/README.md">flights</a>.
 </dd>
 
 <dt><dfn id="capability">Capability</dfn></dt>
@@ -540,7 +549,7 @@ consult [the toolkit map](/tool/README.md) for current capabilities.
 
 <section id="collaboration" data-source="/agents/GLOBAL.md">
 
-<Okf data={{"description":"Delegation, context budgeting, architectural review and collaborative decision practices.","generated":{"at":"2026-10-29","by":"model:openai/gpt-6-astra#xhigh"},"id":"collaboration","order":150,"resource":"/agents/GLOBAL.md","source":"/agents/GLOBAL.md","sources":[{"resource":"opencode://ses_e7bc138ffffeHcfSJmcsHKoO9Z","title":"Human requests a soft 300k delegated-session context target, tolerates modest overshoot and directs the nearly finished Sol slice to wrap"}],"status":"draft","title":"Collaboration and architectural stewardship","type":"ContextFragment"}} />
+<Okf data={{"description":"Delegation, context budgeting, architectural review and collaborative decision practices.","generated":{"at":"2026-10-29","by":"model:openai/gpt-6-astra#xhigh"},"id":"collaboration","order":150,"resource":"/agents/GLOBAL.md","source":"/agents/GLOBAL.md","sources":[{"resource":"opencode://ses_e6cc34212ffelIc5sLrW1xqvi7","title":"Add a concise pointer to the dated model and variant lookup"},{"resource":"opencode://ses_e7bc138ffffeHcfSJmcsHKoO9Z","title":"Human requests a soft 300k delegated-session context target, tolerates modest overshoot and directs the nearly finished Sol slice to wrap"}],"status":"draft","title":"Collaboration and architectural stewardship","type":"ContextFragment"}} />
 
 ## Collaboration and architectural stewardship
 
@@ -558,6 +567,8 @@ consult [the toolkit map](/tool/README.md) for current capabilities.
   unavailable models. `general` is a capable default; for high-value work and
   deep research, ask which agents the user wants for which tasks. See
   [the general-agent guidance](/agents/general.md).
+- For explicitly requested common models and variants, use the dated
+  [model lookup](/agents/models/README.md); recheck uncertain or changed availability.
 - Prime agents with existing research and relevant Markdown. Ask them to return
   file/section references and to write and commit their own model-suffixed
   documents under the effort's domain, often `design/<topic>/`.

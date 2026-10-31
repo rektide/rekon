@@ -7,6 +7,7 @@ tags: [gates, praxis, subagents, waves, readiness]
 status: draft
 generated: { by: "model:gpt-6-astra", at: 2026-09-06 }
 sources:
+  - { resource: "opencode://ses_e6cc34212ffelIc5sLrW1xqvi7", title: Connect evidence gates to the flight coordination model }
   - { resource: /AGENTS.md, title: Deliberative subagents and architectural checkpoints }
   - { resource: /constitution/README.md, title: Dependency-gated dispatch and independent waves }
   - { resource: "urn:opencode:session:ses_f872bf58affeS5IBlC38cA6iYX", title: Human direction to gate analysis on all returning }
@@ -78,10 +79,12 @@ passing tests, model agreement, and human acceptance are different signals.
 
 ## Cross-references
 
+- [Flights](/praxis/flights/README.md) **compose** multiple agent promises and
+  joins; an evidence gate protects a particular dependent decision within one.
 - [Review form](/assess/review/form1.glm53.md) **uses** a full-wave gate to protect
   independent assessment and subsequent comparative reading.
 - [Constitution's opt-in patterns](/constitution/README.md#doc-constitution-patterns)
   **provides prior art**: assignment manifests, wave seals, dependency gates,
   and proportional adoption already belong to this knowledge system.
-- [Architectural stewardship](/AGENTS.md#architectural-stewardship) **owns**
+- [Architectural stewardship](/AGENTS.md#collaboration-stewardship) **owns**
   consequential decision checkpoints after evidence becomes available.

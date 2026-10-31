@@ -13,6 +13,8 @@ extensions:
   ticket: rekon-phoenix
   related_work: [rekon-con-naming, rekon-agents-maintenance]
 sources:
+  - { resource: "opencode://ses_e6cc34212ffelIc5sLrW1xqvi7", title: Record the human-commissioned flight term and its practice home }
+  - { resource: "opencode://ses_e6ccb4e5effe6EWqmToxh2oLHO", title: Human commissions the flight coordination vocabulary }
   - { resource: "urn:opencode:session:ses_ed3000de2ffewvt4aDNZVE4O9R", title: Semantic vocabulary conversion and MDX flow-boundary correction }
   - { resource: "urn:opencode:session:ses_ed31715c4ffex2ROd2G2C617AF", title: Semantic definition-list conversion commissioned for enriched assembly }
   - { resource: /constitution/naming/exploration/proposal4.glm53m.md, title: Recorded human naming override }
@@ -181,6 +183,15 @@ decision; an actual attempt is distinct from its reusable method.
 <dd>
 A repeatable way of joining purpose, procedure, evidence, and
 reflection around a kind of action.
+</dd>
+
+<dt><dfn id="flight">Flight</dfn></dt>
+<dd>
+A reusable coordination model for a series of agent promises, with explicit
+spawn and join points expressing dependencies between work and decisions.
+An actual flight instantiates the model with its own participants and outcomes.
+<em>Do not conflate with:</em> a scheduler, a guarantee of success, or an
+authorization to delegate. Practice: <a href="/praxis/flights/README.md">flights</a>.
 </dd>
 
 <dt><dfn id="capability">Capability</dfn></dt>

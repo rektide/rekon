@@ -11,6 +11,7 @@ stale_after: 2026-12-06
 extensions:
   work_anchor: "wifi-ptp-now:wiptpn-modern-praxis"
 sources:
+  - { resource: "opencode://ses_e6cc34212ffelIc5sLrW1xqvi7", title: Connect the human-commissioned flight coordination practice }
   - { resource: "opencode://ses_e9a40d003ffeEeLMvkRjLaMwVK", title: Connect the consumer accounts practice for libraries we use }
   - {
       resource: "urn:opencode:session:ses_f86b2c89bffeXMeyFPJ6MJg2Cx",
@@ -100,6 +101,13 @@ develops deliberately different positions on the same system. Independent
 same-question research and complementary design axes expose different kinds of
 evidence; the parent compares and synthesizes after the relevant gates rather
 than predetermining the architecture or averaging the outputs.
+
+## Related practice: flights
+
+[Flights](/praxis/flights/README.md) coordinate agent promises across explicit
+spawn and join points. Their optional full-cycle example carries independent
+research through syntheses and designs without making that sequence a universal
+pipeline; gates, partial results, and human authority remain explicit.
 
 ## Related practice: after the build
 
