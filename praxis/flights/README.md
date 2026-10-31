@@ -7,14 +7,14 @@ status: draft
 generated: { by: "model:openai/gpt-6.1-terra#xhigh", at: 2026-10-31 }
 tags: [praxis, flights, agents, coordination, evidence, synthesis]
 sources:
-  - { resource: "opencode://ses_e6c900557ffex5YjEpZrQCueNC", title: Connect the Kinefolk firmware launch-pattern case to flights practice }
+  - { resource: "opencode://ses_e6c900557ffex5YjEpZrQCueNC", title: Connect and update the Kinefolk firmware case through observed flight completion }
   - { resource: "opencode://ses_e6ccb4e5effe6EWqmToxh2oLHO", title: Human commission for flight vocabulary, full-cycle practice and model reference }
   - { resource: "opencode://ses_e6cc6c15bffe34JypBfFJ1p6L1", title: Rekon entrypoint investigation informing the proposed practice home }
   - { resource: "opencode://ses_e6cc34212ffelIc5sLrW1xqvi7", title: Develop flight dependency model and optional full-cycle example }
   - { resource: /praxis/parallax/README.md, title: Independent viewpoints, synthesis and parent architectural responsibility }
   - { resource: /assess/gates/README.md, title: Evidence gates and partial-result release conditions }
   - { resource: /constitution/practice/GLOBAL.md, title: Independent waves and durable provenance }
-  - { resource: /praxis/flights/kinefolk-firmware0.gpt6a.md, title: Commissioned firmware research flight and prospective case seed }
+  - { resource: /praxis/flights/kinefolk-firmware0.gpt6a.md, title: Completed firmware research flight and observed learning }
 ---
 
 # Flights
@@ -92,8 +92,9 @@ The [Kinefolk firmware flight](/praxis/flights/kinefolk-firmware0.gpt6a.md)
 maps a commissioned sequence from two orientations through a shared QMK/ZMK
 study, three independent Kinefolk-fit inquiries, five syntheses, and a returning
 agent's reconsideration. Its all-of joins make the differing cohorts and
-continuation identities visible. It is a case seed, not evidence that the full
-flight succeeded; Kinefolk's own brief maintains the actual dispatch and research.
+continuation identities visible. The completed case records actual corrections,
+parent learning and limits; Kinefolk's brief maintains the dispatch and research.
+Completion does not establish runtime conformance or general practice success.
 
 ## Failure and partial results
 
