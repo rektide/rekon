@@ -2,5 +2,7 @@
 description: Expensive Qwen 3.8 Max high subagent through OpenCode Go. Only use when explicitly requested. Alias Q.
 mode: subagent
 disabled: true
-model: opencode-go/qwen3.8-max#high
+# keep model and variant as separate keys; the deployed opencode loader drops embedded #variants (design/agents/model-routing0.glm53m.md)
+model: opencode-go/qwen3.8-max
+variant: high
 ---
