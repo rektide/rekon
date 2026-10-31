@@ -2,37 +2,39 @@
 
 <nav id="rekon-toc" aria-label="Table of contents">
 
-- <a href="#glossary" data-line-start="47" data-line-end="54">Rekon working vocabulary</a>
-  - <a href="#glossary-names-homes-and-relations" data-line-start="55" data-line-end="132">Names, homes, and relations</a>
-  - <a href="#glossary-knowledge-work-and-learning" data-line-start="133" data-line-end="199">Knowledge, work, and learning</a>
-  - <a href="#glossary-action-and-delivery" data-line-start="200" data-line-end="305">Action and delivery</a>
-  - <a href="#glossary-honing-and-commitment" data-line-start="306" data-line-end="352">Honing and commitment</a>
-- <a href="#codes" data-line-start="353" data-line-end="391">Codes glossary</a>
-- <a href="#doc-constitution" data-line-start="392" data-line-end="398">Constitution — orient before acting</a>
-  - <a href="#doc-constitution-terms-in-use" data-line-start="399" data-line-end="419">Terms in use</a>
-  - <a href="#doc-constitution-use-the-sense-map" data-line-start="420" data-line-end="473">Use the sense-map</a>
-- <a href="#documentation-practice" data-line-start="474" data-line-end="477">Writing, independent waves, and document connections</a>
-  - <a href="#documentation-practice-durable-writing" data-line-start="478" data-line-end="510">Durable writing</a>
-  - <a href="#documentation-practice-waves" data-line-start="511" data-line-end="533">Waves</a>
-  - <a href="#documentation-practice-doc-pass" data-line-start="534" data-line-end="553">Doc-pass</a>
-- <a href="#collaboration" data-line-start="554" data-line-end="557">Collaboration and architectural stewardship</a>
-  - <a href="#collaboration-dispatch-and-return" data-line-start="558" data-line-end="589">Dispatch and return</a>
-  - <a href="#collaboration-stewardship" data-line-start="590" data-line-end="609">Stewardship</a>
-  - <a href="#collaboration-discussion" data-line-start="610" data-line-end="624">Discussion</a>
-- <a href="#workspace" data-line-start="625" data-line-end="651">Workspace, research locations, and shell</a>
-- <a href="#code" data-line-start="652" data-line-end="658">Code — stage and change discipline</a>
-  - <a href="#code-terms-in-use" data-line-start="659" data-line-end="673">Terms in use</a>
-  - <a href="#code-operating-weight" data-line-start="674" data-line-end="705">Operating weight</a>
-- <a href="#jj" data-line-start="706" data-line-end="733">jj and git operating rules</a>
-  - <a href="#jj-jj-waltz-workspaces" data-line-start="734" data-line-end="761">jj-waltz workspaces</a>
-- <a href="#javascript" data-line-start="762" data-line-end="795">JavaScript and TypeScript</a>
-- <a href="#rust" data-line-start="796" data-line-end="822">Rust conventions</a>
-- <a href="#beads" data-line-start="823" data-line-end="860">Beads — readable work IDs and deliberate tracking</a>
-- <a href="#praxis-ticket-pointers" data-line-start="861" data-line-end="876">Ticket pointers — ambient cues</a>
-- <a href="#praxis-consumer-accounts" data-line-start="877" data-line-end="895">Consumer accounts — library-side feedback</a>
-- <a href="#tool" data-line-start="896" data-line-end="935">Tools — check knowledge documents</a>
-- <a href="#refs" data-line-start="936" data-line-end="941">References</a>
-  - <a href="#refs-skills" data-line-start="942" data-line-end="974">Skills</a>
+- <a href="#glossary" data-line-start="49" data-line-end="56">Rekon working vocabulary</a>
+  - <a href="#glossary-names-homes-and-relations" data-line-start="57" data-line-end="134">Names, homes, and relations</a>
+  - <a href="#glossary-knowledge-work-and-learning" data-line-start="135" data-line-end="201">Knowledge, work, and learning</a>
+  - <a href="#glossary-action-and-delivery" data-line-start="202" data-line-end="307">Action and delivery</a>
+  - <a href="#glossary-honing-and-commitment" data-line-start="308" data-line-end="354">Honing and commitment</a>
+- <a href="#codes" data-line-start="355" data-line-end="393">Codes glossary</a>
+- <a href="#doc-constitution" data-line-start="394" data-line-end="400">Constitution — orient before acting</a>
+  - <a href="#doc-constitution-terms-in-use" data-line-start="401" data-line-end="421">Terms in use</a>
+  - <a href="#doc-constitution-use-the-sense-map" data-line-start="422" data-line-end="475">Use the sense-map</a>
+- <a href="#documentation-practice" data-line-start="476" data-line-end="479">Writing, independent waves, and document connections</a>
+  - <a href="#documentation-practice-durable-writing" data-line-start="480" data-line-end="512">Durable writing</a>
+  - <a href="#documentation-practice-waves" data-line-start="513" data-line-end="535">Waves</a>
+  - <a href="#documentation-practice-doc-pass" data-line-start="536" data-line-end="555">Doc-pass</a>
+- <a href="#collaboration" data-line-start="556" data-line-end="559">Collaboration and architectural stewardship</a>
+  - <a href="#collaboration-dispatch-and-return" data-line-start="560" data-line-end="591">Dispatch and return</a>
+  - <a href="#collaboration-stewardship" data-line-start="592" data-line-end="611">Stewardship</a>
+  - <a href="#collaboration-discussion" data-line-start="612" data-line-end="626">Discussion</a>
+- <a href="#workspace" data-line-start="627" data-line-end="653">Workspace, research locations, and shell</a>
+- <a href="#code" data-line-start="654" data-line-end="660">Code — stage and change discipline</a>
+  - <a href="#code-terms-in-use" data-line-start="661" data-line-end="675">Terms in use</a>
+  - <a href="#code-operating-weight" data-line-start="676" data-line-end="707">Operating weight</a>
+- <a href="#jj" data-line-start="708" data-line-end="735">jj and git operating rules</a>
+  - <a href="#jj-jj-waltz-workspaces" data-line-start="736" data-line-end="763">jj-waltz workspaces</a>
+- <a href="#forge-publication" data-line-start="764" data-line-end="778">Forge publication</a>
+- <a href="#javascript" data-line-start="779" data-line-end="812">JavaScript and TypeScript</a>
+- <a href="#rust" data-line-start="813" data-line-end="839">Rust conventions</a>
+- <a href="#atproto-cli" data-line-start="840" data-line-end="852">ATProto CLI sessions</a>
+- <a href="#beads" data-line-start="853" data-line-end="890">Beads — readable work IDs and deliberate tracking</a>
+- <a href="#praxis-ticket-pointers" data-line-start="891" data-line-end="906">Ticket pointers — ambient cues</a>
+- <a href="#praxis-consumer-accounts" data-line-start="907" data-line-end="925">Consumer accounts — library-side feedback</a>
+- <a href="#tool" data-line-start="926" data-line-end="965">Tools — check knowledge documents</a>
+- <a href="#refs" data-line-start="966" data-line-end="971">References</a>
+  - <a href="#refs-skills" data-line-start="972" data-line-end="1004">Skills</a>
 
 </nav>
 
@@ -755,6 +757,21 @@ snapshotting. [Preparation, restrictions, recovery](/vcs/jj/waltz.md#jj-waltz-so
 </section>
 </section>
 
+<section id="forge-publication" data-source="/forge/GLOBAL.md">
+
+<Okf data={{"description":"Defaults and checks for publishing repositories.","id":"forge-publication","order":240,"resource":"/forge/GLOBAL.md","source":"/forge/publication.md","sources":[{"resource":"opencode://ses_e6c505360ffeVFenH2VYDN7XS0","title":"Human defaults and forge guidance integration"}],"status":"draft","title":"Forge publication","type":"ContextFragment"}} />
+
+## Forge publication
+
+- Default to public repositories, `main`, GitHub `rektide`, and SSH
+  (`git@github.com:rektide/<name>`). Confirm the name, account, exact committed
+  tip, and existing remotes before creation or operator-directed push.
+- Tangled usually uses `jauntywunderkind.bsky.social` and
+  `tngl:<handle>/<name>`; OAuth login and SSH push keys are separate. Check
+  client/API currency: current Tangled uses `org.tangled.*`; old recipes may
+  target legacy endpoints. [Publication guide](/forge/publication.md).
+</section>
+
 <section id="javascript" data-source="/code/js/GLOBAL.md">
 
 <Okf data={{"id":"javascript","order":250,"source":"/code/js/README.md","status":"draft"}} />
@@ -814,6 +831,19 @@ snapshotting. [Preparation, restrictions, recovery](/vcs/jj/waltz.md#jj-waltz-so
 Recovered from [legacy Rust preferences](/AGENTS.old.md#rust-instructions).
 The precedence clarification preserves its intended ordering without treating
 the old single-provider example as a complete layering implementation.
+</section>
+
+<section id="atproto-cli" data-source="/atproto/GLOBAL.md">
+
+<Okf data={{"description":"Quick client identity and authentication checks.","id":"atproto-cli","order":280,"resource":"/atproto/GLOBAL.md","source":"/atproto/cli.md","sources":[{"resource":"opencode://ses_e6c505360ffeVFenH2VYDN7XS0","title":"Human direction and ATProto CLI guidance integration"}],"status":"draft","title":"ATProto CLI sessions","type":"ContextFragment"}} />
+
+## ATProto CLI sessions
+
+- Check version and identity with `atgc --version` and `atgc auth status`;
+  login interactively with `atgc auth login <handle>`. Local status alone is
+  not proof remote access works. Different `tg` tools exist; identify the
+  binary before using its recipes. Never expose tokens or passwords.
+  [CLI guide](/atproto/cli.md).
 </section>
 
 <section id="beads" data-source="/praxis/beads/GLOBAL.md">

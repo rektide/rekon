@@ -4,6 +4,8 @@ Reference material and worked recipes for AT Protocol lookups — resolving hand
 records that link to a record (likes, reposts, replies, quotes), and checking whether a record
 exists. Extend as more lookup flows get exercised.
 
+For client login and session checks, see [ATProto CLI sessions](/atproto/cli.md).
+
 ## Handle → DID
 
 AppView endpoint, no auth:

@@ -23,6 +23,9 @@ sources:
 <a id="forge"></a>
 # Forge
 
+For publishing and maintaining our own repositories, see the separate
+[forge publication guide](/forge/publication.md); this guide remains read-only.
+
 > **Revision 1 (2026-09-07).** Hardened after a parent review of both the
 > Iggy case study and this guide: threads must be read to their *late*
 > comments (the #2854 approval lived past the disagreement), identity
