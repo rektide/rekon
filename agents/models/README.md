@@ -7,7 +7,8 @@ status: draft
 generated: { by: "model:zai-coding-plan/glm-5.3#max", at: 2026-10-31 }
 tags: [agents, models, variants, dispatch, reference]
 sources:
-  - { resource: "opencode://ses_e6c1f991dffeK5oewTLCA2j5zu", title: Human moves rate-limit fallback guidance into the G and F agent definitions }
+  - { resource: "opencode://ses_e6c1f991dffeK5oewTLCA2j5zu", title: Human moves fallback into agent definitions and requests concise descriptions and field visibility documentation }
+  - { resource: "https://opencode.ai/v2/docs/agents", title: OpenCode agent description and model configuration }
   - { resource: "opencode://ses_e6ccb4e5effe6EWqmToxh2oLHO", title: Human requests a common-model lookup; parent reports models-tool results checked 2026-10-31 }
   - { resource: "opencode://ses_e6cc6c15bffe34JypBfFJ1p6L1", title: Rekon entrypoint investigation and model-reference home }
   - { resource: "opencode://ses_e6cc34212ffelIc5sLrW1xqvi7", title: Reconcile configured agent defaults with the dated runtime model inventory }
@@ -69,6 +70,18 @@ levels; availability in the table is not a broader selection policy.
 
 For rate-limit fallbacks, follow the individual [`g`](/agents/g.md) and
 [`f`](/agents/f.md) definitions.
+
+## What the parent sees
+
+OpenCode's [agent documentation](https://opencode.ai/v2/docs/agents) says the
+parent model sees a subagent's `description` when choosing an agent. Put brief
+selection and fallback guidance there. Rekon's `note` supplies the row in the
+generated [codes glossary](/codes/GLOSSARY.md); it is not the description
+field. The configured `model` and `variant` select the child model without a
+per-call override; the description can also state the exact ID for a parent
+considering an explicitly requested override. Configuration and catalog entries
+do not prove that a particular request will succeed or that a running service
+has reloaded a changed definition.
 
 The notation above is for a dispatch override, not agent-definition frontmatter.
 The definitions deliberately keep `model:` and `variant:` separate: the
