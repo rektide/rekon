@@ -10,6 +10,7 @@ resource: /codes/GLOSSARY.md
 tags: [codes, naming, aliases, glossary]
 sources:
   - { resource: "opencode://ses_e9bc39334ffetsgyIAj4L0kp0A", title: Commission the codes glossary generator and direct it into ambient context }
+  - { resource: "opencode://ses_e6c20690cffeyOxxE0zP6Z4JVT", title: Add standard variant abbreviations and default-variant notation to agent rows }
   - { resource: /constitution/naming/README.md, title: Short codes practice that owns code vocabulary }
 ---
 
@@ -28,21 +29,26 @@ codes and [`agents/`](/agents) definitions for agent codes, whose
 frontmatter carries the row beside the functional prompt fields. Dormant
 definitions take a `.md.disabled` suffix and stay inert — defined but
 neither loaded nor listed. Single-letter codes are scarce and guarded.
-Practice, rulings, and history live with
+Agent rows name their configured model as `default #variant` using the
+standard variant abbreviations: `lo` low, `med` medium, `hi` high,
+`xh` xhigh, `max` max, `∅` no suffix. These are reading notation;
+actual dispatch overrides use full variant names. The dated inventory
+lives in the [model lookup](/agents/models/README.md). Practice, rulings,
+and history live with
 [naming](/constitution/naming/README.md#short-codes).
 
 | Code | Target (`file#tag`) | Note |
 |---|---|---|
-| `ast` | [`/agents/ast.md`](/agents/ast.md) | GPT-6 Astra high — independent research and design waves; medium/xhigh via model override |
+| `ast` | [`/agents/ast.md`](/agents/ast.md) | GPT-6 Astra, default #hi — independent research and design waves |
 | `cf` | [`file:///home/rektide/src/compfuzor/README.md`](file:///home/rektide/src/compfuzor/README.md) | usually the compfuzor project (~/src/compfuzor); occasionally Cloudflare or scholarly “cf.” — read the context; canonical: github.com/rektide/compfuzor |
 | `con` | [`/constitution/README.md`](/constitution/README.md) | the constitution — rekon's broadest governing document; shared principles for naming, knowledge, work, and assembly; as a prefix it scopes references: con-naming (naming work), con-structure (structure contract) |
 | `exp` | [`/constitution/naming/README.md#short-codes`](/constitution/naming/README.md#short-codes) | a topic's early inquiry documents — drafts and proposals that precede any ruling; usually under the topic's exploration/ or design/ folder; example: con-naming-exp-… points into naming's exploration waves |
-| `f` | [`/agents/f.md`](/agents/f.md) | GLM 5.3 Flash max — fast well-described well-known work; flash/flash-max folded in, #high via model override |
-| `g` | [`/agents/g.md`](/agents/g.md) | GLM 5.3 max — the default heavy lifter for most tasks; gh/gl folded in, other levels via model override |
+| `f` | [`/agents/f.md`](/agents/f.md) | GLM 5.3 Flash, default #max — fast well-described well-known work |
+| `g` | [`/agents/g.md`](/agents/g.md) | GLM 5.3, default #max — the heavy lifter for most tasks |
 | `general` | [`/agents/general.md`](/agents/general.md) | capable general-purpose default for delegated work |
-| `l` | [`/agents/l.md`](/agents/l.md) | GPT-6 Luna xhigh — only when explicitly requested; medium via model override |
+| `l` | [`/agents/l.md`](/agents/l.md) | GPT-6 Luna, default #xh — only when explicitly requested |
 | `prax` | [`/praxis/README.md`](/praxis/README.md) | praxis — the practice domains: repeatable ways of working; bookmarking, beads, fronts, ticket pointers; a practice joins purpose, procedure, evidence, and reflection |
 | `res` | [`/constitution/naming/README.md#short-codes`](/constitution/naming/README.md#short-codes) | a topic's gathered research material; scope comes from the named topic, not a fixed directory |
 | `rkt` | [`/tool/README.md`](/tool/README.md) | rk's tool — the rekon CLI; Markdown maintenance and verification for any repo, not just rekon's; commands: combine, codes, toc, okf extract, check, audit-context; runs from any checkout via --manifest-path |
-| `sol` | [`/agents/sol.md`](/agents/sol.md) | GPT-6.1 Sol high — capable independent doer for partially formed work; medium/xhigh/max via model override |
-| `t` | [`/agents/t.md`](/agents/t.md) | GPT-6.1 Terra medium — general coding, analysis, and implementation |
+| `sol` | [`/agents/sol.md`](/agents/sol.md) | GPT-6.1 Sol, default #hi — capable independent doer for partially formed work |
+| `t` | [`/agents/t.md`](/agents/t.md) | GPT-6.1 Terra, default #med — general coding, analysis, and implementation |

@@ -1,5 +1,5 @@
 ---
-description: DeepSeek V4 Flash high subagent through OpenCode Go. Only use when explicitly requested. Alias DF.
+description: DeepSeek V4 Flash high subagent through OpenCode Go. Only use when explicitly requested. Alias df.
 mode: subagent
 disabled: true
 # keep model and variant as separate keys; the deployed opencode loader drops embedded #variants (design/agents/model-routing0.glm53m.md)

@@ -299,6 +299,7 @@ pub fn render_registry(entries: &[CodeEntry]) -> String {
             "tags: [codes, naming, aliases, glossary]\n",
             "sources:\n",
             "  - {{ resource: \"opencode://ses_e9bc39334ffetsgyIAj4L0kp0A\", title: Commission the codes glossary generator and direct it into ambient context }}\n",
+            "  - {{ resource: \"opencode://ses_e6c20690cffeyOxxE0zP6Z4JVT\", title: Add standard variant abbreviations and default-variant notation to agent rows }}\n",
             "  - {{ resource: /constitution/naming/README.md, title: Short codes practice that owns code vocabulary }}\n",
             "---\n\n",
             "# Codes glossary\n\n",
@@ -312,7 +313,12 @@ pub fn render_registry(entries: &[CodeEntry]) -> String {
             "frontmatter carries the row beside the functional prompt fields. Dormant\n",
             "definitions take a `.md.disabled` suffix and stay inert — defined but\n",
             "neither loaded nor listed. Single-letter codes are scarce and guarded.\n",
-            "Practice, rulings, and history live with\n",
+            "Agent rows name their configured model as `default #variant` using the\n",
+            "standard variant abbreviations: `lo` low, `med` medium, `hi` high,\n",
+            "`xh` xhigh, `max` max, `∅` no suffix. These are reading notation;\n",
+            "actual dispatch overrides use full variant names. The dated inventory\n",
+            "lives in the [model lookup](/agents/models/README.md). Practice, rulings,\n",
+            "and history live with\n",
             "[naming](/constitution/naming/README.md#short-codes).\n\n",
             "| Code | Target (`file#tag`) | Note |\n",
             "|---|---|---|\n",
@@ -471,6 +477,10 @@ mod tests {
         assert!(document.contains(&format!("id: {GLOSSARY_ID}\n")));
         assert!(document.contains(&format!("order: {GLOSSARY_ORDER}\n")));
         assert!(document.contains("# Codes glossary\n"));
+        assert!(
+            document.contains("standard variant abbreviations"),
+            "preamble must define the variant notation used by agent rows"
+        );
     }
 
     #[test]

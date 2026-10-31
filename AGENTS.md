@@ -7,34 +7,34 @@
   - <a href="#glossary-knowledge-work-and-learning" data-line-start="135" data-line-end="201">Knowledge, work, and learning</a>
   - <a href="#glossary-action-and-delivery" data-line-start="202" data-line-end="307">Action and delivery</a>
   - <a href="#glossary-honing-and-commitment" data-line-start="308" data-line-end="354">Honing and commitment</a>
-- <a href="#codes" data-line-start="355" data-line-end="393">Codes glossary</a>
-- <a href="#doc-constitution" data-line-start="394" data-line-end="400">Constitution — orient before acting</a>
-  - <a href="#doc-constitution-terms-in-use" data-line-start="401" data-line-end="421">Terms in use</a>
-  - <a href="#doc-constitution-use-the-sense-map" data-line-start="422" data-line-end="475">Use the sense-map</a>
-- <a href="#documentation-practice" data-line-start="476" data-line-end="479">Writing, independent waves, and document connections</a>
-  - <a href="#documentation-practice-durable-writing" data-line-start="480" data-line-end="512">Durable writing</a>
-  - <a href="#documentation-practice-waves" data-line-start="513" data-line-end="535">Waves</a>
-  - <a href="#documentation-practice-doc-pass" data-line-start="536" data-line-end="555">Doc-pass</a>
-- <a href="#collaboration" data-line-start="556" data-line-end="559">Collaboration and architectural stewardship</a>
-  - <a href="#collaboration-dispatch-and-return" data-line-start="560" data-line-end="584">Dispatch and return</a>
-  - <a href="#collaboration-stewardship" data-line-start="585" data-line-end="604">Stewardship</a>
-  - <a href="#collaboration-discussion" data-line-start="605" data-line-end="619">Discussion</a>
-- <a href="#workspace" data-line-start="620" data-line-end="646">Workspace, research locations, and shell</a>
-- <a href="#code" data-line-start="647" data-line-end="653">Code — stage and change discipline</a>
-  - <a href="#code-terms-in-use" data-line-start="654" data-line-end="668">Terms in use</a>
-  - <a href="#code-operating-weight" data-line-start="669" data-line-end="700">Operating weight</a>
-- <a href="#jj" data-line-start="701" data-line-end="728">jj and git operating rules</a>
-  - <a href="#jj-jj-waltz-workspaces" data-line-start="729" data-line-end="756">jj-waltz workspaces</a>
-- <a href="#forge-publication" data-line-start="757" data-line-end="771">Forge publication</a>
-- <a href="#javascript" data-line-start="772" data-line-end="805">JavaScript and TypeScript</a>
-- <a href="#rust" data-line-start="806" data-line-end="832">Rust conventions</a>
-- <a href="#atproto-cli" data-line-start="833" data-line-end="845">ATProto CLI sessions</a>
-- <a href="#beads" data-line-start="846" data-line-end="883">Beads — readable work IDs and deliberate tracking</a>
-- <a href="#praxis-ticket-pointers" data-line-start="884" data-line-end="899">Ticket pointers — ambient cues</a>
-- <a href="#praxis-consumer-accounts" data-line-start="900" data-line-end="918">Consumer accounts — library-side feedback</a>
-- <a href="#tool" data-line-start="919" data-line-end="958">Tools — check knowledge documents</a>
-- <a href="#refs" data-line-start="959" data-line-end="964">References</a>
-  - <a href="#refs-skills" data-line-start="965" data-line-end="997">Skills</a>
+- <a href="#codes" data-line-start="355" data-line-end="398">Codes glossary</a>
+- <a href="#doc-constitution" data-line-start="399" data-line-end="405">Constitution — orient before acting</a>
+  - <a href="#doc-constitution-terms-in-use" data-line-start="406" data-line-end="426">Terms in use</a>
+  - <a href="#doc-constitution-use-the-sense-map" data-line-start="427" data-line-end="480">Use the sense-map</a>
+- <a href="#documentation-practice" data-line-start="481" data-line-end="484">Writing, independent waves, and document connections</a>
+  - <a href="#documentation-practice-durable-writing" data-line-start="485" data-line-end="517">Durable writing</a>
+  - <a href="#documentation-practice-waves" data-line-start="518" data-line-end="540">Waves</a>
+  - <a href="#documentation-practice-doc-pass" data-line-start="541" data-line-end="560">Doc-pass</a>
+- <a href="#collaboration" data-line-start="561" data-line-end="564">Collaboration and architectural stewardship</a>
+  - <a href="#collaboration-dispatch-and-return" data-line-start="565" data-line-end="589">Dispatch and return</a>
+  - <a href="#collaboration-stewardship" data-line-start="590" data-line-end="609">Stewardship</a>
+  - <a href="#collaboration-discussion" data-line-start="610" data-line-end="624">Discussion</a>
+- <a href="#workspace" data-line-start="625" data-line-end="651">Workspace, research locations, and shell</a>
+- <a href="#code" data-line-start="652" data-line-end="658">Code — stage and change discipline</a>
+  - <a href="#code-terms-in-use" data-line-start="659" data-line-end="673">Terms in use</a>
+  - <a href="#code-operating-weight" data-line-start="674" data-line-end="705">Operating weight</a>
+- <a href="#jj" data-line-start="706" data-line-end="733">jj and git operating rules</a>
+  - <a href="#jj-jj-waltz-workspaces" data-line-start="734" data-line-end="761">jj-waltz workspaces</a>
+- <a href="#forge-publication" data-line-start="762" data-line-end="776">Forge publication</a>
+- <a href="#javascript" data-line-start="777" data-line-end="810">JavaScript and TypeScript</a>
+- <a href="#rust" data-line-start="811" data-line-end="837">Rust conventions</a>
+- <a href="#atproto-cli" data-line-start="838" data-line-end="850">ATProto CLI sessions</a>
+- <a href="#beads" data-line-start="851" data-line-end="888">Beads — readable work IDs and deliberate tracking</a>
+- <a href="#praxis-ticket-pointers" data-line-start="889" data-line-end="904">Ticket pointers — ambient cues</a>
+- <a href="#praxis-consumer-accounts" data-line-start="905" data-line-end="923">Consumer accounts — library-side feedback</a>
+- <a href="#tool" data-line-start="924" data-line-end="963">Tools — check knowledge documents</a>
+- <a href="#refs" data-line-start="964" data-line-end="969">References</a>
+  - <a href="#refs-skills" data-line-start="970" data-line-end="1002">Skills</a>
 
 </nav>
 
@@ -350,7 +350,7 @@ conditions, not a synonym for acceptance or universal correctness.
 
 <section id="codes" data-source="/codes/GLOSSARY.md">
 
-<Okf data={{"description":"Short terms (workspace codes and agent codes) mapped to file#tag targets, assembled from codes/ files and agents/ definitions.","id":"codes","order":55,"resource":"/codes/GLOSSARY.md","source":"/codes/GLOSSARY.md","sources":[{"resource":"opencode://ses_e9bc39334ffetsgyIAj4L0kp0A","title":"Commission the codes glossary generator and direct it into ambient context"},{"resource":"/constitution/naming/README.md","title":"Short codes practice that owns code vocabulary"}],"status":"draft","tags":["codes","naming","aliases","glossary"],"title":"Codes glossary","type":"Glossary"}} />
+<Okf data={{"description":"Short terms (workspace codes and agent codes) mapped to file#tag targets, assembled from codes/ files and agents/ definitions.","id":"codes","order":55,"resource":"/codes/GLOSSARY.md","source":"/codes/GLOSSARY.md","sources":[{"resource":"opencode://ses_e9bc39334ffetsgyIAj4L0kp0A","title":"Commission the codes glossary generator and direct it into ambient context"},{"resource":"opencode://ses_e6c20690cffeyOxxE0zP6Z4JVT","title":"Add standard variant abbreviations and default-variant notation to agent rows"},{"resource":"/constitution/naming/README.md","title":"Short codes practice that owns code vocabulary"}],"status":"draft","tags":["codes","naming","aliases","glossary"],"title":"Codes glossary","type":"Glossary"}} />
 
 ## Codes glossary
 
@@ -367,24 +367,29 @@ codes and [`agents/`](/agents) definitions for agent codes, whose
 frontmatter carries the row beside the functional prompt fields. Dormant
 definitions take a `.md.disabled` suffix and stay inert — defined but
 neither loaded nor listed. Single-letter codes are scarce and guarded.
-Practice, rulings, and history live with
+Agent rows name their configured model as `default #variant` using the
+standard variant abbreviations: `lo` low, `med` medium, `hi` high,
+`xh` xhigh, `max` max, `∅` no suffix. These are reading notation;
+actual dispatch overrides use full variant names. The dated inventory
+lives in the [model lookup](/agents/models/README.md). Practice, rulings,
+and history live with
 [naming](/constitution/naming/README.md#short-codes).
 
 | Code | Target (`file#tag`) | Note |
 |---|---|---|
-| `ast` | [`/agents/ast.md`](/agents/ast.md) | GPT-6 Astra high — independent research and design waves; medium/xhigh via model override |
+| `ast` | [`/agents/ast.md`](/agents/ast.md) | GPT-6 Astra, default #hi — independent research and design waves |
 | `cf` | [`file:///home/rektide/src/compfuzor/README.md`](file:///home/rektide/src/compfuzor/README.md) | usually the compfuzor project (~/src/compfuzor); occasionally Cloudflare or scholarly “cf.” — read the context; canonical: github.com/rektide/compfuzor |
 | `con` | [`/constitution/README.md`](/constitution/README.md) | the constitution — rekon's broadest governing document; shared principles for naming, knowledge, work, and assembly; as a prefix it scopes references: con-naming (naming work), con-structure (structure contract) |
 | `exp` | [`/constitution/naming/README.md#short-codes`](/constitution/naming/README.md#short-codes) | a topic's early inquiry documents — drafts and proposals that precede any ruling; usually under the topic's exploration/ or design/ folder; example: con-naming-exp-… points into naming's exploration waves |
-| `f` | [`/agents/f.md`](/agents/f.md) | GLM 5.3 Flash max — fast well-described well-known work; flash/flash-max folded in, #high via model override |
-| `g` | [`/agents/g.md`](/agents/g.md) | GLM 5.3 max — the default heavy lifter for most tasks; gh/gl folded in, other levels via model override |
+| `f` | [`/agents/f.md`](/agents/f.md) | GLM 5.3 Flash, default #max — fast well-described well-known work |
+| `g` | [`/agents/g.md`](/agents/g.md) | GLM 5.3, default #max — the heavy lifter for most tasks |
 | `general` | [`/agents/general.md`](/agents/general.md) | capable general-purpose default for delegated work |
-| `l` | [`/agents/l.md`](/agents/l.md) | GPT-6 Luna xhigh — only when explicitly requested; medium via model override |
+| `l` | [`/agents/l.md`](/agents/l.md) | GPT-6 Luna, default #xh — only when explicitly requested |
 | `prax` | [`/praxis/README.md`](/praxis/README.md) | praxis — the practice domains: repeatable ways of working; bookmarking, beads, fronts, ticket pointers; a practice joins purpose, procedure, evidence, and reflection |
 | `res` | [`/constitution/naming/README.md#short-codes`](/constitution/naming/README.md#short-codes) | a topic's gathered research material; scope comes from the named topic, not a fixed directory |
 | `rkt` | [`/tool/README.md`](/tool/README.md) | rk's tool — the rekon CLI; Markdown maintenance and verification for any repo, not just rekon's; commands: combine, codes, toc, okf extract, check, audit-context; runs from any checkout via --manifest-path |
-| `sol` | [`/agents/sol.md`](/agents/sol.md) | GPT-6.1 Sol high — capable independent doer for partially formed work; medium/xhigh/max via model override |
-| `t` | [`/agents/t.md`](/agents/t.md) | GPT-6.1 Terra medium — general coding, analysis, and implementation |
+| `sol` | [`/agents/sol.md`](/agents/sol.md) | GPT-6.1 Sol, default #hi — capable independent doer for partially formed work |
+| `t` | [`/agents/t.md`](/agents/t.md) | GPT-6.1 Terra, default #med — general coding, analysis, and implementation |
 </section>
 
 <section id="doc-constitution" data-source="/constitution/GLOBAL.md">
