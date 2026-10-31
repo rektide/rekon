@@ -11,6 +11,7 @@ stale_after: 2026-12-06
 extensions:
   work_anchor: "wifi-ptp-now:wiptpn-modern-praxis"
 sources:
+  - { resource: "opencode://ses_e6c900557ffex5YjEpZrQCueNC", title: Index the Kinefolk firmware flight as a prospective case of explicit joins }
   - { resource: "opencode://ses_e6cc34212ffelIc5sLrW1xqvi7", title: Connect the human-commissioned flight coordination practice }
   - { resource: "opencode://ses_e9a40d003ffeEeLMvkRjLaMwVK", title: Connect the consumer accounts practice for libraries we use }
   - {
@@ -108,6 +109,9 @@ than predetermining the architecture or averaging the outputs.
 spawn and join points. Their optional full-cycle example carries independent
 research through syntheses and designs without making that sequence a universal
 pipeline; gates, partial results, and human authority remain explicit.
+The [Kinefolk firmware flight](/praxis/flights/kinefolk-firmware0.gpt6a.md)
+is a concrete commissioned launch pattern and future assessment seed, not a
+claim that its research or synthesis is complete.
 
 ## Related practice: after the build
 
