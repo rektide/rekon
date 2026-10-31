@@ -130,13 +130,16 @@ unless someone moves them to the tip.
 
 ## Possible ticket agent
 
-**`rekon-ticket-agent`** records an unimplemented possibility: a well-known
-project-level agent session that other agents can contact to understand the
-board and help place or coordinate work. It may be one instance of a broader
-family of project agents. The ticket is an inquiry marker, not build
-authorization; see **`rekon-ticket-agent`**. This possibility stays here rather
-than in ambient `GLOBAL.md` because it is exploratory and should not silently
-impose a new workflow.
+**`rekon-ticket-agent`** records an unimplemented possibility: a project-level,
+board-aware coordinator that can help other agents understand the board and
+place or coordinate work. The proposed well-known session and agent-to-agent
+access may overlap [session-mementos](/design/session-mementos/README.md), which
+already explores canonical session links and Cotail's agent-callable surface.
+The ticket asks whether the board-coordination role adds something distinct and
+should compose those mechanisms, rather than create another discovery/call
+system. It may be one instance of a broader family of project agents. This is
+inquiry, not build authorization, and stays out of ambient `GLOBAL.md` so it
+does not silently impose a new workflow.
 
 ## Common ways to miss
 
