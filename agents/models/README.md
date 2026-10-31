@@ -7,7 +7,7 @@ status: draft
 generated: { by: "model:zai-coding-plan/glm-5.3#max", at: 2026-10-31 }
 tags: [agents, models, variants, dispatch, reference]
 sources:
-  - { resource: "opencode://ses_e6c1f991dffeK5oewTLCA2j5zu", title: Human direction adds the standing g→sol#medium rate-limit fallback cross-reference }
+  - { resource: "opencode://ses_e6c1f991dffeK5oewTLCA2j5zu", title: Human moves rate-limit fallback guidance into the G and F agent definitions }
   - { resource: "opencode://ses_e6ccb4e5effe6EWqmToxh2oLHO", title: Human requests a common-model lookup; parent reports models-tool results checked 2026-10-31 }
   - { resource: "opencode://ses_e6cc6c15bffe34JypBfFJ1p6L1", title: Rekon entrypoint investigation and model-reference home }
   - { resource: "opencode://ses_e6cc34212ffelIc5sLrW1xqvi7", title: Reconcile configured agent defaults with the dated runtime model inventory }
@@ -67,11 +67,8 @@ Luna is only for explicit requests. **Never select a `-highspeed` model**, inclu
 for GLM or Flash. Follow the applicable agent definition for requested lower GLM
 levels; availability in the table is not a broader selection policy.
 
-One standing exception is authorized: the [rate-limit fallback
-procedure](/agents/GLOBAL.md) in ambient dispatch guidance pre-authorizes
-redispatching a default `g` task on `sol#medium` when the `g` call fails on a
-Z.AI rate limit. That human direction, not this table, is the authority for the
-override.
+For rate-limit fallbacks, follow the individual [`g`](/agents/g.md) and
+[`f`](/agents/f.md) definitions.
 
 The notation above is for a dispatch override, not agent-definition frontmatter.
 The definitions deliberately keep `model:` and `variant:` separate: the

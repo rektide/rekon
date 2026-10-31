@@ -16,25 +16,25 @@
   - <a href="#documentation-practice-waves" data-line-start="513" data-line-end="535">Waves</a>
   - <a href="#documentation-practice-doc-pass" data-line-start="536" data-line-end="555">Doc-pass</a>
 - <a href="#collaboration" data-line-start="556" data-line-end="559">Collaboration and architectural stewardship</a>
-  - <a href="#collaboration-dispatch-and-return" data-line-start="560" data-line-end="591">Dispatch and return</a>
-  - <a href="#collaboration-stewardship" data-line-start="592" data-line-end="611">Stewardship</a>
-  - <a href="#collaboration-discussion" data-line-start="612" data-line-end="626">Discussion</a>
-- <a href="#workspace" data-line-start="627" data-line-end="653">Workspace, research locations, and shell</a>
-- <a href="#code" data-line-start="654" data-line-end="660">Code — stage and change discipline</a>
-  - <a href="#code-terms-in-use" data-line-start="661" data-line-end="675">Terms in use</a>
-  - <a href="#code-operating-weight" data-line-start="676" data-line-end="707">Operating weight</a>
-- <a href="#jj" data-line-start="708" data-line-end="735">jj and git operating rules</a>
-  - <a href="#jj-jj-waltz-workspaces" data-line-start="736" data-line-end="763">jj-waltz workspaces</a>
-- <a href="#forge-publication" data-line-start="764" data-line-end="778">Forge publication</a>
-- <a href="#javascript" data-line-start="779" data-line-end="812">JavaScript and TypeScript</a>
-- <a href="#rust" data-line-start="813" data-line-end="839">Rust conventions</a>
-- <a href="#atproto-cli" data-line-start="840" data-line-end="852">ATProto CLI sessions</a>
-- <a href="#beads" data-line-start="853" data-line-end="890">Beads — readable work IDs and deliberate tracking</a>
-- <a href="#praxis-ticket-pointers" data-line-start="891" data-line-end="906">Ticket pointers — ambient cues</a>
-- <a href="#praxis-consumer-accounts" data-line-start="907" data-line-end="925">Consumer accounts — library-side feedback</a>
-- <a href="#tool" data-line-start="926" data-line-end="965">Tools — check knowledge documents</a>
-- <a href="#refs" data-line-start="966" data-line-end="971">References</a>
-  - <a href="#refs-skills" data-line-start="972" data-line-end="1004">Skills</a>
+  - <a href="#collaboration-dispatch-and-return" data-line-start="560" data-line-end="584">Dispatch and return</a>
+  - <a href="#collaboration-stewardship" data-line-start="585" data-line-end="604">Stewardship</a>
+  - <a href="#collaboration-discussion" data-line-start="605" data-line-end="619">Discussion</a>
+- <a href="#workspace" data-line-start="620" data-line-end="646">Workspace, research locations, and shell</a>
+- <a href="#code" data-line-start="647" data-line-end="653">Code — stage and change discipline</a>
+  - <a href="#code-terms-in-use" data-line-start="654" data-line-end="668">Terms in use</a>
+  - <a href="#code-operating-weight" data-line-start="669" data-line-end="700">Operating weight</a>
+- <a href="#jj" data-line-start="701" data-line-end="728">jj and git operating rules</a>
+  - <a href="#jj-jj-waltz-workspaces" data-line-start="729" data-line-end="756">jj-waltz workspaces</a>
+- <a href="#forge-publication" data-line-start="757" data-line-end="771">Forge publication</a>
+- <a href="#javascript" data-line-start="772" data-line-end="805">JavaScript and TypeScript</a>
+- <a href="#rust" data-line-start="806" data-line-end="832">Rust conventions</a>
+- <a href="#atproto-cli" data-line-start="833" data-line-end="845">ATProto CLI sessions</a>
+- <a href="#beads" data-line-start="846" data-line-end="883">Beads — readable work IDs and deliberate tracking</a>
+- <a href="#praxis-ticket-pointers" data-line-start="884" data-line-end="899">Ticket pointers — ambient cues</a>
+- <a href="#praxis-consumer-accounts" data-line-start="900" data-line-end="918">Consumer accounts — library-side feedback</a>
+- <a href="#tool" data-line-start="919" data-line-end="958">Tools — check knowledge documents</a>
+- <a href="#refs" data-line-start="959" data-line-end="964">References</a>
+  - <a href="#refs-skills" data-line-start="965" data-line-end="997">Skills</a>
 
 </nav>
 
@@ -551,7 +551,7 @@ consult [the toolkit map](/tool/README.md) for current capabilities.
 
 <section id="collaboration" data-source="/agents/GLOBAL.md">
 
-<Okf data={{"description":"Delegation, context budgeting, architectural review and collaborative decision practices.","generated":{"at":"2026-10-31","by":"model:zai-coding-plan/glm-5.3#max"},"id":"collaboration","order":150,"resource":"/agents/GLOBAL.md","source":"/agents/GLOBAL.md","sources":[{"resource":"opencode://ses_e6c1f991dffeK5oewTLCA2j5zu","title":"Human commissions the g→sol#medium rate-limit fallback dispatch procedure"},{"resource":"opencode://ses_e6cc34212ffelIc5sLrW1xqvi7","title":"Add a concise pointer to the dated model and variant lookup"},{"resource":"opencode://ses_e7bc138ffffeHcfSJmcsHKoO9Z","title":"Human requests a soft 300k delegated-session context target, tolerates modest overshoot and directs the nearly finished Sol slice to wrap"}],"status":"draft","title":"Collaboration and architectural stewardship","type":"ContextFragment"}} />
+<Okf data={{"description":"Delegation, context budgeting, architectural review and collaborative decision practices.","generated":{"at":"2026-10-31","by":"model:zai-coding-plan/glm-5.3#max"},"id":"collaboration","order":150,"resource":"/agents/GLOBAL.md","source":"/agents/GLOBAL.md","sources":[{"resource":"opencode://ses_e6c1f991dffeK5oewTLCA2j5zu","title":"Human moves rate-limit fallback from global dispatch into agent definitions"},{"resource":"opencode://ses_e6cc34212ffelIc5sLrW1xqvi7","title":"Add a concise pointer to the dated model and variant lookup"},{"resource":"opencode://ses_e7bc138ffffeHcfSJmcsHKoO9Z","title":"Human requests a soft 300k delegated-session context target, tolerates modest overshoot and directs the nearly finished Sol slice to wrap"}],"status":"draft","title":"Collaboration and architectural stewardship","type":"ContextFragment"}} />
 
 ## Collaboration and architectural stewardship
 
@@ -571,13 +571,6 @@ consult [the toolkit map](/tool/README.md) for current capabilities.
   [the general-agent guidance](/agents/general.md).
 - For explicitly requested common models and variants, use the dated
   [model lookup](/agents/models/README.md); recheck uncertain or changed availability.
-- Standing rate-limit fallback (human direction, 2026-10-31): when no model was
-  explicitly requested, dispatch `g` first. If the call fails on a Z.AI rate
-  limit or quota exhaustion, redispatch the same task on `sol` with model
-  `openai/gpt-6.1-sol#medium`. Every later dispatch again tries `g` first,
-  falling back to `sol#medium` only on a fresh rate-limit error — do not latch
-  onto the fallback; the objective is to resume `g` as soon as its quota
-  returns. This direction pre-authorizes only that one override.
 - Prime agents with existing research and relevant Markdown. Ask them to return
   file/section references and to write and commit their own model-suffixed
   documents under the effort's domain, often `design/<topic>/`.
