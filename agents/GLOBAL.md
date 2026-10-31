@@ -7,8 +7,10 @@ type: ContextFragment
 title: Collaboration and architectural stewardship
 description: Delegation, context budgeting, architectural review and collaborative decision practices.
 resource: /agents/GLOBAL.md
-generated: { by: "model:openai/gpt-6-astra#xhigh", at: "2026-10-29" }
+generated: { by: "model:zai-coding-plan/glm-5.3#max", at: "2026-10-31" }
 sources:
+  - resource: "opencode://ses_e6c1f991dffeK5oewTLCA2j5zu"
+    title: Human commissions the g→sol#medium rate-limit fallback dispatch procedure
   - resource: "opencode://ses_e6cc34212ffelIc5sLrW1xqvi7"
     title: Add a concise pointer to the dated model and variant lookup
   - resource: "opencode://ses_e7bc138ffffeHcfSJmcsHKoO9Z"
@@ -31,6 +33,13 @@ sources:
   [the general-agent guidance](/agents/general.md).
 - For explicitly requested common models and variants, use the dated
   [model lookup](/agents/models/README.md); recheck uncertain or changed availability.
+- Standing rate-limit fallback (human direction, 2026-10-31): when no model was
+  explicitly requested, dispatch `g` first. If the call fails on a Z.AI rate
+  limit or quota exhaustion, redispatch the same task on `sol` with model
+  `openai/gpt-6.1-sol#medium`. Every later dispatch again tries `g` first,
+  falling back to `sol#medium` only on a fresh rate-limit error — do not latch
+  onto the fallback; the objective is to resume `g` as soon as its quota
+  returns. This direction pre-authorizes only that one override.
 - Prime agents with existing research and relevant Markdown. Ask them to return
   file/section references and to write and commit their own model-suffixed
   documents under the effort's domain, often `design/<topic>/`.

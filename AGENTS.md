@@ -16,23 +16,23 @@
   - <a href="#documentation-practice-waves" data-line-start="511" data-line-end="533">Waves</a>
   - <a href="#documentation-practice-doc-pass" data-line-start="534" data-line-end="553">Doc-pass</a>
 - <a href="#collaboration" data-line-start="554" data-line-end="557">Collaboration and architectural stewardship</a>
-  - <a href="#collaboration-dispatch-and-return" data-line-start="558" data-line-end="582">Dispatch and return</a>
-  - <a href="#collaboration-stewardship" data-line-start="583" data-line-end="602">Stewardship</a>
-  - <a href="#collaboration-discussion" data-line-start="603" data-line-end="617">Discussion</a>
-- <a href="#workspace" data-line-start="618" data-line-end="644">Workspace, research locations, and shell</a>
-- <a href="#code" data-line-start="645" data-line-end="651">Code — stage and change discipline</a>
-  - <a href="#code-terms-in-use" data-line-start="652" data-line-end="666">Terms in use</a>
-  - <a href="#code-operating-weight" data-line-start="667" data-line-end="698">Operating weight</a>
-- <a href="#jj" data-line-start="699" data-line-end="726">jj and git operating rules</a>
-  - <a href="#jj-jj-waltz-workspaces" data-line-start="727" data-line-end="754">jj-waltz workspaces</a>
-- <a href="#javascript" data-line-start="755" data-line-end="788">JavaScript and TypeScript</a>
-- <a href="#rust" data-line-start="789" data-line-end="815">Rust conventions</a>
-- <a href="#beads" data-line-start="816" data-line-end="853">Beads — readable work IDs and deliberate tracking</a>
-- <a href="#praxis-ticket-pointers" data-line-start="854" data-line-end="869">Ticket pointers — ambient cues</a>
-- <a href="#praxis-consumer-accounts" data-line-start="870" data-line-end="888">Consumer accounts — library-side feedback</a>
-- <a href="#tool" data-line-start="889" data-line-end="928">Tools — check knowledge documents</a>
-- <a href="#refs" data-line-start="929" data-line-end="934">References</a>
-  - <a href="#refs-skills" data-line-start="935" data-line-end="967">Skills</a>
+  - <a href="#collaboration-dispatch-and-return" data-line-start="558" data-line-end="589">Dispatch and return</a>
+  - <a href="#collaboration-stewardship" data-line-start="590" data-line-end="609">Stewardship</a>
+  - <a href="#collaboration-discussion" data-line-start="610" data-line-end="624">Discussion</a>
+- <a href="#workspace" data-line-start="625" data-line-end="651">Workspace, research locations, and shell</a>
+- <a href="#code" data-line-start="652" data-line-end="658">Code — stage and change discipline</a>
+  - <a href="#code-terms-in-use" data-line-start="659" data-line-end="673">Terms in use</a>
+  - <a href="#code-operating-weight" data-line-start="674" data-line-end="705">Operating weight</a>
+- <a href="#jj" data-line-start="706" data-line-end="733">jj and git operating rules</a>
+  - <a href="#jj-jj-waltz-workspaces" data-line-start="734" data-line-end="761">jj-waltz workspaces</a>
+- <a href="#javascript" data-line-start="762" data-line-end="795">JavaScript and TypeScript</a>
+- <a href="#rust" data-line-start="796" data-line-end="822">Rust conventions</a>
+- <a href="#beads" data-line-start="823" data-line-end="860">Beads — readable work IDs and deliberate tracking</a>
+- <a href="#praxis-ticket-pointers" data-line-start="861" data-line-end="876">Ticket pointers — ambient cues</a>
+- <a href="#praxis-consumer-accounts" data-line-start="877" data-line-end="895">Consumer accounts — library-side feedback</a>
+- <a href="#tool" data-line-start="896" data-line-end="935">Tools — check knowledge documents</a>
+- <a href="#refs" data-line-start="936" data-line-end="941">References</a>
+  - <a href="#refs-skills" data-line-start="942" data-line-end="974">Skills</a>
 
 </nav>
 
@@ -549,7 +549,7 @@ consult [the toolkit map](/tool/README.md) for current capabilities.
 
 <section id="collaboration" data-source="/agents/GLOBAL.md">
 
-<Okf data={{"description":"Delegation, context budgeting, architectural review and collaborative decision practices.","generated":{"at":"2026-10-29","by":"model:openai/gpt-6-astra#xhigh"},"id":"collaboration","order":150,"resource":"/agents/GLOBAL.md","source":"/agents/GLOBAL.md","sources":[{"resource":"opencode://ses_e6cc34212ffelIc5sLrW1xqvi7","title":"Add a concise pointer to the dated model and variant lookup"},{"resource":"opencode://ses_e7bc138ffffeHcfSJmcsHKoO9Z","title":"Human requests a soft 300k delegated-session context target, tolerates modest overshoot and directs the nearly finished Sol slice to wrap"}],"status":"draft","title":"Collaboration and architectural stewardship","type":"ContextFragment"}} />
+<Okf data={{"description":"Delegation, context budgeting, architectural review and collaborative decision practices.","generated":{"at":"2026-10-31","by":"model:zai-coding-plan/glm-5.3#max"},"id":"collaboration","order":150,"resource":"/agents/GLOBAL.md","source":"/agents/GLOBAL.md","sources":[{"resource":"opencode://ses_e6c1f991dffeK5oewTLCA2j5zu","title":"Human commissions the g→sol#medium rate-limit fallback dispatch procedure"},{"resource":"opencode://ses_e6cc34212ffelIc5sLrW1xqvi7","title":"Add a concise pointer to the dated model and variant lookup"},{"resource":"opencode://ses_e7bc138ffffeHcfSJmcsHKoO9Z","title":"Human requests a soft 300k delegated-session context target, tolerates modest overshoot and directs the nearly finished Sol slice to wrap"}],"status":"draft","title":"Collaboration and architectural stewardship","type":"ContextFragment"}} />
 
 ## Collaboration and architectural stewardship
 
@@ -569,6 +569,13 @@ consult [the toolkit map](/tool/README.md) for current capabilities.
   [the general-agent guidance](/agents/general.md).
 - For explicitly requested common models and variants, use the dated
   [model lookup](/agents/models/README.md); recheck uncertain or changed availability.
+- Standing rate-limit fallback (human direction, 2026-10-31): when no model was
+  explicitly requested, dispatch `g` first. If the call fails on a Z.AI rate
+  limit or quota exhaustion, redispatch the same task on `sol` with model
+  `openai/gpt-6.1-sol#medium`. Every later dispatch again tries `g` first,
+  falling back to `sol#medium` only on a fresh rate-limit error — do not latch
+  onto the fallback; the objective is to resume `g` as soon as its quota
+  returns. This direction pre-authorizes only that one override.
 - Prime agents with existing research and relevant Markdown. Ask them to return
   file/section references and to write and commit their own model-suffixed
   documents under the effort's domain, often `design/<topic>/`.
