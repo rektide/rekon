@@ -10,7 +10,7 @@ resource: /agents/GLOBAL.md
 generated: { by: "model:zai-coding-plan/glm-5.3#max", at: "2026-10-31" }
 sources:
   - resource: "opencode://ses_e6c1f991dffeK5oewTLCA2j5zu"
-    title: Human moves rate-limit fallback from global dispatch into agent definitions
+    title: Human separates shared rate-limit fallback procedure from agent-specific fallback choices
   - resource: "opencode://ses_e6cc34212ffelIc5sLrW1xqvi7"
     title: Add a concise pointer to the dated model and variant lookup
   - resource: "opencode://ses_e7bc138ffffeHcfSJmcsHKoO9Z"
@@ -33,6 +33,9 @@ sources:
   [the general-agent guidance](/agents/general.md).
 - For explicitly requested common models and variants, use the dated
   [model lookup](/agents/models/README.md); recheck uncertain or changed availability.
+- When an agent hits a rate limit or quota exhaustion, use its stated fallback
+  for the task; try the original agent again on each subsequent dispatch so it
+  resumes when quota returns. Fallback is not a permanent switch.
 - Prime agents with existing research and relevant Markdown. Ask them to return
   file/section references and to write and commit their own model-suffixed
   documents under the effort's domain, often `design/<topic>/`.
