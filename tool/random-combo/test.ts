@@ -206,6 +206,62 @@ test("CLI accepts stdin, file and explicit -, produces replayable JSONL and text
   }
 });
 
+test("rows are ordered triples from the same persistent run, replayable from stderr", async () => {
+  const input = 'first choice w=100\nsecond "choice" w=100\n';
+  const directory = await mkdtemp(join(tmpdir(), "rekon-random-combo-rows-"));
+  try {
+    const file = join(directory, "options.txt");
+    await writeFile(file, input);
+    const args = ["--rows", "8", "--seed", "row test"];
+    const [stdin, named, dash, audit] = await Promise.all([
+      cli(args, input),
+      cli([...args, file]),
+      cli([...args, "-"], input),
+      cli(["--games", "8", "--seed", "row test", "--jsonl"], input),
+    ]);
+    assert.equal(stdin.code, 0, stdin.stderr);
+    assert.deepEqual(named, stdin);
+    assert.deepEqual(dash, stdin);
+    assert.match(stdin.stderr, /^Seed: "row test"\nAlgorithm: sha256-u32le-mulberry32-v1\n$/u);
+    const rows = stdin.stdout
+      .trimEnd()
+      .split("\n")
+      .map((line) => JSON.parse(line) as string[]);
+    assert.equal(rows.length, 8);
+    assert.ok(rows.every((row) => row.length === 3));
+    const events = audit.stdout
+      .trimEnd()
+      .split("\n")
+      .map((line) => JSON.parse(line) as Event);
+    assert.deepEqual(
+      rows,
+      events
+        .filter((event) => event.type === "game")
+        .map((event) => event.picks.map((pick) => pick.label)),
+    );
+    assert.notDeepEqual(rows[1], rows[0], "rows do not restart the seeded run");
+    const repeated = await cli(["--rows", "2", "--seed", "repeat"], "only option w=1\n");
+    assert.deepEqual(
+      repeated.stdout
+        .trimEnd()
+        .split("\n")
+        .map((line) => JSON.parse(line)),
+      [
+        ["only option", "only option", "only option"],
+        ["only option", "only option", "only option"],
+      ],
+    );
+    const generated = await cli(["--rows", "8"], input);
+    assert.equal(generated.code, 0, generated.stderr);
+    const seed = JSON.parse(generated.stderr.split("\n")[0]!.slice("Seed: ".length)) as string;
+    const replay = await cli(["--rows", "8", "--seed", seed], input);
+    assert.equal(replay.stdout, generated.stdout);
+    assert.equal(replay.stderr, generated.stderr);
+  } finally {
+    await rm(directory, { recursive: true });
+  }
+});
+
 test("CLI reports invalid inputs on stderr with nonzero status and no success output", async () => {
   for (const [args, input, pattern] of [
     [["--nope"], "", /Unknown option/u],
@@ -213,6 +269,12 @@ test("CLI reports invalid inputs on stderr with nonzero status and no success ou
     [["--games", "0"], "A w=1", /Games must/u],
     [["--games", "1.5"], "A w=1", /positive integer/u],
     [["--games", "1e3"], "A w=1", /positive integer/u],
+    [["--rows"], "", /argument missing/u],
+    [["--rows", "0"], "A w=1", /positive safe integer/u],
+    [["--rows", "1.5"], "A w=1", /--rows requires/u],
+    [["--rows", "9007199254740991"], "A w=1", /positive safe integer/u],
+    [["--rows", "1", "--games", "1"], "A w=1", /cannot be combined/u],
+    [["--rows", "1", "--jsonl"], "A w=1", /cannot be combined/u],
     [["a", "b"], "", /at most one/u],
     [["/does-not-exist/random-combo.txt"], "", /Cannot read input/u],
     [[], "bad w=-1", /Line 1.*finite non-negative/u],

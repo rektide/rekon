@@ -7,6 +7,7 @@ status: draft
 generated: { by: "model:openai/gpt-6.1-sol#high", at: 2026-11-02 }
 tags: [tool, random-combo, flights, node, weighted-sampling]
 sources:
+  - { resource: "opencode://ses_e614c6702ffe3Ev02jA4WnHnBF", title: Add replayable one-triple-per-line row output }
   - { resource: "opencode://ses_e6172cb39ffe5Q3YzyRjA9H32n", title: Implement and test the commissioned Node generator and reusable random-combo flight }
   - { resource: /tool/README.md, title: Top-level executable entrypoints and domain-grouped implementation conventions }
   - { resource: /constitution/structure.md#tools, title: Source-run Node tool layout and explicit implementation standing }
@@ -34,6 +35,7 @@ From the Rekon checkout:
 node tool/random-combo.ts --help
 node tool/random-combo.ts --games 4 --seed example tool/random-combo/example.txt
 node tool/random-combo.ts --games 4 --seed example --jsonl tool/random-combo/example.txt
+node tool/random-combo.ts --rows 8 tool/random-combo/example.txt > rows.jsonl 2> seed.txt
 printf 'explore w=1\nsmall experiment w=0.1\n' | node tool/random-combo.ts --games 2 --seed demo
 ```
 
@@ -43,6 +45,8 @@ is allowed; use `-- ./-unusual-name.txt` for a filename starting with a dash.
 a safe JavaScript integer. The number of draws per game and the decay are fixed,
 not configurable knobs. To run from elsewhere, use the entrypoint's absolute
 path; relative input files resolve from your current working directory.
+`--rows N` instead selects N games in compact row mode, subject to the same
+integer limit; it conflicts with both `--games` and `--jsonl`.
 
 ## Input grammar
 
@@ -108,6 +112,16 @@ the run or increase initial weights; no automatic rescale changes recorded state
 
 ## Audit output and failure
 
+`--rows N` writes exactly N lines on successful completion: each line is a JSON
+array of three ordered labels, e.g. `["first choice","other","first choice"]`.
+JSON quoting makes spaces and punctuation unambiguous, and repeated picks remain
+present. The seed (as a JSON string) and algorithm name go to stderr, not stdout.
+Capture both streams as in the example above; retain the ordered input, row count,
+and code revision too. Replay with `--rows N --seed TEXT` and the same input;
+decode the JSON seed string if necessary before passing its exact value. To inspect
+the full draw audit for those rows, use `--games N --seed TEXT --jsonl` with the
+same input and revision. Both modes use the same continuous draw sequence.
+
 Default text shows the algorithm and seed, **all initial weights**, each draw's
 game, slot, option ID and label, raw `u`, scaling factor, scaled total, winning
 weight before/after decay, the ordered game triple, all weights after each game,
@@ -124,8 +138,9 @@ array. Event order is `initial`, then three `draw` and one `game` per game, then
 Successful completion exits 0; expected usage/input/numerical errors exit 2 and
 explain the problem on stderr, including line numbers for malformed entries.
 Input and arguments are validated before any transcript is emitted. A numerical
-limit, interruption, or output failure can leave a **partial** transcript: do not
-treat it as complete without a `final` event and successful process exit.
+limit, interruption, or output failure can leave a **partial** transcript: require
+a successful process exit and, for audit JSONL, a `final` event; for rows, check
+the requested line count as well.
 Unexpected failures retain their normal Node stack. Output is streamed with
 backpressure; no generated file is silently written or overwritten.
 
@@ -143,7 +158,7 @@ These are implementation checks, not evidence that a particular flight is useful
 
 - [Entrypoint](/tool/random-combo.ts): import-safe invocation detection.
 - [Generator](/tool/random-combo/generate.ts): parser, seeded PRNG, lazy audit events.
-- [CLI](/tool/random-combo/cli.ts): arguments, stdin/file input, text/JSONL, errors.
+- [CLI](/tool/random-combo/cli.ts): arguments, stdin/file input, text/JSONL/rows, errors.
 - [Tests](/tool/random-combo/test.ts) and [example input](/tool/random-combo/example.txt).
 
 The [toolkit map](/tool/README.md) locates this tool among Rekon's executable

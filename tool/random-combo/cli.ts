@@ -1,10 +1,10 @@
 import { randomBytes } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import { parseArgs } from "node:util";
-import { generate, parseOptions, RandomComboError, validateGames } from "./generate.ts";
+import { ALGORITHM, generate, parseOptions, RandomComboError, validateGames } from "./generate.ts";
 import type { Event, Option } from "./generate.ts";
 
-const HELP = `Usage: node tool/random-combo.ts [--games N] [--seed TEXT] [--jsonl] [FILE|-]
+const HELP = `Usage: node tool/random-combo.ts [--games N | --rows N] [--seed TEXT] [--jsonl] [FILE|-]
 
 Pick three options per game WITH replacement. Every win immediately multiplies
 that option's CURRENT weight by 0.8, persisting across slots and games in this run.
@@ -18,6 +18,8 @@ weights must be finite non-negative decimals, with at least one positive weight.
 FILE defaults to stdin (also spelled -); --games defaults to 1.
 --seed supplies an exact text seed; otherwise a random seed is generated/printed.
 --jsonl emits one JSON event per line (initial, draw, game, final).
+--rows N emits N JSON arrays of three labels, one per stdout line; seed and
+algorithm go to stderr. It cannot be combined with --games or --jsonl.
 --help prints this help. No agents are spawned and no files are modified.
 `;
 
@@ -48,6 +50,9 @@ async function write(text: string): Promise<void> {
 }
 
 export async function main(args: string[]): Promise<void> {
+  // A closed downstream pipe reports both a write callback error and a stream event.
+  const onStdoutError = () => {};
+  process.stdout.on("error", onStdoutError);
   try {
     let parsed;
     try {
@@ -57,6 +62,7 @@ export async function main(args: string[]): Promise<void> {
         strict: true,
         options: {
           games: { type: "string" },
+          rows: { type: "string" },
           seed: { type: "string" },
           jsonl: { type: "boolean" },
           help: { type: "boolean", short: "h" },
@@ -76,9 +82,17 @@ export async function main(args: string[]): Promise<void> {
         "Expected at most one input FILE (or - for stdin). Use --help for usage.",
       );
     }
-    const literal = parsed.values.games ?? "1";
+    if (
+      parsed.values.rows !== undefined &&
+      (parsed.values.games !== undefined || parsed.values.jsonl)
+    ) {
+      throw new RandomComboError("--rows cannot be combined with --games or --jsonl.");
+    }
+    const literal = parsed.values.rows ?? parsed.values.games ?? "1";
     if (!/^\d+$/u.test(literal))
-      throw new RandomComboError("--games requires a positive integer, e.g. --games 4.");
+      throw new RandomComboError(
+        `${parsed.values.rows !== undefined ? "--rows" : "--games"} requires a positive integer, e.g. --games 4.`,
+      );
     const games = Number(literal);
     validateGames(games);
     const file = parsed.positionals[0] ?? "-";
@@ -102,12 +116,23 @@ export async function main(args: string[]): Promise<void> {
     }
     const options = parseOptions(text);
     const seed = parsed.values.seed ?? randomBytes(16).toString("hex");
+    if (parsed.values.rows !== undefined) {
+      process.stderr.write(`Seed: ${JSON.stringify(seed)}\nAlgorithm: ${ALGORITHM}\n`);
+    }
     for (const event of generate(options, games, seed)) {
-      await write(`${parsed.values.jsonl ? JSON.stringify(event) : formatEvent(event)}\n`);
+      if (parsed.values.rows !== undefined) {
+        if (event.type === "game")
+          await write(`${JSON.stringify(event.picks.map((pick) => pick.label))}\n`);
+      } else {
+        await write(`${parsed.values.jsonl ? JSON.stringify(event) : formatEvent(event)}\n`);
+      }
     }
   } catch (error) {
+    if (error instanceof Error && "code" in error && error.code === "EPIPE") return;
     if (!(error instanceof RandomComboError)) throw error;
     process.stderr.write(`random-combo: ${error.message}\n`);
     process.exitCode = 2;
+  } finally {
+    process.stdout.off("error", onStdoutError);
   }
 }
