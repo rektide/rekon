@@ -19,12 +19,8 @@ pub mod document;
 pub mod fragment;
 mod transform;
 
-pub use document::{
-    CheckResult, DOCUMENT_TITLE, GENERATED_NOTICE, compare_document, render_document,
-};
-pub use fragment::{
-    Fragment, FragmentError, FragmentMeta, FragmentStatus, RESERVED_TOC_ID, parse_fragment,
-};
+pub use document::{CheckResult, DOCUMENT_TITLE, GENERATED_NOTICE, compare_document, render_document};
+pub use fragment::{Fragment, FragmentError, FragmentMeta, FragmentStatus, RESERVED_TOC_ID, parse_fragment};
 pub(crate) use transform::parse_options;
 
 use std::collections::HashMap;
@@ -34,7 +30,7 @@ use std::path::{Path, PathBuf};
 
 use thiserror::Error;
 
-use crate::manifest::{ManifestError, expand_globs, parse_manifest, plan_assembly};
+use crate::manifest::{DEFAULT_MANIFEST, ManifestError, expand_globs, parse_manifest, plan_assembly};
 use crate::nodepath;
 
 /// One ordered fragment's context cost, for human assembly reports.
@@ -86,25 +82,11 @@ pub enum AssemblyError {
     #[error(transparent)]
     Fragment(#[from] FragmentError),
     #[error("duplicate fragment id \"{id}\" in {path} and {prior}")]
-    DuplicateFragmentId {
-        id: String,
-        path: String,
-        prior: String,
-    },
+    DuplicateFragmentId { id: String, path: String, prior: String },
     #[error("duplicate fragment order {order} in {path} and {prior}")]
-    DuplicateFragmentOrder {
-        order: i64,
-        path: String,
-        prior: String,
-    },
-    #[error(
-        "fragments {path} and {prior} both define explicit id \"{id}\"; ids must be unique across the assembled document"
-    )]
-    DuplicateAnchorId {
-        id: String,
-        path: String,
-        prior: String,
-    },
+    DuplicateFragmentOrder { order: i64, path: String, prior: String },
+    #[error("fragments {path} and {prior} both define explicit id \"{id}\"; ids must be unique across the assembled document")]
+    DuplicateAnchorId { id: String, path: String, prior: String },
     #[error("{path}: {source}")]
     Io {
         path: String,
@@ -115,9 +97,7 @@ pub enum AssemblyError {
     InvalidPath { path: String },
     #[error("assembly output {output} is a symlink; refusing to publish through it")]
     OutputSymlink { output: PathBuf },
-    #[error(
-        "assembly output {output} aliases input {input} through the filesystem; refusing to overwrite"
-    )]
+    #[error("assembly output {output} aliases input {input} through the filesystem; refusing to overwrite")]
     OutputProtected { output: PathBuf, input: PathBuf },
     #[error("failed to publish {output}: {source}")]
     Publication {
@@ -144,11 +124,7 @@ fn read_file(path: &Path) -> Result<String, AssemblyError> {
 /// Fragments resolve from the manifest's directory; an output override resolves
 /// from `cwd`. All validation, including cross-fragment identity and anchor
 /// uniqueness, finishes before anything is returned.
-pub fn assemble(
-    manifest_path: &Path,
-    cwd: &Path,
-    output_override: Option<&Path>,
-) -> Result<Assembly, AssemblyError> {
+pub fn assemble(manifest_path: &Path, cwd: &Path, output_override: Option<&Path>) -> Result<Assembly, AssemblyError> {
     let manifest_name = path_string(manifest_path)?;
     let working_directory = path_string(cwd)?;
     let override_path = match output_override {
@@ -156,9 +132,18 @@ pub fn assemble(
         None => None,
     };
     let manifest_file = cwd.join(manifest_path);
-    let manifest = parse_manifest(&read_file(&manifest_file)?, manifest_name)?;
-    let expanded =
-        expand_globs(&manifest, &nodepath::dirname(&nodepath::resolve(working_directory, manifest_name)))?;
+    let raw = match fs::read_to_string(&manifest_file) {
+        Ok(raw) => raw,
+        Err(error) if error.kind() == std::io::ErrorKind::NotFound && manifest_path == Path::new(DEFAULT_MANIFEST) => "{}".to_string(),
+        Err(source) => {
+            return Err(AssemblyError::Io {
+                path: manifest_file.display().to_string(),
+                source,
+            });
+        }
+    };
+    let manifest = parse_manifest(&raw, manifest_name)?;
+    let expanded = expand_globs(&manifest, &nodepath::dirname(&nodepath::resolve(working_directory, manifest_name)))?;
     let plan = plan_assembly(&expanded, manifest_name, working_directory, override_path)?;
 
     let mut fragments = Vec::with_capacity(plan.fragments.len());
@@ -219,9 +204,7 @@ pub fn write_assembly(assembly: &Assembly) -> Result<(), AssemblyError> {
     if let Ok(metadata) = fs::symlink_metadata(output)
         && metadata.file_type().is_symlink()
     {
-        return Err(AssemblyError::OutputSymlink {
-            output: output.clone(),
-        });
+        return Err(AssemblyError::OutputSymlink { output: output.clone() });
     }
     if let Ok(published) = fs::canonicalize(output) {
         for input in &assembly.inputs {
@@ -248,18 +231,14 @@ pub fn write_assembly(assembly: &Assembly) -> Result<(), AssemblyError> {
             output: output.clone(),
             source,
         })?;
-    staging
-        .write_all(assembly.document.as_bytes())
-        .map_err(|source| AssemblyError::Publication {
-            output: output.clone(),
-            source,
-        })?;
-    staging
-        .persist(output)
-        .map_err(|error| AssemblyError::Publication {
-            output: output.clone(),
-            source: error.error,
-        })?;
+    staging.write_all(assembly.document.as_bytes()).map_err(|source| AssemblyError::Publication {
+        output: output.clone(),
+        source,
+    })?;
+    staging.persist(output).map_err(|error| AssemblyError::Publication {
+        output: output.clone(),
+        source: error.error,
+    })?;
     Ok(())
 }
 

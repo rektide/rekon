@@ -7,6 +7,7 @@ tags: [tool, agents, assembly, rust, mdx, okf]
 status: draft
 generated: { by: "model:openai/gpt-6-astra", at: 2026-10-11 }
 sources:
+  - { resource: "opencode://ses_e5fd2c680ffekEFiHfgwsgDea2", title: Default missing or empty fragment declarations to GLOBAL wildcard discovery }
   - { resource: "opencode://ses_ed31715c4ffex2ROd2G2C617AF", title: Rust producer integration, cross-engine review, and concise section identities }
   - { resource: "urn:opencode:session:ses_ed31715c4ffex2ROd2G2C617AF", title: Enriched whole-file assembly commission, Rust integration, and producer cutover }
   - { resource: /design/toolchain/enriched-assembly0.gpt6a.md, title: Current integration contract }
@@ -62,8 +63,14 @@ The [root manifest](/agents.manifest.json) declares whole inputs and patterns:
 }
 ```
 
-Every selected body's content is included. There is no subsection selection;
-patterns deliberately select matching files. Fragment paths resolve from the manifest directory and
+Every selected body's content is included. If the default `agents.manifest.json`
+is absent, or a manifest omits `fragments` or supplies an empty array, selection
+defaults to `**/GLOBAL.md`. Output defaults to `AGENTS.md` when omitted. An
+explicitly named missing manifest other than the default remains an error. The
+wildcard selects matching fragments under the manifest directory (or current
+directory when the default manifest is absent); inspect those matches before
+writing in a new project. `--check` remains read-only. There is no subsection
+selection; patterns select matching files. Fragment paths resolve from the manifest directory and
 must be normalized, relative, and free of `.`/`..` segments. Manifest output may
 deliberately use parent segments. The destination must not overwrite an input.
 

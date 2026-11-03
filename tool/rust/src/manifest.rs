@@ -26,6 +26,11 @@ use crate::nodepath;
 
 /// Production selection since October 7; coverage is checked separately.
 pub const DEFAULT_MANIFEST: &str = "agents.manifest.json";
+pub const DEFAULT_FRAGMENT_GLOB: &str = "**/GLOBAL.md";
+
+fn default_output() -> String {
+    "AGENTS.md".to_string()
+}
 
 /// Provenance-comment safety shared by fragment paths and sources.
 pub fn is_provenance_text(text: &str) -> bool {
@@ -55,18 +60,10 @@ fn validate_relative_path(path: &str) -> Result<(), String> {
 pub(crate) fn validate_fragment_path(path: &str) -> Result<(), String> {
     validate_relative_path(path)?;
     if !is_provenance_text(path) {
-        return Err(
-            "must not contain \"--\" or control characters in a provenance comment".to_string(),
-        );
+        return Err("must not contain \"--\" or control characters in a provenance comment".to_string());
     }
-    if path
-        .split('/')
-        .any(|segment| segment == "." || segment == "..")
-    {
-        return Err(
-            "fragment paths must not contain '.' or '..' segments or escape the manifest directory"
-                .to_string(),
-        );
+    if path.split('/').any(|segment| segment == "." || segment == "..") {
+        return Err("fragment paths must not contain '.' or '..' segments or escape the manifest directory".to_string());
     }
     Ok(())
 }
@@ -100,11 +97,9 @@ pub fn expand_globs(manifest: &Manifest, directory: &str) -> Result<Manifest, Ma
             continue;
         }
         let pattern_root = nodepath::resolve(directory, entry);
-        let paths = glob::glob_with(&pattern_root, options).map_err(|error| {
-            ManifestError::GlobExpansion {
-                pattern: entry.clone(),
-                message: format!("invalid glob: {error}"),
-            }
+        let paths = glob::glob_with(&pattern_root, options).map_err(|error| ManifestError::GlobExpansion {
+            pattern: entry.clone(),
+            message: format!("invalid glob: {error}"),
         })?;
         let mut matches: Vec<String> = Vec::new();
         for candidate in paths {
@@ -121,11 +116,7 @@ pub fn expand_globs(manifest: &Manifest, directory: &str) -> Result<Manifest, Ma
             let Ok(relative) = candidate.strip_prefix(std::path::Path::new(directory)) else {
                 return Err(ManifestError::GlobExpansion {
                     pattern: entry.clone(),
-                    message: format!(
-                        "match {} escapes the manifest directory {}",
-                        candidate.display(),
-                        directory
-                    ),
+                    message: format!("match {} escapes the manifest directory {}", candidate.display(), directory),
                 });
             };
             // Recursive glob walks can traverse directory aliases. Do not silently
@@ -159,9 +150,7 @@ pub fn expand_globs(manifest: &Manifest, directory: &str) -> Result<Manifest, Ma
             if let Err(reason) = validate_fragment_path(&relative) {
                 return Err(ManifestError::GlobExpansion {
                     pattern: entry.clone(),
-                    message: format!(
-                        "match {relative:?} is not a selectable fragment path: {reason}"
-                    ),
+                    message: format!("match {relative:?} is not a selectable fragment path: {reason}"),
                 });
             }
             matches.push(relative);
@@ -195,7 +184,9 @@ pub fn expand_globs(manifest: &Manifest, directory: &str) -> Result<Manifest, Ma
 /// The explicit declaration; unknown auxiliary keys do not change selection.
 #[derive(Clone, Deserialize, Debug, PartialEq)]
 pub struct Manifest {
+    #[serde(default)]
     pub fragments: Vec<String>,
+    #[serde(default = "default_output")]
     pub output: String,
     #[serde(default)]
     pub exclude: Vec<String>,
@@ -206,17 +197,9 @@ pub enum ManifestError {
     #[error("{path}: invalid manifest: {message}")]
     Validation { path: String, message: String },
     #[error("{message}")]
-    DuplicateFragmentPath {
-        fragment: String,
-        prior: String,
-        message: String,
-    },
+    DuplicateFragmentPath { fragment: String, prior: String, message: String },
     #[error("{message}")]
-    OutputOverwritesInput {
-        output: String,
-        input: String,
-        message: String,
-    },
+    OutputOverwritesInput { output: String, input: String, message: String },
     #[error("glob directive {pattern:?}: {message}")]
     GlobExpansion { pattern: String, message: String },
 }
@@ -227,25 +210,22 @@ pub fn parse_manifest(raw: &str, path: &str) -> Result<Manifest, ManifestError> 
         path: path.to_string(),
         message,
     };
-    let parsed: Manifest =
-        serde_json::from_str(raw).map_err(|cause| fail(format!("json: {cause}")))?;
+    let value: serde_json::Value = serde_json::from_str(raw).map_err(|cause| fail(format!("json: {cause}")))?;
+    if !value.is_object() {
+        return Err(fail("manifest must be an object".to_string()));
+    }
+    let mut parsed: Manifest = serde_json::from_value(value).map_err(|cause| fail(format!("json: {cause}")))?;
     if parsed.fragments.is_empty() {
-        return Err(fail(
-            "fragments must be a non-empty array of path strings".to_string(),
-        ));
+        parsed.fragments.push(DEFAULT_FRAGMENT_GLOB.to_string());
     }
     for fragment in &parsed.fragments {
-        validate_fragment_path(fragment)
-            .map_err(|message| fail(format!("fragments[{fragment:?}]: {message}")))?;
+        validate_fragment_path(fragment).map_err(|message| fail(format!("fragments[{fragment:?}]: {message}")))?;
     }
     let mut exclusions = std::collections::HashSet::new();
     for excluded in &parsed.exclude {
-        validate_fragment_path(excluded)
-            .map_err(|message| fail(format!("exclude[{excluded:?}]: {message}")))?;
+        validate_fragment_path(excluded).map_err(|message| fail(format!("exclude[{excluded:?}]: {message}")))?;
         if is_pattern(excluded) || !exclusions.insert(excluded) {
-            return Err(fail(format!(
-                "exclude[{excluded:?}]: must be a unique literal path"
-            )));
+            return Err(fail(format!("exclude[{excluded:?}]: must be a unique literal path")));
         }
     }
     validate_relative_path(&parsed.output).map_err(|message| fail(format!("output: {message}")))?;
@@ -267,12 +247,7 @@ pub struct PlanFragment {
 }
 
 /// Lexical path planning: manifest-relative selection, invocation-relative override.
-pub fn plan_assembly(
-    manifest: &Manifest,
-    manifest_path: &str,
-    cwd: &str,
-    output_override: Option<&str>,
-) -> Result<AssemblyPlan, ManifestError> {
+pub fn plan_assembly(manifest: &Manifest, manifest_path: &str, cwd: &str, output_override: Option<&str>) -> Result<AssemblyPlan, ManifestError> {
     let absolute_manifest = nodepath::resolve(cwd, manifest_path);
     let directory = nodepath::dirname(&absolute_manifest);
     let mut seen: HashMap<String, String> = HashMap::new();
@@ -283,16 +258,11 @@ pub fn plan_assembly(
             return Err(ManifestError::DuplicateFragmentPath {
                 fragment: path.clone(),
                 prior: prior.clone(),
-                message: format!(
-                    "{manifest_path}: manifest lists the same fragment twice: \"{prior}\" and \"{path}\" both resolve to {absolute}"
-                ),
+                message: format!("{manifest_path}: manifest lists the same fragment twice: \"{prior}\" and \"{path}\" both resolve to {absolute}"),
             });
         }
         seen.insert(absolute.clone(), path.clone());
-        fragments.push(PlanFragment {
-            path: path.clone(),
-            absolute,
-        });
+        fragments.push(PlanFragment { path: path.clone(), absolute });
     }
     let output = match output_override {
         Some(override_path) => nodepath::resolve(cwd, override_path),
@@ -309,11 +279,7 @@ pub fn plan_assembly(
         } else {
             format!("assembly output must not overwrite source fragment: {input}")
         };
-        return Err(ManifestError::OutputOverwritesInput {
-            output,
-            input,
-            message,
-        });
+        return Err(ManifestError::OutputOverwritesInput { output, input, message });
     }
     Ok(AssemblyPlan {
         manifest_path: absolute_manifest,
@@ -348,10 +314,8 @@ mod tests {
             "{ invalid json",
             "null",
             "[]",
-            r#"{"fragments": [], "output": "AGENTS.md"}"#,
             r#"{"fragments": [42], "output": "AGENTS.md"}"#,
             r#"{"fragments": "rules/GLOBAL.md", "output": "AGENTS.md"}"#,
-            r#"{"fragments": ["rules/GLOBAL.md"]}"#,
             r#"{"fragments": ["rules/GLOBAL.md"], "output": ""}"#,
             r#"{"fragments": ["rules/GLOBAL.md"], "output": "/absolute.md"}"#,
             r#"{"fragments": ["rules/GLOBAL.md"], "output": "./out.md"}"#,
@@ -379,21 +343,14 @@ mod tests {
             "control\nname.md",
         ];
         for path in cases {
-            let raw = format!(
-                r#"{{"fragments": ["{}"], "output": "AGENTS.md"}}"#,
-                path.escape_default()
-            );
-            assert!(
-                parse_manifest(&raw, "bad.json").is_err(),
-                "fragment path {path:?} must be rejected"
-            );
+            let raw = format!(r#"{{"fragments": ["{}"], "output": "AGENTS.md"}}"#, path.escape_default());
+            assert!(parse_manifest(&raw, "bad.json").is_err(), "fragment path {path:?} must be rejected");
         }
     }
 
     #[test]
     fn keeps_inputs_manifest_relative_deliberate_parent_output_and_override_cwd_relative() {
-        let raw =
-            r#"{"fragments": ["local.md", "nested/GLOBAL.md"], "output": "../output/AGENTS.md"}"#;
+        let raw = r#"{"fragments": ["local.md", "nested/GLOBAL.md"], "output": "../output/AGENTS.md"}"#;
         let manifest = parse_manifest(raw, "bundle/manifest.json").unwrap();
         let plain = plan_assembly(&manifest, "bundle/manifest.json", "/workspace", None).unwrap();
         assert_eq!(
@@ -413,22 +370,10 @@ mod tests {
                 output: "/workspace/output/AGENTS.md".into(),
             }
         );
-        let override_plan = plan_assembly(
-            &manifest,
-            "bundle/manifest.json",
-            "/workspace",
-            Some("preview.md"),
-        )
-        .unwrap();
+        let override_plan = plan_assembly(&manifest, "bundle/manifest.json", "/workspace", Some("preview.md")).unwrap();
         assert_eq!(override_plan.output, "/workspace/preview.md");
         assert_eq!(override_plan.fragments, plain.fragments);
-        let absolute_override = plan_assembly(
-            &manifest,
-            "bundle/manifest.json",
-            "/workspace",
-            Some("/preview/AGENTS.md"),
-        )
-        .unwrap();
+        let absolute_override = plan_assembly(&manifest, "bundle/manifest.json", "/workspace", Some("/preview/AGENTS.md")).unwrap();
         assert_eq!(absolute_override.output, "/preview/AGENTS.md");
     }
 
@@ -485,10 +430,7 @@ mod tests {
             &[
                 ("praxis/zeta/GLOBAL.md", "z"),
                 ("praxis/alpha/GLOBAL.md", "a"),
-                (
-                    "praxis/alpha/notes.md",
-                    "not a fragment name, still matched by walk only if pattern says so",
-                ),
+                ("praxis/alpha/notes.md", "not a fragment name, still matched by walk only if pattern says so"),
                 ("praxis/alpha/.hidden.md", "h"),
                 ("praxis/beta", ""), // a directory named like a file
             ],
@@ -498,10 +440,7 @@ mod tests {
         let expanded = expand_globs(&manifest, root.path().to_str().unwrap()).unwrap();
         assert_eq!(
             expanded.fragments,
-            vec![
-                "praxis/alpha/GLOBAL.md".to_string(),
-                "praxis/zeta/GLOBAL.md".to_string()
-            ]
+            vec!["praxis/alpha/GLOBAL.md".to_string(), "praxis/zeta/GLOBAL.md".to_string()]
         );
         assert_eq!(expanded.output, "AGENTS.md");
     }
@@ -509,24 +448,13 @@ mod tests {
     #[test]
     fn plain_entries_pass_through_and_patterns_expand_in_place() {
         let root = tempfile::tempdir().unwrap();
-        write_bundle(
-            root.path(),
-            &[
-                ("CONTEXT.md", "c"),
-                ("code/GLOBAL.md", "g"),
-                ("code/rust/GLOBAL.md", "r"),
-            ],
-        );
+        write_bundle(root.path(), &[("CONTEXT.md", "c"), ("code/GLOBAL.md", "g"), ("code/rust/GLOBAL.md", "r")]);
         let raw = r#"{"fragments": ["CONTEXT.md", "code/**/GLOBAL.md"], "output": "AGENTS.md"}"#;
         let manifest = parse_manifest(raw, "manifest.json").unwrap();
         let expanded = expand_globs(&manifest, root.path().to_str().unwrap()).unwrap();
         assert_eq!(
             expanded.fragments,
-            vec![
-                "CONTEXT.md".to_string(),
-                "code/GLOBAL.md".to_string(),
-                "code/rust/GLOBAL.md".to_string()
-            ]
+            vec!["CONTEXT.md".to_string(), "code/GLOBAL.md".to_string(), "code/rust/GLOBAL.md".to_string()]
         );
     }
 
@@ -545,10 +473,7 @@ mod tests {
     #[test]
     fn literal_exclusions_remove_selected_files_and_stale_exclusions_fail() {
         let root = tempfile::tempdir().unwrap();
-        write_bundle(
-            root.path(),
-            &[("doc/GLOBAL.md", "old"), ("code/GLOBAL.md", "new")],
-        );
+        write_bundle(root.path(), &[("doc/GLOBAL.md", "old"), ("code/GLOBAL.md", "new")]);
         let raw = r#"{"fragments": ["**/GLOBAL.md"], "exclude": ["doc/GLOBAL.md"], "output": "AGENTS.md"}"#;
         let manifest = parse_manifest(raw, "manifest.json").unwrap();
         let expanded = expand_globs(&manifest, root.path().to_str().unwrap()).unwrap();
@@ -561,9 +486,7 @@ mod tests {
                 .contains("excluded path was not selected")
         );
         for excluded in ["../outside", "**/GLOBAL.md"] {
-            let raw = format!(
-                r#"{{"fragments":["*.md"],"exclude":["{excluded}"],"output":"AGENTS.md"}}"#
-            );
+            let raw = format!(r#"{{"fragments":["*.md"],"exclude":["{excluded}"],"output":"AGENTS.md"}}"#);
             assert!(parse_manifest(&raw, "manifest.json").is_err());
         }
     }
@@ -576,18 +499,10 @@ mod tests {
         write_bundle(root.path(), &[("code/js/GLOBAL.md", "js")]);
         symlink("code/js", root.path().join("js")).unwrap();
         symlink("code/js/GLOBAL.md", root.path().join("alias.md")).unwrap();
-        let manifest = parse_manifest(
-            r#"{"fragments":["**/GLOBAL.md", "alias.md"],"output":"AGENTS.md"}"#,
-            "manifest.json",
-        )
-        .unwrap();
+        let manifest = parse_manifest(r#"{"fragments":["**/GLOBAL.md", "alias.md"],"output":"AGENTS.md"}"#, "manifest.json").unwrap();
         let expanded = expand_globs(&manifest, root.path().to_str().unwrap()).unwrap();
         assert_eq!(expanded.fragments, vec!["code/js/GLOBAL.md", "alias.md"]);
-        let only_alias = parse_manifest(
-            r#"{"fragments":["alias.*"],"output":"AGENTS.md"}"#,
-            "manifest.json",
-        )
-        .unwrap();
+        let only_alias = parse_manifest(r#"{"fragments":["alias.*"],"output":"AGENTS.md"}"#, "manifest.json").unwrap();
         assert!(expand_globs(&only_alias, root.path().to_str().unwrap()).is_err());
     }
 
@@ -599,13 +514,7 @@ mod tests {
         let manifest = parse_manifest(raw, "manifest.json").unwrap();
         let expanded = expand_globs(&manifest, root.path().to_str().unwrap()).unwrap();
         assert!(matches!(
-            plan_assembly(
-                &expanded,
-                "manifest.json",
-                root.path().to_str().unwrap(),
-                None
-            )
-            .unwrap_err(),
+            plan_assembly(&expanded, "manifest.json", root.path().to_str().unwrap(), None).unwrap_err(),
             ManifestError::DuplicateFragmentPath { .. }
         ));
     }
