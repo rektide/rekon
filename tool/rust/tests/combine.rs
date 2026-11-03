@@ -84,6 +84,23 @@ fn default_manifest_and_empty_fragments_discover_global_files() {
     assert!(assemble(Path::new("missing.json"), root.path(), None).is_err());
 }
 
+#[test]
+fn manifest_omits_only_requested_top_level_metadata_from_output() {
+    let root = tempfile::tempdir().unwrap();
+    let source = alpha_source().replace("tags: [one, two]", "tags: [one, two]\nsources: [large]\nrefs: [reference]\nextra: { sources: [nested] }");
+    fs::write(root.path().join("GLOBAL.md"), &source).unwrap();
+    fs::write(root.path().join("agents.manifest.json"), r#"{"fragments":["**/GLOBAL.md"],"omit_metadata_fields":["sources","refs","absent"]}"#).unwrap();
+    let assembly = assemble(Path::new("agents.manifest.json"), root.path(), None).unwrap();
+    let fragment = &assembly.fragments[0];
+    assert_eq!(fragment.metadata["sources"][0], "large");
+    assert_eq!(fragment.metadata["refs"][0], "reference");
+    assert!(!fragment.okf.contains("large"));
+    assert!(!fragment.okf.contains("reference"));
+    assert!(fragment.okf.contains("\"extra\":{\"sources\":[\"nested\"]}"));
+    assert!(assembly.document.contains("## Alpha guide"));
+    assert_eq!(fs::read_to_string(root.path().join("GLOBAL.md")).unwrap(), source);
+}
+
 /// Write files (creating parents), then a manifest selecting `fragments`.
 fn create_bundle(root: &Path, files: &[(&str, String)], fragments: &[&str], output: &str) -> PathBuf {
     for (path, contents) in files {

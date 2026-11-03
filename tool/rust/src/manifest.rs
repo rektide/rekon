@@ -178,6 +178,7 @@ pub fn expand_globs(manifest: &Manifest, directory: &str) -> Result<Manifest, Ma
         fragments,
         output: manifest.output.clone(),
         exclude: Vec::new(),
+        omit_metadata_fields: manifest.omit_metadata_fields.clone(),
     })
 }
 
@@ -190,6 +191,9 @@ pub struct Manifest {
     pub output: String,
     #[serde(default)]
     pub exclude: Vec<String>,
+    /// Top-level frontmatter keys omitted only from emitted Okf records.
+    #[serde(default)]
+    pub omit_metadata_fields: Vec<String>,
 }
 
 #[derive(Error, Debug)]
@@ -226,6 +230,12 @@ pub fn parse_manifest(raw: &str, path: &str) -> Result<Manifest, ManifestError> 
         validate_fragment_path(excluded).map_err(|message| fail(format!("exclude[{excluded:?}]: {message}")))?;
         if is_pattern(excluded) || !exclusions.insert(excluded) {
             return Err(fail(format!("exclude[{excluded:?}]: must be a unique literal path")));
+        }
+    }
+    let mut omitted = std::collections::HashSet::new();
+    for field in &parsed.omit_metadata_fields {
+        if field.trim().is_empty() || !omitted.insert(field) || ["id", "order", "source", "status"].contains(&field.as_str()) {
+            return Err(fail(format!("omit_metadata_fields[{field:?}]: must be a unique non-empty field other than id, order, source, or status")));
         }
     }
     validate_relative_path(&parsed.output).map_err(|message| fail(format!("output: {message}")))?;
@@ -303,7 +313,8 @@ mod tests {
             Manifest {
                 fragments: vec!["second.md".into(), "first.md".into()],
                 output: "AGENTS.md".into(),
-                exclude: vec![]
+                exclude: vec![],
+                omit_metadata_fields: vec![]
             }
         );
     }
@@ -316,6 +327,10 @@ mod tests {
             "[]",
             r#"{"fragments": [42], "output": "AGENTS.md"}"#,
             r#"{"fragments": "rules/GLOBAL.md", "output": "AGENTS.md"}"#,
+            r#"{"omit_metadata_fields": ["sources", "sources"]}"#,
+            r#"{"omit_metadata_fields": ["id"]}"#,
+            r#"{"omit_metadata_fields": [""]}"#,
+            r#"{"omit_metadata_fields": "sources"}"#,
             r#"{"fragments": ["rules/GLOBAL.md"], "output": ""}"#,
             r#"{"fragments": ["rules/GLOBAL.md"], "output": "/absolute.md"}"#,
             r#"{"fragments": ["rules/GLOBAL.md"], "output": "./out.md"}"#,

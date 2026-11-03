@@ -5,5 +5,6 @@
     "**/GLOBAL.md"
   ],
   "exclude": ["doc/GLOBAL.md"],
+  "omit_metadata_fields": ["sources", "refs"],
   "output": "AGENTS.md"
 }

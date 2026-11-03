@@ -1,8 +1,8 @@
 //! Fragment contract: frontmatter metadata, prose shape, and relocation safety.
 //!
 //! Port of the assembler-specific fragment rules in `tool/md/fragment.ts`,
-//! upgraded for enriched assembly: the complete frontmatter object survives as
-//! scoped [`Okf`][rekon_markup] data, and explicit in-source IDs are guarded so
+//! upgraded for enriched assembly: frontmatter is available as scoped
+//! [`Okf`][rekon_markup] data, and explicit in-source IDs are guarded so
 //! they can never collide with generated section wrappers or the reserved
 //! table-of-contents nav. Frontmatter parsing and Okf emission come from the
 //! workspace's shared `rekon-markup` library; this module owns only the
@@ -59,7 +59,8 @@ impl FragmentStatus {
 }
 
 /// A validated fragment. `metadata` is the complete frontmatter object,
-/// including unknown fields; `okf` is its rendered `<Okf data={...} />` element.
+/// including unknown fields; `okf` is its rendered `<Okf data={...} />` element,
+/// which assembly may replace with a manifest-filtered rendering.
 #[derive(Clone, Debug)]
 pub struct Fragment {
     pub path: String,

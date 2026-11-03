@@ -150,7 +150,20 @@ pub fn assemble(manifest_path: &Path, cwd: &Path, output_override: Option<&Path>
     let mut inputs = vec![PathBuf::from(&plan.manifest_path)];
     for declared in &plan.fragments {
         let raw = read_file(Path::new(&declared.absolute))?;
-        fragments.push(parse_fragment(&raw, &declared.path)?);
+        let mut fragment = parse_fragment(&raw, &declared.path)?;
+        if !expanded.omit_metadata_fields.is_empty() {
+            let mut emitted = fragment.metadata.clone();
+            if let Some(fields) = emitted.as_object_mut() {
+                for field in &expanded.omit_metadata_fields {
+                    fields.remove(field);
+                }
+            }
+            fragment.okf = rekon_markup::render_okf(&emitted).map_err(|error| fragment::FragmentError::Metadata {
+                path: declared.path.clone(),
+                message: error.to_string(),
+            })?;
+        }
+        fragments.push(fragment);
         inputs.push(PathBuf::from(&declared.absolute));
     }
 

@@ -7,6 +7,7 @@ tags: [tool, agents, assembly, rust, mdx, okf]
 status: draft
 generated: { by: "model:openai/gpt-6-astra", at: 2026-10-11 }
 sources:
+  - { resource: "opencode://ses_e5fb41e38ffeSmnIQ610FK167t", title: Configure output-only metadata omission in the Rust assembly manifest }
   - { resource: "opencode://ses_e5fd2c680ffekEFiHfgwsgDea2", title: Default missing or empty fragment declarations to GLOBAL wildcard discovery }
   - { resource: "opencode://ses_ed31715c4ffex2ROd2G2C617AF", title: Rust producer integration, cross-engine review, and concise section identities }
   - { resource: "urn:opencode:session:ses_ed31715c4ffex2ROd2G2C617AF", title: Enriched whole-file assembly commission, Rust integration, and producer cutover }
@@ -22,7 +23,8 @@ sources:
 # Enriched whole-document assembly
 
 **`rekon combine` assembles complete selected files into `AGENTS.md`.** The
-Rust producer preserves frontmatter as scoped `<Okf data={…} />` metadata,
+Rust producer emits frontmatter as scoped `<Okf data={…} />` metadata, subject
+to manifest-configured top-level omissions,
 builds a section hierarchy, and runs a final ToC pass before writing or checking.
 Edit source contributions, then regenerate; the output is owned by the tool.
 
@@ -59,6 +61,7 @@ The [root manifest](/agents.manifest.json) declares whole inputs and patterns:
 {
   "fragments": ["CONTEXT.md", "**/GLOSSARY.md", "**/GLOBAL.md"],
   "exclude": ["doc/GLOBAL.md"],
+  "omit_metadata_fields": ["sources", "refs"],
   "output": "AGENTS.md"
 }
 ```
@@ -109,7 +112,13 @@ fragment identity for content whose file does not declare it.
 Each source declares `id` (lowercase kebab-case), integer `order`, root-relative
 `source`, and `status` (`draft` or `stable`) in YAML frontmatter. IDs and orders
 must be unique; numeric metadata order determines composition. Additional
-frontmatter fields are preserved rather than discarded.
+frontmatter fields are preserved by default. Optional `omit_metadata_fields`
+lists exact, case-sensitive **top-level** keys to exclude from every emitted
+`Okf` object. It defaults to an empty list; absent keys are harmless, nested
+keys are untouched, and duplicate or empty names and the required `id`, `order`,
+`source`, and `status` fields are rejected. Source frontmatter and validation
+remain complete. The root manifest omits `sources` and `refs` to reduce ambient
+output; consult the source file named by `data-source` for full provenance.
 
 The initial path validators retain the previous producer's rejection of control
 characters and `--` in fragment paths and `source` values. Source fragments must
@@ -150,7 +159,8 @@ nested sections. Hashes inside code remain code. Definitions using `dl`, `dt`,
 `dd`, and `dfn` remain semantic content, including their linkable identities.
 
 `Okf` is Rekon's proposed component interface, not an upstream OKF element. Its
-`data` prop contains the source metadata, including nested and unknown fields.
+`data` prop contains the source metadata, including nested and unknown fields,
+except for top-level fields explicitly omitted by the manifest.
 The enclosing section owns that record; descendant sections do not implicitly
 inherit verification. `data-source` records the source file, independently of
 the metadata's `resource` field. Web and TUI renderers can use this same data
@@ -169,7 +179,8 @@ byte identity with the TypeScript assembler is not promised.
 - Keep root-relative/protocol links portable. Assembly must not silently
   retarget fragment-relative links or duplicate anchor identities.
 - Preserve body content while applying structural and MDX-syntax transforms;
-  frontmatter survives semantically, not necessarily with original YAML formatting.
+  emitted frontmatter survives semantically apart from declared omissions, not
+  necessarily with original YAML formatting; source files are unchanged.
 - Publish atomically through same-directory staging. This is not a claim of
   crash-durable/fsynced output. Cleanup after forcible termination is deliberate.
 - Freshness compares UTF-8 bytes. Missing output is stale; other read failures
