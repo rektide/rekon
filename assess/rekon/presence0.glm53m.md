@@ -300,5 +300,35 @@ records** (not a judgment-moment trigger); the draft variant-support table was
 replaced by a **dispatch translation table** (alias → full variant name →
 `model` override base, no lookup needed) in `agents/GLOBAL.md` and
 `agents/models/README.md`; and flights gained ambient presence via
-`praxis/flights/GLOBAL.md` (manifest-activated), with random-combo's generator
-gaining a `--slots N` knob (default 3) across code, tests, and contracts.
+`praxis/flights/GLOBAL.md`, with random-combo's generator gaining a `--slots N`
+knob (default 3) across code, tests, and contracts.
+
+Assembly itself changed mid-pass (concurrent session
+`ses_e6011f662ffehNx613Rkve982p`): the manifest now selects `**/GLOBAL.md` and
+`**/GLOSSARY.md` by wildcard with an explicit `exclude` (`doc/GLOBAL.md`) and
+`omit_metadata_fields` (`sources`, `refs`), so new GLOBALs are discovered
+without manifest edits and the emitted context carries no source metadata
+blocks. Bookmarking and the flights depth pair (parallax, evidence gates) were
+activated under that mechanism the same day.
+
+## Second addendum — no-GLOBAL audit
+
+Review of items with no ambient exposure, with leans (2026-11-03):
+
+| Item | State | Lean |
+|---|---|---|
+| `praxis/fronts` | three CONTEXT terms link to it | no GLOBAL — vocabulary is its ambient form |
+| `praxis/candidates` | practice-GLOBAL bullet (thinking records) | no GLOBAL — the bullet is its cue |
+| `praxis/parallax`, `assess/gates` | named in the flights cue | no GLOBAL — depth pair, reached via flights |
+| `digest`, `assess`, `remake`, `evidence` | sense-map sentence / glossary pointers | no GLOBAL — adequate |
+| waves and case stories (Kinefolk, model-routing, eventual-integration) | none | correct — evidence, not ambient material |
+| `terminal/` | topic home + `js.md` depth, no GLOBAL | no GLOBAL — on-demand subject home; a cross-ref from `code/js` could aid discovery when TUI work starts |
+| `provider/` | one model-config JSON | no GLOBAL — config artifact, not knowledge |
+| `prompt/` | empty directory | nothing to expose; cleanup is a separate human decision |
+| `upstream/` | practice home (reference mirrors), no GLOBAL | no GLOBAL — situation-triggered; a one-line pointer from `code/GLOBAL.md` is the candidate if porting work recurs |
+| `web/` | platform-first guide, no GLOBAL | no GLOBAL — on-demand guide; revisit when web work next happens |
+
+Sharp edge of wildcard selection worth watching: any future `GLOSSARY.md`
+anywhere in the bundle now auto-assembles (only `codes/GLOSSARY.md` exists
+today), and a stray `GLOBAL.md` in a wave or vendor tree would go ambient
+unintended. `doc/GLOBAL.md` is the one deliberate exclusion.
