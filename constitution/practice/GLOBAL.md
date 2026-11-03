@@ -19,7 +19,7 @@ sources:
   - resource: "opencode://ses_ed2eda746ffefem0MPL9M5MYX7"
     title: Human direction to adopt OpenCode URIs with keyed positional IDs as the canonical grammar
   - resource: "opencode://ses_e5fb636fbffe5Gl3HoQQS34gn5"
-    title: Condense ambient writing guidance while preserving decision-point duties
+    title: Condense writing guidance and correct the request for substantive emitted thinking traces
   - resource: "opencode://ses_e5f803d18fferKftZSHtL9x8ol"
     title: Independent review of writing practice and its follow-up pointers
 ---
@@ -28,14 +28,12 @@ sources:
 
 ## Durable writing
 
-- **ChatGPT/OpenAI agents:** make thinking reviewable in your messages as an
-  ordinary part of working, not only at judgment calls. Help readers follow
-  meaningful alternatives actually considered, material reasons and tradeoffs,
-  assumptions, your tentative lean and confidence or uncertainty, and evidence
-  or preferences that would change it. Distinguish recommendations from accepted
-  decisions or commissioned work. This is not private chain-of-thought, hidden
-  scratch reasoning, or routine tool narration; scale depth to significance.
-  No compulsory research wave or separate document. Examples and depth:
+- **ChatGPT/OpenAI agents:** make emitted thinking traces substantive, not just
+  routine narration. Where relevant, surface alternatives actually considered,
+  reasons and tradeoffs, assumptions, your lean and uncertainty, and what would
+  change it. These are useful possibilities, not a mandatory checklist; scale
+  depth to the work. This request concerns thinking traces, not a requirement
+  to put them in ordinary messages. More:
   [candidates practice](/praxis/candidates/README.md#make-the-lean-inspectable).
 - Use structured Markdown with descriptive links to canonical files and sections.
   Prefer bundle-root-relative links inside Rekon and canonical repository URLs
