@@ -298,6 +298,7 @@ pub fn render_registry(entries: &[CodeEntry]) -> String {
             "resource: /codes/GLOSSARY.md\n",
             "tags: [codes, naming, aliases, glossary]\n",
             "sources:\n",
+            "  - {{ resource: \"opencode://ses_e614412d9ffefitVf6RGudHU9i\", title: Human requests raising Terra's default variant to high }}\n",
             "  - {{ resource: \"opencode://ses_e9bc39334ffetsgyIAj4L0kp0A\", title: Commission the codes glossary generator and direct it into ambient context }}\n",
             "  - {{ resource: \"opencode://ses_e6c20690cffeyOxxE0zP6Z4JVT\", title: Add standard variant abbreviations and default-variant notation to agent rows }}\n",
             "  - {{ resource: /constitution/naming/README.md, title: Short codes practice that owns code vocabulary }}\n",
