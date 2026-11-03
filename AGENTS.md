@@ -2,42 +2,43 @@
 
 <nav id="rekon-toc" aria-label="Table of contents">
 
-- <a href="#glossary" data-line-start="52" data-line-end="59">Rekon working vocabulary</a>
-  - <a href="#glossary-names-homes-and-relations" data-line-start="60" data-line-end="137">Names, homes, and relations</a>
-  - <a href="#glossary-knowledge-work-and-learning" data-line-start="138" data-line-end="220">Knowledge, work, and learning</a>
-  - <a href="#glossary-action-and-delivery" data-line-start="221" data-line-end="326">Action and delivery</a>
-  - <a href="#glossary-honing-and-commitment" data-line-start="327" data-line-end="373">Honing and commitment</a>
-- <a href="#codes" data-line-start="374" data-line-end="429">Codes glossary</a>
-- <a href="#doc-constitution" data-line-start="430" data-line-end="436">Constitution — orient before acting</a>
-  - <a href="#doc-constitution-terms-in-use" data-line-start="437" data-line-end="457">Terms in use</a>
-  - <a href="#doc-constitution-use-the-sense-map" data-line-start="458" data-line-end="511">Use the sense-map</a>
-- <a href="#documentation-practice" data-line-start="512" data-line-end="515">Writing, independent waves, and document connections</a>
-  - <a href="#documentation-practice-durable-writing" data-line-start="516" data-line-end="556">Durable writing</a>
-  - <a href="#documentation-practice-waves" data-line-start="557" data-line-end="579">Waves</a>
-  - <a href="#documentation-practice-doc-pass" data-line-start="580" data-line-end="599">Doc-pass</a>
-- <a href="#collaboration" data-line-start="600" data-line-end="603">Collaboration and architectural stewardship</a>
-  - <a href="#collaboration-dispatch-and-return" data-line-start="604" data-line-end="631">Dispatch and return</a>
-  - <a href="#collaboration-stewardship" data-line-start="632" data-line-end="651">Stewardship</a>
-  - <a href="#collaboration-discussion" data-line-start="652" data-line-end="666">Discussion</a>
-- <a href="#workspace" data-line-start="667" data-line-end="670">Workspace, research locations, and shell</a>
-  - <a href="#workspace-known-places" data-line-start="671" data-line-end="694">Known places</a>
-  - <a href="#workspace-workspace-practice" data-line-start="695" data-line-end="723">Workspace practice</a>
-- <a href="#code" data-line-start="724" data-line-end="730">Code — stage and change discipline</a>
-  - <a href="#code-terms-in-use" data-line-start="731" data-line-end="745">Terms in use</a>
-  - <a href="#code-operating-weight" data-line-start="746" data-line-end="777">Operating weight</a>
-- <a href="#jj" data-line-start="778" data-line-end="805">jj and git operating rules</a>
-  - <a href="#jj-jj-waltz-workspaces" data-line-start="806" data-line-end="833">jj-waltz workspaces</a>
-- <a href="#forge-publication" data-line-start="834" data-line-end="848">Forge publication</a>
-- <a href="#javascript" data-line-start="849" data-line-end="882">JavaScript and TypeScript</a>
-- <a href="#rust" data-line-start="883" data-line-end="909">Rust conventions</a>
-- <a href="#atproto-cli" data-line-start="910" data-line-end="922">ATProto CLI sessions</a>
-- <a href="#beads" data-line-start="923" data-line-end="960">Beads — readable work IDs and deliberate tracking</a>
-- <a href="#praxis-ticket-pointers" data-line-start="961" data-line-end="976">Ticket pointers — ambient cues</a>
-- <a href="#praxis-coverage" data-line-start="977" data-line-end="1009">Coverage — account for threads and omissions</a>
-- <a href="#praxis-consumer-accounts" data-line-start="1010" data-line-end="1028">Consumer accounts — library-side feedback</a>
-- <a href="#tool" data-line-start="1029" data-line-end="1068">Tools — check knowledge documents</a>
-- <a href="#refs" data-line-start="1069" data-line-end="1074">References</a>
-  - <a href="#refs-skills" data-line-start="1075" data-line-end="1107">Skills</a>
+- <a href="#glossary" data-line-start="53" data-line-end="60">Rekon working vocabulary</a>
+  - <a href="#glossary-names-homes-and-relations" data-line-start="61" data-line-end="138">Names, homes, and relations</a>
+  - <a href="#glossary-knowledge-work-and-learning" data-line-start="139" data-line-end="221">Knowledge, work, and learning</a>
+  - <a href="#glossary-action-and-delivery" data-line-start="222" data-line-end="327">Action and delivery</a>
+  - <a href="#glossary-honing-and-commitment" data-line-start="328" data-line-end="374">Honing and commitment</a>
+- <a href="#codes" data-line-start="375" data-line-end="430">Codes glossary</a>
+- <a href="#doc-constitution" data-line-start="431" data-line-end="437">Constitution — orient before acting</a>
+  - <a href="#doc-constitution-terms-in-use" data-line-start="438" data-line-end="458">Terms in use</a>
+  - <a href="#doc-constitution-use-the-sense-map" data-line-start="459" data-line-end="512">Use the sense-map</a>
+- <a href="#documentation-practice" data-line-start="513" data-line-end="516">Writing, independent waves, and document connections</a>
+  - <a href="#documentation-practice-durable-writing" data-line-start="517" data-line-end="561">Durable writing</a>
+  - <a href="#documentation-practice-waves" data-line-start="562" data-line-end="584">Waves</a>
+  - <a href="#documentation-practice-doc-pass" data-line-start="585" data-line-end="604">Doc-pass</a>
+- <a href="#collaboration" data-line-start="605" data-line-end="608">Collaboration and architectural stewardship</a>
+  - <a href="#collaboration-dispatch-and-return" data-line-start="609" data-line-end="655">Dispatch and return</a>
+  - <a href="#collaboration-stewardship" data-line-start="656" data-line-end="675">Stewardship</a>
+  - <a href="#collaboration-discussion" data-line-start="676" data-line-end="690">Discussion</a>
+- <a href="#workspace" data-line-start="691" data-line-end="694">Workspace, research locations, and shell</a>
+  - <a href="#workspace-known-places" data-line-start="695" data-line-end="718">Known places</a>
+  - <a href="#workspace-workspace-practice" data-line-start="719" data-line-end="747">Workspace practice</a>
+- <a href="#code" data-line-start="748" data-line-end="754">Code — stage and change discipline</a>
+  - <a href="#code-terms-in-use" data-line-start="755" data-line-end="769">Terms in use</a>
+  - <a href="#code-operating-weight" data-line-start="770" data-line-end="801">Operating weight</a>
+- <a href="#jj" data-line-start="802" data-line-end="829">jj and git operating rules</a>
+  - <a href="#jj-jj-waltz-workspaces" data-line-start="830" data-line-end="857">jj-waltz workspaces</a>
+- <a href="#forge-publication" data-line-start="858" data-line-end="872">Forge publication</a>
+- <a href="#javascript" data-line-start="873" data-line-end="906">JavaScript and TypeScript</a>
+- <a href="#rust" data-line-start="907" data-line-end="933">Rust conventions</a>
+- <a href="#atproto-cli" data-line-start="934" data-line-end="946">ATProto CLI sessions</a>
+- <a href="#beads" data-line-start="947" data-line-end="984">Beads — readable work IDs and deliberate tracking</a>
+- <a href="#praxis-ticket-pointers" data-line-start="985" data-line-end="1000">Ticket pointers — ambient cues</a>
+- <a href="#praxis-flights" data-line-start="1001" data-line-end="1024">Flights — spawn, join, and carry evidence forward</a>
+- <a href="#praxis-coverage" data-line-start="1025" data-line-end="1057">Coverage — account for threads and omissions</a>
+- <a href="#praxis-consumer-accounts" data-line-start="1058" data-line-end="1076">Consumer accounts — library-side feedback</a>
+- <a href="#tool" data-line-start="1077" data-line-end="1116">Tools — check knowledge documents</a>
+- <a href="#refs" data-line-start="1117" data-line-end="1122">References</a>
+  - <a href="#refs-skills" data-line-start="1123" data-line-end="1155">Skills</a>
 
 </nav>
 
@@ -507,7 +508,7 @@ the root manifest; edit its domain fragments, then regenerate. The preserved
 
 <section id="documentation-practice" data-source="/constitution/practice/GLOBAL.md">
 
-<Okf data={{"description":"Durable writing, inspectable judgment, independent inquiry, and connections between knowledge documents.","id":"documentation-practice","order":120,"resource":"/constitution/practice/GLOBAL.md","source":"/constitution/README.md","sources":[{"resource":"opencode://ses_e612fa800ffeeNJGAuTzJeLwFY","title":"Expose inspectable decision rationale for OpenAI agents in ambient writing guidance"},{"resource":"opencode://ses_e61a523a6ffef0z5ECCK5z73dC","title":"Human requests a practice capturing considered alternatives and the agent's lean"},{"resource":"opencode://ses_ed2db3069ffeQV7v6JC7p69Vte","title":"Align durable-writing provenance with keyed positional OpenCode URIs and session authority"},{"resource":"opencode://ses_ed2eda746ffefem0MPL9M5MYX7","title":"Human direction to adopt OpenCode URIs with keyed positional IDs as the canonical grammar"}],"status":"draft","title":"Writing, independent waves, and document connections","type":"ContextFragment"}} />
+<Okf data={{"description":"Durable writing, inspectable judgment, independent inquiry, and connections between knowledge documents.","id":"documentation-practice","order":120,"resource":"/constitution/practice/GLOBAL.md","source":"/constitution/README.md","sources":[{"resource":"opencode://ses_e60122a28ffem0Q4yFFw0qqZEM","title":"Reframe inspectable judgment as ambient reviewable thinking records rather than a narrow judgment trigger"},{"resource":"opencode://ses_e612fa800ffeeNJGAuTzJeLwFY","title":"Expose inspectable decision rationale for OpenAI agents in ambient writing guidance"},{"resource":"opencode://ses_e61a523a6ffef0z5ECCK5z73dC","title":"Human requests a practice capturing considered alternatives and the agent's lean"},{"resource":"opencode://ses_ed2db3069ffeQV7v6JC7p69Vte","title":"Align durable-writing provenance with keyed positional OpenCode URIs and session authority"},{"resource":"opencode://ses_ed2eda746ffefem0MPL9M5MYX7","title":"Human direction to adopt OpenCode URIs with keyed positional IDs as the canonical grammar"}],"status":"draft","title":"Writing, independent waves, and document connections","type":"ContextFragment"}} />
 
 ## Writing, independent waves, and document connections
 
@@ -515,14 +516,18 @@ the root manifest; edit its domain fragments, then regenerate. The preserved
 
 ### Durable writing
 
-- **ChatGPT/OpenAI agents:** when discussion or a durable assessment calls for
-  judgment, make the rationale inspectable: meaningful alternatives, material
+- **ChatGPT/OpenAI agents:** emit thinking records in your messages as an
+  ordinary part of working, not only when a judgment call seems to demand one.
+  The net effort is **reviewability of thinking**: a reader can follow how a
+  conclusion formed — meaningful alternatives actually considered, material
   reasons and tradeoffs, assumptions, your tentative lean and confidence or
-  uncertainty, and evidence or preferences that would change it. Distinguish a
-  recommendation from an accepted decision or commissioned work. Give a concise
-  decision rationale, not private chain-of-thought, hidden scratch reasoning, or
-  routine tool narration; scale detail to the choice. No compulsory research
-  wave or separate document. [Candidates practice](/praxis/candidates/README.md#make-the-lean-inspectable).
+  uncertainty, and evidence or preferences that would change it. Judgment calls
+  are when this matters most, not the only time it helps; ambiently aim for
+  richer, more useful thinking traces. Distinguish a recommendation from an
+  accepted decision or commissioned work. This is a useful record for a reader,
+  not private chain-of-thought dumps, hidden scratch reasoning, or routine tool
+  narration; scale depth to significance. No compulsory research wave or
+  separate document. [Candidates practice](/praxis/candidates/README.md#make-the-lean-inspectable).
 - Use structured Markdown with descriptive links to canonical files and sections.
   Prefer bundle-root-relative links inside Rekon and canonical repository URLs
   for external sources; identify the repository when context does not already.
@@ -595,7 +600,7 @@ consult [the toolkit map](/tool/README.md) for current capabilities.
 
 <section id="collaboration" data-source="/agents/GLOBAL.md">
 
-<Okf data={{"description":"Delegation, context budgeting, architectural review and collaborative decision practices.","generated":{"at":"2026-10-31","by":"model:zai-coding-plan/glm-5.3#max"},"id":"collaboration","order":150,"resource":"/agents/GLOBAL.md","source":"/agents/GLOBAL.md","sources":[{"resource":"opencode://ses_e6c1f991dffeK5oewTLCA2j5zu","title":"Human separates shared rate-limit fallback procedure from agent-specific fallback choices"},{"resource":"opencode://ses_e6cc34212ffelIc5sLrW1xqvi7","title":"Add a concise pointer to the dated model and variant lookup"},{"resource":"opencode://ses_e7bc138ffffeHcfSJmcsHKoO9Z","title":"Human requests a soft 300k delegated-session context target, tolerates modest overshoot and directs the nearly finished Sol slice to wrap"}],"status":"draft","title":"Collaboration and architectural stewardship","type":"ContextFragment"}} />
+<Okf data={{"description":"Delegation, context budgeting, architectural review and collaborative decision practices.","generated":{"at":"2026-10-31","by":"model:zai-coding-plan/glm-5.3#max"},"id":"collaboration","order":150,"resource":"/agents/GLOBAL.md","source":"/agents/GLOBAL.md","sources":[{"resource":"opencode://ses_e60122a28ffem0Q4yFFw0qqZEM","title":"Rebuild the ambient variant guidance as a dispatch translation table with aliases and override bases"},{"resource":"opencode://ses_e6c20690cffeyOxxE0zP6Z4JVT","title":"Add condensed variant-support table to global ambient context"},{"resource":"opencode://ses_e6c1f991dffeK5oewTLCA2j5zu","title":"Human separates shared rate-limit fallback procedure from agent-specific fallback choices"},{"resource":"opencode://ses_e6cc34212ffelIc5sLrW1xqvi7","title":"Add a concise pointer to the dated model and variant lookup"},{"resource":"opencode://ses_e7bc138ffffeHcfSJmcsHKoO9Z","title":"Human requests a soft 300k delegated-session context target, tolerates modest overshoot and directs the nearly finished Sol slice to wrap"}],"status":"draft","title":"Collaboration and architectural stewardship","type":"ContextFragment"}} />
 
 ## Collaboration and architectural stewardship
 
@@ -615,6 +620,25 @@ consult [the toolkit map](/tool/README.md) for current capabilities.
   [the general-agent guidance](/agents/general.md).
 - For explicitly requested common models and variants, use the dated
   [model lookup](/agents/models/README.md); recheck uncertain or changed availability.
+- Dispatch by translation, not lookup (catalog checked 2026-10-31). When the
+  user asks for a variant — by alias `#lo`, `#med`/`#mid`, `#hi`, `#xh`,
+  `#max`, or `∅`/no suffix — expand the alias to the **full variant name** and
+  pair it with the agent's model ID in the subagent `model` override. Never
+  pass the alias itself to a tool call.
+
+  | Agent | `model` override base | Full variant names |
+  | --- | --- | --- |
+  | `t` | `openai/gpt-6.1-terra` | (none), low, medium, high, xhigh, max |
+  | `ast` | `openai/gpt-6-astra` | low, medium, high, xhigh, max |
+  | `sol` | `openai/gpt-6.1-sol` | low, medium, high, xhigh, max |
+  | `l` | `openai/gpt-6-luna` | (none), low, medium, high, xhigh, max |
+  | `g` | `zai-coding-plan/glm-5.3` | low, high, max |
+  | `f` | `zai-coding-plan/glm-5.3-flash` | low, high, max |
+
+  Example: "ast med" or "ast #mid" → agent `ast` with
+  `model: "openai/gpt-6-astra#medium"`. Only set a `model` override on an
+  explicit user ask for that model or variant; defaults, dated availability,
+  and deeper guidance live in [the model lookup](/agents/models/README.md).
 - When an agent hits a rate limit or quota exhaustion, use its stated fallback
   for the task; try the original agent again on each subsequent dispatch so it
   resumes when quota returns. Fallback is not a permanent switch.
@@ -968,6 +992,30 @@ bd close <issue-id> --reason "<completion and verification>"
   implementation report with the session ID for traceability. Keep it
   proportional; not every edit needs a ticket note.
 - Deeper practice: [Ticket pointers](/praxis/ticket-pointers/ticket-pointers0.glm53fx.md).
+</section>
+
+<section id="praxis-flights" data-source="/praxis/flights/GLOBAL.md">
+
+<Okf data={{"description":"Compact coordination cue for flights, naming the random-combo reusable model and its zero-install generator command.","id":"praxis-flights","order":402,"resource":"/praxis/flights/GLOBAL.md","source":"/praxis/flights/README.md","sources":[{"resource":"opencode://ses_e60122a28ffem0Q4yFFw0qqZEM","title":"Commission ambient flight availability including random-combo and its slots knob"},{"resource":"/praxis/flights/README.md","title":"Flight practice home"}],"status":"draft","title":"Flights — spawn, join, and carry evidence forward","type":"ContextFragment"}} />
+
+## Flights — spawn, join, and carry evidence forward
+
+A **flight** composes agent work as explicit promises: bounded spawns, joins
+that name what a dependent step needs, and evidence carried forward. It is a
+coordination model, not a scheduler and not delegation authority; humans own
+authorization and decisions. Practice: [flights](/praxis/flights/README.md).
+
+The ready reusable model is **random-combo**: draw N weighted options per game
+(three by default) from a human-supplied pool, with persistent winner decay,
+then join independent game responses before comparison. Its generator runs
+without install from the Rekon checkout:
+
+```sh
+node tool/random-combo.ts --rows 4 --slots 3 --seed example FILE   # --help for more
+```
+
+Flight model: [random-combo](/praxis/flights/random-combo.md); generator
+contract: [random-combo tool](/tool/random-combo/README.md).
 </section>
 
 <section id="praxis-coverage" data-source="/praxis/coverage/GLOBAL.md">
