@@ -46,7 +46,7 @@ Add `--check` to that command to detect stale output or hand edits.
 
 <section id="glossary" data-source="/CONTEXT.md">
 
-<Okf data={{"description":"Cross-topic terms linking the established naming and constitutional vocabulary to current action and context work; a working glossary, not a new naming law.","extensions":{"related_work":["rekon-con-naming","rekon-agents-maintenance"],"ticket":"rekon-phoenix"},"generated":{"at":"2026-09-06","by":"model:gpt-6-astra"},"id":"glossary","order":50,"resource":"/CONTEXT.md","source":"/CONTEXT.md","sources":[{"resource":"opencode://ses_e6cc34212ffelIc5sLrW1xqvi7","title":"Record the human-commissioned flight term and its practice home"},{"resource":"opencode://ses_e6ccb4e5effe6EWqmToxh2oLHO","title":"Human commissions the flight coordination vocabulary"},{"resource":"urn:opencode:session:ses_ed3000de2ffewvt4aDNZVE4O9R","title":"Semantic vocabulary conversion and MDX flow-boundary correction"},{"resource":"urn:opencode:session:ses_ed31715c4ffex2ROd2G2C617AF","title":"Semantic definition-list conversion commissioned for enriched assembly"},{"resource":"/constitution/naming/exploration/proposal4.glm53m.md","title":"Recorded human naming override"},{"resource":"/constitution/naming/exploration/draft2-discussion0.sol56x.md","title":"Shared glossary and remaining naming disagreements"},{"resource":"/design/skillify/README1.sol56x.md","title":"Capability and context vocabulary"},{"resource":"/constitution/README.md","title":"Knowledge modules and exposures"},{"resource":"/evidence/README.md","title":"Evidence relationships and case stories"},{"resource":"/digest/README.md","title":"Action and intent fronts"},{"resource":"urn:opencode:session:ses_f2ebf7b1effewnCNYbBQ8Ewey2","title":"Human adoption of the ⇄ maintained-link convention for the fronts thread"},{"resource":"opencode://ses_e9bc39334ffetsgyIAj4L0kp0A","title":"Human names pattern-driven assembly expansion globbing; glossary entry added with the Rust producer capability"}],"status":"draft","tags":["glossary","naming","constitution","actions","context"],"title":"Rekon working vocabulary","type":"Glossary"}} />
+<Okf data={{"description":"Cross-topic terms linking the established naming and constitutional vocabulary to current action and context work; a working glossary, not a new naming law.","extensions":{"related_work":["rekon-con-naming","rekon-agents-maintenance"],"ticket":"rekon-phoenix"},"generated":{"at":"2026-09-06","by":"model:gpt-6-astra"},"id":"glossary","order":50,"resource":"/CONTEXT.md","source":"/CONTEXT.md","sources":[{"resource":"opencode://ses_e609d51f3ffe86faDUH8TGks44","title":"Capture magnitude in the working vocabulary and verify its calibration anchors"},{"resource":"opencode://ses_e61e1251cffe0mFqTdBC7PlEHc","title":"Human introduces magnitude as a measure of ideas with two anchors"},{"resource":"file:///home/rektide/src/bolderfs/design/access/equivalence-ungate0.glm53m.md","title":"Equivalence-ungate idea and its byte-observability scope"},{"resource":"file:///home/rektide/src/watchment/README.md","title":"Watchment filesystem observation and state service"},{"resource":"opencode://ses_e6cc34212ffelIc5sLrW1xqvi7","title":"Record the human-commissioned flight term and its practice home"},{"resource":"opencode://ses_e6ccb4e5effe6EWqmToxh2oLHO","title":"Human commissions the flight coordination vocabulary"},{"resource":"urn:opencode:session:ses_ed3000de2ffewvt4aDNZVE4O9R","title":"Semantic vocabulary conversion and MDX flow-boundary correction"},{"resource":"urn:opencode:session:ses_ed31715c4ffex2ROd2G2C617AF","title":"Semantic definition-list conversion commissioned for enriched assembly"},{"resource":"/constitution/naming/exploration/proposal4.glm53m.md","title":"Recorded human naming override"},{"resource":"/constitution/naming/exploration/draft2-discussion0.sol56x.md","title":"Shared glossary and remaining naming disagreements"},{"resource":"/design/skillify/README1.sol56x.md","title":"Capability and context vocabulary"},{"resource":"/constitution/README.md","title":"Knowledge modules and exposures"},{"resource":"/evidence/README.md","title":"Evidence relationships and case stories"},{"resource":"/digest/README.md","title":"Action and intent fronts"},{"resource":"urn:opencode:session:ses_f2ebf7b1effewnCNYbBQ8Ewey2","title":"Human adoption of the ⇄ maintained-link convention for the fronts thread"},{"resource":"opencode://ses_e9bc39334ffetsgyIAj4L0kp0A","title":"Human names pattern-driven assembly expansion globbing; glossary entry added with the Rust producer capability"}],"status":"draft","tags":["glossary","naming","constitution","actions","context"],"title":"Rekon working vocabulary","type":"Glossary"}} />
 
 ## Rekon working vocabulary
 
@@ -137,6 +137,22 @@ helps someone understand where they are and what a next action means.
 ### Knowledge, work, and learning
 
 <dl>
+<dt><dfn id="magnitude">Magnitude</dfn></dt>
+<dd>
+An informal measure of how strongly an idea shapes and supports its project,
+top to bottom. High-magnitude ideas can be axes for architecture, gating or
+vocabulary; mid-magnitude ideas can be rich, valuable subsystems without
+restructuring the whole project. Human calibration: <strong>8</strong> for
+<a href="file:///home/rektide/src/bolderfs/design/access/equivalence-ungate0.glm53m.md">bolderfs equivalence-ungate</a>,
+an unbuilt idea to leave retained readers ungated across a view swap when their
+reachable bytes are proven identical, while controlling admission for new
+handles and readers of changed bytes; <strong>6 for now</strong> for
+<a href="file:///home/rektide/src/watchment/README.md">Watchment</a>, a rich
+filesystem observation and state service. These are contextual judgments, not
+fixed grades. <em>Do not conflate with:</em> priority, urgency, effort size or
+acceptance.
+</dd>
+
 <dt><dfn id="effort">Effort</dfn></dt>
 <dd>
 A continuing pursuit that may span actions, people, sessions,
