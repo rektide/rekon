@@ -3,43 +3,43 @@
 <nav id="rekon-toc" aria-label="Table of contents">
 
 - <a href="#glossary" data-line-start="54" data-line-end="61">Rekon working vocabulary</a>
-  - <a href="#glossary-names-homes-and-relations" data-line-start="62" data-line-end="127">Names, homes, and relations</a>
-  - <a href="#glossary-knowledge-work-and-learning" data-line-start="128" data-line-end="210">Knowledge, work, and learning</a>
-  - <a href="#glossary-action-and-delivery" data-line-start="211" data-line-end="316">Action and delivery</a>
-  - <a href="#glossary-honing-and-commitment" data-line-start="317" data-line-end="363">Honing and commitment</a>
-- <a href="#codes" data-line-start="364" data-line-end="409">Codes glossary</a>
-- <a href="#doc-constitution" data-line-start="410" data-line-end="416">Constitution — orient before acting</a>
-  - <a href="#doc-constitution-terms-in-use" data-line-start="417" data-line-end="442">Terms in use</a>
-  - <a href="#doc-constitution-use-the-sense-map" data-line-start="443" data-line-end="496">Use the sense-map</a>
-- <a href="#documentation-practice" data-line-start="497" data-line-end="500">Writing, independent waves, and document connections</a>
-  - <a href="#documentation-practice-durable-writing" data-line-start="501" data-line-end="536">Durable writing</a>
-  - <a href="#documentation-practice-waves" data-line-start="537" data-line-end="558">Waves</a>
-  - <a href="#documentation-practice-doc-pass" data-line-start="559" data-line-end="576">Doc-pass</a>
-- <a href="#collaboration" data-line-start="577" data-line-end="580">Collaboration and architectural stewardship</a>
-  - <a href="#collaboration-dispatch-and-return" data-line-start="581" data-line-end="612">Dispatch and return</a>
-  - <a href="#collaboration-stewardship" data-line-start="613" data-line-end="632">Stewardship</a>
-  - <a href="#collaboration-discussion" data-line-start="633" data-line-end="647">Discussion</a>
-- <a href="#workspace" data-line-start="648" data-line-end="651">Workspace, research locations, and shell</a>
-  - <a href="#workspace-known-places" data-line-start="652" data-line-end="675">Known places</a>
-  - <a href="#workspace-workspace-practice" data-line-start="676" data-line-end="704">Workspace practice</a>
-- <a href="#code" data-line-start="705" data-line-end="711">Code — stage and change discipline</a>
-  - <a href="#code-terms-in-use" data-line-start="712" data-line-end="726">Terms in use</a>
-  - <a href="#code-operating-weight" data-line-start="727" data-line-end="758">Operating weight</a>
-- <a href="#jj" data-line-start="759" data-line-end="786">jj and git operating rules</a>
-  - <a href="#jj-jj-waltz-workspaces" data-line-start="787" data-line-end="814">jj-waltz workspaces</a>
-- <a href="#forge-publication" data-line-start="815" data-line-end="829">Forge publication</a>
-- <a href="#javascript" data-line-start="830" data-line-end="863">JavaScript and TypeScript</a>
-- <a href="#rust" data-line-start="864" data-line-end="890">Rust conventions</a>
-- <a href="#atproto-cli" data-line-start="891" data-line-end="903">ATProto CLI sessions</a>
-- <a href="#beads" data-line-start="904" data-line-end="941">Beads — readable work IDs and deliberate tracking</a>
-- <a href="#praxis-ticket-pointers" data-line-start="942" data-line-end="957">Ticket pointers — ambient cues</a>
-- <a href="#praxis-flights" data-line-start="958" data-line-end="983">Flights — spawn, join, and carry evidence forward</a>
-- <a href="#praxis-coverage" data-line-start="984" data-line-end="1016">Coverage — account for threads and omissions</a>
-- <a href="#praxis-bookmarking" data-line-start="1017" data-line-end="1042">Bookmarking — mark session material worth returning to</a>
-- <a href="#praxis-consumer-accounts" data-line-start="1043" data-line-end="1061">Consumer accounts — library-side feedback</a>
-- <a href="#tool" data-line-start="1062" data-line-end="1101">Tools — check knowledge documents</a>
-- <a href="#refs" data-line-start="1102" data-line-end="1107">References</a>
-  - <a href="#refs-skills" data-line-start="1108" data-line-end="1140">Skills</a>
+  - <a href="#glossary-names-homes-and-relations" data-line-start="62" data-line-end="115">Names, homes, and relations</a>
+  - <a href="#glossary-knowledge-work-and-learning" data-line-start="116" data-line-end="198">Knowledge, work, and learning</a>
+  - <a href="#glossary-action-and-delivery" data-line-start="199" data-line-end="304">Action and delivery</a>
+  - <a href="#glossary-honing-and-commitment" data-line-start="305" data-line-end="351">Honing and commitment</a>
+- <a href="#codes" data-line-start="352" data-line-end="397">Codes glossary</a>
+- <a href="#doc-constitution" data-line-start="398" data-line-end="404">Constitution — orient before acting</a>
+  - <a href="#doc-constitution-terms-in-use" data-line-start="405" data-line-end="430">Terms in use</a>
+  - <a href="#doc-constitution-use-the-sense-map" data-line-start="431" data-line-end="484">Use the sense-map</a>
+- <a href="#documentation-practice" data-line-start="485" data-line-end="488">Writing, independent waves, and document connections</a>
+  - <a href="#documentation-practice-durable-writing" data-line-start="489" data-line-end="524">Durable writing</a>
+  - <a href="#documentation-practice-waves" data-line-start="525" data-line-end="546">Waves</a>
+  - <a href="#documentation-practice-doc-pass" data-line-start="547" data-line-end="564">Doc-pass</a>
+- <a href="#collaboration" data-line-start="565" data-line-end="568">Collaboration and architectural stewardship</a>
+  - <a href="#collaboration-dispatch-and-return" data-line-start="569" data-line-end="600">Dispatch and return</a>
+  - <a href="#collaboration-stewardship" data-line-start="601" data-line-end="620">Stewardship</a>
+  - <a href="#collaboration-discussion" data-line-start="621" data-line-end="635">Discussion</a>
+- <a href="#workspace" data-line-start="636" data-line-end="639">Workspace, research locations, and shell</a>
+  - <a href="#workspace-known-places" data-line-start="640" data-line-end="663">Known places</a>
+  - <a href="#workspace-workspace-practice" data-line-start="664" data-line-end="692">Workspace practice</a>
+- <a href="#code" data-line-start="693" data-line-end="699">Code — stage and change discipline</a>
+  - <a href="#code-terms-in-use" data-line-start="700" data-line-end="714">Terms in use</a>
+  - <a href="#code-operating-weight" data-line-start="715" data-line-end="746">Operating weight</a>
+- <a href="#jj" data-line-start="747" data-line-end="774">jj and git operating rules</a>
+  - <a href="#jj-jj-waltz-workspaces" data-line-start="775" data-line-end="802">jj-waltz workspaces</a>
+- <a href="#forge-publication" data-line-start="803" data-line-end="817">Forge publication</a>
+- <a href="#javascript" data-line-start="818" data-line-end="851">JavaScript and TypeScript</a>
+- <a href="#rust" data-line-start="852" data-line-end="878">Rust conventions</a>
+- <a href="#atproto-cli" data-line-start="879" data-line-end="891">ATProto CLI sessions</a>
+- <a href="#beads" data-line-start="892" data-line-end="929">Beads — readable work IDs and deliberate tracking</a>
+- <a href="#praxis-ticket-pointers" data-line-start="930" data-line-end="945">Ticket pointers — ambient cues</a>
+- <a href="#praxis-flights" data-line-start="946" data-line-end="971">Flights — spawn, join, and carry evidence forward</a>
+- <a href="#praxis-coverage" data-line-start="972" data-line-end="1004">Coverage — account for threads and omissions</a>
+- <a href="#praxis-bookmarking" data-line-start="1005" data-line-end="1030">Bookmarking — mark session material worth returning to</a>
+- <a href="#praxis-consumer-accounts" data-line-start="1031" data-line-end="1049">Consumer accounts — library-side feedback</a>
+- <a href="#tool" data-line-start="1050" data-line-end="1089">Tools — check knowledge documents</a>
+- <a href="#refs" data-line-start="1090" data-line-end="1095">References</a>
+  - <a href="#refs-skills" data-line-start="1096" data-line-end="1128">Skills</a>
 
 </nav>
 
@@ -62,15 +62,6 @@ existing discussion, not settled by this glossary.
 ### Names, homes, and relations
 
 <dl>
-<dt><dfn id="name">Name</dfn></dt>
-<dd>Definition: <a href="/constitution/GLOBAL.md#constitutional-name">constitution</a>.</dd>
-
-<dt><dfn id="authority">Authority</dfn></dt>
-<dd>Definition: <a href="/constitution/GLOBAL.md#constitutional-authority">constitution</a>.</dd>
-
-<dt><dfn id="reference">Reference</dfn></dt>
-<dd>Definition: <a href="/constitution/GLOBAL.md#constitutional-reference">constitution</a>.</dd>
-
 <dt><dfn id="alias">Alias</dfn></dt>
 <dd>
 An alternate reference with a recoverable referent and scope;
@@ -88,9 +79,6 @@ A concern-specific alias by which an actor can be addressed.
 A scoped responsibility an actor has in some work or relationship.
 A role can explain a hat without being the actor's identity.
 </dd>
-
-<dt><dfn id="home">Home</dfn></dt>
-<dd>Definition: <a href="/constitution/GLOBAL.md#constitutional-home">constitution</a>.</dd>
 
 <dt><dfn id="bidirectional-link">Bidirectional link (⇄)</dfn></dt>
 <dd>
