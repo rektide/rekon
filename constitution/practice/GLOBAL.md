@@ -1,6 +1,10 @@
 ---
 id: documentation-practice
 order: 120
+type: ContextFragment
+title: Writing, independent waves, and document connections
+description: Durable writing, inspectable judgment, independent inquiry, and connections between knowledge documents.
+resource: /constitution/practice/GLOBAL.md
 source: /constitution/README.md
 status: draft
 sources:
