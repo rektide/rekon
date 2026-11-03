@@ -291,3 +291,14 @@ the week window and is already summarized in the codes glossary and fragments.
 Cross-references: [coverage practice](/praxis/coverage/README.md) (this
 map is itself a coverage pass), [assess/rekon orientation](/assess/rekon/README.md),
 [assembly contract](/constitution/agents-assembly.md) for the combine mechanism.
+
+## Addendum — same-day follow-ups
+
+Human review of this map redirected three rows, all landed this session:
+the inspectable-rationale bullet was reframed as **ambient reviewable thinking
+records** (not a judgment-moment trigger); the draft variant-support table was
+replaced by a **dispatch translation table** (alias → full variant name →
+`model` override base, no lookup needed) in `agents/GLOBAL.md` and
+`agents/models/README.md`; and flights gained ambient presence via
+`praxis/flights/GLOBAL.md` (manifest-activated), with random-combo's generator
+gaining a `--slots N` knob (default 3) across code, tests, and contracts.
