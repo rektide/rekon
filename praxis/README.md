@@ -11,6 +11,7 @@ stale_after: 2026-12-06
 extensions:
   work_anchor: "wifi-ptp-now:wiptpn-modern-praxis"
 sources:
+  - { resource: "opencode://ses_e61c89ec5ffevCqzDqpRciJ0Dl", title: Connect the coverage question as a lightweight practice for proposed threads and omissions }
   - { resource: "opencode://ses_e6c900557ffex5YjEpZrQCueNC", title: Index the Kinefolk firmware flight and its observed learning }
   - { resource: "opencode://ses_e6cc34212ffelIc5sLrW1xqvi7", title: Connect the human-commissioned flight coordination practice }
   - { resource: "opencode://ses_e9a40d003ffeEeLMvkRjLaMwVK", title: Connect the consumer accounts practice for libraries we use }
@@ -84,6 +85,12 @@ remain usefully ambiguous while the next action has a clear boundary.
   RAX120 v2/OpenWrt/all-Linux and NAN context, and the difference between a
   selected implementation priority and preserved hardware-gated options.
   It is a source-grounded case seed, not a completed timing experiment.
+
+## Related practice: coverage
+
+[Coverage](/praxis/coverage/README.md) collects the threads in a conversation or
+pass, says what happened to each, and names important topics left out without
+converting all of them into commitments.
 
 ## Related practice: candidates
 
