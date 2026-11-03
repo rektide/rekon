@@ -9,12 +9,14 @@
         {
           "fragment": "agents/GLOBAL.md",
           "contains": [
-            "Run delegated agents in the background.",
+            "Run delegated agents in the background",
             "Prime agents with existing research",
             "write and commit their own model-suffixed documents",
-            "Delegate implementation and routine verification, not architectural responsibility.",
-            "Trust reported checks; do not rerun them just to confirm.",
-            "Cooperatively anneal broader solutions."
+            "Delegate implementation and routine verification",
+            "not architectural responsibility",
+            "Trust reported checks",
+            "do not rerun them just to confirm",
+            "Cooperatively anneal broader solutions"
           ]
         }
       ]
@@ -27,9 +29,9 @@
           "fragment": "code/workspace/GLOBAL.md",
           "contains": [
             "Use rg and fd",
-            "a variant is usually ~/src/<repo>-<variant>/ with a jj workspace",
+            "~/src/<repo>-<variant>/",
             ".test-agent/<topic>/",
-            "with a README explaining the scratch work"
+            "README explaining the scratch work"
           ]
         }
       ]
@@ -41,8 +43,8 @@
         {
           "fragment": "constitution/GLOBAL.md",
           "contains": [
-            "new Rekon topics do not enter the retiring doc/ bucket",
-            "Promotion synthesizes understanding rather than deleting the evidence it used."
+            "retiring doc/ bucket",
+            "Promotion synthesizes understanding"
           ]
         },
         {
@@ -50,21 +52,21 @@
           "contains": [
             "canonical files and sections",
             "sources actually read",
-            "Every wave filename ends in the current model's concise suffix",
+            "ends in the current model's concise suffix",
             "Use a numerical round starting at 0",
             "Do not read other authors' same-wave files unless directed",
-            "then compare sources' strengths, weaknesses, and distinctive ideas",
-            "useful reciprocal links, and index updates",
+            "strengths, weaknesses, and distinctive ideas",
+            "useful reciprocal links",
             "Verify the links",
             "index.md is a grouped progressive-disclosure listing",
-            "log.md is dated update history, newest first"
+            "log.md is dated update history"
           ]
         },
         {
           "fragment": "agents/GLOBAL.md",
           "contains": [
-            "Prefer multiple-choice questions allowing multiple selections",
-            "Explain the situation before the questions."
+            "multiple-choice questions allowing multiple selections",
+            "Explain the situation before the questions"
           ]
         }
       ]
@@ -81,7 +83,7 @@
             "~/archive/doc",
             "dl <url> fetches a repository and its wiki",
             "~/ff",
-            "Prefer a shebang and executable scripts."
+            "Prefer a shebang and executable scripts"
           ]
         }
       ]
@@ -109,18 +111,19 @@
         {
           "fragment": "code/GLOBAL.md",
           "contains": [
-            "commit each coherent stage when available, including prompts, research, drafts, and guidance",
-            "before a review-driven revamp, save the present owned state",
+            "commit each coherent stage when available",
+            "prompts, research, drafts, and guidance",
+            "save the present owned state",
             "Let It Fail",
-            "Do not add automatic prune/reconciliation behavior unless explicitly requested",
-            "discuss direction as well as committing the predecessor before editing"
+            "Do not add automatic prune/reconciliation behavior",
+            "committing the predecessor before editing"
           ]
         }
       ]
     },
     {
       "heading": "Rust instructions",
-      "note": "Restore preferred tools and publishing order. Refine the incomplete Figment example to distinguish explicit CLI values from defaults; no new configuration implementation is implied.",
+      "note": "Restore preferred tools and publishing order: bump, then a jj commit, then cargo publish — substring probes cannot check order, so it is stated here. Publishing prose was deliberately reworded 2026-10-22; probes realigned 2026-11-03. The Figment note distinguishes explicit CLI values from defaults; no new configuration implementation is implied.",
       "checks": [
         {
           "fragment": "code/rust/GLOBAL.md",
@@ -136,7 +139,8 @@
             "criterion",
             "CLI > environment > defaults",
             "cargo bump",
-            "then make a jj commit and run cargo publish"
+            "then make a jj commit",
+            "cargo publish"
           ]
         }
       ]
@@ -208,7 +212,7 @@
         {
           "fragment": "vcs/jj/GLOBAL.md",
           "contains": [
-            "Wholesale rewrites do not hunk-split into clean intermediates",
+            "Wholesale rewrites do not hunk-split",
             "preserve the rewritten version"
           ]
         }

@@ -4,8 +4,9 @@ title: Operating-context coverage
 description: Review the legacy-to-fragment mapping and check instructional coverage independently of generated-file freshness.
 resource: /tool/assembly/coverage.md
 status: draft
-generated: { by: "model:openai/gpt-6-astra", at: 2026-10-11 }
+generated: { by: "model:zai-coding-plan/glm-5.3#max", at: 2026-11-03 }
 sources:
+  - { resource: "opencode://ses_e5fd2c680ffekEFiHfgwsgDea2", title: Realign ledger probes to short stable excerpts and record probe discipline }
   - { resource: "opencode://ses_ed31715c4ffex2ROd2G2C617AF", title: Integrate independent operating coverage with the Rust producer }
   - { resource: "urn:opencode:session:ses_ed31715c4ffex2ROd2G2C617AF", title: Rust producer integration and preservation of the independent coverage regression }
   - { resource: /design/context-compilation/repair0.gpt6a.md, title: Missing ambient guidance diagnosis }
@@ -21,9 +22,12 @@ reviewed operating requirements declared in [coverage.json](/tool/assembly/cover
 Use both after changing selection or guidance:
 
 ```sh
-cargo run --quiet --manifest-path tool/rust/Cargo.toml -- audit-context
-cargo run --quiet --manifest-path tool/rust/Cargo.toml -- combine --check
+rkt audit-context
+rkt combine --check
 ```
+
+Both also run under `cargo run --manifest-path tool/rust/Cargo.toml --` from
+a checkout without the installed binary.
 
 `pnpm check` runs both. The audit reads files and reports problems; it never
 rewrites guidance, creates output, migrates documents, or updates its own ledger.
@@ -51,6 +55,14 @@ complete per-sentence migration, or editorial quality. The ledger is a review
 surface, not a substitute for reading the combined document. Never weaken a
 required excerpt just to make the check green; explain a genuine policy change
 in its section's `note` and update the owned prose together.
+
+**Probe discipline (2026-11-03 realignment).** Excerpt probes are
+whitespace-normalized substrings; they cannot check ordering. Prefer short,
+canonical strings — tool names, flags, literal commands, distinctive phrases —
+over full sentences, which break on any deliberate rewording. Keep ordering and
+intent in the section `note`. When owned prose is deliberately rewritten,
+realign the probe the same day and say so in the `note`, so a future mismatch
+clearly means unexpected loss rather than paraphrase drift.
 
 Implementation: [`coverage.rs`](/tool/rust/src/coverage.rs) parses real Markdown
 headings and visible bodies with pulldown-cmark; the existing Rust manifest
