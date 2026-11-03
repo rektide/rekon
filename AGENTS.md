@@ -10,36 +10,36 @@
 - <a href="#codes" data-line-start="352" data-line-end="397">Codes glossary</a>
 - <a href="#doc-constitution" data-line-start="398" data-line-end="404">Constitution — orient before acting</a>
   - <a href="#doc-constitution-terms-in-use" data-line-start="405" data-line-end="430">Terms in use</a>
-  - <a href="#doc-constitution-use-the-sense-map" data-line-start="431" data-line-end="484">Use the sense-map</a>
-- <a href="#documentation-practice" data-line-start="485" data-line-end="488">Writing, independent waves, and document connections</a>
-  - <a href="#documentation-practice-durable-writing" data-line-start="489" data-line-end="522">Durable writing</a>
-  - <a href="#documentation-practice-waves" data-line-start="523" data-line-end="544">Waves</a>
-  - <a href="#documentation-practice-doc-pass" data-line-start="545" data-line-end="562">Doc-pass</a>
-- <a href="#collaboration" data-line-start="563" data-line-end="566">Collaboration and architectural stewardship</a>
-  - <a href="#collaboration-dispatch-and-return" data-line-start="567" data-line-end="598">Dispatch and return</a>
-  - <a href="#collaboration-stewardship" data-line-start="599" data-line-end="618">Stewardship</a>
-  - <a href="#collaboration-discussion" data-line-start="619" data-line-end="633">Discussion</a>
-- <a href="#workspace" data-line-start="634" data-line-end="637">Workspace, research locations, and shell</a>
-  - <a href="#workspace-known-places" data-line-start="638" data-line-end="661">Known places</a>
-  - <a href="#workspace-workspace-practice" data-line-start="662" data-line-end="690">Workspace practice</a>
-- <a href="#code" data-line-start="691" data-line-end="697">Code — stage and change discipline</a>
-  - <a href="#code-terms-in-use" data-line-start="698" data-line-end="712">Terms in use</a>
-  - <a href="#code-operating-weight" data-line-start="713" data-line-end="744">Operating weight</a>
-- <a href="#jj" data-line-start="745" data-line-end="772">jj and git operating rules</a>
-  - <a href="#jj-jj-waltz-workspaces" data-line-start="773" data-line-end="800">jj-waltz workspaces</a>
-- <a href="#forge-publication" data-line-start="801" data-line-end="815">Forge publication</a>
-- <a href="#javascript" data-line-start="816" data-line-end="849">JavaScript and TypeScript</a>
-- <a href="#rust" data-line-start="850" data-line-end="876">Rust conventions</a>
-- <a href="#atproto-cli" data-line-start="877" data-line-end="889">ATProto CLI sessions</a>
-- <a href="#beads" data-line-start="890" data-line-end="927">Beads — readable work IDs and deliberate tracking</a>
-- <a href="#praxis-ticket-pointers" data-line-start="928" data-line-end="943">Ticket pointers — ambient cues</a>
-- <a href="#praxis-flights" data-line-start="944" data-line-end="969">Flights — spawn, join, and carry evidence forward</a>
-- <a href="#praxis-coverage" data-line-start="970" data-line-end="1002">Coverage — account for threads and omissions</a>
-- <a href="#praxis-bookmarking" data-line-start="1003" data-line-end="1028">Bookmarking — mark session material worth returning to</a>
-- <a href="#praxis-consumer-accounts" data-line-start="1029" data-line-end="1047">Consumer accounts — library-side feedback</a>
-- <a href="#tool" data-line-start="1048" data-line-end="1087">Tools — check knowledge documents</a>
-- <a href="#refs" data-line-start="1088" data-line-end="1093">References</a>
-  - <a href="#refs-skills" data-line-start="1094" data-line-end="1126">Skills</a>
+  - <a href="#doc-constitution-use-the-sense-map" data-line-start="431" data-line-end="483">Use the sense-map</a>
+- <a href="#documentation-practice" data-line-start="484" data-line-end="487">Writing, independent waves, and document connections</a>
+  - <a href="#documentation-practice-durable-writing" data-line-start="488" data-line-end="521">Durable writing</a>
+  - <a href="#documentation-practice-waves" data-line-start="522" data-line-end="543">Waves</a>
+  - <a href="#documentation-practice-doc-pass" data-line-start="544" data-line-end="561">Doc-pass</a>
+- <a href="#collaboration" data-line-start="562" data-line-end="565">Collaboration and architectural stewardship</a>
+  - <a href="#collaboration-dispatch-and-return" data-line-start="566" data-line-end="597">Dispatch and return</a>
+  - <a href="#collaboration-stewardship" data-line-start="598" data-line-end="617">Stewardship</a>
+  - <a href="#collaboration-discussion" data-line-start="618" data-line-end="632">Discussion</a>
+- <a href="#workspace" data-line-start="633" data-line-end="636">Workspace, research locations, and shell</a>
+  - <a href="#workspace-known-places" data-line-start="637" data-line-end="660">Known places</a>
+  - <a href="#workspace-workspace-practice" data-line-start="661" data-line-end="689">Workspace practice</a>
+- <a href="#code" data-line-start="690" data-line-end="696">Code — stage and change discipline</a>
+  - <a href="#code-terms-in-use" data-line-start="697" data-line-end="711">Terms in use</a>
+  - <a href="#code-operating-weight" data-line-start="712" data-line-end="743">Operating weight</a>
+- <a href="#jj" data-line-start="744" data-line-end="771">jj and git operating rules</a>
+  - <a href="#jj-jj-waltz-workspaces" data-line-start="772" data-line-end="799">jj-waltz workspaces</a>
+- <a href="#forge-publication" data-line-start="800" data-line-end="814">Forge publication</a>
+- <a href="#javascript" data-line-start="815" data-line-end="848">JavaScript and TypeScript</a>
+- <a href="#rust" data-line-start="849" data-line-end="875">Rust conventions</a>
+- <a href="#atproto-cli" data-line-start="876" data-line-end="888">ATProto CLI sessions</a>
+- <a href="#beads" data-line-start="889" data-line-end="926">Beads — readable work IDs and deliberate tracking</a>
+- <a href="#praxis-ticket-pointers" data-line-start="927" data-line-end="942">Ticket pointers — ambient cues</a>
+- <a href="#praxis-flights" data-line-start="943" data-line-end="968">Flights — spawn, join, and carry evidence forward</a>
+- <a href="#praxis-coverage" data-line-start="969" data-line-end="1001">Coverage — account for threads and omissions</a>
+- <a href="#praxis-bookmarking" data-line-start="1002" data-line-end="1027">Bookmarking — mark session material worth returning to</a>
+- <a href="#praxis-consumer-accounts" data-line-start="1028" data-line-end="1046">Consumer accounts — library-side feedback</a>
+- <a href="#tool" data-line-start="1047" data-line-end="1086">Tools — check knowledge documents</a>
+- <a href="#refs" data-line-start="1087" data-line-end="1092">References</a>
+  - <a href="#refs-skills" data-line-start="1093" data-line-end="1125">Skills</a>
 
 </nav>
 
@@ -444,11 +444,10 @@ assume similar words identify the same thing. Moving a durable source changes
 its knowledge names: assess incoming references and agree the repair deliberately.
 
 Domain modules maintain their README bodies; the existing SKILL symlinks load
-those bodies. GLOBAL is the local proposal for shared ambient context. While
-we hone, repetition across these exposures and the root view is intentional.
-Keep the owner and any disagreement visible; do not strip useful definitions
-merely to make a context count smaller. A tiny local glossary belongs before
-instructions that rely on its terms; it need not repeat the entire shared glossary.
+those bodies. GLOBAL is the local proposal for shared ambient context. Preserve
+useful definitions and visible disagreements while honing, but use terms already
+supplied by the same assembly directly rather than adding redundant cross-pointers.
+For independently delivered fragments, account for dependencies not supplied.
 
 In Rekon, maintained explanations live with their domain owners. Shortcodes
 (`con`, `prax`, `rkt`, the agent codes, and friends from the
