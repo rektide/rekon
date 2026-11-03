@@ -4,6 +4,10 @@ order: 120
 source: /constitution/README.md
 status: draft
 sources:
+  - resource: "opencode://ses_e612fa800ffeeNJGAuTzJeLwFY"
+    title: Expose inspectable decision rationale for OpenAI agents in ambient writing guidance
+  - resource: "opencode://ses_e61a523a6ffef0z5ECCK5z73dC"
+    title: Human requests a practice capturing considered alternatives and the agent's lean
   - resource: "opencode://ses_ed2db3069ffeQV7v6JC7p69Vte"
     title: Align durable-writing provenance with keyed positional OpenCode URIs and session authority
   - resource: "opencode://ses_ed2eda746ffefem0MPL9M5MYX7"
@@ -14,6 +18,14 @@ sources:
 
 ## Durable writing
 
+- **ChatGPT/OpenAI agents:** when discussion or a durable assessment calls for
+  judgment, make the rationale inspectable: meaningful alternatives, material
+  reasons and tradeoffs, assumptions, your tentative lean and confidence or
+  uncertainty, and evidence or preferences that would change it. Distinguish a
+  recommendation from an accepted decision or commissioned work. Give a concise
+  decision rationale, not private chain-of-thought, hidden scratch reasoning, or
+  routine tool narration; scale detail to the choice. No compulsory research
+  wave or separate document. [Candidates practice](/praxis/candidates/README.md#make-the-lean-inspectable).
 - Use structured Markdown with descriptive links to canonical files and sections.
   Prefer bundle-root-relative links inside Rekon and canonical repository URLs
   for external sources; identify the repository when context does not already.
