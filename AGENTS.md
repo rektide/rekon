@@ -12,34 +12,34 @@
   - <a href="#doc-constitution-terms-in-use" data-line-start="405" data-line-end="430">Terms in use</a>
   - <a href="#doc-constitution-use-the-sense-map" data-line-start="431" data-line-end="484">Use the sense-map</a>
 - <a href="#documentation-practice" data-line-start="485" data-line-end="488">Writing, independent waves, and document connections</a>
-  - <a href="#documentation-practice-durable-writing" data-line-start="489" data-line-end="524">Durable writing</a>
-  - <a href="#documentation-practice-waves" data-line-start="525" data-line-end="546">Waves</a>
-  - <a href="#documentation-practice-doc-pass" data-line-start="547" data-line-end="564">Doc-pass</a>
-- <a href="#collaboration" data-line-start="565" data-line-end="568">Collaboration and architectural stewardship</a>
-  - <a href="#collaboration-dispatch-and-return" data-line-start="569" data-line-end="600">Dispatch and return</a>
-  - <a href="#collaboration-stewardship" data-line-start="601" data-line-end="620">Stewardship</a>
-  - <a href="#collaboration-discussion" data-line-start="621" data-line-end="635">Discussion</a>
-- <a href="#workspace" data-line-start="636" data-line-end="639">Workspace, research locations, and shell</a>
-  - <a href="#workspace-known-places" data-line-start="640" data-line-end="663">Known places</a>
-  - <a href="#workspace-workspace-practice" data-line-start="664" data-line-end="692">Workspace practice</a>
-- <a href="#code" data-line-start="693" data-line-end="699">Code — stage and change discipline</a>
-  - <a href="#code-terms-in-use" data-line-start="700" data-line-end="714">Terms in use</a>
-  - <a href="#code-operating-weight" data-line-start="715" data-line-end="746">Operating weight</a>
-- <a href="#jj" data-line-start="747" data-line-end="774">jj and git operating rules</a>
-  - <a href="#jj-jj-waltz-workspaces" data-line-start="775" data-line-end="802">jj-waltz workspaces</a>
-- <a href="#forge-publication" data-line-start="803" data-line-end="817">Forge publication</a>
-- <a href="#javascript" data-line-start="818" data-line-end="851">JavaScript and TypeScript</a>
-- <a href="#rust" data-line-start="852" data-line-end="878">Rust conventions</a>
-- <a href="#atproto-cli" data-line-start="879" data-line-end="891">ATProto CLI sessions</a>
-- <a href="#beads" data-line-start="892" data-line-end="929">Beads — readable work IDs and deliberate tracking</a>
-- <a href="#praxis-ticket-pointers" data-line-start="930" data-line-end="945">Ticket pointers — ambient cues</a>
-- <a href="#praxis-flights" data-line-start="946" data-line-end="971">Flights — spawn, join, and carry evidence forward</a>
-- <a href="#praxis-coverage" data-line-start="972" data-line-end="1004">Coverage — account for threads and omissions</a>
-- <a href="#praxis-bookmarking" data-line-start="1005" data-line-end="1030">Bookmarking — mark session material worth returning to</a>
-- <a href="#praxis-consumer-accounts" data-line-start="1031" data-line-end="1049">Consumer accounts — library-side feedback</a>
-- <a href="#tool" data-line-start="1050" data-line-end="1089">Tools — check knowledge documents</a>
-- <a href="#refs" data-line-start="1090" data-line-end="1095">References</a>
-  - <a href="#refs-skills" data-line-start="1096" data-line-end="1128">Skills</a>
+  - <a href="#documentation-practice-durable-writing" data-line-start="489" data-line-end="522">Durable writing</a>
+  - <a href="#documentation-practice-waves" data-line-start="523" data-line-end="544">Waves</a>
+  - <a href="#documentation-practice-doc-pass" data-line-start="545" data-line-end="562">Doc-pass</a>
+- <a href="#collaboration" data-line-start="563" data-line-end="566">Collaboration and architectural stewardship</a>
+  - <a href="#collaboration-dispatch-and-return" data-line-start="567" data-line-end="598">Dispatch and return</a>
+  - <a href="#collaboration-stewardship" data-line-start="599" data-line-end="618">Stewardship</a>
+  - <a href="#collaboration-discussion" data-line-start="619" data-line-end="633">Discussion</a>
+- <a href="#workspace" data-line-start="634" data-line-end="637">Workspace, research locations, and shell</a>
+  - <a href="#workspace-known-places" data-line-start="638" data-line-end="661">Known places</a>
+  - <a href="#workspace-workspace-practice" data-line-start="662" data-line-end="690">Workspace practice</a>
+- <a href="#code" data-line-start="691" data-line-end="697">Code — stage and change discipline</a>
+  - <a href="#code-terms-in-use" data-line-start="698" data-line-end="712">Terms in use</a>
+  - <a href="#code-operating-weight" data-line-start="713" data-line-end="744">Operating weight</a>
+- <a href="#jj" data-line-start="745" data-line-end="772">jj and git operating rules</a>
+  - <a href="#jj-jj-waltz-workspaces" data-line-start="773" data-line-end="800">jj-waltz workspaces</a>
+- <a href="#forge-publication" data-line-start="801" data-line-end="815">Forge publication</a>
+- <a href="#javascript" data-line-start="816" data-line-end="849">JavaScript and TypeScript</a>
+- <a href="#rust" data-line-start="850" data-line-end="876">Rust conventions</a>
+- <a href="#atproto-cli" data-line-start="877" data-line-end="889">ATProto CLI sessions</a>
+- <a href="#beads" data-line-start="890" data-line-end="927">Beads — readable work IDs and deliberate tracking</a>
+- <a href="#praxis-ticket-pointers" data-line-start="928" data-line-end="943">Ticket pointers — ambient cues</a>
+- <a href="#praxis-flights" data-line-start="944" data-line-end="969">Flights — spawn, join, and carry evidence forward</a>
+- <a href="#praxis-coverage" data-line-start="970" data-line-end="1002">Coverage — account for threads and omissions</a>
+- <a href="#praxis-bookmarking" data-line-start="1003" data-line-end="1028">Bookmarking — mark session material worth returning to</a>
+- <a href="#praxis-consumer-accounts" data-line-start="1029" data-line-end="1047">Consumer accounts — library-side feedback</a>
+- <a href="#tool" data-line-start="1048" data-line-end="1087">Tools — check knowledge documents</a>
+- <a href="#refs" data-line-start="1088" data-line-end="1093">References</a>
+  - <a href="#refs-skills" data-line-start="1094" data-line-end="1126">Skills</a>
 
 </nav>
 
@@ -488,14 +488,12 @@ the root manifest; edit its domain fragments, then regenerate. The preserved
 
 ### Durable writing
 
-- **ChatGPT/OpenAI agents:** make thinking reviewable in your messages as an
-  ordinary part of working, not only at judgment calls. Help readers follow
-  meaningful alternatives actually considered, material reasons and tradeoffs,
-  assumptions, your tentative lean and confidence or uncertainty, and evidence
-  or preferences that would change it. Distinguish recommendations from accepted
-  decisions or commissioned work. This is not private chain-of-thought, hidden
-  scratch reasoning, or routine tool narration; scale depth to significance.
-  No compulsory research wave or separate document. Examples and depth:
+- **ChatGPT/OpenAI agents:** make emitted thinking traces substantive, not just
+  routine narration. Where relevant, surface alternatives actually considered,
+  reasons and tradeoffs, assumptions, your lean and uncertainty, and what would
+  change it. These are useful possibilities, not a mandatory checklist; scale
+  depth to the work. This request concerns thinking traces, not a requirement
+  to put them in ordinary messages. More:
   [candidates practice](/praxis/candidates/README.md#make-the-lean-inspectable).
 - Use structured Markdown with descriptive links to canonical files and sections.
   Prefer bundle-root-relative links inside Rekon and canonical repository URLs
