@@ -224,6 +224,9 @@ pub fn evaluate(coverage: &Coverage, baseline: &str, selected: &HashMap<String, 
                 }
                 Some(Ok(body)) => body,
             };
+            // Bodies arrive already normalized; excerpts are prose declarations,
+            // so normalize them before matching (a wrapped line cannot hide a
+            // present instruction either way).
             for excerpt in &check.contains {
                 report.assertions += 1;
                 if !body.contains(&normalize(excerpt)) {
@@ -343,6 +346,14 @@ mod tests {
                 .iter()
                 .any(|f| f.contains("missing required instruction"))
         );
+    }
+
+    #[test]
+    fn a_hard_wrapped_line_does_not_hide_a_present_instruction() {
+        let wrapped = "---\ntype: ContextFragment\n---\n\n# Beads\n\nAlways use readable IDs and explicit\n--id.\n";
+        let selected = HashMap::from([("beads/GLOBAL.md".into(), wrapped.into())]);
+        let result = evaluate(&declaration(), BASELINE, &selected);
+        assert!(result.findings.is_empty(), "{:?}", result.findings);
     }
 
     #[test]

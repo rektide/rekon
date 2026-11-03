@@ -136,7 +136,7 @@
             "criterion",
             "CLI > environment > defaults",
             "cargo bump",
-            "then make a jj commit, then cargo publish"
+            "then make a jj commit and run cargo publish"
           ]
         }
       ]
