@@ -15,6 +15,7 @@ sources:
     last_modified: 2026-09-04
   - { resource: "opencode://ses_eb9709a91ffeKsq7fEUI1ptzt2", title: Handed tree-shape rules to the new layout practice }
   - { resource: "opencode://ses_e9a41f6dfffexEmfMeIjFhXDko", title: Connect pre-1.0 design latitude to preferred versioning practice and actual consumer obligations }
+  - { resource: "opencode://ses_e6011f662ffehNx613Rkve982p", title: Human records future-forward default and migration-cost judgment for pre-1.0 work }
 ---
 
 <a id="planning"></a>
@@ -33,11 +34,23 @@ entirely. Sequence and dependency order carry the plan; calendars do not.
 
 ## Breaking changes under 1.0
 
-Breaking changes are fine while a project is `<1.0`. Do not spend plan
-space on compatibility machinery that a pre-1.0 project does not owe
-anyone; spend it on the right destination shape.
+While a project is `<1.0`, the default posture is future-forward, not
+compatibility-preserving: breaking changes are fine, and the build and
+delivery strategy aims at the right destination shape rather than carrying
+old shapes along. Do not spend plan space on compatibility machinery —
+shims, dual paths, transitional forms — that a pre-1.0 project does not owe
+anyone.
 
-Assess actual consumer and persisted-data obligations. The optional preferred
+Migration steps are usually unnecessary too. The call is a cost judgment,
+not caution: weigh how much data is actually persisted and how much real
+usage depends on it against how difficult migrating it would be. Small or
+easily regenerated data, or few and internal-only users → skip the migration
+and let the break land. Data whose loss would genuinely hurt, with a
+tractable migration → write the step. When a plan touches persisted data,
+name which case it is in so the choice is inspectable rather than assumed.
+
+Assess actual consumer and persisted-data obligations — real external
+consumers and real data, not hypothetical ones. The optional preferred
 [versioning strategy](/code/versioning.md) makes API changes visible and
 consumer revision uptake deliberate while retaining that design latitude.
 

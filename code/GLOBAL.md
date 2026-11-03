@@ -7,7 +7,7 @@ type: ContextFragment
 title: Code — stage and change discipline
 description: Active shared commit, review, planning, and coding discipline.
 resource: /code/GLOBAL.md
-generated: { by: "model:gpt-6-astra", at: 2026-09-06 }
+generated: { by: "model:zai-coding-plan/glm-5.3#max", at: 2026-11-03 }
 extensions:
   ticket: rekon-phoenix
   related_work: [rekon-agents-maintenance, rekon-session-mementos]
@@ -18,6 +18,7 @@ sources:
   - { resource: /CONTEXT.md, title: Shared working vocabulary }
   - { resource: "opencode://ses_eb9709a91ffeKsq7fEUI1ptzt2", title: Ambient scaffold rule naming the pkg-prefix anti-pattern with layout depth }
   - { resource: "opencode://ses_e9a41f6dfffexEmfMeIjFhXDko", title: Record Kubeless-derived pre-alpha versioning as a preferred default rather than a mandate }
+  - { resource: "opencode://ses_e6011f662ffehNx613Rkve982p", title: "Human sharpens pre-1.0 posture — future-forward default, migrations usually unnecessary; carried in full as its own ambient bullet" }
   - { resource: /code/versioning.md, title: API-change markers and reviewed source revisions }
 ---
 
@@ -48,9 +49,13 @@ use the shared vocabulary; this fragment adds only the terms its instructions ne
   `crates/<pkg>-parser`); a registry-name prefix belongs to the package name,
   not the directory. when offering layout options, offer multiple plausible
   domain groupings. depth: /code/layout.md
-- Mermaid diagrams should use meaningful node identifiers. Breaking changes
-  are fine below 1.0; assess actual persisted-data or consumer obligations
-  rather than inventing them.
+- Mermaid diagrams should use meaningful node identifiers.
+- below 1.0 the default posture is future-forward, not compatibility-preserving:
+  breaking changes are fine — skip shims, dual paths, and transitional machinery,
+  build toward the right destination shape. migration steps are usually
+  unnecessary too: write one only when real persisted-data size/usage and
+  migration difficulty justify it. assess actual obligations (real consumers,
+  real data) rather than inventing them. depth: /code/planning.md#planning-breaking-changes
 - Preferred pre-alpha versioning default (optional; respect native policy): bump
   the minor for every public-interface addition/change/removal; internal-only
   fixes need no bump. Coordinated packages share a version and exact internal

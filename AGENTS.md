@@ -24,22 +24,22 @@
   - <a href="#workspace-workspace-practice" data-line-start="661" data-line-end="689">Workspace practice</a>
 - <a href="#code" data-line-start="690" data-line-end="696">Code — stage and change discipline</a>
   - <a href="#code-terms-in-use" data-line-start="697" data-line-end="711">Terms in use</a>
-  - <a href="#code-operating-weight" data-line-start="712" data-line-end="743">Operating weight</a>
-- <a href="#jj" data-line-start="744" data-line-end="771">jj and git operating rules</a>
-  - <a href="#jj-jj-waltz-workspaces" data-line-start="772" data-line-end="799">jj-waltz workspaces</a>
-- <a href="#forge-publication" data-line-start="800" data-line-end="814">Forge publication</a>
-- <a href="#javascript" data-line-start="815" data-line-end="848">JavaScript and TypeScript</a>
-- <a href="#rust" data-line-start="849" data-line-end="875">Rust conventions</a>
-- <a href="#atproto-cli" data-line-start="876" data-line-end="888">ATProto CLI sessions</a>
-- <a href="#beads" data-line-start="889" data-line-end="926">Beads — readable work IDs and deliberate tracking</a>
-- <a href="#praxis-ticket-pointers" data-line-start="927" data-line-end="942">Ticket pointers — ambient cues</a>
-- <a href="#praxis-flights" data-line-start="943" data-line-end="968">Flights — spawn, join, and carry evidence forward</a>
-- <a href="#praxis-coverage" data-line-start="969" data-line-end="1001">Coverage — account for threads and omissions</a>
-- <a href="#praxis-bookmarking" data-line-start="1002" data-line-end="1027">Bookmarking — mark session material worth returning to</a>
-- <a href="#praxis-consumer-accounts" data-line-start="1028" data-line-end="1046">Consumer accounts — library-side feedback</a>
-- <a href="#tool" data-line-start="1047" data-line-end="1086">Tools — check knowledge documents</a>
-- <a href="#refs" data-line-start="1087" data-line-end="1092">References</a>
-  - <a href="#refs-skills" data-line-start="1093" data-line-end="1125">Skills</a>
+  - <a href="#code-operating-weight" data-line-start="712" data-line-end="747">Operating weight</a>
+- <a href="#jj" data-line-start="748" data-line-end="775">jj and git operating rules</a>
+  - <a href="#jj-jj-waltz-workspaces" data-line-start="776" data-line-end="803">jj-waltz workspaces</a>
+- <a href="#forge-publication" data-line-start="804" data-line-end="818">Forge publication</a>
+- <a href="#javascript" data-line-start="819" data-line-end="852">JavaScript and TypeScript</a>
+- <a href="#rust" data-line-start="853" data-line-end="879">Rust conventions</a>
+- <a href="#atproto-cli" data-line-start="880" data-line-end="892">ATProto CLI sessions</a>
+- <a href="#beads" data-line-start="893" data-line-end="930">Beads — readable work IDs and deliberate tracking</a>
+- <a href="#praxis-ticket-pointers" data-line-start="931" data-line-end="946">Ticket pointers — ambient cues</a>
+- <a href="#praxis-flights" data-line-start="947" data-line-end="972">Flights — spawn, join, and carry evidence forward</a>
+- <a href="#praxis-coverage" data-line-start="973" data-line-end="1005">Coverage — account for threads and omissions</a>
+- <a href="#praxis-bookmarking" data-line-start="1006" data-line-end="1031">Bookmarking — mark session material worth returning to</a>
+- <a href="#praxis-consumer-accounts" data-line-start="1032" data-line-end="1050">Consumer accounts — library-side feedback</a>
+- <a href="#tool" data-line-start="1051" data-line-end="1090">Tools — check knowledge documents</a>
+- <a href="#refs" data-line-start="1091" data-line-end="1096">References</a>
+  - <a href="#refs-skills" data-line-start="1097" data-line-end="1129">Skills</a>
 
 </nav>
 
@@ -685,7 +685,7 @@ Source: [legacy workspace guidance](/AGENTS.old.md#well-known-directories-and-fi
 
 <section id="code" data-source="/code/GLOBAL.md">
 
-<Okf data={{"description":"Active shared commit, review, planning, and coding discipline.","extensions":{"posture":"active production fragment; guidance remains open to refinement","related_work":["rekon-agents-maintenance","rekon-session-mementos"],"ticket":"rekon-phoenix"},"generated":{"at":"2026-09-06","by":"model:gpt-6-astra"},"id":"code","order":200,"resource":"/code/GLOBAL.md","source":"/code/README.md","status":"draft","title":"Code — stage and change discipline","type":"ContextFragment"}} />
+<Okf data={{"description":"Active shared commit, review, planning, and coding discipline.","extensions":{"posture":"active production fragment; guidance remains open to refinement","related_work":["rekon-agents-maintenance","rekon-session-mementos"],"ticket":"rekon-phoenix"},"generated":{"at":"2026-11-03","by":"model:zai-coding-plan/glm-5.3#max"},"id":"code","order":200,"resource":"/code/GLOBAL.md","source":"/code/README.md","status":"draft","title":"Code — stage and change discipline","type":"ContextFragment"}} />
 
 ## Code — stage and change discipline
 
@@ -720,9 +720,13 @@ use the shared vocabulary; this fragment adds only the terms its instructions ne
   `crates/<pkg>-parser`); a registry-name prefix belongs to the package name,
   not the directory. when offering layout options, offer multiple plausible
   domain groupings. depth: /code/layout.md
-- Mermaid diagrams should use meaningful node identifiers. Breaking changes
-  are fine below 1.0; assess actual persisted-data or consumer obligations
-  rather than inventing them.
+- Mermaid diagrams should use meaningful node identifiers.
+- below 1.0 the default posture is future-forward, not compatibility-preserving:
+  breaking changes are fine — skip shims, dual paths, and transitional machinery,
+  build toward the right destination shape. migration steps are usually
+  unnecessary too: write one only when real persisted-data size/usage and
+  migration difficulty justify it. assess actual obligations (real consumers,
+  real data) rather than inventing them. depth: /code/planning.md#planning-breaking-changes
 - Preferred pre-alpha versioning default (optional; respect native policy): bump
   the minor for every public-interface addition/change/removal; internal-only
   fixes need no bump. Coordinated packages share a version and exact internal
