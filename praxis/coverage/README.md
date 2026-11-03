@@ -7,6 +7,8 @@ status: draft
 tags: [praxis, coverage, conversation, scope, handoff]
 generated: { by: "model:openai/gpt-6.1-terra#xhigh", at: "2026-11-03" }
 sources:
+  - resource: "opencode://ses_e60b75e93ffelTp0cIJM30swe6"
+    title: Activate the ambient cue and clarify context-sensitive proactive check-ins
   - resource: "opencode://ses_e61c89ec5ffevCqzDqpRciJ0Dl"
     title: Human requests a quickly invoked coverage question to collect and re-present proposed threads and note what is not being dealt with
   - resource: "opencode://ses_e60b75e93ffelTp0cIJM30swe6"
@@ -19,13 +21,16 @@ sources:
 
 # Coverage: what did we pick up, and what did we leave out?
 
-The local [GLOBAL contribution](/praxis/coverage/GLOBAL.md) proposes an ambient
-cue. It is not selected by the current root manifest; its existence alone does not
-mean it is loaded into shared context.
+The local [GLOBAL contribution](/praxis/coverage/GLOBAL.md) is selected by the
+root manifest as an ambient cue; selection alone does not prove it is loaded in
+every session.
 
 When a human offers several ideas, requests, corrections or questions, they can
 ask **“coverage?”** to request a compact account of what happened to the threads.
 This is a conversation and handoff aid, not a requirement to work on everything.
+Offer the check without being asked when useful, including semi-periodically during
+longer work. Choose the timing for the context: checking every turn would often be
+intrusive rather than helpful.
 
 ## Make the pass
 
