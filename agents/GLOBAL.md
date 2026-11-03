@@ -19,6 +19,8 @@ sources:
     title: Add a concise pointer to the dated model and variant lookup
   - resource: "opencode://ses_e7bc138ffffeHcfSJmcsHKoO9Z"
     title: Human requests a soft 300k delegated-session context target, tolerates modest overshoot and directs the nearly finished Sol slice to wrap
+  - resource: "opencode://ses_e5fb636fbffe5Gl3HoQQS34gn5"
+    title: Replace duplicated dispatch inventory with an actionable lookup pointer
 ---
 
 # Collaboration and architectural stewardship
@@ -35,27 +37,12 @@ sources:
   unavailable models. `general` is a capable default; for high-value work and
   deep research, ask which agents the user wants for which tasks. See
   [the general-agent guidance](/agents/general.md).
-- For explicitly requested common models and variants, use the dated
-  [model lookup](/agents/models/README.md); recheck uncertain or changed availability.
-- Dispatch by translation, not lookup (catalog checked 2026-10-31). When the
-  user asks for a variant — by alias `#lo`, `#med`/`#mid`, `#hi`, `#xh`,
-  `#max`, or `∅`/no suffix — expand the alias to the **full variant name** and
-  pair it with the agent's model ID in the subagent `model` override. Never
-  pass the alias itself to a tool call.
-
-  | Agent | `model` override base | Full variant names |
-  | --- | --- | --- |
-  | `t` | `openai/gpt-6.1-terra` | (none), low, medium, high, xhigh, max |
-  | `ast` | `openai/gpt-6-astra` | low, medium, high, xhigh, max |
-  | `sol` | `openai/gpt-6.1-sol` | low, medium, high, xhigh, max |
-  | `l` | `openai/gpt-6-luna` | (none), low, medium, high, xhigh, max |
-  | `g` | `zai-coding-plan/glm-5.3` | low, high, max |
-  | `f` | `zai-coding-plan/glm-5.3-flash` | low, high, max |
-
-  Example: "ast med" or "ast #mid" → agent `ast` with
-  `model: "openai/gpt-6-astra#medium"`. Only set a `model` override on an
-  explicit user ask for that model or variant; defaults, dated availability,
-  and deeper guidance live in [the model lookup](/agents/models/README.md).
+- When a user explicitly requests a model or variant, consult the
+  [model lookup](/agents/models/README.md#variant-table) for override bases,
+  variant aliases and availability; recheck uncertain or changed availability.
+  Expand aliases to full variant names in tool calls (e.g. `#xh` → `#xhigh`);
+  only set a model override on an explicit request. Agent definitions and the
+  harness supply agent identity and configured defaults.
 - When an agent hits a rate limit or quota exhaustion, use its stated fallback
   for the task; try the original agent again on each subsequent dispatch so it
   resumes when quota returns. Fallback is not a permanent switch.

@@ -23,6 +23,7 @@ sources:
   - { resource: /agents/g.md, title: GLM agent definition and no-highspeed rule }
   - { resource: /agents/f.md, title: Flash agent definition and no-highspeed rule }
   - { resource: /design/agents/model-routing0.glm53m.md, title: Routing incident and separate model and variant definition keys }
+  - { resource: "opencode://ses_e5fb636fbffe5Gl3HoQQS34gn5", title: Make the variant table the dispatch lookup rather than a duplicated ambient inventory }
 ---
 
 # Agent model and variant lookup
@@ -62,8 +63,8 @@ the default newest-family query may omit it.
 
 Rows are agents. The **override base** is the exact `model` string before the
 `#variant` suffix; pair it with a **full variant name** from the row when the
-user explicitly asks. This table is the dispatch translation also carried in
-ambient guidance, so a dispatch needs no further lookup:
+user explicitly asks. Ambient guidance points here when a dispatch needs a
+model or variant override:
 
 | Agent | `model` override base | Full variant names |
 | --- | --- | --- |
