@@ -539,8 +539,8 @@ the root manifest; edit its domain fragments, then regenerate. The preserved
 - Waves are independent research/design outputs, commonly under `design/<topic>/`,
   not compulsory for every task. Start with the situation, present ask, inquiry
   directions, and what changed since previous work.
-- Use the current model's concise suffix and a round starting at 0, e.g.
-  `draft0.glm53m.md`; a main document is `<topic>.<model>.md`, a revision
+- Every wave filename ends in the current model's concise suffix. Use a numerical
+  round starting at 0, e.g. `draft0.glm53m.md`; a main document is `<topic>.<model>.md`, a revision
   `<topic>2.<model>.md`, and a synthesis `draft0-syn0.<model>.md`. Never use
   the harness name as the model or copy another model's suffix.
 - Do not read other authors' same-wave files unless directed; previous waves are
