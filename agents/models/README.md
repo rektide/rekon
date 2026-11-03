@@ -1,12 +1,13 @@
 ---
 type: Reference
 title: Agent model and variant lookup
-description: Concise, dated mapping from Rekon agent codes to expected model IDs, configured defaults and advertised variants, with the standard variant abbreviations and the variant-column matrix.
+description: Concise, dated mapping from Rekon agent codes to exact model override bases, configured defaults and advertised variants, with the standard variant abbreviations and the dispatch translation table.
 resource: /agents/models/README.md
 status: draft
 generated: { by: "model:zai-coding-plan/glm-5.3#max", at: 2026-10-31 }
 tags: [agents, models, variants, dispatch, reference]
 sources:
+  - { resource: "opencode://ses_e60122a28ffem0Q4yFFw0qqZEM", title: Rebuild the variant table as dispatch translation with override bases and the mid alias }
   - { resource: "opencode://ses_e6c1f991dffeK5oewTLCA2j5zu", title: Human moves fallback into agent definitions and requests concise descriptions and field visibility documentation }
   - { resource: "https://opencode.ai/v2/docs/agents", title: OpenCode agent description and model configuration }
   - { resource: "opencode://ses_e6bb4e75effew3IrG08fLz8002", title: F investigates OpenCode subagent catalog and model selection }
@@ -40,8 +41,10 @@ Standard abbreviations, usable in conversation, tickets, and tables:
 | `xh` | xhigh |
 | `max` | max |
 
-`default #xx` names an agent's configured default variant, as the codes-glossary
-rows do; in the variant table the default is marked `xx*`. The abbreviations are
+`mid` is an accepted heard alias for `medium` (`#med`/`#mid` say the same
+thing); expand both to the full name when dispatching. `default #xx` names an
+agent's configured default variant, as the codes-glossary
+rows do. The abbreviations are
 **reading and speaking notation only**: an actual dispatch `model` override always
 uses the full variant name — `openai/gpt-6-astra#xhigh`, never `#xh`.
 
@@ -57,23 +60,22 @@ the default newest-family query may omit it.
 <a id="variant-table"></a>
 ## Variant table
 
-One variants column lists whatever the dated catalog offered for each agent;
-`*` marks the configured default. The provider identifies the family; the model
-appears only where it is special — `f` runs the flash model rather than plain
-GLM 5.3. Exact model IDs for overrides live in the dispatch examples and the
-agent definitions.
+Rows are agents. The **override base** is the exact `model` string before the
+`#variant` suffix; pair it with a **full variant name** from the row when the
+user explicitly asks. This table is the dispatch translation also carried in
+ambient guidance, so a dispatch needs no further lookup:
 
-| Agent code and definition | Provider / model | Variants |
+| Agent | `model` override base | Full variant names |
 | --- | --- | --- |
-| [`t`](/agents/t.md) | `openai` | `∅ lo med* hi xh max` |
-| [`ast`](/agents/ast.md) | `openai` | `lo med hi* xh max` |
-| [`sol`](/agents/sol.md) | `openai` | `lo med hi* xh max` |
-| [`l`](/agents/l.md) | `openai` | `∅ lo med hi xh* max` |
-| [`g`](/agents/g.md) | `zai-coding-plan` | `lo hi max*` |
-| [`f`](/agents/f.md) | `zai-coding-plan` · `glm-5.3-flash` | `lo hi max*` |
+| `t` | `openai/gpt-6.1-terra` | (none), low, medium, high, xhigh, max |
+| `ast` | `openai/gpt-6-astra` | low, medium, high, xhigh, max |
+| `sol` | `openai/gpt-6.1-sol` | low, medium, high, xhigh, max |
+| `l` | `openai/gpt-6-luna` | (none), low, medium, high, xhigh, max |
+| `g` | `zai-coding-plan/glm-5.3` | low, high, max |
+| `f` | `zai-coding-plan/glm-5.3-flash` | low, high, max |
 
-`∅` is the model's no-suffix form, not a literal `#none`. A marked variant is an
-observed catalog option, not a promise that the account can always run it. `ast`
+A listed variant is an observed catalog option, not a promise that the account
+can always run it. `ast`
 is the registered code in these definitions; “A” or “a” in a human brief may
 mean Astra, but is not itself a registered agent code. Check the active harness's
 available agents: the `t` definition on disk need not be exposed in every session.

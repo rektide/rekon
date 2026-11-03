@@ -9,6 +9,10 @@ description: Delegation, context budgeting, architectural review and collaborati
 resource: /agents/GLOBAL.md
 generated: { by: "model:zai-coding-plan/glm-5.3#max", at: "2026-10-31" }
 sources:
+  - resource: "opencode://ses_e60122a28ffem0Q4yFFw0qqZEM"
+    title: Rebuild the ambient variant guidance as a dispatch translation table with aliases and override bases
+  - resource: "opencode://ses_e6c20690cffeyOxxE0zP6Z4JVT"
+    title: Add condensed variant-support table to global ambient context
   - resource: "opencode://ses_e6c1f991dffeK5oewTLCA2j5zu"
     title: Human separates shared rate-limit fallback procedure from agent-specific fallback choices
   - resource: "opencode://ses_e6cc34212ffelIc5sLrW1xqvi7"
@@ -33,6 +37,25 @@ sources:
   [the general-agent guidance](/agents/general.md).
 - For explicitly requested common models and variants, use the dated
   [model lookup](/agents/models/README.md); recheck uncertain or changed availability.
+- Dispatch by translation, not lookup (catalog checked 2026-10-31). When the
+  user asks for a variant — by alias `#lo`, `#med`/`#mid`, `#hi`, `#xh`,
+  `#max`, or `∅`/no suffix — expand the alias to the **full variant name** and
+  pair it with the agent's model ID in the subagent `model` override. Never
+  pass the alias itself to a tool call.
+
+  | Agent | `model` override base | Full variant names |
+  | --- | --- | --- |
+  | `t` | `openai/gpt-6.1-terra` | (none), low, medium, high, xhigh, max |
+  | `ast` | `openai/gpt-6-astra` | low, medium, high, xhigh, max |
+  | `sol` | `openai/gpt-6.1-sol` | low, medium, high, xhigh, max |
+  | `l` | `openai/gpt-6-luna` | (none), low, medium, high, xhigh, max |
+  | `g` | `zai-coding-plan/glm-5.3` | low, high, max |
+  | `f` | `zai-coding-plan/glm-5.3-flash` | low, high, max |
+
+  Example: "ast med" or "ast #mid" → agent `ast` with
+  `model: "openai/gpt-6-astra#medium"`. Only set a `model` override on an
+  explicit user ask for that model or variant; defaults, dated availability,
+  and deeper guidance live in [the model lookup](/agents/models/README.md).
 - When an agent hits a rate limit or quota exhaustion, use its stated fallback
   for the task; try the original agent again on each subsequent dispatch so it
   resumes when quota returns. Fallback is not a permanent switch.
