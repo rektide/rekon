@@ -1,13 +1,14 @@
 import { randomBytes } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import { parseArgs } from "node:util";
-import { ALGORITHM, generate, parseOptions, RandomComboError, validateGames } from "./generate.ts";
+import { ALGORITHM, generate, parseOptions, RandomComboError, validateDraws, validateGames } from "./generate.ts";
 import type { Event, Option } from "./generate.ts";
 
-const HELP = `Usage: node tool/random-combo.ts [--games N | --rows N] [--seed TEXT] [--jsonl] [FILE|-]
+const HELP = `Usage: node tool/random-combo.ts [--games N | --rows N] [--slots N] [--seed TEXT] [--jsonl] [FILE|-]
 
-Pick three options per game WITH replacement. Every win immediately multiplies
-that option's CURRENT weight by 0.8, persisting across slots and games in this run.
+Draw --slots options per game (default 3) WITH replacement. Every win
+immediately multiplies that option's CURRENT weight by 0.8, persisting across
+slots and games in this run.
 
 Input: one option per line with exactly one inline w=WEIGHT token, e.g.:
   careful exploration w=1
@@ -16,9 +17,10 @@ Blank lines and whole-line # comments are ignored. Zero weights never win;
 weights must be finite non-negative decimals, with at least one positive weight.
 
 FILE defaults to stdin (also spelled -); --games defaults to 1.
+--slots N sets draws per game; it defaults to 3 and must be a positive integer.
 --seed supplies an exact text seed; otherwise a random seed is generated/printed.
 --jsonl emits one JSON event per line (initial, draw, game, final).
---rows N emits N JSON arrays of three labels, one per stdout line; seed and
+--rows N emits N JSON arrays of slot labels, one per stdout line; seed and
 algorithm go to stderr. It cannot be combined with --games or --jsonl.
 --help prints this help. No agents are spawned and no files are modified.
 `;
@@ -63,6 +65,7 @@ export async function main(args: string[]): Promise<void> {
         options: {
           games: { type: "string" },
           rows: { type: "string" },
+          slots: { type: "string" },
           seed: { type: "string" },
           jsonl: { type: "boolean" },
           help: { type: "boolean", short: "h" },
@@ -89,12 +92,18 @@ export async function main(args: string[]): Promise<void> {
       throw new RandomComboError("--rows cannot be combined with --games or --jsonl.");
     }
     const literal = parsed.values.rows ?? parsed.values.games ?? "1";
+    const flag = parsed.values.rows !== undefined ? "--rows" : "--games";
     if (!/^\d+$/u.test(literal))
       throw new RandomComboError(
-        `${parsed.values.rows !== undefined ? "--rows" : "--games"} requires a positive integer, e.g. --games 4.`,
+        `${flag} requires a positive integer, e.g. --games 4.`,
       );
     const games = Number(literal);
-    validateGames(games);
+    const slotsLiteral = parsed.values.slots ?? "3";
+    if (!/^\d+$/u.test(slotsLiteral))
+      throw new RandomComboError(`--slots requires a positive integer, e.g. --slots 3.`);
+    const drawsPerGame = Number(slotsLiteral);
+    validateDraws(drawsPerGame);
+    validateGames(games, drawsPerGame);
     const file = parsed.positionals[0] ?? "-";
     if (file === "-" && process.stdin.isTTY) {
       throw new RandomComboError("No input: pass a FILE, pipe options to stdin, or use --help.");
@@ -119,7 +128,7 @@ export async function main(args: string[]): Promise<void> {
     if (parsed.values.rows !== undefined) {
       process.stderr.write(`Seed: ${JSON.stringify(seed)}\nAlgorithm: ${ALGORITHM}\n`);
     }
-    for (const event of generate(options, games, seed)) {
+    for (const event of generate(options, games, seed, undefined, drawsPerGame)) {
       if (parsed.values.rows !== undefined) {
         if (event.type === "game")
           await write(`${JSON.stringify(event.picks.map((pick) => pick.label))}\n`);

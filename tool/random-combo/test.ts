@@ -110,6 +110,28 @@ test("replacement permits triples; decay persists through every slot and across 
   }
 });
 
+test("slots change draws per game; three is the default and the games bound scales with slots", () => {
+  const events = [...generate(parseOptions("only w=1"), 2, "test", () => 0.5, 1)];
+  assert.equal(draws(events).length, 2);
+  assert.equal(draws(events)[1]!.slot, 1);
+  assert.equal(draws(events)[1]!.game, 2);
+  const initial = events[0];
+  assert.equal(initial.type, "initial");
+  if (initial.type === "initial") assert.equal(initial.drawsPerGame, 1);
+  const wide = [...generate(parseOptions("only w=1"), 1, "test", () => 0.5, 5)];
+  assert.equal(wide.filter((event) => event.type === "game")[0]!.picks.length, 5);
+  assert.equal(draws([...generate(parseOptions("A w=1"), 1, "test")]).length, 3);
+  assert.throws(() => [...generate(parseOptions("A w=1"), 1, "test", undefined, 0)], /Slots must/u);
+  assert.throws(
+    () => [...generate(parseOptions("A w=1"), 1, "test", undefined, 1.5)],
+    /Slots must/u,
+  );
+  assert.throws(
+    () => [...generate(parseOptions("A w=1"), Number.MAX_SAFE_INTEGER, "test", undefined, 2)],
+    /Games must/u,
+  );
+});
+
 test("a repeated option is retained, and current rather than original weight affects the next draw", () => {
   // Initially A owns [0, .5). After A wins it owns [0, .8/1.8), so .47 picks B.
   const units = [0, 0.47, 0];
@@ -257,6 +279,18 @@ test("rows are ordered triples from the same persistent run, replayable from std
     const replay = await cli(["--rows", "8", "--seed", seed], input);
     assert.equal(replay.stdout, generated.stdout);
     assert.equal(replay.stderr, generated.stderr);
+    const pair = await cli(["--rows", "2", "--slots", "2", "--seed", "pair"], input);
+    assert.equal(pair.code, 0, pair.stderr);
+    const pairRows = pair.stdout
+      .trimEnd()
+      .split("\n")
+      .map((line) => JSON.parse(line) as string[]);
+    assert.equal(pairRows.length, 2);
+    assert.ok(pairRows.every((row) => row.length === 2));
+    const pairReplay = await cli(["--rows", "2", "--slots", "2", "--seed", "pair"], input);
+    assert.equal(pairReplay.stdout, pair.stdout);
+    const defaulted = await cli(["--rows", "2", "--seed", "pair"], input);
+    assert.notEqual(defaulted.stdout, pair.stdout, "slots participate in the draw sequence");
   } finally {
     await rm(directory, { recursive: true });
   }
@@ -275,6 +309,9 @@ test("CLI reports invalid inputs on stderr with nonzero status and no success ou
     [["--rows", "9007199254740991"], "A w=1", /positive safe integer/u],
     [["--rows", "1", "--games", "1"], "A w=1", /cannot be combined/u],
     [["--rows", "1", "--jsonl"], "A w=1", /cannot be combined/u],
+    [["--slots", "0"], "A w=1", /Slots must/u],
+    [["--slots", "1.5"], "A w=1", /--slots requires/u],
+    [["--slots", "2", "--games", "9007199254740991"], "A w=1", /positive safe integer/u],
     [["a", "b"], "", /at most one/u],
     [["/does-not-exist/random-combo.txt"], "", /Cannot read input/u],
     [[], "bad w=-1", /Line 1.*finite non-negative/u],

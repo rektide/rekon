@@ -1,12 +1,13 @@
 ---
 type: Flight
-title: Random-combo — weighted triples for independent exploration
-description: A reusable coordination model that draws three arbitrary options per game with replacement, preserves persistent weight decay, and joins independent game results before comparison.
+title: Random-combo — weighted draws for independent exploration
+description: A reusable coordination model that draws an ordered set of options per game with replacement — three slots by default, `--slots N` for other counts — preserves persistent weight decay, and joins independent game results before comparison.
 resource: /praxis/flights/random-combo.md
 status: draft
 generated: { by: "model:openai/gpt-6.1-sol#high", at: 2026-11-02 }
 tags: [praxis, flights, random-combo, exploration, independence]
 sources:
+  - { resource: "opencode://ses_e60122a28ffem0Q4yFFw0qqZEM", title: Generalize the draw to N slots with the triple as default and add the generator flag }
   - { resource: "opencode://ses_e6172cb39ffe5Q3YzyRjA9H32n", title: Implement the commissioned reusable random-combo flight and its reproducible Node draw stage }
   - { resource: /praxis/flights/README.md, title: Frame, bounded spawns, explicit joins, independence, and terminal dispositions }
   - { resource: /praxis/parallax/README.md, title: Complementary assignments are not independent replications or a model benchmark }
@@ -20,7 +21,9 @@ sources:
 options, with a reproducible draw record and independent game responses before
 comparison. Options may be lenses, methods, constraints, themes, or other
 human-supplied ingredients; this flight does not prescribe a domain vocabulary.
-Every **game** receives an ordered triple drawn from the same pool.
+Every **game** receives an ordered draw from the same pool: three slots by
+default — the usual triple — with the generator's `--slots N` opening other
+counts when the frame calls for them.
 
 This is a reusable **coordination model**, not an implementation of a scheduler
 or permission to delegate. The parent coordinates actual promises in the harness;
@@ -63,7 +66,7 @@ only equipping a choice, or a wider exploration. Do not infer the wider authorit
 There are two different orderings: **draws are sequential** because weights
 persist; **game responses may be independent and concurrent** once the full draw
 record is fixed. Do not generate each game in a new process, reset weights between
-games, or draw three options independently from their original weights.
+games, or draw the game's options independently from their original weights.
 
 For example, from the Rekon checkout:
 
@@ -78,14 +81,14 @@ recommended or required vocabulary.
 
 ## Sampling invariant
 
-For each of the three slots in each game:
+For each slot in each game:
 
 1. Sample with probability proportional to **current** weights.
 2. Keep the winner eligible: sampling is **with replacement**.
 3. Immediately replace only the winning weight with `current weight × 0.8`.
 4. Carry that updated pool into the next slot, and then the next game.
 
-The same option may occupy two or all three slots. One positive option is a
+The same option may occupy several or all slots. One positive option is a
 valid pool. Repeats are neither missing results nor a reason to redraw. Weights
 express selection preference, not confidence, importance of evidence, or merit
 of an eventual response. Decay spreads opportunity without guaranteeing diversity.

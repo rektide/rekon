@@ -115,14 +115,20 @@ export function seededRandom(seed: string): () => number {
   };
 }
 
-export function validateGames(games: number): void {
+export function validateDraws(drawsPerGame: number): void {
+  if (!Number.isSafeInteger(drawsPerGame) || drawsPerGame < 1) {
+    throw new RandomComboError("Slots must be a positive safe integer (draws per game), e.g. --slots 3.");
+  }
+}
+
+export function validateGames(games: number, drawsPerGame: number = DRAWS_PER_GAME): void {
   if (
     !Number.isSafeInteger(games) ||
     games < 1 ||
-    games > Math.floor(Number.MAX_SAFE_INTEGER / DRAWS_PER_GAME)
+    games > Math.floor(Number.MAX_SAFE_INTEGER / drawsPerGame)
   ) {
     throw new RandomComboError(
-      "Games must be a positive safe integer with 3 × games also a safe integer.",
+      `Games must be a positive safe integer with ${drawsPerGame} × games also a safe integer.`,
     );
   }
 }
@@ -133,9 +139,11 @@ export function* generate(
   games: number,
   seed: string,
   random: () => number = seededRandom(seed),
+  drawsPerGame: number = DRAWS_PER_GAME,
 ): Generator<Event> {
   validateOptions(options);
-  validateGames(games);
+  validateDraws(drawsPerGame);
+  validateGames(games, drawsPerGame);
   const current = options.map((option) => ({ ...option }));
   const snapshot = (): Option[] => current.map((option) => ({ ...option }));
   yield {
@@ -143,13 +151,13 @@ export function* generate(
     algorithm: ALGORITHM,
     seed,
     games,
-    drawsPerGame: DRAWS_PER_GAME,
+    drawsPerGame,
     decay: DECAY,
     weights: snapshot(),
   };
   for (let game = 1; game <= games; game++) {
     const picks: Pick[] = [];
-    for (let slot = 1; slot <= DRAWS_PER_GAME; slot++) {
+    for (let slot = 1; slot <= drawsPerGame; slot++) {
       // Dividing by the maximum avoids overflow when finite input weights sum to Infinity.
       let scale = 0;
       for (const option of current) scale = Math.max(scale, option.weight);
