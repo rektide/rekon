@@ -31,4 +31,6 @@ node tool/random-combo.ts --rows 4 --slots 3 --seed example FILE   # --help for 
 ```
 
 Flight model: [random-combo](/praxis/flights/random-combo.md); generator
-contract: [random-combo tool](/tool/random-combo/README.md).
+contract: [random-combo tool](/tool/random-combo/README.md). Depth pair for
+flight design: [parallax](/praxis/parallax/README.md) (why independent views
+differ) and [evidence gates](/assess/gates/README.md) (arrival vs readiness).

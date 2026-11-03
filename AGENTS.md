@@ -2,43 +2,44 @@
 
 <nav id="rekon-toc" aria-label="Table of contents">
 
-- <a href="#glossary" data-line-start="53" data-line-end="60">Rekon working vocabulary</a>
-  - <a href="#glossary-names-homes-and-relations" data-line-start="61" data-line-end="138">Names, homes, and relations</a>
-  - <a href="#glossary-knowledge-work-and-learning" data-line-start="139" data-line-end="221">Knowledge, work, and learning</a>
-  - <a href="#glossary-action-and-delivery" data-line-start="222" data-line-end="327">Action and delivery</a>
-  - <a href="#glossary-honing-and-commitment" data-line-start="328" data-line-end="374">Honing and commitment</a>
-- <a href="#codes" data-line-start="375" data-line-end="430">Codes glossary</a>
-- <a href="#doc-constitution" data-line-start="431" data-line-end="437">Constitution — orient before acting</a>
-  - <a href="#doc-constitution-terms-in-use" data-line-start="438" data-line-end="458">Terms in use</a>
-  - <a href="#doc-constitution-use-the-sense-map" data-line-start="459" data-line-end="512">Use the sense-map</a>
-- <a href="#documentation-practice" data-line-start="513" data-line-end="516">Writing, independent waves, and document connections</a>
-  - <a href="#documentation-practice-durable-writing" data-line-start="517" data-line-end="561">Durable writing</a>
-  - <a href="#documentation-practice-waves" data-line-start="562" data-line-end="584">Waves</a>
-  - <a href="#documentation-practice-doc-pass" data-line-start="585" data-line-end="604">Doc-pass</a>
-- <a href="#collaboration" data-line-start="605" data-line-end="608">Collaboration and architectural stewardship</a>
-  - <a href="#collaboration-dispatch-and-return" data-line-start="609" data-line-end="655">Dispatch and return</a>
-  - <a href="#collaboration-stewardship" data-line-start="656" data-line-end="675">Stewardship</a>
-  - <a href="#collaboration-discussion" data-line-start="676" data-line-end="690">Discussion</a>
-- <a href="#workspace" data-line-start="691" data-line-end="694">Workspace, research locations, and shell</a>
-  - <a href="#workspace-known-places" data-line-start="695" data-line-end="718">Known places</a>
-  - <a href="#workspace-workspace-practice" data-line-start="719" data-line-end="747">Workspace practice</a>
-- <a href="#code" data-line-start="748" data-line-end="754">Code — stage and change discipline</a>
-  - <a href="#code-terms-in-use" data-line-start="755" data-line-end="769">Terms in use</a>
-  - <a href="#code-operating-weight" data-line-start="770" data-line-end="801">Operating weight</a>
-- <a href="#jj" data-line-start="802" data-line-end="829">jj and git operating rules</a>
-  - <a href="#jj-jj-waltz-workspaces" data-line-start="830" data-line-end="857">jj-waltz workspaces</a>
-- <a href="#forge-publication" data-line-start="858" data-line-end="872">Forge publication</a>
-- <a href="#javascript" data-line-start="873" data-line-end="906">JavaScript and TypeScript</a>
-- <a href="#rust" data-line-start="907" data-line-end="933">Rust conventions</a>
-- <a href="#atproto-cli" data-line-start="934" data-line-end="946">ATProto CLI sessions</a>
-- <a href="#beads" data-line-start="947" data-line-end="984">Beads — readable work IDs and deliberate tracking</a>
-- <a href="#praxis-ticket-pointers" data-line-start="985" data-line-end="1000">Ticket pointers — ambient cues</a>
-- <a href="#praxis-flights" data-line-start="1001" data-line-end="1024">Flights — spawn, join, and carry evidence forward</a>
-- <a href="#praxis-coverage" data-line-start="1025" data-line-end="1057">Coverage — account for threads and omissions</a>
-- <a href="#praxis-consumer-accounts" data-line-start="1058" data-line-end="1076">Consumer accounts — library-side feedback</a>
-- <a href="#tool" data-line-start="1077" data-line-end="1116">Tools — check knowledge documents</a>
-- <a href="#refs" data-line-start="1117" data-line-end="1122">References</a>
-  - <a href="#refs-skills" data-line-start="1123" data-line-end="1155">Skills</a>
+- <a href="#glossary" data-line-start="54" data-line-end="61">Rekon working vocabulary</a>
+  - <a href="#glossary-names-homes-and-relations" data-line-start="62" data-line-end="127">Names, homes, and relations</a>
+  - <a href="#glossary-knowledge-work-and-learning" data-line-start="128" data-line-end="210">Knowledge, work, and learning</a>
+  - <a href="#glossary-action-and-delivery" data-line-start="211" data-line-end="316">Action and delivery</a>
+  - <a href="#glossary-honing-and-commitment" data-line-start="317" data-line-end="363">Honing and commitment</a>
+- <a href="#codes" data-line-start="364" data-line-end="409">Codes glossary</a>
+- <a href="#doc-constitution" data-line-start="410" data-line-end="416">Constitution — orient before acting</a>
+  - <a href="#doc-constitution-terms-in-use" data-line-start="417" data-line-end="442">Terms in use</a>
+  - <a href="#doc-constitution-use-the-sense-map" data-line-start="443" data-line-end="496">Use the sense-map</a>
+- <a href="#documentation-practice" data-line-start="497" data-line-end="500">Writing, independent waves, and document connections</a>
+  - <a href="#documentation-practice-durable-writing" data-line-start="501" data-line-end="545">Durable writing</a>
+  - <a href="#documentation-practice-waves" data-line-start="546" data-line-end="568">Waves</a>
+  - <a href="#documentation-practice-doc-pass" data-line-start="569" data-line-end="588">Doc-pass</a>
+- <a href="#collaboration" data-line-start="589" data-line-end="592">Collaboration and architectural stewardship</a>
+  - <a href="#collaboration-dispatch-and-return" data-line-start="593" data-line-end="624">Dispatch and return</a>
+  - <a href="#collaboration-stewardship" data-line-start="625" data-line-end="644">Stewardship</a>
+  - <a href="#collaboration-discussion" data-line-start="645" data-line-end="659">Discussion</a>
+- <a href="#workspace" data-line-start="660" data-line-end="663">Workspace, research locations, and shell</a>
+  - <a href="#workspace-known-places" data-line-start="664" data-line-end="687">Known places</a>
+  - <a href="#workspace-workspace-practice" data-line-start="688" data-line-end="716">Workspace practice</a>
+- <a href="#code" data-line-start="717" data-line-end="723">Code — stage and change discipline</a>
+  - <a href="#code-terms-in-use" data-line-start="724" data-line-end="738">Terms in use</a>
+  - <a href="#code-operating-weight" data-line-start="739" data-line-end="770">Operating weight</a>
+- <a href="#jj" data-line-start="771" data-line-end="798">jj and git operating rules</a>
+  - <a href="#jj-jj-waltz-workspaces" data-line-start="799" data-line-end="826">jj-waltz workspaces</a>
+- <a href="#forge-publication" data-line-start="827" data-line-end="841">Forge publication</a>
+- <a href="#javascript" data-line-start="842" data-line-end="875">JavaScript and TypeScript</a>
+- <a href="#rust" data-line-start="876" data-line-end="902">Rust conventions</a>
+- <a href="#atproto-cli" data-line-start="903" data-line-end="915">ATProto CLI sessions</a>
+- <a href="#beads" data-line-start="916" data-line-end="953">Beads — readable work IDs and deliberate tracking</a>
+- <a href="#praxis-ticket-pointers" data-line-start="954" data-line-end="969">Ticket pointers — ambient cues</a>
+- <a href="#praxis-flights" data-line-start="970" data-line-end="995">Flights — spawn, join, and carry evidence forward</a>
+- <a href="#praxis-coverage" data-line-start="996" data-line-end="1028">Coverage — account for threads and omissions</a>
+- <a href="#praxis-bookmarking" data-line-start="1029" data-line-end="1054">Bookmarking — mark session material worth returning to</a>
+- <a href="#praxis-consumer-accounts" data-line-start="1055" data-line-end="1073">Consumer accounts — library-side feedback</a>
+- <a href="#tool" data-line-start="1074" data-line-end="1113">Tools — check knowledge documents</a>
+- <a href="#refs" data-line-start="1114" data-line-end="1119">References</a>
+  - <a href="#refs-skills" data-line-start="1120" data-line-end="1152">Skills</a>
 
 </nav>
 
@@ -62,22 +63,13 @@ existing discussion, not settled by this glossary.
 
 <dl>
 <dt><dfn id="name">Name</dfn></dt>
-<dd>
-A scoped identity by which an actor, artifact, or idea is recognized.
-In Rekon's wiki-native knowledge, location and section participate in the name.
-</dd>
+<dd>Definition: <a href="/constitution/GLOBAL.md#constitutional-name">constitution</a>.</dd>
 
 <dt><dfn id="authority">Authority</dfn></dt>
-<dd>
-The person or native owner entitled to decide a particular kind
-of claim, name, or change within a declared scope.
-</dd>
+<dd>Definition: <a href="/constitution/GLOBAL.md#constitutional-authority">constitution</a>.</dd>
 
 <dt><dfn id="reference">Reference</dfn></dt>
-<dd>
-An expression that lets a reader identify or reach a referent,
-including a local name, qualified name, alias, or revision-bound citation.
-</dd>
+<dd>Definition: <a href="/constitution/GLOBAL.md#constitutional-reference">constitution</a>.</dd>
 
 <dt><dfn id="alias">Alias</dfn></dt>
 <dd>
@@ -98,10 +90,7 @@ A role can explain a hat without being the actor's identity.
 </dd>
 
 <dt><dfn id="home">Home</dfn></dt>
-<dd>
-The maintained account a reader should consult first for a concern;
-it connects current understanding to its sources and unresolved alternatives.
-</dd>
+<dd>Definition: <a href="/constitution/GLOBAL.md#constitutional-home">constitution</a>.</dd>
 
 <dt><dfn id="bidirectional-link">Bidirectional link (⇄)</dfn></dt>
 <dd>
@@ -374,27 +363,17 @@ conditions, not a synonym for acceptance or universal correctness.
 
 ## Codes glossary
 
-This glossary is generated by Rust `rekon codes` from the `codes/` directory; do not edit it by hand.
-From Rekon's checkout, edit a code's file and run `cargo run --quiet --manifest-path tool/rust/Cargo.toml -- codes`.
-Add `--check` to that command to detect stale output or hand edits.
+Generated by `rkt codes`; edit `codes/` or `agents/` definitions, not this file. Use `rkt codes --check` to verify freshness.
 
-Short terms (codes) are workspace reference vocabulary: short names
-usable in conversation, headings, and tickets, each mapped to a
-`file#tag` target explaining its meaning. Codes may name concerns or
-explicit local directory aliases; a code alone does not create a path.
-Entries are documented either directly in this glossary or
-assembled from constituent parts: [`codes/`](/codes) files for workspace
-codes and [`agents/`](/agents) definitions for agent codes, whose
-frontmatter carries the row beside the functional prompt fields. Dormant
-definitions take a `.md.disabled` suffix and stay inert — defined but
-neither loaded nor listed. Single-letter codes are scarce and guarded.
-Agent rows name their configured model as `default #variant` using the
-standard variant abbreviations: `lo` low, `med` medium, `hi` high,
-`xh` xhigh, `max` max, `∅` no suffix. These are reading notation;
-actual dispatch overrides use full variant names. The dated inventory
-lives in the [model lookup](/agents/models/README.md). Practice, rulings,
-and history live with
-[naming](/constitution/naming/README.md#short-codes).
+Codes are conversational references to concerns or explicit local aliases;
+a code alone does not create a path. Rows come from [`codes/`](/codes)
+and [`agents/`](/agents) definitions; dormant `.md.disabled` definitions
+are not loaded or listed. See [naming](/constitution/naming/README.md#short-codes)
+for the practice.
+
+Agent rows show `default #variant`: `lo` low, `med` medium, `hi` high,
+`xh` xhigh, `max` max, `∅` no suffix. For an explicit override, consult
+the [model lookup](/agents/models/README.md); tool calls use full variant names.
 
 | Code | Target (`file#tag`) | Note |
 |---|---|---|
@@ -437,17 +416,22 @@ it does not mean the fragment is absent from runtime context.
 
 ### Terms in use
 
-| Term | Meaning before deeper reading |
-|---|---|
-| **Name / reference** | A scoped identity / a way to identify or reach it. Location and anchors carry knowledge identity; aliases can cross modalities. |
-| **Home / exposure** | Where meaning is maintained / how it reaches a reader. Repeated wording need not create another owner. |
-| **Authority** | Who can decide this kind of claim or change, in this scope—not whoever generated the newest account. |
-| **Work anchor** | The native ticket holding scope and lifecycle. Documents hold the arguments and evidence; they link back to the work. |
-| **Evidence / provenance** | What a source supports or challenges / where it came from. Neither a citation nor acceptance is proof of every implied claim. |
-| **Practice / action** | A repeatable way of working / a bounded undertaking using judgment and tools. |
-| **Honing / promotion / activation** | Refining a candidate / deliberately changing its standing / actually putting it into use. These can occur separately. |
+<dl>
+<dt><dfn id="constitutional-name">Name</dfn></dt>
+<dd>A scoped identity by which an actor, artifact, or idea is recognized. In
+Rekon's wiki-native knowledge, location and section participate in the name.</dd>
+<dt><dfn id="constitutional-reference">Reference</dfn></dt>
+<dd>An expression identifying or reaching a referent, including a local or
+qualified name, alias, or revision-bound citation.</dd>
+<dt><dfn id="constitutional-home">Home</dfn></dt>
+<dd>The maintained account to consult first for a concern, connecting current
+understanding to sources and unresolved alternatives.</dd>
+<dt><dfn id="constitutional-authority">Authority</dfn></dt>
+<dd>The person or native owner entitled to decide a kind of claim, name, or
+change within a declared scope—not whoever generated the newest account.</dd>
+</dl>
 
-The [working glossary](/CONTEXT.md) connects these terms. The
+The [working glossary](/CONTEXT.md) connects these and other terms. The
 [naming ruling](/constitution/naming/exploration/proposal4.glm53m.md#the-override-stated-as-ruling)
 grounds location identity, deliberate rename cost, hats, and cross-modal aliases.
 Later grammar proposals remain proposals; a new summary does not revoke the ruling.
@@ -618,27 +602,12 @@ consult [the toolkit map](/tool/README.md) for current capabilities.
   unavailable models. `general` is a capable default; for high-value work and
   deep research, ask which agents the user wants for which tasks. See
   [the general-agent guidance](/agents/general.md).
-- For explicitly requested common models and variants, use the dated
-  [model lookup](/agents/models/README.md); recheck uncertain or changed availability.
-- Dispatch by translation, not lookup (catalog checked 2026-10-31). When the
-  user asks for a variant — by alias `#lo`, `#med`/`#mid`, `#hi`, `#xh`,
-  `#max`, or `∅`/no suffix — expand the alias to the **full variant name** and
-  pair it with the agent's model ID in the subagent `model` override. Never
-  pass the alias itself to a tool call.
-
-  | Agent | `model` override base | Full variant names |
-  | --- | --- | --- |
-  | `t` | `openai/gpt-6.1-terra` | (none), low, medium, high, xhigh, max |
-  | `ast` | `openai/gpt-6-astra` | low, medium, high, xhigh, max |
-  | `sol` | `openai/gpt-6.1-sol` | low, medium, high, xhigh, max |
-  | `l` | `openai/gpt-6-luna` | (none), low, medium, high, xhigh, max |
-  | `g` | `zai-coding-plan/glm-5.3` | low, high, max |
-  | `f` | `zai-coding-plan/glm-5.3-flash` | low, high, max |
-
-  Example: "ast med" or "ast #mid" → agent `ast` with
-  `model: "openai/gpt-6-astra#medium"`. Only set a `model` override on an
-  explicit user ask for that model or variant; defaults, dated availability,
-  and deeper guidance live in [the model lookup](/agents/models/README.md).
+- When a user explicitly requests a model or variant, consult the
+  [model lookup](/agents/models/README.md#variant-table) for override bases,
+  variant aliases and availability; recheck uncertain or changed availability.
+  Expand aliases to full variant names in tool calls (e.g. `#xh` → `#xhigh`);
+  only set a model override on an explicit request. Agent definitions and the
+  harness supply agent identity and configured defaults.
 - When an agent hits a rate limit or quota exhaustion, use its stated fallback
   for the task; try the original agent again on each subsequent dispatch so it
   resumes when quota returns. Fallback is not a permanent switch.
@@ -1015,7 +984,9 @@ node tool/random-combo.ts --rows 4 --slots 3 --seed example FILE   # --help for 
 ```
 
 Flight model: [random-combo](/praxis/flights/random-combo.md); generator
-contract: [random-combo tool](/tool/random-combo/README.md).
+contract: [random-combo tool](/tool/random-combo/README.md). Depth pair for
+flight design: [parallax](/praxis/parallax/README.md) (why independent views
+differ) and [evidence gates](/assess/gates/README.md) (arrival vs readiness).
 </section>
 
 <section id="praxis-coverage" data-source="/praxis/coverage/GLOBAL.md">
@@ -1049,6 +1020,32 @@ that separately when relevant. A recommendation tag is not authorization.
 They are not ticket or bookmark tags, runtime classification, or mandatory on
 every answer. [Coverage presentation practice](/praxis/coverage/README.md#present-the-nature-of-a-thread)
 connects them to digest, fronts, and an inspectable lean.
+</section>
+
+<section id="praxis-bookmarking" data-source="/praxis/bookmarking/GLOBAL.md">
+
+<Okf data={{"description":"Compact cue for when to bookmark decision-dense junctions, summaries, and review gates, naming the cotail engine commands.","id":"praxis-bookmarking","order":408,"resource":"/praxis/bookmarking/GLOBAL.md","source":"/praxis/bookmarking/README.md","status":"draft","title":"Bookmarking — mark session material worth returning to","type":"ContextFragment"}} />
+
+## Bookmarking — mark session material worth returning to
+
+Mark decision-dense junctions (crossroads), explicit summaries, and parked
+review/design gates while the reasoning is still inspectable. Write the note as
+the evidentiary sentence — why this mark exists and what it bears on — and give
+it free-form tags. A bookmark preserves an inspectable state; it decides
+nothing. Practice and seed glossary:
+[bookmarking](/praxis/bookmarking/README.md).
+
+The engine is cotail's landed CLI:
+
+```sh
+cotail bookmark create -s ses_... --tag crossroads --note "why this junction matters"
+cotail bookmark list --tag review --tag-match any   # top-down review view
+cotail bookmark tags                                # live tag inventory
+```
+
+Tags are convention, not enforced vocabulary; the live inventory is
+`cotail bookmark tags`. Until cotail's session-env ticket lands, pass `-s`
+explicitly.
 </section>
 
 <section id="praxis-consumer-accounts" data-source="/praxis/consumer-accounts/GLOBAL.md">
