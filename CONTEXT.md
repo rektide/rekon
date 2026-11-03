@@ -29,7 +29,7 @@ sources:
   - { resource: /digest/README.md, title: Action and intent fronts }
   - { resource: "urn:opencode:session:ses_f2ebf7b1effewnCNYbBQ8Ewey2", title: Human adoption of the ⇄ maintained-link convention for the fronts thread }
   - { resource: "opencode://ses_e9bc39334ffetsgyIAj4L0kp0A", title: Human names pattern-driven assembly expansion globbing; glossary entry added with the Rust producer capability }
-  - { resource: "opencode://ses_e5fb636fbffe5Gl3HoQQS34gn5", title: Move foundational naming definitions to the constitution while preserving glossary anchors }
+  - { resource: "opencode://ses_e5fb636fbffe5Gl3HoQQS34gn5", title: Move foundational naming definitions to the constitution and remove redundant ambient pointers }
 ---
 
 # Rekon working vocabulary
@@ -41,15 +41,6 @@ existing discussion, not settled by this glossary.
 ## Names, homes, and relations
 
 <dl>
-<dt><dfn id="name">Name</dfn></dt>
-<dd>Definition: <a href="/constitution/GLOBAL.md#constitutional-name">constitution</a>.</dd>
-
-<dt><dfn id="authority">Authority</dfn></dt>
-<dd>Definition: <a href="/constitution/GLOBAL.md#constitutional-authority">constitution</a>.</dd>
-
-<dt><dfn id="reference">Reference</dfn></dt>
-<dd>Definition: <a href="/constitution/GLOBAL.md#constitutional-reference">constitution</a>.</dd>
-
 <dt><dfn id="alias">Alias</dfn></dt>
 <dd>
 An alternate reference with a recoverable referent and scope;
@@ -67,9 +58,6 @@ A concern-specific alias by which an actor can be addressed.
 A scoped responsibility an actor has in some work or relationship.
 A role can explain a hat without being the actor's identity.
 </dd>
-
-<dt><dfn id="home">Home</dfn></dt>
-<dd>Definition: <a href="/constitution/GLOBAL.md#constitutional-home">constitution</a>.</dd>
 
 <dt><dfn id="bidirectional-link">Bidirectional link (⇄)</dfn></dt>
 <dd>

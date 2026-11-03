@@ -123,7 +123,7 @@ Otherwise it becomes a collection of imperatives containing unfamiliar nouns.
 
 `CONTEXT.md` is already a useful shared home. It defines a
 [channel](/CONTEXT.md#channel), [revision binding](/CONTEXT.md#revision),
-[home](/CONTEXT.md#home), and [intent front](/CONTEXT.md#intent-front).
+[home](/constitution/GLOBAL.md#constitutional-home), and [intent front](/CONTEXT.md#intent-front).
 The feature-line question needs connections to these terms, not an isolated
 alphabetical entry declaring that prime means main-but-renamed.
 

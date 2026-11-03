@@ -18,7 +18,7 @@ sources:
   - { resource: /constitution/naming/exploration/proposal4.glm53m.md, title: Recorded naming ruling }
   - { resource: /design/rekon/context-weave/north-star0.gpt6a.md, title: Historical basis and scope of the manual weave }
   - { resource: "opencode://ses_e9bc39334ffetsgyIAj4L0kp0A", title: Point shortcode references at the codes glossary after the October 22 rekey }
-  - { resource: "opencode://ses_e5fb636fbffe5Gl3HoQQS34gn5", title: Consolidate foundational naming terms here while retaining glossary anchors }
+  - { resource: "opencode://ses_e5fb636fbffe5Gl3HoQQS34gn5", title: Consolidate foundational naming terms here without redundant ambient glossary pointers }
 ---
 
 # Constitution — orient before acting
