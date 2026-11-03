@@ -7,6 +7,10 @@ status: draft
 tags: [praxis, coverage, conversation, scope, handoff]
 generated: { by: "model:openai/gpt-6.1-terra#xhigh", at: "2026-11-03" }
 sources:
+  - resource: "opencode://ses_e612fa800ffeeNJGAuTzJeLwFY"
+    title: Develop non-exclusive presentation labels for thread accounts and connect their neighboring practices
+  - resource: "opencode://ses_e61a523a6ffef0z5ECCK5z73dC"
+    title: Human requests enduring presentation distinctions and a GLOBAL table for user-facing thread information
   - resource: "opencode://ses_e60b75e93ffelTp0cIJM30swe6"
     title: Activate the ambient cue and clarify context-sensitive proactive check-ins
   - resource: "opencode://ses_e61c89ec5ffevCqzDqpRciJ0Dl"
@@ -54,6 +58,35 @@ work, distinguish the results already obtained from work that is still pending;
 revisit the pass when those results arrive. The conversation, not a new ticket,
 can be the entire output. Create or update durable records or work items only
 when requested or independently authorized.
+
+## Present the nature of a thread
+
+When useful in a coverage account or other user-facing report, these enduring
+presentation lenses make different kinds of information easier to recognize:
+
+| Label | What it helps convey |
+|---|---|
+| `#background` | Existing context or current ground needed to understand the account. |
+| `#iterative` | An extension or revision building on existing work; not a promise of trivial effort. |
+| `#net-new` | A capability or approach new to the scope being discussed; say what it is new relative to. |
+| `#forward-looking` | A possibility or direction being considered beyond the established ground. |
+
+Use hashtags as compact cues when they help the reader, or express the same
+distinctions in ordinary language. They are lenses, not exclusive bins: a
+forward-looking extension can be `#iterative`, while a `#net-new` implementation
+can be ready to build now. Describe the relevant scope and evidence rather than
+letting a tag imply novelty, timing, or certainty on its own.
+
+These labels do not establish whether something is proposed, recommended,
+accepted, commissioned, implemented, or verified; state that standing separately
+when it matters. A recommendation, even when tagged as such, is not authorization.
+The labels are neither a ticket taxonomy nor bookmark tags or a runtime classifier,
+and are not mandatory on every answer.
+
+[Digest](/digest/README.md#digest-output) supplies the broader effort account in
+which these cues can make ground and change legible. [Candidates' inspectable
+lean](/praxis/candidates/README.md#make-the-lean-inspectable) owns the reasons,
+tradeoffs and uncertainty behind a recommendation; labeling it is not a substitute.
 
 ## Relation to fronts
 
