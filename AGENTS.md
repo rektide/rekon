@@ -2,39 +2,41 @@
 
 <nav id="rekon-toc" aria-label="Table of contents">
 
-- <a href="#glossary" data-line-start="49" data-line-end="56">Rekon working vocabulary</a>
-  - <a href="#glossary-names-homes-and-relations" data-line-start="57" data-line-end="134">Names, homes, and relations</a>
-  - <a href="#glossary-knowledge-work-and-learning" data-line-start="135" data-line-end="201">Knowledge, work, and learning</a>
-  - <a href="#glossary-action-and-delivery" data-line-start="202" data-line-end="307">Action and delivery</a>
-  - <a href="#glossary-honing-and-commitment" data-line-start="308" data-line-end="354">Honing and commitment</a>
-- <a href="#codes" data-line-start="355" data-line-end="398">Codes glossary</a>
-- <a href="#doc-constitution" data-line-start="399" data-line-end="405">Constitution — orient before acting</a>
-  - <a href="#doc-constitution-terms-in-use" data-line-start="406" data-line-end="426">Terms in use</a>
-  - <a href="#doc-constitution-use-the-sense-map" data-line-start="427" data-line-end="480">Use the sense-map</a>
-- <a href="#documentation-practice" data-line-start="481" data-line-end="484">Writing, independent waves, and document connections</a>
-  - <a href="#documentation-practice-durable-writing" data-line-start="485" data-line-end="517">Durable writing</a>
-  - <a href="#documentation-practice-waves" data-line-start="518" data-line-end="540">Waves</a>
-  - <a href="#documentation-practice-doc-pass" data-line-start="541" data-line-end="560">Doc-pass</a>
-- <a href="#collaboration" data-line-start="561" data-line-end="564">Collaboration and architectural stewardship</a>
-  - <a href="#collaboration-dispatch-and-return" data-line-start="565" data-line-end="592">Dispatch and return</a>
-  - <a href="#collaboration-stewardship" data-line-start="593" data-line-end="612">Stewardship</a>
-  - <a href="#collaboration-discussion" data-line-start="613" data-line-end="627">Discussion</a>
-- <a href="#workspace" data-line-start="628" data-line-end="654">Workspace, research locations, and shell</a>
-- <a href="#code" data-line-start="655" data-line-end="661">Code — stage and change discipline</a>
-  - <a href="#code-terms-in-use" data-line-start="662" data-line-end="676">Terms in use</a>
-  - <a href="#code-operating-weight" data-line-start="677" data-line-end="708">Operating weight</a>
-- <a href="#jj" data-line-start="709" data-line-end="736">jj and git operating rules</a>
-  - <a href="#jj-jj-waltz-workspaces" data-line-start="737" data-line-end="764">jj-waltz workspaces</a>
-- <a href="#forge-publication" data-line-start="765" data-line-end="779">Forge publication</a>
-- <a href="#javascript" data-line-start="780" data-line-end="813">JavaScript and TypeScript</a>
-- <a href="#rust" data-line-start="814" data-line-end="840">Rust conventions</a>
-- <a href="#atproto-cli" data-line-start="841" data-line-end="853">ATProto CLI sessions</a>
-- <a href="#beads" data-line-start="854" data-line-end="891">Beads — readable work IDs and deliberate tracking</a>
-- <a href="#praxis-ticket-pointers" data-line-start="892" data-line-end="907">Ticket pointers — ambient cues</a>
-- <a href="#praxis-consumer-accounts" data-line-start="908" data-line-end="926">Consumer accounts — library-side feedback</a>
-- <a href="#tool" data-line-start="927" data-line-end="966">Tools — check knowledge documents</a>
-- <a href="#refs" data-line-start="967" data-line-end="972">References</a>
-  - <a href="#refs-skills" data-line-start="973" data-line-end="1005">Skills</a>
+- <a href="#glossary" data-line-start="51" data-line-end="58">Rekon working vocabulary</a>
+  - <a href="#glossary-names-homes-and-relations" data-line-start="59" data-line-end="136">Names, homes, and relations</a>
+  - <a href="#glossary-knowledge-work-and-learning" data-line-start="137" data-line-end="203">Knowledge, work, and learning</a>
+  - <a href="#glossary-action-and-delivery" data-line-start="204" data-line-end="309">Action and delivery</a>
+  - <a href="#glossary-honing-and-commitment" data-line-start="310" data-line-end="356">Honing and commitment</a>
+- <a href="#codes" data-line-start="357" data-line-end="400">Codes glossary</a>
+- <a href="#doc-constitution" data-line-start="401" data-line-end="407">Constitution — orient before acting</a>
+  - <a href="#doc-constitution-terms-in-use" data-line-start="408" data-line-end="428">Terms in use</a>
+  - <a href="#doc-constitution-use-the-sense-map" data-line-start="429" data-line-end="482">Use the sense-map</a>
+- <a href="#documentation-practice" data-line-start="483" data-line-end="486">Writing, independent waves, and document connections</a>
+  - <a href="#documentation-practice-durable-writing" data-line-start="487" data-line-end="519">Durable writing</a>
+  - <a href="#documentation-practice-waves" data-line-start="520" data-line-end="542">Waves</a>
+  - <a href="#documentation-practice-doc-pass" data-line-start="543" data-line-end="562">Doc-pass</a>
+- <a href="#collaboration" data-line-start="563" data-line-end="566">Collaboration and architectural stewardship</a>
+  - <a href="#collaboration-dispatch-and-return" data-line-start="567" data-line-end="594">Dispatch and return</a>
+  - <a href="#collaboration-stewardship" data-line-start="595" data-line-end="614">Stewardship</a>
+  - <a href="#collaboration-discussion" data-line-start="615" data-line-end="629">Discussion</a>
+- <a href="#workspace" data-line-start="630" data-line-end="633">Workspace, research locations, and shell</a>
+  - <a href="#workspace-known-places" data-line-start="634" data-line-end="657">Known places</a>
+  - <a href="#workspace-workspace-practice" data-line-start="658" data-line-end="686">Workspace practice</a>
+- <a href="#code" data-line-start="687" data-line-end="693">Code — stage and change discipline</a>
+  - <a href="#code-terms-in-use" data-line-start="694" data-line-end="708">Terms in use</a>
+  - <a href="#code-operating-weight" data-line-start="709" data-line-end="740">Operating weight</a>
+- <a href="#jj" data-line-start="741" data-line-end="768">jj and git operating rules</a>
+  - <a href="#jj-jj-waltz-workspaces" data-line-start="769" data-line-end="796">jj-waltz workspaces</a>
+- <a href="#forge-publication" data-line-start="797" data-line-end="811">Forge publication</a>
+- <a href="#javascript" data-line-start="812" data-line-end="845">JavaScript and TypeScript</a>
+- <a href="#rust" data-line-start="846" data-line-end="872">Rust conventions</a>
+- <a href="#atproto-cli" data-line-start="873" data-line-end="885">ATProto CLI sessions</a>
+- <a href="#beads" data-line-start="886" data-line-end="923">Beads — readable work IDs and deliberate tracking</a>
+- <a href="#praxis-ticket-pointers" data-line-start="924" data-line-end="939">Ticket pointers — ambient cues</a>
+- <a href="#praxis-consumer-accounts" data-line-start="940" data-line-end="958">Consumer accounts — library-side feedback</a>
+- <a href="#tool" data-line-start="959" data-line-end="998">Tools — check knowledge documents</a>
+- <a href="#refs" data-line-start="999" data-line-end="1004">References</a>
+  - <a href="#refs-skills" data-line-start="1005" data-line-end="1037">Skills</a>
 
 </nav>
 
@@ -623,16 +625,44 @@ Recovered from [the legacy operating manual](/AGENTS.old.md#subagents);
 
 <section id="workspace" data-source="/code/workspace/GLOBAL.md">
 
-<Okf data={{"id":"workspace","order":170,"source":"/code/workspace/GLOBAL.md","status":"draft"}} />
+<Okf data={{"description":"Global directory of known places, explicit home-path notation, and workspace operating guidance.","id":"workspace","order":170,"resource":"/code/workspace/GLOBAL.md","source":"/code/workspace/GLOBAL.md","sources":[{"resource":"opencode://ses_e614482c2ffeXMJXi14xoFW33A","title":"Human selects ~/r as the global reference space; move the notes repository, preserve aliases and publish the known-places directory"},{"resource":"/code/workspace/README.md","title":"Maintained known-places directory and migration account"}],"status":"draft","title":"Workspace and known places","type":"ContextFragment","updated":{"at":"2026-11-03","by":"model:openai/gpt-6-astra#high"}}} />
 
 ## Workspace, research locations, and shell
+
+<section id="workspace-known-places">
+
+### Known places
+
+**Spell home paths with `~/`:** bare `ado/` or `doc/` looks relative to the
+current directory. `~/r/` is the operator's global reference/wiki space;
+**rk means Rekon**, the separate `~/src/rekon/` project. A project-local `doc/`
+belongs to that project. [Directory home and alias details](/code/workspace/README.md).
+
+| Path / alias | Place and purpose |
+| --- | --- |
+| `~/r/` | Global reference space: broad-topic notes, research and a growing personal wiki. |
+| `~/ado/` | `~/r/opencode/`: OpenCode notes, including `~/ado/patches.md`. |
+| `~/ad/`, `~/archive/doc/`, `~/src/doc/` | Compatibility aliases to `~/r/`; use `~/r/` for new references. |
+| `~/a/` → `~/archive/` | Archived source repositories, normally `<org>/<repo>`. |
+| `~/src/` | First-party checkouts and development variants. |
+| `~/w/` | Resolves to `~/src/opencode-working/`, the OpenCode compose workspace. |
+| `~/wiki/` | Generated architectural notes (currently resolves to `~/deepwiki/`), separate from `~/r/`. |
+| `~/doc/` | Points to `~/Documents/`, separate from the reference space and project-local `doc/`. |
+| `~/ff/` | `~/src/future-fuze/`: Kubernetes resources. |
+| `/opt/`, `/srv/` | Installed software and service instances. |
+
+</section>
+
+<section id="workspace-workspace-practice">
+
+### Workspace practice
 
 - Check `~/archive/<repo-org>/<repo-name>` first for third-party source before
   fetching from the web. `~/wiki/<repo-org>/<repo-name>` may hold generated
   architectural notes. Check an archived project's `llms.txt` if present.
 - First-party checkouts are usually `~/src/<repo-name>`; a variant is usually
-  `~/src/<repo>-<variant>/` with a jj workspace. `~/archive/doc` (also reachable
-  via `~/src/doc`) holds broad-topic notes. Project `doc/` holds project material,
+  `~/src/<repo>-<variant>/` with a jj workspace. `~/r/` holds broad-topic notes.
+  Project `doc/` holds project material,
   subject to native conventions and Rekon's own domain-first structure.
 - `dl <url>` fetches a repository and its wiki to those archive/wiki locations.
   `~/ff` holds future-fuze Kubernetes resources; `/opt` and `/srv` hold installs
@@ -646,6 +676,8 @@ Recovered from [the legacy operating manual](/AGENTS.old.md#subagents);
   file must live outside project scratch.
 
 Source: [legacy workspace guidance](/AGENTS.old.md#well-known-directories-and-files).
+
+</section>
 </section>
 
 <section id="code" data-source="/code/GLOBAL.md">
