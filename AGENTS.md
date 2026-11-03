@@ -12,34 +12,34 @@
   - <a href="#doc-constitution-terms-in-use" data-line-start="417" data-line-end="442">Terms in use</a>
   - <a href="#doc-constitution-use-the-sense-map" data-line-start="443" data-line-end="496">Use the sense-map</a>
 - <a href="#documentation-practice" data-line-start="497" data-line-end="500">Writing, independent waves, and document connections</a>
-  - <a href="#documentation-practice-durable-writing" data-line-start="501" data-line-end="545">Durable writing</a>
-  - <a href="#documentation-practice-waves" data-line-start="546" data-line-end="568">Waves</a>
-  - <a href="#documentation-practice-doc-pass" data-line-start="569" data-line-end="588">Doc-pass</a>
-- <a href="#collaboration" data-line-start="589" data-line-end="592">Collaboration and architectural stewardship</a>
-  - <a href="#collaboration-dispatch-and-return" data-line-start="593" data-line-end="624">Dispatch and return</a>
-  - <a href="#collaboration-stewardship" data-line-start="625" data-line-end="644">Stewardship</a>
-  - <a href="#collaboration-discussion" data-line-start="645" data-line-end="659">Discussion</a>
-- <a href="#workspace" data-line-start="660" data-line-end="663">Workspace, research locations, and shell</a>
-  - <a href="#workspace-known-places" data-line-start="664" data-line-end="687">Known places</a>
-  - <a href="#workspace-workspace-practice" data-line-start="688" data-line-end="716">Workspace practice</a>
-- <a href="#code" data-line-start="717" data-line-end="723">Code — stage and change discipline</a>
-  - <a href="#code-terms-in-use" data-line-start="724" data-line-end="738">Terms in use</a>
-  - <a href="#code-operating-weight" data-line-start="739" data-line-end="770">Operating weight</a>
-- <a href="#jj" data-line-start="771" data-line-end="798">jj and git operating rules</a>
-  - <a href="#jj-jj-waltz-workspaces" data-line-start="799" data-line-end="826">jj-waltz workspaces</a>
-- <a href="#forge-publication" data-line-start="827" data-line-end="841">Forge publication</a>
-- <a href="#javascript" data-line-start="842" data-line-end="875">JavaScript and TypeScript</a>
-- <a href="#rust" data-line-start="876" data-line-end="902">Rust conventions</a>
-- <a href="#atproto-cli" data-line-start="903" data-line-end="915">ATProto CLI sessions</a>
-- <a href="#beads" data-line-start="916" data-line-end="953">Beads — readable work IDs and deliberate tracking</a>
-- <a href="#praxis-ticket-pointers" data-line-start="954" data-line-end="969">Ticket pointers — ambient cues</a>
-- <a href="#praxis-flights" data-line-start="970" data-line-end="995">Flights — spawn, join, and carry evidence forward</a>
-- <a href="#praxis-coverage" data-line-start="996" data-line-end="1028">Coverage — account for threads and omissions</a>
-- <a href="#praxis-bookmarking" data-line-start="1029" data-line-end="1054">Bookmarking — mark session material worth returning to</a>
-- <a href="#praxis-consumer-accounts" data-line-start="1055" data-line-end="1073">Consumer accounts — library-side feedback</a>
-- <a href="#tool" data-line-start="1074" data-line-end="1113">Tools — check knowledge documents</a>
-- <a href="#refs" data-line-start="1114" data-line-end="1119">References</a>
-  - <a href="#refs-skills" data-line-start="1120" data-line-end="1152">Skills</a>
+  - <a href="#documentation-practice-durable-writing" data-line-start="501" data-line-end="536">Durable writing</a>
+  - <a href="#documentation-practice-waves" data-line-start="537" data-line-end="558">Waves</a>
+  - <a href="#documentation-practice-doc-pass" data-line-start="559" data-line-end="576">Doc-pass</a>
+- <a href="#collaboration" data-line-start="577" data-line-end="580">Collaboration and architectural stewardship</a>
+  - <a href="#collaboration-dispatch-and-return" data-line-start="581" data-line-end="612">Dispatch and return</a>
+  - <a href="#collaboration-stewardship" data-line-start="613" data-line-end="632">Stewardship</a>
+  - <a href="#collaboration-discussion" data-line-start="633" data-line-end="647">Discussion</a>
+- <a href="#workspace" data-line-start="648" data-line-end="651">Workspace, research locations, and shell</a>
+  - <a href="#workspace-known-places" data-line-start="652" data-line-end="675">Known places</a>
+  - <a href="#workspace-workspace-practice" data-line-start="676" data-line-end="704">Workspace practice</a>
+- <a href="#code" data-line-start="705" data-line-end="711">Code — stage and change discipline</a>
+  - <a href="#code-terms-in-use" data-line-start="712" data-line-end="726">Terms in use</a>
+  - <a href="#code-operating-weight" data-line-start="727" data-line-end="758">Operating weight</a>
+- <a href="#jj" data-line-start="759" data-line-end="786">jj and git operating rules</a>
+  - <a href="#jj-jj-waltz-workspaces" data-line-start="787" data-line-end="814">jj-waltz workspaces</a>
+- <a href="#forge-publication" data-line-start="815" data-line-end="829">Forge publication</a>
+- <a href="#javascript" data-line-start="830" data-line-end="863">JavaScript and TypeScript</a>
+- <a href="#rust" data-line-start="864" data-line-end="890">Rust conventions</a>
+- <a href="#atproto-cli" data-line-start="891" data-line-end="903">ATProto CLI sessions</a>
+- <a href="#beads" data-line-start="904" data-line-end="941">Beads — readable work IDs and deliberate tracking</a>
+- <a href="#praxis-ticket-pointers" data-line-start="942" data-line-end="957">Ticket pointers — ambient cues</a>
+- <a href="#praxis-flights" data-line-start="958" data-line-end="983">Flights — spawn, join, and carry evidence forward</a>
+- <a href="#praxis-coverage" data-line-start="984" data-line-end="1016">Coverage — account for threads and omissions</a>
+- <a href="#praxis-bookmarking" data-line-start="1017" data-line-end="1042">Bookmarking — mark session material worth returning to</a>
+- <a href="#praxis-consumer-accounts" data-line-start="1043" data-line-end="1061">Consumer accounts — library-side feedback</a>
+- <a href="#tool" data-line-start="1062" data-line-end="1101">Tools — check knowledge documents</a>
+- <a href="#refs" data-line-start="1102" data-line-end="1107">References</a>
+  - <a href="#refs-skills" data-line-start="1108" data-line-end="1140">Skills</a>
 
 </nav>
 
@@ -500,18 +500,15 @@ the root manifest; edit its domain fragments, then regenerate. The preserved
 
 ### Durable writing
 
-- **ChatGPT/OpenAI agents:** emit thinking records in your messages as an
-  ordinary part of working, not only when a judgment call seems to demand one.
-  The net effort is **reviewability of thinking**: a reader can follow how a
-  conclusion formed — meaningful alternatives actually considered, material
-  reasons and tradeoffs, assumptions, your tentative lean and confidence or
-  uncertainty, and evidence or preferences that would change it. Judgment calls
-  are when this matters most, not the only time it helps; ambiently aim for
-  richer, more useful thinking traces. Distinguish a recommendation from an
-  accepted decision or commissioned work. This is a useful record for a reader,
-  not private chain-of-thought dumps, hidden scratch reasoning, or routine tool
-  narration; scale depth to significance. No compulsory research wave or
-  separate document. [Candidates practice](/praxis/candidates/README.md#make-the-lean-inspectable).
+- **ChatGPT/OpenAI agents:** make thinking reviewable in your messages as an
+  ordinary part of working, not only at judgment calls. Help readers follow
+  meaningful alternatives actually considered, material reasons and tradeoffs,
+  assumptions, your tentative lean and confidence or uncertainty, and evidence
+  or preferences that would change it. Distinguish recommendations from accepted
+  decisions or commissioned work. This is not private chain-of-thought, hidden
+  scratch reasoning, or routine tool narration; scale depth to significance.
+  No compulsory research wave or separate document. Examples and depth:
+  [candidates practice](/praxis/candidates/README.md#make-the-lean-inspectable).
 - Use structured Markdown with descriptive links to canonical files and sections.
   Prefer bundle-root-relative links inside Rekon and canonical repository URLs
   for external sources; identify the repository when context does not already.
@@ -521,18 +518,12 @@ the root manifest; edit its domain fragments, then regenerate. The preserved
   [source practice](/refs/sources.md) and [the constitution](/constitution/README.md).
 - **Include your current native session ID in OKF `sources:` whenever you create
   or substantively revise a knowledge document.** Use
-  `resource: "opencode://<actual-session-id>"` and a title explaining
-  the session's contribution (direction, reasoning, research, or revision).
-  This is vital provenance: it lets the next reader recover why the document
-  exists and how it took shape. Use the ID supplied by the harness, not a
-  petname, placeholder, or another session's ID copied from an example.
-  Preserve earlier session sources; add the revising session's source.
-  Maintain your session's own source entry as the work develops, gradually
-  updating its title to match its actual contribution; keep the session ID stable.
-  Session-only citations may omit `?source=<registered-source-id>`; portable
-  cross-store exports include it. The native session ID is the URI authority;
-  there are no named route components. Preserve legacy URN and named-route
-  sources. For message/part targets and selected-source resolution, follow the
+  `resource: "opencode://<actual-session-id>"` with a title explaining the
+  session's contribution. Use the ID supplied by the harness, not a petname,
+  placeholder, or an example's ID. Preserve earlier session sources, including
+  legacy URN and named-route forms. Keep your session ID stable and update its
+  title as the contribution develops. For message/part citations, selected-source
+  resolution, and portable exports, follow the
   [OpenCode URI convention](/refs/sources.md#our-opencode-session-convention).
 - `index.md` is a grouped progressive-disclosure listing, not another concept
   document. `log.md` is dated update history, newest first. An addendum can retain
@@ -545,22 +536,21 @@ the root manifest; edit its domain fragments, then regenerate. The preserved
 
 ### Waves
 
-- Start with the situation, present ask, directions of inquiry, and what changed
-  since the previous work. Waves are independent research/design outputs, commonly
-  under `design/<topic>/`; they are not compulsory for every task.
-- Every wave filename ends in the current model's concise suffix:
-  `draft0.gpt6a.md`, `draft0.glm53m.md`. Use a numerical round starting at 0.
-  Never use the harness name as the model or copy another model's suffix.
-- For one main document, use `<topic>.<model>.md`; revisions can use
-  `<topic>2.<model>.md`. Prefer new files for materially new arguments; preserve
-  independent drafts. Maintain a README/index as the corpus becomes useful.
-- Do not read other authors' same-wave files unless directed. Previous waves are
-  available context. Synthesis follows the evidence: integrate common themes
-  and tensions, then compare sources' strengths, weaknesses, and distinctive ideas.
-  Names such as `draft0-syn0.<model>.md` record the wave and synthesis round.
-- When a tip is accepted, a suffix-less symlink can identify it while exact
-  model-suffixed evidence stays available. Acceptance is not deletion or a bulk
-  move; promotion synthesizes into the maintained domain home.
+- Waves are independent research/design outputs, commonly under `design/<topic>/`,
+  not compulsory for every task. Start with the situation, present ask, inquiry
+  directions, and what changed since previous work.
+- Use the current model's concise suffix and a round starting at 0, e.g.
+  `draft0.glm53m.md`; a main document is `<topic>.<model>.md`, a revision
+  `<topic>2.<model>.md`, and a synthesis `draft0-syn0.<model>.md`. Never use
+  the harness name as the model or copy another model's suffix.
+- Do not read other authors' same-wave files unless directed; previous waves are
+  available. Prefer new files for new arguments, preserve independent drafts,
+  and maintain a README/index as the corpus becomes useful. Synthesize common
+  themes and tensions, then compare strengths, weaknesses, and distinctive ideas.
+- An accepted tip may have a suffix-less symlink; preserve the model-suffixed
+  evidence. Acceptance is not deletion or bulk move; promotion synthesizes into
+  the maintained home. For the fuller practice, read
+  [the constitution's history guidance](/constitution/README.md#doc-constitution-history).
 
 </section>
 
@@ -575,9 +565,7 @@ extension), useful reciprocal links, and index updates. Verify the links and
 surrounding text. A separate search agent is optional when authorized; integrate
 only findings checked against sources.
 
-These restore [legacy writing practice](/AGENTS.old.md#documentation--reference-materials).
-The old `summarizer` mention described unfinished work, not an available tool;
-consult [the toolkit map](/tool/README.md) for current capabilities.
+Precedent: [legacy writing practice](/AGENTS.old.md#documentation--reference-materials).
 
 </section>
 </section>
