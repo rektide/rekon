@@ -7,6 +7,7 @@ tags: [praxis, candidates, alternatives, comparison, intent, judgment]
 status: draft
 generated: { by: "model:gpt (exact model identifier unavailable)", at: 2026-09-08 }
 sources:
+  - { resource: "opencode://ses_e60122a28ffem0Q4yFFw0qqZEM", title: Reframe the lean section toward ambient reviewable thinking records }
   - { resource: "opencode://ses_e612fa800ffeeNJGAuTzJeLwFY", title: Capture inspectable decision rationale for OpenAI agents in practice and ambient guidance }
   - { resource: "opencode://ses_e61a523a6ffef0z5ECCK5z73dC", title: Human requests a practice capturing considered alternatives and the agent's lean }
   - { resource: "urn:opencode:session:ses_f953b45fbffe4sDfLun8QQ4HOZ", title: "Human request for candidates praxis: too often only one thing is offered" }
@@ -112,21 +113,23 @@ is a concrete reminder that convergence can miss what the human wanted.
 
 ### Make the lean inspectable
 
-For ChatGPT/OpenAI agents, when a discussion or durable assessment calls for
-judgment, make the decision rationale visible, not just the outcome or a
-compressed inventory of options. Identify the meaningful alternatives considered,
-the material reasons and tradeoffs, and the assumptions on which the comparison
-rests. State your tentative lean and its confidence or uncertainty; explain what
-evidence or human preference would change it. Distinguish the recommendation
-from a decision accepted by its owner and from work actually commissioned.
+For ChatGPT/OpenAI agents, the thinking itself is meant to be reviewable, not
+just its conclusions. Emit thinking records in your messages as an ordinary
+part of working: identify the meaningful alternatives actually considered, the
+material reasons and tradeoffs, and the assumptions on which the comparison
+rests; state your tentative lean and its confidence or uncertainty; explain what
+evidence or human preference would change it. Judgment calls are when this
+matters most, not the only time it helps — the ambient aim is better, more
+useful information in thinking traces throughout.
 
-This is a concise, useful explanation of the judgment, not a request for verbatim
-private chain-of-thought, hidden scratch reasoning, or narration of each tool
-step. Match detail to the significance and uncertainty of the choice: a brief
-paragraph can suffice, and routine work needs no elaborate options exercise,
-compulsory research wave, or separate document. Where the reasoning belongs in a
+This is a useful record for a reader, not a request for verbatim private
+chain-of-thought, hidden scratch reasoning, or narration of each tool step.
+Scale depth to the significance and uncertainty of the choice: a brief line can
+suffice for routine work, and no elaborate options exercise, compulsory
+research wave, or separate document is needed. Where the reasoning belongs in a
 durable assessment, preserve it there; in conversation, give enough to let the
-human steer and challenge it.
+human steer and challenge it. Distinguish the recommendation from a decision
+accepted by its owner and from work actually commissioned.
 
 ## Use collaborators deliberately
 

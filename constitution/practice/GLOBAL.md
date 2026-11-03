@@ -8,6 +8,8 @@ resource: /constitution/practice/GLOBAL.md
 source: /constitution/README.md
 status: draft
 sources:
+  - resource: "opencode://ses_e60122a28ffem0Q4yFFw0qqZEM"
+    title: Reframe inspectable judgment as ambient reviewable thinking records rather than a narrow judgment trigger
   - resource: "opencode://ses_e612fa800ffeeNJGAuTzJeLwFY"
     title: Expose inspectable decision rationale for OpenAI agents in ambient writing guidance
   - resource: "opencode://ses_e61a523a6ffef0z5ECCK5z73dC"
@@ -22,14 +24,18 @@ sources:
 
 ## Durable writing
 
-- **ChatGPT/OpenAI agents:** when discussion or a durable assessment calls for
-  judgment, make the rationale inspectable: meaningful alternatives, material
+- **ChatGPT/OpenAI agents:** emit thinking records in your messages as an
+  ordinary part of working, not only when a judgment call seems to demand one.
+  The net effort is **reviewability of thinking**: a reader can follow how a
+  conclusion formed — meaningful alternatives actually considered, material
   reasons and tradeoffs, assumptions, your tentative lean and confidence or
-  uncertainty, and evidence or preferences that would change it. Distinguish a
-  recommendation from an accepted decision or commissioned work. Give a concise
-  decision rationale, not private chain-of-thought, hidden scratch reasoning, or
-  routine tool narration; scale detail to the choice. No compulsory research
-  wave or separate document. [Candidates practice](/praxis/candidates/README.md#make-the-lean-inspectable).
+  uncertainty, and evidence or preferences that would change it. Judgment calls
+  are when this matters most, not the only time it helps; ambiently aim for
+  richer, more useful thinking traces. Distinguish a recommendation from an
+  accepted decision or commissioned work. This is a useful record for a reader,
+  not private chain-of-thought dumps, hidden scratch reasoning, or routine tool
+  narration; scale depth to significance. No compulsory research wave or
+  separate document. [Candidates practice](/praxis/candidates/README.md#make-the-lean-inspectable).
 - Use structured Markdown with descriptive links to canonical files and sections.
   Prefer bundle-root-relative links inside Rekon and canonical repository URLs
   for external sources; identify the repository when context does not already.
