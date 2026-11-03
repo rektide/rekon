@@ -43,7 +43,7 @@ current meaning rather than reserving paths on other machines.
 | Reference | Canonical location / resolution | Purpose |
 | --- | --- | --- |
 | [`~/r/`](file:///home/rektide/r/README.md) | `/home/rektide/r/` — real directory | Global reference/wiki space. |
-| [`~/ado/`](file:///home/rektide/r/opencode/README.md) | `~/r/opencode/` | OpenCode knowledge; [patches and ideas](file:///home/rektide/r/opencode/patches.md). |
+| [`~/ado/`](file:///home/rektide/r/opencode/README.md) | `~/r/opencode/` | OpenCode knowledge; [patches and ideas](file:///home/rektide/r/opencode/patches.md) (symlink `~/ado/p.md`; conversational short `ado/p`). |
 | `~/ad/`, `~/src/doc/`, `~/archive/doc/`, `~/src/d/`, `~/archive/d/` | Symlinks to `~/r/` | Preserved reference-space aliases; new references use `~/r/`. |
 | `~/a/` | `~/archive/` | Source archive; `<org>/<repo>` is the usual lookup shape. |
 | `~/a/a/opencode/` | `~/archive/anomalyco/opencode/` | OpenCode primary donor; preparation state belongs to its maintenance records. |

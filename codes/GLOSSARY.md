@@ -44,7 +44,7 @@ and history live with
 |---|---|---|
 | `a` | [`/code/workspace/README.md#directory`](/code/workspace/README.md#directory) | ~/a → ~/archive, the source archive; nested ~/a/a → ~/archive/anomalyco. |
 | `ad` | [`/code/workspace/README.md#directory`](/code/workspace/README.md#directory) | ~/ad → ~/r, a compatibility alias for the global reference space. |
-| `ado` | [`/code/workspace/README.md#directory`](/code/workspace/README.md#directory) | ~/ado → ~/r/opencode, the OpenCode notes directory. |
+| `ado` | [`/code/workspace/README.md#directory`](/code/workspace/README.md#directory) | ~/ado → ~/r/opencode, the OpenCode notes directory; ado/p is the conversational short for ~/ado/patches.md (p.md symlink). |
 | `ast` | [`/agents/ast.md`](/agents/ast.md) | GPT-6 Astra, default #hi — independent research and design waves |
 | `cf` | [`file:///home/rektide/src/compfuzor/README.md`](file:///home/rektide/src/compfuzor/README.md) | usually the compfuzor project (~/src/compfuzor); occasionally Cloudflare or scholarly “cf.” — read the context; canonical: github.com/rektide/compfuzor |
 | `con` | [`/constitution/README.md`](/constitution/README.md) | the constitution — rekon's broadest governing document; shared principles for naming, knowledge, work, and assembly; as a prefix it scopes references: con-naming (naming work), con-structure (structure contract) |
