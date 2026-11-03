@@ -18,6 +18,7 @@ sources:
   - { resource: /constitution/naming/exploration/proposal4.glm53m.md, title: Recorded naming ruling }
   - { resource: /design/rekon/context-weave/north-star0.gpt6a.md, title: Historical basis and scope of the manual weave }
   - { resource: "opencode://ses_e9bc39334ffetsgyIAj4L0kp0A", title: Point shortcode references at the codes glossary after the October 22 rekey }
+  - { resource: "opencode://ses_e5fb636fbffe5Gl3HoQQS34gn5", title: Consolidate foundational naming terms here while retaining glossary anchors }
 ---
 
 # Constitution — orient before acting
@@ -27,17 +28,22 @@ it does not mean the fragment is absent from runtime context.
 
 ## Terms in use
 
-| Term | Meaning before deeper reading |
-|---|---|
-| **Name / reference** | A scoped identity / a way to identify or reach it. Location and anchors carry knowledge identity; aliases can cross modalities. |
-| **Home / exposure** | Where meaning is maintained / how it reaches a reader. Repeated wording need not create another owner. |
-| **Authority** | Who can decide this kind of claim or change, in this scope—not whoever generated the newest account. |
-| **Work anchor** | The native ticket holding scope and lifecycle. Documents hold the arguments and evidence; they link back to the work. |
-| **Evidence / provenance** | What a source supports or challenges / where it came from. Neither a citation nor acceptance is proof of every implied claim. |
-| **Practice / action** | A repeatable way of working / a bounded undertaking using judgment and tools. |
-| **Honing / promotion / activation** | Refining a candidate / deliberately changing its standing / actually putting it into use. These can occur separately. |
+<dl>
+<dt><dfn id="constitutional-name">Name</dfn></dt>
+<dd>A scoped identity by which an actor, artifact, or idea is recognized. In
+Rekon's wiki-native knowledge, location and section participate in the name.</dd>
+<dt><dfn id="constitutional-reference">Reference</dfn></dt>
+<dd>An expression identifying or reaching a referent, including a local or
+qualified name, alias, or revision-bound citation.</dd>
+<dt><dfn id="constitutional-home">Home</dfn></dt>
+<dd>The maintained account to consult first for a concern, connecting current
+understanding to sources and unresolved alternatives.</dd>
+<dt><dfn id="constitutional-authority">Authority</dfn></dt>
+<dd>The person or native owner entitled to decide a kind of claim, name, or
+change within a declared scope—not whoever generated the newest account.</dd>
+</dl>
 
-The [working glossary](/CONTEXT.md) connects these terms. The
+The [working glossary](/CONTEXT.md) connects these and other terms. The
 [naming ruling](/constitution/naming/exploration/proposal4.glm53m.md#the-override-stated-as-ruling)
 grounds location identity, deliberate rename cost, hats, and cross-modal aliases.
 Later grammar proposals remain proposals; a new summary does not revoke the ruling.

@@ -29,6 +29,7 @@ sources:
   - { resource: /digest/README.md, title: Action and intent fronts }
   - { resource: "urn:opencode:session:ses_f2ebf7b1effewnCNYbBQ8Ewey2", title: Human adoption of the ⇄ maintained-link convention for the fronts thread }
   - { resource: "opencode://ses_e9bc39334ffetsgyIAj4L0kp0A", title: Human names pattern-driven assembly expansion globbing; glossary entry added with the Rust producer capability }
+  - { resource: "opencode://ses_e5fb636fbffe5Gl3HoQQS34gn5", title: Move foundational naming definitions to the constitution while preserving glossary anchors }
 ---
 
 # Rekon working vocabulary
@@ -41,22 +42,13 @@ existing discussion, not settled by this glossary.
 
 <dl>
 <dt><dfn id="name">Name</dfn></dt>
-<dd>
-A scoped identity by which an actor, artifact, or idea is recognized.
-In Rekon's wiki-native knowledge, location and section participate in the name.
-</dd>
+<dd>Definition: <a href="/constitution/GLOBAL.md#constitutional-name">constitution</a>.</dd>
 
 <dt><dfn id="authority">Authority</dfn></dt>
-<dd>
-The person or native owner entitled to decide a particular kind
-of claim, name, or change within a declared scope.
-</dd>
+<dd>Definition: <a href="/constitution/GLOBAL.md#constitutional-authority">constitution</a>.</dd>
 
 <dt><dfn id="reference">Reference</dfn></dt>
-<dd>
-An expression that lets a reader identify or reach a referent,
-including a local name, qualified name, alias, or revision-bound citation.
-</dd>
+<dd>Definition: <a href="/constitution/GLOBAL.md#constitutional-reference">constitution</a>.</dd>
 
 <dt><dfn id="alias">Alias</dfn></dt>
 <dd>
@@ -77,10 +69,7 @@ A role can explain a hat without being the actor's identity.
 </dd>
 
 <dt><dfn id="home">Home</dfn></dt>
-<dd>
-The maintained account a reader should consult first for a concern;
-it connects current understanding to its sources and unresolved alternatives.
-</dd>
+<dd>Definition: <a href="/constitution/GLOBAL.md#constitutional-home">constitution</a>.</dd>
 
 <dt><dfn id="bidirectional-link">Bidirectional link (⇄)</dfn></dt>
 <dd>
