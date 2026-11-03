@@ -10,6 +10,7 @@ extensions:
   local_knowledge_id: agent-naming
 sources:
   - { resource: "opencode://ses_e9bc39334ffetsgyIAj4L0kp0A", title: "Codes registry: table moved to /codes.md, then generated from self-describing codes/ files" }
+  - { resource: "opencode://ses_e6143e1e5ffeewf1KkLGRgz75C", title: "Human commissions directory-alias codes and concise pointer metadata" }
 ---
 
 # Naming
@@ -27,6 +28,14 @@ core fact. Dormant agent definitions take a `.md.disabled` suffix: defined but
 inert, neither loaded nor listed. This section keeps the recorded practice
 without loading the entire exploration wave.
 
+Every `codes/` definition's frontmatter concisely identifies the name (`code`,
+matching the filename), its `target`, and what that pointer denotes
+(`description`); `points` may add ordered detail to the generated row. Agent
+definitions use their filename and `note` beside their functional metadata.
+Targets can be a maintained account of a place, not necessarily the filesystem
+object itself; say what a local alias resolves to and qualify nested aliases.
+See [known places](/code/workspace/README.md) for the actual local paths.
+
 **October 22 ruling — single letters are guarded treasures.** `g` is reclaimed
 for the GLM-max agent; the global-guidance umbrella is retired, not renamed —
 its sub-things carry their own codes and take prefixes (selectively, per the
@@ -35,11 +44,13 @@ its sub-things carry their own codes and take prefixes (selectively, per the
 stays, softened to "usually". The earlier October 6 correction (`g` global,
 `p` praxis, `t` tool) stands as history above.
 
-**Shortcodes are reference vocabulary, not directory names.** The human
+**Shortcodes are reference vocabulary, not automatically directory names.** The human
 explicitly corrected that conflation on October 6: `g` global, `p` praxis,
 `t` tool. The chosen physical toolkit is one `tool/` tree with shared
 domain-grouped implementation. Numeric clauses need their own stated meanings;
 this table does not manufacture a `g0`/`p0`/`t0` numbering scheme.
+The later directory-alias codes deliberately name existing local paths; their
+spelling does not turn other codes into paths, nor does a code create a symlink.
 
 The [earlier human ruling](/constitution/naming/exploration/proposal4.glm53m.md#the-override-stated-as-ruling)
 explicitly restored glossary abbreviations and cross-modal aliases. Their use

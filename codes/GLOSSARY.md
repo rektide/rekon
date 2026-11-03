@@ -9,6 +9,7 @@ status: draft
 resource: /codes/GLOSSARY.md
 tags: [codes, naming, aliases, glossary]
 sources:
+  - { resource: "opencode://ses_e6143e1e5ffeewf1KkLGRgz75C", title: Human commissions directory-alias codes and concise pointer metadata }
   - { resource: "opencode://ses_e614412d9ffefitVf6RGudHU9i", title: Human requests raising Terra's default variant to high }
   - { resource: "opencode://ses_e9bc39334ffetsgyIAj4L0kp0A", title: Commission the codes glossary generator and direct it into ambient context }
   - { resource: "opencode://ses_e6c20690cffeyOxxE0zP6Z4JVT", title: Add standard variant abbreviations and default-variant notation to agent rows }
@@ -23,8 +24,9 @@ Add `--check` to that command to detect stale output or hand edits.
 
 Short terms (codes) are workspace reference vocabulary: short names
 usable in conversation, headings, and tickets, each mapped to a
-`file#tag` target that owns its meaning. They name concerns, not
-directories. Entries are documented either directly in this glossary or
+`file#tag` target explaining its meaning. Codes may name concerns or
+explicit local directory aliases; a code alone does not create a path.
+Entries are documented either directly in this glossary or
 assembled from constituent parts: [`codes/`](/codes) files for workspace
 codes and [`agents/`](/agents) definitions for agent codes, whose
 frontmatter carries the row beside the functional prompt fields. Dormant
@@ -40,16 +42,27 @@ and history live with
 
 | Code | Target (`file#tag`) | Note |
 |---|---|---|
+| `a` | [`/code/workspace/README.md#directory`](/code/workspace/README.md#directory) | ~/a → ~/archive, the source archive; nested ~/a/a → ~/archive/anomalyco. |
+| `ad` | [`/code/workspace/README.md#directory`](/code/workspace/README.md#directory) | ~/ad → ~/r, a compatibility alias for the global reference space. |
+| `ado` | [`/code/workspace/README.md#directory`](/code/workspace/README.md#directory) | ~/ado → ~/r/opencode, the OpenCode notes directory. |
 | `ast` | [`/agents/ast.md`](/agents/ast.md) | GPT-6 Astra, default #hi — independent research and design waves |
 | `cf` | [`file:///home/rektide/src/compfuzor/README.md`](file:///home/rektide/src/compfuzor/README.md) | usually the compfuzor project (~/src/compfuzor); occasionally Cloudflare or scholarly “cf.” — read the context; canonical: github.com/rektide/compfuzor |
 | `con` | [`/constitution/README.md`](/constitution/README.md) | the constitution — rekon's broadest governing document; shared principles for naming, knowledge, work, and assembly; as a prefix it scopes references: con-naming (naming work), con-structure (structure contract) |
+| `d` | [`/code/workspace/README.md#directory`](/code/workspace/README.md#directory) | ~/src/d and ~/archive/d → ~/r; nested aliases, not a ~/d alias. |
+| `doc` | [`/code/workspace/README.md#directory`](/code/workspace/README.md#directory) | ~/doc → ~/Documents; ~/src/doc and ~/archive/doc → ~/r instead; project doc/ is relative. |
 | `exp` | [`/constitution/naming/README.md#short-codes`](/constitution/naming/README.md#short-codes) | a topic's early inquiry documents — drafts and proposals that precede any ruling; usually under the topic's exploration/ or design/ folder; example: con-naming-exp-… points into naming's exploration waves |
 | `f` | [`/agents/f.md`](/agents/f.md) | GLM 5.3 Flash, default #max — fast well-described well-known work |
+| `ff` | [`/code/workspace/README.md#directory`](/code/workspace/README.md#directory) | ~/ff → ~/src/future-fuze, Kubernetes resources. |
 | `g` | [`/agents/g.md`](/agents/g.md) | GLM 5.3, default #max — the heavy lifter for most tasks |
 | `general` | [`/agents/general.md`](/agents/general.md) | capable general-purpose default for delegated work |
 | `l` | [`/agents/l.md`](/agents/l.md) | GPT-6 Luna, default #xh — only when explicitly requested |
 | `prax` | [`/praxis/README.md`](/praxis/README.md) | praxis — the practice domains: repeatable ways of working; bookmarking, beads, fronts, ticket pointers; a practice joins purpose, procedure, evidence, and reflection |
+| `r` | [`/code/workspace/README.md#directory`](/code/workspace/README.md#directory) | ~/r is the real global reference directory, not a symlink or Rekon. |
 | `res` | [`/constitution/naming/README.md#short-codes`](/constitution/naming/README.md#short-codes) | a topic's gathered research material; scope comes from the named topic, not a fixed directory |
 | `rkt` | [`/tool/README.md`](/tool/README.md) | rk's tool — the rekon CLI; Markdown maintenance and verification for any repo, not just rekon's; commands: combine, codes, toc, okf extract, check, audit-context; runs from any checkout via --manifest-path |
+| `s` | [`/code/workspace/README.md#directory`](/code/workspace/README.md#directory) | ~/s → ~/src, the first-party development checkout root. |
 | `sol` | [`/agents/sol.md`](/agents/sol.md) | GPT-6.1 Sol, default #hi — capable independent doer for partially formed work |
 | `t` | [`/agents/t.md`](/agents/t.md) | GPT-6.1 Terra, default #hi — general coding, analysis, and implementation |
+| `w` | [`/code/workspace/README.md#directory`](/code/workspace/README.md#directory) | ~/w → ~/src/working → ~/src/opencode-working, the OpenCode compose workspace. |
+| `wiki` | [`/code/workspace/README.md#directory`](/code/workspace/README.md#directory) | ~/wiki resolves via ~/deepwiki.com to ~/deepwiki, generated architectural notes. |
+| `working` | [`/code/workspace/README.md#directory`](/code/workspace/README.md#directory) | ~/src/working and ~/oc/working resolve to ~/src/opencode-working; not a ~/working alias. |

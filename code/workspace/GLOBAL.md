@@ -9,6 +9,7 @@ resource: /code/workspace/GLOBAL.md
 status: draft
 updated: { by: "model:openai/gpt-6-astra#high", at: 2026-11-03 }
 sources:
+  - { resource: "opencode://ses_e6143e1e5ffeewf1KkLGRgz75C", title: "Create ~/s and expose scoped directory alias codes" }
   - { resource: "opencode://ses_e614482c2ffeXMJXi14xoFW33A", title: "Human selects ~/r as the global reference space; move the notes repository, preserve aliases and publish the known-places directory" }
   - { resource: /code/workspace/README.md, title: Maintained known-places directory and migration account }
 ---
@@ -28,7 +29,7 @@ belongs to that project. [Directory home and alias details](/code/workspace/READ
 | `~/ado/` | `~/r/opencode/`: OpenCode notes, including `~/ado/patches.md`. |
 | `~/ad/`, `~/archive/doc/`, `~/src/doc/` | Compatibility aliases to `~/r/`; use `~/r/` for new references. |
 | `~/a/` → `~/archive/` | Archived source repositories, normally `<org>/<repo>`. |
-| `~/src/` | First-party checkouts and development variants. |
+| `~/s/` → `~/src/` | First-party checkouts and development variants. |
 | `~/w/` | Resolves to `~/src/opencode-working/`, the OpenCode compose workspace. |
 | `~/wiki/` | Generated architectural notes (currently resolves to `~/deepwiki/`), separate from `~/r/`. |
 | `~/doc/` | Points to `~/Documents/`, separate from the reference space and project-local `doc/`. |

@@ -6,6 +6,7 @@ resource: /code/workspace/README.md
 status: active
 generated: { by: "model:openai/gpt-6-astra#high", at: 2026-11-03 }
 sources:
+  - { resource: "opencode://ses_e6143e1e5ffeewf1KkLGRgz75C", title: "Create ~/s and record directory aliases as scoped code pointers" }
   - { resource: "opencode://ses_e614482c2ffeXMJXi14xoFW33A", title: "Human chooses ~/r for the global reference space and commissions relocation, alias updates and a GLOBAL directory" }
   - { resource: /code/workspace/directories0.gpt61t.md, title: Terra's directory-index proposal and explicit home-path notation }
   - { resource: /code/workspace/GLOBAL.md, title: Ambient known-places directory and workspace practice }
@@ -47,12 +48,17 @@ current meaning rather than reserving paths on other machines.
 | `~/a/` | `~/archive/` | Source archive; `<org>/<repo>` is the usual lookup shape. |
 | `~/a/a/opencode/` | `~/archive/anomalyco/opencode/` | OpenCode primary donor; preparation state belongs to its maintenance records. |
 | `~/src/` | `/home/rektide/src/` | First-party development checkouts and variants. |
+| `~/s/` | `~/src/` | Short symlink to the development checkout root. |
 | `~/w/`, `~/src/working/`, `~/oc/working/` | `~/src/opencode-working/` | OpenCode compose workspace; lifecycle belongs to the patches record. |
 | `~/wiki/` | Via `~/deepwiki.com` to `~/deepwiki/` | Generated architectural notes, distinct from the operator-authored reference space. |
 | `~/doc/` | `~/Documents/` | Existing personal Documents alias. |
 | `~/ff/` | `~/src/future-fuze/` | Kubernetes resources. |
 | `/opt/`, `/srv/` | Absolute host paths | Installed software and service instances. |
 | `/tmp/opencode/` | Absolute host path | Harness-approved temporary files; ephemeral evidence. |
+
+The [codes glossary](/codes/GLOSSARY.md) also identifies these local aliases by
+symlink name; it distinguishes the nested `src/d` and `archive/d` links from a
+nonexistent `~/d`. `r` denotes the real reference directory, not a symlink.
 
 ## Reference-space relocation — 2026-11-03
 

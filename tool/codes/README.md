@@ -7,6 +7,7 @@ tags: [tool, codes, naming, glossary, rust]
 status: draft
 generated: { by: "model:glm-5.3-max", at: 2026-10-22 }
 sources:
+  - { resource: "opencode://ses_e6143e1e5ffeewf1KkLGRgz75C", title: "Clarify directory pointers and frontmatter identity in the codes registry" }
   - { resource: "opencode://ses_e9bc39334ffetsgyIAj4L0kp0A", title: "Commission the codes generator, then direct its glossary into ambient context" }
   - { resource: /codes/GLOSSARY.md, title: The generated glossary, bundled by the root manifest }
   - { resource: /constitution/naming/README.md, title: Short codes practice that owns code vocabulary }
@@ -31,11 +32,15 @@ cargo run --quiet --manifest-path tool/rust/Cargo.toml -- codes --check
 The file name stem is the code: `codes/cf.md` declares `code: cf`. Frontmatter
 carries three row fields — `code`, `target` (a `file#tag` string:
 bundle-root-relative `/…`, `file://…`, or `http(s)://…`), and `description`
-(the glossary row's note, pipe-free) — beside the OKF knowledge fields and the
+(a concise explanation of the pointer, used as the glossary row's note unless
+ordered `points` are present; pipe-free) — beside the OKF knowledge fields and the
 fragment contract fields (`id`, `order`, `source`, `status`). The fragment
 fields let a code contribute itself to assembly the way GLOBAL fragments do;
 generation uses only the frontmatter, and the body's single H1 plus prose is
 for readers and any future per-code assembly.
+Directory-alias entries can point to their maintained place account; the
+description must identify the actual alias and its scope rather than implying
+that every code is a path.
 
 ## Generated glossary
 
