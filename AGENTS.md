@@ -48,7 +48,7 @@ Add `--check` to that command to detect stale output or hand edits.
 
 <section id="glossary" data-source="/CONTEXT.md">
 
-<Okf data={{"description":"Cross-topic terms linking the established naming and constitutional vocabulary to current action and context work; a working glossary, not a new naming law.","extensions":{"related_work":["rekon-con-naming","rekon-agents-maintenance"],"ticket":"rekon-phoenix"},"generated":{"at":"2026-09-06","by":"model:gpt-6-astra"},"id":"glossary","order":50,"resource":"/CONTEXT.md","source":"/CONTEXT.md","sources":[{"resource":"opencode://ses_e609d51f3ffe86faDUH8TGks44","title":"Capture magnitude in the working vocabulary and verify its calibration anchors"},{"resource":"opencode://ses_e61e1251cffe0mFqTdBC7PlEHc","title":"Human introduces magnitude as a measure of ideas with two anchors"},{"resource":"file:///home/rektide/src/bolderfs/design/access/equivalence-ungate0.glm53m.md","title":"Equivalence-ungate idea and its byte-observability scope"},{"resource":"file:///home/rektide/src/watchment/README.md","title":"Watchment filesystem observation and state service"},{"resource":"opencode://ses_e6cc34212ffelIc5sLrW1xqvi7","title":"Record the human-commissioned flight term and its practice home"},{"resource":"opencode://ses_e6ccb4e5effe6EWqmToxh2oLHO","title":"Human commissions the flight coordination vocabulary"},{"resource":"urn:opencode:session:ses_ed3000de2ffewvt4aDNZVE4O9R","title":"Semantic vocabulary conversion and MDX flow-boundary correction"},{"resource":"urn:opencode:session:ses_ed31715c4ffex2ROd2G2C617AF","title":"Semantic definition-list conversion commissioned for enriched assembly"},{"resource":"/constitution/naming/exploration/proposal4.glm53m.md","title":"Recorded human naming override"},{"resource":"/constitution/naming/exploration/draft2-discussion0.sol56x.md","title":"Shared glossary and remaining naming disagreements"},{"resource":"/design/skillify/README1.sol56x.md","title":"Capability and context vocabulary"},{"resource":"/constitution/README.md","title":"Knowledge modules and exposures"},{"resource":"/evidence/README.md","title":"Evidence relationships and case stories"},{"resource":"/digest/README.md","title":"Action and intent fronts"},{"resource":"urn:opencode:session:ses_f2ebf7b1effewnCNYbBQ8Ewey2","title":"Human adoption of the ⇄ maintained-link convention for the fronts thread"},{"resource":"opencode://ses_e9bc39334ffetsgyIAj4L0kp0A","title":"Human names pattern-driven assembly expansion globbing; glossary entry added with the Rust producer capability"}],"status":"draft","tags":["glossary","naming","constitution","actions","context"],"title":"Rekon working vocabulary","type":"Glossary"}} />
+<Okf data={{"description":"Cross-topic terms linking the established naming and constitutional vocabulary to current action and context work; a working glossary, not a new naming law.","extensions":{"related_work":["rekon-con-naming","rekon-agents-maintenance"],"ticket":"rekon-phoenix"},"generated":{"at":"2026-09-06","by":"model:gpt-6-astra"},"id":"glossary","order":50,"resource":"/CONTEXT.md","source":"/CONTEXT.md","status":"draft","tags":["glossary","naming","constitution","actions","context"],"title":"Rekon working vocabulary","type":"Glossary"}} />
 
 ## Rekon working vocabulary
 
@@ -370,7 +370,7 @@ conditions, not a synonym for acceptance or universal correctness.
 
 <section id="codes" data-source="/codes/GLOSSARY.md">
 
-<Okf data={{"description":"Short terms (workspace codes and agent codes) mapped to file#tag targets, assembled from codes/ files and agents/ definitions.","id":"codes","order":55,"resource":"/codes/GLOSSARY.md","source":"/codes/GLOSSARY.md","sources":[{"resource":"opencode://ses_e6143e1e5ffeewf1KkLGRgz75C","title":"Human commissions directory-alias codes and concise pointer metadata"},{"resource":"opencode://ses_e614412d9ffefitVf6RGudHU9i","title":"Human requests raising Terra's default variant to high"},{"resource":"opencode://ses_e9bc39334ffetsgyIAj4L0kp0A","title":"Commission the codes glossary generator and direct it into ambient context"},{"resource":"opencode://ses_e6c20690cffeyOxxE0zP6Z4JVT","title":"Add standard variant abbreviations and default-variant notation to agent rows"},{"resource":"/constitution/naming/README.md","title":"Short codes practice that owns code vocabulary"}],"status":"draft","tags":["codes","naming","aliases","glossary"],"title":"Codes glossary","type":"Glossary"}} />
+<Okf data={{"description":"Short terms (workspace codes and agent codes) mapped to file#tag targets, assembled from codes/ files and agents/ definitions.","id":"codes","order":55,"resource":"/codes/GLOSSARY.md","source":"/codes/GLOSSARY.md","status":"draft","tags":["codes","naming","aliases","glossary"],"title":"Codes glossary","type":"Glossary"}} />
 
 ## Codes glossary
 
@@ -426,7 +426,7 @@ and history live with
 
 <section id="doc-constitution" data-source="/constitution/GLOBAL.md">
 
-<Okf data={{"description":"Active shared context joining naming, knowledge, work, and action before specialized reading.","extensions":{"posture":"active production fragment; guidance remains open to refinement","related_work":["rekon-con-naming","rekon-agents-maintenance-skillify"],"ticket":"rekon-phoenix"},"generated":{"at":"2026-09-06","by":"model:gpt-6-astra"},"id":"doc-constitution","order":100,"resource":"/constitution/GLOBAL.md","source":"/constitution/README.md","sources":[{"resource":"/constitution/README.md","title":"Constitution and the current honing exception"},{"resource":"/CONTEXT.md","title":"Shared working vocabulary"},{"resource":"/constitution/naming/exploration/proposal4.glm53m.md","title":"Recorded naming ruling"},{"resource":"/design/rekon/context-weave/north-star0.gpt6a.md","title":"Historical basis and scope of the manual weave"},{"resource":"opencode://ses_e9bc39334ffetsgyIAj4L0kp0A","title":"Point shortcode references at the codes glossary after the October 22 rekey"}],"status":"draft","title":"Constitution — the shared sense-map","type":"ContextFragment"}} />
+<Okf data={{"description":"Active shared context joining naming, knowledge, work, and action before specialized reading.","extensions":{"posture":"active production fragment; guidance remains open to refinement","related_work":["rekon-con-naming","rekon-agents-maintenance-skillify"],"ticket":"rekon-phoenix"},"generated":{"at":"2026-09-06","by":"model:gpt-6-astra"},"id":"doc-constitution","order":100,"resource":"/constitution/GLOBAL.md","source":"/constitution/README.md","status":"draft","title":"Constitution — the shared sense-map","type":"ContextFragment"}} />
 
 ## Constitution — orient before acting
 
@@ -508,7 +508,7 @@ the root manifest; edit its domain fragments, then regenerate. The preserved
 
 <section id="documentation-practice" data-source="/constitution/practice/GLOBAL.md">
 
-<Okf data={{"description":"Durable writing, inspectable judgment, independent inquiry, and connections between knowledge documents.","id":"documentation-practice","order":120,"resource":"/constitution/practice/GLOBAL.md","source":"/constitution/README.md","sources":[{"resource":"opencode://ses_e60122a28ffem0Q4yFFw0qqZEM","title":"Reframe inspectable judgment as ambient reviewable thinking records rather than a narrow judgment trigger"},{"resource":"opencode://ses_e612fa800ffeeNJGAuTzJeLwFY","title":"Expose inspectable decision rationale for OpenAI agents in ambient writing guidance"},{"resource":"opencode://ses_e61a523a6ffef0z5ECCK5z73dC","title":"Human requests a practice capturing considered alternatives and the agent's lean"},{"resource":"opencode://ses_ed2db3069ffeQV7v6JC7p69Vte","title":"Align durable-writing provenance with keyed positional OpenCode URIs and session authority"},{"resource":"opencode://ses_ed2eda746ffefem0MPL9M5MYX7","title":"Human direction to adopt OpenCode URIs with keyed positional IDs as the canonical grammar"}],"status":"draft","title":"Writing, independent waves, and document connections","type":"ContextFragment"}} />
+<Okf data={{"description":"Durable writing, inspectable judgment, independent inquiry, and connections between knowledge documents.","id":"documentation-practice","order":120,"resource":"/constitution/practice/GLOBAL.md","source":"/constitution/README.md","status":"draft","title":"Writing, independent waves, and document connections","type":"ContextFragment"}} />
 
 ## Writing, independent waves, and document connections
 
@@ -600,7 +600,7 @@ consult [the toolkit map](/tool/README.md) for current capabilities.
 
 <section id="collaboration" data-source="/agents/GLOBAL.md">
 
-<Okf data={{"description":"Delegation, context budgeting, architectural review and collaborative decision practices.","generated":{"at":"2026-10-31","by":"model:zai-coding-plan/glm-5.3#max"},"id":"collaboration","order":150,"resource":"/agents/GLOBAL.md","source":"/agents/GLOBAL.md","sources":[{"resource":"opencode://ses_e60122a28ffem0Q4yFFw0qqZEM","title":"Rebuild the ambient variant guidance as a dispatch translation table with aliases and override bases"},{"resource":"opencode://ses_e6c20690cffeyOxxE0zP6Z4JVT","title":"Add condensed variant-support table to global ambient context"},{"resource":"opencode://ses_e6c1f991dffeK5oewTLCA2j5zu","title":"Human separates shared rate-limit fallback procedure from agent-specific fallback choices"},{"resource":"opencode://ses_e6cc34212ffelIc5sLrW1xqvi7","title":"Add a concise pointer to the dated model and variant lookup"},{"resource":"opencode://ses_e7bc138ffffeHcfSJmcsHKoO9Z","title":"Human requests a soft 300k delegated-session context target, tolerates modest overshoot and directs the nearly finished Sol slice to wrap"}],"status":"draft","title":"Collaboration and architectural stewardship","type":"ContextFragment"}} />
+<Okf data={{"description":"Delegation, context budgeting, architectural review and collaborative decision practices.","generated":{"at":"2026-10-31","by":"model:zai-coding-plan/glm-5.3#max"},"id":"collaboration","order":150,"resource":"/agents/GLOBAL.md","source":"/agents/GLOBAL.md","status":"draft","title":"Collaboration and architectural stewardship","type":"ContextFragment"}} />
 
 ## Collaboration and architectural stewardship
 
@@ -686,7 +686,7 @@ Recovered from [the legacy operating manual](/AGENTS.old.md#subagents);
 
 <section id="workspace" data-source="/code/workspace/GLOBAL.md">
 
-<Okf data={{"description":"Global directory of known places, explicit home-path notation, and workspace operating guidance.","id":"workspace","order":170,"resource":"/code/workspace/GLOBAL.md","source":"/code/workspace/GLOBAL.md","sources":[{"resource":"opencode://ses_e6143e1e5ffeewf1KkLGRgz75C","title":"Create ~/s and expose scoped directory alias codes"},{"resource":"opencode://ses_e614482c2ffeXMJXi14xoFW33A","title":"Human selects ~/r as the global reference space; move the notes repository, preserve aliases and publish the known-places directory"},{"resource":"/code/workspace/README.md","title":"Maintained known-places directory and migration account"},{"resource":"opencode://ses_e6086bb73ffeWHOULEsvy3WjFG","title":"Add the ado/p shorthand beside ado and publish the p.md symlink"}],"status":"draft","title":"Workspace and known places","type":"ContextFragment","updated":{"at":"2026-11-03","by":"model:zai-coding-plan/glm-5.3-flash#max"}}} />
+<Okf data={{"description":"Global directory of known places, explicit home-path notation, and workspace operating guidance.","id":"workspace","order":170,"resource":"/code/workspace/GLOBAL.md","source":"/code/workspace/GLOBAL.md","status":"draft","title":"Workspace and known places","type":"ContextFragment","updated":{"at":"2026-11-03","by":"model:zai-coding-plan/glm-5.3-flash#max"}}} />
 
 ## Workspace, research locations, and shell
 
@@ -743,7 +743,7 @@ Source: [legacy workspace guidance](/AGENTS.old.md#well-known-directories-and-fi
 
 <section id="code" data-source="/code/GLOBAL.md">
 
-<Okf data={{"description":"Active shared commit, review, planning, and coding discipline.","extensions":{"posture":"active production fragment; guidance remains open to refinement","related_work":["rekon-agents-maintenance","rekon-session-mementos"],"ticket":"rekon-phoenix"},"generated":{"at":"2026-09-06","by":"model:gpt-6-astra"},"id":"code","order":200,"resource":"/code/GLOBAL.md","source":"/code/README.md","sources":[{"resource":"/code/README.md","title":"Coding practice"},{"resource":"/code/commits.md","title":"Capture revise compare"},{"resource":"/CONTEXT.md","title":"Shared working vocabulary"},{"resource":"opencode://ses_eb9709a91ffeKsq7fEUI1ptzt2","title":"Ambient scaffold rule naming the pkg-prefix anti-pattern with layout depth"},{"resource":"opencode://ses_e9a41f6dfffexEmfMeIjFhXDko","title":"Record Kubeless-derived pre-alpha versioning as a preferred default rather than a mandate"},{"resource":"/code/versioning.md","title":"API-change markers and reviewed source revisions"}],"status":"draft","title":"Code — stage and change discipline","type":"ContextFragment"}} />
+<Okf data={{"description":"Active shared commit, review, planning, and coding discipline.","extensions":{"posture":"active production fragment; guidance remains open to refinement","related_work":["rekon-agents-maintenance","rekon-session-mementos"],"ticket":"rekon-phoenix"},"generated":{"at":"2026-09-06","by":"model:gpt-6-astra"},"id":"code","order":200,"resource":"/code/GLOBAL.md","source":"/code/README.md","status":"draft","title":"Code — stage and change discipline","type":"ContextFragment"}} />
 
 ## Code — stage and change discipline
 
@@ -797,7 +797,7 @@ use the shared vocabulary; this fragment adds only the terms its instructions ne
 
 <section id="jj" data-source="/vcs/jj/GLOBAL.md">
 
-<Okf data={{"id":"jj","order":220,"source":"/vcs/jj/README.md","sources":[{"resource":"opencode://ses_ec375b1d6ffergulkiIGGtQXA8","title":"Added compact jj-waltz creation and reseed examples with and without groups"},{"resource":"/vcs/jj/waltz.md","title":"Active jj-waltz usage and reseeding guide"}],"status":"draft"}} />
+<Okf data={{"id":"jj","order":220,"source":"/vcs/jj/README.md","status":"draft"}} />
 
 ## jj and git operating rules
 
@@ -853,7 +853,7 @@ snapshotting. [Preparation, restrictions, recovery](/vcs/jj/waltz.md#jj-waltz-so
 
 <section id="forge-publication" data-source="/forge/GLOBAL.md">
 
-<Okf data={{"description":"Defaults and checks for publishing repositories.","id":"forge-publication","order":240,"resource":"/forge/GLOBAL.md","source":"/forge/publication.md","sources":[{"resource":"opencode://ses_e6c505360ffeVFenH2VYDN7XS0","title":"Human defaults and forge guidance integration"}],"status":"draft","title":"Forge publication","type":"ContextFragment"}} />
+<Okf data={{"description":"Defaults and checks for publishing repositories.","id":"forge-publication","order":240,"resource":"/forge/GLOBAL.md","source":"/forge/publication.md","status":"draft","title":"Forge publication","type":"ContextFragment"}} />
 
 ## Forge publication
 
@@ -902,7 +902,7 @@ snapshotting. [Preparation, restrictions, recovery](/vcs/jj/waltz.md#jj-waltz-so
 
 <section id="rust" data-source="/code/rust/GLOBAL.md">
 
-<Okf data={{"description":"Rust tool preferences, configuration precedence, and publication mechanics.","generated":{"at":"2026-10-22","by":"model:openai/gpt-6-astra#high"},"id":"rust","order":260,"resource":"/code/rust/GLOBAL.md","source":"/code/rust/GLOBAL.md","sources":[{"resource":"/AGENTS.old.md","title":"Legacy Rust preferences"},{"resource":"opencode://ses_e9a41f6dfffexEmfMeIjFhXDko","title":"Clarify publication version selection alongside the preferred pre-alpha API-marker policy"}],"status":"draft","title":"Rust conventions","type":"ContextFragment"}} />
+<Okf data={{"description":"Rust tool preferences, configuration precedence, and publication mechanics.","generated":{"at":"2026-10-22","by":"model:openai/gpt-6-astra#high"},"id":"rust","order":260,"resource":"/code/rust/GLOBAL.md","source":"/code/rust/GLOBAL.md","status":"draft","title":"Rust conventions","type":"ContextFragment"}} />
 
 ## Rust conventions
 
@@ -929,7 +929,7 @@ the old single-provider example as a complete layering implementation.
 
 <section id="atproto-cli" data-source="/atproto/GLOBAL.md">
 
-<Okf data={{"description":"Quick client identity and authentication checks.","id":"atproto-cli","order":280,"resource":"/atproto/GLOBAL.md","source":"/atproto/cli.md","sources":[{"resource":"opencode://ses_e6c505360ffeVFenH2VYDN7XS0","title":"Human direction and ATProto CLI guidance integration"}],"status":"draft","title":"ATProto CLI sessions","type":"ContextFragment"}} />
+<Okf data={{"description":"Quick client identity and authentication checks.","id":"atproto-cli","order":280,"resource":"/atproto/GLOBAL.md","source":"/atproto/cli.md","status":"draft","title":"ATProto CLI sessions","type":"ContextFragment"}} />
 
 ## ATProto CLI sessions
 
@@ -980,7 +980,7 @@ bd close <issue-id> --reason "<completion and verification>"
 
 <section id="praxis-ticket-pointers" data-source="/praxis/ticket-pointers/GLOBAL.md">
 
-<Okf data={{"description":"Brief cues for user-shaped ticket coordination, useful ticket pointers, and traceable implementation notes.","generated":{"at":"2026-09-23","by":"model:openai/gpt-6-luna#medium"},"id":"praxis-ticket-pointers","order":400,"resource":"/praxis/ticket-pointers/GLOBAL.md","source":"/praxis/ticket-pointers/ticket-pointers0.glm53fx.md","sources":[{"resource":"/praxis/ticket-pointers/ticket-pointers0.glm53fx.md","title":"Ticket pointers praxis"},{"resource":"/constitution/README.md#doc-constitution-tickets","title":"Balanced ticket coordination"}],"status":"draft","title":"Ticket pointers — ambient cues","type":"ContextFragment"}} />
+<Okf data={{"description":"Brief cues for user-shaped ticket coordination, useful ticket pointers, and traceable implementation notes.","generated":{"at":"2026-09-23","by":"model:openai/gpt-6-luna#medium"},"id":"praxis-ticket-pointers","order":400,"resource":"/praxis/ticket-pointers/GLOBAL.md","source":"/praxis/ticket-pointers/ticket-pointers0.glm53fx.md","status":"draft","title":"Ticket pointers — ambient cues","type":"ContextFragment"}} />
 
 ## Ticket pointers — ambient cues
 
@@ -996,7 +996,7 @@ bd close <issue-id> --reason "<completion and verification>"
 
 <section id="praxis-flights" data-source="/praxis/flights/GLOBAL.md">
 
-<Okf data={{"description":"Compact coordination cue for flights, naming the random-combo reusable model and its zero-install generator command.","id":"praxis-flights","order":402,"resource":"/praxis/flights/GLOBAL.md","source":"/praxis/flights/README.md","sources":[{"resource":"opencode://ses_e60122a28ffem0Q4yFFw0qqZEM","title":"Commission ambient flight availability including random-combo and its slots knob"},{"resource":"/praxis/flights/README.md","title":"Flight practice home"}],"status":"draft","title":"Flights — spawn, join, and carry evidence forward","type":"ContextFragment"}} />
+<Okf data={{"description":"Compact coordination cue for flights, naming the random-combo reusable model and its zero-install generator command.","id":"praxis-flights","order":402,"resource":"/praxis/flights/GLOBAL.md","source":"/praxis/flights/README.md","status":"draft","title":"Flights — spawn, join, and carry evidence forward","type":"ContextFragment"}} />
 
 ## Flights — spawn, join, and carry evidence forward
 
@@ -1020,7 +1020,7 @@ contract: [random-combo tool](/tool/random-combo/README.md).
 
 <section id="praxis-coverage" data-source="/praxis/coverage/GLOBAL.md">
 
-<Okf data={{"description":"A compact cue for answering the human's coverage question.","id":"praxis-coverage","order":405,"resource":"/praxis/coverage/GLOBAL.md","source":"/praxis/coverage/README.md","sources":[{"resource":"opencode://ses_e612fa800ffeeNJGAuTzJeLwFY","title":"Expose non-exclusive presentation labels for thread accounts"},{"resource":"opencode://ses_e61a523a6ffef0z5ECCK5z73dC","title":"Human requests enduring presentation distinctions and a GLOBAL table for user-facing thread information"},{"resource":"opencode://ses_e60b75e93ffelTp0cIJM30swe6","title":"Activate coverage guidance and add context-sensitive proactive check-ins"},{"resource":"opencode://ses_e61c89ec5ffevCqzDqpRciJ0Dl","title":"Human requests an ambient coverage question for proposed threads and what is not being dealt with"},{"resource":"/praxis/coverage/README.md","title":"Coverage practice and its distinction from fronts"}],"status":"draft","title":"Coverage — account for the threads and omissions","type":"ContextFragment"}} />
+<Okf data={{"description":"A compact cue for answering the human's coverage question.","id":"praxis-coverage","order":405,"resource":"/praxis/coverage/GLOBAL.md","source":"/praxis/coverage/README.md","status":"draft","title":"Coverage — account for the threads and omissions","type":"ContextFragment"}} />
 
 ## Coverage — account for threads and omissions
 
@@ -1053,7 +1053,7 @@ connects them to digest, fronts, and an inspectable lean.
 
 <section id="praxis-consumer-accounts" data-source="/praxis/consumer-accounts/GLOBAL.md">
 
-<Okf data={{"description":"Recommend library-side accounts of consuming projects' use, case studies and improvement hopes.","generated":{"at":"2026-10-22","by":"model:openai/gpt-6-astra#medium"},"id":"praxis-consumer-accounts","order":410,"resource":"/praxis/consumer-accounts/GLOBAL.md","source":"/praxis/consumer-accounts/README.md","sources":[{"resource":"opencode://ses_e9a40d003ffeEeLMvkRjLaMwVK","title":"Human requests ambient guidance recommending consumer accounts for libraries we use under ~/src"},{"resource":"/praxis/consumer-accounts/README.md","title":"Consumer accounts practice and Kubeless precedent"}],"status":"draft","title":"Consumer accounts — library-side feedback","type":"ContextFragment"}} />
+<Okf data={{"description":"Recommend library-side accounts of consuming projects' use, case studies and improvement hopes.","generated":{"at":"2026-10-22","by":"model:openai/gpt-6-astra#medium"},"id":"praxis-consumer-accounts","order":410,"resource":"/praxis/consumer-accounts/GLOBAL.md","source":"/praxis/consumer-accounts/README.md","status":"draft","title":"Consumer accounts — library-side feedback","type":"ContextFragment"}} />
 
 ## Consumer accounts — library-side feedback
 
@@ -1072,7 +1072,7 @@ connects them to digest, fronts, and an inspectable lean.
 
 <section id="tool" data-source="/tool/GLOBAL.md">
 
-<Okf data={{"description":"Quick rkt recipes for Markdown checking and generated-output freshness, plus the checker's profiles, link resolution, and freshness-vs-coverage distinctions.","generated":{"at":"2026-10-22","by":"model:openai/gpt-6-astra#high"},"id":"tool","order":450,"resource":"/tool/GLOBAL.md","source":"/tool/README.md","sources":[{"resource":"opencode://ses_e9d711bbeffenO3yHUyxP2Bv1G","title":"Human requests Rust integration of the consumer-document checker; parent completes parser corrections, documentation and generated guidance after G reaches its usage limit"},{"resource":"opencode://ses_e9d67cd87ffe5fumUOB6NXo3Zn","title":"G develops the initial Rust check engine and CLI integration"},{"resource":"/tool/check/README.md","title":"Document checker commands, profiles and limits"},{"resource":"opencode://ses_e9bc39334ffetsgyIAj4L0kp0A","title":"Human direction to document the toolkit's offerings with quick usage examples under the rkt code"}],"status":"draft","title":"Tools — check knowledge documents","type":"ContextFragment"}} />
+<Okf data={{"description":"Quick rkt recipes for Markdown checking and generated-output freshness, plus the checker's profiles, link resolution, and freshness-vs-coverage distinctions.","generated":{"at":"2026-10-22","by":"model:openai/gpt-6-astra#high"},"id":"tool","order":450,"resource":"/tool/GLOBAL.md","source":"/tool/README.md","status":"draft","title":"Tools — check knowledge documents","type":"ContextFragment"}} />
 
 ## Tools — check knowledge documents
 
@@ -1112,7 +1112,7 @@ maintenance in any repo, not just rekon's.
 
 <section id="refs" data-source="/refs/GLOBAL.md">
 
-<Okf data={{"id":"refs","order":500,"source":"/refs/README.md","sources":[{"resource":"opencode://ses_ed2db3069ffeQV7v6JC7p69Vte","title":"Align ambient provenance guidance with keyed positional OpenCode URIs and session authority"},{"resource":"opencode://ses_ed2eda746ffefem0MPL9M5MYX7","title":"Human direction to adopt OpenCode URIs with keyed positional IDs as the canonical grammar"}],"status":"draft"}} />
+<Okf data={{"id":"refs","order":500,"source":"/refs/README.md","status":"draft"}} />
 
 ## References
 
