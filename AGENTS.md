@@ -2,41 +2,42 @@
 
 <nav id="rekon-toc" aria-label="Table of contents">
 
-- <a href="#glossary" data-line-start="51" data-line-end="58">Rekon working vocabulary</a>
-  - <a href="#glossary-names-homes-and-relations" data-line-start="59" data-line-end="136">Names, homes, and relations</a>
-  - <a href="#glossary-knowledge-work-and-learning" data-line-start="137" data-line-end="203">Knowledge, work, and learning</a>
-  - <a href="#glossary-action-and-delivery" data-line-start="204" data-line-end="309">Action and delivery</a>
-  - <a href="#glossary-honing-and-commitment" data-line-start="310" data-line-end="356">Honing and commitment</a>
-- <a href="#codes" data-line-start="357" data-line-end="412">Codes glossary</a>
-- <a href="#doc-constitution" data-line-start="413" data-line-end="419">Constitution — orient before acting</a>
-  - <a href="#doc-constitution-terms-in-use" data-line-start="420" data-line-end="440">Terms in use</a>
-  - <a href="#doc-constitution-use-the-sense-map" data-line-start="441" data-line-end="494">Use the sense-map</a>
-- <a href="#documentation-practice" data-line-start="495" data-line-end="498">Writing, independent waves, and document connections</a>
-  - <a href="#documentation-practice-durable-writing" data-line-start="499" data-line-end="539">Durable writing</a>
-  - <a href="#documentation-practice-waves" data-line-start="540" data-line-end="562">Waves</a>
-  - <a href="#documentation-practice-doc-pass" data-line-start="563" data-line-end="582">Doc-pass</a>
-- <a href="#collaboration" data-line-start="583" data-line-end="586">Collaboration and architectural stewardship</a>
-  - <a href="#collaboration-dispatch-and-return" data-line-start="587" data-line-end="614">Dispatch and return</a>
-  - <a href="#collaboration-stewardship" data-line-start="615" data-line-end="634">Stewardship</a>
-  - <a href="#collaboration-discussion" data-line-start="635" data-line-end="649">Discussion</a>
-- <a href="#workspace" data-line-start="650" data-line-end="653">Workspace, research locations, and shell</a>
-  - <a href="#workspace-known-places" data-line-start="654" data-line-end="677">Known places</a>
-  - <a href="#workspace-workspace-practice" data-line-start="678" data-line-end="706">Workspace practice</a>
-- <a href="#code" data-line-start="707" data-line-end="713">Code — stage and change discipline</a>
-  - <a href="#code-terms-in-use" data-line-start="714" data-line-end="728">Terms in use</a>
-  - <a href="#code-operating-weight" data-line-start="729" data-line-end="760">Operating weight</a>
-- <a href="#jj" data-line-start="761" data-line-end="788">jj and git operating rules</a>
-  - <a href="#jj-jj-waltz-workspaces" data-line-start="789" data-line-end="816">jj-waltz workspaces</a>
-- <a href="#forge-publication" data-line-start="817" data-line-end="831">Forge publication</a>
-- <a href="#javascript" data-line-start="832" data-line-end="865">JavaScript and TypeScript</a>
-- <a href="#rust" data-line-start="866" data-line-end="892">Rust conventions</a>
-- <a href="#atproto-cli" data-line-start="893" data-line-end="905">ATProto CLI sessions</a>
-- <a href="#beads" data-line-start="906" data-line-end="943">Beads — readable work IDs and deliberate tracking</a>
-- <a href="#praxis-ticket-pointers" data-line-start="944" data-line-end="959">Ticket pointers — ambient cues</a>
-- <a href="#praxis-consumer-accounts" data-line-start="960" data-line-end="978">Consumer accounts — library-side feedback</a>
-- <a href="#tool" data-line-start="979" data-line-end="1018">Tools — check knowledge documents</a>
-- <a href="#refs" data-line-start="1019" data-line-end="1024">References</a>
-  - <a href="#refs-skills" data-line-start="1025" data-line-end="1057">Skills</a>
+- <a href="#glossary" data-line-start="52" data-line-end="59">Rekon working vocabulary</a>
+  - <a href="#glossary-names-homes-and-relations" data-line-start="60" data-line-end="137">Names, homes, and relations</a>
+  - <a href="#glossary-knowledge-work-and-learning" data-line-start="138" data-line-end="220">Knowledge, work, and learning</a>
+  - <a href="#glossary-action-and-delivery" data-line-start="221" data-line-end="326">Action and delivery</a>
+  - <a href="#glossary-honing-and-commitment" data-line-start="327" data-line-end="373">Honing and commitment</a>
+- <a href="#codes" data-line-start="374" data-line-end="429">Codes glossary</a>
+- <a href="#doc-constitution" data-line-start="430" data-line-end="436">Constitution — orient before acting</a>
+  - <a href="#doc-constitution-terms-in-use" data-line-start="437" data-line-end="457">Terms in use</a>
+  - <a href="#doc-constitution-use-the-sense-map" data-line-start="458" data-line-end="511">Use the sense-map</a>
+- <a href="#documentation-practice" data-line-start="512" data-line-end="515">Writing, independent waves, and document connections</a>
+  - <a href="#documentation-practice-durable-writing" data-line-start="516" data-line-end="556">Durable writing</a>
+  - <a href="#documentation-practice-waves" data-line-start="557" data-line-end="579">Waves</a>
+  - <a href="#documentation-practice-doc-pass" data-line-start="580" data-line-end="599">Doc-pass</a>
+- <a href="#collaboration" data-line-start="600" data-line-end="603">Collaboration and architectural stewardship</a>
+  - <a href="#collaboration-dispatch-and-return" data-line-start="604" data-line-end="631">Dispatch and return</a>
+  - <a href="#collaboration-stewardship" data-line-start="632" data-line-end="651">Stewardship</a>
+  - <a href="#collaboration-discussion" data-line-start="652" data-line-end="666">Discussion</a>
+- <a href="#workspace" data-line-start="667" data-line-end="670">Workspace, research locations, and shell</a>
+  - <a href="#workspace-known-places" data-line-start="671" data-line-end="694">Known places</a>
+  - <a href="#workspace-workspace-practice" data-line-start="695" data-line-end="723">Workspace practice</a>
+- <a href="#code" data-line-start="724" data-line-end="730">Code — stage and change discipline</a>
+  - <a href="#code-terms-in-use" data-line-start="731" data-line-end="745">Terms in use</a>
+  - <a href="#code-operating-weight" data-line-start="746" data-line-end="777">Operating weight</a>
+- <a href="#jj" data-line-start="778" data-line-end="805">jj and git operating rules</a>
+  - <a href="#jj-jj-waltz-workspaces" data-line-start="806" data-line-end="833">jj-waltz workspaces</a>
+- <a href="#forge-publication" data-line-start="834" data-line-end="848">Forge publication</a>
+- <a href="#javascript" data-line-start="849" data-line-end="882">JavaScript and TypeScript</a>
+- <a href="#rust" data-line-start="883" data-line-end="909">Rust conventions</a>
+- <a href="#atproto-cli" data-line-start="910" data-line-end="922">ATProto CLI sessions</a>
+- <a href="#beads" data-line-start="923" data-line-end="960">Beads — readable work IDs and deliberate tracking</a>
+- <a href="#praxis-ticket-pointers" data-line-start="961" data-line-end="976">Ticket pointers — ambient cues</a>
+- <a href="#praxis-coverage" data-line-start="977" data-line-end="1009">Coverage — account for threads and omissions</a>
+- <a href="#praxis-consumer-accounts" data-line-start="1010" data-line-end="1028">Consumer accounts — library-side feedback</a>
+- <a href="#tool" data-line-start="1029" data-line-end="1068">Tools — check knowledge documents</a>
+- <a href="#refs" data-line-start="1069" data-line-end="1074">References</a>
+  - <a href="#refs-skills" data-line-start="1075" data-line-end="1107">Skills</a>
 
 </nav>
 
@@ -398,7 +399,7 @@ and history live with
 |---|---|---|
 | `a` | [`/code/workspace/README.md#directory`](/code/workspace/README.md#directory) | ~/a → ~/archive, the source archive; nested ~/a/a → ~/archive/anomalyco. |
 | `ad` | [`/code/workspace/README.md#directory`](/code/workspace/README.md#directory) | ~/ad → ~/r, a compatibility alias for the global reference space. |
-| `ado` | [`/code/workspace/README.md#directory`](/code/workspace/README.md#directory) | ~/ado → ~/r/opencode, the OpenCode notes directory. |
+| `ado` | [`/code/workspace/README.md#directory`](/code/workspace/README.md#directory) | ~/ado → ~/r/opencode, the OpenCode notes directory; ado/p is the conversational short for ~/ado/patches.md (p.md symlink). |
 | `ast` | [`/agents/ast.md`](/agents/ast.md) | GPT-6 Astra, default #hi — independent research and design waves |
 | `cf` | [`file:///home/rektide/src/compfuzor/README.md`](file:///home/rektide/src/compfuzor/README.md) | usually the compfuzor project (~/src/compfuzor); occasionally Cloudflare or scholarly “cf.” — read the context; canonical: github.com/rektide/compfuzor |
 | `con` | [`/constitution/README.md`](/constitution/README.md) | the constitution — rekon's broadest governing document; shared principles for naming, knowledge, work, and assembly; as a prefix it scopes references: con-naming (naming work), con-structure (structure contract) |
@@ -661,7 +662,7 @@ Recovered from [the legacy operating manual](/AGENTS.old.md#subagents);
 
 <section id="workspace" data-source="/code/workspace/GLOBAL.md">
 
-<Okf data={{"description":"Global directory of known places, explicit home-path notation, and workspace operating guidance.","id":"workspace","order":170,"resource":"/code/workspace/GLOBAL.md","source":"/code/workspace/GLOBAL.md","sources":[{"resource":"opencode://ses_e6143e1e5ffeewf1KkLGRgz75C","title":"Create ~/s and expose scoped directory alias codes"},{"resource":"opencode://ses_e614482c2ffeXMJXi14xoFW33A","title":"Human selects ~/r as the global reference space; move the notes repository, preserve aliases and publish the known-places directory"},{"resource":"/code/workspace/README.md","title":"Maintained known-places directory and migration account"}],"status":"draft","title":"Workspace and known places","type":"ContextFragment","updated":{"at":"2026-11-03","by":"model:openai/gpt-6-astra#high"}}} />
+<Okf data={{"description":"Global directory of known places, explicit home-path notation, and workspace operating guidance.","id":"workspace","order":170,"resource":"/code/workspace/GLOBAL.md","source":"/code/workspace/GLOBAL.md","sources":[{"resource":"opencode://ses_e6143e1e5ffeewf1KkLGRgz75C","title":"Create ~/s and expose scoped directory alias codes"},{"resource":"opencode://ses_e614482c2ffeXMJXi14xoFW33A","title":"Human selects ~/r as the global reference space; move the notes repository, preserve aliases and publish the known-places directory"},{"resource":"/code/workspace/README.md","title":"Maintained known-places directory and migration account"},{"resource":"opencode://ses_e6086bb73ffeWHOULEsvy3WjFG","title":"Add the ado/p shorthand beside ado and publish the p.md symlink"}],"status":"draft","title":"Workspace and known places","type":"ContextFragment","updated":{"at":"2026-11-03","by":"model:zai-coding-plan/glm-5.3-flash#max"}}} />
 
 ## Workspace, research locations, and shell
 
@@ -677,7 +678,7 @@ belongs to that project. [Directory home and alias details](/code/workspace/READ
 | Path / alias | Place and purpose |
 | --- | --- |
 | `~/r/` | Global reference space: broad-topic notes, research and a growing personal wiki. |
-| `~/ado/` | `~/r/opencode/`: OpenCode notes, including `~/ado/patches.md`. |
+| `~/ado/` | `~/r/opencode/`: OpenCode notes, including `~/ado/patches.md` (conversational short `ado/p`). |
 | `~/ad/`, `~/archive/doc/`, `~/src/doc/` | Compatibility aliases to `~/r/`; use `~/r/` for new references. |
 | `~/a/` → `~/archive/` | Archived source repositories, normally `<org>/<repo>`. |
 | `~/s/` → `~/src/` | First-party checkouts and development variants. |
@@ -967,6 +968,39 @@ bd close <issue-id> --reason "<completion and verification>"
   implementation report with the session ID for traceability. Keep it
   proportional; not every edit needs a ticket note.
 - Deeper practice: [Ticket pointers](/praxis/ticket-pointers/ticket-pointers0.glm53fx.md).
+</section>
+
+<section id="praxis-coverage" data-source="/praxis/coverage/GLOBAL.md">
+
+<Okf data={{"description":"A compact cue for answering the human's coverage question.","id":"praxis-coverage","order":405,"resource":"/praxis/coverage/GLOBAL.md","source":"/praxis/coverage/README.md","sources":[{"resource":"opencode://ses_e612fa800ffeeNJGAuTzJeLwFY","title":"Expose non-exclusive presentation labels for thread accounts"},{"resource":"opencode://ses_e61a523a6ffef0z5ECCK5z73dC","title":"Human requests enduring presentation distinctions and a GLOBAL table for user-facing thread information"},{"resource":"opencode://ses_e60b75e93ffelTp0cIJM30swe6","title":"Activate coverage guidance and add context-sensitive proactive check-ins"},{"resource":"opencode://ses_e61c89ec5ffevCqzDqpRciJ0Dl","title":"Human requests an ambient coverage question for proposed threads and what is not being dealt with"},{"resource":"/praxis/coverage/README.md","title":"Coverage practice and its distinction from fronts"}],"status":"draft","title":"Coverage — account for the threads and omissions","type":"ContextFragment"}} />
+
+## Coverage — account for threads and omissions
+
+When the human asks **“coverage?”**, gather the relevant prompt or conversation's
+threads, re-present their dispositions, and name important adjacent topics not dealt
+with in this pass. Offer an unasked-for coverage check when it would help, including
+semi-periodic check-ins during longer work; use judgment about context and frequency,
+not every turn. State the examined scope and uncertainty; distinguish suggestions
+from decisions and results. Do not turn threads into tickets or commitments. Deeper
+practice: [coverage](/praxis/coverage/README.md).
+
+For user-facing thread accounts and other reports, use these presentation cues
+when helpful, as hashtags or ordinary language:
+
+| Cue | Meaning |
+|---|---|
+| `#background` | Existing context or current ground. |
+| `#iterative` | Extension or revision of existing work; not necessarily easy. |
+| `#net-new` | A capability or approach new to the stated scope. |
+| `#forward-looking` | A possibility or direction beyond established ground. |
+
+These lenses can combine: future-looking work can extend existing mechanisms,
+and net-new implementation can be ready now. They do not establish proposed,
+recommended, accepted, commissioned, implemented, or verified standing; say
+that separately when relevant. A recommendation tag is not authorization.
+They are not ticket or bookmark tags, runtime classification, or mandatory on
+every answer. [Coverage presentation practice](/praxis/coverage/README.md#present-the-nature-of-a-thread)
+connects them to digest, fronts, and an inspectable lean.
 </section>
 
 <section id="praxis-consumer-accounts" data-source="/praxis/consumer-accounts/GLOBAL.md">
