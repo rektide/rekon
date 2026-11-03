@@ -18,7 +18,7 @@ sources:
   - { resource: /constitution/naming/exploration/proposal4.glm53m.md, title: Recorded naming ruling }
   - { resource: /design/rekon/context-weave/north-star0.gpt6a.md, title: Historical basis and scope of the manual weave }
   - { resource: "opencode://ses_e9bc39334ffetsgyIAj4L0kp0A", title: Point shortcode references at the codes glossary after the October 22 rekey }
-  - { resource: "opencode://ses_e5fb636fbffe5Gl3HoQQS34gn5", title: Consolidate foundational naming terms here without redundant ambient glossary pointers }
+  - { resource: "opencode://ses_e5fb636fbffe5Gl3HoQQS34gn5", title: Consolidate naming terms and clarify ambient cross-reference practice }
 ---
 
 # Constitution — orient before acting
@@ -64,11 +64,10 @@ assume similar words identify the same thing. Moving a durable source changes
 its knowledge names: assess incoming references and agree the repair deliberately.
 
 Domain modules maintain their README bodies; the existing SKILL symlinks load
-those bodies. GLOBAL is the local proposal for shared ambient context. While
-we hone, repetition across these exposures and the root view is intentional.
-Keep the owner and any disagreement visible; do not strip useful definitions
-merely to make a context count smaller. A tiny local glossary belongs before
-instructions that rely on its terms; it need not repeat the entire shared glossary.
+those bodies. GLOBAL is the local proposal for shared ambient context. Preserve
+useful definitions and visible disagreements while honing, but use terms already
+supplied by the same assembly directly rather than adding redundant cross-pointers.
+For independently delivered fragments, account for dependencies not supplied.
 
 In Rekon, maintained explanations live with their domain owners. Shortcodes
 (`con`, `prax`, `rkt`, the agent codes, and friends from the

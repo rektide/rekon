@@ -14,6 +14,8 @@ extensions:
   skill: /constitution/SKILL.md
   global_fragment: /constitution/GLOBAL.md
 sources:
+  - { resource: "opencode://ses_e5fb636fbffe5Gl3HoQQS34gn5", title: Refine ambient cross-reference practice and investigate a Rekon-specific entrypoint }
+  - { resource: "opencode://ses_e5f780899ffe3ZWukAS2XsDC0H", title: Research ambient assembly documentation and Rekon entrypoint alternatives }
   - { resource: "opencode://ses_e7172da2affeJ5Mx7eqRYTsOu8", title: Link the proposed eventual document integration cadence and optional doc helper from opt-in patterns }
   - { resource: "opencode://ses_ed31715c4ffex2ROd2G2C617AF", title: Current enriched assembly standing and implementation navigation }
   - { resource: "urn:opencode:session:ses_ed31715c4ffex2ROd2G2C617AF", title: Update assembly standing for scoped metadata and the Rust producer }
@@ -277,6 +279,14 @@ line is paid for in sessions that may never need that topic.
 - Keep procedures, rationale, source histories, and fuller examples with their
   owner. A fragment SHOULD link to that depth rather than repeat it.
 
+**Already ambient is not deeper context.** Do not add cross-references among
+selected GLOBAL, CONTEXT, or GLOSSARY fragments merely to make their terms or
+instructions available: their bodies are supplied together. Use their shared
+vocabulary directly. Keep links that provide meaningful navigation, attribution,
+evidence, or task-specific depth, and retain source provenance. Selection is
+determined by the actual assembly manifest, not a filename alone; an independently
+delivered fragment must account for dependencies not supplied with it.
+
 [`refs/GLOBAL.md`](/refs/GLOBAL.md) is the concrete index pattern: direct skill
 links and a tiny provenance example, with the process behind those links. The
 2026-10-06 human direction makes this KISS posture explicit. The earlier
@@ -299,9 +309,11 @@ it is not acceptance of every candidate GLOBAL or a production cutover.
 
 During this workshop:
 
-- In the workshop's instruction-bearing GLOBALs, put the small **terms in use**
-  before guidance that relies on them, linked to the [shared glossary](/CONTEXT.md).
-  A self-explanatory routing index needs only its cues and links.
+- In the workshop's instruction-bearing GLOBALs, supply small **terms in use**
+  when needed before guidance that relies on them. Use terms already supplied
+  by the same assembly directly, without redundant glossary pointers; account
+  for dependencies when delivering a fragment independently. A self-explanatory
+  routing index needs only its cues and links.
 - Repetition may supply orientation, reinforce an invariant, or let an exposure
   stand on its own. Keep its owner and purpose clear. Compare and reconcile
   divergent meanings; do not remove useful repetition merely to satisfy DRY.
