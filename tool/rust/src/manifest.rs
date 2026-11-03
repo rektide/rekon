@@ -85,7 +85,7 @@ pub fn is_pattern(entry: &str) -> bool {
 /// A pattern matching nothing is an error: a stale directive must fail loudly
 /// rather than silently assemble less context.
 pub fn expand_globs(manifest: &Manifest, directory: &str) -> Result<Manifest, ManifestError> {
-    if !manifest.fragments.iter().any(|f| is_pattern(f)) {
+    if !manifest.fragments.iter().any(|f| is_pattern(f)) && manifest.exclude.is_empty() {
         return Ok(manifest.clone());
     }
     let options = glob::MatchOptions {
@@ -128,6 +128,27 @@ pub fn expand_globs(manifest: &Manifest, directory: &str) -> Result<Manifest, Ma
                     ),
                 });
             };
+            // Recursive glob walks can traverse directory aliases. Do not silently
+            // select the same owner through an alias (or leave the bundle via one).
+            let mut component_path = std::path::PathBuf::from(directory);
+            let mut symlinked = false;
+            for component in relative.components() {
+                component_path.push(component);
+                if std::fs::symlink_metadata(&component_path)
+                    .map_err(|error| ManifestError::GlobExpansion {
+                        pattern: entry.clone(),
+                        message: format!("cannot inspect {}: {error}", component_path.display()),
+                    })?
+                    .file_type()
+                    .is_symlink()
+                {
+                    symlinked = true;
+                    break;
+                }
+            }
+            if symlinked {
+                continue;
+            }
             let relative = relative
                 .to_str()
                 .ok_or_else(|| ManifestError::GlobExpansion {
@@ -138,7 +159,9 @@ pub fn expand_globs(manifest: &Manifest, directory: &str) -> Result<Manifest, Ma
             if let Err(reason) = validate_fragment_path(&relative) {
                 return Err(ManifestError::GlobExpansion {
                     pattern: entry.clone(),
-                    message: format!("match {relative:?} is not a selectable fragment path: {reason}"),
+                    message: format!(
+                        "match {relative:?} is not a selectable fragment path: {reason}"
+                    ),
                 });
             }
             matches.push(relative);
@@ -152,9 +175,20 @@ pub fn expand_globs(manifest: &Manifest, directory: &str) -> Result<Manifest, Ma
         matches.sort();
         fragments.extend(matches);
     }
+    for excluded in &manifest.exclude {
+        let before = fragments.len();
+        fragments.retain(|fragment| fragment != excluded);
+        if fragments.len() == before {
+            return Err(ManifestError::GlobExpansion {
+                pattern: excluded.clone(),
+                message: "excluded path was not selected".to_string(),
+            });
+        }
+    }
     Ok(Manifest {
         fragments,
         output: manifest.output.clone(),
+        exclude: Vec::new(),
     })
 }
 
@@ -163,6 +197,8 @@ pub fn expand_globs(manifest: &Manifest, directory: &str) -> Result<Manifest, Ma
 pub struct Manifest {
     pub fragments: Vec<String>,
     pub output: String,
+    #[serde(default)]
+    pub exclude: Vec<String>,
 }
 
 #[derive(Error, Debug)]
@@ -182,10 +218,7 @@ pub enum ManifestError {
         message: String,
     },
     #[error("glob directive {pattern:?}: {message}")]
-    GlobExpansion {
-        pattern: String,
-        message: String,
-    },
+    GlobExpansion { pattern: String, message: String },
 }
 
 /// Parse the manifest text; `path` names the manifest for error context (as given, not absolute).
@@ -204,6 +237,16 @@ pub fn parse_manifest(raw: &str, path: &str) -> Result<Manifest, ManifestError> 
     for fragment in &parsed.fragments {
         validate_fragment_path(fragment)
             .map_err(|message| fail(format!("fragments[{fragment:?}]: {message}")))?;
+    }
+    let mut exclusions = std::collections::HashSet::new();
+    for excluded in &parsed.exclude {
+        validate_fragment_path(excluded)
+            .map_err(|message| fail(format!("exclude[{excluded:?}]: {message}")))?;
+        if is_pattern(excluded) || !exclusions.insert(excluded) {
+            return Err(fail(format!(
+                "exclude[{excluded:?}]: must be a unique literal path"
+            )));
+        }
     }
     validate_relative_path(&parsed.output).map_err(|message| fail(format!("output: {message}")))?;
     Ok(parsed)
@@ -293,7 +336,8 @@ mod tests {
             manifest,
             Manifest {
                 fragments: vec!["second.md".into(), "first.md".into()],
-                output: "AGENTS.md".into()
+                output: "AGENTS.md".into(),
+                exclude: vec![]
             }
         );
     }
@@ -441,7 +485,10 @@ mod tests {
             &[
                 ("praxis/zeta/GLOBAL.md", "z"),
                 ("praxis/alpha/GLOBAL.md", "a"),
-                ("praxis/alpha/notes.md", "not a fragment name, still matched by walk only if pattern says so"),
+                (
+                    "praxis/alpha/notes.md",
+                    "not a fragment name, still matched by walk only if pattern says so",
+                ),
                 ("praxis/alpha/.hidden.md", "h"),
                 ("praxis/beta", ""), // a directory named like a file
             ],
@@ -451,7 +498,10 @@ mod tests {
         let expanded = expand_globs(&manifest, root.path().to_str().unwrap()).unwrap();
         assert_eq!(
             expanded.fragments,
-            vec!["praxis/alpha/GLOBAL.md".to_string(), "praxis/zeta/GLOBAL.md".to_string()]
+            vec![
+                "praxis/alpha/GLOBAL.md".to_string(),
+                "praxis/zeta/GLOBAL.md".to_string()
+            ]
         );
         assert_eq!(expanded.output, "AGENTS.md");
     }
@@ -493,6 +543,55 @@ mod tests {
     }
 
     #[test]
+    fn literal_exclusions_remove_selected_files_and_stale_exclusions_fail() {
+        let root = tempfile::tempdir().unwrap();
+        write_bundle(
+            root.path(),
+            &[("doc/GLOBAL.md", "old"), ("code/GLOBAL.md", "new")],
+        );
+        let raw = r#"{"fragments": ["**/GLOBAL.md"], "exclude": ["doc/GLOBAL.md"], "output": "AGENTS.md"}"#;
+        let manifest = parse_manifest(raw, "manifest.json").unwrap();
+        let expanded = expand_globs(&manifest, root.path().to_str().unwrap()).unwrap();
+        assert_eq!(expanded.fragments, vec!["code/GLOBAL.md"]);
+        std::fs::remove_file(root.path().join("doc/GLOBAL.md")).unwrap();
+        assert!(
+            expand_globs(&manifest, root.path().to_str().unwrap())
+                .unwrap_err()
+                .to_string()
+                .contains("excluded path was not selected")
+        );
+        for excluded in ["../outside", "**/GLOBAL.md"] {
+            let raw = format!(
+                r#"{{"fragments":["*.md"],"exclude":["{excluded}"],"output":"AGENTS.md"}}"#
+            );
+            assert!(parse_manifest(&raw, "manifest.json").is_err());
+        }
+    }
+
+    #[cfg(unix)]
+    #[test]
+    fn glob_skips_symlinked_files_and_directories_but_literals_remain_available() {
+        use std::os::unix::fs::symlink;
+        let root = tempfile::tempdir().unwrap();
+        write_bundle(root.path(), &[("code/js/GLOBAL.md", "js")]);
+        symlink("code/js", root.path().join("js")).unwrap();
+        symlink("code/js/GLOBAL.md", root.path().join("alias.md")).unwrap();
+        let manifest = parse_manifest(
+            r#"{"fragments":["**/GLOBAL.md", "alias.md"],"output":"AGENTS.md"}"#,
+            "manifest.json",
+        )
+        .unwrap();
+        let expanded = expand_globs(&manifest, root.path().to_str().unwrap()).unwrap();
+        assert_eq!(expanded.fragments, vec!["code/js/GLOBAL.md", "alias.md"]);
+        let only_alias = parse_manifest(
+            r#"{"fragments":["alias.*"],"output":"AGENTS.md"}"#,
+            "manifest.json",
+        )
+        .unwrap();
+        assert!(expand_globs(&only_alias, root.path().to_str().unwrap()).is_err());
+    }
+
+    #[test]
     fn expanded_duplicates_are_rejected_by_planning() {
         let root = tempfile::tempdir().unwrap();
         write_bundle(root.path(), &[("code/GLOBAL.md", "g")]);
@@ -500,7 +599,13 @@ mod tests {
         let manifest = parse_manifest(raw, "manifest.json").unwrap();
         let expanded = expand_globs(&manifest, root.path().to_str().unwrap()).unwrap();
         assert!(matches!(
-            plan_assembly(&expanded, "manifest.json", root.path().to_str().unwrap(), None).unwrap_err(),
+            plan_assembly(
+                &expanded,
+                "manifest.json",
+                root.path().to_str().unwrap(),
+                None
+            )
+            .unwrap_err(),
             ManifestError::DuplicateFragmentPath { .. }
         ));
     }

@@ -1,24 +1,9 @@
 {
   "fragments": [
     "CONTEXT.md",
-    "codes/GLOSSARY.md",
-    "constitution/GLOBAL.md",
-    "constitution/practice/GLOBAL.md",
-    "agents/GLOBAL.md",
-    "code/workspace/GLOBAL.md",
-    "code/GLOBAL.md",
-    "vcs/jj/GLOBAL.md",
-    "forge/GLOBAL.md",
-    "code/js/GLOBAL.md",
-    "code/rust/GLOBAL.md",
-    "atproto/GLOBAL.md",
-    "praxis/beads/GLOBAL.md",
-    "praxis/ticket-pointers/GLOBAL.md",
-    "praxis/flights/GLOBAL.md",
-    "praxis/coverage/GLOBAL.md",
-    "praxis/consumer-accounts/GLOBAL.md",
-    "tool/GLOBAL.md",
-    "refs/GLOBAL.md"
+    "**/GLOSSARY.md",
+    "**/GLOBAL.md"
   ],
+  "exclude": ["doc/GLOBAL.md"],
   "output": "AGENTS.md"
 }

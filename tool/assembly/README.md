@@ -12,6 +12,7 @@ sources:
   - { resource: /design/toolchain/enriched-assembly0.gpt6a.md, title: Current integration contract }
   - { resource: /design/toolchain/draft0.glm53m.md, title: Earlier Rust-first and combine-first direction }
   - { resource: "opencode://ses_e9bc39334ffetsgyIAj4L0kp0A", title: Human names globbing; contract updated with pattern directives and the section-selection follow-on }
+  - { resource: "opencode://ses_e5fb7f311ffeXrWNZ49Ok9Rh2N", title: Adopt wildcard selection with a retired-fragment exclusion and align coverage audit }
   - { resource: /constitution/agents-assembly.md, title: Legacy assembler contract and operational guarantees }
   - { resource: /design/rekon/agents-effect0.sol61xh.md, title: Prior Effect producer and validation evidence }
   - { resource: /design/context-compilation/repair0.gpt6a.md, title: Guidance recovery and independent coverage audit }
@@ -51,17 +52,18 @@ output or staging directories. Help exits 0; invalid CLI arguments exit 1.
 
 ## Selection and ordering
 
-The [root manifest](/agents.manifest.json) explicitly lists whole inputs:
+The [root manifest](/agents.manifest.json) declares whole inputs and patterns:
 
 ```json
 {
-  "fragments": ["CONTEXT.md", "constitution/GLOBAL.md", "code/GLOBAL.md"],
+  "fragments": ["CONTEXT.md", "**/GLOSSARY.md", "**/GLOBAL.md"],
+  "exclude": ["doc/GLOBAL.md"],
   "output": "AGENTS.md"
 }
 ```
 
-Every selected body's content is included. There is no subsection selection or
-automatic discovery. Fragment paths resolve from the manifest directory and
+Every selected body's content is included. There is no subsection selection;
+patterns deliberately select matching files. Fragment paths resolve from the manifest directory and
 must be normalized, relative, and free of `.`/`..` segments. Manifest output may
 deliberately use parent segments. The destination must not overwrite an input.
 
@@ -75,12 +77,22 @@ declaration — expansion is deliberate selection, not unconstrained discovery:
 - every match is revalidated against the fragment path rules and never escapes
   the manifest directory;
 - dotfiles and dot-directories are skipped, directories are never selected;
+- glob matches through symlinked files or directories are skipped, avoiding alias
+  duplication and selection outside the bundle; literal entries remain explicit;
 - a pattern matching no files is a hard error, so stale directives fail loudly;
+- optional `exclude` entries are unique, normalized literal paths, removed after
+  expansion; an exclusion that selected nothing is an error. The root manifest
+  excludes the retired `doc/GLOBAL.md` rather than activating it;
 - duplicate detection and output-overwrite protection run against the expanded
   set (an explicit entry plus a glob matching the same file is rejected);
 - ordering is unchanged: numeric frontmatter `order` still composes the
   document, and each matched file must carry its own full fragment frontmatter
   — identity and provenance stay with owners.
+
+The coverage audit uses the same expanded, filtered selection. A new matching
+file becomes ambient on the next successful assembly; review its metadata and
+content deliberately. Legacy TypeScript assemblers do not implement this manifest
+extension; the Rust producer is the live implementation.
 
 Section selection (`file#tag` entries addressing one section of a larger
 document, resolved through the heading/anchor indexing the ToC pass already

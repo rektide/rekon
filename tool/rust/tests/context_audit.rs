@@ -32,17 +32,34 @@ fn fresh_assembly_still_fails_when_beads_is_omitted_or_its_instruction_is_lost()
         .map(|byte| format!("{byte:02x}"))
         .collect();
     fs::write(root.join("legacy.md"), baseline).unwrap();
-    fs::write(root.join("common.md"), "---\nid: common\norder: 1\nsource: /common.md\nstatus: draft\n---\n# Common\n\nCommon guidance.\n").unwrap();
+    fs::write(
+        root.join("common.md"),
+        "---\nid: common\norder: 1\nsource: /common.md\nstatus: draft\n---\n# Common\n\nCommon guidance.\n",
+    )
+    .unwrap();
     let beads = "---\nid: beads\norder: 2\nsource: /beads.md\nstatus: draft\n---\n# Beads\n\nAlways supply explicit `--id`.\n";
     fs::write(root.join("beads.md"), beads).unwrap();
-    fs::write(root.join("coverage.json"), serde_json::json!({
-        "baseline": "legacy.md", "sha256": hash,
-        "sections": [{"heading": "beads", "note": "Keep IDs ambient", "checks": [{"fragment":"beads.md", "contains":["Always supply explicit --id."]}]}]
-    }).to_string()).unwrap();
+    fs::write(
+        root.join("coverage.json"),
+        serde_json::json!({
+            "baseline": "legacy.md", "sha256": hash,
+            "sections": [{"heading": "beads", "note": "Keep IDs ambient", "checks": [{"fragment":"beads.md", "contains":["Always supply explicit --id."]}]}]
+        })
+        .to_string(),
+    )
+    .unwrap();
     let full_manifest = r#"{"fragments":["common.md","beads.md"],"output":"AGENTS.md"}"#;
     fs::write(root.join("agents.manifest.json"), full_manifest).unwrap();
     let audit = ["audit-context", "--coverage", "coverage.json"];
     successful(run(binary, &["combine"], root));
+    successful(run(binary, &audit, root));
+
+    // Audit and combine must select the same expanded and excluded paths.
+    fs::write(
+        root.join("agents.manifest.json"),
+        r#"{"fragments":["*.md"],"exclude":["legacy.md","AGENTS.md"],"output":"AGENTS.md"}"#,
+    )
+    .unwrap();
     successful(run(binary, &audit, root));
 
     // The unselected file still exists, exactly as it did after the original cutover.

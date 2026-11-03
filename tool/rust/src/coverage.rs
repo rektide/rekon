@@ -12,7 +12,10 @@ use serde::Deserialize;
 use sha2::{Digest, Sha256};
 use thiserror::Error;
 
-use crate::manifest::{ManifestError, parse_manifest, plan_assembly, validate_fragment_path};
+use crate::manifest::{
+    ManifestError, expand_globs, parse_manifest, plan_assembly, validate_fragment_path,
+};
+use crate::nodepath;
 
 pub const DEFAULT_COVERAGE: &str = "tool/assembly/coverage.json";
 
@@ -247,6 +250,11 @@ pub fn audit(manifest_path: &Path, coverage_path: &Path, cwd: &Path) -> Result<R
     let manifest_file = cwd.join(manifest_path);
     let coverage_file = cwd.join(coverage_path);
     let manifest = parse_manifest(&read(&manifest_file)?, &manifest_file.to_string_lossy())?;
+    let directory = nodepath::dirname(&nodepath::resolve(
+        &cwd.to_string_lossy(),
+        &manifest_file.to_string_lossy(),
+    ));
+    let manifest = expand_globs(&manifest, &directory)?;
     let plan = plan_assembly(
         &manifest,
         &manifest_file.to_string_lossy(),
